@@ -37,10 +37,13 @@ class UMLLMClient:
         max_retries: int = 5,
         backoff: float = 2.0,
         log_path: str | Path = "live_evaluation_v3/llm_calls.jsonl",
+        request_delay_seconds: float | None = None,
         opener=None,
         sleeper=time.sleep,
         clock=time.monotonic,
     ):
+        if request_delay_seconds is not None:
+            type(self)._min_interval = max(0.0, float(request_delay_seconds))
         cleaned_url = (base_url or "").strip().rstrip("/")
         for suffix in ("/docs", "/docs/", "/docs2", "/docs2/", "/llm/query_unified"):
             if cleaned_url.endswith(suffix):

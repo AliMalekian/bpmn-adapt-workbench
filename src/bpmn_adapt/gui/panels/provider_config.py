@@ -115,6 +115,7 @@ class ProviderConfigPanel(ttk.Frame):
         self.var_server_id = tk.IntVar(value=1)
         self.var_priority = tk.IntVar(value=1)
         self.var_enabled = tk.BooleanVar(value=False)
+        self.var_delay = tk.DoubleVar(value=2.0)
 
         f_grid = ttk.Frame(self.edit_frame)
         f_grid.pack(fill="both", expand=True)
@@ -156,6 +157,11 @@ class ProviderConfigPanel(ttk.Frame):
 
         self.btn_show_key = ttk.Button(f_grid, text="Show", width=6, command=self._toggle_show_key)
         self.btn_show_key.grid(row=4, column=3, sticky="w", padx=4, pady=2)
+
+        ttk.Label(f_grid, text="Request Delay (s):").grid(row=5, column=0, sticky="w", pady=2)
+        self.spin_delay = ttk.Spinbox(f_grid, textvariable=self.var_delay, from_=0.0, to=30.0, increment=0.5, width=8)
+        self.spin_delay.grid(row=5, column=1, sticky="w", pady=2)
+        ttk.Label(f_grid, text="(Rate limit spacing between requests)", foreground="gray").grid(row=5, column=2, columnspan=3, sticky="w", pady=2)
 
         # Action buttons in detail frame
         detail_btns = ttk.Frame(self.edit_frame)
@@ -311,6 +317,7 @@ class ProviderConfigPanel(ttk.Frame):
         self.var_api_key.set(p.get("api_key", ""))
         self.var_priority.set(p.get("priority", 1))
         self.var_enabled.set(p.get("enabled", False))
+        self.var_delay.set(float(p.get("request_delay_seconds", 2.0)))
         if p.get("type") == "um_llm":
             self.var_server_id.set(p.get("server_id", 1))
         self._on_type_change()
@@ -336,6 +343,7 @@ class ProviderConfigPanel(ttk.Frame):
             "api_key": self.var_api_key.get().strip(),
             "priority": self.var_priority.get(),
             "enabled": self.var_enabled.get(),
+            "request_delay_seconds": float(self.var_delay.get()),
         }
         if self.var_type.get() == "um_llm":
             updates["server_id"] = self.var_server_id.get()

@@ -44,6 +44,8 @@ class BenchmarkRunner:
         screenshot_strategy: str = "A",
         allow_synthetic: bool = False,
         resume: bool = False,
+        enable_rag: bool = True,
+        retry_failed_only: bool = False,
         manager: ProviderManager | None = None,
         on_progress: Callable[[int, int, str], None] | None = None,
         stop_event: threading.Event | None = None,
@@ -59,6 +61,8 @@ class BenchmarkRunner:
         self.screenshot_strategy = screenshot_strategy
         self.allow_synthetic = allow_synthetic
         self.resume = resume
+        self.enable_rag = enable_rag
+        self.retry_failed_only = retry_failed_only
         self.manager = manager or ProviderManager()
         self.on_progress = on_progress
         self.stop_event = stop_event or threading.Event()
@@ -263,6 +267,31 @@ class BenchmarkRunner:
 
         return cases
 
+    def _persist_test_record(self, tests_file: Path, entry: dict[str, Any]) -> None:
+        """Atomically appends or replaces a test record in tests.jsonl."""
+        if not tests_file.is_file():
+            with open(tests_file, "w", encoding="utf-8") as f:
+                f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+            return
+        lines = tests_file.read_text(encoding="utf-8").splitlines()
+        replaced = False
+        new_lines = []
+        for l in lines:
+            if not l.strip():
+                continue
+            try:
+                r = json.loads(l)
+                if r.get("test_id") == entry["test_id"]:
+                    new_lines.append(json.dumps(entry, ensure_ascii=False))
+                    replaced = True
+                else:
+                    new_lines.append(l)
+            except Exception:
+                new_lines.append(l)
+        if not replaced:
+            new_lines.append(json.dumps(entry, ensure_ascii=False))
+        tests_file.write_text("\n".join(new_lines) + "\n", encoding="utf-8")
+
     def run(self) -> dict[str, Any]:
         """Executes the benchmark run and saves all metrics, logs, and artifacts."""
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -308,6 +337,7 @@ class BenchmarkRunner:
             app.llm = p_client
             app.orchestrator.llm = p_client
             app.orchestrator.analyst.llm = p_client
+            app.orchestrator.analyst.enable_rag = self.enable_rag
             app.orchestrator.modeler.llm = p_client
             app.orchestrator.experimenter.llm = p_client
 
@@ -340,29 +370,39 @@ class BenchmarkRunner:
             token_pres_scores: list[float] = []
 
             # Checkpoint & Resume Initialization
-            if self.resume and checkpoint_file.is_file():
+            should_resume = (self.resume or self.retry_failed_only)
+            if should_resume and tests_file.is_file():
                 try:
-                    cp_data = json.loads(checkpoint_file.read_text(encoding="utf-8"))
-                    completed_test_ids = set(cp_data.get("completed_test_ids", []))
-                    logger.info("Resuming benchmark: loaded %d completed test IDs.", len(completed_test_ids))
-                except Exception as cp_err:
-                    logger.warning("Failed to parse checkpoint file %s: %s", checkpoint_file, cp_err)
-
-                if tests_file.is_file():
-                    try:
-                        for line in tests_file.read_text(encoding="utf-8").splitlines():
-                            if line.strip():
-                                rec = json.loads(line)
+                    for line in tests_file.read_text(encoding="utf-8").splitlines():
+                        if not line.strip():
+                            continue
+                        rec = json.loads(line)
+                        tid = rec.get("test_id")
+                        is_success = (rec.get("status") == "SUCCESS" and rec.get("decision") != "ERROR")
+                        if self.retry_failed_only:
+                            if is_success:
+                                completed_test_ids.add(tid)
                                 tests_log.append(rec)
-                                outcomes.append(rec.get("matched_ground_truth", rec.get("status") == "SUCCESS"))
+                                outcomes.append(rec.get("matched_ground_truth", True))
                                 if rec.get("latency_s") is not None:
                                     latencies.append(rec["latency_s"])
                                 if rec.get("graph_edit_distance") is not None:
                                     ged_scores.append(rec["graph_edit_distance"])
                                 if rec.get("token_preservation_rate") is not None:
                                     token_pres_scores.append(rec["token_preservation_rate"])
-                    except Exception as t_err:
-                        logger.warning("Failed to restore existing tests.jsonl: %s", t_err)
+                        else:
+                            completed_test_ids.add(tid)
+                            tests_log.append(rec)
+                            outcomes.append(rec.get("matched_ground_truth", is_success))
+                            if rec.get("latency_s") is not None:
+                                latencies.append(rec["latency_s"])
+                            if rec.get("graph_edit_distance") is not None:
+                                ged_scores.append(rec["graph_edit_distance"])
+                            if rec.get("token_preservation_rate") is not None:
+                                token_pres_scores.append(rec["token_preservation_rate"])
+                    logger.info("Resume/Retry: initialized with %d completed test IDs (retry_failed_only=%s).", len(completed_test_ids), self.retry_failed_only)
+                except Exception as t_err:
+                    logger.warning("Failed to restore existing tests.jsonl: %s", t_err)
 
             for ds_folder in folders:
                 if self.stop_event.is_set():
@@ -394,6 +434,11 @@ class BenchmarkRunner:
                         if test_id in completed_test_ids:
                             logger.info("Skipping already completed test (resume): %s", test_id)
                             continue
+
+                        # Rate limit delay between requests
+                        req_delay = float(p_cfg.get("request_delay_seconds", 0.0))
+                        if req_delay > 0:
+                            time.sleep(req_delay)
 
                         t0 = time.monotonic()
                         tok_in_before = getattr(p_client, "total_prompt_tokens", 0)
@@ -516,9 +561,8 @@ class BenchmarkRunner:
                             }
                             tests_log.append(test_entry)
 
-                            # Append test record to tests.jsonl
-                            with open(tests_file, "a", encoding="utf-8") as f:
-                                f.write(json.dumps(test_entry, ensure_ascii=False) + "\n")
+                            # Append or update test record in tests.jsonl
+                            self._persist_test_record(tests_file, test_entry)
 
                             # Live UI propagation to update all tabs in real-time
                             if self.on_progress:
@@ -574,8 +618,7 @@ class BenchmarkRunner:
                                 "status": "ERROR",
                             }
                             tests_log.append(err_entry)
-                            with open(tests_file, "a", encoding="utf-8") as f:
-                                f.write(json.dumps(err_entry, ensure_ascii=False) + "\n")
+                            self._persist_test_record(tests_file, err_entry)
 
                             completed_test_ids.add(test_id)
                             cp_payload = {
@@ -588,7 +631,18 @@ class BenchmarkRunner:
                             tmp_cp.write_text(json.dumps(cp_payload, indent=2, ensure_ascii=False), encoding="utf-8")
                             tmp_cp.replace(checkpoint_file)
 
-            # Calculate provider metrics
+            # Calculate provider metrics over full suite from tests.jsonl
+            if tests_file.is_file():
+                try:
+                    all_file_tests = [json.loads(line) for line in tests_file.read_text(encoding="utf-8").splitlines() if line.strip()]
+                    if all_file_tests:
+                        tests_log = all_file_tests
+                        latencies = [t.get("latency_s", 0.0) for t in tests_log if t.get("latency_s") is not None]
+                        token_pres_scores = [t.get("token_preservation_rate", 1.0) for t in tests_log if t.get("token_preservation_rate") is not None]
+                        ged_scores = [t.get("graph_edit_distance", 0) for t in tests_log if t.get("graph_edit_distance") is not None]
+                except Exception:
+                    pass
+
             total_tests = len(tests_log)
             correct_count = sum(1 for t in tests_log if t.get("matched_ground_truth"))
             error_count = sum(1 for t in tests_log if t.get("status") == "ERROR")

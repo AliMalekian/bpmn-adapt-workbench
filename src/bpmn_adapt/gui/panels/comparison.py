@@ -173,6 +173,69 @@ class ComparisonPanel(ttk.Frame):
             tests_f = folder / "tests.jsonl"
             folder_tokens = self._extract_tokens_from_folder(folder)
 
+            # Prioritize tests.jsonl if it contains fresher or more complete runs than metrics.json
+            use_tests_jsonl = False
+            tests_parsed = []
+            if tests_f.is_file():
+                try:
+                    for line in tests_f.read_text(encoding="utf-8").splitlines():
+                        if line.strip():
+                            tests_parsed.append(json.loads(line))
+                    if tests_parsed:
+                        if not metrics_f.is_file():
+                            use_tests_jsonl = True
+                        else:
+                            # Compare mtime or test counts
+                            m_data = {}
+                            try:
+                                m_data = json.loads(metrics_f.read_text(encoding="utf-8"))
+                            except Exception:
+                                pass
+                            m_total = m_data.get("total_tests", 0) if isinstance(m_data, dict) else 0
+                            if len(tests_parsed) >= m_total or tests_f.stat().st_mtime > metrics_f.stat().st_mtime:
+                                use_tests_jsonl = True
+                except Exception:
+                    pass
+
+            if use_tests_jsonl and tests_parsed:
+                try:
+                    p_name = tests_parsed[0].get("provider", "LLM Provider")
+                    model = tests_parsed[0].get("model", "")
+                    correct = sum(1 for t in tests_parsed if t.get("matched_ground_truth"))
+                    total = len(tests_parsed)
+                    acc = round((correct / max(1, total)) * 100, 1)
+                    lats = [t.get("latency_s", 0.0) for t in tests_parsed if t.get("latency_s") is not None]
+                    avg_lat = round(sum(lats) / max(1, len(lats)), 2)
+                    in_tok = folder_tokens.get("total_prompt_tokens", 0) or sum(t.get("prompt_tokens", 0) for t in tests_parsed)
+                    out_tok = folder_tokens.get("total_completion_tokens", 0) or sum(t.get("completion_tokens", 0) for t in tests_parsed)
+                    tot_tok = folder_tokens.get("total_tokens", 0) or (in_tok + out_tok)
+                    synth = {
+                        p_name: {
+                            "provider_id": p_name,
+                            "name": p_name,
+                            "model": model,
+                            "accuracy": acc,
+                            "precision": acc,
+                            "recall": acc,
+                            "f1": acc,
+                            "avg_latency_s": avg_lat,
+                            "error_rate": round(sum(1 for t in tests_parsed if t.get("decision") == "ERROR") / max(1, total) * 100, 1),
+                            "total_tests": total,
+                            "prompt_tokens": in_tok,
+                            "completion_tokens": out_tok,
+                            "total_tokens": tot_tok,
+                            "token_metrics": folder_tokens,
+                            "xsd_pass_rate": round(sum(1 for t in tests_parsed if t.get("xsd_valid")) / max(1, total), 2),
+                            "simulation_success_rate": round(sum(1 for t in tests_parsed if t.get("simulation_success")) / max(1, total), 2),
+                            "avg_token_preservation": round(sum(t.get("token_preservation_rate", 1.0) for t in tests_parsed) / max(1, total), 2),
+                        }
+                    }
+                    self.load_summary(synth)
+                    loaded = True
+                    break
+                except Exception:
+                    pass
+
             if summary_f.is_file():
                 try:
                     data = json.loads(summary_f.read_text(encoding="utf-8"))
@@ -194,51 +257,6 @@ class ComparisonPanel(ttk.Frame):
                     self.load_summary(data)
                     loaded = True
                     break
-                except Exception:
-                    pass
-
-            if tests_f.is_file():
-                try:
-                    # Synthesize metrics from tests.jsonl
-                    tests = []
-                    for line in tests_f.read_text(encoding="utf-8").splitlines():
-                        if line.strip():
-                            tests.append(json.loads(line))
-                    if tests:
-                        p_name = tests[0].get("provider", "LLM Provider")
-                        model = tests[0].get("model", "")
-                        correct = sum(1 for t in tests if t.get("matched_ground_truth"))
-                        total = len(tests)
-                        acc = round((correct / max(1, total)) * 100, 1)
-                        lats = [t.get("latency_s", 0.0) for t in tests if t.get("latency_s") is not None]
-                        avg_lat = round(sum(lats) / max(1, len(lats)), 2)
-                        in_tok = folder_tokens.get("total_prompt_tokens", 0)
-                        out_tok = folder_tokens.get("total_completion_tokens", 0)
-                        tot_tok = folder_tokens.get("total_tokens", 0)
-                        synth = {
-                            p_name: {
-                                "provider_id": p_name,
-                                "name": p_name,
-                                "model": model,
-                                "accuracy": acc,
-                                "precision": acc,
-                                "recall": acc,
-                                "f1": acc,
-                                "avg_latency_s": avg_lat,
-                                "error_rate": round(sum(1 for t in tests if t.get("decision") == "ERROR") / max(1, total) * 100, 1),
-                                "total_tests": total,
-                                "prompt_tokens": in_tok,
-                                "completion_tokens": out_tok,
-                                "total_tokens": tot_tok,
-                                "token_metrics": folder_tokens,
-                                "xsd_pass_rate": round(sum(1 for t in tests if t.get("xsd_valid")) / max(1, total), 2),
-                                "simulation_success_rate": round(sum(1 for t in tests if t.get("simulation_success")) / max(1, total), 2),
-                                "avg_token_preservation": round(sum(t.get("token_preservation_rate", 1.0) for t in tests) / max(1, total), 2),
-                            }
-                        }
-                        self.load_summary(synth)
-                        loaded = True
-                        break
                 except Exception:
                     pass
 
@@ -388,20 +406,23 @@ class ComparisonPanel(ttk.Frame):
         # Split width: Left half Accuracy & F1 bars, Right half Latency bars
         half_w = (w - 40) / 2
         colors = ["#2563eb", "#10b981", "#8b5cf6", "#f59e0b", "#ec4899"]
+        label_margin = 175  # Generous offset so provider labels never collide with bars
 
         # Left: Accuracy bars
         c.create_text(20, 15, anchor="w", text="Accuracy by Provider", font=("Segoe UI", 9, "bold"), fill="#1e293b")
         y = 35
         bar_h = 22
+        usable_bw = max(50.0, half_w - label_margin - 80)
         for idx, p in enumerate(providers):
-            name = p.get("name", p.get("id", f"P{idx}"))[:12]
+            name = p.get("name", p.get("id", f"P{idx}"))[:22]
             acc = p.get("accuracy", 0.0) / 100.0
             color = colors[idx % len(colors)]
-            bw = half_w * 0.65 * max(0.0, min(1.0, acc))
+            bw = usable_bw * max(0.0, min(1.0, acc))
 
             c.create_text(20, y + 11, anchor="w", text=f"{name}:", font=("Segoe UI", 8), fill="#334155")
-            c.create_rectangle(100, y, 100 + bw, y + bar_h, fill=color, outline="")
-            c.create_text(110 + bw, y + 11, anchor="w", text=f"{acc*100:.1f}%", font=("Segoe UI", 8, "bold"), fill="#0f172a")
+            bar_start = 20 + label_margin
+            c.create_rectangle(bar_start, y, bar_start + bw, y + bar_h, fill=color, outline="")
+            c.create_text(bar_start + bw + 8, y + 11, anchor="w", text=f"{acc*100:.1f}%", font=("Segoe UI", 8, "bold"), fill="#0f172a")
             y += bar_h + 8
 
         # Right: Latency bars
@@ -410,13 +431,14 @@ class ComparisonPanel(ttk.Frame):
         y = 35
         max_lat = max([p.get("avg_latency_s", p.get("latency", 1.0)) for p in providers] + [5.0])
         for idx, p in enumerate(providers):
-            name = p.get("name", p.get("provider_id", p.get("id", f"P{idx}")))[:14]
+            name = p.get("name", p.get("provider_id", p.get("id", f"P{idx}")))[:22]
             lat = p.get("avg_latency_s", p.get("latency", 0.0))
-            bw = half_w * 0.65 * (lat / max(1.0, max_lat))
+            bw = usable_bw * (lat / max(1.0, max_lat))
 
             c.create_text(rx, y + 11, anchor="w", text=f"{name}:", font=("Segoe UI", 8), fill="#334155")
-            c.create_rectangle(rx + 80, y, rx + 80 + bw, y + bar_h, fill="#f59e0b", outline="")
-            c.create_text(rx + 90 + bw, y + 11, anchor="w", text=f"{lat:.2f}s", font=("Segoe UI", 8, "bold"), fill="#0f172a")
+            bar_start = rx + label_margin
+            c.create_rectangle(bar_start, y, bar_start + bw, y + bar_h, fill="#f59e0b", outline="")
+            c.create_text(bar_start + bw + 8, y + 11, anchor="w", text=f"{lat:.2f}s", font=("Segoe UI", 8, "bold"), fill="#0f172a")
             y += bar_h + 8
 
     def _export_report(self) -> None:

@@ -134,6 +134,15 @@ class BenchmarkPanel(ttk.Frame):
         ttk.Checkbutton(shot_frame, text="Save as JPEG", variable=self.shot_jpeg).pack(side="left", padx=4)
         ttk.Checkbutton(shot_frame, text="Include Live Log", variable=self.shot_livelog).pack(side="left", padx=4)
 
+        # Options: RAG Evidence & Failed Test Retry
+        opt_frame = ttk.Frame(config_frame)
+        opt_frame.pack(fill="x", pady=2)
+        ttk.Label(opt_frame, text="Execution Options:").pack(side="left", padx=(0, 4))
+        self.enable_rag_var = tk.BooleanVar(value=True)
+        self.retry_failed_only_var = tk.BooleanVar(value=False)
+        ttk.Checkbutton(opt_frame, text="✔ Enable RAG Context (Ablation Mode)", variable=self.enable_rag_var).pack(side="left", padx=4)
+        ttk.Checkbutton(opt_frame, text="🔄 Retry Failed / Dropped Tests Only", variable=self.retry_failed_only_var).pack(side="left", padx=4)
+
         # Output Directory
         out_frame = ttk.Frame(config_frame)
         out_frame.pack(fill="x", pady=2)
@@ -147,6 +156,8 @@ class BenchmarkPanel(ttk.Frame):
         run_control_frame.pack(fill="x", pady=(6, 2))
         self.btn_start = ttk.Button(run_control_frame, text="▶ Start", command=self._start_benchmark)
         self.btn_start.pack(side="left", padx=2)
+        self.btn_retry_failed = ttk.Button(run_control_frame, text="🔄 Retry Failed Only", command=self._retry_failed_benchmark)
+        self.btn_retry_failed.pack(side="left", padx=2)
         self.btn_pause = ttk.Button(run_control_frame, text="⏸ Pause", state="disabled", command=self._pause_benchmark)
         self.btn_pause.pack(side="left", padx=2)
         self.btn_stop = ttk.Button(run_control_frame, text="⏹ Stop", state="disabled", command=self._stop_benchmark)
@@ -261,12 +272,18 @@ class BenchmarkPanel(ttk.Frame):
         else:
             subprocess.Popen(["xdg-open", str(out_p)])
 
+    def _retry_failed_benchmark(self) -> None:
+        self.retry_failed_only_var.set(True)
+        self._append_log("Starting retry run for failed / socket dropped scenarios only...")
+        self._start_benchmark()
+
     def _start_benchmark(self) -> None:
         self.is_running = True
         self.is_paused = False
         self._stop_requested = False
         self._stop_event = threading.Event()
         self.btn_start.configure(state="disabled")
+        self.btn_retry_failed.configure(state="disabled")
         self.btn_pause.configure(state="normal", text="⏸ Pause")
         self.btn_stop.configure(state="normal")
         self._append_log("Starting benchmark execution run...")
@@ -289,6 +306,9 @@ class BenchmarkPanel(ttk.Frame):
             self._stop_event.set()
         self._append_log("Stop requested. Halting benchmark...")
         self.btn_stop.configure(state="disabled")
+        self.btn_start.configure(state="normal")
+        self.btn_retry_failed.configure(state="normal")
+        self.is_running = False
 
     def _run_benchmark_worker(self) -> None:
         t_start = time.monotonic()
@@ -366,6 +386,8 @@ class BenchmarkPanel(ttk.Frame):
                 screenshot_strategy=shot_strat,
                 allow_synthetic=False,
                 resume=True,
+                enable_rag=self.enable_rag_var.get(),
+                retry_failed_only=self.retry_failed_only_var.get(),
                 manager=self.manager,
                 on_progress=on_prog,
                 stop_event=self._stop_event,
@@ -386,6 +408,7 @@ class BenchmarkPanel(ttk.Frame):
         def finish_ui():
             self.is_running = False
             self.btn_start.configure(state="normal")
+            self.btn_retry_failed.configure(state="normal")
             self.btn_pause.configure(state="disabled")
             self.btn_stop.configure(state="disabled")
             self._append_log("Benchmark execution finished.")

@@ -31,6 +31,7 @@ class OpenAICompatibleClient:
         max_retries: int = 5,
         backoff: float = 2.0,
         rate_limit_per_minute: int = 30,
+        request_delay_seconds: float = 0.0,
         opener=urlopen,
         sleeper=time.sleep,
         clock=time.monotonic,
@@ -44,7 +45,7 @@ class OpenAICompatibleClient:
         self.timeout = timeout
         self.max_retries = max_retries
         self.backoff = backoff
-        self.minimum_interval = 60.0 / max(1, rate_limit_per_minute)
+        self.minimum_interval = max(float(request_delay_seconds), 60.0 / max(1, rate_limit_per_minute))
         self._opener, self._sleeper, self._clock = opener, sleeper, clock
         self._last_request: float | None = None
         self._lock = threading.Lock()

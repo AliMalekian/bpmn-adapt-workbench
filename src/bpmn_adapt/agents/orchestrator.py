@@ -129,18 +129,21 @@ class OrchestratorAgent:
                     feedback=feedback,
                 )
             except (ValueError, PermissionError) as exc:
-                self.database.update_run_status(run_id, "failed")
                 record("modeler_error", {"error_type": type(exc).__name__, "message": str(exc), "attempt": attempt})
-                provenance = RunProvenance(
-                    run_id,
-                    request.process_id,
-                    str(request.source_folder),
-                    self.settings.fingerprint(),
-                    self.PROMPT_VERSIONS,
-                    "failed",
-                    tuple(events),
-                )
-                return AdaptationResult(run_id, "failed", decision, None, None, provenance)
+                if attempt >= self.settings.max_agent_retries:
+                    self.database.update_run_status(run_id, "failed")
+                    provenance = RunProvenance(
+                        run_id,
+                        request.process_id,
+                        str(request.source_folder),
+                        self.settings.fingerprint(),
+                        self.PROMPT_VERSIONS,
+                        "failed",
+                        tuple(events),
+                    )
+                    return AdaptationResult(run_id, "failed", decision, None, None, provenance)
+                feedback = ({"type": type(exc).__name__, "message": str(exc)},)
+                continue
 
             self.database.save_candidate(run_id, candidate)
             record("modeler_completed", {"candidate_id": candidate.candidate_id, "attempt": attempt})

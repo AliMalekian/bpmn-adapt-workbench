@@ -240,6 +240,7 @@ class ProviderManager:
             api_key = p.get("api_key", "").strip()
             base_url = p.get("base_url", "")
             model = p.get("model", "")
+            delay_sec = float(p.get("request_delay_seconds", 2.0))
             max_retries = int(self._fallback_policy.get("max_retries_per_provider", 3))
 
             if ptype == "um_llm":
@@ -249,6 +250,7 @@ class ProviderManager:
                     model=model or "gemma4",
                     server_id=int(p.get("server_id", 1)),
                     max_retries=max_retries,
+                    request_delay_seconds=delay_sec,
                 )
 
             return OpenAICompatibleClient(
@@ -257,6 +259,7 @@ class ProviderManager:
                 model=model,
                 max_retries=max_retries,
                 timeout=float(p.get("timeout", 30.0)),
+                request_delay_seconds=delay_sec,
             )
 
     def test(self, provider_id: str) -> dict[str, Any]:

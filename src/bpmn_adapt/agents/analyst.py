@@ -20,25 +20,29 @@ VALID_REJECTION_CATEGORIES = {
 
 
 class AnalystAgent:
-    def __init__(self, database, rag_service, llm_client, planner=None, prompt_name: str = "analyst"):
+    def __init__(self, database, rag_service, llm_client, planner=None, prompt_name: str = "analyst", enable_rag: bool = True):
         self.database = database
         self.rag = rag_service
         self.llm = llm_client
         self.planner = planner
         self.prompt_name = prompt_name
+        self.enable_rag = enable_rag
 
     def analyse(self, request: AdaptationRequest, *, run_id: str, planning_context=None) -> FeasibilityDecision:
         rules = self.database.get_rules(request.process_id)
         resources = self.database.get_resources(request.process_id)
         states = self.database.get_states(request.process_id)
 
-        evidence = self.rag.retrieve(
-            request.raw_text,
-            process_id=request.process_id,
-            operation=request.operation.value,
-            source_version_id=request.source_version_id,
-            run_id=run_id,
-        )
+        if getattr(self, "enable_rag", True) and self.rag is not None:
+            evidence = self.rag.retrieve(
+                request.raw_text,
+                process_id=request.process_id,
+                operation=request.operation.value,
+                source_version_id=request.source_version_id,
+                run_id=run_id,
+            )
+        else:
+            evidence = ()
 
         bpmn_xml = ""
         target_node_context: dict[str, Any] = {}
