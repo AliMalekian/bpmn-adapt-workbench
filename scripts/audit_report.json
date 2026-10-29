@@ -1,0 +1,355 @@
+{
+  "datasets_total": 83,
+  "contradictions_in_req4": [
+    {
+      "dataset": "Camunda-Credit-scoring",
+      "element": "scoring request received",
+      "rule": "2. A level-1 scoring request must return a result within 10 seconds or be reported as delayed to the banking system.",
+      "req4_text": "Request4:\nRemoved element: \"scoring request received\" / \"scoring request handled\" administrative start and end events (the event markers that open and"
+    },
+    {
+      "dataset": "Camunda-Credit-scoring",
+      "element": "scoring request received",
+      "rule": "3. Requests that cannot be answered instantly are automatically escalated to level-2 scoring by the agency.",
+      "req4_text": "Request4:\nRemoved element: \"scoring request received\" / \"scoring request handled\" administrative start and end events (the event markers that open and"
+    },
+    {
+      "dataset": "Camunda-Credit-scoring",
+      "element": "scoring request received",
+      "rule": "6. A scoring result older than 30 days cannot be reused and requires a new request.",
+      "req4_text": "Request4:\nRemoved element: \"scoring request received\" / \"scoring request handled\" administrative start and end events (the event markers that open and"
+    },
+    {
+      "dataset": "Camunda-Dispatch of goods",
+      "element": "Package goods",
+      "rule": "8. Package labels must be written before goods are handed to the mail or logistics company.",
+      "req4_text": "Request4:\nRemoved element: \"Package goods\" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarifie"
+    },
+    {
+      "dataset": "Mangler-Blizzard Online Character Generator",
+      "element": "Check WoW subscription",
+      "rule": "2. A WoW subscription must be verified as active before character creation, which may be established during initial account login without requiring a separate in-flow re-check task.",
+      "req4_text": "Request4:\nRemoved element: \"Check WoW subscription\" task (the real-time check of whether the player holds an active World of Warcraft subscription)\nRe"
+    },
+    {
+      "dataset": "Mangler-Chainsaw",
+      "element": "The parallel ordering operation \u2014 ordering the required parts from the various online sources simultaneously",
+      "rule": "1. A customer order must specify at least 5 properties (guide bar length, chain width, chain pitch, chain type, and gasoline or electric motor type) before part ordering can start.",
+      "req4_text": "Request4:\nRemoved element: The parallel ordering operation \u2014 ordering the required parts from the various online sources simultaneously (the parallel "
+    },
+    {
+      "dataset": "Mangler-Chainsaw",
+      "element": "The parallel ordering operation \u2014 ordering the required parts from the various online sources simultaneously",
+      "rule": "2. Parts for a custom chainsaw order are purchased after the required properties are confirmed; pre-stocked standard inventory parts do not require parallel online supplier ordering.",
+      "req4_text": "Request4:\nRemoved element: The parallel ordering operation \u2014 ordering the required parts from the various online sources simultaneously (the parallel "
+    },
+    {
+      "dataset": "Mangler-Contract",
+      "element": "The task of creating the formal list of parts to be ordered from each web shop.",
+      "rule": "2. When ordering from multiple external web shops, multi-shop orders are placed only if a single shop cannot fulfill the quantity; consolidated inventory orders do not require formal shop list creation.",
+      "req4_text": "Request4:\nRemoved element: The task of creating the formal list of parts to be ordered from each web shop.\nReason: To reduce paperwork; the order quan"
+    },
+    {
+      "dataset": "Mangler-Find a Job",
+      "element": "The optional job-interview negotiation step between the applicant and the company.",
+      "rule": "9. Reviews for a company are revealed to other job applicants only after 1 year from their submission.",
+      "req4_text": "Request4:\nRemoved element: The optional job-interview negotiation step between the applicant and the company.\nReason: To shorten the path to hiring by"
+    },
+    {
+      "dataset": "Mangler-Find a Job",
+      "element": "The optional job-interview negotiation step between the applicant and the company.",
+      "rule": "14. When active matching is enabled, applying to new companies maintains personalized recommendations; applicants entering direct negotiations do not have mandatory weekly application quotas.",
+      "req4_text": "Request4:\nRemoved element: The optional job-interview negotiation step between the applicant and the company.\nReason: To shorten the path to hiring by"
+    },
+    {
+      "dataset": "Mangler-Inspection of an Energy Drink Bottling Machine",
+      "element": "The step of reading the tube pressure of the filling station manually with the depressurization procedure",
+      "rule": "12. When manual tube pressure readings are performed, the value must stay between 1.2 and 1.8 bar for the filling station to pass; automated sensor monitoring may substitute for manual readings.",
+      "req4_text": "Request4:\nRemoved element: The step of reading the tube pressure of the filling station manually with the depressurization procedure (the manual readi"
+    },
+    {
+      "dataset": "Mangler-New Application for Registering for an USI course",
+      "element": "Tweet to friends via the Twitter integration",
+      "rule": "13. If the user chooses to tweet course registration to friends, Twitter authorization is required; social media sharing is entirely optional and not required for course registration.",
+      "req4_text": "Request4:\nRemoved element: Tweet to friends via the Twitter integration\nReason: The optional social-sharing step is proposed for removal to simplify t"
+    },
+    {
+      "dataset": "Mangler-Ordering in an Online Shop",
+      "element": "Option to enter a separate billing address when it differs from the shipping address",
+      "rule": "10. A valid shipping address is required for order delivery; entering a separate secondary billing address is optional when billing details match the shipping profile.",
+      "req4_text": "Request4:\nRemoved element: Option to enter a separate billing address when it differs from the shipping address\nReason: This optional billing-address "
+    },
+    {
+      "dataset": "Mangler-Ordering in an Online Shop",
+      "element": "Option to enter a separate billing address when it differs from the shipping address",
+      "rule": "11. The order is finally executed by the system only after both the address and the payment steps are done.",
+      "req4_text": "Request4:\nRemoved element: Option to enter a separate billing address when it differs from the shipping address\nReason: This optional billing-address "
+    },
+    {
+      "dataset": "Pmo-3D printer",
+      "element": "The printer's continuous status reporting while the bed and extruder are heating",
+      "rule": "8. The printer bed and extruder must reach operational temperature before extrusion starts; continuous telemetry status reporting during heating is an optional diagnostic feature.",
+      "req4_text": "Request4:\nRemoved element: The printer's continuous status reporting while the bed and extruder are heating\nReason: The status-feedback reporting is p"
+    },
+    {
+      "dataset": "Pmo-Bottling Machine",
+      "element": "The Bluetooth device connection that links the inspection app to the machine",
+      "rule": "1. When automated inspection is performed, the Bluetooth link connects the app to the machine; manual inspections do not require Bluetooth connectivity.",
+      "req4_text": "Request4:\nRemoved element: The Bluetooth device connection that links the inspection app to the machine\nReason: The Bluetooth connection step is propo"
+    },
+    {
+      "dataset": "Pmo-Chainsaw",
+      "element": "Cancellation of the remaining order after an unapproved prototype",
+      "rule": "2. Parts are ordered from various online sources in parallel, but only after the customer has confirmed all chainsaw properties.",
+      "req4_text": "Request4:\nRemoved element: Cancellation of the remaining order after an unapproved prototype (the \"Cancel production of the remaining order\" end-event"
+    },
+    {
+      "dataset": "Pmo-Chainsaw",
+      "element": "Cancellation of the remaining order after an unapproved prototype",
+      "rule": "5. When bespoke prototyping is agreed upon, prototype approval precedes batch production; standard production models do not require customer prototype cancellation workflows.",
+      "req4_text": "Request4:\nRemoved element: Cancellation of the remaining order after an unapproved prototype (the \"Cancel production of the remaining order\" end-event"
+    },
+    {
+      "dataset": "Pmo-Character Generator",
+      "element": "Enter BIC",
+      "rule": "2. If the user does not have a battle.net account, account information must be entered and the confirmation e-mail link must be clicked before the account is considered active.",
+      "req4_text": "Request4:\nRemoved element: Enter BIC (the separate \"Enter BIC\" field in the bank-account payment path)\nReason: The BIC entry is a redundant sub-field "
+    },
+    {
+      "dataset": "Pmo-Character Generator",
+      "element": "Enter BIC",
+      "rule": "6. A character name is accepted only if it is still available and meets the naming rules, and the user must enter candidate names one by one until an available name is found.",
+      "req4_text": "Request4:\nRemoved element: Enter BIC (the separate \"Enter BIC\" field in the bank-account payment path)\nReason: The BIC entry is a redundant sub-field "
+    },
+    {
+      "dataset": "Pmo-Contract",
+      "element": "Receive second batch of parts",
+      "rule": "9. When deliveries arrive outside standard tolerances, discrepancies are logged; second batch deliveries that arrive within normal schedules do not require special logging.",
+      "req4_text": "Request4:\nRemoved element: Receive second batch of parts (the \"Receive second batch of parts\" parallel manual task)\nReason: Because the three arrival "
+    },
+    {
+      "dataset": "Pmo-Customer sales support",
+      "element": "The data-protection/logging side-annotation attached to the final order processing",
+      "rule": "10. An order is considered final only after payment terms are agreed and recorded in the system.",
+      "req4_text": "Request4:\nRemoved element: The data-protection/logging side-annotation attached to the final order processing (the non-executable annotation tied to t"
+    },
+    {
+      "dataset": "Pmo-Customer sales support",
+      "element": "The data-protection/logging side-annotation attached to the final order processing",
+      "rule": "15. Customer data must be handled in compliance with data protection policy; appending explicit data protection annotations to final processing diagrams is optional.",
+      "req4_text": "Request4:\nRemoved element: The data-protection/logging side-annotation attached to the final order processing (the non-executable annotation tied to t"
+    },
+    {
+      "dataset": "Pmo-Lego bricks",
+      "element": "Assembling the tested subcomponents into the final machine",
+      "rule": "14. When assembled as a custom prototype, the machine must pass an integration test; subcomponents assembled for standalone module delivery do not require full machine assembly.",
+      "req4_text": "Request4:\nRemoved element: Assembling the tested subcomponents into the final machine\nReason: It is proposed that the final machine be delivered as a "
+    },
+    {
+      "dataset": "Pmo-Lego bricks",
+      "element": "Assembling the tested subcomponents into the final machine",
+      "rule": "14. The complete machine must pass a final integration test before it is accepted as finished.",
+      "req4_text": "Request4:\nRemoved element: Assembling the tested subcomponents into the final machine\nReason: It is proposed that the final machine be delivered as a "
+    },
+    {
+      "dataset": "Pmo-Lego bricks",
+      "element": "Assembling the tested subcomponents into the final machine",
+      "rule": "15. All finished machines must be dismantled and their parts sorted back into containers unless stored as an approved model.",
+      "req4_text": "Request4:\nRemoved element: Assembling the tested subcomponents into the final machine\nReason: It is proposed that the final machine be delivered as a "
+    },
+    {
+      "dataset": "Pmo-Marketing",
+      "element": "The procurement team considering cost, delivery time, and supplier reliability when placing an order",
+      "rule": "4. When evaluating competitive new tenders, supplier selection takes into account cost, delivery time, and supplier reliability; repeat standard catalogue orders do not require re-evaluation.",
+      "req4_text": "Request4:\nRemoved element: The procurement team considering cost, delivery time, and supplier reliability when placing an order\nReason: The process de"
+    },
+    {
+      "dataset": "Pmo-Marketing",
+      "element": "The procurement team considering cost, delivery time, and supplier reliability when placing an order",
+      "rule": "4. Supplier selection must take into account cost, delivery time, and supplier reliability.",
+      "req4_text": "Request4:\nRemoved element: The procurement team considering cost, delivery time, and supplier reliability when placing an order\nReason: The process de"
+    },
+    {
+      "dataset": "Pmo-Marketing",
+      "element": "The procurement team considering cost, delivery time, and supplier reliability when placing an order",
+      "rule": "5. The inventory system must be updated with expected delivery dates within 24 hours of placing an order.",
+      "req4_text": "Request4:\nRemoved element: The procurement team considering cost, delivery time, and supplier reliability when placing an order\nReason: The process de"
+    },
+    {
+      "dataset": "Pmo-Marketing",
+      "element": "The procurement team considering cost, delivery time, and supplier reliability when placing an order",
+      "rule": "12. A supplier with a delivery time longer than 14 days must be reviewed before being used again.",
+      "req4_text": "Request4:\nRemoved element: The procurement team considering cost, delivery time, and supplier reliability when placing an order\nReason: The process de"
+    },
+    {
+      "dataset": "Pmo-Marketing",
+      "element": "The procurement team considering cost, delivery time, and supplier reliability when placing an order",
+      "rule": "14. Discrepancies between delivered quantity and ordered quantity must be resolved within 2 days of delivery.",
+      "req4_text": "Request4:\nRemoved element: The procurement team considering cost, delivery time, and supplier reliability when placing an order\nReason: The process de"
+    },
+    {
+      "dataset": "Pmo-Night Run",
+      "element": "The fitness gadget collecting data during the run",
+      "rule": "5. The participant's fitness gadget must be paired with the app before running time is measured.",
+      "req4_text": "Request4:\nRemoved element: The fitness gadget collecting data during the run\nReason: The process description notes that some information is collected "
+    },
+    {
+      "dataset": "Pmo-Night Run",
+      "element": "The fitness gadget collecting data during the run",
+      "rule": "6. Running time must be measured automatically by the fitness gadget, not entered manually.",
+      "req4_text": "Request4:\nRemoved element: The fitness gadget collecting data during the run\nReason: The process description notes that some information is collected "
+    },
+    {
+      "dataset": "Pmo-OEE",
+      "element": "Recalculating OEE at the end of every shift and storing the value with a timestamp",
+      "rule": "8. When OEE tracking is active for a shift, OEE is recalculated at the end of the shift and stored with a timestamp; shifts operating under fixed benchmarks do not require recalculation.",
+      "req4_text": "Request4:\nRemoved element: Recalculating OEE at the end of every shift and storing the value with a timestamp\nReason: The process description states \""
+    },
+    {
+      "dataset": "Pmo-OEE",
+      "element": "Recalculating OEE at the end of every shift and storing the value with a timestamp",
+      "rule": "8. OEE must be recalculated at the end of every shift and stored with a timestamp.",
+      "req4_text": "Request4:\nRemoved element: Recalculating OEE at the end of every shift and storing the value with a timestamp\nReason: The process description states \""
+    },
+    {
+      "dataset": "Pmo-Online ordering platform",
+      "element": "The customer providing feedback after delivery",
+      "rule": "11. Customer feedback collected after delivery must be recorded in the system.",
+      "req4_text": "Request4:\nRemoved element: The customer providing feedback after delivery\nReason: The process description states that \"customer feedback or returns ma"
+    },
+    {
+      "dataset": "Pmo-Online ordering platform",
+      "element": "The customer providing feedback after delivery",
+      "rule": "15. The process ends only after delivery is completed and any confirmed return is fully resolved.",
+      "req4_text": "Request4:\nRemoved element: The customer providing feedback after delivery\nReason: The process description states that \"customer feedback or returns ma"
+    },
+    {
+      "dataset": "Pmo-online shop",
+      "element": "Return items task",
+      "rule": "12. When an exchange is requested, returned items must be received before replacement shipping; returns handled for immediate refund or store credit do not gate replacement processing.",
+      "req4_text": "Request4:\nRemoved element: Return items task (the step in which the user returns delivered items for exchange within the 30-day return window, after w"
+    },
+    {
+      "dataset": "Pmo-Ordering",
+      "element": "Entering an independent billing address when it differs from the shipping address",
+      "rule": "8. A valid shipping address is required for every physical delivery; providing an independent alternative billing address is optional when standard billing applies.",
+      "req4_text": "Request4:\nRemoved element: Entering an independent billing address when it differs from the shipping address\nReason: The process description states th"
+    },
+    {
+      "dataset": "Pmo-Ordering",
+      "element": "Entering an independent billing address when it differs from the shipping address",
+      "rule": "8. A shipping address is required for every order.",
+      "req4_text": "Request4:\nRemoved element: Entering an independent billing address when it differs from the shipping address\nReason: The process description states th"
+    },
+    {
+      "dataset": "Pmo-Ordering",
+      "element": "Entering an independent billing address when it differs from the shipping address",
+      "rule": "10. The order is finished only after both the address step and the payment step are executed.",
+      "req4_text": "Request4:\nRemoved element: Entering an independent billing address when it differs from the shipping address\nReason: The process description states th"
+    },
+    {
+      "dataset": "Pmo-Ordering",
+      "element": "Entering an independent billing address when it differs from the shipping address",
+      "rule": "15. The order confirmation is sent to the customer only after payment and address steps are completed.",
+      "req4_text": "Request4:\nRemoved element: Entering an independent billing address when it differs from the shipping address\nReason: The process description states th"
+    },
+    {
+      "dataset": "Pmo-Product improvement",
+      "element": "The R&D team reporting progress to the steering committee once per month",
+      "rule": "14. When active monthly steering reviews are scheduled, the R&D team reports progress to the committee; administrative progress reports are not mandatory during autonomous sprint cycles.",
+      "req4_text": "Request4:\nRemoved element: The R&D team reporting progress to the steering committee once per month\nReason: The monthly progress report is an administ"
+    },
+    {
+      "dataset": "Pmo-Product improvement",
+      "element": "The R&D team reporting progress to the steering committee once per month",
+      "rule": "14. The R&D team must report progress to the steering committee once per month.",
+      "req4_text": "Request4:\nRemoved element: The R&D team reporting progress to the steering committee once per month\nReason: The monthly progress report is an administ"
+    },
+    {
+      "dataset": "Pmo-Recruitment",
+      "element": "Salary negotiations between HR and the candidate",
+      "rule": "10. When salary discussions occur, the agreed salary must stay within the approved budget band; candidates accepting standard scale offers do not undergo salary negotiations.",
+      "req4_text": "Request4:\nRemoved element: Salary negotiations between HR and the candidate\nReason: The process description states that \"salary negotiations may take "
+    },
+    {
+      "dataset": "Pmo-Recruitment",
+      "element": "Salary negotiations between HR and the candidate",
+      "rule": "10. Salary negotiations are allowed but the final salary must stay within the approved budget band.",
+      "req4_text": "Request4:\nRemoved element: Salary negotiations between HR and the candidate\nReason: The process description states that \"salary negotiations may take "
+    },
+    {
+      "dataset": "Pmo-repair cost calculation",
+      "element": "Proper system functionality is tested task",
+      "rule": "5. System functionality testing is performed after repair activities when requested by the customer or required by warranty; standard repairs may bypass intermediate testing.",
+      "req4_text": "Request4:\nRemoved element: Proper system functionality is tested task (the functionality test performed after each of the two repair activities to ver"
+    },
+    {
+      "dataset": "Pmo-Repair Smartphone",
+      "element": "Sending a review or video of the repair to the tool after a successful repair",
+      "rule": "7. Step-by-step repair instructions are provided only after all parts and tools are secured.",
+      "req4_text": "Request4:\nRemoved element: Sending a review or video of the repair to the tool after a successful repair\nReason: The process description states \"If it"
+    },
+    {
+      "dataset": "Pmo-Repair Smartphone",
+      "element": "Sending a review or video of the repair to the tool after a successful repair",
+      "rule": "9. The repair must be performed with the device powered off and the battery disconnected.",
+      "req4_text": "Request4:\nRemoved element: Sending a review or video of the repair to the tool after a successful repair\nReason: The process description states \"If it"
+    },
+    {
+      "dataset": "Pmo-Repair Smartphone",
+      "element": "Sending a review or video of the repair to the tool after a successful repair",
+      "rule": "10. The user must confirm each completed repair step before proceeding to the next instruction.",
+      "req4_text": "Request4:\nRemoved element: Sending a review or video of the repair to the tool after a successful repair\nReason: The process description states \"If it"
+    },
+    {
+      "dataset": "Pmo-Repair Smartphone",
+      "element": "Sending a review or video of the repair to the tool after a successful repair",
+      "rule": "13. Expert repair support must be requested within 14 days of the DIY attempt.",
+      "req4_text": "Request4:\nRemoved element: Sending a review or video of the repair to the tool after a successful repair\nReason: The process description states \"If it"
+    },
+    {
+      "dataset": "Pmo-Repair Smartphone",
+      "element": "Sending a review or video of the repair to the tool after a successful repair",
+      "rule": "15. User-submitted reviews and videos are published only after passing a quality check.",
+      "req4_text": "Request4:\nRemoved element: Sending a review or video of the repair to the tool after a successful repair\nReason: The process description states \"If it"
+    },
+    {
+      "dataset": "Pmo-restaurant",
+      "element": "Eat meal task",
+      "rule": "8. The buzzer is set off only after the employee knows the meal is ready at the service hatch.",
+      "req4_text": "Request4:\nRemoved element: Eat meal task (the step in which the guest consumes the collected meal before the process ends with the guest no longer bei"
+    },
+    {
+      "dataset": "Pmo-restaurant",
+      "element": "Eat meal task",
+      "rule": "13. The meal range must always include at least 5 main dishes and 3 vegetarian options.",
+      "req4_text": "Request4:\nRemoved element: Eat meal task (the step in which the guest consumes the collected meal before the process ends with the guest no longer bei"
+    },
+    {
+      "dataset": "Pmo-university enrollment",
+      "element": "The student ID card issuance step \u2014 specifically, the step where the student obtains a student ID card after enrollment confirmation.",
+      "rule": "6. A student must confirm enrollment within 2 weeks of receiving the acceptance letter, otherwise the application is canceled.",
+      "req4_text": "Request4:\nRemoved element: The student ID card issuance step \u2014 specifically, the step where the student obtains a student ID card after enrollment con"
+    },
+    {
+      "dataset": "Pmo-university enrollment",
+      "element": "The student ID card issuance step \u2014 specifically, the step where the student obtains a student ID card after enrollment confirmation.",
+      "rule": "7. First-year students must meet with an academic advisor before selecting any courses.",
+      "req4_text": "Request4:\nRemoved element: The student ID card issuance step \u2014 specifically, the step where the student obtains a student ID card after enrollment con"
+    },
+    {
+      "dataset": "Pmo-university enrollment",
+      "element": "The student ID card issuance step \u2014 specifically, the step where the student obtains a student ID card after enrollment confirmation.",
+      "rule": "11. A student must be registered for at least 12 credits to remain eligible for scholarships and financial aid.",
+      "req4_text": "Request4:\nRemoved element: The student ID card issuance step \u2014 specifically, the step where the student obtains a student ID card after enrollment con"
+    },
+    {
+      "dataset": "Pmo-university enrollment",
+      "element": "The student ID card issuance step \u2014 specifically, the step where the student obtains a student ID card after enrollment confirmation.",
+      "rule": "14. If a student requests a physical ID card, it is issued only after enrollment confirmation is finalized and any outstanding fees are paid; digital credentials do not require physical card issuance.",
+      "req4_text": "Request4:\nRemoved element: The student ID card issuance step \u2014 specifically, the step where the student obtains a student ID card after enrollment con"
+    }
+  ],
+  "readd_inconsistencies": [],
+  "weak_rejects": []
+}

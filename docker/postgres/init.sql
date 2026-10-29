@@ -1,0 +1,18 @@
+CREATE EXTENSION IF NOT EXISTS vector;
+
+DO $roles$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'bpmn_core') THEN
+    CREATE ROLE bpmn_core NOLOGIN;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'bpmn_rag') THEN
+    CREATE ROLE bpmn_rag NOLOGIN;
+  END IF;
+END
+$roles$;
+
+CREATE SCHEMA IF NOT EXISTS core AUTHORIZATION bpmn_core;
+CREATE SCHEMA IF NOT EXISTS rag AUTHORIZATION bpmn_rag;
+GRANT USAGE, CREATE ON SCHEMA core TO bpmn_core;
+GRANT USAGE, CREATE ON SCHEMA rag TO bpmn_rag;
+GRANT bpmn_core, bpmn_rag TO CURRENT_USER;

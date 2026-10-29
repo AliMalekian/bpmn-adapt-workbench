@@ -1,0 +1,39 @@
+[llm]
+mode = "mock"
+
+[embedding]
+provider = "hash_test"
+model = "sentence-transformers/all-MiniLM-L6-v2"
+revision = "main"
+device = "cpu"
+batch_size = 32
+
+[vector]
+backend = "local"
+path = "experiments/vector_index"
+
+[database]
+url = "sqlite:///experiments/runtime_bpmn.db"
+
+[rag]
+mode = "hybrid"
+semantic_weight = 0.65
+syntactic_weight = 0.35
+
+[output]
+root = "experiments/runs"
+
+[planner]
+weight_time = 0.4
+weight_budget = 0.3
+weight_risk = 0.3
+max_states = 10000
+max_depth = 100
+timeout_seconds = 30.0
+
+[engine]
+mode = "dry_run"
+
+[evaluation]
+seed = 20260922
+repetitions = 5

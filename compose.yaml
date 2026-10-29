@@ -1,0 +1,67 @@
+name: bpmn-adapt-research
+
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.6-pg16
+    environment:
+      POSTGRES_DB: ${ADAPT_POSTGRES_DB:-bpmn_adapt}
+      POSTGRES_USER: ${ADAPT_POSTGRES_USER:-bpmn_adapt}
+      POSTGRES_PASSWORD: ${ADAPT_POSTGRES_PASSWORD:?Set ADAPT_POSTGRES_PASSWORD for the research database}
+    ports:
+      - "${ADAPT_POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.10
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      cluster.routing.allocation.disk.threshold_enabled: "false"
+      #logger.org.elasticsearch.deprecation: "OFF"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ports:
+      - "${ADAPT_ELASTIC_PORT:-9200}:9200"
+    volumes:
+      - elastic-data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9200/_cluster/health | grep -Eq '\"status\":\"(green|yellow)\"'"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 30s
+    restart: unless-stopped
+
+  orchestration:
+    image: camunda/camunda:8.8.37
+    environment:
+      JAVA_TOOL_OPTIONS: "-Xms512m -Xmx1024m"
+    ports:
+      - "${ADAPT_CAMUNDA_GRPC_PORT:-26500}:26500"
+      - "${ADAPT_CAMUNDA_MANAGEMENT_PORT:-9600}:9600"
+      - "${ADAPT_CAMUNDA_REST_PORT:-8088}:8080"
+    volumes:
+      - camunda-data:/usr/local/camunda/data
+      - ./docker/camunda/application.yaml:/usr/local/camunda/config/application.yaml:ro
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "bash -c 'exec 3<>/dev/tcp/127.0.0.1/9600 && echo -e \"GET /actuator/health/status HTTP/1.1\\r\\nHost: localhost\\r\\n\\r\\n\" >&3 && head -n 1 <&3 | grep -q 200'"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  elastic-data:
+  camunda-data:

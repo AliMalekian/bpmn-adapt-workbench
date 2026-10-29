@@ -1,0 +1,83 @@
+index,dataset,folder,slug,process_id,tasks_count,rules_count,resources_count,states_count,test_cases_count,decision_accuracy,constraint_accuracy,retrieval_coverage,simulation_passed,token_preservation,ged,similarity,elapsed_sec,screenshots_dir
+1,Camunda,Camunda-Credit-scoring,camunda_credit_scoring,bf43e04d107f6651ce55fbe6,2,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,6.21,full_dataset_82_processes\screenshots\camunda_credit_scoring
+2,Camunda,Camunda-Dispatch of goods,camunda_dispatch_of_goods,c4b9055b3f010b364c30c450,1,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,4.54,full_dataset_82_processes\screenshots\camunda_dispatch_of_goods
+3,Camunda,Camunda-Recource,camunda_recource,2bd1c83174608b19115f77d3,1,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,6.7,full_dataset_82_processes\screenshots\camunda_recource
+4,Camunda,Camunda-Self-service-restaurant,camunda_self_service_restaurant,4c96a8a7001f0db163813ae8,1,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.47,full_dataset_82_processes\screenshots\camunda_self_service_restaurant
+5,Mangler,Mangler-App For Participating at the Vienna Night Run,mangler_app_for_participating_at_the_vienna_night_run,5a12411c51991f6badceb774,7,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.37,full_dataset_82_processes\screenshots\mangler_app_for_participating_at_the_vienna_night_run
+6,Mangler,Mangler-Becoming A Parent,mangler_becoming_a_parent,8226f06a6245a5dccdc907c8,7,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,10.19,full_dataset_82_processes\screenshots\mangler_becoming_a_parent
+7,Mangler,Mangler-Blizzard Online Character Generator,mangler_blizzard_online_character_generator,167056d1b0700060b2f43c18,6,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,6.86,full_dataset_82_processes\screenshots\mangler_blizzard_online_character_generator
+8,Mangler,Mangler-Building a House,mangler_building_a_house,792daee2883f90569bc22a3e,3,15,15,4,4,0.0,0.0,1.0,True,1.0,1.0,0.5,6.89,full_dataset_82_processes\screenshots\mangler_building_a_house
+9,Mangler,Mangler-Building a custom machine out of Lego bricks,mangler_building_a_custom_machine_out_of_lego_bricks,a113440e7dc9d3083933fbe6,5,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,9.07,full_dataset_82_processes\screenshots\mangler_building_a_custom_machine_out_of_lego_bricks
+10,Mangler,Mangler-Car Service,mangler_car_service,fe8aa476d836bad51337ba4e,5,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,4.71,full_dataset_82_processes\screenshots\mangler_car_service
+11,Mangler,Mangler-Chainsaw,mangler_chainsaw,ae442dc8fcb03a20c395d620,3,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,4.98,full_dataset_82_processes\screenshots\mangler_chainsaw
+12,Mangler,Mangler-Contract,mangler_contract,8e1369292140da1a792d5a51,7,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.02,full_dataset_82_processes\screenshots\mangler_contract
+13,Mangler,Mangler-DIY Repair of a Broken Smartphone Screen,mangler_diy_repair_of_a_broken_smartphone_screen,3a665c8f37ef8b1c051b2e5e,9,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.59,full_dataset_82_processes\screenshots\mangler_diy_repair_of_a_broken_smartphone_screen
+14,Mangler,Mangler-Farming Bot,mangler_farming_bot,4a701fe652ca2633af4d2d36,4,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.35,full_dataset_82_processes\screenshots\mangler_farming_bot
+15,Mangler,Mangler-Find a Job,mangler_find_a_job,daa3c454535263d24a1170eb,8,15,12,4,4,1.0,0.5,1.0,False,1.0,1.0,0.5,8.5,full_dataset_82_processes\screenshots\mangler_find_a_job
+16,Mangler,Mangler-Inspection of an Energy Drink Bottling Machine,mangler_inspection_of_an_energy_drink_bottling_machine,72466f4f91fbaaadbcccc010,3,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,6.87,full_dataset_82_processes\screenshots\mangler_inspection_of_an_energy_drink_bottling_machine
+17,Mangler,Mangler-Instruct an artist to create a 3D model print it on a 3D printer,mangler_instruct_an_artist_to_create_a_3d_model_print_it_on_a_3d_printer,2cf69704b02b2ee270651475,9,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,10.25,full_dataset_82_processes\screenshots\mangler_instruct_an_artist_to_create_a_3d_model_print_it_on_a_3d_printer
+18,Mangler,Mangler-Internship,mangler_internship,531b89e34a21055eb3f32d66,8,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.38,full_dataset_82_processes\screenshots\mangler_internship
+19,Mangler,Mangler-LAN Party,mangler_lan_party,879a98c60d5d79c9a03815f0,4,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.97,full_dataset_82_processes\screenshots\mangler_lan_party
+20,Mangler,Mangler-Luxury Airplane,mangler_luxury_airplane,d043efec9a4841436e89c993,8,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.16,full_dataset_82_processes\screenshots\mangler_luxury_airplane
+21,Mangler,Mangler-New Application for Registering for an USI course,mangler_new_application_for_registering_for_an_usi_course,27fab72df6ce63974f11bd99,4,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.39,full_dataset_82_processes\screenshots\mangler_new_application_for_registering_for_an_usi_course
+22,Mangler,Mangler-OEE,mangler_oee,e7039abe2eb5f065b1d86500,6,15,13,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,9.46,full_dataset_82_processes\screenshots\mangler_oee
+23,Mangler,Mangler-Ordering in an Online Shop,mangler_ordering_in_an_online_shop,2796c356dc47aab0bd7e6c04,3,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.44,full_dataset_82_processes\screenshots\mangler_ordering_in_an_online_shop
+24,Mangler,Mangler-Robotic Burger Seller near the University of Vienna,mangler_robotic_burger_seller_near_the_university_of_vienna,a50d0db26a212a1a9312b29d,9,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.44,full_dataset_82_processes\screenshots\mangler_robotic_burger_seller_near_the_university_of_vienna
+25,Mangler,Mangler-Service for Your Fridge,mangler_service_for_your_fridge,68f9a2ac67b37071a37a0a31,5,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.3,full_dataset_82_processes\screenshots\mangler_service_for_your_fridge
+26,Mangler,Mangler-Storage management,mangler_storage_management,cce9817124cfe141df38a114,4,15,13,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,9.48,full_dataset_82_processes\screenshots\mangler_storage_management
+27,Mangler,Mangler-Work and Live in Austria,mangler_work_and_live_in_austria,3344accf65ae96bb7107017b,5,15,14,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,9.21,full_dataset_82_processes\screenshots\mangler_work_and_live_in_austria
+28,Pmo,Pmo-3D printer,pmo_3d_printer,d27a0bc8d3c08bbdc613233f,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,6.12,full_dataset_82_processes\screenshots\pmo_3d_printer
+29,Pmo,Pmo-Bottling Machine,pmo_bottling_machine,99e7d83bf32dc593baabb60c,1,15,13,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,6.48,full_dataset_82_processes\screenshots\pmo_bottling_machine
+30,Pmo,Pmo-Building a House,pmo_building_a_house,d802a8cacb5af62e1889d1fa,1,15,13,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,6.92,full_dataset_82_processes\screenshots\pmo_building_a_house
+31,Pmo,Pmo-Burger Seller,pmo_burger_seller,d4796312cf7f79d6c2144d9b,1,15,13,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,5.48,full_dataset_82_processes\screenshots\pmo_burger_seller
+32,Pmo,Pmo-Car Service,pmo_car_service,691932eab9b3d992a8eec095,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.52,full_dataset_82_processes\screenshots\pmo_car_service
+33,Pmo,Pmo-Chainsaw,pmo_chainsaw,8c254f02338f1741b573015b,1,15,13,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.72,full_dataset_82_processes\screenshots\pmo_chainsaw
+34,Pmo,Pmo-Character Generator,pmo_character_generator,58c555931a96b772432179e5,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,8.5,full_dataset_82_processes\screenshots\pmo_character_generator
+35,Pmo,Pmo-Contract,pmo_contract,e21a20f62aa1d077bc51ec57,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.74,full_dataset_82_processes\screenshots\pmo_contract
+36,Pmo,Pmo-Customer sales support,pmo_customer_sales_support,ba9b7a2633440e568cbe39d2,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,8.32,full_dataset_82_processes\screenshots\pmo_customer_sales_support
+37,Pmo,Pmo-Farming Bot,pmo_farming_bot,6f909303859204bd3ed2e76d,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.58,full_dataset_82_processes\screenshots\pmo_farming_bot
+38,Pmo,Pmo-IT solution,pmo_it_solution,4c255bb18d61050447d5a218,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.36,full_dataset_82_processes\screenshots\pmo_it_solution
+39,Pmo,Pmo-Internship,pmo_internship,7875e157565fc9a4dbd84978,1,15,11,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,6.97,full_dataset_82_processes\screenshots\pmo_internship
+40,Pmo,Pmo-LAN Party,pmo_lan_party,1f66c62bda9d28b8a325c170,1,15,14,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.14,full_dataset_82_processes\screenshots\pmo_lan_party
+41,Pmo,Pmo-Lego bricks,pmo_lego_bricks,751d6b3d646159a1381c60af,1,15,15,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.38,full_dataset_82_processes\screenshots\pmo_lego_bricks
+42,Pmo,Pmo-Luxury Airplane,pmo_luxury_airplane,de4e2da231b868f2d2c8b27c,1,15,16,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.42,full_dataset_82_processes\screenshots\pmo_luxury_airplane
+43,Pmo,Pmo-Marketing,pmo_marketing,4938cebe41d54b461a62526b,1,15,16,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.87,full_dataset_82_processes\screenshots\pmo_marketing
+44,Pmo,Pmo-Night Run,pmo_night_run,61061bcbba832841e050a545,1,15,16,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,6.96,full_dataset_82_processes\screenshots\pmo_night_run
+45,Pmo,Pmo-OEE,pmo_oee,0e05a4835bd63df8a1e0f86b,1,15,16,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.8,full_dataset_82_processes\screenshots\pmo_oee
+46,Pmo,Pmo-Online ordering platform,pmo_online_ordering_platform,d093ddfdde67dd776a111fe1,1,15,16,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.32,full_dataset_82_processes\screenshots\pmo_online_ordering_platform
+47,Pmo,Pmo-Ordering,pmo_ordering,6ae82f4766d8051884291caa,1,15,16,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,6.75,full_dataset_82_processes\screenshots\pmo_ordering
+48,Pmo,Pmo-Product improvement,pmo_product_improvement,159199e3a56397a0df83a5e3,1,15,16,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.69,full_dataset_82_processes\screenshots\pmo_product_improvement
+49,Pmo,Pmo-Recruitment,pmo_recruitment,9493230bac74f68985f5905e,1,15,16,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.49,full_dataset_82_processes\screenshots\pmo_recruitment
+50,Pmo,Pmo-Repair Smartphone,pmo_repair_smartphone,22c8049401fe948cd75f758c,1,15,16,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.62,full_dataset_82_processes\screenshots\pmo_repair_smartphone
+51,Pmo,Pmo-Service Fridge,pmo_service_fridge,57956eb2b24e969ce7c56548,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.98,full_dataset_82_processes\screenshots\pmo_service_fridge
+52,Pmo,Pmo-Storage management,pmo_storage_management,8244e5d773cc305a5c6a43d3,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,10.04,full_dataset_82_processes\screenshots\pmo_storage_management
+53,Pmo,Pmo-Supplier tender,pmo_supplier_tender,392fb0cfb4e14129a98a4e38,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,8.05,full_dataset_82_processes\screenshots\pmo_supplier_tender
+54,Pmo,Pmo-Surgery,pmo_surgery,703ecd0d7840bf3319c9e649,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,9.22,full_dataset_82_processes\screenshots\pmo_surgery
+55,Pmo,Pmo-Ticket purchasing system,pmo_ticket_purchasing_system,36a57781b974839bd0af78c2,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,9.16,full_dataset_82_processes\screenshots\pmo_ticket_purchasing_system
+56,Pmo,Pmo-Warehouse management,pmo_warehouse_management,d14e742eebd7c9f2f93898ea,1,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,8.29,full_dataset_82_processes\screenshots\pmo_warehouse_management
+57,Pmo,Pmo-Work Accident,pmo_work_accident,2cc58ba7b4d6046e8370dfca,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,9.55,full_dataset_82_processes\screenshots\pmo_work_accident
+58,Pmo,Pmo-Work and Live in Austria,pmo_work_and_live_in_austria,f720697979af8eb310fed4f7,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,9.06,full_dataset_82_processes\screenshots\pmo_work_and_live_in_austria
+59,Pmo,Pmo-Workplace safety,pmo_workplace_safety,712e746510da0bb389c977b4,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,8.4,full_dataset_82_processes\screenshots\pmo_workplace_safety
+60,Pmo,Pmo-annual audit,pmo_annual_audit,3a6f1502b1440cc5389cf6be,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,8.25,full_dataset_82_processes\screenshots\pmo_annual_audit
+61,Pmo,Pmo-career aspirations,pmo_career_aspirations,9030ae3158dbc62d51fb0f01,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,8.13,full_dataset_82_processes\screenshots\pmo_career_aspirations
+62,Pmo,Pmo-claims officer,pmo_claims_officer,a36eb8bb105eb6d36d09faf3,1,15,11,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.79,full_dataset_82_processes\screenshots\pmo_claims_officer
+63,Pmo,Pmo-compliance audit,pmo_compliance_audit,3b028a085eca72aa6bbee621,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,9.16,full_dataset_82_processes\screenshots\pmo_compliance_audit
+64,Pmo,Pmo-course Registering,pmo_course_registering,0c142c598b79c9ad8737452f,1,15,11,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,8.44,full_dataset_82_processes\screenshots\pmo_course_registering
+65,Pmo,Pmo-customer complaint,pmo_customer_complaint,ae1da7eae9ef35f8a1c735ae,1,15,10,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,8.06,full_dataset_82_processes\screenshots\pmo_customer_complaint
+66,Pmo,Pmo-department objectives,pmo_department_objectives,87646e7e09471018145e3cb6,1,15,11,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,8.16,full_dataset_82_processes\screenshots\pmo_department_objectives
+67,Pmo,Pmo-dismissal,pmo_dismissal,abfb2676488047958958ce60,1,15,10,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,8.68,full_dataset_82_processes\screenshots\pmo_dismissal
+68,Pmo,Pmo-dismissal of the MSPN,pmo_dismissal_of_the_mspn,c1326178c83641094ef4d2c3,1,15,10,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.79,full_dataset_82_processes\screenshots\pmo_dismissal_of_the_mspn
+69,Pmo,Pmo-goods shipping,pmo_goods_shipping,a60ddd4073279d893e5c683a,1,15,11,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,8.49,full_dataset_82_processes\screenshots\pmo_goods_shipping
+70,Pmo,Pmo-hotel,pmo_hotel,028cef2cf545d618248fd702,1,15,12,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,9.18,full_dataset_82_processes\screenshots\pmo_hotel
+71,Pmo,Pmo-insurant,pmo_insurant,fdbb1a0f32a1bfd8b9ec5026,1,15,13,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.67,full_dataset_82_processes\screenshots\pmo_insurant
+72,Pmo,Pmo-job application,pmo_job_application,6fdba37bde456f0a0b9aa940,1,15,13,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,8.11,full_dataset_82_processes\screenshots\pmo_job_application
+73,Pmo,Pmo-maternity leave,pmo_maternity_leave,bb0c110b0e49c5dbdab14add,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,8.02,full_dataset_82_processes\screenshots\pmo_maternity_leave
+74,Pmo,Pmo-online shop,pmo_online_shop,209eef399c883c6a6cd9a785,1,15,11,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.97,full_dataset_82_processes\screenshots\pmo_online_shop
+75,Pmo,Pmo-order fulfillment,pmo_order_fulfillment,4342f9178bff24db024ed9a3,1,15,11,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,9.17,full_dataset_82_processes\screenshots\pmo_order_fulfillment
+76,Pmo,Pmo-repair cost calculation,pmo_repair_cost_calculation,75a5ea6648a115ef7bf08640,1,15,11,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.44,full_dataset_82_processes\screenshots\pmo_repair_cost_calculation
+77,Pmo,Pmo-restaurant,pmo_restaurant,aabb4173b8732f9d5d5b74a7,1,15,13,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.67,full_dataset_82_processes\screenshots\pmo_restaurant
+78,Pmo,Pmo-sales clerks,pmo_sales_clerks,3698cdf0c20e4bb143063871,1,15,11,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.3,full_dataset_82_processes\screenshots\pmo_sales_clerks
+79,Pmo,Pmo-subscription service,pmo_subscription_service,ddf0da1bb8e855c5ea330e60,1,15,11,4,4,0.25,0.25,1.0,True,1.0,1.0,0.5,7.89,full_dataset_82_processes\screenshots\pmo_subscription_service
+80,Pmo,Pmo-transaction data,pmo_transaction_data,7964bd1f28cc748a21bbe0b0,1,15,12,4,4,1.0,0.5,1.0,True,1.0,1.0,0.5,7.8,full_dataset_82_processes\screenshots\pmo_transaction_data
+81,Pmo,Pmo-university enrollment,pmo_university_enrollment,47bdc6a2e4fc7a2e07ef4b7c,1,15,15,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,9.56,full_dataset_82_processes\screenshots\pmo_university_enrollment
+82,Pmo,Pmo-vacation request,pmo_vacation_request,34cb11aeacb50d6d884de011,1,15,14,4,4,0.75,0.25,1.0,True,1.0,1.0,0.5,7.72,full_dataset_82_processes\screenshots\pmo_vacation_request

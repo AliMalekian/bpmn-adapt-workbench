@@ -1,0 +1,68 @@
+{
+  "google/gemma-4-31b-it": {
+    "model": "google/gemma-4-31b-it",
+    "processes_tested": 3,
+    "processes": {
+      "Pmo-3D printer": {
+        "latency_sec": 32.72,
+        "decision_accuracy": 0.75,
+        "constraint_accuracy": 0.25,
+        "status": "failed",
+        "proposed_timing": "Immediate"
+      },
+      "Mangler-Car Service": {
+        "latency_sec": 14.84,
+        "decision_accuracy": 0.75,
+        "constraint_accuracy": 0.25,
+        "status": "rejected",
+        "proposed_timing": "Immediate"
+      },
+      "Camunda-Credit-scoring": {
+        "latency_sec": 22.87,
+        "decision_accuracy": 0.75,
+        "constraint_accuracy": 0.25,
+        "status": "failed",
+        "proposed_timing": "Immediate"
+      }
+    },
+    "total_latency_sec": 70.43,
+    "mean_latency_sec": 23.48,
+    "schema_adherence_rate": 1.0,
+    "mean_decision_accuracy": 0.75,
+    "mean_constraint_accuracy": 0.25,
+    "mean_retrieval_coverage": 1.0
+  },
+  "google/gemma-2-27b-it": {
+    "model": "google/gemma-2-27b-it",
+    "processes_tested": 3,
+    "processes": {
+      "Pmo-3D printer": {
+        "latency_sec": 42.47,
+        "decision_accuracy": 0.75,
+        "constraint_accuracy": 0.25,
+        "status": "failed",
+        "proposed_timing": "Immediate"
+      },
+      "Mangler-Car Service": {
+        "latency_sec": 20.48,
+        "decision_accuracy": 0.75,
+        "constraint_accuracy": 0.25,
+        "status": "rejected",
+        "proposed_timing": "Immediate"
+      },
+      "Camunda-Credit-scoring": {
+        "latency_sec": 44.68,
+        "decision_accuracy": 0.75,
+        "constraint_accuracy": 0.25,
+        "status": "failed",
+        "proposed_timing": "immediate"
+      }
+    },
+    "total_latency_sec": 107.63,
+    "mean_latency_sec": 35.88,
+    "schema_adherence_rate": 1.0,
+    "mean_decision_accuracy": 0.75,
+    "mean_constraint_accuracy": 0.25,
+    "mean_retrieval_coverage": 1.0
+  }
+}

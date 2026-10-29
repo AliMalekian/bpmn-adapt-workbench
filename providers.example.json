@@ -1,0 +1,84 @@
+{
+  "providers": [
+    {
+      "id": "groq",
+      "name": "Groq Cloud",
+      "type": "openai_compatible",
+      "base_url": "https://api.groq.com/openai/v1",
+      "model": "openai/gpt-oss-120b",
+      "api_key": "YOUR_KEY_HERE",
+      "priority": 1,
+      "enabled": false
+    },
+    {
+      "id": "gemini",
+      "name": "Google AI Studio",
+      "type": "openai_compatible",
+      "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/",
+      "model": "gemini-3.8-flash",
+      "api_key": "YOUR_KEY_HERE",
+      "priority": 2,
+      "enabled": false
+    },
+    {
+      "id": "um-llm1-gemma4",
+      "name": "UM LLM1 (A100, gemma4)",
+      "type": "um_llm",
+      "base_url": "https://fumllm.um.ac.ir",
+      "model": "gemma4",
+      "server_id": 1,
+      "api_key": "YOUR_KEY_HERE",
+      "priority": 3,
+      "enabled": false
+    },
+    {
+      "id": "um-llm2-gemma3",
+      "name": "UM LLM2 (V100, gemma3)",
+      "type": "um_llm",
+      "base_url": "https://fumllm.um.ac.ir",
+      "model": "gemma3",
+      "server_id": 2,
+      "api_key": "YOUR_KEY_HERE",
+      "priority": 4,
+      "enabled": false
+    },
+    {
+      "id": "um-llm3-gemma3",
+      "name": "UM LLM3 (4090, gemma3)",
+      "type": "um_llm",
+      "base_url": "https://fumllm.um.ac.ir",
+      "model": "gemma3",
+      "server_id": 3,
+      "api_key": "YOUR_KEY_HERE",
+      "priority": 5,
+      "enabled": false
+    },
+    {
+      "id": "openrouter",
+      "name": "OpenRouter (Free)",
+      "type": "openai_compatible",
+      "base_url": "https://openrouter.ai/api/v1",
+      "model": "google/gemma-4-31b-it:free",
+      "api_key": "YOUR_KEY_HERE",
+      "priority": 6,
+      "enabled": false
+    },
+    {
+      "id": "gpt",
+      "name": "OpenAI GPT",
+      "type": "openai_compatible",
+      "base_url": "https://api.openai.com/v1",
+      "model": "gpt-4o-mini",
+      "api_key": "YOUR_KEY_HERE",
+      "priority": 7,
+      "enabled": false
+    }
+  ],
+  "fallback_policy": {
+    "on_429": true,
+    "on_5xx": true,
+    "on_timeout": true,
+    "on_4xx_non_429": false,
+    "max_retries_per_provider": 3
+  }
+}

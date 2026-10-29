@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS processes (process_id TEXT PRIMARY KEY, folder TEXT NOT NULL, name TEXT NOT NULL, narrative TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS process_versions (version_id TEXT PRIMARY KEY, process_id TEXT NOT NULL, parent_version_id TEXT, bpmn_xml TEXT NOT NULL, checksum TEXT NOT NULL, created_at TEXT DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(process_id) REFERENCES processes(process_id));
+CREATE TABLE IF NOT EXISTS rules (process_id TEXT NOT NULL, rule_id TEXT NOT NULL, text TEXT NOT NULL, PRIMARY KEY(process_id, rule_id));
+CREATE TABLE IF NOT EXISTS resources (process_id TEXT NOT NULL, resource_id TEXT NOT NULL, name TEXT NOT NULL, value TEXT NOT NULL, PRIMARY KEY(process_id, resource_id));
+CREATE TABLE IF NOT EXISTS runtime_states (process_id TEXT NOT NULL, state_id TEXT NOT NULL, position TEXT NOT NULL, payload_json TEXT NOT NULL, PRIMARY KEY(process_id, state_id));
+CREATE TABLE IF NOT EXISTS runs (run_id TEXT PRIMARY KEY, process_id TEXT NOT NULL, config_fingerprint TEXT NOT NULL, status TEXT NOT NULL, created_at TEXT DEFAULT CURRENT_TIMESTAMP, updated_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS requests (request_id TEXT PRIMARY KEY, run_id TEXT NOT NULL, process_id TEXT NOT NULL, source_version_id TEXT, operation TEXT NOT NULL, raw_text TEXT NOT NULL, target_element TEXT NOT NULL, payload_json TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS decisions (decision_id TEXT PRIMARY KEY, run_id TEXT NOT NULL, status TEXT NOT NULL, reason TEXT NOT NULL, payload_json TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS candidates (candidate_id TEXT PRIMARY KEY, run_id TEXT NOT NULL, source_version_id TEXT NOT NULL, bpmn_xml TEXT NOT NULL, checksum TEXT NOT NULL, payload_json TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS simulations (report_id TEXT PRIMARY KEY, run_id TEXT NOT NULL, candidate_id TEXT NOT NULL, passed INTEGER NOT NULL, payload_json TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS provenance_events (run_id TEXT NOT NULL, sequence_no INTEGER NOT NULL, event_type TEXT NOT NULL, payload_json TEXT NOT NULL, created_at TEXT DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY(run_id, sequence_no));
+CREATE TABLE IF NOT EXISTS rag_cases (evidence_id TEXT PRIMARY KEY, run_id TEXT NOT NULL, process_id TEXT NOT NULL, source_version_id TEXT, operation TEXT NOT NULL, text TEXT NOT NULL, decision TEXT NOT NULL, metadata_json TEXT NOT NULL, active INTEGER NOT NULL DEFAULT 1, revoked_reason TEXT, created_at TEXT DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS retrieval_logs (retrieval_id TEXT PRIMARY KEY, run_id TEXT NOT NULL, query_hash TEXT NOT NULL, filters_json TEXT NOT NULL, scores_json TEXT NOT NULL, ranking_json TEXT NOT NULL, index_version TEXT NOT NULL, created_at TEXT DEFAULT CURRENT_TIMESTAMP);

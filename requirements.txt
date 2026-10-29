@@ -1,0 +1,3 @@
+# Complete runtime installation, including the PostgreSQL/pgvector adapter.
+# Exact defense-environment versions are selected by constraints.txt.
+-e .[postgres]

@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+experiments/
+live_evaluation_v2/
+live_evaluation_v3/
+*.log
+logs/
+.superpowers/
+providers.json

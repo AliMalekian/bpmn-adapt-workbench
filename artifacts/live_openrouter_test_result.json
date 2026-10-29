@@ -1,0 +1,64 @@
+{
+  "run_id": "b6516df5-4159-42e4-9c23-5310f3680a02",
+  "status": "rejected",
+  "decision": {
+    "decision_id": "a57d8d0f-0e80-4e1e-bf03-36c0de1c4f43",
+    "status": "REJECT",
+    "reason": "Rule R10 explicitly mandates that 'The warehousemen must finish packaging before the logistics company arrives for pickup.' The 'Package goods' task is the designated step where warehousemen perform packaging. Removing this task eliminates the mechanism by which this precondition is satisfied, directly conflicting with R10. The request does not provide an alternative packaging step or compliance pathway. No resource capacity constraint is violated by the removal itself (removal would free warehousemen time and packaging boxes), but the rule conflict is decisive.",
+    "request": {
+      "request_id": "af041c93-3c4b-4b06-9392-bc703466ad22",
+      "process_id": "c4b9055b3f010b364c30c450",
+      "source_folder": "E:\\Implemention_dataset enriched\\Camunda-Dispatch of goods",
+      "operation": "REMOVE",
+      "raw_text": "Remove the task 'Package goods'",
+      "target_element": "Package goods",
+      "source_version_id": "c4b9055b3f010b364c30c450-source"
+    },
+    "rule_ids": [
+      "R10"
+    ],
+    "resource_ids": [],
+    "evidence_ids": [
+      "source-c4b9055b3f010b364c30c450-R4-REMOVE-VALID",
+      "source-c4b9055b3f010b364c30c450-R1-REMOVE-VALID",
+      "source-c4b9055b3f010b364c30c450-R2-REMOVE-VALID",
+      "source-c4b9055b3f010b364c30c450-R3-REMOVE-VALID",
+      "source-c4b9055b3f010b364c30c450-R4-REMOVE-RESOURCE-CONFLICT"
+    ],
+    "proposed_timing": "current",
+    "planning_result": null,
+    "rejection_category": "RULE_VIOLATION"
+  },
+  "candidate": null,
+  "experiment": null,
+  "provenance": {
+    "run_id": "b6516df5-4159-42e4-9c23-5310f3680a02",
+    "process_id": "c4b9055b3f010b364c30c450",
+    "folder": "E:\\Implemention_dataset enriched\\Camunda-Dispatch of goods",
+    "config_fingerprint": "d5084ab41705dec69028ae9865d4375634d6ae49ca5171b98b3fea58a7919d3a",
+    "prompt_versions": {
+      "orchestrator": "v2",
+      "analyst": "v2",
+      "modeler": "v2",
+      "experimenter": "v2"
+    },
+    "status": "rejected",
+    "events": [
+      {
+        "event_type": "orchestrator_started",
+        "payload": {
+          "request_id": "af041c93-3c4b-4b06-9392-bc703466ad22",
+          "routing_action": "continue"
+        }
+      },
+      {
+        "event_type": "analyst_completed",
+        "payload": {
+          "decision_id": "a57d8d0f-0e80-4e1e-bf03-36c0de1c4f43",
+          "status": "REJECT",
+          "rejection_category": "RULE_VIOLATION"
+        }
+      }
+    ]
+  }
+}

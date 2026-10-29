@@ -1,0 +1,343 @@
+[
+  {
+    "dataset": "Camunda-Credit-scoring",
+    "element": "scoring request received",
+    "rules_file": "e:\\Implemention_dataset enriched\\Camunda-Credit-scoring\\Rules.txt",
+    "contradicting_rules": [
+      "2. A level-1 scoring request must return a result within 10 seconds or be reported as delayed to the banking system.",
+      "3. Requests that cannot be answered instantly are automatically escalated to level-2 scoring by the agency.",
+      "6. A scoring result older than 30 days cannot be reused and requires a new request.",
+      "14. The agency must log every scoring request with timestamp, customer reference, and result within 24 hours."
+    ],
+    "req4_summary": "Request4: Removed element: \"scoring request received\" / \"scoring request handled\" administrative start and end events (the event markers that open and close a scoring request in the agency without performing any value-adding work on the score itself)"
+  },
+  {
+    "dataset": "Camunda-Dispatch of goods",
+    "element": "Package goods",
+    "rules_file": "e:\\Implemention_dataset enriched\\Camunda-Dispatch of goods\\Rules.txt",
+    "contradicting_rules": [
+      "8. Package labels must be written before goods are handed to the mail or logistics company."
+    ],
+    "req4_summary": "Request4: Removed element: \"Package goods\" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified) Reason: Packaging is proposed as no longer necessary because goods could be handed over in bulk c"
+  },
+  {
+    "dataset": "Camunda-Recource",
+    "element": "case closed",
+    "rules_file": "e:\\Implemention_dataset enriched\\Camunda-Recource\\Rules.txt",
+    "contradicting_rules": [
+      "11. Payments received from the insurant must be booked within 2 business days; the case is then closed."
+    ],
+    "req4_summary": "Request4: Removed element: \"case closed\" event path / \"close case\" task used for the low-value branch (the closing action applied to recourse claims below the small-claim threshold) Reason: The separate close-case operation for small-value claims is "
+  },
+  {
+    "dataset": "Mangler-Chainsaw",
+    "element": "The parallel ordering operation — ordering the required parts from the various online sources simultaneously",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Chainsaw\\Rules.txt",
+    "contradicting_rules": [
+      "1. A customer order must specify at least 5 properties (guide bar length, chain width, chain pitch, chain type, and gasoline or electric motor type) before part ordering can start.",
+      "2. Parts for a chainsaw may only be ordered from online sources after all 5 required properties have been confirmed by the customer."
+    ],
+    "req4_summary": "Request4: Removed element: The parallel ordering operation — ordering the required parts from the various online sources simultaneously (the parallel branches of the ordering step). Reason: To simplify coordination with the suppliers; ordering the pa"
+  },
+  {
+    "dataset": "Mangler-Contract",
+    "element": "The task of creating the formal list of parts to be ordered from each web shop.",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Contract\\Rules.txt",
+    "contradicting_rules": [
+      "2. Parts may only be ordered from multiple shops when a single shop cannot deliver the full required quantity."
+    ],
+    "req4_summary": "Request4: Removed element: The task of creating the formal list of parts to be ordered from each web shop. Reason: To reduce paperwork; the order quantities can be communicated to the shops directly without writing down a separate per-shop parts list"
+  },
+  {
+    "dataset": "Mangler-DIY Repair of a Broken Smartphone Screen",
+    "element": "The optional step of contacting friends to borrow or buy something",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-DIY Repair of a Broken Smartphone Screen\\Rules.txt",
+    "contradicting_rules": [
+      "4. Parts that cannot be borrowed or bought cheaply from friends are purchased from the tool's recommended ordering options."
+    ],
+    "req4_summary": "Request4: Removed element: The optional step of contacting friends to borrow or buy something (tools or parts) cheaply from them. Reason: To avoid the back-and-forth communication with friends and go straight to buying everything from the recommended"
+  },
+  {
+    "dataset": "Mangler-Find a Job",
+    "element": "The optional job-interview negotiation step between the applicant and the company.",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Find a Job\\Rules.txt",
+    "contradicting_rules": [
+      "9. Reviews for a company are revealed to other job applicants only after 1 year from their submission.",
+      "14. The applicant must apply to at least 1 new company per week to keep receiving personalized offers."
+    ],
+    "req4_summary": "Request4: Removed element: The optional job-interview negotiation step between the applicant and the company. Reason: To shorten the path to hiring by letting companies that already know the applicant move directly to the probation phase. Conflict de"
+  },
+  {
+    "dataset": "Mangler-Inspection of an Energy Drink Bottling Machine",
+    "element": "The step of reading the tube pressure of the filling station manually with the depressurization procedure",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Inspection of an Energy Drink Bottling Machine\\Rules.txt",
+    "contradicting_rules": [
+      "12. The tube pressure reading must stay between 1.2 and 1.8 bar for the filling station to pass."
+    ],
+    "req4_summary": "Request4: Removed element: The step of reading the tube pressure of the filling station manually with the depressurization procedure (the manual reading branch of the filling station pressure check). Reason: To rely entirely on the automatic sensor r"
+  },
+  {
+    "dataset": "Mangler-Instruct an artist to create a 3D model print it on a 3D printer",
+    "element": "The step of generating the gcode file from the artist's STL file.",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Instruct an artist to create a 3D model print it on a 3D printer\\Rules.txt",
+    "contradicting_rules": [
+      "3. The artist delivers a finalized STL file only after the customer confirms satisfaction with the model."
+    ],
+    "req4_summary": "Request4: Removed element: The step of generating the gcode file from the artist's STL file. Reason: To save the gcode generation effort and print directly from the STL file, since the process description frames gcode generation as an optional conven"
+  },
+  {
+    "dataset": "Mangler-Internship",
+    "element": "The optional step of entering experience and hobbies into the internship platform.",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Internship\\Rules.txt",
+    "contradicting_rules": [
+      "1. The applicant must enter an interest topic and a desired salary into the internship platform."
+    ],
+    "req4_summary": "Request4: Removed element: The optional step of entering experience and hobbies into the internship platform. Reason: To complete the registration faster by entering only the mandatory topic and desired salary, skipping the optional profile details. "
+  },
+  {
+    "dataset": "Mangler-Luxury Airplane",
+    "element": "The option of premium shipping of the airplane to the customer",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Luxury Airplane\\Rules.txt",
+    "contradicting_rules": [
+      "2. The customer must choose between exactly 5 different bars for the airplane interior."
+    ],
+    "req4_summary": "Request4: Removed element: The option of premium shipping of the airplane to the customer (the \"premium shipping to the customer\" variant of the delivery step). Reason: To standardize the delivery and ship every airplane with the regular standard shi"
+  },
+  {
+    "dataset": "Mangler-New Application for Registering for an USI course",
+    "element": "Tweet to friends via the Twitter integration",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-New Application for Registering for an USI course\\Rules.txt",
+    "contradicting_rules": [
+      "13. Tweeting to friends is possible only after the user authorizes the connection to their Twitter account."
+    ],
+    "req4_summary": "Request4: Removed element: Tweet to friends via the Twitter integration Reason: The optional social-sharing step is proposed for removal to simplify the registration flow and remove the dependency on the Twitter integration. Conflict details: None — "
+  },
+  {
+    "dataset": "Mangler-Ordering in an Online Shop",
+    "element": "Option to enter a separate billing address when it differs from the shipping address",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Ordering in an Online Shop\\Rules.txt",
+    "contradicting_rules": [
+      "10. The shipping address must be entered while the payment confirmation is still pending.",
+      "11. The order is finally executed by the system only after both the address and the payment steps are done."
+    ],
+    "req4_summary": "Request4: Removed element: Option to enter a separate billing address when it differs from the shipping address Reason: This optional billing-address feature is proposed for removal to simplify the address-entry process, assuming the shipping address"
+  },
+  {
+    "dataset": "Mangler-Robotic Burger Seller near the University of Vienna",
+    "element": "The customer's ability to check the current status of their order while it is being prepared",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Robotic Burger Seller near the University of Vienna\\Rules.txt",
+    "contradicting_rules": [
+      "12. The order is handed over only after all prepared items are complete."
+    ],
+    "req4_summary": "Request4: Removed element: The customer's ability to check the current status of their order while it is being prepared Reason: The status-check step is proposed for removal under the assumption that it is redundant, because the robot already pushes "
+  },
+  {
+    "dataset": "Mangler-Service for Your Fridge",
+    "element": "The technician's random arrival time within the agreed appointment window",
+    "rules_file": "e:\\Implemention_dataset enriched\\Mangler-Service for Your Fridge\\Rules.txt",
+    "contradicting_rules": [
+      "13. The service facility must notify the customer of the visit time on the day of the appointment."
+    ],
+    "req4_summary": "Request4: Removed element: The technician's random arrival time within the agreed appointment window Reason: The random-arrival behavior is proposed for removal so the technician arrives at a fixed, pre-agreed time, which is easier to plan around. Co"
+  },
+  {
+    "dataset": "Pmo-3D printer",
+    "element": "The printer's continuous status reporting while the bed and extruder are heating",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-3D printer\\Rules.txt",
+    "contradicting_rules": [
+      "8. The printer bed and the extruder must be heated up before printing can start."
+    ],
+    "req4_summary": "Request4: Removed element: The printer's continuous status reporting while the bed and extruder are heating Reason: The status-feedback reporting is proposed for removal under the assumption that the user can simply wait until the printer reaches its"
+  },
+  {
+    "dataset": "Pmo-Bottling Machine",
+    "element": "The Bluetooth device connection that links the inspection app to the machine",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Bottling Machine\\Rules.txt",
+    "contradicting_rules": [
+      "1. The inspection cannot begin until the machine type and its serial number are entered."
+    ],
+    "req4_summary": "Request4: Removed element: The Bluetooth device connection that links the inspection app to the machine Reason: The Bluetooth connection step is proposed for removal under the assumption that the machine's values can be entered manually instead of be"
+  },
+  {
+    "dataset": "Pmo-Building a House",
+    "element": "Creating the list of people attending the party before buying the snacks",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Building a House\\Rules.txt",
+    "contradicting_rules": [
+      "10. At least one friend must confirm attendance before snacks can be ordered."
+    ],
+    "req4_summary": "Request4: Removed element: Creating the list of people attending the party before buying the snacks Reason: The attendance-list step is proposed for removal under the assumption that snack quantities can be estimated from the number of invitations se"
+  },
+  {
+    "dataset": "Pmo-Chainsaw",
+    "element": "Cancellation of the remaining order after an unapproved prototype",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Chainsaw\\Rules.txt",
+    "contradicting_rules": [
+      "2. Parts are ordered from various online sources in parallel, but only after the customer has confirmed all chainsaw properties.",
+      "5. A prototype of the first saw must be sent to the customer, and the rest of the order is produced only after the customer confirms that he or she likes it."
+    ],
+    "req4_summary": "Request4: Removed element: Cancellation of the remaining order after an unapproved prototype (the \"Cancel production of the remaining order\" end-event on the \"No\" output of the \"Customer Approval?\" decision gateway) Reason: The cancel-production path"
+  },
+  {
+    "dataset": "Pmo-Character Generator",
+    "element": "Enter BIC",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Character Generator\\Rules.txt",
+    "contradicting_rules": [
+      "2. If the user does not have a battle.net account, account information must be entered and the confirmation e-mail link must be clicked before the account is considered active.",
+      "6. A character name is accepted only if it is still available and meets the naming rules, and the user must enter candidate names one by one until an available name is found."
+    ],
+    "req4_summary": "Request4: Removed element: Enter BIC (the separate \"Enter BIC\" field in the bank-account payment path) Reason: The BIC entry is a redundant sub-field because the IBAN already encodes the bank identifier; removing this single field would shorten the b"
+  },
+  {
+    "dataset": "Pmo-Contract",
+    "element": "Receive second batch of parts",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Contract\\Rules.txt",
+    "contradicting_rules": [
+      "9. Parts received outside the acceptable tolerance of +/- 2 days must be reported to the delivery log before use."
+    ],
+    "req4_summary": "Request4: Removed element: Receive second batch of parts (the \"Receive second batch of parts\" parallel manual task) Reason: Because the three arrival batches are already handled in parallel, the second-batch reception duplicates the same handling; re"
+  },
+  {
+    "dataset": "Pmo-Customer sales support",
+    "element": "The data-protection/logging side-annotation attached to the final order processing",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Customer sales support\\Rules.txt",
+    "contradicting_rules": [
+      "10. An order is considered final only after payment terms are agreed and recorded in the system.",
+      "15. Sensitive customer data collected during inquiry and ordering must be handled in compliance with data protection policy."
+    ],
+    "req4_summary": "Request4: Removed element: The data-protection/logging side-annotation attached to the final order processing (the non-executable annotation tied to the end of the sales flow) Reason: The annotation is informational only and does not perform work; re"
+  },
+  {
+    "dataset": "Pmo-Lego bricks",
+    "element": "Assembling the tested subcomponents into the final machine",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Lego bricks\\Rules.txt",
+    "contradicting_rules": [
+      "14. The complete machine must pass a final integration test before it is accepted as finished.",
+      "15. All finished machines must be dismantled and their parts sorted back into containers unless stored as an approved model."
+    ],
+    "req4_summary": "Request4: Removed element: Assembling the tested subcomponents into the final machine Reason: It is proposed that the final machine be delivered as a set of separate, individually tested subcomponents rather than being assembled into a single integra"
+  },
+  {
+    "dataset": "Pmo-Marketing",
+    "element": "The procurement team considering cost, delivery time, and supplier reliability when placing an order",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Marketing\\Rules.txt",
+    "contradicting_rules": [
+      "4. Supplier selection must take into account cost, delivery time, and supplier reliability.",
+      "5. The inventory system must be updated with expected delivery dates within 24 hours of placing an order.",
+      "12. A supplier with a delivery time longer than 14 days must be reviewed before being used again.",
+      "14. Discrepancies between delivered quantity and ordered quantity must be resolved within 2 days of delivery."
+    ],
+    "req4_summary": "Request4: Removed element: The procurement team considering cost, delivery time, and supplier reliability when placing an order Reason: The process description states the procurement team considers factors like cost, delivery time, and supplier relia"
+  },
+  {
+    "dataset": "Pmo-Night Run",
+    "element": "The fitness gadget collecting data during the run",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Night Run\\Rules.txt",
+    "contradicting_rules": [
+      "5. The participant's fitness gadget must be paired with the app before running time is measured.",
+      "6. Running time must be measured automatically by the fitness gadget, not entered manually."
+    ],
+    "req4_summary": "Request4: Removed element: The fitness gadget collecting data during the run Reason: The process description notes that some information is collected by fitness gadgets. It is proposed that this gadget data collection detail be removed from the proce"
+  },
+  {
+    "dataset": "Pmo-OEE",
+    "element": "Recalculating OEE at the end of every shift and storing the value with a timestamp",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-OEE\\Rules.txt",
+    "contradicting_rules": [
+      "8. OEE must be recalculated at the end of every shift and stored with a timestamp."
+    ],
+    "req4_summary": "Request4: Removed element: Recalculating OEE at the end of every shift and storing the value with a timestamp Reason: The process description states \"when the machine is restarted, continue measuring,\" implying that OEE is continuously monitored. It "
+  },
+  {
+    "dataset": "Pmo-Online ordering platform",
+    "element": "The customer providing feedback after delivery",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Online ordering platform\\Rules.txt",
+    "contradicting_rules": [
+      "11. Customer feedback collected after delivery must be recorded in the system.",
+      "15. The process ends only after delivery is completed and any confirmed return is fully resolved."
+    ],
+    "req4_summary": "Request4: Removed element: The customer providing feedback after delivery Reason: The process description states that \"customer feedback or returns may trigger further actions\" after delivery. It is proposed that the customer feedback component be re"
+  },
+  {
+    "dataset": "Pmo-online shop",
+    "element": "Return items task",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-online shop\\Rules.txt",
+    "contradicting_rules": [
+      "12. Returned items must be received by the shop before the replacement order is shipped."
+    ],
+    "req4_summary": "Request4: Removed element: Return items task (the step in which the user returns delivered items for exchange within the 30-day return window, after which a new delivery of the replacement item is made) Reason: To reduce reverse-logistics workload, t"
+  },
+  {
+    "dataset": "Pmo-Ordering",
+    "element": "Entering an independent billing address when it differs from the shipping address",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Ordering\\Rules.txt",
+    "contradicting_rules": [
+      "8. A shipping address is required for every order.",
+      "10. The order is finished only after both the address step and the payment step are executed.",
+      "15. The order confirmation is sent to the customer only after payment and address steps are completed."
+    ],
+    "req4_summary": "Request4: Removed element: Entering an independent billing address when it differs from the shipping address Reason: The process description states that an independent billing address \"can be entered if the shipping address is not equal to the billin"
+  },
+  {
+    "dataset": "Pmo-Product improvement",
+    "element": "The R&D team reporting progress to the steering committee once per month",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Product improvement\\Rules.txt",
+    "contradicting_rules": [
+      "14. The R&D team must report progress to the steering committee once per month."
+    ],
+    "req4_summary": "Request4: Removed element: The R&D team reporting progress to the steering committee once per month Reason: The monthly progress report is an administrative reporting activity. It is proposed that the R&D team focus purely on development work and no "
+  },
+  {
+    "dataset": "Pmo-Recruitment",
+    "element": "Salary negotiations between HR and the candidate",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Recruitment\\Rules.txt",
+    "contradicting_rules": [
+      "10. Salary negotiations are allowed but the final salary must stay within the approved budget band."
+    ],
+    "req4_summary": "Request4: Removed element: Salary negotiations between HR and the candidate Reason: The process description states that \"salary negotiations may take place\" after an offer is extended. It is proposed that the negotiation activity be removed, and the "
+  },
+  {
+    "dataset": "Pmo-repair cost calculation",
+    "element": "Proper system functionality is tested task",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-repair cost calculation\\Rules.txt",
+    "contradicting_rules": [
+      "5. The proper system functionality must be tested after each of the two repair activities."
+    ],
+    "req4_summary": "Request4: Removed element: Proper system functionality is tested task (the functionality test performed after each of the two repair activities to verify the system works correctly) Reason: To shorten each repair iteration, the proposal is to skip th"
+  },
+  {
+    "dataset": "Pmo-Repair Smartphone",
+    "element": "Sending a review or video of the repair to the tool after a successful repair",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-Repair Smartphone\\Rules.txt",
+    "contradicting_rules": [
+      "7. Step-by-step repair instructions are provided only after all parts and tools are secured.",
+      "9. The repair must be performed with the device powered off and the battery disconnected.",
+      "10. The user must confirm each completed repair step before proceeding to the next instruction.",
+      "13. Expert repair support must be requested within 14 days of the DIY attempt.",
+      "15. User-submitted reviews and videos are published only after passing a quality check."
+    ],
+    "req4_summary": "Request4: Removed element: Sending a review or video of the repair to the tool after a successful repair Reason: The process description states \"If it worked, send a review and/or video of you fixing it.\" The post-repair review submission is a volunt"
+  },
+  {
+    "dataset": "Pmo-restaurant",
+    "element": "Eat meal task",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-restaurant\\Rules.txt",
+    "contradicting_rules": [
+      "7. The chef must inform the employee once the finished meal is placed in the service hatch.",
+      "8. The buzzer is set off only after the employee knows the meal is ready at the service hatch.",
+      "13. The meal range must always include at least 5 main dishes and 3 vegetarian options."
+    ],
+    "req4_summary": "Request4: Removed element: Eat meal task (the step in which the guest consumes the collected meal before the process ends with the guest no longer being hungry) Reason: To shorten the guest journey, the proposal is to end the process immediately afte"
+  },
+  {
+    "dataset": "Pmo-university enrollment",
+    "element": "The student ID card issuance step — specifically, the step where the student obtains a student ID card after enrollment confirmation.",
+    "rules_file": "e:\\Implemention_dataset enriched\\Pmo-university enrollment\\Rules.txt",
+    "contradicting_rules": [
+      "6. A student must confirm enrollment within 2 weeks of receiving the acceptance letter, otherwise the application is canceled.",
+      "7. First-year students must meet with an academic advisor before selecting any courses.",
+      "11. A student must be registered for at least 12 credits to remain eligible for scholarships and financial aid.",
+      "14. A student ID card is issued only after enrollment confirmation is finalized and any outstanding fees are paid."
+    ],
+    "req4_summary": "Request4: Removed element: The student ID card issuance step — specifically, the step where the student obtains a student ID card after enrollment confirmation. Reason: This step is proposed for removal to simplify the enrollment process, as the stud"
+  }
+]

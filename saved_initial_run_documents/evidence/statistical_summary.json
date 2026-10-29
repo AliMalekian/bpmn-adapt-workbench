@@ -1,0 +1,494 @@
+{
+  "by_treatment": {
+    "Ablation: No Simulation": {
+      "n": 210,
+      "executability_rate": {
+        "mean": 0.7333,
+        "std": 0.4433,
+        "ci_95": [
+          0.6734,
+          0.7933
+        ]
+      },
+      "token_preservation_rate": {
+        "mean": 0.9167,
+        "std": 0.1181,
+        "ci_95": [
+          0.9007,
+          0.9326
+        ]
+      },
+      "constraint_violations": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "graph_edit_distance": {
+        "mean": 1.25,
+        "std": 0.2506,
+        "ci_95": [
+          1.2161,
+          1.2839
+        ]
+      },
+      "restoration_similarity": {
+        "mean": 0.45,
+        "std": 0.0501,
+        "ci_95": [
+          0.4432,
+          0.4568
+        ]
+      },
+      "latency_sec": {
+        "mean": 20.5566,
+        "std": 15.6482,
+        "ci_95": [
+          18.4401,
+          22.6731
+        ]
+      }
+    },
+    "Baseline: Conversational": {
+      "n": 210,
+      "executability_rate": {
+        "mean": 0.3333,
+        "std": 0.4725,
+        "ci_95": [
+          0.2694,
+          0.3972
+        ]
+      },
+      "token_preservation_rate": {
+        "mean": 0.266,
+        "std": 0.1046,
+        "ci_95": [
+          0.2519,
+          0.2802
+        ]
+      },
+      "constraint_violations": {
+        "mean": 1.9333,
+        "std": 0.8331,
+        "ci_95": [
+          1.8207,
+          2.046
+        ]
+      },
+      "graph_edit_distance": {
+        "mean": 4.5452,
+        "std": 0.8651,
+        "ci_95": [
+          4.4282,
+          4.6622
+        ]
+      },
+      "restoration_similarity": {
+        "mean": 0.1849,
+        "std": 0.0297,
+        "ci_95": [
+          0.1809,
+          0.1889
+        ]
+      },
+      "latency_sec": {
+        "mean": 1.889,
+        "std": 0.3713,
+        "ci_95": [
+          1.8387,
+          1.9392
+        ]
+      }
+    },
+    "Proposed (Multi-Agent + Sim)": {
+      "n": 210,
+      "executability_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "token_preservation_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "constraint_violations": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "graph_edit_distance": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "restoration_similarity": {
+        "mean": 0.5,
+        "std": 0.0,
+        "ci_95": [
+          0.5,
+          0.5
+        ]
+      },
+      "latency_sec": {
+        "mean": 45.6814,
+        "std": 34.7739,
+        "ci_95": [
+          40.9781,
+          50.3846
+        ]
+      }
+    },
+    "RAG: Hybrid": {
+      "n": 210,
+      "executability_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "token_preservation_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "constraint_violations": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "graph_edit_distance": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "restoration_similarity": {
+        "mean": 0.9507,
+        "std": 0.0109,
+        "ci_95": [
+          0.9492,
+          0.9522
+        ]
+      },
+      "latency_sec": {
+        "mean": 45.6814,
+        "std": 34.7739,
+        "ci_95": [
+          40.9781,
+          50.3846
+        ]
+      }
+    },
+    "RAG: None": {
+      "n": 210,
+      "executability_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "token_preservation_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "constraint_violations": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "graph_edit_distance": {
+        "mean": 1.5,
+        "std": 0.3007,
+        "ci_95": [
+          1.4593,
+          1.5407
+        ]
+      },
+      "restoration_similarity": {
+        "mean": 0.7192,
+        "std": 0.0221,
+        "ci_95": [
+          0.7162,
+          0.7222
+        ]
+      },
+      "latency_sec": {
+        "mean": 38.8292,
+        "std": 29.5578,
+        "ci_95": [
+          34.8314,
+          42.8269
+        ]
+      }
+    },
+    "RAG: Semantic": {
+      "n": 210,
+      "executability_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "token_preservation_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "constraint_violations": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "graph_edit_distance": {
+        "mean": 1.1,
+        "std": 0.1002,
+        "ci_95": [
+          1.0864,
+          1.1136
+        ]
+      },
+      "restoration_similarity": {
+        "mean": 0.879,
+        "std": 0.0117,
+        "ci_95": [
+          0.8774,
+          0.8806
+        ]
+      },
+      "latency_sec": {
+        "mean": 43.8541,
+        "std": 33.3829,
+        "ci_95": [
+          39.339,
+          48.3692
+        ]
+      }
+    },
+    "RAG: Syntactic": {
+      "n": 210,
+      "executability_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "token_preservation_rate": {
+        "mean": 1.0,
+        "std": 0.0,
+        "ci_95": [
+          1.0,
+          1.0
+        ]
+      },
+      "constraint_violations": {
+        "mean": 0.0,
+        "std": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "graph_edit_distance": {
+        "mean": 1.25,
+        "std": 0.1504,
+        "ci_95": [
+          1.2297,
+          1.2703
+        ]
+      },
+      "restoration_similarity": {
+        "mean": 0.8082,
+        "std": 0.0177,
+        "ci_95": [
+          0.8058,
+          0.8106
+        ]
+      },
+      "latency_sec": {
+        "mean": 42.0269,
+        "std": 31.992,
+        "ci_95": [
+          37.6999,
+          46.3539
+        ]
+      }
+    }
+  },
+  "pairwise_hypothesis_tests": {
+    "Proposed_vs_Conversational": {
+      "mcnemar_executability": {
+        "test": "mcnemar_exact",
+        "statistic": 140.0,
+        "p_value": 1.4349296274686127e-42,
+        "effect_size": -1.0
+      },
+      "token_preservation": {
+        "test": "wilcoxon",
+        "statistic": 0.0,
+        "p_value": 3.2972260929141066e-36,
+        "effect_size": 7.0166008066179515,
+        "ci_95": [
+          0.720597486561866,
+          0.7474650481106075
+        ]
+      },
+      "graph_edit_distance": {
+        "test": "wilcoxon",
+        "statistic": 0.0,
+        "p_value": 3.2972260929141066e-36,
+        "effect_size": 4.098013083940598,
+        "ci_95": [
+          3.425059434322231,
+          3.668586975875292
+        ]
+      }
+    },
+    "Proposed_vs_NoSimulation": {
+      "mcnemar_executability": {
+        "test": "mcnemar_exact",
+        "statistic": 56.0,
+        "p_value": 2.7755575615628914e-17,
+        "effect_size": -1.0
+      },
+      "token_preservation": {
+        "test": "wilcoxon",
+        "statistic": 0.0,
+        "p_value": 5.930445850082486e-17,
+        "effect_size": 0.7054211845550483,
+        "ci_95": [
+          0.06785714285714285,
+          0.1
+        ]
+      },
+      "graph_edit_distance": {
+        "test": "wilcoxon",
+        "statistic": 0.0,
+        "p_value": 1.2213583807296573e-24,
+        "effect_size": 0.9976162063830436,
+        "ci_95": [
+          0.21428571428571427,
+          0.2857142857142857
+        ]
+      }
+    },
+    "Proposed_vs_RAGNone": {
+      "mcnemar_executability": {
+        "test": "mcnemar_exact",
+        "statistic": 0.0,
+        "p_value": 1.0,
+        "effect_size": 0.0
+      },
+      "token_preservation": {
+        "test": "permutation",
+        "statistic": 0.0,
+        "p_value": 1.0,
+        "effect_size": 0.0,
+        "ci_95": [
+          0.0,
+          0.0
+        ]
+      },
+      "graph_edit_distance": {
+        "test": "wilcoxon",
+        "statistic": 0.0,
+        "p_value": 1.7237341159157059e-38,
+        "effect_size": 1.6626936773050722,
+        "ci_95": [
+          0.45714285714285713,
+          0.5428571428571428
+        ]
+      }
+    }
+  },
+  "holm_bonferroni_correction": {
+    "Proposed_vs_Conversational_exec": {
+      "raw_p": 1.4349296274686127e-42,
+      "adjusted_p": 1.2914366647217514e-41,
+      "reject": true
+    },
+    "Proposed_vs_RAGNone_ged": {
+      "raw_p": 1.7237341159157059e-38,
+      "adjusted_p": 1.3789872927325647e-37,
+      "reject": true
+    },
+    "Proposed_vs_Conversational_tok": {
+      "raw_p": 3.2972260929141066e-36,
+      "adjusted_p": 2.3080582650398747e-35,
+      "reject": true
+    },
+    "Proposed_vs_Conversational_ged": {
+      "raw_p": 3.2972260929141066e-36,
+      "adjusted_p": 2.3080582650398747e-35,
+      "reject": true
+    },
+    "Proposed_vs_NoSimulation_ged": {
+      "raw_p": 1.2213583807296573e-24,
+      "adjusted_p": 6.1067919036482865e-24,
+      "reject": true
+    },
+    "Proposed_vs_NoSimulation_exec": {
+      "raw_p": 2.7755575615628914e-17,
+      "adjusted_p": 1.1102230246251565e-16,
+      "reject": true
+    },
+    "Proposed_vs_NoSimulation_tok": {
+      "raw_p": 5.930445850082486e-17,
+      "adjusted_p": 1.7791337550247457e-16,
+      "reject": true
+    },
+    "Proposed_vs_RAGNone_exec": {
+      "raw_p": 1.0,
+      "adjusted_p": 1.0,
+      "reject": false
+    },
+    "Proposed_vs_RAGNone_tok": {
+      "raw_p": 1.0,
+      "adjusted_p": 1.0,
+      "reject": false
+    }
+  }
+}

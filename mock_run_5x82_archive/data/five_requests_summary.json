@@ -1,0 +1,67 @@
+{
+  "model_name": "google/gemma-4-31b-it",
+  "total_datasets": 82,
+  "total_tests": 410,
+  "total_screenshots": 410,
+  "total_execution_time_seconds": 484.51,
+  "mean_latency_per_test_sec": 1.18,
+  "confusion_matrix": {
+    "true_positive_tp": 164,
+    "true_negative_tn": 246,
+    "false_positive_fp": 0,
+    "false_negative_fn": 0
+  },
+  "aggregate_metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall_sensitivity": 1.0,
+    "specificity": 1.0,
+    "f1_score": 1.0,
+    "balanced_accuracy": 1.0,
+    "mean_ged_applicable_remove": 2.51,
+    "mean_restoration_similarity_readd": 1.0,
+    "token_soundness_preservation_rate": 1.0,
+    "petri_net_simulation_pass_rate": 1.0
+  },
+  "per_group_metrics": {
+    "Pmo": {
+      "total_datasets": 55,
+      "total_tests": 275,
+      "tp": 110,
+      "tn": 165,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "f1_score": 1.0
+    },
+    "Mangler": {
+      "total_datasets": 23,
+      "total_tests": 115,
+      "tp": 46,
+      "tn": 69,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "f1_score": 1.0
+    },
+    "Camunda": {
+      "total_datasets": 4,
+      "total_tests": 20,
+      "tp": 8,
+      "tn": 12,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "f1_score": 1.0
+    }
+  }
+}

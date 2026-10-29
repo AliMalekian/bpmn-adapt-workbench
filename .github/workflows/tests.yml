@@ -1,0 +1,55 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  offline:
+    strategy:
+      matrix:
+        python: ["3.11", "3.12"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: python -m pip install -r requirements-dev.txt -c constraints.txt
+      - run: python -m pip check
+      - run: python -m compileall -q src tests scripts
+      - run: python -m pytest -q -m "not live"
+
+  postgres-pgvector:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.6-pg16
+        env:
+          POSTGRES_DB: bpmn_adapt_test
+          POSTGRES_USER: bpmn_adapt_test
+          POSTGRES_PASSWORD: integration-only-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U bpmn_adapt_test -d bpmn_adapt_test"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      ADAPT_TEST_POSTGRES_URL: postgresql://bpmn_adapt_test:integration-only-password@localhost:5432/bpmn_adapt_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements-dev.txt -c constraints.txt
+      - run: python -c "import psycopg; c=psycopg.connect('${{ env.ADAPT_TEST_POSTGRES_URL }}'); c.execute('CREATE EXTENSION IF NOT EXISTS vector'); c.commit(); c.close()"
+      - run: python -m pytest tests/contract tests/integration -q
+
+  live-external:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Enable only in an approved environment with Camunda and LLM secrets."

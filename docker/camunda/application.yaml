@@ -1,0 +1,26 @@
+management.endpoints.configprops.show-values: always
+camunda:
+  system:
+    cpu-thread-count: "3"
+    io-thread-count: "3"
+  security:
+    authentication:
+      method: "basic"
+      unprotectedApi: true
+    authorizations:
+      enabled: false
+    initialization:
+      users:
+        - username: "demo"
+          password: "demo"
+          name: "Research Demo"
+          email: "demo@example.invalid"
+      defaultRoles.admin.users:
+        - "demo"
+  database.index.numberOfReplicas: 0
+  data:
+    secondary-storage:
+      type: elasticsearch
+      elasticsearch:
+        cluster-name: elasticsearch
+        url: "http://elasticsearch:9200"

@@ -1,0 +1,23 @@
+Metadata-Version: 2.4
+Name: bpmn-adapt
+Version: 0.1.0
+Summary: Auditable multi-agent runtime BPMN adaptation research platform
+Requires-Python: <3.13,>=3.11
+Requires-Dist: httpx<1,>=0.28
+Requires-Dist: lxml<7,>=5.4
+Requires-Dist: networkx<4,>=3.4
+Requires-Dist: numpy<3,>=2.2
+Requires-Dist: pandas<4,>=2.2
+Requires-Dist: platformdirs<5,>=4.3
+Requires-Dist: pm4py<3,>=2.7.16
+Requires-Dist: scipy<2,>=1.15
+Requires-Dist: sentence-transformers<6,>=4.1
+Requires-Dist: statsmodels<1,>=0.14.4
+Provides-Extra: postgres
+Requires-Dist: psycopg[binary]<4,>=3.2; extra == "postgres"
+Requires-Dist: pgvector<1,>=0.4; extra == "postgres"
+Provides-Extra: dev
+Requires-Dist: coverage<8,>=7.8; extra == "dev"
+Requires-Dist: hypothesis<7,>=6.130; extra == "dev"
+Requires-Dist: pytest<9,>=8.3; extra == "dev"
+Requires-Dist: pytest-cov<8,>=6; extra == "dev"

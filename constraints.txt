@@ -1,0 +1,19 @@
+# Reproducible Python 3.11/3.12 evidence environment.
+# These pins are integration candidates until M0 live service gates run.
+httpx==0.28.1
+lxml==5.4.0
+networkx==3.4.2
+numpy==2.2.6
+pandas==2.2.3
+platformdirs==4.3.8
+pm4py==2.7.16
+scipy==1.15.3
+sentence-transformers==4.1.0
+statsmodels==0.14.4
+psycopg==3.2.9
+psycopg-binary==3.2.9
+pgvector==0.4.1
+coverage==7.8.2
+hypothesis==6.131.7
+pytest==8.3.5
+pytest-cov==6.1.1

@@ -1,0 +1,50 @@
+[llm]
+mode = "live"
+provider = "openai_compatible"
+model = "example-model"
+base_url = "https://api.openai.com/v1"
+timeout_seconds = 60.0
+max_retries = 2
+retry_backoff_seconds = 1.0
+rate_limit_per_minute = 30
+
+[embedding]
+provider = "sentence_transformers"
+model = "sentence-transformers/all-MiniLM-L6-v2"
+revision = "main"
+device = "cpu"
+batch_size = 32
+
+[vector]
+backend = "pgvector"
+
+[database]
+url = "postgresql://bpmn_adapt@localhost:5432/bpmn_adapt"
+
+[rag]
+mode = "hybrid"
+semantic_weight = 0.65
+syntactic_weight = 0.35
+
+[output]
+root = "experiments/integration-runs"
+
+[planner]
+weight_time = 0.4
+weight_budget = 0.3
+weight_risk = 0.3
+max_states = 25000
+max_depth = 200
+timeout_seconds = 60.0
+
+[engine]
+mode = "camunda8"
+base_url = "http://localhost:8080"
+oauth_url = "http://localhost:18080/auth/realms/camunda-platform/protocol/openid-connect/token"
+tenant_id = "research"
+timeout_seconds = 30.0
+max_retries = 2
+
+[evaluation]
+seed = 20260922
+repetitions = 5
