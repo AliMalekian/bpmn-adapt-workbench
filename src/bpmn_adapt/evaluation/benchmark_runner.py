@@ -306,7 +306,20 @@ class BenchmarkRunner:
         else:
             active_providers = [self.provider]
 
-        total_campaign_cases = len(folders) * 5 * self.repetitions * len(active_providers)
+        # Pre-extract and cache exact test cases for all discovered datasets
+        cases_per_folder: dict[Path, list[dict[str, Any]]] = {}
+        total_extracted_cases = 0
+        for ds_f in folders:
+            try:
+                bundle = ingest_folder(ds_f)
+                cases_list = self.extract_test_cases(bundle, ds_f.name, ds_folder=ds_f)
+                cases_per_folder[ds_f] = cases_list
+                total_extracted_cases += len(cases_list)
+            except Exception as exc:
+                logger.debug("Failed pre-extracting cases for %s: %s", ds_f.name, exc)
+                cases_per_folder[ds_f] = []
+
+        total_campaign_cases = max(1, total_extracted_cases * self.repetitions * len(active_providers))
         completed_global = 0
 
         campaign_results: dict[str, Any] = {}
@@ -413,12 +426,14 @@ class BenchmarkRunner:
                 if self.stop_event.is_set():
                     break
 
-                try:
-                    bundle = ingest_folder(ds_folder)
-                    cases = self.extract_test_cases(bundle, ds_folder.name, ds_folder=ds_folder)
-                except Exception as exc:
-                    logger.error("Failed to ingest %s: %s", ds_folder.name, exc)
-                    continue
+                cases = cases_per_folder.get(ds_folder)
+                if cases is None:
+                    try:
+                        bundle = ingest_folder(ds_folder)
+                        cases = self.extract_test_cases(bundle, ds_folder.name, ds_folder=ds_folder)
+                    except Exception as exc:
+                        logger.error("Failed to ingest %s: %s", ds_folder.name, exc)
+                        continue
 
                 for rep in range(1, self.repetitions + 1):
                     for case_idx, case in enumerate(cases):

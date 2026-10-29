@@ -1,8 +1,14 @@
+import argparse
 import json
 from pathlib import Path
 
-tests_file = Path("experiments/live_evaluation_v4/tests.jsonl")
-metrics_file = Path("experiments/live_evaluation_v4/metrics.json")
+parser = argparse.ArgumentParser(description="Compute scientific confusion matrix and benchmark metrics.")
+parser.add_argument("--dir", default="experiments/live_evaluation_v4", help="Directory containing tests.jsonl and metrics.json")
+args = parser.parse_args()
+
+exp_dir = Path(args.dir)
+tests_file = exp_dir / "tests.jsonl"
+metrics_file = exp_dir / "metrics.json"
 
 tests = [json.loads(line) for line in tests_file.read_text(encoding="utf-8").splitlines() if line.strip()]
 m = json.loads(metrics_file.read_text(encoding="utf-8")) if metrics_file.is_file() else {}

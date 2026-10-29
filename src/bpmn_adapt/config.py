@@ -229,6 +229,10 @@ class Settings:
 
         if "providers" not in values or not values["providers"]:
             prov_file = Path("providers.json")
+            if not prov_file.is_file():
+                root_prov = Path(__file__).resolve().parents[2] / "providers.json"
+                if root_prov.is_file():
+                    prov_file = root_prov
             if prov_file.is_file():
                 try:
                     pdata = json.loads(prov_file.read_text(encoding="utf-8"))

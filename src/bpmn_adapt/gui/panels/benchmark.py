@@ -162,6 +162,8 @@ class BenchmarkPanel(ttk.Frame):
         self.btn_pause.pack(side="left", padx=2)
         self.btn_stop = ttk.Button(run_control_frame, text="⏹ Stop", state="disabled", command=self._stop_benchmark)
         self.btn_stop.pack(side="left", padx=2)
+        self.btn_reset = ttk.Button(run_control_frame, text="⏮ Reset", command=self._reset_benchmark)
+        self.btn_reset.pack(side="left", padx=2)
 
         self.progress_bar = ttk.Progressbar(run_control_frame, orient="horizontal", mode="determinate")
         self.progress_bar.pack(side="left", fill="x", expand=True, padx=8)
@@ -277,6 +279,57 @@ class BenchmarkPanel(ttk.Frame):
         self._append_log("Starting retry run for failed / socket dropped scenarios only...")
         self._start_benchmark(from_retry=True)
 
+    def _reset_benchmark(self) -> None:
+        """Resets the benchmark UI progress counters and optionally clears checkpoints to start fresh."""
+        if getattr(self, "is_running", False):
+            messagebox.showwarning("Benchmark Running", "Please stop the running benchmark before resetting.", parent=self)
+            return
+
+        out_path = Path(self.out_dir_var.get())
+        has_checkpoint = out_path.is_dir() and ((out_path / "checkpoint.json").is_file() or (out_path / "tests.jsonl").is_file())
+
+        clear_disk = False
+        if has_checkpoint:
+            ans = messagebox.askyesnocancel(
+                "Reset Benchmark",
+                f"Reset progress counters and clear checkpoint data in:\n{out_path}?\n\n"
+                "• Click 'Yes' to reset UI and DELETE checkpoints to run from scratch.\n"
+                "• Click 'No' to reset UI counters only without deleting files.\n"
+                "• Click 'Cancel' to abort.",
+                parent=self,
+            )
+            if ans is None:
+                return
+            clear_disk = ans
+        else:
+            if not messagebox.askyesno("Reset Benchmark", "Reset benchmark counters and telemetry?", parent=self):
+                return
+
+        if clear_disk and out_path.is_dir():
+            try:
+                for fname in ("checkpoint.json", "checkpoint.json.tmp", "metrics.json"):
+                    target_file = out_path / fname
+                    if target_file.is_file():
+                        target_file.unlink()
+                tests_file = out_path / "tests.jsonl"
+                if tests_file.is_file():
+                    tests_file.unlink()
+                self._append_log(f"Cleared checkpoint and test logs in {out_path}.")
+            except Exception as exc:
+                self._append_log(f"Warning while resetting files: {exc}")
+
+        # Reset UI telemetry
+        self.progress_bar["value"] = 0
+        self.lbl_progress.configure(text="0/0 (0%)")
+        self.lbl_stats.configure(text="Stats: Completed: 0 | Errors: 0 | Fallbacks: 0")
+        self.lbl_time.configure(text="Elapsed: 00:00:00 | ETA: --:--:--")
+        self.retry_failed_only_var.set(False)
+        self.btn_start.configure(state="normal")
+        self.btn_retry_failed.configure(state="normal")
+        self.btn_pause.configure(state="disabled")
+        self.btn_stop.configure(state="disabled")
+        self._append_log("Benchmark UI state reset. Ready for a clean start.")
+
     def _start_benchmark(self, from_retry: bool = False) -> None:
         if not from_retry:
             self.retry_failed_only_var.set(False)
@@ -331,11 +384,11 @@ class BenchmarkPanel(ttk.Frame):
             req_types = ["REMOVE"]
 
         def on_prog(completed, total, msg, **kwargs):
-            pct = int((completed / max(1, total)) * 100)
+            pct = min(100, int((completed / max(1, total)) * 100))
             elapsed = time.monotonic() - t_start
-            eta = (elapsed / completed) * (total - completed) if completed > 0 else 0
+            eta = (elapsed / completed) * max(0, total - completed) if completed > 0 else 0
             time_str = f"Elapsed: {time.strftime('%H:%M:%S', time.gmtime(elapsed))} | ETA: {time.strftime('%H:%M:%S', time.gmtime(eta))}"
-            stats_str = f"Completed: {completed}/{total} ({pct}%)"
+            stats_str = f"Completed: {min(completed, total)}/{total} ({pct}%)"
 
             res_dict = kwargs.get("result")
             ds_path = kwargs.get("dataset_path")

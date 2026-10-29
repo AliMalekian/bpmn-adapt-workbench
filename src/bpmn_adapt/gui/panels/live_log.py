@@ -351,14 +351,26 @@ class LiveLogPanel(ttk.Frame):
         bar_height = 18
         colors = ["#3b82f6", "#10b981", "#8b5cf6", "#f59e0b", "#ec4899"]
 
+        # Dynamically calculate label margin so text is never truncated awkwardly
+        import tkinter.font as tkfont
+        lbl_font = tkfont.Font(family="Segoe UI", size=8, weight="bold")
+        max_prov_w = 0
+        for prov in self.provider_counts:
+            text_w = lbl_font.measure(f"{prov}: ")
+            if text_w > max_prov_w:
+                max_prov_w = text_w
+        label_margin = max(90, min(max_prov_w + 12, int(w * 0.45)))
+        usable_w = max(40, w - label_margin - 80)
+
         for idx, (prov, count) in enumerate(self.provider_counts.items()):
             color = colors[idx % len(colors)]
             pct = (count / max(1, total_calls))
-            bar_w = (w - 140) * pct
+            bar_w = usable_w * pct
 
-            c.create_text(10, y_pos + 9, anchor="w", text=f"{prov[:12]}:", font=("Segoe UI", 8, "bold"), fill="#1e293b")
-            c.create_rectangle(85, y_pos, 85 + bar_w, y_pos + bar_height, fill=color, outline="")
-            c.create_text(95 + bar_w, y_pos + 9, anchor="w", text=f"{count} ({pct*100:.0f}%)", font=("Segoe UI", 8), fill="#475569")
+            c.create_text(10, y_pos + 9, anchor="w", text=f"{prov}:", font=lbl_font, fill="#1e293b")
+            bar_start = 10 + label_margin
+            c.create_rectangle(bar_start, y_pos, bar_start + bar_w, y_pos + bar_height, fill=color, outline="")
+            c.create_text(bar_start + bar_w + 8, y_pos + 9, anchor="w", text=f"{count} ({pct*100:.0f}%)", font=("Segoe UI", 8), fill="#475569")
             y_pos += bar_height + 8
             if y_pos > h - 20:
                 break

@@ -439,23 +439,36 @@ class ComparisonPanel(ttk.Frame):
         # Split width: Left half Accuracy & F1 bars, Right half Latency bars
         half_w = (w - 40) / 2
         colors = ["#2563eb", "#10b981", "#8b5cf6", "#f59e0b", "#ec4899"]
-        label_margin = 175  # Generous offset so provider labels never collide with bars
+
+        # Dynamically measure font width so provider names never overlap or clip into bars
+        import tkinter.font as tkfont
+        lbl_font = tkfont.Font(family="Segoe UI", size=8)
+        bold_font = tkfont.Font(family="Segoe UI", size=8, weight="bold")
+
+        max_label_w = 0
+        for p in providers:
+            p_display = p.get("name") or p.get("provider_id") or p.get("id", "Provider")
+            text_w = lbl_font.measure(f"{p_display}: ")
+            if text_w > max_label_w:
+                max_label_w = text_w
+
+        label_margin = max(180, min(max_label_w + 15, int(half_w * 0.55)))
+        usable_bw = max(40.0, half_w - label_margin - 85)
 
         # Left: Accuracy bars
         c.create_text(20, 15, anchor="w", text="Accuracy by Provider", font=("Segoe UI", 9, "bold"), fill="#1e293b")
         y = 35
         bar_h = 22
-        usable_bw = max(50.0, half_w - label_margin - 80)
         for idx, p in enumerate(providers):
-            name = p.get("name", p.get("id", f"P{idx}"))[:22]
+            name = p.get("name") or p.get("provider_id") or p.get("id", f"P{idx}")
             acc = p.get("accuracy", 0.0) / 100.0
             color = colors[idx % len(colors)]
             bw = usable_bw * max(0.0, min(1.0, acc))
 
-            c.create_text(20, y + 11, anchor="w", text=f"{name}:", font=("Segoe UI", 8), fill="#334155")
+            c.create_text(20, y + 11, anchor="w", text=f"{name}:", font=lbl_font, fill="#334155")
             bar_start = 20 + label_margin
             c.create_rectangle(bar_start, y, bar_start + bw, y + bar_h, fill=color, outline="")
-            c.create_text(bar_start + bw + 8, y + 11, anchor="w", text=f"{acc*100:.1f}%", font=("Segoe UI", 8, "bold"), fill="#0f172a")
+            c.create_text(bar_start + bw + 8, y + 11, anchor="w", text=f"{acc*100:.1f}%", font=bold_font, fill="#0f172a")
             y += bar_h + 8
 
         # Right: Latency bars
@@ -464,14 +477,14 @@ class ComparisonPanel(ttk.Frame):
         y = 35
         max_lat = max([p.get("avg_latency_s", p.get("latency", 1.0)) for p in providers] + [5.0])
         for idx, p in enumerate(providers):
-            name = p.get("name", p.get("provider_id", p.get("id", f"P{idx}")))[:22]
+            name = p.get("name") or p.get("provider_id") or p.get("id", f"P{idx}")
             lat = p.get("avg_latency_s", p.get("latency", 0.0))
             bw = usable_bw * (lat / max(1.0, max_lat))
 
-            c.create_text(rx, y + 11, anchor="w", text=f"{name}:", font=("Segoe UI", 8), fill="#334155")
+            c.create_text(rx, y + 11, anchor="w", text=f"{name}:", font=lbl_font, fill="#334155")
             bar_start = rx + label_margin
             c.create_rectangle(bar_start, y, bar_start + bw, y + bar_h, fill="#f59e0b", outline="")
-            c.create_text(bar_start + bw + 8, y + 11, anchor="w", text=f"{lat:.2f}s", font=("Segoe UI", 8, "bold"), fill="#0f172a")
+            c.create_text(bar_start + bw + 8, y + 11, anchor="w", text=f"{lat:.2f}s", font=bold_font, fill="#0f172a")
             y += bar_h + 8
 
     def _export_report(self) -> None:
