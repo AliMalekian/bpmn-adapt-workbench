@@ -439,7 +439,6 @@ class BenchmarkRunner:
                         completed_global += 1
                         if self.on_progress:
                             self.on_progress(completed_global, total_campaign_cases, f"{pid} | {ds_folder.name} | {op} | {target}")
-                            continue
 
                         # Rate limit delay between requests
                         req_delay = float(p_cfg.get("request_delay_seconds", 0.0))

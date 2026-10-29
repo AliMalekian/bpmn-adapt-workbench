@@ -275,9 +275,11 @@ class BenchmarkPanel(ttk.Frame):
     def _retry_failed_benchmark(self) -> None:
         self.retry_failed_only_var.set(True)
         self._append_log("Starting retry run for failed / socket dropped scenarios only...")
-        self._start_benchmark()
+        self._start_benchmark(from_retry=True)
 
-    def _start_benchmark(self) -> None:
+    def _start_benchmark(self, from_retry: bool = False) -> None:
+        if not from_retry:
+            self.retry_failed_only_var.set(False)
         self.is_running = True
         self.is_paused = False
         self._stop_requested = False
