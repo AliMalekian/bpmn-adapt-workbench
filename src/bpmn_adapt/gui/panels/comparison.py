@@ -153,16 +153,49 @@ class ComparisonPanel(ttk.Frame):
             Path(__file__).resolve().parents[4],
         ]
         candidates = []
+
+        # 1. Dynamically prioritize currently active Benchmark panel output directory
+        try:
+            top = self.winfo_toplevel()
+            if hasattr(top, "panels") and "Benchmark" in top.panels:
+                b_panel = top.panels["Benchmark"]
+                if hasattr(b_panel, "out_dir_var"):
+                    b_dir = Path(b_panel.out_dir_var.get())
+                    if b_dir.is_dir():
+                        candidates.append(b_dir)
+        except Exception:
+            pass
+
+        # 2. Discover all experiment folders across workspace
         for b in base_dirs:
-            candidates.extend([
-                b / "experiments" / "live_evaluation_v4",
-                b / "experiments" / "live_evaluation_v3",
-                b / self.report_dir,
-            ])
+            candidates.append(b / self.report_dir)
             for match in glob.glob(str(b / "experiments" / "*")):
                 p_match = Path(match)
                 if p_match.is_dir() and p_match not in candidates:
                     candidates.append(p_match)
+
+        # 3. Sort candidates strictly by most recently updated tests.jsonl or folder mtime
+        def _freshness(f: Path) -> float:
+            if not f.exists():
+                return 0.0
+            t_f = f / "tests.jsonl"
+            if t_f.is_file():
+                try:
+                    return t_f.stat().st_mtime
+                except Exception:
+                    pass
+            m_f = f / "metrics.json"
+            if m_f.is_file():
+                try:
+                    return m_f.stat().st_mtime
+                except Exception:
+                    pass
+            try:
+                return f.stat().st_mtime
+            except Exception:
+                return 0.0
+
+        candidates.sort(key=_freshness, reverse=True)
 
         loaded = False
         for folder in candidates:

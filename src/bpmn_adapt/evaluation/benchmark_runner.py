@@ -370,6 +370,7 @@ class BenchmarkRunner:
             token_pres_scores: list[float] = []
 
             # Checkpoint & Resume Initialization
+            failed_ids_to_retry: set[str] = set()
             should_resume = (self.resume or self.retry_failed_only)
             if should_resume and tests_file.is_file():
                 try:
@@ -390,6 +391,8 @@ class BenchmarkRunner:
                                     ged_scores.append(rec["graph_edit_distance"])
                                 if rec.get("token_preservation_rate") is not None:
                                     token_pres_scores.append(rec["token_preservation_rate"])
+                            else:
+                                failed_ids_to_retry.add(tid)
                         else:
                             completed_test_ids.add(tid)
                             tests_log.append(rec)
@@ -400,7 +403,9 @@ class BenchmarkRunner:
                                 ged_scores.append(rec["graph_edit_distance"])
                             if rec.get("token_preservation_rate") is not None:
                                 token_pres_scores.append(rec["token_preservation_rate"])
-                    logger.info("Resume/Retry: initialized with %d completed test IDs (retry_failed_only=%s).", len(completed_test_ids), self.retry_failed_only)
+                    if self.retry_failed_only and failed_ids_to_retry:
+                        total_campaign_cases = len(failed_ids_to_retry)
+                    logger.info("Resume/Retry: initialized with %d completed test IDs, %d to retry.", len(completed_test_ids), len(failed_ids_to_retry))
                 except Exception as t_err:
                     logger.warning("Failed to restore existing tests.jsonl: %s", t_err)
 
@@ -426,13 +431,14 @@ class BenchmarkRunner:
                         req_text = case["request_text"]
                         gt = case.get("ground_truth_decision", "APPROVE")
 
-                        completed_global += 1
-                        if self.on_progress:
-                            self.on_progress(completed_global, total_campaign_cases, f"{pid} | {ds_folder.name} | {op} | {target}")
-
                         # Skip already completed tests if resuming
                         if test_id in completed_test_ids:
                             logger.info("Skipping already completed test (resume): %s", test_id)
+                            continue
+
+                        completed_global += 1
+                        if self.on_progress:
+                            self.on_progress(completed_global, total_campaign_cases, f"{pid} | {ds_folder.name} | {op} | {target}")
                             continue
 
                         # Rate limit delay between requests
