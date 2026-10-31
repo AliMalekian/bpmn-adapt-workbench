@@ -34,12 +34,18 @@ class AnalystAgent:
         states = self.database.get_states(request.process_id)
 
         if getattr(self, "enable_rag", True) and self.rag is not None:
-            evidence = self.rag.retrieve(
+            raw_evidence = self.rag.retrieve(
                 request.raw_text,
                 process_id=request.process_id,
                 operation=request.operation.value,
                 source_version_id=request.source_version_id,
                 run_id=run_id,
+            )
+            # Relevance Confidence Filtering: Prevent Negative Transfer / Context Poisoning
+            # Only inject historical cases if similarity meets confidence threshold (>= 0.60)
+            evidence = tuple(
+                e for e in raw_evidence
+                if getattr(e, "final_score", 1.0) >= 0.60 or getattr(e, "semantic_score", 1.0) >= 0.60
             )
         else:
             evidence = ()

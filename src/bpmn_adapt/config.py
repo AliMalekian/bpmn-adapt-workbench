@@ -51,9 +51,8 @@ class Settings:
     providers: tuple[dict[str, Any], ...] = ()
 
     # Embeddings and retrieval
-    # The no-profile default is deliberately dependency-free. Production and
-    # integration profiles explicitly select the neural encoder.
-    embedding_provider: str = "hash_test"
+    # Production neural dense embedding encoder using SentenceTransformers.
+    embedding_provider: str = "sentence_transformers"
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     embedding_revision: str = "main"
     embedding_device: str = "cpu"

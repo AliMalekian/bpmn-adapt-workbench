@@ -58,6 +58,11 @@ class HybridRAGService:
             raise ValueError(f"Unsupported RAG mode: {mode}")
         filters = {"process_id": process_id, "operation": operation, "source_version_id": source_version_id, "active": True}
         rows = [] if mode == "none" else self.database.list_rag_cases(process_id, active_only=True, operation=operation, source_version_id=source_version_id)
+        if not rows and mode != "none":
+            if operation == "ADD":
+                rows = self.database.list_rag_cases(process_id, active_only=True, operation="RE_ADD", source_version_id=source_version_id)
+            elif operation == "MODIFY":
+                rows = self.database.list_rag_cases(process_id, active_only=True, operation=None, source_version_id=source_version_id)
         if self.retriever is not None:
             return self._retrieve_persistent(query, rows, process_id, operation,
                                              source_version_id, run_id, mode, limit)
@@ -114,19 +119,28 @@ class HybridRAGService:
     def _retrieve_persistent(self, query, rows, process_id, operation,
                              source_version_id, run_id, mode, limit):
         from .contracts import RetrievalMode, VectorScope
+        target_op = operation
+        if operation == "ADD" and not any(r.get("operation") == "ADD" for r in rows):
+            target_op = "RE_ADD"
+        elif operation == "MODIFY" and not any(r.get("operation") == "MODIFY" for r in rows):
+            target_op = None
         result = self.retriever.retrieve(
-            query, VectorScope(process_id, operation, source_version_id),
+            query, VectorScope(process_id, target_op, source_version_id),
             mode=RetrievalMode(mode), limit=limit)
         by_id = {row["evidence_id"]: row for row in rows}
-        selected = tuple(RetrievedEvidence(
-            item.evidence_id, process_id, OperationType(operation), item.text,
-            by_id[item.evidence_id]["decision"],
-            next(entry.scores["semantic"] for entry in result.log.candidates
-                 if entry.evidence_id == item.evidence_id),
-            next(entry.scores["syntactic"] for entry in result.log.candidates
-                 if entry.evidence_id == item.evidence_id),
-            item.score, source_version_id, True, item.metadata)
-            for item in result.hits)
+        selected_list = []
+        for item in result.hits:
+            row_match = by_id.get(item.evidence_id)
+            if not row_match:
+                continue
+            sem_score = next((entry.scores["semantic"] for entry in result.log.candidates if entry.evidence_id == item.evidence_id), 0.0)
+            syn_score = next((entry.scores["syntactic"] for entry in result.log.candidates if entry.evidence_id == item.evidence_id), 0.0)
+            selected_list.append(RetrievedEvidence(
+                item.evidence_id, process_id, OperationType(operation), item.text,
+                row_match.get("decision", "UNKNOWN"),
+                sem_score, syn_score, item.score, source_version_id, True, item.metadata
+            ))
+        selected = tuple(selected_list)
         score_log = {item.evidence_id: item.scores for item in result.log.candidates}
         self.database.save_retrieval_log(
             result.log.retrieval_id, run_id, result.log.query_hash,

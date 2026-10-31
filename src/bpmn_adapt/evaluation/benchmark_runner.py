@@ -345,7 +345,8 @@ class BenchmarkRunner:
                 if hasattr(p_client, "log_path"):
                     p_client.log_path = p_log_file
 
-            settings = Settings.load(overrides={"llm_mode": "live"})
+            emb_prov = "sentence_transformers" if self.enable_rag else "hash_test"
+            settings = Settings.load(overrides={"llm_mode": "live", "embedding_provider": emb_prov})
             app = RuntimeAdaptationApplication.from_settings(settings)
             app.llm = p_client
             app.orchestrator.llm = p_client
@@ -464,12 +465,37 @@ class BenchmarkRunner:
                         tok_in_before = getattr(p_client, "total_prompt_tokens", 0)
                         tok_out_before = getattr(p_client, "total_completion_tokens", 0)
                         try:
-                            res = app.adapt_folder(
-                                ds_folder,
-                                req_text,
-                                target=target,
-                                operation=op,
-                            )
+                            res = None
+                            max_sc_retries = 15
+                            for sc_att in range(max_sc_retries):
+                                if self.stop_event.is_set():
+                                    break
+                                try:
+                                    res = app.adapt_folder(
+                                        ds_folder,
+                                        req_text,
+                                        target=target,
+                                        operation=op,
+                                    )
+                                    break
+                                except Exception as sc_err:
+                                    if self.stop_event.is_set() or sc_att >= max_sc_retries - 1:
+                                        raise sc_err
+                                    wait_s = min(25.0, 3.0 * (1.35 ** sc_att))
+                                    logger.warning(
+                                        "Scenario %s transient failure (%s). Auto-retrying (%d/%d) in %.1fs...",
+                                        test_id, sc_err, sc_att + 1, max_sc_retries, wait_s
+                                    )
+                                    if self.on_progress:
+                                        self.on_progress(
+                                            completed_global,
+                                            total_campaign_cases,
+                                            f"⚡ Network recover ({sc_att+1}/{max_sc_retries}) for {test_id}: {sc_err}"
+                                        )
+                                    time.sleep(wait_s)
+
+                            if res is None:
+                                raise RuntimeError(f"Scenario {test_id} aborted without response.")
                             lat = round(time.monotonic() - t0, 3)
                             dec = res.decision.status.value
                             tok_in_after = getattr(p_client, "total_prompt_tokens", 0)
