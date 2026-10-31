@@ -57,12 +57,22 @@ class ComparisonPanel(ttk.Frame):
 
         # Header + Action buttons
         hdr = ttk.Frame(self)
-        hdr.pack(fill="x", pady=(0, 6))
+        hdr.pack(fill="x", pady=(0, 4))
 
         ttk.Label(hdr, text="Benchmark Results & Provider Analytics", font=("Segoe UI", 12, "bold")).pack(side="left")
         ttk.Button(hdr, text="Export Comparison Report", command=self._export_report).pack(side="right", padx=3)
         ttk.Button(hdr, text="Open Output Folder", command=self._open_folder).pack(side="right", padx=3)
-        ttk.Button(hdr, text="🔄 Load / Refresh", command=self._auto_load_recent).pack(side="right", padx=3)
+        ttk.Button(hdr, text="🔄 Refresh All", command=self._auto_load_recent).pack(side="right", padx=3)
+
+        # Run Selector Row
+        sel_row = ttk.Frame(self)
+        sel_row.pack(fill="x", pady=(0, 6))
+        ttk.Label(sel_row, text="Select Experiment Run:", font=("Segoe UI", 9, "bold")).pack(side="left", padx=(0, 6))
+        self.run_selector_var = tk.StringVar()
+        self.cb_runs = ttk.Combobox(sel_row, textvariable=self.run_selector_var, state="readonly", width=50)
+        self.cb_runs.pack(side="left", padx=(0, 8))
+        self.cb_runs.bind("<<ComboboxSelected>>", self._on_run_selected)
+        self._discovered_runs: dict[str, Path] = {}
 
         # Winner Banner
         self.winner_banner = ttk.Label(self, text="Status: Ready to load benchmark results", font=("Segoe UI", 10, "bold"), foreground="#2563eb")
@@ -145,156 +155,179 @@ class ComparisonPanel(ttk.Frame):
             "estimated_cost_flagship_usd": round((in_tok * 3.00 + out_tok * 15.00) / 1_000_000, 4),
         }
 
+    def _on_run_selected(self, event=None) -> None:
+        sel_label = self.run_selector_var.get()
+        if not sel_label:
+            return
+        if sel_label == "[Cross-Run Comparison] With RAG vs. Without RAG":
+            self._load_cross_run_comparison()
+            return
+
+        folder = self._discovered_runs.get(sel_label)
+        if folder and folder.is_dir():
+            self._load_single_folder(folder)
+
+    def _load_single_folder(self, folder: Path) -> None:
+        """Loads and displays benchmark data strictly from a single experiment folder."""
+        metrics_f = folder / "metrics.json"
+        tests_f = folder / "tests.jsonl"
+        folder_tokens = self._extract_tokens_from_folder(folder)
+
+        tests_parsed = []
+        if tests_f.is_file():
+            try:
+                for line in tests_f.read_text(encoding="utf-8").splitlines():
+                    if line.strip():
+                        tests_parsed.append(json.loads(line))
+            except Exception:
+                pass
+
+        if tests_parsed:
+            p_name = tests_parsed[0].get("provider", "LLM Provider")
+            model = tests_parsed[0].get("model", "")
+            correct = sum(1 for t in tests_parsed if t.get("matched_ground_truth"))
+            total = len(tests_parsed)
+            acc = round((correct / max(1, total)) * 100, 1)
+            lats = [t.get("latency_s", 0.0) for t in tests_parsed if t.get("latency_s") is not None]
+            avg_lat = round(sum(lats) / max(1, len(lats)), 2)
+            in_tok = folder_tokens.get("total_prompt_tokens", 0) or sum(t.get("prompt_tokens", 0) for t in tests_parsed)
+            out_tok = folder_tokens.get("total_completion_tokens", 0) or sum(t.get("completion_tokens", 0) for t in tests_parsed)
+            tot_tok = folder_tokens.get("total_tokens", 0) or (in_tok + out_tok)
+            synth = {
+                p_name: {
+                    "provider_id": p_name,
+                    "name": p_name,
+                    "model": model,
+                    "accuracy": acc,
+                    "precision": acc,
+                    "recall": acc,
+                    "f1": acc,
+                    "avg_latency_s": avg_lat,
+                    "error_rate": round(sum(1 for t in tests_parsed if t.get("decision") == "ERROR") / max(1, total) * 100, 1),
+                    "total_tests": total,
+                    "prompt_tokens": in_tok,
+                    "completion_tokens": out_tok,
+                    "total_tokens": tot_tok,
+                    "token_metrics": folder_tokens,
+                    "xsd_pass_rate": round(sum(1 for t in tests_parsed if t.get("xsd_valid")) / max(1, total), 2),
+                    "simulation_success_rate": round(sum(1 for t in tests_parsed if t.get("simulation_success")) / max(1, total), 2),
+                    "avg_token_preservation": round(sum(t.get("token_preservation_rate", 1.0) for t in tests_parsed) / max(1, total), 2),
+                }
+            }
+            self.load_summary(synth)
+            return
+
+        if metrics_f.is_file():
+            try:
+                data = json.loads(metrics_f.read_text(encoding="utf-8"))
+                if isinstance(data, dict):
+                    if not data.get("prompt_tokens") and folder_tokens.get("total_prompt_tokens"):
+                        data["prompt_tokens"] = folder_tokens["total_prompt_tokens"]
+                        data["completion_tokens"] = folder_tokens["total_completion_tokens"]
+                        data["total_tokens"] = folder_tokens["total_tokens"]
+                        data["token_metrics"] = folder_tokens
+                    self.load_summary(data)
+                    return
+            except Exception:
+                pass
+
+    def _load_cross_run_comparison(self) -> None:
+        """Synthesizes a cross-run comparison between With-RAG and Without-RAG runs."""
+        base_dir = Path.cwd()
+        v4_dir = base_dir / "experiments" / "live_evaluation_v4"
+        norag_dir = base_dir / "experiments" / "live_evaluation_no_rag"
+
+        results = {}
+        for label, fdir in [("Gemma-4 (With RAG)", v4_dir), ("Gemma-4 (No RAG)", norag_dir)]:
+            if not fdir.is_dir():
+                continue
+            tf = fdir / "tests.jsonl"
+            tokens = self._extract_tokens_from_folder(fdir)
+            if tf.is_file():
+                tests = [json.loads(l) for l in tf.read_text(encoding="utf-8").splitlines() if l.strip()]
+                if tests:
+                    correct = sum(1 for t in tests if t.get("matched_ground_truth"))
+                    tot = len(tests)
+                    acc = round((correct / max(1, tot)) * 100, 1)
+                    lats = [t.get("latency_s", 0.0) for t in tests if t.get("latency_s") is not None]
+                    results[label] = {
+                        "provider_id": label,
+                        "name": label,
+                        "model": "gemma4",
+                        "accuracy": acc,
+                        "f1": acc,
+                        "avg_latency_s": round(sum(lats) / max(1, len(lats)), 2),
+                        "error_rate": round(sum(1 for t in tests if t.get("decision") == "ERROR") / max(1, tot) * 100, 1),
+                        "total_tests": tot,
+                        "prompt_tokens": tokens.get("total_prompt_tokens", 0),
+                        "completion_tokens": tokens.get("total_completion_tokens", 0),
+                        "total_tokens": tokens.get("total_tokens", 0),
+                        "token_metrics": tokens,
+                    }
+        if results:
+            self.load_summary(results)
+
     def _auto_load_recent(self) -> None:
-        """Auto-detects and loads metrics from recent benchmark runs (supports both single & multi provider)."""
+        """Discovers all valid experiment runs and populates the Run Selector dropdown."""
         import glob
         base_dirs = [
             Path.cwd(),
             Path(__file__).resolve().parents[4],
         ]
-        candidates = []
-
-        # 1. Dynamically prioritize currently active Benchmark panel output directory
-        try:
-            top = self.winfo_toplevel()
-            if hasattr(top, "panels") and "Benchmark" in top.panels:
-                b_panel = top.panels["Benchmark"]
-                if hasattr(b_panel, "out_dir_var"):
-                    b_dir = Path(b_panel.out_dir_var.get())
-                    if b_dir.is_dir():
-                        candidates.append(b_dir)
-        except Exception:
-            pass
-
-        # 2. Discover all experiment folders across workspace
+        candidate_folders: list[Path] = []
         for b in base_dirs:
-            candidates.append(b / self.report_dir)
             for match in glob.glob(str(b / "experiments" / "*")):
                 p_match = Path(match)
-                if p_match.is_dir() and p_match not in candidates:
-                    candidates.append(p_match)
+                if p_match.is_dir() and p_match not in candidate_folders:
+                    candidate_folders.append(p_match)
 
-        # 3. Sort candidates strictly by most recently updated tests.jsonl or folder mtime
-        def _freshness(f: Path) -> float:
-            if not f.exists():
-                return 0.0
-            t_f = f / "tests.jsonl"
+        # Filter only folders that actually contain benchmark test data
+        valid_runs: list[tuple[str, Path, float]] = []
+        for folder in candidate_folders:
+            t_f = folder / "tests.jsonl"
+            m_f = folder / "metrics.json"
+            if not (t_f.is_file() or m_f.is_file()):
+                continue
+            test_cnt = 0
             if t_f.is_file():
                 try:
-                    return t_f.stat().st_mtime
+                    test_cnt = sum(1 for l in t_f.read_text(encoding="utf-8").splitlines() if l.strip())
                 except Exception:
                     pass
-            m_f = f / "metrics.json"
-            if m_f.is_file():
+            elif m_f.is_file():
                 try:
-                    return m_f.stat().st_mtime
+                    m_data = json.loads(m_f.read_text(encoding="utf-8"))
+                    test_cnt = m_data.get("total_tests", 0)
                 except Exception:
                     pass
-            try:
-                return f.stat().st_mtime
-            except Exception:
-                return 0.0
 
-        candidates.sort(key=_freshness, reverse=True)
-
-        loaded = False
-        for folder in candidates:
-            if not folder.exists():
+            if test_cnt == 0:
                 continue
-            metrics_f = folder / "metrics.json"
-            summary_f = folder / "comparison_summary.json"
-            tests_f = folder / "tests.jsonl"
-            folder_tokens = self._extract_tokens_from_folder(folder)
 
-            # Prioritize tests.jsonl if it contains fresher or more complete runs than metrics.json
-            use_tests_jsonl = False
-            tests_parsed = []
-            if tests_f.is_file():
-                try:
-                    for line in tests_f.read_text(encoding="utf-8").splitlines():
-                        if line.strip():
-                            tests_parsed.append(json.loads(line))
-                    if tests_parsed:
-                        if not metrics_f.is_file():
-                            use_tests_jsonl = True
-                        else:
-                            # Compare mtime or test counts
-                            m_data = {}
-                            try:
-                                m_data = json.loads(metrics_f.read_text(encoding="utf-8"))
-                            except Exception:
-                                pass
-                            m_total = m_data.get("total_tests", 0) if isinstance(m_data, dict) else 0
-                            if len(tests_parsed) >= m_total or tests_f.stat().st_mtime > metrics_f.stat().st_mtime:
-                                use_tests_jsonl = True
-                except Exception:
-                    pass
+            mtime = t_f.stat().st_mtime if t_f.is_file() else m_f.stat().st_mtime
+            tag = "With RAG" if "v4" in folder.name else ("No RAG" if "no_rag" in folder.name else "Run")
+            label = f"{folder.name} ({test_cnt} tests - {tag})"
+            valid_runs.append((label, folder, mtime))
 
-            if use_tests_jsonl and tests_parsed:
-                try:
-                    p_name = tests_parsed[0].get("provider", "LLM Provider")
-                    model = tests_parsed[0].get("model", "")
-                    correct = sum(1 for t in tests_parsed if t.get("matched_ground_truth"))
-                    total = len(tests_parsed)
-                    acc = round((correct / max(1, total)) * 100, 1)
-                    lats = [t.get("latency_s", 0.0) for t in tests_parsed if t.get("latency_s") is not None]
-                    avg_lat = round(sum(lats) / max(1, len(lats)), 2)
-                    in_tok = folder_tokens.get("total_prompt_tokens", 0) or sum(t.get("prompt_tokens", 0) for t in tests_parsed)
-                    out_tok = folder_tokens.get("total_completion_tokens", 0) or sum(t.get("completion_tokens", 0) for t in tests_parsed)
-                    tot_tok = folder_tokens.get("total_tokens", 0) or (in_tok + out_tok)
-                    synth = {
-                        p_name: {
-                            "provider_id": p_name,
-                            "name": p_name,
-                            "model": model,
-                            "accuracy": acc,
-                            "precision": acc,
-                            "recall": acc,
-                            "f1": acc,
-                            "avg_latency_s": avg_lat,
-                            "error_rate": round(sum(1 for t in tests_parsed if t.get("decision") == "ERROR") / max(1, total) * 100, 1),
-                            "total_tests": total,
-                            "prompt_tokens": in_tok,
-                            "completion_tokens": out_tok,
-                            "total_tokens": tot_tok,
-                            "token_metrics": folder_tokens,
-                            "xsd_pass_rate": round(sum(1 for t in tests_parsed if t.get("xsd_valid")) / max(1, total), 2),
-                            "simulation_success_rate": round(sum(1 for t in tests_parsed if t.get("simulation_success")) / max(1, total), 2),
-                            "avg_token_preservation": round(sum(t.get("token_preservation_rate", 1.0) for t in tests_parsed) / max(1, total), 2),
-                        }
-                    }
-                    self.load_summary(synth)
-                    loaded = True
-                    break
-                except Exception:
-                    pass
+        valid_runs.sort(key=lambda x: x[2], reverse=True)
+        self._discovered_runs.clear()
+        cb_values = []
+        if len(valid_runs) >= 2:
+            cross_label = "[Cross-Run Comparison] With RAG vs. Without RAG"
+            cb_values.append(cross_label)
 
-            if summary_f.is_file():
-                try:
-                    data = json.loads(summary_f.read_text(encoding="utf-8"))
-                    self.load_summary(data)
-                    loaded = True
-                    break
-                except Exception:
-                    pass
+        for label, folder, _ in valid_runs:
+            self._discovered_runs[label] = folder
+            cb_values.append(label)
 
-            if metrics_f.is_file():
-                try:
-                    data = json.loads(metrics_f.read_text(encoding="utf-8"))
-                    if isinstance(data, dict):
-                        if not data.get("prompt_tokens") and folder_tokens.get("total_prompt_tokens"):
-                            data["prompt_tokens"] = folder_tokens["total_prompt_tokens"]
-                            data["completion_tokens"] = folder_tokens["total_completion_tokens"]
-                            data["total_tokens"] = folder_tokens["total_tokens"]
-                            data["token_metrics"] = folder_tokens
-                    self.load_summary(data)
-                    loaded = True
-                    break
-                except Exception:
-                    pass
-
-        if not loaded:
-            self.winner_banner.configure(text="No recent benchmark metrics found to load.", foreground="#dc2626")
+        self.cb_runs["values"] = cb_values
+        if cb_values:
+            # Default to active benchmark or most recent run
+            active_target = cb_values[0]
+            self.run_selector_var.set(active_target)
+            self._on_run_selected()
+        else:
+            self.winner_banner.configure(text="No completed benchmark experiment folders found.", foreground="#dc2626")
 
     def _get_provider_items(self) -> list[dict[str, Any]]:
         results = self.summary_data.get("results", {})
