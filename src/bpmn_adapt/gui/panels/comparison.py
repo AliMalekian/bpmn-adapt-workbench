@@ -90,25 +90,27 @@ class ComparisonPanel(ttk.Frame):
         tbl_frame = ttk.LabelFrame(top_split, text="Provider Summary Table", padding=6)
         tbl_frame.pack(side="left", fill="both", expand=True, padx=(0, 4))
 
-        cols = ("provider", "acc", "f1", "lat", "err", "in_tok", "out_tok", "tot_tok")
+        cols = ("provider", "acc", "prec", "rec", "f1", "ged", "lat", "err", "tot_tok")
         self.tree = ttk.Treeview(tbl_frame, columns=cols, show="headings", height=5)
         self.tree.heading("provider", text="Provider")
         self.tree.heading("acc", text="Acc (%)")
+        self.tree.heading("prec", text="Prec (%)")
+        self.tree.heading("rec", text="Recall (%)")
         self.tree.heading("f1", text="F1 (%)")
+        self.tree.heading("ged", text="Avg GED")
         self.tree.heading("lat", text="Lat (s)")
         self.tree.heading("err", text="Err (%)")
-        self.tree.heading("in_tok", text="In Tokens")
-        self.tree.heading("out_tok", text="Out Tokens")
-        self.tree.heading("tot_tok", text="Total Tokens")
+        self.tree.heading("tot_tok", text="Tokens")
 
-        self.tree.column("provider", width=130)
-        self.tree.column("acc", width=60, anchor="center")
-        self.tree.column("f1", width=60, anchor="center")
-        self.tree.column("lat", width=60, anchor="center")
-        self.tree.column("err", width=60, anchor="center")
-        self.tree.column("in_tok", width=75, anchor="center")
-        self.tree.column("out_tok", width=75, anchor="center")
-        self.tree.column("tot_tok", width=80, anchor="center")
+        self.tree.column("provider", width=120)
+        self.tree.column("acc", width=55, anchor="center")
+        self.tree.column("prec", width=55, anchor="center")
+        self.tree.column("rec", width=55, anchor="center")
+        self.tree.column("f1", width=55, anchor="center")
+        self.tree.column("ged", width=55, anchor="center")
+        self.tree.column("lat", width=55, anchor="center")
+        self.tree.column("err", width=50, anchor="center")
+        self.tree.column("tot_tok", width=75, anchor="center")
         self.tree.pack(fill="both", expand=True)
 
         # Statistical Tests Box
@@ -188,6 +190,18 @@ class ComparisonPanel(ttk.Frame):
             correct = sum(1 for t in tests_parsed if t.get("matched_ground_truth"))
             total = len(tests_parsed)
             acc = round((correct / max(1, total)) * 100, 1)
+
+            tp = sum(1 for t in tests_parsed if t.get("ground_truth_decision") == "APPROVE" and t.get("decision") in ("APPROVE", "ALTERNATIVE_PROPOSED"))
+            fp = sum(1 for t in tests_parsed if t.get("ground_truth_decision") == "REJECT" and t.get("decision") != "REJECT")
+            fn = sum(1 for t in tests_parsed if t.get("ground_truth_decision") == "APPROVE" and t.get("decision") not in ("APPROVE", "ALTERNATIVE_PROPOSED"))
+            tn = sum(1 for t in tests_parsed if t.get("ground_truth_decision") == "REJECT" and t.get("decision") == "REJECT")
+            prec = round((tp / max(1, tp + fp)) * 100, 1)
+            rec = round((tp / max(1, tp + fn)) * 100, 1)
+            f1_score = round(2 * (prec * rec) / max(1e-9, prec + rec), 1)
+
+            ged_scores = [t["graph_edit_distance"] for t in tests_parsed if t.get("graph_edit_distance") is not None]
+            avg_ged = round(sum(ged_scores) / max(1, len(ged_scores)), 2) if ged_scores else 0.0
+
             lats = [t.get("latency_s", 0.0) for t in tests_parsed if t.get("latency_s") is not None]
             avg_lat = round(sum(lats) / max(1, len(lats)), 2)
             in_tok = folder_tokens.get("total_prompt_tokens", 0) or sum(t.get("prompt_tokens", 0) for t in tests_parsed)
@@ -199,9 +213,10 @@ class ComparisonPanel(ttk.Frame):
                     "name": p_name,
                     "model": model,
                     "accuracy": acc,
-                    "precision": acc,
-                    "recall": acc,
-                    "f1": acc,
+                    "precision": prec,
+                    "recall": rec,
+                    "f1": f1_score,
+                    "avg_ged": avg_ged,
                     "avg_latency_s": avg_lat,
                     "error_rate": round(sum(1 for t in tests_parsed if t.get("decision") == "ERROR") / max(1, total) * 100, 1),
                     "total_tests": total,
@@ -232,13 +247,20 @@ class ComparisonPanel(ttk.Frame):
                 pass
 
     def _load_cross_run_comparison(self) -> None:
-        """Synthesizes a cross-run comparison between With-RAG and Without-RAG runs."""
+        """Synthesizes a cross-run comparison across live RAG and ablation runs."""
         base_dir = Path.cwd()
+        v6_dir = base_dir / "experiments" / "live_evaluation_rag_v6"
         v4_dir = base_dir / "experiments" / "live_evaluation_v4"
         norag_dir = base_dir / "experiments" / "live_evaluation_no_rag"
 
+        candidates = [
+            ("Dense RAG v6 (SentenceTransformer)", v6_dir),
+            ("Base RAG v4 (BM25)", v4_dir),
+            ("Ablation (Without RAG)", norag_dir),
+        ]
+
         results = {}
-        for label, fdir in [("Gemma-4 (With RAG)", v4_dir), ("Gemma-4 (No RAG)", norag_dir)]:
+        for label, fdir in candidates:
             if not fdir.is_dir():
                 continue
             tf = fdir / "tests.jsonl"
@@ -249,13 +271,27 @@ class ComparisonPanel(ttk.Frame):
                     correct = sum(1 for t in tests if t.get("matched_ground_truth"))
                     tot = len(tests)
                     acc = round((correct / max(1, tot)) * 100, 1)
+
+                    tp = sum(1 for t in tests if t.get("ground_truth_decision") == "APPROVE" and t.get("decision") in ("APPROVE", "ALTERNATIVE_PROPOSED"))
+                    fp = sum(1 for t in tests if t.get("ground_truth_decision") == "REJECT" and t.get("decision") != "REJECT")
+                    fn = sum(1 for t in tests if t.get("ground_truth_decision") == "APPROVE" and t.get("decision") not in ("APPROVE", "ALTERNATIVE_PROPOSED"))
+                    prec = round((tp / max(1, tp + fp)) * 100, 1)
+                    rec = round((tp / max(1, tp + fn)) * 100, 1)
+                    f1_score = round(2 * (prec * rec) / max(1e-9, prec + rec), 1)
+
+                    ged_scores = [t["graph_edit_distance"] for t in tests if t.get("graph_edit_distance") is not None]
+                    avg_ged = round(sum(ged_scores) / max(1, len(ged_scores)), 2) if ged_scores else 0.0
+
                     lats = [t.get("latency_s", 0.0) for t in tests if t.get("latency_s") is not None]
                     results[label] = {
                         "provider_id": label,
                         "name": label,
                         "model": "gemma4",
                         "accuracy": acc,
-                        "f1": acc,
+                        "precision": prec,
+                        "recall": rec,
+                        "f1": f1_score,
+                        "avg_ged": avg_ged,
                         "avg_latency_s": round(sum(lats) / max(1, len(lats)), 2),
                         "error_rate": round(sum(1 for t in tests if t.get("decision") == "ERROR") / max(1, tot) * 100, 1),
                         "total_tests": tot,
@@ -363,35 +399,37 @@ class ComparisonPanel(ttk.Frame):
 
         providers = self._get_provider_items()
         for p in providers:
-            in_tok = p.get("prompt_tokens") or p.get("token_metrics", {}).get("total_prompt_tokens", 0)
-            out_tok = p.get("completion_tokens") or p.get("token_metrics", {}).get("total_completion_tokens", 0)
             tot_tok = p.get("total_tokens") or p.get("token_metrics", {}).get("total_tokens", 0)
-
-            in_str = f"{in_tok:,}" if in_tok else "-"
-            out_str = f"{out_tok:,}" if out_tok else "-"
             tot_str = f"{tot_tok:,}" if tot_tok else "-"
 
             self.tree.insert("", "end", values=(
                 p.get("name", p.get("provider_id", "Unknown")),
                 f"{p.get('accuracy', 0.0):.1f}%",
-                f"{p.get('f1', p.get('accuracy', 0.0)):.1f}%",
+                f"{p.get('precision', 0.0):.1f}%",
+                f"{p.get('recall', 0.0):.1f}%",
+                f"{p.get('f1', 0.0):.1f}%",
+                f"{p.get('avg_ged', 0.0):.2f}",
                 f"{p.get('avg_latency_s', p.get('latency', 0.0)):.2f}s",
                 f"{p.get('error_rate', 0.0):.1f}%",
-                in_str,
-                out_str,
                 tot_str,
             ))
 
         winner = self.summary_data.get("winner")
         if winner:
             self.winner_banner.configure(
-                text=f"🏆 Winner: {winner.get('name', 'N/A')} (Accuracy: {winner.get('accuracy', 0.0):.1f}%)",
+                text=f"Winner: {winner.get('name', 'N/A')} (Accuracy: {winner.get('accuracy', 0.0):.1f}%)",
                 foreground="#16a34a",
             )
         elif len(providers) == 1:
             p = providers[0]
             self.winner_banner.configure(
-                text=f"📊 Evaluated Provider: {p.get('name', p.get('provider_id', 'N/A'))} | Accuracy: {p.get('accuracy', 0.0):.1f}% | Avg Latency: {p.get('avg_latency_s', p.get('latency', 0.0)):.2f}s | Total Tests: {p.get('total_tests', 0)}",
+                text=f"Evaluated Run: {p.get('name', p.get('provider_id', 'N/A'))} | Accuracy: {p.get('accuracy', 0.0):.1f}% | Avg Latency: {p.get('avg_latency_s', p.get('latency', 0.0)):.2f}s | Total Tests: {p.get('total_tests', 0)}",
+                foreground="#2563eb",
+            )
+        elif len(providers) > 1:
+            best = max(providers, key=lambda x: x.get("accuracy", 0.0))
+            self.winner_banner.configure(
+                text=f"Benchmark Comparison: {len(providers)} configurations evaluated | Top Accuracy: {best.get('name')} ({best.get('accuracy', 0.0):.1f}%)",
                 foreground="#2563eb",
             )
 
@@ -417,6 +455,10 @@ class ComparisonPanel(ttk.Frame):
                 f"• Model: {p.get('model', 'N/A')}\n",
                 f"• Completed Scenarios: {p.get('total_tests', 0)}\n",
                 f"• Accuracy: {p.get('accuracy', 0.0):.1f}%\n",
+                f"• Precision: {p.get('precision', 0.0):.1f}%\n",
+                f"• Recall: {p.get('recall', 0.0):.1f}%\n",
+                f"• F1-Score: {p.get('f1', 0.0):.1f}%\n",
+                f"• Avg Graph Edit Distance (GED): {p.get('avg_ged', 0.0):.2f}\n",
                 f"• Average Latency: {p.get('avg_latency_s', p.get('latency', 0.0)):.2f}s\n",
                 f"• XSD Validation Rate: {p.get('xsd_pass_rate', 1.0)*100:.1f}%\n",
                 f"• Simulation Success Rate: {p.get('simulation_success_rate', 1.0)*100:.1f}%\n",
@@ -525,10 +567,10 @@ class ComparisonPanel(ttk.Frame):
         if dest:
             content = f"# BPMN Adaptation Multi-Provider Comparison Report\n\n"
             content += f"## Winner\n{self.winner_banner['text']}\n\n"
-            content += "## Summary Table\n\n| Provider | Accuracy | Precision | Recall | F1 | Latency (s) | Error Rate |\n"
-            content += "|---|---|---|---|---|---|---|\n"
+            content += "## Summary Table\n\n| Provider | Accuracy | Precision | Recall | F1 | Avg GED | Latency (s) | Error Rate |\n"
+            content += "|---|---|---|---|---|---|---|---|\n"
             for p in self.summary_data.get("providers", []):
-                content += f"| {p.get('name')} | {p.get('accuracy'):.1f}% | {p.get('precision'):.1f}% | {p.get('recall'):.1f}% | {p.get('f1'):.1f}% | {p.get('latency'):.2f}s | {p.get('error_rate'):.1f}% |\n"
+                content += f"| {p.get('name')} | {p.get('accuracy', 0.0):.1f}% | {p.get('precision', 0.0):.1f}% | {p.get('recall', 0.0):.1f}% | {p.get('f1', 0.0):.1f}% | {p.get('avg_ged', 0.0):.2f} | {p.get('avg_latency_s', p.get('latency', 0.0)):.2f}s | {p.get('error_rate', 0.0):.1f}% |\n"
             Path(dest).write_text(content, encoding="utf-8")
 
     def _open_folder(self) -> None:

@@ -712,6 +712,11 @@ class BenchmarkRunner:
             correct_rejects = sum(1 for t in tests_log if t.get("ground_truth_decision") == "REJECT" and t.get("decision") == "REJECT")
             gt_reject_count = sum(1 for t in tests_log if t.get("ground_truth_decision") == "REJECT")
 
+            calc_precision = round((correct_approves / max(1, approved_count)) * 100.0, 2)
+            calc_recall = round((correct_approves / max(1, gt_approve_count)) * 100.0, 2)
+            calc_f1 = round((2 * (calc_precision * calc_recall) / max(1e-9, calc_precision + calc_recall)), 2)
+            calc_specificity = round((correct_rejects / max(1, gt_reject_count)) * 100.0, 2)
+
             approval_accuracy = round(correct_approves / max(1, gt_approve_count), 2)
             rejection_accuracy = round(correct_rejects / max(1, gt_reject_count), 2)
 
@@ -759,9 +764,11 @@ class BenchmarkRunner:
                 "name": p_name,
                 "model": p_cfg.get("model", ""),
                 "accuracy": acc,
-                "precision": acc,
-                "recall": acc,
-                "f1": acc,
+                "precision": calc_precision,
+                "recall": calc_recall,
+                "f1": calc_f1,
+                "specificity": calc_specificity,
+                "avg_ged": avg_ged,
                 "error_rate": err_rate,
                 "avg_latency_s": avg_lat,
                 "total_tests": total_tests,
