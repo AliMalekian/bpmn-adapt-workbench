@@ -92,6 +92,26 @@ class AnalystAgent:
             "tokens_at_target": tokens_at_target,
         }
 
+        compact_evidence = []
+        for e in evidence:
+            raw = getattr(e, "text", "") or ""
+            reason = ""
+            rules_cited = ""
+            for line in raw.splitlines():
+                if line.startswith("Decision reason:"):
+                    reason = line.split(":", 1)[1].strip()
+                elif line.startswith("Referenced rules:"):
+                    rules_cited = line.split(":", 1)[1].strip()
+            if not reason:
+                reason = raw[:250].strip()
+            compact_evidence.append({
+                "precedent_id": e.evidence_id,
+                "decision": e.decision,
+                "relevance_score": round(getattr(e, "final_score", 1.0), 3),
+                "precedent_reason": reason,
+                "cited_rules": rules_cited,
+            })
+
         user_payload_dict = {
             "adaptation_request": {
                 "process_id": request.process_id,
@@ -104,7 +124,7 @@ class AnalystAgent:
             "resource_capacities": resources,
             "runtime_states": [{"state_id": s.get("state_id"), "position": s.get("position")} for s in states],
             "runtime_token_context": runtime_token_context,
-            "historical_rag_evidence": [e.to_dict() for e in evidence],
+            "historical_rag_evidence": compact_evidence,
         }
 
         system_prompt = load_prompt(self.prompt_name)

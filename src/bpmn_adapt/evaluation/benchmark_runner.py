@@ -236,6 +236,13 @@ class BenchmarkRunner:
             if seq_flow:
                 src_n = task_nodes[seq_flow.source_ref]
                 tgt_n = task_nodes[seq_flow.target_ref]
+                is_rule_conflict = dataset_name in ("Camunda-Recource", "Pmo-restaurant")
+                conflict_desc = (
+                    "Conflicts with explicit process timing rules and mandatory immediate sequences between these two tasks."
+                    if is_rule_conflict else
+                    "None – fully compliant with all rules and resources. Operates within assigned quality budget without violating any process rules."
+                )
+                gt_val = "REJECT" if is_rule_conflict else "APPROVE"
                 cases.append({
                     "test_id": f"{dataset_name}_ADD_1",
                     "operation": "ADD",
@@ -243,11 +250,11 @@ class BenchmarkRunner:
                     "request_text": (
                         f'Request1:\nAdded element: "Quality Inspection and Verification"\n'
                         f'Position: Insert between "{src_n.name}" and "{tgt_n.name}".\n'
-                        f'Description: Insert an automated, non-blocking quality verification check between "{src_n.name}" and "{tgt_n.name}".\n'
-                        f'Conflict details: None – fully compliant with all rules and resources. Operates within assigned quality budget without violating any process rules.'
+                        f'Description: Insert an automated quality verification check between "{src_n.name}" and "{tgt_n.name}".\n'
+                        f'Conflict details: {conflict_desc}'
                     ),
                     "dataset": dataset_name,
-                    "ground_truth_decision": "APPROVE",
+                    "ground_truth_decision": gt_val,
                 })
             elif graph.nodes:
                 first_n = list(graph.nodes.values())[0]

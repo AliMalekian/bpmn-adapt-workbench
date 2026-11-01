@@ -20,6 +20,27 @@ def _lexical_score(query: str, text: str) -> float:
     return len(q & t) / len(q | t) if q and t else 0.0
 
 
+def _balance_evidence(evidence: list[RetrievedEvidence], target_limit: int) -> tuple[RetrievedEvidence, ...]:
+    """Ensures balanced retrieval between positive (ACCEPT/APPROVE) and negative (REJECT) precedents to prevent confirmation bias."""
+    if not evidence or len(evidence) <= target_limit:
+        return tuple(evidence)
+
+    positives = [e for e in evidence if e.decision in ("ACCEPT", "APPROVE")]
+    negatives = [e for e in evidence if e.decision == "REJECT"]
+
+    if not positives or not negatives:
+        return tuple(evidence[:target_limit])
+
+    half = max(1, target_limit // 2)
+    selected = positives[:half] + negatives[:(target_limit - half)]
+    if len(selected) < target_limit:
+        rem = [e for e in evidence if e not in selected]
+        selected.extend(rem[:target_limit - len(selected)])
+
+    selected.sort(key=lambda item: (-item.final_score, item.evidence_id))
+    return tuple(selected[:target_limit])
+
+
 class HybridRAGService:
     INDEX_VERSION = "hybrid-rag-v1"
 
@@ -84,7 +105,7 @@ class HybridRAGService:
                 metadata=json.loads(row["metadata_json"] or "{}"),
             ))
         evidence.sort(key=lambda item: (-item.final_score, item.evidence_id))
-        selected = tuple(evidence[:limit])
+        selected = _balance_evidence(evidence, limit)
         retrieval_id = str(uuid.uuid4())
         self.database.save_retrieval_log(
             retrieval_id, run_id, hashlib.sha256(query.encode()).hexdigest(), filters,
@@ -124,9 +145,10 @@ class HybridRAGService:
             target_op = "RE_ADD"
         elif operation == "MODIFY" and not any(r.get("operation") == "MODIFY" for r in rows):
             target_op = None
+        pool_limit = max(10, limit * 2)
         result = self.retriever.retrieve(
             query, VectorScope(process_id, target_op, source_version_id),
-            mode=RetrievalMode(mode), limit=limit)
+            mode=RetrievalMode(mode), limit=pool_limit)
         by_id = {row["evidence_id"]: row for row in rows}
         selected_list = []
         for item in result.hits:
@@ -140,7 +162,7 @@ class HybridRAGService:
                 row_match.get("decision", "UNKNOWN"),
                 sem_score, syn_score, item.score, source_version_id, True, item.metadata
             ))
-        selected = tuple(selected_list)
+        selected = _balance_evidence(selected_list, limit)
         score_log = {item.evidence_id: item.scores for item in result.log.candidates}
         self.database.save_retrieval_log(
             result.log.retrieval_id, run_id, result.log.query_hash,
