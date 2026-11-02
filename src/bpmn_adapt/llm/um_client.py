@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
+import http.client
 import json
 import logging
 import os
@@ -18,6 +19,33 @@ from .client import LLMError
 
 logger = logging.getLogger(__name__)
 
+
+
+def _find_university_lan_ip() -> str | None:
+    try:
+        hostname = socket.gethostname()
+        for ip in socket.gethostbyname_ex(hostname)[2]:
+            if ip.startswith('172.21.') or ip.startswith('172.20.'):
+                return ip
+    except Exception:
+        pass
+    return None
+
+
+class _BoundHTTPSHandler(HTTPSHandler):
+    def __init__(self, source_ip: str | None, context=None):
+        super().__init__(context=context)
+        self.source_ip = source_ip
+
+    def https_open(self, req):
+        return self.do_open(
+            lambda host, **kw: http.client.HTTPSConnection(
+                host,
+                context=self._context,
+                source_address=(self.source_ip, 0) if self.source_ip else None,
+            ),
+            req
+        )
 
 class UMLLMClient:
     """Adapter for UM LLM query_unified endpoint with global rate limiting."""
@@ -70,7 +98,8 @@ class UMLLMClient:
             ctx = ssl.create_default_context()
             ctx.check_hostname = False
             ctx.verify_mode = ssl.CERT_NONE
-            opener = build_opener(HTTPSHandler(context=ctx)).open
+            lan_ip = _find_university_lan_ip()
+            opener = build_opener(_BoundHTTPSHandler(lan_ip, context=ctx)).open
         self._opener, self._sleeper, self._clock = opener, sleeper, clock
 
     @classmethod
