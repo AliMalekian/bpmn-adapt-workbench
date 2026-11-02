@@ -103,8 +103,8 @@ class OrchestratorAgent:
                         "request_id": request.request_id,
                         "decision_id": decision.decision_id,
                         "rejection_category": decision.rejection_category,
-                        "rule_violations": list(decision.rule_violations),
-                        "resource_violations": list(decision.resource_violations),
+                        "rule_violations": list(decision.rule_ids),
+                        "resource_violations": list(decision.resource_ids),
                         "evidence_label": "negative",
                         "origin": "live_rejected_experience",
                         "prompt_versions": self.PROMPT_VERSIONS,
@@ -116,8 +116,8 @@ class OrchestratorAgent:
                         f"Request: {request.raw_text}\n"
                         f"Decision: REJECT\n"
                         f"Decision reason: {decision.reason}\n"
-                        f"Referenced rules: {', '.join(decision.rule_violations) or 'None'}\n"
-                        f"Referenced resources: {', '.join(decision.resource_violations) or 'None'}"
+                        f"Referenced rules: {', '.join(decision.rule_ids) or 'None'}\n"
+                        f"Referenced resources: {', '.join(decision.resource_ids) or 'None'}"
                     )
                     self.rag.index_negative(
                         evidence_id=f"negative-{run_id}",

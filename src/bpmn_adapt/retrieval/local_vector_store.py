@@ -22,7 +22,10 @@ class LocalVectorStore:
         self._lock = threading.RLock()
         self._records: dict[str, VectorRecord] = {}
         if self.manifest_path.exists():
-            self._load()
+            try:
+                self._load()
+            except Exception:
+                self._records = {}
 
     def upsert(self, records):
         with self._lock:

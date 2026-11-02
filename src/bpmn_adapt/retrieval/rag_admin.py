@@ -107,12 +107,13 @@ def flush_rag(db_path: Path | str | None = None, vector_dir: Path | str | None =
 
     if vec_p.is_dir():
         try:
-            for f in vec_p.glob("*.npz"):
-                try:
-                    f.unlink()
-                    res["deleted_vector_files"] += 1
-                except Exception:
-                    pass
+            for f in vec_p.iterdir():
+                if f.is_file():
+                    try:
+                        f.unlink()
+                        res["deleted_vector_files"] += 1
+                    except Exception:
+                        pass
         except Exception as e:
             res["error_vectors"] = str(e)
 
