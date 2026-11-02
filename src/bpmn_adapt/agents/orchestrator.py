@@ -95,7 +95,11 @@ class OrchestratorAgent:
 
         if decision.status == DecisionStatus.REJECT:
             self.database.update_run_status(run_id, "rejected")
-            if hasattr(self.rag, "index_negative") and callable(getattr(self.rag, "index_negative", None)):
+            if (
+                decision.rejection_category != "AMBIGUOUS_REQUEST"
+                and hasattr(self.rag, "index_negative")
+                and callable(getattr(self.rag, "index_negative", None))
+            ):
                 try:
                     negative_lineage = {
                         "process_id": request.process_id,
