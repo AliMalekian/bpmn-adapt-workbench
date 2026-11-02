@@ -146,8 +146,11 @@ class RelationalDatabase:
     def revoke_rag_case(self, evidence_id, reason):
         self.execute("UPDATE rag_cases SET active=0,revoked_reason=? WHERE evidence_id=?", (reason,evidence_id)); self.connection.commit()
 
-    def list_rag_cases(self, process_id, active_only=False, operation=None, source_version_id=None):
-        sql="SELECT * FROM rag_cases WHERE process_id=?"; args=[process_id]
+    def list_rag_cases(self, process_id=None, active_only=False, operation=None, source_version_id=None):
+        if process_id is not None:
+            sql="SELECT * FROM rag_cases WHERE process_id=?"; args=[process_id]
+        else:
+            sql="SELECT * FROM rag_cases WHERE 1=1"; args=[]
         if active_only: sql += " AND active=1"
         if operation: sql += " AND operation=?"; args.append(operation)
         if source_version_id: sql += " AND (source_version_id=? OR source_version_id IS NULL)"; args.append(source_version_id)

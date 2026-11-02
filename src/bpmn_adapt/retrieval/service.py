@@ -73,20 +73,22 @@ class HybridRAGService:
         return cls(database, encoder, settings.rag_mode, retriever=retriever,
                    vector_store=store)
 
-    def retrieve(self, query: str, *, process_id: str, operation: str, source_version_id: str | None, run_id: str, mode: str | None = None, limit: int = 5) -> tuple[RetrievedEvidence, ...]:
+    def retrieve(self, query: str, *, process_id: str, operation: str, source_version_id: str | None, run_id: str, mode: str | None = None, limit: int = 5, cross_process: bool = True) -> tuple[RetrievedEvidence, ...]:
         mode = mode or self.default_mode
         if mode not in {"none", "syntactic", "semantic", "hybrid"}:
             raise ValueError(f"Unsupported RAG mode: {mode}")
-        filters = {"process_id": process_id, "operation": operation, "source_version_id": source_version_id, "active": True}
-        rows = [] if mode == "none" else self.database.list_rag_cases(process_id, active_only=True, operation=operation, source_version_id=source_version_id)
+        search_pid = None if cross_process else process_id
+        search_ver = None if cross_process else source_version_id
+        filters = {"process_id": search_pid, "operation": operation, "source_version_id": search_ver, "active": True}
+        rows = [] if mode == "none" else self.database.list_rag_cases(search_pid, active_only=True, operation=operation, source_version_id=search_ver)
         if not rows and mode != "none":
             if operation == "ADD":
-                rows = self.database.list_rag_cases(process_id, active_only=True, operation="RE_ADD", source_version_id=source_version_id)
+                rows = self.database.list_rag_cases(search_pid, active_only=True, operation="RE_ADD", source_version_id=search_ver)
             elif operation == "MODIFY":
-                rows = self.database.list_rag_cases(process_id, active_only=True, operation=None, source_version_id=source_version_id)
+                rows = self.database.list_rag_cases(search_pid, active_only=True, operation=None, source_version_id=search_ver)
         if self.retriever is not None:
-            return self._retrieve_persistent(query, rows, process_id, operation,
-                                             source_version_id, run_id, mode, limit)
+            return self._retrieve_persistent(query, rows, search_pid, operation,
+                                             search_ver, run_id, mode, limit)
         query_embedding = self.embedding_client.embed(query)
         evidence: list[RetrievedEvidence] = []
         score_log: dict[str, dict[str, float]] = {}
@@ -158,7 +160,7 @@ class HybridRAGService:
             sem_score = next((entry.scores["semantic"] for entry in result.log.candidates if entry.evidence_id == item.evidence_id), 0.0)
             syn_score = next((entry.scores["syntactic"] for entry in result.log.candidates if entry.evidence_id == item.evidence_id), 0.0)
             selected_list.append(RetrievedEvidence(
-                item.evidence_id, process_id, OperationType(operation), item.text,
+                item.evidence_id, row_match.get("process_id", process_id or "global"), OperationType(operation), item.text,
                 row_match.get("decision", "UNKNOWN"),
                 sem_score, syn_score, item.score, source_version_id, True, item.metadata
             ))
