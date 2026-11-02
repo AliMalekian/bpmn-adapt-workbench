@@ -61,6 +61,7 @@ class ComparisonPanel(ttk.Frame):
 
         ttk.Label(hdr, text="Benchmark Results & Provider Analytics", font=("Segoe UI", 12, "bold")).pack(side="left")
         ttk.Button(hdr, text="Export Comparison Report", command=self._export_report).pack(side="right", padx=3)
+        ttk.Button(hdr, text="📈 Learning Curve", command=self._plot_learning_curve).pack(side="right", padx=3)
         ttk.Button(hdr, text="Open Output Folder", command=self._open_folder).pack(side="right", padx=3)
         ttk.Button(hdr, text="🔄 Refresh All", command=self._auto_load_recent).pack(side="right", padx=3)
 
@@ -348,13 +349,16 @@ class ComparisonPanel(ttk.Frame):
         valid_runs.sort(key=lambda x: x[2], reverse=True)
         self._discovered_runs.clear()
         cb_values = []
-        if len(valid_runs) >= 2:
-            cross_label = "[Cross-Run Comparison] With RAG vs. Without RAG"
-            cb_values.append(cross_label)
 
+        # Latest executed run is always first and default
         for label, folder, _ in valid_runs:
             self._discovered_runs[label] = folder
             cb_values.append(label)
+
+        if len(valid_runs) >= 2:
+            cross_label = "[Cross-Run Comparison] With RAG vs. Without RAG"
+            self._discovered_runs[cross_label] = valid_runs[0][1]
+            cb_values.append(cross_label)
 
         self.cb_runs["values"] = cb_values
         if cb_values:
@@ -364,6 +368,26 @@ class ComparisonPanel(ttk.Frame):
             self._on_run_selected()
         else:
             self.winner_banner.configure(text="No completed benchmark experiment folders found.", foreground="#dc2626")
+
+    def _plot_learning_curve(self) -> None:
+        """Plots the Learning Curve over Time for the currently selected run."""
+        selected_label = self.run_selector_var.get()
+        folder = self._discovered_runs.get(selected_label)
+        if not folder or not (folder / "tests.jsonl").is_file():
+            from tkinter import messagebox
+            messagebox.showinfo("Learning Curve", "No tests.jsonl found in selected run to compute learning curve.")
+            return
+        try:
+            from bpmn_adapt.retrieval.rag_admin import plot_learning_curve
+            png_path = plot_learning_curve(folder)
+            import subprocess, os
+            if os.name == "nt":
+                os.startfile(str(png_path))
+            else:
+                subprocess.Popen(["xdg-open", str(png_path)])
+        except Exception as e:
+            from tkinter import messagebox
+            messagebox.showerror("Error", f"Failed to generate learning curve: {e}")
 
     def _get_provider_items(self) -> list[dict[str, Any]]:
         results = self.summary_data.get("results", {})

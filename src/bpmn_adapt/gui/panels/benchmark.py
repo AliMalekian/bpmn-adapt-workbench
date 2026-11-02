@@ -164,6 +164,8 @@ class BenchmarkPanel(ttk.Frame):
         self.btn_stop.pack(side="left", padx=2)
         self.btn_reset = ttk.Button(run_control_frame, text="⏮ Reset", command=self._reset_benchmark)
         self.btn_reset.pack(side="left", padx=2)
+        self.btn_flush = ttk.Button(run_control_frame, text="🗑️ Flush RAG", command=self._flush_rag_action)
+        self.btn_flush.pack(side="left", padx=2)
 
         self.progress_bar = ttk.Progressbar(run_control_frame, orient="horizontal", mode="determinate")
         self.progress_bar.pack(side="left", fill="x", expand=True, padx=8)
@@ -329,6 +331,28 @@ class BenchmarkPanel(ttk.Frame):
         self.btn_pause.configure(state="disabled")
         self.btn_stop.configure(state="disabled")
         self._append_log("Benchmark UI state reset. Ready for a clean start.")
+
+    def _flush_rag_action(self) -> None:
+        """Prompts and flushes RAG database and vector memory for a clean Cold-Start benchmark."""
+        if getattr(self, "is_running", False):
+            messagebox.showwarning("Benchmark Running", "Please stop the running benchmark before flushing RAG.", parent=self)
+            return
+
+        confirm = messagebox.askyesno(
+            "Flush RAG Memory",
+            "Are you sure you want to flush all RAG memory?\n\n"
+            "This will delete all historical cases from the database and vector index, "
+            "resetting RAG to a completely clean Cold-Start state (0 cases).\n\n"
+            "Proceed with flush?",
+            parent=self,
+        )
+        if not confirm:
+            return
+
+        from bpmn_adapt.retrieval.rag_admin import flush_rag
+        res = flush_rag()
+        self._append_log(f"RAG Flush: {res.get('message', 'Flushed RAG successfully.')}")
+        messagebox.showinfo("RAG Flushed", res.get("message", "RAG memory flushed successfully."), parent=self)
 
     def _start_benchmark(self, from_retry: bool = False) -> None:
         if not from_retry:
