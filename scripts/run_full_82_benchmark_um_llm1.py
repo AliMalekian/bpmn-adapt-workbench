@@ -5,7 +5,7 @@ Evaluates 984 balanced scenarios:
 - 492 ADD requests (246 REJECT [rule, resource, both] + 246 APPROVE)
 - Exactly 50.0% / 50.0% balance.
 
-Runs No-RAG baseline, flushes RAG, and runs Cold-Start RAG with gated indexing.
+Runs With-RAG first (cold-start with gated indexing), then No-RAG baseline.
 """
 from __future__ import annotations
 
@@ -28,36 +28,18 @@ def run_full_82_campaign():
     if um_test.get("status") != "OK":
         raise RuntimeError(f"UM LLM1 is offline or failing: {um_test.get('error')}")
 
-    # PHASE 1: Full Baseline WITHOUT RAG (984 Scenarios)
-    no_rag_dir = base_dir / "experiments" / "full_82_no_rag_um_llm1"
+    # PHASE 1: Flush RAG for Clean Cold Start
     print("\n" + "=" * 75)
-    print("PHASE 1: Starting Full 82-Process Baseline WITHOUT RAG")
-    print("=" * 75)
-    t0_no = time.time()
-    runner_no = BenchmarkRunner(
-        dataset_root=dataset_root,
-        provider="um-llm1-gemma4",
-        request_types=["REMOVE", "ADD"],
-        repetitions=1,
-        output_dir=no_rag_dir,
-        enable_rag=False,
-        resume=True,
-    )
-    runner_no.run()
-    dur_no = time.time() - t0_no
-    print(f"Phase 1 finished in {dur_no/3600:.2f} hours.")
-
-    # PHASE 2: Flush RAG
-    print("\n" + "=" * 75)
-    print("PHASE 2: Flushing RAG Memory")
+    print("PHASE 1: Flushing RAG Memory for Clean Cold-Start")
     print("=" * 75)
     flush_res = flush_rag()
     print(flush_res.get("message"))
+    print(f"RAG Status before run: {get_rag_status()}")
 
-    # PHASE 3: Full Evaluation WITH RAG (984 Scenarios)
+    # PHASE 2: Full Evaluation WITH RAG (984 Scenarios)
     rag_dir = base_dir / "experiments" / "full_82_rag_cold_start_um_llm1"
     print("\n" + "=" * 75)
-    print("PHASE 3: Starting Full 82-Process Evaluation WITH RAG")
+    print("PHASE 2: Starting Full 82-Process Evaluation WITH RAG")
     print("=" * 75)
     t0_rag = time.time()
     runner_rag = BenchmarkRunner(
@@ -71,11 +53,33 @@ def run_full_82_campaign():
     )
     runner_rag.run()
     dur_rag = time.time() - t0_rag
-    print(f"Phase 3 finished in {dur_rag/3600:.2f} hours.")
+    print(f"Phase 2 (With RAG) finished in {dur_rag/3600:.2f} hours.")
 
     # Plot Full Learning Curve
     plot_learning_curve(rag_dir, title="Full 82-Process Continual Learning Curve (UM LLM1)")
-    print("Full Campaign Completed.")
+
+    # PHASE 3: Full Baseline WITHOUT RAG (984 Scenarios)
+    no_rag_dir = base_dir / "experiments" / "full_82_no_rag_um_llm1"
+    print("\n" + "=" * 75)
+    print("PHASE 3: Starting Full 82-Process Baseline WITHOUT RAG")
+    print("=" * 75)
+    t0_no = time.time()
+    runner_no = BenchmarkRunner(
+        dataset_root=dataset_root,
+        provider="um-llm1-gemma4",
+        request_types=["REMOVE", "ADD"],
+        repetitions=1,
+        output_dir=no_rag_dir,
+        enable_rag=False,
+        resume=True,
+    )
+    runner_no.run()
+    dur_no = time.time() - t0_no
+    print(f"Phase 3 (No RAG) finished in {dur_no/3600:.2f} hours.")
+
+    print("\n" + "=" * 75)
+    print("Full 82-Process Campaign (Both With-RAG and No-RAG) Successfully Completed!")
+    print("=" * 75)
 
 
 if __name__ == "__main__":
