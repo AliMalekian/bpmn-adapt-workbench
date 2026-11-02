@@ -183,6 +183,27 @@ class HybridRAGService:
             self.vector_store.upsert([VectorRecord(evidence_id, text, vector, metadata,
                                                     True, self.embedding_client.model_key)])
 
+    def index_negative(self, *, evidence_id: str, run_id: str, process_id: str, source_version_id: str, operation: str, text: str, decision: str, lineage: dict) -> None:
+        """Indexes verified negative precedents into the governed negative memory for contrastive learning."""
+        self.database.add_rag_case(evidence_id, run_id, process_id, source_version_id, operation, text, decision, json.dumps(lineage, sort_keys=True))
+        if self.vector_store is not None:
+            from .contracts import VectorRecord
+            metadata = {**lineage, "process_id": process_id, "operation": operation,
+                        "source_version_id": source_version_id,
+                        "approval_status": "rejected", "validation_status": "BLOCKED",
+                        "evidence_label": "negative"}
+            vector = self.embedding_client.encode_documents([text])[0]
+            self.vector_store.upsert([VectorRecord(evidence_id, text, vector, metadata,
+                                                    True, self.embedding_client.model_key)])
+
+    def purge_negative_experiences(self) -> int:
+        """Purges all live-accumulated negative experiences, allowing complete reversion to positive-only state."""
+        if hasattr(self.database, "purge_negative_rag_cases"):
+            self.database.purge_negative_rag_cases()
+        if self.vector_store is not None and hasattr(self.vector_store, "purge_prefix"):
+            return self.vector_store.purge_prefix("negative-")
+        return 0
+
     def revoke(self, evidence_id: str, reason: str) -> None:
         self.database.revoke_rag_case(evidence_id, reason)
         if self.vector_store is not None:

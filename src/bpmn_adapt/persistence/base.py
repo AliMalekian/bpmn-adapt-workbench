@@ -136,9 +136,12 @@ class RelationalDatabase:
 
     def add_rag_case(self, evidence_id, run_id, process_id, source_version_id, operation, text, decision, metadata_json):
         run = self.get_run(run_id)
-        if not run or run["status"] != "approved":
-            raise ApprovalRequired("Only final approved runs may enter RAG")
+        if not run or run["status"] not in ("approved", "rejected"):
+            raise ApprovalRequired("Only final approved or documented rejected runs may enter RAG")
         self.execute("INSERT INTO rag_cases(evidence_id,run_id,process_id,source_version_id,operation,text,decision,metadata_json,active) VALUES(?,?,?,?,?,?,?,?,1)", (evidence_id,run_id,process_id,source_version_id,operation,text,decision,metadata_json)); self.connection.commit()
+
+    def purge_negative_rag_cases(self):
+        self.execute("DELETE FROM rag_cases WHERE evidence_id LIKE 'negative-%'"); self.connection.commit()
 
     def revoke_rag_case(self, evidence_id, reason):
         self.execute("UPDATE rag_cases SET active=0,revoked_reason=? WHERE evidence_id=?", (reason,evidence_id)); self.connection.commit()

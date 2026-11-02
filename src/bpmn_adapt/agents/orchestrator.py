@@ -95,6 +95,43 @@ class OrchestratorAgent:
 
         if decision.status == DecisionStatus.REJECT:
             self.database.update_run_status(run_id, "rejected")
+            if hasattr(self.rag, "index_negative") and callable(getattr(self.rag, "index_negative", None)):
+                try:
+                    negative_lineage = {
+                        "process_id": request.process_id,
+                        "folder": str(request.source_folder),
+                        "request_id": request.request_id,
+                        "decision_id": decision.decision_id,
+                        "rejection_category": decision.rejection_category,
+                        "rule_violations": list(decision.rule_violations),
+                        "resource_violations": list(decision.resource_violations),
+                        "evidence_label": "negative",
+                        "origin": "live_rejected_experience",
+                        "prompt_versions": self.PROMPT_VERSIONS,
+                        "config_fingerprint": self.settings.fingerprint(),
+                    }
+                    summary_text = (
+                        f"Operation: {request.operation.value}\n"
+                        f"Target: {request.target_element}\n"
+                        f"Request: {request.raw_text}\n"
+                        f"Decision: REJECT\n"
+                        f"Decision reason: {decision.reason}\n"
+                        f"Referenced rules: {', '.join(decision.rule_violations) or 'None'}\n"
+                        f"Referenced resources: {', '.join(decision.resource_violations) or 'None'}"
+                    )
+                    self.rag.index_negative(
+                        evidence_id=f"negative-{run_id}",
+                        run_id=run_id,
+                        process_id=request.process_id,
+                        source_version_id=request.source_version_id or f"{request.process_id}-source",
+                        operation=request.operation.value,
+                        text=summary_text,
+                        decision="REJECT",
+                        lineage=negative_lineage,
+                    )
+                except Exception as neg_err:
+                    logger.warning("Could not index negative RAG experience for %s: %s", run_id, neg_err)
+
             provenance = RunProvenance(
                 run_id,
                 request.process_id,

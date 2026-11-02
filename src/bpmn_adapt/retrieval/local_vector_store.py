@@ -47,6 +47,16 @@ class LocalVectorStore:
                 old.evidence_id, old.text, old.vector, metadata, False, old.model_key)}
             self._atomic_commit(updated); self._records = updated
 
+    def purge_prefix(self, prefix: str) -> int:
+        with self._lock:
+            to_remove = [k for k in self._records if k.startswith(prefix)]
+            if not to_remove:
+                return 0
+            updated = {k: v for k, v in self._records.items() if not k.startswith(prefix)}
+            self._atomic_commit(updated)
+            self._records = updated
+            return len(to_remove)
+
     def search(self, query, scope: VectorScope, limit: int):
         query = np.asarray(query, dtype=np.float32).reshape(-1)
         if query.size != self.dimensions: raise ValueError("Query dimensions mismatch")
