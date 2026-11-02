@@ -1,0 +1,10 @@
+Re-Add Request:
+Removed element to be restored: Send a notification that the LAN party will be held on that date (the "Send a notification that the LAN party will be held on that date" confirmation message)
+
+Restoration details:
+1. Re-insert the "Send a notification that the LAN party will be held on that date" service task at the end of the preparation branch, after the date has been reserved and the beer and games are in place, and before the process ends: recreate the BPMN service task with its original name at its original position, exactly as it appeared in the original model.
+2. Restore the announcement behavior: once the date, games, and beer are confirmed, the host again sends the notification to the guests announcing that the LAN party will be held on that date, so all attendees receive the final confirmation message.
+3. Reconnect the sequence flows: the outgoing flow of the date-reservation / preparation merge (the "8 or more people can play on that date" branch) now leads into "Send a notification that the LAN party will be held on that date", and its outgoing flow continues to the party start / end as before; the bypass that the removal created is deleted.
+4. Restore the final confirmation step: with the notification restored, the process again ends with the announced party date reaching the guests, matching the exact original process shape (invite -> games -> date vote -> download missing games -> estimate and order beer -> reserve -> notify -> hold party).
+
+The process is thereby returned to exactly its original shape: the "Send a notification that the LAN party will be held on that date" task and its sequence-flow connections that Request4 removed are fully restored.

@@ -1,0 +1,15 @@
+1. The INQ must submit a transaction data request containing valid credentials for the IP to examine.
+2. The IP checks every request for completeness and validity before issuing a response.
+3. Requests with missing or invalid credentials are rejected immediately without data transmission.
+4. A valid request results in the transmission of the requested transaction data.
+5. Data transmission is restricted to transaction records not older than 7 years.
+6. The IP may reject a request if the requested data volume exceeds 10,000 records per inquiry.
+7. The IP must respond to a valid request within 24 hours of receiving it.
+8. The IP must not transmit data covered by an ongoing legal dispute without court authorization.
+9. Every request must be logged with a timestamp and the requester's identity for audit purposes.
+10. A request rejected due to the data volume limit may be re-submitted as a supplementary data request.
+11. Duplicate requests for the same data within a 30-day window may be rejected.
+12. A third failed authentication attempt disables the requester's access for 12 hours.
+13. All data transmission must use an encrypted channel with 256-bit encryption.
+14. A fee of $0.05 per transmitted record applies, with a minimum charge of $10 per request.
+15. The INQ must delete the received transaction data after 90 days of storage.

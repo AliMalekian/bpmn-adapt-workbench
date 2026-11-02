@@ -1,0 +1,57 @@
+STATE-01: Initial / early execution
+Current process position: startEvent
+Completed activities: Participate Night Run
+Current active activity or waiting point: startEvent
+Token position / execution status: token is at startEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Total event capacity: 5000 runners)
+Applicable rules: Rule 1 (A runner must select a starting block before the run attempt can be registered in the app.)
+Possible next activities: select a starting block, Select a starting block
+
+STATE-02: Intermediate / decision
+Current process position: Run
+Completed activities: Participate Night Run, startEvent, Start Vienna Night Run process, Wish to participate, Participate in 
+night run, startEvent, Vienna Night Run 
+participation 
+ application started, Select starting block, select a starting block, Select starting block, Select a starting block, Select a starting block, Select a starting block, Check registration, parallelGateway, exclusiveGateway, Running 5 km, Run for 5 km, exclusiveGateway, Start VNR-App, Participant is 
+registered?, Run 5 km, Start to measure time, parallelGateway, Time, Measure time, parallelGateway, parallelGateway, Request a registration in the app, Select starting block, parallelGateway, run for 5km, measure the time, More training, Good in shape, exclusiveGateway, Run 5km, Measure time, Measure distance, Run 5 KM, Measure the time, End, parallelGateway, Stop to measure the time, parallelGateway, Get your starting number, Train for the 5 km, Receive a starting number, parallelGateway, parallelGateway
+Current active activity or waiting point: Run
+Token position / execution status: token is at Run; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Total event capacity: 5000 runners)
+Applicable rules: Rule 1 (A runner must select a starting block before the run attempt can be registered in the app.)
+Possible next activities: parallelGateway, parallelGateway, parallelGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: parallelGateway
+Completed activities: Participate Night Run, startEvent, Start Vienna Night Run process, Wish to participate, Participate in 
+night run, startEvent, Vienna Night Run 
+participation 
+ application started, Select starting block, select a starting block, Select starting block, Select a starting block, Select a starting block, Select a starting block, Check registration
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Total event capacity: 5000 runners)
+Applicable rules: Rule 1 (A runner must select a starting block before the run attempt can be registered in the app.)
+Possible next activities: Run 5 km, Start to measure time, Stop to measure the time, Run the night run, Drink iso sport, Receive final running time, run for 5km, measure the time, is it less than 25 minutes?, run, receive your final running time, drink, measure the time, Receive your final running time, Drink, Run, Running, Drinking, Get the running time of your run, Run 5km, Measure time, Measure distance, Less than 25min?, Run, Drink, Receive final running time, Run 5 KM, Measure the time, Check the time, Run Marathon, Drink water, Check final running time, Run, Measure the time, Check the 
+ time invested, Run at the Vienna Night Run, Receive the final running time, Drink water with limun
+
+STATE-04: Near completion / completed
+Current process position: Receive the final running time
+Completed activities: Participate Night Run, startEvent, Start Vienna Night Run process, Wish to participate, Participate in 
+night run, startEvent, Vienna Night Run 
+participation 
+ application started, Select starting block, select a starting block, Select starting block, Select a starting block, Select a starting block, Select a starting block, Check registration, parallelGateway, exclusiveGateway, Running 5 km, Run for 5 km, exclusiveGateway, Start VNR-App, Participant is 
+registered?, Run 5 km, Start to measure time, parallelGateway, Time, Measure time, parallelGateway, parallelGateway, Request a registration in the app, Select starting block, parallelGateway, run for 5km, measure the time, More training, Good in shape, exclusiveGateway, Run 5km, Measure time, Measure distance, Run 5 KM, Measure the time, End, parallelGateway, Stop to measure the time, parallelGateway, Get your starting number, Train for the 5 km, Receive a starting number, parallelGateway, parallelGateway, Run, Measure the time, Get total running time, is it less than 25 minutes?, Way to the run, exclusiveGateway, Less than 25min?, Check the time, parallelGateway, Took less than 25 minutes?, train, get your starting number, exclusiveGateway, Go home, Changes clothes at work, Train, Receive starting number, Time < 25 Min?, Check the 
+ time invested, Do Training, Satisfied with the result, calculate time 
+between starting time and the end of workday, Go from work, Go from home, Change clothes, exclusiveGateway, Receive starting time, Train, Starting number received, Time <25 
+minutes?, Get starting number, check time
+ more than 
+1 hour?, exclusiveGateway, Go to the Vienna Night Run, More than 1 
+hour from work?, Check starting time, Train, Get starting number, Ends workday >1h before starting time?, go to home, exclusiveGateway, Start Vienna Nightrun, parallelGateway, Go from home, Go from work, more > 1h?, Check the participant`s starting time, Go to the run from home, Go directly after work to the run, parallelGateway, parallelGateway, Running, Drinking, exclusiveGateway, Need to leave from home, Need to leave from work, Check the time between starting time and the end of the workday, exclusiveGateway, run, drink, measure the time, Drink, Run, parallelGateway, parallelGateway, Take start position, >1 hour?, parallelGateway, parallelGateway, parallelGateway, Get the running time of your run, Run, Drink, parallelGateway, Go to the Vienna Night Run from home, Go to the Vienna Night Run from work, Run the night run, Drink iso sport, receive your final running time, Receive your final running time, You finished your run, parallelGateway, Run Marathon, Drink water, exclusiveGateway, parallelGateway, endEvent, Vienna Night Run end, Receive final running time, parallelGateway, Arriving at the Vienna Night Run destination, Receive final running time, Night run finished, Check final running time, parallelGateway, Run finished, endEvent, Run at the Vienna Night Run, Drink water with limun, parallelGateway
+Current active activity or waiting point: Receive the final running time
+Token position / execution status: token is at Receive the final running time; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Total event capacity: 5000 runners)
+Applicable rules: Rule 1 (A runner must select a starting block before the run attempt can be registered in the app.)
+Possible next activities: End

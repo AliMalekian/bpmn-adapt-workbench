@@ -1,0 +1,11 @@
+Claims officers: 6
+Senior claims officers: 2
+Average claims received per day: 40
+Maximum claims per officer per day: 8
+Claims examination deadline (business days): 5
+Senior review turnaround (business days): 3
+Maximum rework attempts per claim: 3
+Settlement threshold requiring senior review ($): 50,000
+Mandatory total processing deadline (days): 30
+Policy exclusion reporting threshold ($): 20,000
+Case management system licenses: 15

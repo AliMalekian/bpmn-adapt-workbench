@@ -1,0 +1,15 @@
+1. A ticket is issued only after the customer provides valid personal information and completes the payment.
+2. Payment must be authorized by the payment gateway before the booking is confirmed and the ticket is generated.
+3. Seat inventory is updated in real time immediately after a successful booking to prevent double sales.
+4. If the payment fails, the seat is released and the booking is cancelled automatically.
+5. Customers are entitled to a full refund for cancellations made at least 48 hours before departure.
+6. The booking system allows a maximum of 9 passengers per single reservation.
+7. Tickets are sent to the customer by email or SMS within 5 minutes of a confirmed booking.
+8. A customer may select only routes, dates, and times that are available in the current schedule.
+9. Check-in reminders are sent 24 hours and again 3 hours before the scheduled departure.
+10. Boarding is permitted only with a valid ticket and government-issued identification.
+11. Seat selection is only available for tickets purchased more than 3 hours before departure.
+12. Overbooking is not allowed beyond 2% of the vehicle's seat capacity for flights.
+13. Post-travel feedback requests are sent within 24 hours after the journey is completed.
+14. A booking may be rescheduled without a fee once, if requested more than 12 hours before departure.
+15. Incomplete payments must be finalized within 10 minutes, or the held reservation is released.

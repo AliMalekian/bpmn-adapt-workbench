@@ -1,0 +1,12 @@
+Re_Add_Request:
+Restored element: The "Check if the whole order is ready for shipment" task — the explicit gateway that verifies all product lines of the order are available in sufficient quantity before proceeding to courier dispatch and packing.
+
+Detailed restoration: Request4 removed the explicit shipment readiness check, relying on the sequential loop's termination condition to implicitly perform this check. To restore the process to its original state, the explicit check must be re-added as follows:
+
+1. After all products in the order have been processed through the sequential loop (each product checked against stock, withdrawn if available, or reordered and registered if not), the process reaches the explicit "Check if the whole order is ready for shipment" gateway.
+2. This gateway evaluates whether every product line in the order has been fulfilled — meaning all products are available in sufficient quantity, as required by Rule 5 ("An order is eligible for shipment only when every product line of the order is available in sufficient quantity").
+3. If the order is ready for shipment, the process proceeds to the "Packing the products" and "Courier is requested" steps, which execute simultaneously (Rule 6: "The courier is requested at the same time packing starts, once the full order is confirmed ready for shipment"), followed by "Shipping the order."
+4. If the order is not ready for shipment, the process proceeds to "Select the next product from the order," which loops back to "Check if product is in stock" and repeats the processing cycle for the next product line.
+5. This explicit check serves as a formal verification point in the process flow, distinct from the loop termination logic, ensuring that no order proceeds to shipment without all product lines being fully available.
+
+This restores the complete original process: order read from automatic management system, each product checked and withdrawn or reordered, products registered upon arrival, explicit readiness check confirming all products are available, courier requested and packing performed simultaneously, order shipped. All 15 rules (Rules 1-15) and all 14 resources (5,000 products, 40 staff, 3,000 pallet capacity, 12 system users, 7-day lead time, 10-day threshold, 2% penalty rate, 30% cap, 250 daily orders, 8 courier vehicles, 500-unit reorder point, 200 daily volume, 8,000 sqm floor, 6 forklifts) remain in effect.

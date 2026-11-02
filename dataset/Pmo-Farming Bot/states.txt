@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Player
+Completed activities: Farming Bot Game
+Current active activity or waiting point: Player
+Token position / execution status: token is at Player; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum resources collected in parallel: 10)
+Applicable rules: Rule 1 (The bot gathers only the resources that the player has explicitly selected before farming starts.)
+Possible next activities: Farming Bot
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: Farming Bot Game, Player, Farming Bot, Farming bot creation desire, Find out wanted resources, parallelGateway, Check repo for already available resources, Collect urgently needed resources, parallelGateway, New tools needed?, Build tools
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum resources collected in parallel: 10)
+Applicable rules: Rule 1 (The bot gathers only the resources that the player has explicitly selected before farming starts.)
+Possible next activities: Collect the remained resources, Bot finished?, New milestone achieved?, Wait for random natural event for some time
+
+STATE-03: Resource-dependent / waiting
+Current process position: Continue farming
+Completed activities: Farming Bot Game, Player, Farming Bot, Farming bot creation desire, Find out wanted resources, parallelGateway, Check repo for already available resources, Collect urgently needed resources, parallelGateway, New tools needed?, Build tools, exclusiveGateway, Collect the remained resources, parallelGateway, exclusiveGateway, Update list of resources, Wait for random natural event for some time, parallelGateway, RNE happened?, endEvent, Reset bot, Start farming
+Current active activity or waiting point: Continue farming
+Token position / execution status: token is at Continue farming; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum resources collected in parallel: 10)
+Applicable rules: Rule 1 (The bot gathers only the resources that the player has explicitly selected before farming starts.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: inclusiveGateway
+Completed activities: Farming Bot Game, Player, Farming Bot, Farming bot creation desire, Find out wanted resources, parallelGateway, Check repo for already available resources, Collect urgently needed resources, parallelGateway, New tools needed?, Build tools, exclusiveGateway, Collect the remained resources, parallelGateway, exclusiveGateway, Update list of resources, Wait for random natural event for some time, parallelGateway, RNE happened?, endEvent, Reset bot, Start farming, Continue farming, exclusiveGateway, New milestone achieved?, Notify player, exclusiveGateway, Read message, Bot finished?
+Current active activity or waiting point: inclusiveGateway
+Token position / execution status: token is at inclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum resources collected in parallel: 10)
+Applicable rules: Rule 1 (The bot gathers only the resources that the player has explicitly selected before farming starts.)
+Possible next activities: parallelGateway, Brag to friends, Help with materials

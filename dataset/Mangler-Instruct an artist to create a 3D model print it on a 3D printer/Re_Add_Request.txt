@@ -1,0 +1,12 @@
+Re_Add_Request:
+Restored element: The gcode file generation step from the artist's STL file.
+
+This request semantically restores everything that Request4 removed. Request4 removed the step in which the gcode file for the printer is generated out of the STL file delivered by the artist, so that printing would start directly from the STL. This restoration brings the process back to its exact original shape:
+
+1. The gcode generation step is re-inserted into the process, executed after the artist delivers the finalized STL file (Rule 3) and while the printer is heating up its bed and extruder, exactly as described in the process ("you can generate the gcode file for your printer out of the STL sent to you by the artist").
+2. The restored step keeps its original timing: it runs in parallel with the heating-up phase, i.e., while the printer is turned on and heating the bed and extruder (Rule 9: "The gcode file is generated from the artist's STL while the printer is heating up").
+3. The restored gcode generation still respects the model acceptance constraint: only models with a print volume smaller than the build volume are accepted for printing (Rule 15), matching the resource "Print bed volume: 220 x 220 x 250 mm", and the STL file remains subject to the "STL file size limit: 50 MB".
+4. The gcode output still follows the "Printed model quality settings: 0.2 mm layer height", and the print itself starts only after the bed and extruder have reached their target temperatures (Rule 8, resources "PLA bed temperature: 60 degrees Celsius" and "Extruder temperature: 200 degrees Celsius").
+5. No other part of the process is altered: sketches and revisions (Rules 1 and 2), color choice and filament checks (Rules 4, 5 and 6), the filament availability condition for turning on the printer (Rule 7), continuous heating-status reporting (Rule 10), the 12-hour pause (Rule 11), model inspection and reprints (Rule 12), and filament storage (Rule 13) remain exactly as before.
+
+The process is thereby returned to precisely its original state, with the gcode generation step fully restored.

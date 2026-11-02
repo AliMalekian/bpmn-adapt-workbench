@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Identify development needs or career aspirations
+Completed activities: start
+Current active activity or waiting point: Identify development needs or career aspirations
+Token position / execution status: token is at Identify development needs or career aspirations; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (HR specialists handling development plans: 3)
+Applicable rules: Rule 1 (A personal development plan is created only after an employee's development needs or career aspirations have been explicitly identified and documented.)
+Possible next activities: Create personal development plan
+
+STATE-02: Intermediate / decision
+Current process position: Receive feedback and evaluation from supervisors
+Completed activities: start, Identify development needs or career aspirations, Create personal development plan, parallelGateway, exclusiveGateway, exclusiveGateway, Work on skill enhancement
+Current active activity or waiting point: Receive feedback and evaluation from supervisors
+Token position / execution status: token is at Receive feedback and evaluation from supervisors; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (HR specialists handling development plans: 3)
+Applicable rules: Rule 1 (A personal development plan is created only after an employee's development needs or career aspirations have been explicitly identified and documented.)
+Possible next activities: exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Approve promotion
+Completed activities: start, Identify development needs or career aspirations, Create personal development plan, parallelGateway, exclusiveGateway, exclusiveGateway, Work on skill enhancement, Receive feedback and evaluation from supervisors, exclusiveGateway, exclusiveGateway, parallelGateway, Consider employee for promotion or new role, Conducts formal performance review, exclusiveGateway
+Current active activity or waiting point: Approve promotion
+Token position / execution status: token is at Approve promotion; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (HR specialists handling development plans: 3)
+Applicable rules: Rule 1 (A personal development plan is created only after an employee's development needs or career aspirations have been explicitly identified and documented.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: Transition into new role
+Completed activities: start, Identify development needs or career aspirations, Create personal development plan, parallelGateway, exclusiveGateway, exclusiveGateway, Work on skill enhancement, Receive feedback and evaluation from supervisors, exclusiveGateway, exclusiveGateway, parallelGateway, Consider employee for promotion or new role, Conducts formal performance review, exclusiveGateway, Approve promotion, exclusiveGateway, parallelGateway, end, Set new responsibilities, Adjust compensation, parallelGateway
+Current active activity or waiting point: Transition into new role
+Token position / execution status: token is at Transition into new role; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (HR specialists handling development plans: 3)
+Applicable rules: Rule 1 (A personal development plan is created only after an employee's development needs or career aspirations have been explicitly identified and documented.)
+Possible next activities: exclusiveGateway

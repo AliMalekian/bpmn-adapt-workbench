@@ -1,0 +1,17 @@
+Rules for Participating in the Vienna Night Run App
+6. When participant fitness gadgets are paired, running time is measured automatically by the gadget; offline runners may use official gate timing.
+1. A participant must select a starting block before registering for the Vienna Night Run.
+2. A qualifying run of 5 km must be completed in less than 25 minutes to qualify for the event.
+3. Participants who fail to qualify must train further and recheck their time until the goal is achieved.
+4. A starting number is issued only after the qualification goal has been achieved.
+5. The participant's fitness gadget must be paired with the app before running time is measured.
+6. Running time must be measured automatically by the fitness gadget, not entered manually.
+7. The end of the participant's workday must be entered into the app to plan travel to the run.
+8. If more than one hour remains between the end of the workday and the start time, the participant may travel from home.
+9. If one hour or less remains between the end of the workday and the start time, the participant must leave directly from work.
+10. Each participant must stop at every designated drink station along the 5 km route.
+11. The starting number must be shown at the gate to enter the assigned starting block.
+12. The final running time is issued and saved to the app when the participant crosses the finish line.
+13. Registration for the event closes 48 hours before the start time.
+14. Participants must be at their starting block at least 30 minutes before the start.
+15. The measured time is valid only if the participant completes the full 5 km route.

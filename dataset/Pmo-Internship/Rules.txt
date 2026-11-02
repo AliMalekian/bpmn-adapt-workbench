@@ -1,0 +1,15 @@
+1. The student enters a topic of interest and the desired compensation, plus experience and hobbies, before any internships can be offered.
+2. Offers may arrive at arbitrary points in time and each offer is presented to the student upon arrival.
+3. The student may accept or deny each offer individually.
+4. As soon as one offer is accepted, all other outstanding offers automatically become invalid.
+5. The student must write at least 3 status updates about the internship, with at least one update every week.
+6. The company must write at least 3 status updates about the student.
+7. Missing more than one consecutive weekly update invalidates the internship participation record.
+8. After the internship finishes, the student may recommend the company to friends via Twitter.
+9. Separate recommendation tweets are sent in parallel, so each friend receives an individual tweet.
+10. A recommendation tweet may only be sent to friends whose Twitter accounts are publicly verified.
+11. The internship duration must be confirmed before the first status update is due.
+12. Compensation offered must be at least 60 percent of the amount requested by the student for the offer to be valid.
+13. Once an offer is accepted, the accepted offer's terms (topic, compensation, duration) are frozen and cannot be renegotiated.
+14. Twitter recommendations are disabled if the student posted fewer than the minimum required weekly updates.
+15. The student must finish the internship within the agreed duration, after which all remaining offers are closed.

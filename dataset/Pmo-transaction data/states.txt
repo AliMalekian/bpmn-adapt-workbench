@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: INQ transmits the transaction data request
+Completed activities: startEvent
+Current active activity or waiting point: INQ transmits the transaction data request
+Token position / execution status: token is at INQ transmits the transaction data request; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Response time limit (hours): 24)
+Applicable rules: Rule 1 (The INQ must submit a transaction data request containing valid credentials for the IP to examine.)
+Possible next activities: IP checks the request of the INQ
+
+STATE-02: Intermediate / decision
+Current process position: INQ transmits the transaction data request
+Completed activities: startEvent
+Current active activity or waiting point: INQ transmits the transaction data request
+Token position / execution status: token is at INQ transmits the transaction data request; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Response time limit (hours): 24)
+Applicable rules: Rule 1 (The INQ must submit a transaction data request containing valid credentials for the IP to examine.)
+Possible next activities: IP checks the request of the INQ
+
+STATE-03: Resource-dependent / waiting
+Current process position: IP answers the question of the INQ
+Completed activities: startEvent, INQ transmits the transaction data request, IP checks the request of the INQ
+Current active activity or waiting point: IP answers the question of the INQ
+Token position / execution status: token is at IP answers the question of the INQ; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Response time limit (hours): 24)
+Applicable rules: Rule 1 (The INQ must submit a transaction data request containing valid credentials for the IP to examine.)
+Possible next activities: endEvent
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: startEvent, INQ transmits the transaction data request, IP checks the request of the INQ, IP answers the question of the INQ
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Response time limit (hours): 24)
+Applicable rules: Rule 1 (The INQ must submit a transaction data request containing valid credentials for the IP to examine.)
+Possible next activities: Process completion

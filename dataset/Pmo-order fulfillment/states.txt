@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Place order
+Completed activities: start
+Current active activity or waiting point: Place order
+Token position / execution status: token is at Place order; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of warehouse staff: 30)
+Applicable rules: Rule 1 (When a customer places an order, the system must record the full order details before payment processing begins.)
+Possible next activities: Record order details
+
+STATE-02: Intermediate / decision
+Current process position: Receive back-order
+Completed activities: start, Place order, Record order details, Process payment, exclusiveGateway, Check stock availability, Notify about failed payment, exclusiveGateway, exclusiveGateway, Initiate back-order, exclusiveGateway, end, Inform customer about delay, Pick items from warehouse
+Current active activity or waiting point: Receive back-order
+Token position / execution status: token is at Receive back-order; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of warehouse staff: 30)
+Applicable rules: Rule 1 (When a customer places an order, the system must record the full order details before payment processing begins.)
+Possible next activities: exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Update inventory levels
+Completed activities: start, Place order, Record order details, Process payment, exclusiveGateway, Check stock availability, Notify about failed payment, exclusiveGateway, exclusiveGateway, Initiate back-order, exclusiveGateway, end, Inform customer about delay, Pick items from warehouse, Receive back-order, Perform quality control checks, parallelGateway, Package items, Prepare shipping documents and labels, exclusiveGateway, exclusiveGateway, parallelGateway, exclusiveGateway, Prepare documentation for international orders, exclusiveGateway, Gift wrap items, Dispatch order, parallelGateway
+Current active activity or waiting point: Update inventory levels
+Token position / execution status: token is at Update inventory levels; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of warehouse staff: 30)
+Applicable rules: Rule 1 (When a customer places an order, the system must record the full order details before payment processing begins.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: exclusiveGateway
+Completed activities: start, Place order, Record order details, Process payment
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of warehouse staff: 30)
+Applicable rules: Rule 1 (When a customer places an order, the system must record the full order details before payment processing begins.)
+Possible next activities: Process refund, exclusiveGateway, Check stock availability, exclusiveGateway, parallelGateway, Customer reports issue, exclusiveGateway, Notify about failed payment, exclusiveGateway, Pick items from warehouse, end, exclusiveGateway, Gift wrap items, Prepare documentation for international orders, parallelGateway, Initiate back-order, exclusiveGateway, Process replacement

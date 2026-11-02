@@ -1,0 +1,10 @@
+Re-Add Request:
+Removed element to be restored: Give bot a sleeping break (the "Give bot a sleeping break" pause step that rests the bot before it finishes)
+
+Restoration details:
+1. Re-insert the "Give bot a sleeping break" service task in the completion branch of the farming loop: recreate the BPMN service task named "Give bot a sleeping break" on the "No" path of the "Bot finished?" gateway, so that when the bot is not yet finished it again takes a brief rest before continuing to gather.
+2. Restore the pause behavior: after a farming iteration, the bot again enters the sleeping-break pause before the loop continues, exactly as in the original model; the continuous-run bypass introduced by the removal is deleted.
+3. Reconnect the sequence flows: the "No" output of the "Bot finished?" gateway again flows into "Give bot a sleeping break", and its outgoing flow rejoins the collection loop as before, preserving the original loop topology.
+4. Restore the loop cadence: the farming loop again alternates between collecting resources and taking the scheduled resting pause until the player-set targets are reached and the "Bot finished?" condition evaluates true.
+
+The process is thereby returned to exactly its original shape: the "Give bot a sleeping break" task and its loop connections that Request4 removed are all restored.

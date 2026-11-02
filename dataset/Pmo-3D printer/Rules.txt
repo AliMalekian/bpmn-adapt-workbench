@@ -1,0 +1,15 @@
+1. The artist is given several sketches before the model project can be started.
+2. Change requests are sent to the artist until the result satisfies the customer.
+3. The plastic color is chosen only after the artist has delivered a satisfying project.
+4. If the chosen plastic color is already at home, the remaining amount must be checked.
+5. If the remaining plastic is under 100 grams, the color is put on the shopping list.
+6. If the plastic color is not available at home, it is ordered.
+7. The printer may only be turned on after the plastic is available.
+8. The printer bed and extruder must reach operational temperature before extrusion starts; continuous telemetry status reporting during heating is an optional diagnostic feature.
+9. While heating, the printer continuously sends back its status.
+10. The gcode file is generated out of the STL sent by the artist.
+11. Printing starts only after the gcode file is generated and the target temperatures are reached.
+12. The gcode is generated only from the final, approved version of the STL.
+13. The model must fit within the printer's build volume to be printable.
+14. At least 100 grams of usable plastic must be loaded before a print job can start.
+15. The print job is aborted automatically if the printer reports an error status.

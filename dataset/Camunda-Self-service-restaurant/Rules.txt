@@ -1,0 +1,15 @@
+1. A guest must pay for the meal at the till before the order can be entered into the POS system.
+2. The buzzer is activated only after the POS system confirms the guest's payment.
+3. The employee must trigger the buzzer within 1 minute after the chef reports the meal as ready.
+4. If a guest does not react to the buzzer, the employee calls for them after 5 minutes.
+5. Calls for uncollected meals are repeated at 5-minute intervals, up to 3 times in a row.
+6. A meal left in the service hatch for more than 10 minutes is discarded and re-prepared only on request.
+7. The chef prepares meals strictly in the order of POS entry.
+8. The chef places each finished meal in the service hatch and immediately informs the employee.
+9. Each guest may have only one open order at a time; the next order is accepted after the previous meal is collected.
+10. The daily meal range must offer at least 6 dishes, including one vegetarian and one gluten-free option.
+11. The service hatch may contain at most 10 finished meals at the same time.
+12. Cash payments above 50 EUR must be verified by a second employee before acceptance.
+13. Buzzer units with a battery level below 20% must not be handed to guests.
+14. The restaurant is limited to 120 active buzzers at any moment.
+15. Guests who miss three buzzer calls and do not appear within 30 minutes lose their meal and payment claim.

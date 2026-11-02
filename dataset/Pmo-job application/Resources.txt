@@ -1,0 +1,13 @@
+Number of registered job seekers: 5,000
+Number of registered companies: 250
+Application confirmation deadline (days): 14
+Company rating deadline (days): 30
+Minimum probation length (months): 1
+Maximum probation length (months): 6
+Mutual rating window (days): 7
+Review visibility delay (years): 1
+Rating scale levels (A to F): 6
+Maximum weekly reporting requirement (applications): 20
+Report discrepancy flag threshold: 2
+Active job offers in the platform: 1,200
+Job offer recommendation limit per day: 10

@@ -1,0 +1,15 @@
+1. A product is withdrawn from stock only when the available quantity is at least equal to the ordered quantity.
+2. An out-of-stock product is automatically reordered from the wholesaler on the same working day the shortage is identified.
+3. If a reordered product takes more than 10 days to arrive, a delivery delay penalty is automatically demanded from the wholesaler.
+4. Every arrived product must be registered in the stock management system before it can fulfill an order.
+5. An order is eligible for shipment only when every product line of the order is available in sufficient quantity.
+6. The courier is requested at the same time packing starts, once the full order is confirmed ready for shipment.
+7. Orders with an unavailable product that remain incomplete for more than 30 days are escalated to the warehouse manager.
+8. Partial shipments are not allowed unless the customer approves them in advance.
+9. The system processes the products of an order sequentially, starting from the first line item.
+10. Damaged products received from the wholesaler are returned within 3 working days and trigger an automatic replacement order.
+11. Stock falling below the reorder point of a product triggers a replenishment order in the economic order quantity.
+12. The delivery delay penalty is calculated at 2% of the product value per day of delay beyond 10 days, capped at 30%.
+13. Warehouse staff must reconcile the physical count with the system count at the end of each shift.
+14. A courier cannot be dispatched on the same day that a packing error is discovered in the shipment.
+15. If the delivery delay penalty is not paid within 15 days, the wholesaler's account is suspended.

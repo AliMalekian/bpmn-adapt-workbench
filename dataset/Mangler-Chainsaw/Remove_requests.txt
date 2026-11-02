@@ -1,0 +1,28 @@
+Request1:
+Removed element: Manual inspection of all received parts.
+Reason: To save production time (each part costs 5 minutes of manual inspection time) and to start assembly of the chainsaws faster.
+Conflict details: Conflicts with Rule 3 — all received parts must pass a manual inspection before they are added to the assembly queue, and defective parts are returned and re-ordered immediately. Removing the inspection makes it impossible to detect and return defective parts. Also conflicts with Rule 4 — assembly of a saw may only begin when 100% of its parts have been inspected and approved; without the inspection no part can be marked as approved.
+
+Request2:
+Removed element: The certified electrician check of the electric motor before shipment of an electric chainsaw.
+Reason: To shorten the delivery time of electric chainsaws and to free up the technicians for other work.
+Conflict details: Conflicts with the resource "Certified technicians: 4". These 4 certified technicians are staffed and allocated specifically to perform the certified safety check of the electric motor before shipment. Removing this operation makes the certified-technician resource allocation invalid — the process resource plan is violated because a dedicated, counted resource is assigned to this mandatory safety step that would no longer exist.
+
+Request3:
+Removed element: Sending the first produced saw to the customer as a prototype for approval.
+Reason: To deliver the full order in one shipment and to avoid the 2-week prototype approval waiting time.
+Conflict details: Conflicts with Rule 6 — the first produced saw must be sent to the customer as a prototype and must be approved before the remaining saws of the order are produced; and Rule 7 — if the prototype is rejected, up to 2 revision rounds are allowed before the order is cancelled. It also conflicts with the resource "Prototype approval deadline: 2 weeks", which allocates a fixed two-week window for the prototype approval step; removing the step contradicts this resource allocation.
+
+Request4:
+Removed element: The parallel ordering operation — ordering the required parts from the various online sources simultaneously (the parallel branches of the ordering step).
+Reason: To simplify coordination with the suppliers; ordering the parts one online source after another is easier to manage for a small order.
+Conflict details: None — fully compatible with all rules and resources. No rule requires the part ordering to be executed in parallel: Rules 1 and 2 only require that all 5 properties have been confirmed by the customer before ordering can start, and the resources (e.g., "Production capacity: 20 saws per month", "Guide bar stock (all lengths): 30 units") impose no parallelism constraint on ordering. Executing the ordering sequentially is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

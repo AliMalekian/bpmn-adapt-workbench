@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Architect
+Completed activities: Customer
+Current active activity or waiting point: Architect
+Token position / execution status: token is at Architect; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Construction budget: 15000 EUR)
+Applicable rules: Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.)
+Possible next activities: Amadon
+
+STATE-02: Intermediate / decision
+Current process position: collecting requirements
+Completed activities: Customer, Architect, Amadon, Customer, wish to build a house, startEvent, List of requirements, draft, final plan, List of guests, Project Treehouse, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, List of requirements, draft, final plan, List of guests, Collect requirements, collect requirements
+Current active activity or waiting point: collecting requirements
+Token position / execution status: token is at collecting requirements; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Construction budget: 15000 EUR)
+Applicable rules: Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.)
+Possible next activities: send to architect
+
+STATE-03: Resource-dependent / waiting
+Current process position: Place order
+Completed activities: Customer, Architect, Amadon, Customer, wish to build a house, startEvent, List of requirements, draft, final plan, List of guests, Project Treehouse, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, List of requirements, draft, final plan, List of guests, Collect requirements, collect requirements, collecting requirements, exclusiveGateway, send requirement list to architect, send to architect, Send requirements, receive draft, receiving draft, draft received, draft complete?, Checking draft, Check feasibility, create list of materials, refine draft with additional requirements, Is draft ok?, Draft sufficient?, divide materials into categories, create building plan, adding materials, Subject to approval?, Refine requirements, order materials, search online, Report for builing permit, exclusiveGateway, exclusiveGateway, order material, Create order list, order at the hardware store, order from wholesaler/manufacturer, order on the Internet, everthing orderd?
+Current active activity or waiting point: Place order
+Token position / execution status: token is at Place order; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Construction budget: 15000 EUR)
+Applicable rules: Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.)
+Possible next activities: Calculate effort
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: Customer, Architect, Amadon, Customer, wish to build a house, startEvent, List of requirements, draft, final plan, List of guests, Project Treehouse, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, List of requirements, draft, final plan, List of guests, Collect requirements, collect requirements, collecting requirements, exclusiveGateway, send requirement list to architect, send to architect, Send requirements, receive draft, receiving draft, draft received, draft complete?, Checking draft, Check feasibility, create list of materials, refine draft with additional requirements, Is draft ok?, Draft sufficient?, divide materials into categories, create building plan, adding materials, Subject to approval?, Refine requirements, order materials, search online, Report for builing permit, exclusiveGateway, exclusiveGateway, order material, Create order list, order at the hardware store, order from wholesaler/manufacturer, order on the Internet, everthing orderd?, Place order, exclusiveGateway, continue search, parallelGateway, Calculate effort, parallelGateway, orders are processed, invite friends, parallelGateway, receive orders, invite friends, parallelGateway, Get order, Affordable?, parallelGateway, build house, parallelGateway, Call friends, Hire building company, build tree house, invite friends, Build house, exclusiveGateway, create guest list, Party, finished house, invite friends to tree house party, receive answers, create list of confirmed guests, buy snacks for tree house party
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Construction budget: 15000 EUR)
+Applicable rules: Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.)
+Possible next activities: Process completion

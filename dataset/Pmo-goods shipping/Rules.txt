@@ -1,0 +1,15 @@
+1. Shipping begins only after the secretary determines who will perform the actual shipping of the goods.
+2. Shipments above a total weight of 30 kg are classified as large amounts and require special shipping.
+3. For large amounts, the secretary must invite exactly three logistic companies to submit offers.
+4. The secretary selects one logistic company from the submitted offers based on the best combination of price and delivery time.
+5. A package label must be written by the secretary for every shipment before it is handed over.
+6. Parcel insurance is taken by the logistics department head whenever the shipment value exceeds $500.
+7. Goods must be fully packaged by the warehousemen before the logistic company picks them up.
+8. Small amounts up to 30 kg are shipped using normal post shipment.
+9. Packaged goods are prepared for pickup only after the label and any required insurance are in place.
+10. Offers from logistic companies remain valid for a maximum of 7 days after submission.
+11. The chosen logistic company must be notified of the pickup at least 1 day in advance.
+12. Unsafe or damaged packaging must be redone by the warehousemen before pickup is authorized.
+13. Normal post shipments are dispatched at the end of each working day.
+14. The secretary must keep a record of offers, selection, and insurance for every special shipment.
+15. The logistics department head approves the parcel insurance decision for every shipment above the value threshold.

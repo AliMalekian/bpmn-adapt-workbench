@@ -1,0 +1,12 @@
+Cars accepted for service per day: 8
+Number of mechanics: 4
+Number of service bays: 4
+Fine amount for missed service (EUR): 50
+Standard service interval (months): 12
+Fine deadline after notification (days): 30
+Email status update interval (days): 2
+Maximum repair days without extra update: 7
+App payment processing fee (percent): 1.5
+Longest repair wait with email updates (days): 2
+Pickerl inspection certificate fee (EUR): 15
+Annual number of service reminders handled: 1000

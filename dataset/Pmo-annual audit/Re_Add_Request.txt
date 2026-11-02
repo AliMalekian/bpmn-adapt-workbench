@@ -1,0 +1,11 @@
+Re_Add_Request:
+Restored element: The "Close audit process" task — the final step where the entire audit process is formally closed after the approved report has been distributed and archived.
+
+Detailed restoration: Request4 removed the closing task, letting the process end directly after distribution and archiving. To restore the process to its original state, the closing step must be re-added exactly as follows:
+
+1. After the audit director approves the report (Rule 10: the director reviews the report and may approve it or send it back for revisions), the final report is distributed to the executive board (Rule 13: the final report is distributed to the executive board and archived once approved) and archived.
+2. The process again performs the "Close audit process" task as its final activity, formally closing the entire annual audit process — this occurs only after the final report has been distributed and archived (Rule 14: "The entire audit process is closed only after the final report is distributed and archived").
+3. After the closing task completes, the process reaches its end, exactly as described in the original process description ("Once approved, the final report is distributed to the executive board and archived. The entire audit process is then closed").
+4. All audit working papers and evidence remain retained for at least 7 years after the audit closes (Rule 15), which the closing task formally anchors in time.
+
+This returns the process to exactly its original shape, with the closing milestone restored as the final step of the annual audit, while all 15 rules (Rules 1-15) and all 14 resource allocations (12 regional offices, 8 central audit team members, 2 audit coordinators, 4 compliance team members, 30-day submission deadline, 10-day clarification deadline, 3 max revision cycles, 3 risk categories, 5 site visits per cycle, 4 review rounds, 7-year retention period, 90-day average duration, 1 financial statement per office, 9 executive board members) continue to apply.

@@ -1,0 +1,17 @@
+Resources for Luxury Airplane Interior Production
+
+Number of interior manufacturing teams: 6
+Number of bar options offered: 5
+Maximum seats per airplane: 40
+Number of approved seat color options: 6
+Water capacity range per toilet: 2-25 liters
+Manufacturing time for interior parts: 45 days
+Interior assembly workforce: 10 technicians
+Test flight duration: 2 hours
+Number of test flights per airplane: 1
+Quality inspection stations: 3
+Spare interior part sets kept in stock: 2
+Number of fuel filler airplanes in the fleet: 1
+Interior assembly workstations: 4
+Engineers available for test protocol review: 2
+Customer confirmation deadline after test flight: 7 days

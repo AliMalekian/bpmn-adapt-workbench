@@ -1,0 +1,127 @@
+STATE-01: Initial / early execution
+Current process position: OEE check
+Completed activities: Receive information
+Current active activity or waiting point: OEE check
+Token position / execution status: token is at OEE check; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum acceptable OEE threshold: 60 percent)
+Applicable rules: Rule 1 (OEE is calculated continuously from availability, performance, and quality data collected from the machine.)
+Possible next activities: Check connection
+
+STATE-02: Intermediate / decision
+Current process position: Calculate OEE
+Completed activities: Receive information, OEE check, OEE, OEE, Start to 
+collect Info., Start measuring process, Database for machine efficency, start measurement cycle, Database for machine efficency, Category: Repair and Service
+Title: OEE
+
+Write a process, that collects relevant information from a machine, and
+calculates the Overall Equipment Efficiency (OEE). If the OEE falls below a
+certain value/percentage, stop the machine and send an email to an engineer.
+When the machine is restarted, continue measuring. When the machine is
+disconnected, stop the process.
+
+OEE = Availability × Performance × Quality, Assumptions:
+
+- System does the OEE calculations and stops the machine if necessary (and sends a mail)
+- Machine is restarted or disconnected manually
+- After restart, measuring has to be manually confirmed to continue, OEE data required, Category: Repair and Service
+Title: OEE
+
+Write a process, that collects relevant information from a machine, and
+calculates the Overall Equipment Efficiency (OEE). If the OEE falls below a
+certain value/percentage, stop the machine and send an email to an engineer.
+When the machine is restarted, continue measuring. When the machine is
+disconnected, stop the process.
+
+OEE = Availability × Performance × Quality, Assumptions:
+
+- System does the OEE calculations and stops the machine if necessary (and sends a mail)
+- Machine is restarted or disconnected manually
+- After restart, measuring has to be manually confirmed to continue, Collect information, Check connection, Collect  Information, Pick  machine, machine is connected?, parallelGateway, Process data, Is the machine 
+connected?
+Current active activity or waiting point: Calculate OEE
+Token position / execution status: token is at Calculate OEE; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum acceptable OEE threshold: 60 percent)
+Applicable rules: Rule 1 (OEE is calculated continuously from availability, performance, and quality data collected from the machine.)
+Possible next activities: OEE?, Represent the result, Value?, OEE below 50%?
+
+STATE-03: Resource-dependent / waiting
+Current process position: exclusiveGateway
+Completed activities: Receive information, OEE check, OEE, OEE, Start to 
+collect Info., Start measuring process, Database for machine efficency, start measurement cycle, Database for machine efficency, Category: Repair and Service
+Title: OEE
+
+Write a process, that collects relevant information from a machine, and
+calculates the Overall Equipment Efficiency (OEE). If the OEE falls below a
+certain value/percentage, stop the machine and send an email to an engineer.
+When the machine is restarted, continue measuring. When the machine is
+disconnected, stop the process.
+
+OEE = Availability × Performance × Quality, Assumptions:
+
+- System does the OEE calculations and stops the machine if necessary (and sends a mail)
+- Machine is restarted or disconnected manually
+- After restart, measuring has to be manually confirmed to continue, OEE data required, Category: Repair and Service
+Title: OEE
+
+Write a process, that collects relevant information from a machine, and
+calculates the Overall Equipment Efficiency (OEE). If the OEE falls below a
+certain value/percentage, stop the machine and send an email to an engineer.
+When the machine is restarted, continue measuring. When the machine is
+disconnected, stop the process.
+
+OEE = Availability × Performance × Quality, Assumptions:
+
+- System does the OEE calculations and stops the machine if necessary (and sends a mail)
+- Machine is restarted or disconnected manually
+- After restart, measuring has to be manually confirmed to continue, Collect information, Check connection, Collect  Information, Pick  machine, machine is connected?, parallelGateway, Process data, Is the machine 
+connected?, Calculate OEE
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum acceptable OEE threshold: 60 percent)
+Applicable rules: Rule 1 (OEE is calculated continuously from availability, performance, and quality data collected from the machine.)
+Possible next activities: Calculate new OEE, Calculate OEE, Collect information from machine, Send engineer an email, End, Machine Restarted, parallelGateway, change parts, restart machine, Machine operating normally /
+Machine disconnected, exclusiveGateway, Repair the issue
+
+STATE-04: Near completion / completed
+Current process position: End of measuring process
+Completed activities: Receive information, OEE check, OEE, OEE, Start to 
+collect Info., Start measuring process, Database for machine efficency, start measurement cycle, Database for machine efficency, Category: Repair and Service
+Title: OEE
+
+Write a process, that collects relevant information from a machine, and
+calculates the Overall Equipment Efficiency (OEE). If the OEE falls below a
+certain value/percentage, stop the machine and send an email to an engineer.
+When the machine is restarted, continue measuring. When the machine is
+disconnected, stop the process.
+
+OEE = Availability × Performance × Quality, Assumptions:
+
+- System does the OEE calculations and stops the machine if necessary (and sends a mail)
+- Machine is restarted or disconnected manually
+- After restart, measuring has to be manually confirmed to continue, OEE data required, Category: Repair and Service
+Title: OEE
+
+Write a process, that collects relevant information from a machine, and
+calculates the Overall Equipment Efficiency (OEE). If the OEE falls below a
+certain value/percentage, stop the machine and send an email to an engineer.
+When the machine is restarted, continue measuring. When the machine is
+disconnected, stop the process.
+
+OEE = Availability × Performance × Quality, Assumptions:
+
+- System does the OEE calculations and stops the machine if necessary (and sends a mail)
+- Machine is restarted or disconnected manually
+- After restart, measuring has to be manually confirmed to continue, Collect information, Check connection, Collect  Information, Pick  machine, machine is connected?, parallelGateway, Process data, Is the machine 
+connected?, Calculate OEE, exclusiveGateway, sending request, End process, Get quality data, Get availability data, Get performance data, exclusiveGateway, Report Repair and Service center, exclusiveGateway, Value?, parallelGateway, safe data, parallelGateway, Calculate OEE, exclusiveGateway, Collect information from machine, parallelGateway, continue measuring, Collect unplanned Stops, Collect planned Stops, Cloud upload, Calculate OEE, OEE?, End, Calculate OEE, Send an email, Stop the machine, disconnected?, inclusiveGateway, calculate OEE, OEE below 50%?, Keep the machine running, parallelGateway, Represent the result, parallelGateway, Machine diconnected, Summarize availability Loss, OEE Error?, Stop the machine, exclusiveGateway, exclusiveGateway, Stop machine, Send email, Is OEE is bellower than a 
+certain percentage?, Machine Restarted?, Machine disconnected, Calculate Run Time, upload messurement data, parallelGateway, Send email to  an engineer, Machine operating normally /
+Machine disconnected, Calculate new OEE, parallelGateway, Keep going, parallelGateway, Restarting Machine, Waiting for the Restart, Manufacturing time, Restart process at the beginning, stop machine, sent mail to engineer, Machine worth repairing?, Disconnected?, Restart machine, Stop the machine, exclusiveGateway, exclusiveGateway, parallelGateway, Calculate Net Run Time, parallelGateway, Disconnect the machine, exclusiveGateway, Continue machine process, Stop Process, parallelGateway, Send engineer an email, Machine Restarted, Capture Small Stops, Capture Slow Cycles, Do all parts meet quality Standards?, run machine diagnosis, exclusiveGateway, Repair the issue, Process finished, Do the diagnosis/repair, Has any engineer 
+responded?, inclusiveGateway, parallelGateway, Calculate Fully Productive Time  (OEE), exclusiveGateway, Remaining issues?, Restart the machine, Notify the Repair and Service center, Summarize Perfomance Loss Indicators, Capture Production Rejects, Capture Startup Rejects, OEE?, change parts, restart machine, Restart the machine, inclusiveGateway, End measuring process, Stop the Machine, Restart process at the beginning, Continue measuring, Summarize Quality Loss Indicators, Write Email, Machine adjustable?, Disconnect Machine, Restart Machine
+Current active activity or waiting point: End of measuring process
+Token position / execution status: token is at End of measuring process; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum acceptable OEE threshold: 60 percent)
+Applicable rules: Rule 1 (OEE is calculated continuously from availability, performance, and quality data collected from the machine.)
+Possible next activities: Process completion

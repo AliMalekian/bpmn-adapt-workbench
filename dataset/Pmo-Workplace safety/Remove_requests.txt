@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Log report into tracking system" task — the step where an incident report is recorded in the tracking system.
+Reason: Removing the logging step would let the incident be handled directly by the assigned team without a formal tracking-system record, cutting the administrative logging workload.
+Conflict details: This removal directly conflicts with Rule 1 ("Every incident report is logged into the tracking system within 24 hours of it being reported") — the logging task is exactly what this rule mandates. It also conflicts with Rule 2 ("An incident is assigned to the appropriate team no later than one working day after it is logged"), since the assignment depends on a logged record existing first.
+
+Request2:
+Removed element: The "Notify all stakeholders" task — the step where all stakeholders are notified after the incident report is closed.
+Reason: Removing the stakeholder notification step would eliminate the closing communication after an incident is resolved.
+Conflict details: This removal conflicts with the resource "Stakeholder notification deadline (days): 3" — this resource defines the 3-working-day deadline for notifying stakeholders after an incident report is closed, and the notification task is the step that fulfills that deadline; without the task the resource has no application. It also conflicts with the resource "Incident tracking system users: 45", since these 45 users are the stakeholders whose accounts receive the closure notifications in the tracking system. Rule 8 ("All stakeholders must be notified within 3 working days after the incident report is closed") is likewise violated.
+
+Request3:
+Removed element: The "Identify cause of incident" task — the step where the team identifies the root cause of the incident.
+Reason: Removing the root-cause identification step would let the team skip the cause analysis and proceed directly to implementing a correction, shortening the overall resolution.
+Conflict details: This removal conflicts with Rule 3 ("Each assigned team must complete the investigation and root cause analysis within 14 days") — the root-cause identification is the core of the mandated investigation. It also conflicts with the resource "Investigation completion deadline (days): 14", which is the deadline under which the root-cause analysis must be completed. Rule 4 ("Corrective actions must be proposed for every incident with an identified root cause") also depends on having a root cause identified.
+
+Request4:
+Removed element: The "Change policy" task — the policy-change corrective action, one of the three ways a proposed solution can be implemented (fix, training, or policy change).
+Reason: The other two implementation routes — "Implement fix" and "Conduct training" — remain available for corrective actions. Removing only the policy-change path keeps the resolution phase functional while reducing the administrative overhead of policy-release reviews.
+Conflict details: None — fully compatible with all rules and resources. Rule 13 states that IF a policy change is used as a corrective action, it must be reviewed by the compliance team before release; it does not require that policy change be offered as a corrective-action option. No rule mandates that any incident be resolved by changing policy. No resource in Resources.txt is tied to policy changes. All 14 resources remain fully valid and operational (24-hour logging deadline, 14-day investigation deadline, 5-day high-severity action deadline, 3-day stakeholder notification deadline, 90-day recurrence window, 45 tracking-system users, 3 safety officers, 8 safety committee members, 600 reports/year, 30-day training deadline, 120 max open incidents, 2 audits/year, 4 safety equipment inspections/year, 6 emergency drills/year).
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

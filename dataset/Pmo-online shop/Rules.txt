@@ -1,0 +1,15 @@
+1. A user must log in to their account before starting any purchase order.
+2. The user may select items and set the payment method simultaneously, but both must be completed before payment.
+3. The payment method must be either a full payment or an installment agreement.
+4. Installment agreements are limited to 12 monthly installments and require a minimum purchase value of $100.
+5. The free reward must be selected after the items are selected, but it is independent of the payment activities.
+6. The reward value depends on the purchase value and must not exceed 20% of the order value.
+7. A chosen reward may be changed by the user at any time until the payment has been completed.
+8. Items are delivered only after the payment or the installment agreement has been successfully completed.
+9. The user has the right to return delivered items for exchange within 30 days of delivery.
+10. Every returned item triggers a new delivery of the replacement item.
+11. A return is accepted only if the item is unused and returned in its original packaging.
+12. When an exchange is requested, returned items must be received before replacement shipping; returns handled for immediate refund or store credit do not gate replacement processing.
+13. If an installment payment is missed, the account is blocked from placing new orders until the payment is settled.
+14. Delivery is free for orders above $50; otherwise a fixed $5 delivery fee is charged.
+15. Rewards apply to a single order only and cannot be combined across multiple orders.

@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: exclusiveGateway
+Completed activities: start
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for an Online Ordering and Delivery Platform)
+Applicable rules: Rule 1 (Orders may be placed through the online platform or by phone between 8:00 and 20:00 local time.)
+Possible next activities: Customer places order online, Generate and send order confirmation, Customer places order over the phone, Process customer feedback or returns, Successful delivery, exclusiveGateway, end, exclusiveGateway, Monitor shipment
+
+STATE-02: Intermediate / decision
+Current process position: parallelGateway
+Completed activities: start, exclusiveGateway, Customer places order online, Customer places order over the phone, exclusiveGateway, Generate and send order confirmation
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for an Online Ordering and Delivery Platform)
+Applicable rules: Rule 1 (Orders may be placed through the online platform or by phone between 8:00 and 20:00 local time.)
+Possible next activities: Generate shipping label, Pick and pack items, Hand over order to logistics provider
+
+STATE-03: Resource-dependent / waiting
+Current process position: Monitor shipment
+Completed activities: start, exclusiveGateway, Customer places order online, Customer places order over the phone, exclusiveGateway, Generate and send order confirmation, parallelGateway, Generate shipping label, Pick and pack items, parallelGateway, Hand over order to logistics provider, Send tracking information to customer, exclusiveGateway
+Current active activity or waiting point: Monitor shipment
+Token position / execution status: token is at Monitor shipment; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for an Online Ordering and Delivery Platform)
+Applicable rules: Rule 1 (Orders may be placed through the online platform or by phone between 8:00 and 20:00 local time.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, exclusiveGateway, Customer places order online, Customer places order over the phone, exclusiveGateway, Generate and send order confirmation, parallelGateway, Generate shipping label, Pick and pack items, parallelGateway, Hand over order to logistics provider, Send tracking information to customer, exclusiveGateway, Monitor shipment, exclusiveGateway, Successful delivery, exclusiveGateway, Process customer feedback or returns, exclusiveGateway
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for an Online Ordering and Delivery Platform)
+Applicable rules: Rule 1 (Orders may be placed through the online platform or by phone between 8:00 and 20:00 local time.)
+Possible next activities: Process completion

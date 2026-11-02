@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Login task (the step in which the user logs in to their account before starting any purchase order).
+Current token position: Immediately before Login task (the step in which the user logs in to their account before starting any purchase order) on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of registered users: 40,000)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → Login task (the step in which the user logs in to their account before starting any purchase order) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Login task (the step in which the user logs in to their account before starting any purchase order).
+Current token position: Immediately before Login task (the step in which the user logs in to their account before starting any purchase order) on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 1 (A user must log in to their account before starting any purchase order.), Rule 13 (If an installment payment is missed, the account is blocked from placing new orders until the payment is settled.)
+Expected execution path: Follow the original predecessor → Login task (the step in which the user logs in to their account before starting any purchase order) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Login task (the step in which the user logs in to their account before starting any purchase order).
+Current token position: Immediately before Login task (the step in which the user logs in to their account before starting any purchase order) on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of registered users: 40,000)
+Relevant rules: Rule 1 (A user must log in to their account before starting any purchase order.), Rule 13 (If an installment payment is missed, the account is blocked from placing new orders until the payment is settled.)
+Expected execution path: Follow the original predecessor → Login task (the step in which the user logs in to their account before starting any purchase order) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate restored process activity.
+Current token position: Immediately before restored process activity on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → restored process activity → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

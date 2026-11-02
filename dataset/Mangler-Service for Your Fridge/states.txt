@@ -1,0 +1,61 @@
+STATE-01: Initial / early execution
+Current process position: strange noise from the fridge
+Completed activities: noise description
+Current active activity or waiting point: strange noise from the fridge
+Token position / execution status: token is at strange noise from the fridge; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of central service center staff: 8)
+Applicable rules: Rule 1 (The customer must describe the symptoms and state the fridge type when contacting the central service center.)
+Possible next activities: Describing the noise
+
+STATE-02: Intermediate / decision
+Current process position: Start
+Completed activities: noise description, strange noise from the fridge, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, noise description, Describe symptoms, noise and mention the type of fridge, startEvent, dercribe the sypmptoms 
+in a mail, DefaultInputSet, DefaultOutputSet, send the mail to the central fridge service center, CFSC selects a local service facility, LSF makes an appointment, LSF arrives at random time, LSF starts to repair the fridge, exclusiveGateway, exclusiveGateway, exclusiveGateway, Employee scans the parts in the stock, exclusiveGateway, Employees look up the stock with the additional parts, LSF repairs the fridge, confirm that the fridge is repaired, rate the service facility, don´t rate the service facility, exclusiveGateway, exclusiveGateway, endEvent, parallelGateway, parallelGateway, LSF gets back to 
+the fridge, Employees get to the right stock, Describe symptoms, noise and mention the type of fridge, Symptoms, Symptoms, Type of fridge, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Fridge makes 
+strange noises, Symptoms, Symptoms, Type of fridge, Type of fridge
+Current active activity or waiting point: Start
+Token position / execution status: token is at Start; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of central service center staff: 8)
+Applicable rules: Rule 1 (The customer must describe the symptoms and state the fridge type when contacting the central service center.)
+Possible next activities: The fridge produces strange noises, Check the sound of the fridge
+
+STATE-03: Resource-dependent / waiting
+Current process position: Availability of customer
+Completed activities: noise description, strange noise from the fridge, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, noise description, Describe symptoms, noise and mention the type of fridge, startEvent, dercribe the sypmptoms 
+in a mail, DefaultInputSet, DefaultOutputSet, send the mail to the central fridge service center, CFSC selects a local service facility, LSF makes an appointment, LSF arrives at random time, LSF starts to repair the fridge, exclusiveGateway, exclusiveGateway, exclusiveGateway, Employee scans the parts in the stock, exclusiveGateway, Employees look up the stock with the additional parts, LSF repairs the fridge, confirm that the fridge is repaired, rate the service facility, don´t rate the service facility, exclusiveGateway, exclusiveGateway, endEvent, parallelGateway, parallelGateway, LSF gets back to 
+the fridge, Employees get to the right stock, Describe symptoms, noise and mention the type of fridge, Symptoms, Symptoms, Type of fridge, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Fridge makes 
+strange noises, Symptoms, Symptoms, Type of fridge, Type of fridge, Start, Start, Describing the noise, parallelGateway, The fridge produces strange noises, Check the sound of the fridge, exclusiveGateway, Describe the symptoms, Collect fridge type data, The user hears the strange noises, Fridge produces 
+strange noice?, collect all data, searching  for the type, parallelGateway, parallelGateway, Fridge repaired, Check the type of the fridge, exclusiveGateway, Send a report to the fridge service center, The user describes the syptoms, The user states the type of the fridge, Record the noice of the fridge, send mail to service center, Select local service facility, parallelGateway, Find the website of Central Fridge Service Center, selected firm contacts you, exclusiveGateway, The user sends the information to the central fridge service, Start creating a ticket about this issue, contact via phone, answer mail, Schedule an appointment for fridge repair, The central fridge service center receives the information, parallelGateway, exclusiveGateway, Wait until service 
+facility arrives, The central fridge service selects a local service facility, Upload audio sound recording, Describe the symptoms, Write the type of the fridge, make an appointment, Repair the fridge, The service facility makes an appointment through its own way of communication, parallelGateway, service team arrives, Additional parts needed?, The service facility arrive at a random time, Select an appropriate country and  city, repair parts?, Confirm that fridge is okay, Parts in stock?
+Current active activity or waiting point: Availability of customer
+Token position / execution status: token is at Availability of customer; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of central service center staff: 8)
+Applicable rules: Rule 1 (The customer must describe the symptoms and state the fridge type when contacting the central service center.)
+Possible next activities: The service facility start the repairing, The service facility makes an appointment through its own way of communication
+
+STATE-04: Near completion / completed
+Current process position: Rating the service facility
+Completed activities: noise description, strange noise from the fridge, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, noise description, Describe symptoms, noise and mention the type of fridge, startEvent, dercribe the sypmptoms 
+in a mail, DefaultInputSet, DefaultOutputSet, send the mail to the central fridge service center, CFSC selects a local service facility, LSF makes an appointment, LSF arrives at random time, LSF starts to repair the fridge, exclusiveGateway, exclusiveGateway, exclusiveGateway, Employee scans the parts in the stock, exclusiveGateway, Employees look up the stock with the additional parts, LSF repairs the fridge, confirm that the fridge is repaired, rate the service facility, don´t rate the service facility, exclusiveGateway, exclusiveGateway, endEvent, parallelGateway, parallelGateway, LSF gets back to 
+the fridge, Employees get to the right stock, Describe symptoms, noise and mention the type of fridge, Symptoms, Symptoms, Type of fridge, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Fridge makes 
+strange noises, Symptoms, Symptoms, Type of fridge, Type of fridge, Start, Start, Describing the noise, parallelGateway, The fridge produces strange noises, Check the sound of the fridge, exclusiveGateway, Describe the symptoms, Collect fridge type data, The user hears the strange noises, Fridge produces 
+strange noice?, collect all data, searching  for the type, parallelGateway, parallelGateway, Fridge repaired, Check the type of the fridge, exclusiveGateway, Send a report to the fridge service center, The user describes the syptoms, The user states the type of the fridge, Record the noice of the fridge, send mail to service center, Select local service facility, parallelGateway, Find the website of Central Fridge Service Center, selected firm contacts you, exclusiveGateway, The user sends the information to the central fridge service, Start creating a ticket about this issue, contact via phone, answer mail, Schedule an appointment for fridge repair, The central fridge service center receives the information, parallelGateway, exclusiveGateway, Wait until service 
+facility arrives, The central fridge service selects a local service facility, Upload audio sound recording, Describe the symptoms, Write the type of the fridge, make an appointment, Repair the fridge, The service facility makes an appointment through its own way of communication, parallelGateway, service team arrives, Additional parts needed?, The service facility arrive at a random time, Select an appropriate country and  city, repair parts?, Confirm that fridge is okay, Parts in stock?, Availability of customer, Forward ticket to the local service facility, Parts are missing, fridge gets repaired, Submit a rating?, Collect additional parts in warehouse, Service orders additional parts, The service facility start the repairing, Update ticket with the new information, system check of the storage, checking if its ok, Rapair is process over, Rate Service Facility, Additional parts arrive, Fixing of fridge with
+needed parts, Review ticket and audio recording, exclusiveGateway, exclusiveGateway, Evaluate Rating, The service facility fixes the fridge, The service facility did not fix the frigde, Local Service Facility suggests an appointment, rating the service?, Rapair process over, The customer checks the fridge, The service facility waits 
+for the parts in order to
+fix the fridge, An appointment 
+time fits?, repaired fridge, rate the service, Confirmation about
+the working of the fridge, Arriving to the customer, repaired fridge, The customer confirms to the service facility that the repairing is okay, The customer states asks for a new appointment, All necessary 
+parts available?, The user can rate the service facility, Order the necessary parts, Repair the fridge, exclusiveGateway, parallelGateway, The service facility can view
+the rating, End without rating, Request a confirmation that the fridge has been repaired, Request the closure of  the ticket, End with rating, parallelGateway, Test if the fridge works, Does the fridge 
+work properly?, Close the ticket, Want to rate 
+the service facility?
+Current active activity or waiting point: Rating the service facility
+Token position / execution status: token is at Rating the service facility; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of central service center staff: 8)
+Applicable rules: Rule 1 (The customer must describe the symptoms and state the fridge type when contacting the central service center.)
+Possible next activities: Fridge repaired

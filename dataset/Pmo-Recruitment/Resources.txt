@@ -1,0 +1,17 @@
+Resources for the Recruitment and Onboarding Process
+
+Number of job boards used for posting: 3
+Application window after posting: 14 days
+Number of HR recruiters: 4
+Number of hired HR interviewer candidates per week: 10
+Number of interview panel members: 3
+Maximum total hiring process time: 60 days
+Number of paid job description templates: 10
+Salary band width for negotiations: 10 percent
+Number of reference checks per shortlisted candidate: 2
+Interview slots reserved per candidate: 3
+Number of onboarding paperwork documents: 8
+Orientation duration: 1 day
+Number of training modules for new hires: 6
+New hire trial period: 6 months
+Number of open positions tracked at once: 15

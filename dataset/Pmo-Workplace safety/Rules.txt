@@ -1,0 +1,15 @@
+1. Every incident report is logged into the tracking system within 24 hours of it being reported.
+2. An incident is assigned to the appropriate team no later than one working day after it is logged.
+3. Each assigned team must complete the investigation and root cause analysis within 14 days.
+4. Corrective actions must be proposed for every incident with an identified root cause.
+5. High-severity incidents must have corrective actions implemented within 5 working days.
+6. A corrective action is closed only after its effectiveness has been verified during the follow-up.
+7. Incident reports are closed only after the follow-up confirms the issue will not recur.
+8. All stakeholders must be notified within 3 working days after the incident report is closed.
+9. An incident is re-opened if a similar issue recurs within 90 days of closure.
+10. Safety incidents require immediate notification to the safety officer within 2 hours of the report.
+11. Training-based corrective actions must be completed by all affected employees within 30 days.
+12. Technical issues are prioritized by severity, with critical issues handled within 24 hours.
+13. A policy change as a corrective action must be reviewed by the compliance team before release.
+14. Customer-reported incidents receive confirmation of receipt within one working day.
+15. Recurring incidents of the same type are escalated to the safety committee after the third occurrence in a quarter.

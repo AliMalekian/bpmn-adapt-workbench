@@ -1,0 +1,28 @@
+Request1:
+Removed element: The rejection feedback path — specifically, the step where "the application is returned to the applicant/employee" upon rejection by the supervisor.
+Reason: This step is proposed for removal to simplify the rejection workflow, assuming that the supervisor's rejection decision is sufficient and the application does not need to be formally returned to the employee.
+Conflict details: This removal conflicts with Rule 10, which states: "After a rejection, the employee may submit a revised request no earlier than 3 working days after receiving the rejection notification." Removing the step where the application is returned to the employee means the employee never receives the rejection notification. Without this notification, the employee cannot know when the 3-day waiting period begins, making Rule 10 unenforceable and directly violated.
+
+Request2:
+Removed element: The step where "the request is received by the immediate supervisor of the employee requesting the vacation" — specifically, the supervisor's receipt and intake of the vacation request.
+Reason: This step is proposed for removal under the assumption that the supervisor can act on vacation requests through other channels (e.g., a shared dashboard) without formally receiving each individual request.
+Conflict details: This removal conflicts with Resource 7: "Supervisor approval deadline: 2 working days." This resource defines the time limit within which the supervisor must act after receiving a request. If the supervisor never formally receives the request, this deadline constraint cannot be applied, creating a conflict with the resource structure. Additionally, it conflicts with Resource 11: "Number of vacation requests processed per quarter: 200." This throughput metric assumes a functioning pipeline where requests are received and processed by supervisors; removing the receiving step breaks this pipeline.
+
+Request3:
+Removed element: The supervisor's decision step — specifically, "the supervisor must approve or reject the request."
+Reason: This step is proposed for removal to allow vacation requests to be auto-processed based on predefined rules, eliminating the need for manual supervisor approval or rejection.
+Conflict details: This removal conflicts with Rule 3, which states: "The immediate supervisor must approve or reject a vacation request within 2 working days of receiving it." The rule explicitly mandates that the supervisor must make an approval or rejection decision, and removing this step directly violates this requirement. Additionally, this removal conflicts with Resource 7: "Supervisor approval deadline: 2 working days." This resource specifies the deadline for the supervisor's decision; removing the decision step renders this deadline resource meaningless and unenforceable.
+
+Request4:
+Removed element: The "review the rejection reasons" sub-element within the rejection feedback path — specifically, the part where the employee reviews the reasons for the rejection after the application is returned.
+Reason: This sub-element is proposed for removal to simplify the rejection feedback, as the employee would still be notified of the rejection through the application return but would not receive detailed reasons.
+Conflict details: None — fully compatible with all rules and resources. Rule 10 refers to "rejection notification" (the application being returned to the employee), which still occurs without the reasons review. No rule in Rules.txt specifically requires that rejection reasons be provided or reviewed by the employee. No resource in Resources.txt is tied to the rejection reasons review mechanism. The process remains fully functional: the employee receives the returned application (the rejection notification), knows they were rejected, and can submit a revised request after 3 working days per Rule 10.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

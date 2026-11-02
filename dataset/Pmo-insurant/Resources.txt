@@ -1,0 +1,13 @@
+Number of claims officers: 12
+Subrogation claim handling budget: $250,000
+Maximum claim value for automatic recourse: $5,000
+Objection/agreement deadline (days): 14
+Collection agency fee rate: 15%
+Write-off review threshold (days): 180
+Case closure turnaround (business days): 10
+Minimum claim value for collection action: $200
+Reminder follow-up interval (days): 7
+Senior claims officer approval threshold: $5,000
+Maximum open cases per officer: 40
+Dispute resolution time (business days): 5
+Booking correction deadline (business days): 3

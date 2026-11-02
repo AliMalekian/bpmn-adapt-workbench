@@ -1,0 +1,7 @@
+Request1:
+Removed element: End event of the process (the final termination node)
+Restoration details: This request restores, in full, everything that Request4 removed from the transaction-data process so that the process returns to its exact original shape:
+- The end event (EndEvent_1 in the model) is re-inserted as the termination node of the process. It is reconnected exactly as before: the "IP answers the question of the INQ" task feeds into the end event via the final sequence flow (SequenceFlow_4), so the process again terminates with the end event after the IP has answered the INQ's question.
+- No sequence flow that existed in the original model is missing: the restored flow is StartEvent_1 -> "INQ transmits the transaction data request" -> "IP checks the request of the INQ" -> "IP answers the question of the INQ" -> EndEvent_1.
+- The diagnostics of the process are thereby restored: every case of the data exchange (transmission of the requested data or rejection, per Rule 4 and Rule 3 of Rules.txt) again closes through the end event, and the process chart (BPMN diagram) again shows the complete closed loop it had originally.
+After this restoration the transaction-data process is exactly as modeled originally: a linear three-task process that starts at the start event, transmits the request, checks it, answers it, and terminates at the end event. The process is back to its original state.

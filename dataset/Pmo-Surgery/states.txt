@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Prepare implements
+Completed activities: startEvent
+Current active activity or waiting point: Prepare implements
+Token position / execution status: token is at Prepare implements; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Operating room capacity (procedures per day): 4)
+Applicable rules: Rule 1 (The procedure may begin only after the implements are sterilized, the hands are washed, and the doctor is in sterile clothing.)
+Possible next activities: Hand washing
+
+STATE-02: Intermediate / decision
+Current process position: Vein identification method
+Completed activities: startEvent, Prepare implements, Hand washing, Get in sterile clothes, Clean puncture area, Drap puncture zone, Ultrasound configuration, Gel in probe, Cover probe, Put sterile gel, Position probe, Position patient
+Current active activity or waiting point: Vein identification method
+Token position / execution status: token is at Vein identification method; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Operating room capacity (procedures per day): 4)
+Applicable rules: Rule 1 (The procedure may begin only after the implements are sterilized, the hands are washed, and the doctor is in sterile clothing.)
+Possible next activities: Doppler identification, Anatomic identification, Compression identification
+
+STATE-03: Resource-dependent / waiting
+Current process position: Remove trocar
+Completed activities: startEvent, Prepare implements, Hand washing, Get in sterile clothes, Clean puncture area, Drap puncture zone, Ultrasound configuration, Gel in probe, Cover probe, Put sterile gel, Position probe, Position patient, Vein identification method, Doppler identification, Anatomic identification, Compression identification, exclusiveGateway, Anesthetize patient, exclusiveGateway, Puncture patient, Check blood return, Blood return correct ?, Drop probe, Remove syringe, Guidewire install
+Current active activity or waiting point: Remove trocar
+Token position / execution status: token is at Remove trocar; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Operating room capacity (procedures per day): 4)
+Applicable rules: Rule 1 (The procedure may begin only after the implements are sterilized, the hands are washed, and the doctor is in sterile clothing.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: startEvent, Prepare implements, Hand washing, Get in sterile clothes, Clean puncture area, Drap puncture zone, Ultrasound configuration, Gel in probe, Cover probe, Put sterile gel, Position probe, Position patient, Vein identification method, Doppler identification, Anatomic identification, Compression identification, exclusiveGateway, Anesthetize patient, exclusiveGateway, Puncture patient, Check blood return, Blood return correct ?, Drop probe, Remove syringe, Guidewire install, Remove trocar, exclusiveGateway, Check wire in long axis, Check wire in short axis, exclusiveGateway, Check wire position, Wire in good position ?, Widen pathway, Advance catheter, Remove guidewire, Check flow and reflow, Check catheter position
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Operating room capacity (procedures per day): 4)
+Applicable rules: Rule 1 (The procedure may begin only after the implements are sterilized, the hands are washed, and the doctor is in sterile clothing.)
+Possible next activities: Process completion

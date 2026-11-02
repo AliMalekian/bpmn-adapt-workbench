@@ -1,0 +1,12 @@
+HR specialists handling development plans: 3
+Mentors available in the program: 5
+Training programs offered per year: 12
+Annual training and development budget: $25,000
+Maximum development plan duration (months): 12
+Minimum milestones per development plan: 3
+Promotion review cycles per year: 2
+HR review turnaround for promotions (days): 30
+Eligible employees for development planning: 15
+Reconsideration waiting period after rejection (months): 6
+Quarterly feedback sessions per employee: 4
+Minimum passing milestone completion rate (%): 80

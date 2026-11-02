@@ -1,0 +1,40 @@
+STATE-01: Initial / early execution
+Current process position: Custom machine building
+Completed activities: Build machine
+Current active activity or waiting point: Custom machine building
+Token position / execution status: token is at Custom machine building; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Available Lego brick sets: 40)
+Applicable rules: Rule 1 (The basic design of the machine must be approved before any brick sets are ordered.)
+Possible next activities: Check registration
+
+STATE-02: Intermediate / decision
+Current process position: Report Manufacturing company
+Completed activities: Build machine, Custom machine building, New order received, startEvent, develop the basic design, order certain lego bricks set, Give the lego bricks to children, Children sort the lego parts in containers, exclusiveGateway, order missing parts individually, exclusiveGateway, start building subcomponents from the legos in the container, Finish building all the subcomponents, build the subcomponents with the parts that are here, parallelGateway, parallelGateway, testing al the parts individually, redesign the subcomponent, rebuild, exclusiveGateway, exclusiveGateway, assemble subcomponents, endEvent, exclusiveGateway, testing, exclusiveGateway, Start, Develop basic design, Check registration, exclusiveGateway, Develop Basic Design, Order necessary Lego brick sets, Is Registered?, Develop basic design, Check the stock, Sort Lego bricks according to size, Develop basic design
+Current active activity or waiting point: Report Manufacturing company
+Token position / execution status: token is at Report Manufacturing company; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Available Lego brick sets: 40)
+Applicable rules: Rule 1 (The basic design of the machine must be approved before any brick sets are ordered.)
+Possible next activities: End
+
+STATE-03: Resource-dependent / waiting
+Current process position: Reorder Lego bricks
+Completed activities: Build machine, Custom machine building, New order received, startEvent, develop the basic design, order certain lego bricks set, Give the lego bricks to children, Children sort the lego parts in containers, exclusiveGateway, order missing parts individually, exclusiveGateway, start building subcomponents from the legos in the container, Finish building all the subcomponents, build the subcomponents with the parts that are here, parallelGateway, parallelGateway, testing al the parts individually, redesign the subcomponent, rebuild, exclusiveGateway, exclusiveGateway, assemble subcomponents, endEvent, exclusiveGateway, testing, exclusiveGateway, Start, Develop basic design, Check registration, exclusiveGateway, Develop Basic Design, Order necessary Lego brick sets, Is Registered?, Develop basic design, Check the stock, Sort Lego bricks according to size, Develop basic design, Report Manufacturing company, Brick sets already ordered?, Order Lego Brick sets, parallelGateway, Order lego brick sets, End, Order Lego brick sets, exclusiveGateway, Hand the lego sets to children, Put big bricks in suitable container, Put medium bricks in suitable container, Put small bricks in suitable container, Sort parts into containers, Give the lego sets to the children, exclusiveGateway, parallelGateway, parallelGateway, exclusiveGateway, Sort the parts into containers, Container empty?, Sort parts into containers, Sort parts into containers, exclusiveGateway, Check the subcomponent, Reorder parts, exclusiveGateway, parallelGateway, Build subcomponents, Is more subcomponents 
+needed?, Build the next subcomponent, exclusiveGateway, Container empty?, exclusiveGateway, Assemble machine, Parts remained?, exclusiveGateway, Continue building subcomponents
+Current active activity or waiting point: Reorder Lego bricks
+Token position / execution status: token is at Reorder Lego bricks; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Available Lego brick sets: 40)
+Applicable rules: Rule 1 (The basic design of the machine must be approved before any brick sets are ordered.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: End
+Completed activities: Build machine, Custom machine building, New order received, startEvent, develop the basic design, order certain lego bricks set, Give the lego bricks to children, Children sort the lego parts in containers, exclusiveGateway, order missing parts individually, exclusiveGateway, start building subcomponents from the legos in the container, Finish building all the subcomponents, build the subcomponents with the parts that are here, parallelGateway, parallelGateway, testing al the parts individually, redesign the subcomponent, rebuild, exclusiveGateway, exclusiveGateway, assemble subcomponents, endEvent, exclusiveGateway, testing, exclusiveGateway, Start, Develop basic design, Check registration, exclusiveGateway, Develop Basic Design, Order necessary Lego brick sets, Is Registered?, Develop basic design, Check the stock, Sort Lego bricks according to size, Develop basic design, Report Manufacturing company, Brick sets already ordered?, Order Lego Brick sets, parallelGateway, Order lego brick sets
+Current active activity or waiting point: End
+Token position / execution status: token is at End; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Available Lego brick sets: 40)
+Applicable rules: Rule 1 (The basic design of the machine must be approved before any brick sets are ordered.)
+Possible next activities: Process completion

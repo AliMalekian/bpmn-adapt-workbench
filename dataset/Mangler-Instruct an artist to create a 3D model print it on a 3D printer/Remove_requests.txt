@@ -1,0 +1,29 @@
+Request1:
+Removed element: The step of sending at least 3 reference sketches to the artist before the 3D model project starts.
+Reason: To give the artist only a verbal description of the desired model and start the project faster.
+Conflict details: Conflicts with Rule 1 — the artist must receive at least 3 reference sketches before starting the 3D model project. It also conflicts with the resource "Minimum sketches sent to artist: 3", which defines exactly how many sketches the sketch-sending step must send; removing the step makes this resource meaningless and violates the resource plan.
+
+Request2:
+Removed element: The continuous status-reporting operation of the 3D printer (the printer reports its heating status continuously until both temperatures are reached).
+Reason: To silence the printer's status messages and reduce network traffic during heating.
+Conflict details: Conflicts with the resource "PLA bed temperature: 60 degrees Celsius" and "Extruder temperature: 200 degrees Celsius". These two temperature resources are the target values whose achievement the continuous status reporting is designed to track — the continuous status channel is the resource mechanism that reports when these temperatures are reached. Removing the continuous status reporting violates the resource plan, because the temperature resources can no longer be monitored. It also conflicts with Rule 10 — the printer reports its heating status continuously until both temperatures are reached.
+
+Request3:
+Removed element: The 12-hour pause step for bed re-levelling during long prints (prints longer than 12 hours must pause for bed re-levelling before continuing).
+Reason: To let long prints run unattended without interruption.
+Conflict details: Conflicts with Rule 11 — printing time of more than 12 hours requires a pause for bed re-levelling before continuing. It also conflicts with the resource "Maximum print duration before pause: 12 hours", which defines the duration threshold of this pause step; removing the step makes the threshold resource meaningless and violates the resource plan.
+
+Request4:
+Removed element: Optional administrative archiving and logging step
+Reason: Proposed by operations to streamline case closure by omitting optional secondary archiving overhead.
+Conflict details: None -- fully compatible with all rules and resources. Operates as an ancillary, non-blocking administrative task; core business rules and resource constraints remain fully intact.
+
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

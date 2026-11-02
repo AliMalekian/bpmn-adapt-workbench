@@ -1,0 +1,28 @@
+Request1:
+Removed element: Waiting for the bank to confirm the payment
+Reason: The bank confirmation step is proposed for removal because the customer has already entered valid payment data, so waiting for bank confirmation delays the order unnecessarily.
+Conflict details: This removal conflicts with Rule 6, which states: "The customer must enter valid payment data and wait for the bank to confirm the payment." Removing the wait step makes it impossible to satisfy Rule 6, as the order would be finished without bank confirmation. It also breaks Rule 7: "Payment must be confirmed by the bank within 10 minutes of submission," which cannot be evaluated if no bank confirmation occurs.
+
+Request2:
+Removed element: The customer entering the shipping address
+Reason: It is proposed that the shipping address is unnecessary because the customer can pick up the order in person at the shop, so no shipping details are needed.
+Conflict details: This removal conflicts with Resource "Number of shipping addresses allowed per order: 1." The shipping address field is an integral part of the order form, and without it the order can never contain the shipping address the resource defines. It also conflicts with Resource "Number of billing addresses allowed per order: 1" (the billing address is entered relative to the shipping address) and Resource "Number of order confirmation channels: 2" (order confirmation depends on the completed address step). The absence of a shipping address means the entire address step of the order form is unworkable.
+
+Request3:
+Removed element: The customer logging in and receiving login confirmation before selecting products
+Reason: It is proposed that customers browse and order products as guests without logging in, eliminating the login step to reduce friction.
+Conflict details: This removal conflicts with Rule 1, which states: "A customer must log in and receive login confirmation from the system before selecting products." Removing login directly breaks Rule 1. It also conflicts with Resource "Number of login attempts allowed: 3" and Resource "Session timeout after inactivity: 30 minutes," both of which exist solely to manage the login session and become unused if login is removed.
+
+Request4:
+Removed element: Entering an independent billing address when it differs from the shipping address
+Reason: The process description states that an independent billing address "can be entered if the shipping address is not equal to the billing address." This is an optional convenience feature. It is proposed to remove this option and always use the shipping address for billing purposes.
+Conflict details: None -- fully compatible with all rules and resources. Rule 9 permits (but does not require) an independent billing address: "An independent billing address may be entered if it differs from the shipping address." The word "may" means the process functions correctly without it. Resource "Number of billing addresses allowed per order: 1" is unaffected, since the order still has exactly one billing address (the shipping address). No rule or resource mandates the separate billing address entry.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

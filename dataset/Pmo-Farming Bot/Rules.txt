@@ -1,0 +1,15 @@
+1. The bot gathers only the resources that the player has explicitly selected before farming starts.
+2. Up to 10 resources can be collected in parallel, and urgent resources are scheduled before less urgent ones.
+3. Tools required to gather a resource must be crafted before the dependent resource can be collected.
+4. Depending on the game logic, a tool's crafting dependencies must be satisfied first, otherwise the dependent resource is skipped.
+5. When a random natural disaster strikes, the bot's progress is set back and collection pauses until the disaster effect expires.
+6. A notification is sent to the player whenever a milestone in gathered quantity is reached.
+7. The list of resources to be farmed can be updated at any time while the bot is running.
+8. Resources may be sent to approved friends and displayed in a friend filter only after the bot has finished collecting.
+9. Brag messages to friends are published only for milestones that are marked as shareable.
+10. A natural disaster resets the gathered quantity of the affected resource by at most 20 percent.
+11. The bot halts entirely if the inventory reaches its carrying capacity, and resumes after storage is cleared.
+12. Tool durability below 10 percent forces a maintenance stop before further collection continues.
+13. Only friends who have been approved by the player may receive materials and milestone notifications.
+14. The farming scheduler checks resource priorities at most once per minute.
+15. Collection of a resource stops automatically once the player-set target quantity for that resource is reached.

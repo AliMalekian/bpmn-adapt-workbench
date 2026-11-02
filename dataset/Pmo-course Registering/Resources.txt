@@ -1,0 +1,11 @@
+Courses offered per season: 20
+Maximum participants per course: 25
+Average course fee: $120
+Maximum course registrations per user per season: 3
+Minimum free slots to display a course: 1
+Activation response time (business days): 5
+Allowed cancellation refund window (days): 7
+Eligible university partners: 12
+Course ticket validity (months): 6
+System online booking percentage: 100
+Payment processing fee (%): 2.5

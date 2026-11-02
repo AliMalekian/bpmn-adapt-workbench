@@ -1,0 +1,12 @@
+Number of courses offered per semester: 120
+Maximum participants per course: 30
+Number of eligible universities: 15
+Course registration fee: 50 EUR
+Course slot reservation validity: 48 hours
+Account activation response time: 3 days
+Number of registered users: 5000
+Total course slots per day: 600
+Course cancellation notice period: 7 days
+Number of customer support staff: 4
+Maximum courses per student per semester: 3
+Refund processing time: 14 days

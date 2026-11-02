@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Receive feedback and evaluation from supervisors" task (Task_8) in the skill-enhancement phase of the development process.
+Reason: It is proposed for removal to reduce the recurring supervisory workload and to shorten the development period, since gathering scheduled feedback from supervisors several times per employee was seen as time-consuming.
+Conflict details: This removal CONFLICTS with Rule 7 of Rules.txt: "Supervisors must provide formal feedback at least once every quarter during the development period." Removing the receive-feedback step makes it impossible for supervisors to deliver the mandatory quarterly formal feedback and for the employee to receive the periodic evaluation that the rule guarantees, so the removal cannot be executed without breaking Rule 7.
+
+Request2:
+Removed element: The mentorship component embedded in the "Create personal development plan" task (Task_2), i.e., the option that includes a mentorship track in the employee's development plan.
+Reason: It is proposed for removal to simplify development plans and to avoid the pairing, scheduling, and monitoring overhead of matching employees with mentors.
+Conflict details: This removal CONFLICTS with the resource "Mentors available in the program: 5" listed in Resources.txt. Those five mentors are an allocated, budgeted resource whose entire purpose is to staff the mentorship track of the development plans; removing the mentorship component strands this provisioned resource completely unused and contradicts the intended consumption of the allocated mentoring capacity, so the removal violates the resource plan for the process.
+
+Request3:
+Removed element: The "Conducts formal performance review" task (Task_4) - the formal HR review of the employee's performance before the promotion is approved.
+Reason: It is proposed for removal to shorten the promotion cycle by relying directly on the supervisor's confirmation that milestones were reached, skipping the separate HR review step.
+Conflict details: This removal CONFLICTS with both rules and resources. Rules: Rule 8 of Rules.txt states that "The formal performance review is conducted by HR only after the supervisor confirms that the required milestones have been reached," and Rule 9 states that "HR must complete its review of a promotion proposal within 30 days of submission"; both rules presuppose the existence of the formal HR performance-review step. In addition, Rule 14 requires all development activities to be documented and "attached to the final performance review file," which becomes meaningless if no formal review is ever conducted. Resources: the resource "HR review turnaround for promotions (days): 30" and "Promotion review cycles per year: 2" in Resources.txt are provisioned specifically so that HR can carry out the formal performance review; removing the review step contradicts this allocated HR review capacity, leaving that resource without any use.
+
+Request4:
+Removed element: The "Set new responsibilities" task (Task_10) - the post-approval step that assigns the promoted employee's new duties after the promotion is approved.
+Reason: It is proposed for removal so that the promotion is finalized with only the compensation adjustment, reducing the parallel workload immediately after approval.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt and no resource in Resources.txt requires a distinct "Set new responsibilities" step. Rule 6 of Rules.txt concerns additional responsibilities granted on a temporary basis during the development period and is unrelated to assigning the promoted role's permanent duties; Rule 11 only governs approval of the compensation adjustment (carried by the retained "Adjust compensation" task); Rules 12 and 13 concern probation eligibility and the effective date of the new role; and Rule 15 concerns mandatory training. None of these depends on a separate responsibilities-setting task. Resources such as "Eligible employees for development planning: 15" and "Promotion review cycles per year: 2" are likewise unaffected. The promotion can still be finalized and the employee can still transition into the new role, so the removal does not conflict with any rule or resource.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

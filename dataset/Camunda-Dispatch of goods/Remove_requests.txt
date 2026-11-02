@@ -1,0 +1,28 @@
+Request1:
+Removed element: "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment)
+Reason: Handling the special shipment with only a single, directly chosen logistics company would save the negotiation effort and shorten the process.
+Conflict details: Conflicts with Rule 4 ("The secretary must invite at least three logistics companies to offer for every special shipment"), which mandates exactly this minimum of three offers. It also conflicts with Rule 5 ("The selected logistics offer may not exceed the cheapest valid offer by more than 5%, otherwise department head approval is required"), because with a single offer there is no cheapest-offer baseline left against which the comparison could be evaluated. In addition, it violates Rule 15 ("Special shipping costs count against the monthly logistics budget and must be recorded on the day of booking") since a single supplier makes fair cost benchmarking impossible, and the resource "Logistics companies invited per special shipment: 3" is defined exactly to support this step.
+
+Request2:
+Removed element: "Insure parcel" task (the step where one of the logistics department heads takes out parcel insurance when necessary)
+Reason: Dropping the optional insurance step removes an extra approval and cuts handling time for the dispatch process.
+Conflict details: Conflicts with Resource "Parcel insurance coverage limit per item: 5000 EUR" and "Annual logistics budget: 250000 EUR", because the insurance coverage limit and the part of the logistics budget reserved for insurance are in place to fund exactly this step, and removing it would leave those capacities unused. It also conflicts with Resource "Parcel insurance coverage limit per item: 5000 EUR" (the insured-value ceiling cannot be exercised at all without an insurance task). Furthermore the removal violates Rule 2 ("Shipments worth more than 1000 EUR require parcel insurance before dispatch") and Rule 3 ("Parcel insurance may only be arranged by the logistics department head after written approval") and Rule 14 ("The insured value declared for a parcel must not exceed the invoice value of the goods"), because with the task gone, none of the insurance-related requirements can be fulfilled for valuable parcels.
+
+Request3:
+Removed element: "Write package label" task (the secretary step that writes the package label for normal post shipments)
+Reason: It is proposed to skip writing the package label and hand the parcel to the mail carrier directly, assuming the recipient data can be read from the invoice instead.
+Conflict details: Conflicts with Rule 8 ("Package labels must be written before goods are handed to the mail or logistics company") and Rule 12 ("Only the secretary may issue package labels; no other staff member may release parcels for shipping"), which make the label-writing step a mandatory gate before any handover. It also conflicts with the resource "Label printer throughput: 300 labels per hour", which exists specifically to produce these package labels. In addition, Rule 9 ("Standard post parcels prepared before 15:00 are dispatched on the same working day") depends on the label being written within the same-day cutoff, and the resource "Same-day dispatch cutoff time: 15:00" is thereby also affected.
+
+Request4:
+Removed element: "Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)
+Reason: Packaging is proposed as no longer necessary because goods could be handed over in bulk containers directly to the logistics company or mail, saving the physical packaging activity.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt requires an explicit packaging step (the rules govern labels, insurance, logistics selection, and pickup timing, none of which are affected), and no resource in Resources.txt is bound to the packaging task. The "Packaging boxes in stock: 5000" resource exists only as stock and does not mandate a packaging operation.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

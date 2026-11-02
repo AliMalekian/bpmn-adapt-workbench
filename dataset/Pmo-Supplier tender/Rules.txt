@@ -1,0 +1,15 @@
+1. An RFP is issued only after the company formally documents the need for a new supplier or vendor.
+2. Suppliers must submit their proposals within 30 days of the RFP issue date to be considered.
+3. Every proposal is evaluated on cost, quality, and delivery time, weighted 40%, 30%, and 30% respectively.
+4. Suppliers whose proposals fail to meet the minimum quality score of 70 out of 100 are disqualified from selection.
+5. Site visits and interviews are conducted for the top 3 ranked suppliers before a final decision is made.
+6. Contract negotiations may not exceed 45 days from the date of supplier selection.
+7. The contract is signed only after both parties agree on all negotiated terms and legal review is completed.
+8. A supplier is officially onboarded only after signing the contract and passing the vendor registration checklist.
+9. No contract can be signed without the approval of the procurement director.
+10. At least 3 qualified supplier proposals must be received, or the RFP is reissued.
+11. A supplier is disqualified if it submits conflicting pricing, false declarations, or references that cannot be verified.
+12. Delivery time commitments longer than 60 days trigger a mandatory logistics risk review.
+13. The selected supplier must sign the code of conduct and data protection agreement before execution begins.
+14. Bidding is reopened if the winning proposal's total cost exceeds the approved budget by more than 10%.
+15. The entire tender process, from RFP issue to supplier onboarding, must be completed within 120 days.

@@ -1,0 +1,15 @@
+1. The machine type and serial number must be entered and validated before an inspection can begin.
+2. All questions displayed during the inspection must be answered before proceeding to the next step.
+3. Values collected automatically from the machine are read from the sensors and displayed to the inspector.
+4. The inspector must confirm automatically collected values before they are stored in the report.
+5. A measured value outside the tolerance range triggers an additional question about the affected subsystem.
+6. The inspection sequence branches based on previous results; not all questions are asked on every run.
+7. The inspection must produce a pass or fail verdict for every checked subsystem.
+8. The energy drink bottling machine must be fully depressurized before any manual readings are taken.
+9. A failed subsystem blocks the inspection report from being finalized until a retest is performed.
+10. Senior approval is required when the final result includes 2 or more failed checks.
+11. Inspection results are archived together with the machine's serial number for 5 years.
+12. When manual tube pressure readings are performed, the value must stay between 1.2 and 1.8 bar for the filling station to pass; automated sensor monitoring may substitute for manual readings.
+13. Only an authorized inspector may start a new inspection for a given serial number.
+14. Each inspection session must be completed within 4 hours and signed off at the end.
+15. Alarms that appear during automatic collection interrupt the flow and require a manual reset of the machine.

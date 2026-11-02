@@ -1,0 +1,29 @@
+Request1:
+Removed element: Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled)
+Reason: To reduce communication overhead, the proposal is to silently cancel the order after payment failure.
+Conflict details: CONFLICTS with Rule 2 of Rules.txt ("If payment fails, the customer is notified within 24 hours and the order is cancelled.") — removing the customer notification violates this mandatory communication step. It also conflicts with Rule 3 of Rules.txt ("A payment is considered failed after 3 unsuccessful processing attempts."), because without notifying the customer the failure-retry cycle defined by the 3-attempt limit loses its meaning. The removal therefore breaks Rules 2 and 3.
+
+Request2:
+Removed element: Send shipping confirmation to customer task (the step that confirms the dispatch of the order on the day it is dispatched)
+Reason: To reduce messaging effort, the proposal is to stop sending the dispatch confirmation to the customer.
+Conflict details: CONFLICTS with Resource "Number of shipping documents preparers: 5" in Resources.txt and the shipping-document capability it funds — the shipping documents and labels prepared by these 5 preparers are the basis for the confirmation the customer receives. More directly, it conflicts with Resource "Order processing capacity per day: 2,000" because order dispatch and its confirmation are part of the 2,000-order daily capacity, and dropping the confirmation leaves customers without the shipment traceability that the dispatch documentation resource is designed to support. The removal therefore violates the shipping-documentation and processing-capacity resources.
+
+Request3:
+Removed element: Perform quality control checks task (the inspection of every picked item before it moves to the packaging stage)
+Reason: To speed up fulfillment, the proposal is to skip quality control and pack items directly after picking.
+Conflict details: CONFLICTS with Rule 8 of Rules.txt ("Quality control must check every picked item before it is moved to the packaging stage.") — removing the quality-control check violates this mandatory rule. It also conflicts with Resource "Quality control inspection ratio: 100%" in Resources.txt, which fixes the inspection ratio at 100% of all picked items. The removal therefore violates Rule 8 and the resource "Quality control inspection ratio: 100%".
+
+Request4:
+Removed element: Optional administrative archiving and logging step
+Reason: Proposed by operations to streamline case closure by omitting optional secondary archiving overhead.
+Conflict details: None -- fully compatible with all rules and resources. Operates as an ancillary, non-blocking administrative task; core business rules and resource constraints remain fully intact.
+
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

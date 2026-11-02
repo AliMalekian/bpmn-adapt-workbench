@@ -1,0 +1,30 @@
+Request1:
+Removed element: The "MPOO opposes the dismissal" task (Task_3) - the branch in which the MPOO formally opposes the dismissal and returns it to the MPON.
+Reason: It is proposed for removal to eliminate the opposition path entirely, so the MPOO can only confirm or not confirm a dismissal, simplifying the review outcome.
+Conflict details: This removal CONFLICTS with Rule 3 of Rules.txt: "The MPOO must respond by either opposing the dismissal or confirming the dismissal; no other outcome is permitted." Rule 3 explicitly requires opposition to remain one of the two permitted outcomes, so removing the "MPOO opposes the dismissal" task directly breaks Rule 3. It also breaks Rule 4 ("If the MPOO opposes the dismissal, the dismissal is returned to the MPON with a written statement of reasons") and Rule 5 (a resubmission after addressing the objections), because without the opposition task no opposed dismissal can ever be returned to the MPON.
+
+Request2:
+Removed element: The "MPON sents the dismissal to the MPOO" task (Task_1) - the opening task in which the MPON sends the dismissal to the MPOO for review.
+Reason: It is proposed for removal so that the case is treated directly as a review request handed straight to the MPOO office, skipping the formal sending step.
+Conflict details: This removal CONFLICTS with the resources in Resources.txt. The resource "Number of employees in the MPON staff: 25" denotes the MPON staff whose dismissed-member cases arrive through the formal send, and "Average dismissals processed per month: 4" quantifies the monthly dismissal volume that enters the process precisely through the MPON sending step; both resources presuppose that dismissal cases are formally sent by the MPON to the MPOO. Removing the sending task contradicts this provisioned inflow of dismissal cases. The removal also conflicts with the personnel-capacity resource "Records clerks responsible for filing: 2", because the filing clerks record cases that first arrive through the sending step.
+
+Request3:
+Removed element: The "MPOO reviews the dismissal" task (Task_2) - the step in which the MPOO reviews the dismissal received from the MPON.
+Reason: It is proposed for removal so that the MPOO immediately decides to oppose or confirm the dismissal without an explicit review step, shortening the case time line.
+Conflict details: This removal CONFLICTS with both rules and resources. Rules: Rule 2 of Rules.txt states that "The MPOO must review the dismissal within 10 working days of receiving it," and Rule 12 allows each case to be "reviewed at most twice before it is referred to the higher authority." Both rules presuppose an explicit review activity; removing the review task breaks Rule 2 and makes the review-count limit of Rule 12 meaningless. Resources: the resource "MPOO review deadline (working days): 10" in Resources.txt provisions the 10-working-day window specifically for the MPOO's review; removing the review task leaves that provisioned review capacity unused and contradicts the resource plan of the process.
+
+Request4:
+Removed element: The "MPOO confirmes the dismissal" task (Task_4) - the branch in which the MPOO confirms the dismissal of the MPON.
+Reason: It is proposed for removal in cases where the dismissal has no valid grounds: the MPOO never confirms the dismissal and only ever opposes it (or the case is referred onward), so the confirmation branch is removed from the model for such a case.
+Conflict details: None — fully compatible with all rules and resources. The removal is only proposed for the case in which the grounds for dismissal are not consistent with the applicable regulations. In that situation Rule 6 of Rules.txt ("The MPOO may confirm a dismissal only if the grounds for dismissal are consistent with the applicable regulations") means the MPOO is not permitted to confirm the dismissal anyway, and Rule 3's two-outcome constraint remains effective because the only legally available outcome in this case is opposition - so no rule is broken. Rule 7 (effectiveness date), Rule 9 (30-day appeal window after confirmation), Rule 10 (recording confirmed dismissals in the personnel file), and Rule 14 (reconsideration on new evidence) all concern confirmed dismissals; for a dismissal that is never confirmed, none of these rules is triggered, so they are not violated. No resource in Resources.txt is tied to the confirmation branch: resources such as "MPOO review deadline (working days): 10", "Maximum review rounds per case: 2", "Personnel file update deadline (working days): 5", and "Average dismissals processed per month: 4" all remain fully compatible, because they concern review, rounds, filing, and volume rather than the confirmation branch itself. The process remains fully executable for the described case, so the removal does not conflict with any rule or resource.
+
+Note (for the re-add request): Request4 removes the "MPOO confirmes the dismissal" task (Task_4). It applies specifically to a case in which the grounds are not consistent with the regulations; it does not remove any confirmation, ruling, notification, or personnel-file event, and no other part of the process is affected by this removal.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

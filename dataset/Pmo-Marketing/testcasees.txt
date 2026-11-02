@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Inspecting delivered stock for quality before recording it in the system.
+Current token position: Immediately before Inspecting delivered stock for quality before recording it in the system on its original BPMN sequence flow.
+Required resources: Resource 1 (Resources for Inventory Restocking in a Warehouse or Store)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → Inspecting delivered stock for quality before recording it in the system → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Inspecting delivered stock for quality before recording it in the system.
+Current token position: Immediately before Inspecting delivered stock for quality before recording it in the system on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 4 (Supplier selection must take into account cost, delivery time, and supplier reliability.), Rule 6 (Delivered stock must be inspected for quality before it is recorded in the system.), Rule 7 (Stock that fails quality inspection is rejected and returned to the supplier at the supplier's expense.)
+Expected execution path: Follow the original predecessor → Inspecting delivered stock for quality before recording it in the system → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Inspecting delivered stock for quality before recording it in the system.
+Current token position: Immediately before Inspecting delivered stock for quality before recording it in the system on its original BPMN sequence flow.
+Required resources: Resource 1 (Resources for Inventory Restocking in a Warehouse or Store)
+Relevant rules: Rule 4 (Supplier selection must take into account cost, delivery time, and supplier reliability.), Rule 6 (Delivered stock must be inspected for quality before it is recorded in the system.), Rule 7 (Stock that fails quality inspection is rejected and returned to the supplier at the supplier's expense.)
+Expected execution path: Follow the original predecessor → Inspecting delivered stock for quality before recording it in the system → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate restored process activity.
+Current token position: Immediately before restored process activity on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → restored process activity → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

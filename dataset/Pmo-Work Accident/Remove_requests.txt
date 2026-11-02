@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Notify insurance" task — the step where a work accident that kills an insured person or leaves them unable to work for at least three days is reported to the accident insurance provider.
+Reason: Removing the insurance notification would reduce the employer's administrative reporting burden after a serious work accident.
+Conflict details: This removal directly conflicts with Rule 8 ("Every work accident that kills an insured person or leaves them unable to work for at least three days must be reported to the accident insurance provider within five days"). It also conflicts with Rule 9 ("Schools, educational facilities, and universities must report every covered accident in triplicate to the insurance provider within five days"), since the mandated reporting obligation is carried by this step.
+
+Request2:
+Removed element: The "Schedule safety training" task — the step where safety training is scheduled for employees when the process determines that employee training is required after identifying a safety issue.
+Reason: Removing the safety-training scheduling step would eliminate the preventive training follow-up after a safety issue, cutting the training coordination workload.
+Conflict details: This removal conflicts with the resource "Annual accident prevention training sessions: 12" — the yearly plan of 12 accident-prevention training sessions is fulfilled precisely through the safety-training scheduling step, so removing it makes this resource allocation meaningless. It also conflicts with the resource "Safety inspection frequency (times per year): 2", because the issues identified by those inspections feed into the training-need determination.
+
+Request3:
+Removed element: The "Inform employer" task — the step where the employee reports a work accident, near-accident, or safety risk to the employer.
+Reason: Removing the employer notification step would let the employee handle the incident directly with other authorities, skipping the employer as an intermediary.
+Conflict details: This removal conflicts with Rule 6 ("An employee must inform the employer immediately of any work accident, near-accident, serious safety risk, or defect in protection systems") — the inform task is exactly what this rule mandates. It also conflicts with the resource "Employer notification deadline (immediate, hours): 24", which defines the deadline for the employer notification that this step performs.
+
+Request4:
+Removed element: The "Inform relatives" task — the step where the relatives of an injured or deceased insured person are informed about the accident's consequences.
+Reason: Relatives are not an official reporting authority required by the accident-insurance regulations. Informing them is a purely humanitarian and private step rather than a regulatory obligation, so it can be removed without affecting the legal reporting duties.
+Conflict details: None — fully compatible with all rules and resources. Rules 1-15 govern work-accident classification (Rules 1-5), reporting duties to the employer, Labour Inspectorate, insurance provider, schools, and institution directorate (Rules 6-10, 12), special coverage situations (Rules 11, 13, 15), and exclusion conditions (Rule 14) — none of them mention informing relatives. No resource in Resources.txt is tied to the relatives' notification. All 14 resources remain fully valid and operational (5-day insurance deadline, 3-day fatal deadline, 3-day incapacity threshold, 3 report copies, 10 volunteer organizations, 2,400 claims/year, 1 provider, 24-hour employer deadline, 24-hour inspectorate deadline, 30-day claim processing, 12 training sessions, 100 km commute coverage, 350 insured employees, 2 safety inspections/year).
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

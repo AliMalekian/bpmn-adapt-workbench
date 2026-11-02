@@ -1,0 +1,15 @@
+1. When a customer places an order, the system must record the full order details before payment processing begins.
+2. If payment fails, the customer is notified within 24 hours and the order is cancelled.
+3. A payment is considered failed after 3 unsuccessful processing attempts.
+4. After successful payment, the inventory system must check stock availability for every ordered item.
+5. If any item is out of stock, a back-order is initiated and the customer is informed about the expected delay.
+6. The order processing continues only when all back-ordered items have been received and are in stock.
+7. In-stock items are picked from the warehouse within 1 business day of payment confirmation.
+8. Quality control must check every picked item before it is moved to the packaging stage.
+9. Gift wrapping is added only if the customer explicitly requested it at the time of the order.
+10. International orders require customs documentation to be prepared before dispatch.
+11. An order may be dispatched only when both the packaging and the shipping documents are ready.
+12. A shipping confirmation is sent to the customer on the day the order is dispatched.
+13. Inventory levels are updated within the same day after the order is dispatched.
+14. A follow-up feedback email is sent only after the customer confirms successful delivery.
+15. If the customer reports an issue upon delivery, a return label is issued and the return must be processed within 10 business days.

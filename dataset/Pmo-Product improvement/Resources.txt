@@ -1,0 +1,17 @@
+Resources for Product Improvement and Prototype Development
+
+R&D project budget: $120,000
+Number of R&D team engineers: 8
+Maximum prototype refinement rounds: 3
+Number of design concepts drafted per idea: 2
+Prototype material budget share: 40 percent
+Number of testing laboratories: 1
+Number of functionality test cases per prototype: 12
+Number of safety test cases per prototype: 8
+Number of market potential surveys per prototype: 2
+Steering committee reporting frequency: 1 report per month
+Number of approved material suppliers: 5
+Prototype building time: 6 weeks
+Number of ideas in the improvement pipeline: 25
+Number of prototypes under testing simultaneously: 3
+Project manager approval required: 1 approval per prototype

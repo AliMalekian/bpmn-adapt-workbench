@@ -1,0 +1,15 @@
+1. The customer must describe the symptoms and state the fridge type when contacting the central service center.
+2. The central service center selects a local service facility for the case.
+3. The local service facility makes an appointment with the customer.
+4. The technician may arrive at any random time within the agreed appointment window.
+5. If additional parts are needed, the technician may leave before finishing the repair.
+6. A follow-up appointment is scheduled whenever the technician leaves because of missing parts.
+7. The repair is treated as complete only after the customer confirms that the fridge works properly again.
+8. The customer can rate the service facility only after confirming the repair.
+9. Each service facility uses its own way of interacting with the customer.
+10. A repair that was interrupted due to missing parts must be completed within 5 days of the first visit.
+11. The customer is not charged for the first visit when the repair could not be completed.
+12. The ticket is closed only after the customer confirmation is submitted within 3 days of the repair.
+13. When scheduling home visits, the facility provides an appointment window; specific technician arrival times within the window are variable and not strictly fixed.
+14. The rating is mandatory once the repair confirmation has been submitted.
+15. A re-visit is automatically triggered if the same symptom is reported again within 30 days.

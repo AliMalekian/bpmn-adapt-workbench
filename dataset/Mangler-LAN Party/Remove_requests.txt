@@ -1,0 +1,28 @@
+Request1:
+Removed element: The step of sending invitations to the 10 friends.
+Reason: To skip the invitation round and start the planning by directly asking the friends for their game preferences and availability.
+Conflict details: Conflicts with Rule 1 — invitations are sent to exactly 10 friends before the party planning continues. It also conflicts with the resource "Number of invited friends: 10", which defines the exact invitee count of this step; removing the invitation step makes the invited-friends capacity meaningless and violates the resource plan.
+
+Request2:
+Removed element: The beer check step in which the host checks the available beer stock at home against the required amount.
+Reason: To trust the estimated requirements and skip the home-stock check.
+Conflict details: Conflicts with the resource "Beer stock at home: 2 crates". This resource defines the current beer stock value that the check operation reads and compares against the required amount; removing the check step makes the stock resource meaningless and violates the resource plan. It also conflicts with Rule 8 — if the available beer stock is lower than the required amount, the missing quantity is bought, since without the check the stock shortfall can never be detected.
+
+Request3:
+Removed element: The step of downloading the missing games.
+Reason: To rely on games being already available locally and skip the download and installation effort.
+Conflict details: Conflicts with Rule 6 — missing games are downloaded before the party date; and with Rule 11 — the party cannot start until all promised games are downloaded and installed on the LAN network. It also conflicts with the resources "Missing games to download: 2" and "Game download time: 2 hours", which define the download workload and duration of this step; removing the download step makes both resources meaningless and violates the resource plan.
+
+Request4:
+Removed element: The venue/date reservation task ("Reserve that day") in which the chosen LAN-party date is formally reserved.
+Reason: To avoid the booking overhead, since the party takes place in the host's own home.
+Conflict details: None — fully compatible with all rules and resources. None of the 15 rules requires a formal reservation of the date: the rules govern the invitation count (Rule 1), the game list (Rules 2, 5, 6), the agreement of at least 8 friends (Rules 3, 4), the beer supply (Rules 7, 8, 12), the seats and network ports (Rule 9), the installed games (Rules 10, 11), and the date communication and replanning (Rules 13, 14, 15) — but no rule mentions booking or reserving a venue. No resource in the resource list (e.g., "Number of invited friends: 10", "Number of seats: 10", "Power outlets available: 6") is tied to a reservation either. Skipping the reservation task is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

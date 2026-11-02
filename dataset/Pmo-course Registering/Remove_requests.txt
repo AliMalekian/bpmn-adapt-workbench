@@ -1,0 +1,30 @@
+Request1:
+Removed element: The "connect to twitter account" task (UserTask_7) - the step in which the registration system is connected to the user's social (Twitter) account.
+Reason: It is proposed for removal to reduce friction in the registration flow and to respect users who do not wish to link their social media account to the sports institute.
+Conflict details: This removal CONFLICTS with Rule 13 of Rules.txt: "Completion of the registration requires the application to be connected to the user's social account to allow inviting friends." Rule 13 explicitly makes the social-account connection a requirement for completing the registration, so removing this step makes the registration impossible to complete and directly breaks Rule 13. The removal also breaks the chain that supports Rule 9's invitations, because the ability to invite friends presupposes the social-account connection.
+
+Request2:
+Removed element: The "register account" task (UserTask_5) - the step in which a new user creates a sports-institute account.
+Reason: It is proposed for removal so that users who are not yet registered can proceed and pay immediately, without creating an account first.
+Conflict details: This removal CONFLICTS with the resources in Resources.txt. The resource "System online booking percentage: 100" states that 100% of bookings are made online, which requires an online registered user persona and hence an account; and "Eligible university partners: 12" provisions the partnership network that exists to support eligibility-based account creation for new users. Rule 3 of Rules.txt also requires "a valid account at the sports institute" for registration. Removing the account-creation step contradicts the fully online system (100% online booking) and leaves the eligibility-and-account infrastructure of the resources without its purpose.
+
+Request3:
+Removed element: The "system issues course tickets" task (ServiceTask_3) - the automated step that generates and sends the course ticket after payment.
+Reason: It is proposed for removal to allow users to complete registration without receiving a ticket, treating payment as the final step.
+Conflict details: This removal CONFLICTS with both rules and resources. Rules: Rule 8 of Rules.txt states that "A course ticket is generated and sent only after the payment is completed," and Rule 7 requires "Registration is confirmed only after payment has been successfully processed" - the completion criterion of the whole registration process is the issued ticket. Removing the ticket-issuing step makes the registration process end without its mandatory deliverable, directly breaking Rules 7 and 8. Resources: the resource "Course ticket validity (months): 6" in Resources.txt provisions the validity period of the issued tickets; removing ticket issuance makes this provisioned ticket-validity resource meaningless and contradicts the resource plan of the process.
+
+Request4:
+Removed element: The "check if another course is interesting" task (UserTask_10) - the step that asks the user, when no free slots are available for the initially selected course, whether another course is interesting, along with the related routing loop.
+Reason: It is proposed for removal to simplify the flow: when a course is full, the process should simply end rather than offer the user to check other courses.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt requires offering another course when a course is full: Rule 1 only requires a free slot before a course can be selected, Rule 10 only closes a course once its maximum participants are reached, and Rule 9 (at most 3 courses per season) is a limit on registrations, not a requirement to suggest alternatives. Removing the "check if another course is interesting" step does not violate any of them, because a user whose chosen course has no free slots simply cannot register for that course, which is consistent with Rules 1 and 10. No resource in Resources.txt is tied to this step: resources such as "Courses offered per season: 20", "Maximum participants per course: 25", and "Minimum free slots to display a course: 1" are unaffected, since the course-selection rules still operate identically. The process remains fully executable: with the removal, the "free spots?" decision (ExclusiveGateway_1) routes a user with no free slots straight to the end of the process instead of to the alternative-course check. The removal therefore does not conflict with any rule or resource.
+
+Note (for the re-add request): Request4 removes the "check if another course is interesting" user task together with the routing structure that feeds it (the ExclusiveGateway_5 yes/no branching between the alternative-course check and the end of the process). Only those elements are removed; the main no-slot path is simply shortened to end the process.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

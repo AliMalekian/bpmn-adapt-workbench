@@ -1,0 +1,83 @@
+STATE-01: Initial / early execution
+Current process position: P = Produce
+Completed activities: Testing device
+ connected
+Current active activity or waiting point: P = Produce
+Token position / execution status: token is at P = Produce; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Specified filling pressure range: 1.2 to 1.8 bar)
+Applicable rules: Rule 1 (The machine type and serial number must be entered and validated before an inspection can begin.)
+Possible next activities: Assume you can cancel the process at any time.
+X=abort process
+
+STATE-02: Intermediate / decision
+Current process position: Connect application to machine
+Completed activities: Testing device
+ connected, P = Produce, Assume you can cancel the process at any time.
+X=abort process, how many bottles were produced + collected infos, such as:
+50 Bottles - 500ml, startEvent, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, P = Produce, Assume you can cancel the process at any time.
+X=abort process, how many bottles were produced + collected infos, such as:
+50 Bottles - 500ml, Energy Drink 
+Bottling machine 
+Inspection, Choose configuration, Turn on bluetooth, Start Application, exclusiveGateway, Run "Inspect-App", Press button
+"Start new inspection", Perform test run, Enter type of Machine, Select type of machine, Read error codes, Enter serial number of machine, Enter serial number, Error exists?, Connecting to device
+Current active activity or waiting point: Connect application to machine
+Token position / execution status: token is at Connect application to machine; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Specified filling pressure range: 1.2 to 1.8 bar)
+Applicable rules: Rule 1 (The machine type and serial number must be entered and validated before an inspection can begin.)
+Possible next activities: Press button
+"Cable connected"
+
+STATE-03: Resource-dependent / waiting
+Current process position: Shut down machine
+Completed activities: Testing device
+ connected, P = Produce, Assume you can cancel the process at any time.
+X=abort process, how many bottles were produced + collected infos, such as:
+50 Bottles - 500ml, startEvent, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, P = Produce, Assume you can cancel the process at any time.
+X=abort process, how many bottles were produced + collected infos, such as:
+50 Bottles - 500ml, Energy Drink 
+Bottling machine 
+Inspection, Choose configuration, Turn on bluetooth, Start Application, exclusiveGateway, Run "Inspect-App", Press button
+"Start new inspection", Perform test run, Enter type of Machine, Select type of machine, Read error codes, Enter serial number of machine, Enter serial number, Error exists?, Connecting to device, Connect application to machine, Print error codes, exclusiveGateway, Connected?, Press button
+"Cable connected", parallelGateway, Write final report, Check the fill capacity, parallelGateway, Visual inspection, Clear error codes, Turn off testing device, Is the fill level in the bootle ok?, Retrieve and display error code, Create Inspection ticket, parallelGateway, Inspection completed, Leave short Feedback, Is the cap position straight?, parallelGateway, Enter 
+- machine type
+- serial no., Machine faulty?, Press button "X", Save Answers, Add error code to inspection ticket, Repair profitable?, parallelGateway, Press "P" button, Error Code
+= 0, Repair machine
+Current active activity or waiting point: Shut down machine
+Token position / execution status: token is at Shut down machine; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Specified filling pressure range: 1.2 to 1.8 bar)
+Applicable rules: Rule 1 (The machine type and serial number must be entered and validated before an inspection can begin.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: Inspection
+finished
+Completed activities: Testing device
+ connected, P = Produce, Assume you can cancel the process at any time.
+X=abort process, how many bottles were produced + collected infos, such as:
+50 Bottles - 500ml, startEvent, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, P = Produce, Assume you can cancel the process at any time.
+X=abort process, how many bottles were produced + collected infos, such as:
+50 Bottles - 500ml, Energy Drink 
+Bottling machine 
+Inspection, Choose configuration, Turn on bluetooth, Start Application, exclusiveGateway, Run "Inspect-App", Press button
+"Start new inspection", Perform test run, Enter type of Machine, Select type of machine, Read error codes, Enter serial number of machine, Enter serial number, Error exists?, Connecting to device, Connect application to machine, Print error codes, exclusiveGateway, Connected?, Press button
+"Cable connected", parallelGateway, Write final report, Check the fill capacity, parallelGateway, Visual inspection, Clear error codes, Turn off testing device, Is the fill level in the bootle ok?, Retrieve and display error code, Create Inspection ticket, parallelGateway, Inspection completed, Leave short Feedback, Is the cap position straight?, parallelGateway, Enter 
+- machine type
+- serial no., Machine faulty?, Press button "X", Save Answers, Add error code to inspection ticket, Repair profitable?, parallelGateway, Press "P" button, Error Code
+= 0, Repair machine, Shut down machine, Auto collect values, Show data, Are the right bottles in the pack?, exclusiveGateway, Check DB for stored, known problems, exclusiveGateway, parallelGateway, Present results, Display
+"Initiate test run", exclusiveGateway, endEvent, Initiate test run on machine, Display next known problem, parallelGateway, Follow suggestion to fix problem, Test run
+finished, Add applied solution with notes to inspection ticket, Press button
+"Suggestion applied", parallelGateway, Display
+"Machine working properly?", Confirmation, Display
+"Inspection finished", Known 
+problems left?, Mark inspection ticket as resolved, Delegate inspection ticket to engineer, exclusiveGateway, Disconnect cable, Close application
+Current active activity or waiting point: Inspection
+finished
+Token position / execution status: token is at Inspection
+finished; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Specified filling pressure range: 1.2 to 1.8 bar)
+Applicable rules: Rule 1 (The machine type and serial number must be entered and validated before an inspection can begin.)
+Possible next activities: Process completion

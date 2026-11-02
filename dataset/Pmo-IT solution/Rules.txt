@@ -1,0 +1,15 @@
+1. The request for an IT solution is submitted by an employee or department and must include the required functionality and business justification.
+2. IT assesses each request for compatibility with existing systems before any procurement can begin.
+3. A request is approved only if it satisfies the compatibility check and the cost and resource evaluation, including return on investment.
+4. If a request is not compatible with existing systems, it must be returned to the requester with a clear explanation before resubmission.
+5. Approved solutions must have their tools or licenses procured through the designated IT procurement channel.
+6. Every new solution must be installed and tested in a controlled environment before it is rolled out to the requesting department.
+7. Rollout to the production environment happens only after all tests pass in the controlled environment.
+8. Training is required for the requesting department when the solution changes user-facing workflows.
+9. IT support remains available for troubleshooting for at least 30 days after the rollout.
+10. Test environments must be isolated so that failed tests cannot affect the production systems.
+11. Software licenses must be tracked, and using unlicensed copies of software is prohibited.
+12. A rollout may proceed only when the planned downtime window does not exceed 4 hours, unless the department approves a longer window.
+13. Hardware requests above EUR 5000 require an additional sign-off from the department head.
+14. Patch and update cycle for the new solution follows the department's monthly maintenance window.
+15. Documentation of the installed solution, including configuration and support contact, must be delivered before the rollout is marked complete.

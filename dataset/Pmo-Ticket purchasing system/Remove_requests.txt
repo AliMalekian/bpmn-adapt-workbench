@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Send reminder" task — the step where the travel company sends the customer check-in reminders before departure.
+Reason: Removing the reminder task would eliminate a pre-departure customer communication, relying on the customer to check in on their own.
+Conflict details: This removal directly conflicts with Rule 9 ("Check-in reminders are sent 24 hours and again 3 hours before the scheduled departure"). The rule mandates that reminders be sent at two fixed times, so without the "Send reminder" task the rule cannot be satisfied.
+
+Request2:
+Removed element: The "Send ticket via SMS" task — the step where the generated ticket is sent to the customer via SMS (keeping only the email delivery channel).
+Reason: Removing the SMS delivery channel would eliminate the cost of supporting two separate ticket delivery mechanisms.
+Conflict details: This removal conflicts with the resource "Ticket delivery time limit (minutes): 5" — this 5-minute delivery SLA is defined over the ticket delivery channels (email and SMS) and the SMS channel is one of the two channels carrying that obligation. Rule 7 ("Tickets are sent to the customer by email or SMS within 5 minutes of a confirmed booking") explicitly requires the email-or-SMS delivery pair, so removing the SMS channel removes one of the two mandatory delivery options the rule lists.
+
+Request3:
+Removed element: The "Update seat inventory" task — the step where the travel company updates its seat inventory in real time after a successful booking.
+Reason: Removing the inventory update step would eliminate the need for real-time seat synchronization with the booking system.
+Conflict details: This removal conflicts with Rule 3 ("Seat inventory is updated in real time immediately after a successful booking to prevent double sales") — the update task is exactly what this rule mandates. It also conflicts with the resources "Average flight seat capacity: 180" and "Overbooking tolerance (percent of capacity): 2", because the seat inventory update is the mechanism that tracks how many seats of the 180-seat capacity are sold and enforces that overbooking stays within 2%; without it, capacity and overbooking can no longer be monitored.
+
+Request4:
+Removed element: The "Send instructions" task — the step where the travel company sends the customer check-in and boarding instructions before travel.
+Reason: The tickets and the reminder messages already reach the customer with the essential booking and check-in information, and full boarding details are available at the departure point. The separate instructions step is supplementary, so removing it does not affect the booking-to-journey flow.
+Conflict details: None — fully compatible with all rules and resources. Rule 9 mandates check-in reminders, but the "Send reminder" task remains in the process. No rule requires a separate boarding-instructions message. Rule 10 (boarding requires a valid ticket and government-issued identification) is unaffected, since the customer still receives the ticket. All 14 resources remain fully valid and operational (50,000 daily bookings, 9 max passengers, 180/480/45 seat capacities, 10-minute payment limit, 48-hour free cancellation window, 1 reschedule waiver, 24-hour and 3-hour reminder lead times, 5-minute ticket delivery, 2% overbooking tolerance, 20 customer service agents, 24-hour feedback window).
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

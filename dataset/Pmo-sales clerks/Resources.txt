@@ -1,0 +1,11 @@
+Level 1 scoring response time (seconds): 30
+Level 2 scoring response time (minutes): 2
+Daily scoring request limit: 500
+Per-customer request interval (minutes): 60
+Customer consent validity (days): 90
+Scoring time-out threshold (minutes): 15
+Archival period for scoring results (months): 6
+Senior referral score threshold: 450
+Number of banking frontends: 15
+Number of sales clerks: 15
+Agency uptime requirement: 99.5%

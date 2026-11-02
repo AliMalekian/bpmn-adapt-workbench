@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: parallelGateway
+Completed activities: Fridge makes strange noises
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of local service facilities: 25)
+Applicable rules: Rule 1 (A service request is accepted only if it includes a description of the symptoms and the exact fridge type.)
+Possible next activities: Describe the symptoms, Collect fridge type data, Send a report to the fridge service center
+
+STATE-02: Intermediate / decision
+Current process position: Send a report to the fridge service center
+Completed activities: Fridge makes strange noises, parallelGateway, Describe the symptoms, Collect fridge type data, parallelGateway
+Current active activity or waiting point: Send a report to the fridge service center
+Token position / execution status: token is at Send a report to the fridge service center; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of local service facilities: 25)
+Applicable rules: Rule 1 (A service request is accepted only if it includes a description of the symptoms and the exact fridge type.)
+Possible next activities: Select local service facility
+
+STATE-03: Resource-dependent / waiting
+Current process position: Repair the fridge
+Completed activities: Fridge makes strange noises, parallelGateway, Describe the symptoms, Collect fridge type data, parallelGateway, Send a report to the fridge service center, Select local service facility, exclusiveGateway, Schedule an appointment for fridge repair, Wait until service facility arrives
+Current active activity or waiting point: Repair the fridge
+Token position / execution status: token is at Repair the fridge; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of local service facilities: 25)
+Applicable rules: Rule 1 (A service request is accepted only if it includes a description of the symptoms and the exact fridge type.)
+Possible next activities: Additional parts needed?
+
+STATE-04: Near completion / completed
+Current process position: Repair process over
+Completed activities: Fridge makes strange noises, parallelGateway, Describe the symptoms, Collect fridge type data, parallelGateway, Send a report to the fridge service center, Select local service facility, exclusiveGateway, Schedule an appointment for fridge repair, Wait until service facility arrives, Repair the fridge, Additional parts needed?, Confirm that fridge is okay, Submit a rating?, Rate Service Facility
+Current active activity or waiting point: Repair process over
+Token position / execution status: token is at Repair process over; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of local service facilities: 25)
+Applicable rules: Rule 1 (A service request is accepted only if it includes a description of the symptoms and the exact fridge type.)
+Possible next activities: Process completion

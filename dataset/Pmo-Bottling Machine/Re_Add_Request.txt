@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: The Bluetooth device connection that links the inspection app to the machine
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The step "Turn on Bluetooth" is re-inserted as the first action of the inspection workflow, before the machine type and serial number are entered.
+- The step "Connecting to device" is restored: after the serial number is entered and validated against the machine database, the inspection app connects to the bottling machine over Bluetooth.
+- The Bluetooth connection is the transport over which automatically collected values are fetched when the corresponding buttons are pressed, so that Rules 3, 9, and 13 remain fully applicable.
+- All other process elements (entering machine type and serial number, running the inspect app, answering inspection questions, pressing collection buttons, follow-up questions, results presentation, inspection report) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration, as the Bluetooth connection step does not conflict with any rule or resource in the folder.

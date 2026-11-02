@@ -1,0 +1,13 @@
+Re-Add request:
+The removal request Request4 removed the "Prepare for picking up goods" task (Task_7) from the process. This request semantically restores that removed element and returns the process to exactly its original shape.
+
+Restored element: "Prepare for picking up goods" task (Task_7).
+
+How it is restored:
+1. The "Prepare for picking up goods" task (Task_7) is reinserted into the process at its original position, directly before the end event "Shipment prepared".
+2. The original sequential flow is restored: after the packaged-goods branch and the label/insurance branch have both completed, ExclusiveGateway_3 again continues into Task_7 via SequenceFlow_15, the packaged goods are again prepared for being picked up by the logistic company, and only then does the flow proceed from Task_7 to the end event via SequenceFlow_16.
+3. Task_7 again performs its original function: it re-establishes the final preparation activity in which the fully packaged goods - together with the package label and any required parcel insurance - are made ready at the departure point for collection by the logistic company, exactly as the process description states ("If everything is ready, the packaged goods are prepared for being picked up by the logistic company").
+4. The full shipping sequence is restored: the shipment is clarified (Task_3), small amounts are labeled by the secretary (Task_2) while the logistics department head insures the parcel when necessary (Task_1), large amounts go through the three-offer invitation (Task_4) and the selection and ordering (Task_5), the warehousemen package the goods in parallel (Task_6), and finally the packaged goods are again prepared for pickup (restored Task_7) before the "Shipment prepared" end event - every element, branch, and ordering of the original model is restored.
+5. The process flow ends exactly as in the original model, completing with the "Shipment prepared" end event, with every element, branch, and ordering of the original process restored.
+
+Result: The removal of Task_7 is fully undone, and the goods-shipping process is back to precisely its original shape with the "Prepare for picking up goods" step present as the final activity before the end event.

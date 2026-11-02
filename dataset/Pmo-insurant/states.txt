@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: probable recourse detected
+Completed activities: Recourse Clerk
+Current active activity or waiting point: probable recourse detected
+Token position / execution status: token is at probable recourse detected; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of claims officers: 12)
+Applicable rules: Rule 1 (If insurance can launch a potential subrogation claim against an insurant, the case officer must first record the details of the possibility before proceeding.)
+Possible next activities: check case
+
+STATE-02: Intermediate / decision
+Current process position: check reasoning
+Completed activities: Recourse Clerk, probable recourse detected, disagreement letter received, Reminder is due, Money received, check case
+Current active activity or waiting point: check reasoning
+Token position / execution status: token is at check reasoning; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of claims officers: 12)
+Applicable rules: Rule 1 (If insurance can launch a potential subrogation claim against an insurant, the case officer must first record the details of the possibility before proceeding.)
+Possible next activities: OK?
+
+STATE-03: Resource-dependent / waiting
+Current process position: send request for payment
+Completed activities: Recourse Clerk, probable recourse detected, disagreement letter received, Reminder is due, Money received, check case, check reasoning, hand over to collection agency, make booking, recourse possible?, OK?, case open, close case
+Current active activity or waiting point: send request for payment
+Token position / execution status: token is at send request for payment; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of claims officers: 12)
+Applicable rules: Rule 1 (If insurance can launch a potential subrogation claim against an insurant, the case officer must first record the details of the possibility before proceeding.)
+Possible next activities: send reminder
+
+STATE-04: Near completion / completed
+Current process position: case closed
+Completed activities: Recourse Clerk, probable recourse detected, disagreement letter received, Reminder is due, Money received, check case, check reasoning, hand over to collection agency, make booking, recourse possible?, OK?, case open, close case, send request for payment, close case, close case
+Current active activity or waiting point: case closed
+Token position / execution status: token is at case closed; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of claims officers: 12)
+Applicable rules: Rule 1 (If insurance can launch a potential subrogation claim against an insurant, the case officer must first record the details of the possibility before proceeding.)
+Possible next activities: Process completion

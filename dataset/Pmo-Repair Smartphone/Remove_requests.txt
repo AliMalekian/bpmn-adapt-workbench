@@ -1,0 +1,28 @@
+Request1:
+Removed element: The user confirming each completed repair step before proceeding to the next instruction
+Reason: The step-by-step confirmation is proposed as excessive friction; it is suggested that the user simply follow all instructions at once and only confirm completion at the very end of the repair.
+Conflict details: This removal conflicts with Rule 10, which states: "The user must confirm each completed repair step before proceeding to the next instruction." Removing the per-step confirmation makes it impossible to satisfy Rule 10, as the process would no longer require confirmation before proceeding.
+
+Request2:
+Removed element: Purchasing parts not covered by owned stock or friends from approved suppliers
+Reason: It is proposed that the user purchase any missing parts from any online retailer of their choosing, rather than being restricted to the tool's approved suppliers.
+Conflict details: This removal conflicts with Resource "Number of approved part suppliers: 8." The 8 approved suppliers exist precisely to cover the parts that cannot be sourced from owned stock or friends; removing the approved-supplier purchase step leaves the approved supplier network entirely unused. It also conflicts with Rule 6, which states that parts "must be purchased from approved suppliers."
+
+Request3:
+Removed element: Contacting friends through the tool's sharing feature to borrow or buy parts
+Reason: It is proposed that the user simply buy all missing parts from suppliers, and the friend-sharing feature be removed as an unnecessary complication.
+Conflict details: This removal conflicts with Rule 5, which states: "Friends may be contacted to borrow or buy parts only through the tool's sharing feature." Removing the friend-contact step would eliminate a permitted source of parts and directly breaks Rule 5's channel constraint. It also conflicts with Resource "Maximum borrowing requests to friends per repair: 5" -- the 5 borrowing requests per repair become entirely unused.
+
+Request4:
+Removed element: Sending a review or video of the repair to the tool after a successful repair
+Reason: The process description states "If it worked, send a review and/or video of you fixing it." The post-repair review submission is a voluntary, non-essential step that does not affect the repair outcome. It is proposed to remove it from the core process.
+Conflict details: None -- fully compatible with all rules and resources. Rule 11 states that "the user is asked to send a review or a video of the repair," but this applies only when the repair succeeds and the user is prompted; the rule does not require the review step for the process to be valid. No other rule depends on the review submission. Resources "Number of quality check reviewers for published reviews: 2" and "Number of tutorial videos available: 50" relate to review/video handling, but no resource mandates the review submission step itself. The repair is complete without it.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

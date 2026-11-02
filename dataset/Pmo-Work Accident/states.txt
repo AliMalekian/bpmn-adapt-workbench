@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Inform employer
+Completed activities: Issue occurs
+Current active activity or waiting point: Inform employer
+Token position / execution status: token is at Inform employer; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Accident insurance reporting deadline (days): 5)
+Applicable rules: Rule 1 (An accident is classified as a work accident only if it occurs at a location, at a time, and with a cause that correlates to the insured employment.)
+Possible next activities: Type of event?
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: Issue occurs, Inform employer, Type of event?, Death or serious injury?, Employee training reqired?, Run diagnostics/find problems, Identify potential issues
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Accident insurance reporting deadline (days): 5)
+Applicable rules: Rule 1 (An accident is classified as a work accident only if it occurs at a location, at a time, and with a cause that correlates to the insured employment.)
+Possible next activities: parallelGateway, parallelGateway, Issue resolved, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Fix the problem, Fix the threat
+
+STATE-03: Resource-dependent / waiting
+Current process position: Notify insurance
+Completed activities: Issue occurs, Inform employer, Type of event?, Death or serious injury?, Employee training reqired?, Run diagnostics/find problems, Identify potential issues, exclusiveGateway, Inform relatives, exclusiveGateway, Schedule safety training, exclusiveGateway, exclusiveGateway, exclusiveGateway, parallelGateway, Fix the problem, Fix the threat, Issue resolved, Person insured?, Safety authorities informed?, More issues?, More issues?
+Current active activity or waiting point: Notify insurance
+Token position / execution status: token is at Notify insurance; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Accident insurance reporting deadline (days): 5)
+Applicable rules: Rule 1 (An accident is classified as a work accident only if it occurs at a location, at a time, and with a cause that correlates to the insured employment.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: exclusiveGateway
+Completed activities: Issue occurs, Inform employer, Type of event?, Death or serious injury?, Employee training reqired?, Run diagnostics/find problems, Identify potential issues
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Accident insurance reporting deadline (days): 5)
+Applicable rules: Rule 1 (An accident is classified as a work accident only if it occurs at a location, at a time, and with a cause that correlates to the insured employment.)
+Possible next activities: parallelGateway, parallelGateway, Issue resolved, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Fix the problem, Fix the threat

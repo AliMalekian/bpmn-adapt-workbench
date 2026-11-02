@@ -1,0 +1,28 @@
+Request1:
+Removed element: send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event)
+Reason: To save case-officer effort, the proposal is to skip setting the payment follow-up reminder after a subrogation payment request is sent to the insurant.
+Conflict details: CONFLICTS with Rule 3 of Rules.txt ("The case officer must set a reminder for payment follow-up on the day the payment request is issued.") — removing the reminder directly violates this mandatory follow-up obligation. It also conflicts with Rule 9 of Rules.txt, because the reminder is the trigger that enables the "Reminder is due" deadline path used to auto-forward the case to the collection agency when no payment arrives; without it the 14-day deadline escalation cannot be enforced. The removal therefore breaks Rules 3 and 9.
+
+Request2:
+Removed element: close case task on the "recourse not possible" branch (the task that closes the case when the case officer determines that no recourse is possible)
+Reason: To reduce administrative work, the proposal is to skip explicitly closing the case when recourse is impossible and let the case linger in the system.
+Conflict details: CONFLICTS with Resource "Case closure turnaround (business days): 10" in Resources.txt — Rule 4 of Rules.txt requires the case to be closed within 10 business days when recourse is not possible, and the resource caps that turnaround time. Skipping the close-case step makes it impossible to honour the 10-business-day case closure turnaround resource (and its guarantee of bounded case duration). It also conflicts with Resource "Maximum open cases per officer: 40", because unclosed cases would accumulate and push officers over the 40-open-case limit.
+
+Request3:
+Removed element: booking of received money (the "make booking" task executed when the subrogated payment arrives via the "Money received" event)
+Reason: To simplify the money-handling step, the proposal is to record the receipt informally and skip the formal booking of the received payment to the claim account.
+Conflict details: CONFLICTS with Rule 5 of Rules.txt ("The case is closed only after the received money is booked to the correct claim account.") — without the booking the case cannot legitimately be closed. It also conflicts with Resource "Booking correction deadline (business days): 3" in Resources.txt and Rule 15 of Rules.txt, which require booked payments to be corrected within 3 business days if posted to the wrong account; both assume a booking is always made. The removal therefore violates Rule 5, Rule 15, and the booking-related resources.
+
+Request4:
+Removed element: check reasoning task and the exclusive gateway "OK?" (the review step that assesses an insurant's reasoning when the insurant disagrees with the recourse, and the decision point deciding whether the reasoning is right or wrong)
+Reason: To save review effort, the proposal is to drop the analysis of the insurant's disagreement reasoning and treat every disagreement as immediately valid.
+Conflict details: None — fully compatible with all rules and resources. The description, Rules.txt and Resources.txt contain no provision that requires reviewing the insurant's disagreement reasoning, no deadline for such a review, and no resource dedicated to it. Every mandatory rule (payment request confirmation, reminder, booking, closure deadlines, collection agency escalation thresholds) can still be satisfied because the disagreement-review branch is an optional validation step that is never mandated by a rule or resource.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,14 @@
+Visa passport photo size (mm): 35 x 45
+Minimum travel health insurance cover (Euro): 30,000
+Travel document minimum remaining validity beyond visa (months): 3
+Minimum empty passport pages: 2
+Travel document maximum age (years): 10
+Rot-Weiss-Rot Card validity (months): 24
+Visa application processing time (days): 15
+Visa application fee (Euro): 160
+Minimum means of subsistence (Euro per month): 1,050
+Maximum visa application attempts per year: 3
+Representation offices for visa applications: 1
+Minimum stay to open a bank account (months): 3
+Accommodation search time allowance (weeks): 4
+Required supporting document categories: 6

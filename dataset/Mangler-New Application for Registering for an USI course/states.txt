@@ -1,0 +1,67 @@
+STATE-01: Initial / early execution
+Current process position: Database
+Completed activities: wish to enroll in course
+Current active activity or waiting point: Database
+Token position / execution status: token is at Database; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of courses offered per semester: 120)
+Applicable rules: Rule 1 (A course can be registered for only if at least one free slot is available.)
+Possible next activities: Application
+
+STATE-02: Intermediate / decision
+Current process position: check for account
+Completed activities: wish to enroll in course, Database, Application, Application, Course Participant, System, Registering for
+an USI course, Database, start, Application for USI Course Registration, Application for USI Course Registration, Student, Application, Desire to reg 
+USI course, exclusiveGateway, Select a course, list usi courses, exclusiveGateway, select course, Check free slots, parallelGateway, Select course, free spots?, Slots free?, select course, breathe, Slots free?, system shows parallel courses and dates, check if another course is interesting, Return courses and dates, endEvent, parallelGateway, Show dates, select specific course, exclusiveGateway, parallelGateway, list free slots for the selected course, Select one date, already registered?, exclusiveGateway, Check courses and dates and select one, Check calendar
+Current active activity or waiting point: check for account
+Token position / execution status: token is at check for account; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of courses offered per semester: 120)
+Applicable rules: Rule 1 (A course can be registered for only if at least one free slot is available.)
+Possible next activities: has
+one?
+
+STATE-03: Resource-dependent / waiting
+Current process position: credentials received
+Completed activities: wish to enroll in course, Database, Application, Application, Course Participant, System, Registering for
+an USI course, Database, start, Application for USI Course Registration, Application for USI Course Registration, Student, Application, Desire to reg 
+USI course, exclusiveGateway, Select a course, list usi courses, exclusiveGateway, select course, Check free slots, parallelGateway, Select course, free spots?, Slots free?, select course, breathe, Slots free?, system shows parallel courses and dates, check if another course is interesting, Return courses and dates, endEvent, parallelGateway, Show dates, select specific course, exclusiveGateway, parallelGateway, list free slots for the selected course, Select one date, already registered?, exclusiveGateway, Check courses and dates and select one, Check calendar, check for account, Check if account  at sports institute available, check if registered at eligible university, exclusiveGateway, exclusiveGateway, parallelGateway, has
+one?, Account 
+available?, eligible university?, log into account, end process, Check if you have an account, check if registered at an eligible uni, exclusiveGateway, Check if registered at an eligible university, exclusiveGateway, request activation, exclusiveGateway, parallelGateway, Account?, registered?, exclusiveGateway, Registered?, Log into account, system checks eligibility, register account, connect to twitter account, provide payment info, exclusiveGateway, Check if you are registered at an eligible university, register, request an activation, login, Register with account, Send request for activation, Provide payment information, person eligible?, invite friends to course, parallelGateway, exclusiveGateway, registered
+at eligible
+university?, exclusiveGateway
+Current active activity or waiting point: credentials received
+Token position / execution status: token is at credentials received; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of courses offered per semester: 120)
+Applicable rules: Rule 1 (A course can be registered for only if at least one free slot is available.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: Successful registered
+for the USI course
+Completed activities: wish to enroll in course, Database, Application, Application, Course Participant, System, Registering for
+an USI course, Database, start, Application for USI Course Registration, Application for USI Course Registration, Student, Application, Desire to reg 
+USI course, exclusiveGateway, Select a course, list usi courses, exclusiveGateway, select course, Check free slots, parallelGateway, Select course, free spots?, Slots free?, select course, breathe, Slots free?, system shows parallel courses and dates, check if another course is interesting, Return courses and dates, endEvent, parallelGateway, Show dates, select specific course, exclusiveGateway, parallelGateway, list free slots for the selected course, Select one date, already registered?, exclusiveGateway, Check courses and dates and select one, Check calendar, check for account, Check if account  at sports institute available, check if registered at eligible university, exclusiveGateway, exclusiveGateway, parallelGateway, has
+one?, Account 
+available?, eligible university?, log into account, end process, Check if you have an account, check if registered at an eligible uni, exclusiveGateway, Check if registered at an eligible university, exclusiveGateway, request activation, exclusiveGateway, parallelGateway, Account?, registered?, exclusiveGateway, Registered?, Log into account, system checks eligibility, register account, connect to twitter account, provide payment info, exclusiveGateway, Check if you are registered at an eligible university, register, request an activation, login, Register with account, Send request for activation, Provide payment information, person eligible?, invite friends to course, parallelGateway, exclusiveGateway, registered
+at eligible
+university?, exclusiveGateway, credentials received, check 
+credentials, exclusiveGateway, Wait for response, Complete registration for course, system issues course tickets, Log in, exclusiveGateway, Request activation, successfully?, parallelGateway, Check credentials, Register account, Response if
+activation  is ok, provide paymend details, Tweet friends, Receive ticket, Credentials
+ok?, Activation ok?, pay for usi course, parallelGateway, Open  Twitter Connection, endEvent, course ticket, endEvent, Wanna ask friends
+on Twitter to join
+the course?, end, exclusiveGateway, Forwarding to Twitter and share the course, exclusiveGateway, Friends want
+to join?, Type of
+payment, Offer them the
+registration process, exclusiveGateway, Povide credit card information, Provide IBAN, exclusiveGateway, Debit amount, Payment
+successful?, Send course ticket, Receive course
+ticket
+Current active activity or waiting point: Successful registered
+for the USI course
+Token position / execution status: token is at Successful registered
+for the USI course; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of courses offered per semester: 120)
+Applicable rules: Rule 1 (A course can be registered for only if at least one free slot is available.)
+Possible next activities: Process completion

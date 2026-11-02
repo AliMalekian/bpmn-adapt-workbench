@@ -1,0 +1,12 @@
+Re-Add Request:
+Restored element: The customer's ability to check the current status of their order while it is being prepared
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The step "Check order status" is re-inserted into the process as a customer-facing activity that can be consulted while the order is being prepared.
+- The customer can look up the current status of their order (e.g., via a status display or a check-order-status activity) at any point between placing the order and the delivery handover.
+- The status check is restored as an independent, customer-initiated activity, in addition to the robot-initiated enthusiastic status updates every 30 seconds required by Rule 9 ("The robot gives the customer an enthusiastic status update every 30 seconds while the burger is prepared").
+- The status-check step does not alter any preparation or delivery behavior; it only gives the customer visibility into the progress of their order.
+- All other process elements (order reception, menu decision, drink/side/burger preparation, status updates, conveyor-belt delivery, handover) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration, as the status-check capability does not conflict with any rule or resource in the folder.

@@ -1,0 +1,9 @@
+Re_Add_Request:
+Re-added element: Salary negotiations between HR and the candidate
+Reason: This request semantically restores the element removed by Request4 in Remove_requests.txt, returning the process to its original state.
+Restoration details:
+- The process is restored so that salary negotiations may again take place between HR and the candidate after the offer is extended, exactly as described in the original process ("Once a candidate is chosen, an offer is extended, and salary negotiations may take place").
+- The restored negotiation is optional, as in the original process: HR and the candidate may engage in salary negotiation before the offer is finalized and accepted. If both sides agree to the offered salary, no negotiation occurs; the option is simply available again.
+- Any negotiation that does take place is governed by Rule 10, so the final salary must stay within the approved budget band, and by Resource "Salary band width for negotiations: 10 percent," so the negotiation range is again bounded by the 10 percent band.
+- The restored negotiation step occurs between the offer being extended and the candidate accepting the offer; once the offer is accepted, onboarding begins exactly as before (Rule 11).
+- With this restoration, the process is back to its exact original shape: hiring request approval by the department head, job description creation and posting on job boards, resume collection and screening, phone interviews, in-person or virtual interviews per candidate preference, offer extension with the optional salary negotiation, offer acceptance, onboarding with paperwork/orientation/training, and full integration of the new hire, all completed within the 60-day hiring window.

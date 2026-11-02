@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Employee order processing
+Completed activities: Guest food consumption
+Current active activity or waiting point: Employee order processing
+Token position / execution status: token is at Employee order processing; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of restaurant seats: 60)
+Applicable rules: Rule 1 (A guest enters the restaurant and chooses a dish from the changing meal range before waiting for their turn.)
+Possible next activities: Chef meal preparation
+
+STATE-02: Intermediate / decision
+Current process position: Hand over meal
+Completed activities: Guest food consumption, Employee order processing, Chef meal preparation, Hunger noticed, Order received, Guest appears, 5 minutes, Meal needed, Enter restaurant, Enter order
+Current active activity or waiting point: Hand over meal
+Token position / execution status: token is at Hand over meal; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of restaurant seats: 60)
+Applicable rules: Rule 1 (A guest enters the restaurant and chooses a dish from the changing meal range before waiting for their turn.)
+Possible next activities: Order processed
+
+STATE-03: Resource-dependent / waiting
+Current process position: Hand over buzzer
+Completed activities: Guest food consumption, Employee order processing, Chef meal preparation, Hunger noticed, Order received, Guest appears, 5 minutes, Meal needed, Enter restaurant, Enter order, Hand over meal, Call guest, Prepare meal, Choose dish, Collect money, Order processed, Place meal in hatch, wait for turn, Set up buzzer, Inform employee, Place order
+Current active activity or waiting point: Hand over buzzer
+Token position / execution status: token is at Hand over buzzer; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of restaurant seats: 60)
+Applicable rules: Rule 1 (A guest enters the restaurant and chooses a dish from the changing meal range before waiting for their turn.)
+Possible next activities: Inform chef
+
+STATE-04: Near completion / completed
+Current process position: Not hungry anymore
+Completed activities: Guest food consumption, Employee order processing, Chef meal preparation, Hunger noticed, Order received, Guest appears, 5 minutes, Meal needed, Enter restaurant, Enter order, Hand over meal, Call guest, Prepare meal, Choose dish, Collect money, Order processed, Place meal in hatch, wait for turn, Set up buzzer, Inform employee, Place order, Hand over buzzer, Meal prepared, Pay money, Inform chef, Take buzzer, Meal ready, Meal ready, Set off buzzer, Get meal, Eat meal
+Current active activity or waiting point: Not hungry anymore
+Token position / execution status: token is at Not hungry anymore; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of restaurant seats: 60)
+Applicable rules: Rule 1 (A guest enters the restaurant and chooses a dish from the changing meal range before waiting for their turn.)
+Possible next activities: Process completion

@@ -1,0 +1,15 @@
+1. Every job application sent to a company must be reported to the job service registration.
+2. The job service sends new potential job offers only based on the reported applications and matching interests.
+3. Each company must confirm receipt of a job application within 3 working days.
+4. Every application is rated by the company on a scale from A to E.
+5. Applications rated D or lower are automatically closed and no interview is offered.
+6. A job interview can be negotiated with the company after a positive application rating.
+7. The probation phase ends after 6 months at the company.
+8. After probation, both the applicant and the company rate each other on a scale from A to E.
+9. Reviews for a company are revealed to other job applicants only after 1 year from their submission.
+10. The process ends when the job becomes permanent and the company rating was not C or lower.
+11. If the company is rated C or less, the applicant continues to receive job offers but no longer has to report applications.
+12. A company must confirm employment terms in writing before the probation phase begins.
+13. Only one probation phase may be active for the applicant at a time.
+14. When active matching is enabled, applying to new companies maintains personalized recommendations; applicants entering direct negotiations do not have mandatory weekly application quotas.
+15. A job offer that is not answered within 2 weeks is considered rejected and expires.

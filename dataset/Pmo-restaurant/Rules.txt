@@ -1,0 +1,15 @@
+1. A guest enters the restaurant and chooses a dish from the changing meal range before waiting for their turn.
+2. The guest places the order with the employee only after it is the guest's turn.
+3. The employee enters the order into the POS system and collects the money from the guest before the meal is prepared.
+4. After the payment, the employee sets up a buzzer and passes it to the guest with the notification instruction.
+5. The employee informs the chef of the new meal order after payment has been collected.
+6. The chef prepares the meal and places it in the service hatch.
+7. The chef informs the counter employee when a meal is ready at the service hatch; on-site dining vs takeaway consumption is at the discretion of the guest.
+8. The buzzer is set off only after the employee knows the meal is ready at the service hatch.
+9. The meal is handed to the guest only when the guest appears at the service hatch.
+10. If a guest does not react to the buzzer, the employee calls for the guest after 5 minutes.
+11. If the guest still does not respond after the first call, the employee may call again up to 3 times in total.
+12. If the guest does not collect the meal within 20 minutes of the buzzer being set off, the meal is disposed of.
+13. The meal range must always include at least 5 main dishes and 3 vegetarian options.
+14. An order may contain no more than 10 items.
+15. Orders are not accepted within the last 15 minutes before the kitchen closing time.

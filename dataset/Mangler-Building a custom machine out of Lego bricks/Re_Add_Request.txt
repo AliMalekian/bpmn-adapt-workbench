@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: "Reorder Lego bricks" task (the reorder step, removed by Request4, plus its loop triggers and flows)
+Reason: Request4 removed the "Reorder Lego bricks" task claiming substitute parts could avoid any reorder. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+
+Detailed restoration:
+1. "Reorder Lego bricks" task: Restored as the explicit reorder activity. It is placed back exactly where it originally was, on the loop that is triggered by the "Container empty?" gateway: when a container runs out of parts during the subcomponent build, the flow again goes to "Order necessary Lego brick sets" / "Reorder Lego bricks", which reorders individual replacement parts with delivery per the "Reorder delivery time: 3 days" resource, and then returns to "Continue building subcomponents" / "Build subcomponents".
+2. Trigger conditions restored: The "Container empty?" decision and the low-stock trigger described by Rule 6 ("The supply of a container may not fall below 10 parts mid-assembly without triggering a reorder") are again wired to this task, so a container that runs out of parts is again replenished through the reorder loop instead of silently continuing.
+3. Substitution stop: The substitute-parts workaround introduced by Request4 is removed; the build again relies on the sorted containers and the reorder loop exactly as in the original model, so Rule 5 ("If a container runs out of parts, individual replacement parts must be reordered before assembly continues") and Rule 6 are again satisfied through the reorder step itself.
+4. Sequence flows: All original connections are re-established: "Container empty?" (yes) -> "Reorder Lego bricks" -> back into the subcomponent build loop; (no) -> continue building. The loop now cycles exactly as originally modelled, and the "Reorder delivery time: 3 days" resource is again exercised.
+
+With the "Reorder Lego bricks" task restored, the process returns to exactly the original shape described in M_g02.txt, where a container that runs out of parts triggers the individual reorder before assembly continues.

@@ -1,0 +1,13 @@
+Average number of products per order: 5
+Number of warehouses: 2
+Warehouse storage capacity: 50000 units
+Average stock level per product: 500 units
+Automatic reorder threshold per product: 100 units
+Delay penalty period limit: 10 days
+Penalty amount per delayed delivery: 50 EUR
+Number of wholesalers: 6
+Average wholesaler delivery time: 5 days
+Courier request time: 1 hour
+Packing time per order: 30 minutes
+Number of warehouse employees: 20
+Maximum orders handled per day: 300

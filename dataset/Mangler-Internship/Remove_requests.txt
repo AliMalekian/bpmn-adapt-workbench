@@ -1,0 +1,28 @@
+Request1:
+Removed element: The step of entering the desired topic of interest and the desired amount of money (salary) into the internship platform.
+Reason: To reduce the initial registration effort and let the applicant receive offers without declaring a topic and salary.
+Conflict details: Conflicts with Rule 1 — the applicant must enter an interest topic and a desired salary into the internship platform. It also conflicts with Rule 13 — the desired salary must be within the platform's range of 1,000 to 3,000 units per month, which requires the salary entry to exist in the first place, and with Rule 15 — the applicant must keep at least one unanswered offer open, which depends on the application being submitted with the required data.
+
+Request2:
+Removed element: The weekly status update operation in which the applicant writes status updates about the internship.
+Reason: To free the applicant from the weekly reporting burden during the internship.
+Conflict details: Conflicts with the resource "Minimum weekly applicant updates: 3". This resource defines the frequency and number of the applicant's weekly status updates; removing the update operation makes the resource allocation meaningless and violates the resource plan. It also conflicts with the resource "Required update format: 100 characters", which defines the format of these updates. In addition, the removal conflicts with Rule 6 — the applicant must write at least 3 status updates about the internship every week.
+
+Request3:
+Removed element: The step of invalidating all other offers as soon as one offer has been accepted.
+Reason: To keep the other offers visible as a fallback after accepting one offer.
+Conflict details: Conflicts with Rule 5 — as soon as one offer is accepted, all other pending offers become invalid automatically. It also conflicts with the resource "Maximum simultaneous offers: 8", which defines the offer capacity that the invalidation step manages and resets when one offer is accepted; removing the invalidation violates the resource plan because up to 8 offers would stay pending simultaneously. In addition, the removal conflicts with Rule 4 — at most one internship offer may be accepted by the applicant.
+
+Request4:
+Removed element: The optional step of entering experience and hobbies into the internship platform.
+Reason: To complete the registration faster by entering only the mandatory topic and desired salary, skipping the optional profile details.
+Conflict details: None — fully compatible with all rules and resources. Rule 2 explicitly states that "experience and hobbies are optional but recommended to increase the chance of matching offers" — the entry of experience and hobbies is therefore not a mandatory step. No other rule requires this data, and no resource in the resource list (e.g., "Minimum weekly applicant updates: 3", "Salary range: 1,000 to 3,000 units per month", "Application topics available: 15") is tied to the experience/hobbies entry. Skipping this optional step is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,15 @@
+1. A customer can continue shopping only after the login is confirmed by the system.
+2. If the login credentials are not valid, the shopping session ends immediately.
+3. Each selected product must be added to the shopping cart and saved before the next product is selected.
+4. Product selection repeats until all intended products have been selected.
+5. The order is finalized only after all intended products are in the cart.
+6. Payment and shipment preparation are started simultaneously once the order is finished.
+7. Payment data must be entered before the bank confirmation is requested.
+8. The order is completed only after the bank confirms the payment.
+9. A separate billing address may be entered when it is not equal to the shipping address.
+10. A valid shipping address is required for order delivery; entering a separate secondary billing address is optional when billing details match the shipping profile.
+11. The order is finally executed by the system only after both the address and the payment steps are done.
+12. An order must contain at least one valid product to be accepted.
+13. Payment data rejected by the bank must be re-entered before payment can be retried.
+14. The customer may not modify the cart contents after the payment confirmation has started.
+15. The order confirmation is generated only after the shipment preparation has finished.

@@ -1,0 +1,13 @@
+Minimum acceptable OEE threshold: 60 percent
+OEE restart threshold: 65 percent
+Production shifts per day: 3
+Measurement interval per shift: 8 hours
+Engineer email response time: 2 hours
+Dashboard refresh interval: 30 seconds
+Data collection interval: 5 seconds
+Number of monitored machines: 24
+Number of assigned engineers: 6
+Maintenance budget per year: 50000 EUR
+Maximum running hours before scheduled maintenance: 480 hours
+Number of operators per shift: 4
+Quality inspection rate: 100 percent

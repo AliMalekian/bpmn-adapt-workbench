@@ -1,0 +1,28 @@
+Request1:
+Removed element: Report task (the regular activity in which the job seeker reports the companies they wrote applications to, at least once every week)
+Reason: To reduce the administrative burden on job seekers, the proposal is to drop the weekly reporting obligation entirely.
+Conflict details: CONFLICTS with Rule 1 of Rules.txt ("A job seeker must report the companies they wrote applications to, on a regular basis, at least once every week.") — removing the Report task violates this core obligation. It also conflicts with Rule 14 of Rules.txt ("Discrepancies between reported and actually sent applications above 2 per month are flagged for review."), because there is nothing left to compare against actual applications, making the discrepancy check meaningless. The removal therefore breaks Rules 1 and 14.
+
+Request2:
+Removed element: Send rejection Email task (the user task that informs a rejected candidate that their application was not accepted)
+Reason: To save communication effort, the proposal is to stop sending rejection emails to unsuccessful candidates and silently close the application.
+Conflict details: CONFLICTS with Resource "Number of registered companies: 250" in Resources.txt and the requirement implied by the 250 registered companies interacting through the platform — candidates must be informed of the outcome of their application. More directly, it conflicts with the workflow implied by Resource "Application confirmation deadline (days): 14" and Rule 2 of Rules.txt, because a candidate whose application is neither confirmed nor formally rejected is left in limbo, undermining the confirmation/rejection communication pattern the platform is built on. The removal also conflicts with Resource "Rating scale levels (A to F): 6", since an application that is not answered cannot receive the company rating that the platform guarantees to applicants.
+
+Request3:
+Removed element: "Do temp-to-perm" task (the task that converts a successful probation-phase employee into a permanent hire)
+Reason: To shorten the process, the proposal is to keep candidates permanently on probation instead of converting them to permanent employment.
+Conflict details: CONFLICTS with Rule 10 of Rules.txt ("If the job becomes permanent, the process ends and the job seeker stops receiving job offers.") — without the temp-to-perm conversion the job never becomes permanent and the process can never end as specified. It also conflicts with Rule 11 and Rule 12 of Rules.txt, which describe the handling of permanent jobs rated C or lower; these rules presuppose a permanent-employment outcome that the removal eliminates. On the resource side it conflicts with Resource "Maximum probation length (months): 6" in Resources.txt (and Rule 7 of Rules.txt), because keeping candidates on probation indefinitely exceeds the maximum probation length the resource permits. The removal therefore violates Rules 10, 11, 12, 7 and the resource "Maximum probation length (months): 6".
+
+Request4:
+Removed element: "Interview candidate" user task (the job interview that is negotiated and conducted after the company has confirmed receipt and rated the application, and before the candidate is selected)
+Reason: To accelerate hiring, the proposal is to skip the interview step entirely and select candidates directly from their rated applications.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt mandates that an interview must be conducted; Rule 5 ("A job interview may be negotiated only after the company has confirmed receipt and rated the application") regulates the ordering of the interview but does not require one to take place. No resource in Resources.txt is allocated to interviews or constrains them. All mandatory steps (reporting, application confirmation, rating, probation, mutual evaluation, review publication) are unaffected. The removal is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

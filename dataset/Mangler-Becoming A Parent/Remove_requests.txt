@@ -1,0 +1,28 @@
+Request1:
+Removed element: "notify to the employer" task (the notification step that informs the employer of the parental leave in time)
+Reason: Removing the employer notification would reduce the number of parties to contact and simplify the leave process.
+Conflict details: Conflicts with Rule 5 ("The employer must be notified at least 8 weeks before the leave begins"), which makes the employer notification mandatory, and with Rule 9 ("Employer response to the leave notification must be acknowledged within 14 days of sending"), which governs the response to this very notification. It also conflicts with Rule 13 ("Every update to the leave plan must be communicated to both Social Security and the employer within 5 business days"), because with the notification step gone no update can reach the employer. The resource "Employer notification lead time: 8 weeks" documents the deadline for exactly this step.
+
+Request2:
+Removed element: "take protection period" task (the step where the specific protection-period duration is configured for the leave model)
+Reason: The protection-period configuration step is proposed to be dropped in favour of a fixed default duration for every parent.
+Conflict details: Conflicts with Resource "Total supported leave models: 8", "Shared model split increments: 1 month", and "Standard base leave duration: 12 months", because these resources define the variable protection-period models that this step applies, and dropping the step would make the model configurations unmanageable. It also conflicts with Rule 3 ("The duration of the leave must be configured in full months and split explicitly between the parents in shared models"), which requires exactly the configuration activity, and Rule 6 ("A change of model is only possible within the first 2 weeks of the leave"), which depends on recording the chosen period.
+
+Request3:
+Removed element: "Employee sends parent information to Social Security" task (the step where the employee forwards the collected parent information to Social Security)
+Reason: It is proposed to let the employer or the parent send the information directly to Social Security, dropping the employee mediation step.
+Conflict details: Conflicts with Rule 4 ("Social Security must be notified no later than 12 weeks before the expected leave start") because the employee step is the process step that performs the timely notification, and with Rule 13 ("Every update to the leave plan must be communicated to both Social Security and the employer within 5 business days"), which depends on this sending step. It also conflicts with the resource "Social Security notification lead time: 12 weeks" and "Support staff handling leave cases: 6", because the six support-staff cases rely on the employee-mediated communication. Finally, Rule 10 ("Company-provided documents submitted to Social Security may not be older than 30 days at the time of filing") is tied to this submission step.
+
+Request4:
+Removed element: "go back to your work" task (the end-of-leave step where the parent resumes work after the leave period)
+Reason: The resume-work step is considered a trivial status update that the employer system applies automatically, so an explicit task is proposed to be removed.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt and no resource in Resources.txt mandate an explicit "go back to work" task; starting, taking, extending and notifying are entirely handled by the remaining steps, and the leave automatically ends at the configured end date. The extension decision, notification deadlines, and document rules are all unaffected.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

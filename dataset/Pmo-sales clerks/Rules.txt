@@ -1,0 +1,15 @@
+1. A sales clerk may request a credit score for a customer only through the software frontend after verifying the customer's identity.
+2. Every scoring request is sent to the agency immediately after the frontend request is submitted.
+3. Level 1 scoring is executed first and normally returns an immediate result to the banking system within seconds.
+4. If level 1 cannot determine the score immediately, the agency informs the banking process of the delay.
+5. When a delay notification is received, the banking process displays a message to the clerk to check again later.
+6. Level 2 scoring is initiated only after the agency has reported that level 1 could not determine a result.
+7. Level 2 scoring may take no longer than a couple of minutes.
+8. The scoring result is displayed at the frontend as soon as it arrives from the banking process.
+9. A clerk must not request scoring for the same customer more than once per hour.
+10. Scoring requests are limited to 500 per day under the agency contract.
+11. Customer consent for credit scoring must not be older than 90 days.
+12. Clerks can view only the final score and not the intermediate agency data.
+13. If no result arrives within 15 minutes, a time-out is raised and the clerk is offered the alternative manual file.
+14. Scoring results are archived 6 months after being delivered to the frontend.
+15. A score below 450 triggers an automatic referral to a senior loan officer for review.

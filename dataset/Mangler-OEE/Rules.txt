@@ -1,0 +1,15 @@
+1. OEE is calculated continuously from availability, performance, and quality data collected from the machine.
+2. If the calculated OEE falls below 60 percent, the machine is stopped automatically.
+3. When the machine is stopped because of low OEE, an email is sent to the assigned engineer.
+4. The machine may be restarted only by the engineer and only after the OEE has recovered to at least 65 percent.
+5. OEE measurement resumes automatically as soon as the machine is restarted.
+6. The OEE process stops completely when the machine is disconnected from the system.
+7. OEE is recomputed at least once every 8 hours, covering each production shift.
+8. Availability excludes all idle time, wait time, and breakdown time from the scheduled production time.
+9. Performance losses are counted only for the time the machine is actually running.
+10. Quality losses count only the units that fail inspection.
+11. The stop email to the engineer is sent only once per stop event, even if the OEE stays below the threshold for a long time.
+12. No OEE data is collected while the machine is disconnected from the system.
+13. An OEE alert is escalated to the maintenance supervisor if the assigned engineer does not respond within 2 hours.
+14. The OEE dashboard is refreshed at least every 30 seconds during production.
+15. Every stop and restart event is recorded with a timestamp in the maintenance log.

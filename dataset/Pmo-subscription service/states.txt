@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Customer signs up
+Completed activities: start
+Current active activity or waiting point: Customer signs up
+Token position / execution status: token is at Customer signs up; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Billing cycle length (days): 30)
+Applicable rules: Rule 1 (A customer must provide valid personal and payment information when signing up for the subscription service.)
+Possible next activities: Generate account
+
+STATE-02: Intermediate / decision
+Current process position: parallelGateway
+Completed activities: start, Customer signs up, Generate account
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Billing cycle length (days): 30)
+Applicable rules: Rule 1 (A customer must provide valid personal and payment information when signing up for the subscription service.)
+Possible next activities: Assign access, Send renewal notifications, exclusiveGateway, Send regular updates, exclusiveGateway, Deactivate subscription, Set automatic triggers for billing cycles, exclusiveGateway, exclusiveGateway, Send product enhancements
+
+STATE-03: Resource-dependent / waiting
+Current process position: end
+Completed activities: start, Customer signs up, Generate account, parallelGateway, Assign access, Set automatic triggers for billing cycles, parallelGateway, exclusiveGateway, parallelGateway, Send renewal notifications, Send regular updates, Send product enhancements, parallelGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Customer submits cancellation request
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Billing cycle length (days): 30)
+Applicable rules: Rule 1 (A customer must provide valid personal and payment information when signing up for the subscription service.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: Settle final account balance
+Completed activities: start, Customer signs up, Generate account, parallelGateway, Assign access, Set automatic triggers for billing cycles, parallelGateway, exclusiveGateway, parallelGateway, Send renewal notifications, Send regular updates, Send product enhancements, parallelGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Customer submits cancellation request, end, parallelGateway, Deactivate subscription, exclusiveGateway, parallelGateway, apply refund, apply charges, exclusiveGateway
+Current active activity or waiting point: Settle final account balance
+Token position / execution status: token is at Settle final account balance; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Billing cycle length (days): 30)
+Applicable rules: Rule 1 (A customer must provide valid personal and payment information when signing up for the subscription service.)
+Possible next activities: parallelGateway

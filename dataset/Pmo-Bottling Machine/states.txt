@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Turn on bluetooth
+Completed activities: startEvent
+Current active activity or waiting point: Turn on bluetooth
+Token position / execution status: token is at Turn on bluetooth; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of supported machine types: 6)
+Applicable rules: Rule 1 (The inspection cannot begin until the machine type and its serial number are entered.)
+Possible next activities: Run 'Inspect-App'
+
+STATE-02: Intermediate / decision
+Current process position: Check the fill capacity
+Completed activities: startEvent, Turn on bluetooth, Run 'Inspect-App', Enter type of Machine, Enter serial number of machine, Connecting to device, Connected?
+Current active activity or waiting point: Check the fill capacity
+Token position / execution status: token is at Check the fill capacity; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of supported machine types: 6)
+Applicable rules: Rule 1 (The inspection cannot begin until the machine type and its serial number are entered.)
+Possible next activities: Is the fill level in the bootle ok?
+
+STATE-03: Resource-dependent / waiting
+Current process position: Press 'Produce' button
+Completed activities: startEvent, Turn on bluetooth, Run 'Inspect-App', Enter type of Machine, Enter serial number of machine, Connecting to device, Connected?, Check the fill capacity, Is the fill level in the bootle ok?, Leave short Feedback, Is the cap position straight?, Press button 'Abort process', Save Answers, parallelGateway
+Current active activity or waiting point: Press 'Produce' button
+Token position / execution status: token is at Press 'Produce' button; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of supported machine types: 6)
+Applicable rules: Rule 1 (The inspection cannot begin until the machine type and its serial number are entered.)
+Possible next activities: Are the right bottles in the pack?
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: startEvent, Turn on bluetooth, Run 'Inspect-App', Enter type of Machine, Enter serial number of machine, Connecting to device, Connected?, Check the fill capacity, Is the fill level in the bootle ok?, Leave short Feedback, Is the cap position straight?, Press button 'Abort process', Save Answers, parallelGateway, Press 'Produce' button, Auto collect values, Show data, Are the right bottles in the pack?, parallelGateway, Present results
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of supported machine types: 6)
+Applicable rules: Rule 1 (The inspection cannot begin until the machine type and its serial number are entered.)
+Possible next activities: Process completion

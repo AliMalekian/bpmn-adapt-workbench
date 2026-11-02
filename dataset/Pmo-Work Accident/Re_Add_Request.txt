@@ -1,0 +1,11 @@
+Re_Add_Request:
+Restored element: The "Inform relatives" task — the step where the relatives of an injured or deceased insured person are informed about the work accident and its consequences.
+
+Detailed restoration: Request4 removed the step where the relatives of the affected person are informed. To restore the process to its original state, the "Inform relatives" step must be re-added as follows:
+
+1. When a work accident occurs and the process determines that the person was injured (and, in the case of a fatal accident, has died), the process again performs the "Inform relatives" task.
+2. During "Inform relatives," the employer (or the responsible party in the process) contacts the family members/relatives of the injured or deceased person and informs them about the accident, the person's condition, and the next steps in the claims and care process.
+3. In the death branch of the process, the relatives are informed in parallel with the formal notifications — the process again runs "Inform relatives," "Notify insurance" (Rule 8: within 5 days for a fatal accident), and, where applicable, "Notify labor inspectorate" (Rule 7: immediate for fatality or serious injury) and "Notify insurance about the death" (per Rule 8 and the resource "Fatal accident reporting deadline (days): 3").
+4. The process continues with the task "Stay informed about the person's condition" — the involved parties, including the family, remain updated on the insured person's medical situation until the issue is resolved.
+
+This restores the complete original process: accident occurs, type of event determined, person insured checked, employer informed (Rule 6), death/serious injury assessed, Labour Inspectorate notified (Rule 7), insurance notified (Rule 8), relatives informed, person's condition monitored, issues fixed and resolved. All 15 rules (Rules 1-15) and all 14 resources (5-day insurance deadline, 3-day fatal deadline, 3-day incapacity threshold, 3 report copies, 10 volunteer aid organizations, 2,400 claims/year, 1 provider, 24-hour employer deadline, 24-hour inspectorate deadline, 30-day claim processing, 12 training sessions, 100 km commute coverage, 350 insured employees, 2 safety inspections/year) remain in effect.

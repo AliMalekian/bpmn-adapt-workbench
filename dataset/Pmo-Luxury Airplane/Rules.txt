@@ -1,0 +1,17 @@
+Rules for Luxury Airplane Interior Production
+
+1. The customer must submit full interior specifications within 30 days of placing the order.
+2. Exactly one bar must be selected from the 5 available bar options for each airplane.
+3. The number of seats must not exceed 40 seats per airplane.
+4. Seat color must be chosen from the 6 approved color options of the standard palette.
+5. The water capacity of each toilet must be set between 2 and 25 liters.
+6. Interior specifications must be confirmed in writing before requirements are sent to the manufacturing teams.
+7. Manufacturing teams must deliver their parts within 45 days of receiving the requirements.
+8. The vodka bar must be manufactured by the Russian team and the whiskey bar by the Irish team.
+9. Every delivered part must pass a quality inspection before it is used in the interior assembly.
+10. Interior assembly may begin only after all manufacturing teams have delivered and cleared the required parts.
+11. The airplane may be sent on a test flight only after the complete interior is assembled.
+12. A test protocol must be created during the test flight and sent to both the manufacturer and the customer.
+13. The test flight must last at least 2 hours.
+14. The airplane may only be delivered to the customer after the customer confirms the test protocol.
+15. Any change to the approved specifications during production requires written customer approval before work continues.

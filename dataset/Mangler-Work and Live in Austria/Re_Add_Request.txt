@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: Organizing accommodation for the stay
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The step "Organize accommodation" is re-inserted into the process as part of the relocation workflow, running alongside the visa process.
+- The applicant searches for suitable accommodation, negotiates the contract (rent with the landlord), and secures a place to live, restoring the accommodation-organization branch of the process.
+- The accommodation step is performed independently of the visa documents but in parallel with the visa application, matching the original process structure in which "organizing accommodation and bank account (negotiation)" is combined with the visa steps.
+- All visa-related elements (application form, travel document, passport photo, travel health insurance, proof of subsistence, additional evidence, visa issuance, Rot-Weiss-Rot Card renewal) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration, as the accommodation step is optional from the perspective of the visa rules and is not tied to any mandatory visa document.

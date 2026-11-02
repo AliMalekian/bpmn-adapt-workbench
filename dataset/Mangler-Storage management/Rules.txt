@@ -1,0 +1,15 @@
+1. Orders are read from the automatic order management system.
+2. Each product of an order must be checked for stock availability before withdrawal.
+3. If the product is in stock, it is withdrawn from the warehouse.
+4. If the product is not in stock, it is reordered from the wholesaler.
+5. Processing of an order continues only after every product has been handled.
+6. If the product arrival takes longer than 10 days, a delivery delay penalty is automatically demanded from the wholesaler.
+7. Arrived products must be registered in the stock management system before any further processing.
+8. An order is considered ready for shipment only when all of its products have been secured.
+9. Once the order is ready, a courier is requested and the products are packed.
+10. Packing and the courier request are performed simultaneously.
+11. The shipment happens only after the packing is finished and the courier is available.
+12. If the order is not yet ready, the next product from the order is selected and the process repeats from the stock check.
+13. Only one product is processed per iteration of the stock check.
+14. The delay penalty is demanded automatically without manual intervention once the 10-day limit is exceeded.
+15. A product that falls below its minimum stock level triggers an automatic reorder.

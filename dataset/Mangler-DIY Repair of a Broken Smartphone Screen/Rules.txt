@@ -1,0 +1,15 @@
+1. The smartphone model and the damaged part must be entered into the tool before any material or tool list is generated.
+2. Materials and tools that the user already owns are marked as available at home and are not ordered.
+3. A tool may be borrowed or bought from a friend only if its price is lower than the retail price plus shipping.
+4. When tools or parts are sourced informally, they may be borrowed or purchased cheaply from friends; direct commercial part procurement is also fully authorized.
+5. The cheapest ordering option is chosen unless its delivery time exceeds 2 weeks.
+6. Repair instructions are only provided after all required materials and tools are confirmed to be in hand.
+7. The repair must follow the tool's step-by-step instructions in the given order.
+8. If the phone does not work after the first repair attempt, one retry is allowed before contacting an expert.
+9. A review and/or repair video must be submitted to the tool after a successful repair.
+10. If the repair fails after two attempts, the device is sent to an expert and no further self-repair is attempted on it.
+11. Original-manufacturer replacement screens are preferred over third-party screens when the price difference is below 30%.
+12. Adhesive is always ordered together with the display to guarantee proper sealing.
+13. A newly glued screen must cure for at least 8 hours before the phone is powered on.
+14. The tool recommends at least 3 ordering choices for each required part.
+15. Screen repairs must not be performed while the phone is connected to a power source.

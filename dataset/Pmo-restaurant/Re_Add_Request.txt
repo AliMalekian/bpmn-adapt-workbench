@@ -1,0 +1,8 @@
+Request1:
+Removed element: Eat meal task
+Restoration details: This request restores, in full, everything that Request4 removed from the restaurant process so that the process returns to its exact original shape:
+- The "Eat meal" task (Task_7 in the model) is re-inserted at the end of the guest's journey. It is reconnected exactly as before: after the guest collects the meal through the "Get meal" task (which follows the "Meal ready" intermediate event triggered by the buzzer), the flow continues into the "Eat meal" task.
+- The "Not hungry anymore" end event (EndEvent_1) is re-connected so that it is reached exactly as in the original model, namely from the "Eat meal" task, so the process ends only after the guest has consumed the meal.
+- The original sequence flow between "Get meal" -> "Eat meal" -> end event "Not hungry anymore" is restored. No sequence flow that existed in the original model is missing.
+- The guest-side ordering of the model is thereby fully restored: hunger noticed -> enter restaurant -> choose dish -> wait for turn -> place order -> pay money -> take buzzer -> meal ready -> get meal -> eat meal -> not hungry anymore.
+After this restoration the guest journey is exactly as modeled originally: the guest collects the meal and then consumes it on the premises before the process ends. The process is back to its original state.

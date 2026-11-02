@@ -1,0 +1,28 @@
+Request1:
+Removed element: The task of confirming the final collection goal list before the bot starts farming.
+Reason: To start the bot faster without an extra confirmation step after the preferences are collected.
+Conflict details: Conflicts with Rule 15 — the player must confirm the final collection goal list before the bot starts farming. It also conflicts with Rule 8 — farming stops automatically when all selected resource goals are reached, since without a confirmed goal list there is no defined goal set against which completion can be measured.
+
+Request2:
+Removed element: The use of the bot's inventory (holding collected resources up to the inventory capacity during the run).
+Reason: To simplify the bot by dropping the gathered resources continuously instead of storing them in an inventory.
+Conflict details: Conflicts with the resource "Bot inventory capacity: 500 units". The inventory capacity of 500 units is allocated to the bot to hold the collected resources during a run; removing the inventory contradicts this resource allocation. It also conflicts with the resource "Maximum load per run: 500 units", which defines how much the bot can carry per run — without an inventory/load, the capacity resource is meaningless and the resource plan is violated.
+
+Request3:
+Removed element: The milestone notification step (notifying the player each time 25% of a selected resource goal is reached).
+Reason: To avoid interrupting the farming run with notifications and to keep the bot silent.
+Conflict details: Conflicts with Rule 5 — a milestone notification is sent to the player each time 25% of a selected resource goal is reached. It also conflicts with the resource "Milestone notification interval: 25%", which defines the interval of this notification step; removing the step makes the interval resource meaningless and violates the resource plan.
+
+Request4:
+Removed element: The optional step of bragging to selected friends and/or sending them materials after the bot is finished.
+Reason: To keep the collected materials for the player and to avoid the sharing step at the end of the process.
+Conflict details: None — fully compatible with all rules and resources. Rule 10 says bragging is allowed only in chat channels of selected friends and Rule 9 says materials can be sent only when the player still has at least 50% of the collected goal left — but these are conditions that apply IF sharing happens; neither rule requires the player to brag or send materials. The resources "Selected friends to brag to: 5" and "Minimum goal share kept before sharing: 50%" are permissive capacities, not mandatory steps. Skipping the bragging/sharing step entirely is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

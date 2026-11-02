@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Receive customer inquiry
+Completed activities: start
+Current active activity or waiting point: Receive customer inquiry
+Token position / execution status: token is at Receive customer inquiry; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of sales support agents: 12)
+Applicable rules: Rule 1 (The sales process begins only when a potential customer inquires about a product or service.)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: parallelGateway
+Completed activities: start, Receive customer inquiry
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of sales support agents: 12)
+Applicable rules: Rule 1 (The sales process begins only when a potential customer inquires about a product or service.)
+Possible next activities: Address customer concerns or questions, exclusiveGateway, Collect customer information
+
+STATE-03: Resource-dependent / waiting
+Current process position: Provide quote
+Completed activities: start, Receive customer inquiry, parallelGateway, Address customer concerns or questions, Collect customer information, parallelGateway, exclusiveGateway, exclusiveGateway, Guide customer in selecting product/service, end
+Current active activity or waiting point: Provide quote
+Token position / execution status: token is at Provide quote; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of sales support agents: 12)
+Applicable rules: Rule 1 (The sales process begins only when a potential customer inquires about a product or service.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: Send order confirmation to customer
+Completed activities: start, Receive customer inquiry, parallelGateway, Address customer concerns or questions, Collect customer information, parallelGateway, exclusiveGateway, exclusiveGateway, Guide customer in selecting product/service, end, Provide quote, exclusiveGateway, exclusiveGateway, Place order, Record order in system
+Current active activity or waiting point: Send order confirmation to customer
+Token position / execution status: token is at Send order confirmation to customer; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of sales support agents: 12)
+Applicable rules: Rule 1 (The sales process begins only when a potential customer inquires about a product or service.)
+Possible next activities: exclusiveGateway

@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Identify need for new hire
+Completed activities: start
+Current active activity or waiting point: Identify need for new hire
+Token position / execution status: token is at Identify need for new hire; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for the Recruitment and Onboarding Process)
+Applicable rules: Rule 1 (A hiring request must be approved by the department head before HR creates a job description.)
+Possible next activities: Create job description
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: start, Identify need for new hire, Create job description, Post job description, Collect resumes, Screen resumes, Conduct initial phone interviews, Invite candidates for interviews
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for the Recruitment and Onboarding Process)
+Applicable rules: Rule 1 (A hiring request must be approved by the department head before HR creates a job description.)
+Possible next activities: Choose candidate, exclusiveGateway, Conduct a virtual interview, Conduct an in-person interview, exclusiveGateway, exclusiveGateway, Negotiate salary, Begin onboarding process, exclusiveGateway, exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Begin onboarding process
+Completed activities: start, Identify need for new hire, Create job description, Post job description, Collect resumes, Screen resumes, Conduct initial phone interviews, Invite candidates for interviews, exclusiveGateway, Conduct a virtual interview, Conduct an in-person interview, exclusiveGateway, Choose candidate, Extend offer, exclusiveGateway, exclusiveGateway, exclusiveGateway
+Current active activity or waiting point: Begin onboarding process
+Token position / execution status: token is at Begin onboarding process; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for the Recruitment and Onboarding Process)
+Applicable rules: Rule 1 (A hiring request must be approved by the department head before HR creates a job description.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Identify need for new hire, Create job description, Post job description, Collect resumes, Screen resumes, Conduct initial phone interviews, Invite candidates for interviews, exclusiveGateway, Conduct a virtual interview, Conduct an in-person interview, exclusiveGateway, Choose candidate, Extend offer, exclusiveGateway, exclusiveGateway, exclusiveGateway, Begin onboarding process, Negotiate salary, parallelGateway, exclusiveGateway, Complete orientation, Complete paperwork, Complete training, parallelGateway
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for the Recruitment and Onboarding Process)
+Applicable rules: Rule 1 (A hiring request must be approved by the department head before HR creates a job description.)
+Possible next activities: Process completion

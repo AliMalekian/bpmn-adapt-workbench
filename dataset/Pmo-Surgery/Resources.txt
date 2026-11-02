@@ -1,0 +1,14 @@
+Operating room capacity (procedures per day): 4
+Sterile surgical gowns available: 20
+Ultrasound machines: 3
+Puncture needles per procedure kit: 2
+Guidewires in stock: 50
+Catheters in stock: 40
+Syringes (10 ml) in stock: 100
+Trocar sets: 15
+Circulating nurses on duty: 3
+Sterile gel containers per room: 5
+Maximum puncture attempts per insertion site: 3
+Surgical theater recovery beds: 6
+Average procedure duration (minutes): 45
+Anesthesiologists on call: 2

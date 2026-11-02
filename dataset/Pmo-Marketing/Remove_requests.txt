@@ -1,0 +1,28 @@
+Request1:
+Removed element: Inspecting delivered stock for quality before recording it in the system
+Reason: The quality inspection step is proposed for removal because the procurement team already selects suppliers based on reliability (Rule 4), making a separate quality check redundant and a bottleneck that delays restocking.
+Conflict details: This removal conflicts with Rule 6, which states: "Delivered stock must be inspected for quality before it is recorded in the system." Removing the inspection step makes it impossible to satisfy Rule 6, as stock would be recorded without prior quality verification. It also conflicts with Rule 7, which governs rejected stock returned to suppliers -- without inspection, there is no mechanism to identify and reject defective stock.
+
+Request2:
+Removed element: The procurement team placing orders with suppliers
+Reason: It is proposed that the process rely on standing/recurring orders with suppliers rather than requiring the procurement team to actively place individual orders each time stock is low.
+Conflict details: This removal conflicts with Resource "Number of staff members in the procurement team: 5" -- the 5 procurement staff exist to place and manage supplier orders; without this step, the entire team becomes unused. It also conflicts with Resource "Number of approved suppliers: 20" -- the approved supplier list serves no purpose if no one places orders with them. Additionally, Resource "Inventory restock budget per month: $25,000" becomes irrelevant as no purchasing activity occurs.
+
+Request3:
+Removed element: Updating the inventory system with expected delivery dates after placing an order
+Reason: It is proposed that the system update with expected delivery dates is unnecessary because the warehouse can check delivery status manually when stock arrives.
+Conflict details: This removal conflicts with Rule 5, which states: "The inventory system must be updated with expected delivery dates within 24 hours of placing an order." Removing this update step directly breaks Rule 5. It also conflicts with Resource "Expected delivery date update window: 24 hours" -- the 24-hour update window resource exists solely to support this system update; without the update step, the resource becomes unused and meaningless.
+
+Request4:
+Removed element: The procurement team considering cost, delivery time, and supplier reliability when placing an order
+Reason: The process description states the procurement team considers factors like cost, delivery time, and supplier reliability. It is proposed that orders be placed based solely on supplier availability without weighing these selection factors.
+Conflict details: None -- fully compatible with all rules and resources. While Rule 4 states that "Supplier selection must take into account cost, delivery time, and supplier reliability," the described consideration factors in the process description are a contextual detail about how the team approaches the task. Removing the consideration of these factors does not eliminate the procurement step itself, nor does it prevent any resource from being utilized. No resource in Resources.txt depends on the consideration of these specific factors.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

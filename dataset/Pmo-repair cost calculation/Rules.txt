@@ -1,0 +1,15 @@
+1. The CRS must check the defect of the defective computer before issuing a repair cost calculation.
+2. The customer must decide whether the quoted repair costs are acceptable before any repair work begins.
+3. If the customer decides the costs are not acceptable, the computer is returned unrepaired and the case is closed.
+4. The hardware check-and-repair and the software check-and-configure activities are executed in an arbitrary order.
+5. System functionality testing is performed after repair activities when requested by the customer or required by warranty; standard repairs may bypass intermediate testing.
+6. If the test detects an error, one further repair activity is executed, also in an arbitrary order.
+7. A maximum of 3 repair attempts per component is allowed before the repair is escalated.
+8. Escalated repairs are sent to the specialist bench within 2 business days.
+9. A quoted repair cost is valid for 14 days from the date of calculation.
+10. Labor is charged at $60 per hour with a minimum charge of 1 hour.
+11. Replacement part costs above $450 require a new cost approval from the customer before work continues.
+12. The first pass of hardware repair and software configuration is included in the base repair fee.
+13. Each functionality test must take no longer than 20 minutes after a repair activity.
+14. If an error is detected twice in the same component, the component is replaced instead of repaired again.
+15. A computer is returned to the customer only after the final test passes all diagnostic checks.

@@ -1,0 +1,17 @@
+Resources for Inventory Restocking in a Warehouse or Store
+
+Warehouse storage capacity: 5,000 units
+Number of staff members in the procurement team: 5
+Number of approved suppliers: 20
+Reorder threshold for critical items: 20 units
+Reorder threshold for standard items: 50 units
+Maximum delivery time accepted from suppliers: 14 days
+Minimum order quantity accepted from any supplier: 50 units
+Number of daily inventory monitoring checks: 2
+Quality inspection stations: 2
+Number of inventory clerks: 4
+Inventory restock budget per month: $25,000
+Expected delivery date update window: 24 hours
+Storage shelf count: 60
+Number of warehouses managed by the system: 3
+Quantity inspection turnaround time: 8 hours

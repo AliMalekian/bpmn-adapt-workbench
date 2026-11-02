@@ -1,0 +1,11 @@
+Re_Add_Request:
+Restored element: The task of creating the list of parts that are ordered from each web shop.
+
+This request semantically restores everything that Request4 removed. Request4 removed the step "create a list of parts that you order from each shop", i.e., the task of recording, for each web shop, which parts and which quantities are to be ordered from it. This restoration brings the process back to its exact original shape:
+
+1. The step "Create a list of parts that you order from each shop" is re-inserted into the process immediately after the querying step and before any order is placed. As described in the process, after querying all web shops to find out what they can deliver, at which price, and how long it takes, the list of parts is compiled per shop.
+2. The restored list still records the correct split of quantities: if one shop does not have enough parts, the remaining quantity is assigned to a second shop (Rule 4), and ordering from multiple shops happens only when a single shop cannot deliver the full required quantity (Rule 2).
+3. The restored list still reflects the cheapest-offer decision: the cheapest combined offer is chosen when its delivery time is 10 days or less (Rule 3), and express reorders with the fastest delivery apply below the threshold of 3 units (Rule 8).
+4. No other part of the process is altered: the web-shop queries, the arrival of batches, the start of building when the first parts arrive, and the reorder/stock-counting operations remain exactly as before.
+
+The process is thereby returned to precisely its original state, with the per-shop parts list step fully restored.

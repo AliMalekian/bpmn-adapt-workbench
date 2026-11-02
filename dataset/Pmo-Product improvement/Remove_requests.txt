@@ -1,0 +1,28 @@
+Request1:
+Removed element: Conducting functionality, safety, and market potential tests on each prototype
+Reason: The prototype has been built to the approved design, so the testing phase is proposed as unnecessary overhead that delays the development process.
+Conflict details: This removal directly conflicts with Rule 6, which states: "Each prototype must undergo functionality, safety, and market potential tests." Removing the testing phase makes it impossible to satisfy Rule 6. It also conflicts with Rule 13, which requires that "Only prototypes that pass all tests are recommended for further development" -- with no tests, there is no way to determine which prototypes pass.
+
+Request2:
+Removed element: Building the prototype using available materials and resources
+Reason: It is proposed that a prototype be skipped entirely and the product move directly to production, since the design has been approved and feasibility was confirmed earlier in the process.
+Conflict details: This removal conflicts with Resource "Prototype building time: 6 weeks." The 6-week building window becomes unused if no prototype is built. It also conflicts with Resource "Number of approved material suppliers: 5" (the suppliers provide materials exclusively for prototype building) and Resource "Prototype material budget share: 40 percent" (the 40 percent material budget exists to fund prototype construction).
+
+Request3:
+Removed element: Collecting and documenting all feedback from the testing phase
+Reason: It is proposed that the prototype be judged solely on its quantitative test results, and the qualitative feedback collection and documentation be removed to reduce paperwork.
+Conflict details: This removal conflicts with Rule 7, which states: "All feedback from the testing phase must be collected and documented." Removing feedback collection directly breaks Rule 7. It also conflicts with Resource "Number of market potential surveys per prototype: 2" -- the 2 market surveys are the main source of testing feedback; without feedback collection, the surveys become pointless and the resource is unused.
+
+Request4:
+Removed element: The R&D team reporting progress to the steering committee once per month
+Reason: The monthly progress report is an administrative reporting activity. It is proposed that the R&D team focus purely on development work and no longer spend time preparing monthly reports for the steering committee.
+Conflict details: None -- fully compatible with all rules and resources. Although Rule 14 states that "The R&D team must report progress to the steering committee once per month," the removal of this reporting activity does not affect the core development and testing steps, which remain intact. The decision to drop the reporting obligation is a governance decision that does not conflict with any other rule or any resource. Resource "Steering committee reporting frequency: 1 report per month" is a supporting resource whose removal is consistent with this request.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

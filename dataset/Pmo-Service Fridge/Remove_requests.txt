@@ -1,0 +1,29 @@
+Request1:
+Removed element: The "Confirm that fridge is okay" task — the step where the customer confirms that the fridge is working correctly again after the repair is completed.
+Reason: Removing the customer confirmation step would let the repair be marked as complete immediately after the technician finishes, eliminating the follow-up contact needed for customer sign-off.
+Conflict details: This removal directly conflicts with Rule 6 ("A repair is considered complete only after the customer confirms that the fridge is working correctly again"). Without the confirmation step, no repair can be officially classified as complete, which also blocks Rule 7, since a rating can only be given after a successful completion confirmation, and Rule 12 ("A service request is automatically closed if the customer cannot be reached for confirmation within 30 days"), which presupposes the confirmation step exists.
+
+Request2:
+Removed element: The "Select local service facility" task — the step where the central service center assigns the request to a local service facility.
+Reason: Removing the central selection step would let customers contact local service facilities directly, bypassing the central dispatch and potentially reducing the time to first contact.
+Conflict details: This removal conflicts with the resource "Central service center operators: 8" — these eight operators exist specifically to staff the central service center and carry out the facility assignment; without the selection step they have no defined role. It also conflicts with the resource "Weekly appointment capacity: 300" and "Maximum appointment slots per facility per day: 12", because the central selection step is how requests are distributed across the 25 facilities within these capacity limits.
+
+Request3:
+Removed element: The "Schedule an appointment for fridge repair" task — the step where the service facility makes the repair appointment with the customer.
+Reason: Removing the appointment scheduling step would let the technician arrive without a pre-arranged appointment time, shortening the customer-facing booking overhead.
+Conflict details: This removal conflicts with Rule 3 ("Every service visit must be confirmed by the customer at least 24 hours before the technician's arrival window"), because the customer confirmation is tied to the appointment scheduling step — without the appointment there is no arrival window to confirm. It also conflicts with the resource "Maximum appointment slots per facility per day: 12", which is the slot system that the appointment scheduling step uses to book a facility's available slots.
+
+Request4:
+Removed element: Optional administrative archiving and logging step
+Reason: Proposed by operations to streamline case closure by omitting optional secondary archiving overhead.
+Conflict details: None -- fully compatible with all rules and resources. Operates as an ancillary, non-blocking administrative task; core business rules and resource constraints remain fully intact.
+
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

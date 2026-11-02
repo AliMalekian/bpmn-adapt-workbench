@@ -1,0 +1,17 @@
+Resources for Participating in the Vienna Night Run App
+
+Race distance: 5 km
+Qualification time limit: 25 minutes
+Maximum number of starting blocks: 4
+Maximum participants per starting block: 300
+Number of drink stations along the route: 3
+Number of qualifying attempts allowed: 5
+Registration deadline before start: 48 hours
+Buffer between workday end and start time: 1 hour
+Minimum arrival time before start: 30 minutes
+Number of fitness gadgets supported by the app: 15
+Starting number validity period: 1 day
+App users registered for the Night Run edition: 1,200
+Number of race officials: 20
+Maximum allowed running time before disqualification: 60 minutes
+Number of race day helpers: 40

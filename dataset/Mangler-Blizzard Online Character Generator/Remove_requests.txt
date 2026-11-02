@@ -1,0 +1,28 @@
+Request1:
+Removed element: "Check availability of character name" task (the step that tests the chosen name against the realm and reserves it)
+Reason: Reserving names is proposed to be skipped so that any typed name is accepted immediately without an availability lookup.
+Conflict details: Conflicts with Rule 7 ("Character names are entered one by one until a name that is still available is confirmed") and Rule 8 ("A chosen name is reserved for the character once the availability check passes"), which both make the availability check a mandatory prerequisite. It also conflicts with Rule 9 ("Names rejected as unavailable cannot be retried until 24 hours have passed") and Rule 12 ("Each realm can host no more than 5000 characters per account region cap"), because without the check the realm cap can be exceeded and the retry cooldown becomes meaningless. In addition, it conflicts with resource "Maximum characters per realm: 5000" and "Name retry cooldown: 24 hours", which document the parameters of exactly this step.
+
+Request2:
+Removed element: "Enter credit card information" task (the step where the player types the credit card details when credit card is the chosen payment method)
+Reason: The task is proposed to be dropped so that payment is authorized by saved profile data without re-entering the card details.
+Conflict details: Conflicts with Resources "Supported payment methods: 2 (credit card, bank account)" and "Account creation support staff: 5", because the two supported methods include credit card, and the account-creation support staff handle the payment entry; without the task the credit-card payment method cannot be exercised. It also conflicts with Resource "Supported payment methods: 2 (credit card, bank account)" as the step is the operationalization of the credit-card option. Furthermore, the removal violates Rule 4 ("Credit card information is entered only if credit card is selected as the payment method"), which prescribes that this task runs under exactly that condition, and Rule 6 ("A payment method may not be left unset; the account stays blocked until a method is chosen"), which depends on the entry step to unblock the account.
+
+Request3:
+Removed element: "Enter character name" task (the loop step where the player types candidate names one by one into the system)
+Reason: Auto-generating a unique name for the player is proposed so the name-entry loop disappears entirely from the flow.
+Conflict details: Conflicts with Rule 7 ("Character names are entered one by one until a name that is still available is confirmed") and Rule 13 ("The player needs to come up with at least 5 candidate names before entering them into the system"), which together define the entry loop that includes this task. It also conflicts with Rule 10 ("Realm, race, and class must be selected before the name confirmation is executed"), since the name step is the one gated by the realm/race/class selection. On the resource side it conflicts with "Candidate names required before entry: 5" and "Maximum concurrent name lookups: 2000 per second", which exist to support the manual name-entry flow.
+
+Request4:
+Removed element: "Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)
+Reason: The real-time subscription verification is proposed to be replaced by a trusted local session flag, dropping the live lookup.
+Conflict details: None — fully compatible with all rules and resources. Rule 2 ("A WoW subscription must be active before the character can be created and logged in") remains satisfied because the subscription is still verified during account creation before this point in the flow; the removal only drops a redundant re-check at the character-creation stage. No resource in Resources.txt is invalidated by the removal — "Subscription check frequency: real-time" describes the mechanism that is retained elsewhere, not a distinct mandatory step at this exact point. All payment, name, realm/race/class, and confirmation steps are unaffected.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

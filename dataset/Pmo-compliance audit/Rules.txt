@@ -1,0 +1,15 @@
+1. An external compliance audit may be scheduled only after the company has submitted the required audit application and fee.
+2. The internal self-assessment must cover all mandatory clauses of the applicable standard before external auditors are invited.
+3. All supporting evidence and documentation must be collected and organized no later than 10 days before the external audit begins.
+4. Every identified gap must be assigned to a responsible owner with a corrective action deadline.
+5. Corrective actions for high-risk findings must be completed within 30 days; low-risk findings within 60 days.
+6. The final audit may proceed only after all high-priority nonconformities have been corrected and verified.
+7. Certification is awarded only if all mandatory criteria and at least 90% of all audit criteria are met.
+8. A certification audit team must include at least one auditor independent of the company being audited.
+9. Official certification documents are issued only after the certification committee approves the audit report.
+10. Certification is valid for 3 years and requires an annual surveillance audit to be maintained.
+11. Temporary corrective actions are permitted only if the auditor approves the proposed deadline for full compliance.
+12. Audit findings with health or safety impact are escalated to management within 24 hours of discovery.
+13. The certification decision must be documented and issued no later than 30 days after the final audit closes.
+14. Nonconformities that remain open after the allowed deadline cause the certification to be withheld.
+15. Any staff member involved in preparing the audited processes may not serve on the internal audit team for the same scope.

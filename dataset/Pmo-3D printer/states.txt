@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: exclusiveGateway
+Completed activities: Create a 3D model
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum plastic stock threshold: 100 grams)
+Applicable rules: Rule 1 (The artist is given several sketches before the model project can be started.)
+Possible next activities: Send sketches to an artist, exclusiveGateway, Turn on the printer, Receive status
+
+STATE-02: Intermediate / decision
+Current process position: Check color level
+Completed activities: Create a 3D model, exclusiveGateway, Send sketches to an artist, Receive result, Satisfied with result?, Choose the color, Tell artist to change, In stock?
+Current active activity or waiting point: Check color level
+Token position / execution status: token is at Check color level; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum plastic stock threshold: 100 grams)
+Applicable rules: Rule 1 (The artist is given several sketches before the model project can be started.)
+Possible next activities: Under 100g?
+
+STATE-03: Resource-dependent / waiting
+Current process position: Turn on the printer
+Completed activities: Create a 3D model, exclusiveGateway, Send sketches to an artist, Receive result, Satisfied with result?, Choose the color, Tell artist to change, In stock?, Check color level, Order color, Under 100g?, Receive order confirmation, Put it on shopping list, exclusiveGateway, Color received, exclusiveGateway
+Current active activity or waiting point: Turn on the printer
+Token position / execution status: token is at Turn on the printer; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum plastic stock threshold: 100 grams)
+Applicable rules: Rule 1 (The artist is given several sketches before the model project can be started.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: Model printed
+Completed activities: Create a 3D model, exclusiveGateway, Send sketches to an artist, Receive result, Satisfied with result?, Choose the color, Tell artist to change, In stock?, Check color level, Order color, Under 100g?, Receive order confirmation, Put it on shopping list, exclusiveGateway, Color received, exclusiveGateway, Turn on the printer, parallelGateway, Generate gcode file, exclusiveGateway, parallelGateway, Receive status, Print the model, Heated?
+Current active activity or waiting point: Model printed
+Token position / execution status: token is at Model printed; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum plastic stock threshold: 100 grams)
+Applicable rules: Rule 1 (The artist is given several sketches before the model project can be started.)
+Possible next activities: Process completion

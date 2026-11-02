@@ -1,0 +1,15 @@
+Total character slots per account: 50
+Maximum character name length: 12 characters
+Candidate names required before entry: 5
+Available realms: 120
+Maximum characters per realm: 5000
+Available races: 13
+Available classes: 12
+Name reservation duration: 30 days
+Name retry cooldown: 24 hours
+Maximum concurrent name lookups: 2000 per second
+Supported payment methods: 2 (credit card, bank account)
+Confirmation selfie images generated per character: 3
+Subscription check frequency: real-time
+Account creation support staff: 5
+Expansion release notification fan-out capacity: 1000000 players

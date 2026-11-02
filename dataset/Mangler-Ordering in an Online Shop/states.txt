@@ -1,0 +1,51 @@
+STATE-01: Initial / early execution
+Current process position: Ordering in an online shop
+Completed activities: None
+Current active activity or waiting point: Ordering in an online shop
+Token position / execution status: token is at Ordering in an online shop; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of registered customers: 45000)
+Applicable rules: Rule 1 (A customer can continue shopping only after the login is confirmed by the system.)
+Possible next activities: Ordering in an online shop
+
+STATE-02: Intermediate / decision
+Current process position: Finish
+Completed activities: Ordering in an online shop, Ordering in an online shop, User, E-Shop, User wants to login, Open E-Shop Homepage, Bank, DefaultInputSet, DefaultOutputSet, startEvent, DefaultInputSet, Enter login data, customer logs into E-Shop, Log in, Check if credentials are correct, customer credentials being checked by system, Check correctness of log-in data, Is data correct?, succesful login?, Login-in 
+data 
+correct?, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Select products, exclusiveGateway, Select product
+Current active activity or waiting point: Finish
+Token position / execution status: token is at Finish; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of registered customers: 45000)
+Applicable rules: Rule 1 (A customer can continue shopping only after the login is confirmed by the system.)
+Possible next activities: customer selects a product
+
+STATE-03: Resource-dependent / waiting
+Current process position: Prepare shipment
+Completed activities: Ordering in an online shop, Ordering in an online shop, User, E-Shop, User wants to login, Open E-Shop Homepage, Bank, DefaultInputSet, DefaultOutputSet, startEvent, DefaultInputSet, Enter login data, customer logs into E-Shop, Log in, Check if credentials are correct, customer credentials being checked by system, Check correctness of log-in data, Is data correct?, succesful login?, Login-in 
+data 
+correct?, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Select products, exclusiveGateway, Select product, Finish, customer selects a product, Close E-Shop Homepage, exclusiveGateway, endEvent, Add it to shopping cart, customer adds product to shopping cart, Add product to shopping cart, Save item, customer saves product, Save product, Want to select other products?, customer checks if product was already selected, Check if  all products are selected yet, Check if every selected item is in the shopping cart, has customer selected
+ all desired products?, All products 
+selected?, Confirm order, parallelGateway, Confirm order, parallelGateway, Payment is prepared by system, Shipment is prepared by system, parallelGateway, Prepare shipment details, Prepare payment details, parallelGateway
+Current active activity or waiting point: Prepare shipment
+Token position / execution status: token is at Prepare shipment; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of registered customers: 45000)
+Applicable rules: Rule 1 (A customer can continue shopping only after the login is confirmed by the system.)
+Possible next activities: Enter payment data
+
+STATE-04: Near completion / completed
+Current process position: Confirm and save order
+Completed activities: Ordering in an online shop, Ordering in an online shop, User, E-Shop, User wants to login, Open E-Shop Homepage, Bank, DefaultInputSet, DefaultOutputSet, startEvent, DefaultInputSet, Enter login data, customer logs into E-Shop, Log in, Check if credentials are correct, customer credentials being checked by system, Check correctness of log-in data, Is data correct?, succesful login?, Login-in 
+data 
+correct?, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Select products, exclusiveGateway, Select product, Finish, customer selects a product, Close E-Shop Homepage, exclusiveGateway, endEvent, Add it to shopping cart, customer adds product to shopping cart, Add product to shopping cart, Save item, customer saves product, Save product, Want to select other products?, customer checks if product was already selected, Check if  all products are selected yet, Check if every selected item is in the shopping cart, has customer selected
+ all desired products?, All products 
+selected?, Confirm order, parallelGateway, Confirm order, parallelGateway, Payment is prepared by system, Shipment is prepared by system, parallelGateway, Prepare shipment details, Prepare payment details, parallelGateway, Prepare shipment, Prepare payment, parallelGateway, customer enters payment data, Enter payment data, Enter shipping data, Enter payment data, parallelGateway, Payment confirmation, Same billing 
+and shipping 
+address?, parallelGateway, customer enters shipping address, customer waits until bank confirms payment, parallelGateway, Use billing address as shipping address, Enter different shipping address, Send payment data to bank institut, Enter shipping details, if shipping adress == billing adress?, parallelGateway, Finish order, exclusiveGateway, parallelGateway, exclusiveGateway, customer enters an independent billing adress, order is being finished by system, Did bank confirm payment data?
+Current active activity or waiting point: Confirm and save order
+Token position / execution status: token is at Confirm and save order; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of registered customers: 45000)
+Applicable rules: Rule 1 (A customer can continue shopping only after the login is confirmed by the system.)
+Possible next activities: exclusiveGateway

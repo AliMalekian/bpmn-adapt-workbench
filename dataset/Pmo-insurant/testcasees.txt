@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event).
+Current token position: Immediately before send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event) on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of claims officers: 12)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event).
+Current token position: Immediately before send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event) on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 3 (The case officer must set a reminder for payment follow-up on the day the payment request is issued.), Rule 9 (If the disagreement deadline is reached and no payment has been received, the case is automatically forwarded to the collection agency.)
+Expected execution path: Follow the original predecessor → send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event).
+Current token position: Immediately before send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event) on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of claims officers: 12)
+Relevant rules: Rule 3 (The case officer must set a reminder for payment follow-up on the day the payment request is issued.), Rule 9 (If the disagreement deadline is reached and no payment has been received, the case is automatically forwarded to the collection agency.)
+Expected execution path: Follow the original predecessor → send reminder task (the follow-up reminder created on the day the payment request is issued, tracked via the "Reminder is due" timer event) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate restored process activity.
+Current token position: Immediately before restored process activity on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → restored process activity → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

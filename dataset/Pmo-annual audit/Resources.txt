@@ -1,0 +1,14 @@
+Regional offices: 12
+Central audit team members: 8
+Audit coordinators: 2
+Compliance team members: 4
+Document submission deadline (days): 30
+Clarification response deadline (days): 10
+Maximum revision cycles: 3
+Risk categories assessed: 3
+Site visits per audit cycle: 5
+Audit report review rounds (maximum): 4
+Retention period for audit evidence (years): 7
+Average audit duration (days): 90
+Financial statements reviewed per office: 1
+Executive board members receiving the report: 9

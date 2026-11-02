@@ -1,0 +1,28 @@
+Request1:
+Removed element: Describing the symptoms and stating the type of fridge when contacting the central service center
+Reason: The symptom-description step is proposed for removal so the customer only needs to send a repair request without providing details.
+Conflict details: Conflicts with Rule 1 ("The customer must describe the symptoms and state the fridge type when contacting the central service center"). Removing this step directly violates the mandatory information requirement. It also conflicts with Resource 9 ("Number of service requests per day: 35"): the call-queue and staff capacity assume that each request carries the symptom and type information needed to route and triage the case.
+
+Request2:
+Removed element: Customer rating of the service facility after the repair
+Reason: The rating step is proposed for removal so the process ends immediately after the repair confirmation, sparing the customer an extra action.
+Conflict details: Conflicts with Rule 8 ("The customer can rate the service facility only after confirming the repair") and Rule 14 ("The rating is mandatory once the repair confirmation has been submitted"). Removing the rating step violates both the sequencing rule and the mandatory-rating rule. There is no resource in Resources.txt that sets the rating value itself, but the service-level monitoring implied by the rating infrastructure (25 local service facilities, 4 technicians per facility) is undermined because there is no longer any feedback channel to evaluate the facility's performance.
+
+Request3:
+Removed element: Scheduling a follow-up appointment when the technician leaves because additional parts are needed
+Reason: The follow-up scheduling step is proposed for removal to reduce the number of visits and administrative work.
+Conflict details: Conflicts with Rule 6 ("A follow-up appointment is scheduled whenever the technician leaves because of missing parts") and Rule 10 ("A repair that was interrupted due to missing parts must be completed within 5 days of the first visit"). It also conflicts with Resource 6 ("Number of spare parts carried per technician: 20") and Resource 7 ("Repair completion deadline: 5 days"): the 5-day completion deadline resource exists to bound the follow-up visit, and the 20 spare-parts capacity defines when a follow-up is even needed.
+
+Request4:
+Removed element: The technician's random arrival time within the agreed appointment window
+Reason: The random-arrival behavior is proposed for removal so the technician arrives at a fixed, pre-agreed time, which is easier to plan around.
+Conflict details: None — fully compatible with all rules and resources. Rule 4 ("The technician may arrive at any random time within the agreed appointment window") is a permissive ("may") rule that allows random arrival but does not require it; arriving at a fixed time within the window satisfies the appointment contract without breaking it. Rule 13 ("The service facility must notify the customer of the visit time on the day of the appointment") still holds for the fixed time. Resource 4 ("Appointment window: 4 hours") defines the window, which is not violated by choosing a fixed point inside it. No other rule or resource depends on the randomness of the arrival.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

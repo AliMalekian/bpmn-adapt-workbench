@@ -1,0 +1,29 @@
+Request1:
+Removed element: "Refine requirements" task (the iterative step where additional requirements are sent and the architect returns revised drafts)
+Reason: Removing the refinement rounds would send the requirements only once and accept the first draft, shortening the planning phase.
+Conflict details: Conflicts with Rule 3 ("Each refinement round with additional requirements must be answered with a revised draft within 1 week") and Rule 4 ("Refinement rounds are limited to 5 rounds before a final plan must be frozen"), which jointly define and limit the refinement loop that this task executes. It also conflicts with Rule 1 ("The requirements list must be complete and signed by the owner before it is sent to the architect") because refinement frequently adds new requirements that must remain complete. On the resource side it conflicts with "Refinement round delivery time: 1 week" and "Maximum refinement rounds: 5", which document the parameters of this very step.
+
+Request2:
+Removed element: "Call friends" task (the activity that asks friends to help build the house)
+Reason: It is proposed to hire a single paid builder instead of calling friends, eliminating the friend-coordination step.
+Conflict details: Conflicts with Resource "Minimum friends required to build: 3" and "Maximum number of helpers on site: 8", because the resource model reserves helper capacity specifically for the friends called by this task. It also conflicts with Resource "Ready-to-build projects per year: 4" and "Construction budget: 15000 EUR", since the budget allocation assumes the friends-based construction model. Furthermore the removal violates Rule 8 ("Friends are asked to help build the house only after all material orders have been placed") and Rule 9 ("At least 3 friends must be available to start the construction phase"), which explicitly require this step.
+
+Request3:
+Removed element: "Place order" task (the step where materials are ordered from several online stores)
+Reason: Buying the materials directly from a single local supplier is proposed, skipping the multi-store ordering task.
+Conflict details: Conflicts with Rule 6 ("Materials are ordered from online stores only after the final plan is approved") because the place-order task is the online-store ordering step, and Rule 7 ("Orders exceeding 2000 EUR from a single store require owner approval"), whose threshold applies exactly to the orders issued by this task. It also conflicts with Rule 5 ("The final materials list must be created only from the approved architectural plan"), since order placement consumes that materials list. On the resource side it conflicts with "Number of online stores used for orders: 4" and "Single-store order approval threshold: 2000 EUR", which define the multi-store ordering setup.
+
+Request4:
+Removed element: Optional administrative archiving and logging step
+Reason: Proposed by operations to streamline case closure by omitting optional secondary archiving overhead.
+Conflict details: None -- fully compatible with all rules and resources. Operates as an ancillary, non-blocking administrative task; core business rules and resource constraints remain fully intact.
+
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

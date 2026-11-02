@@ -1,0 +1,17 @@
+Rules for Overall Equipment Effectiveness (OEE) Monitoring
+8. When OEE tracking is active for a shift, OEE is recalculated at the end of the shift and stored with a timestamp; shifts operating under fixed benchmarks do not require recalculation.
+1. The monitoring system must collect production data from the machine continuously.
+2. OEE must be calculated from three factors: availability, performance, and quality.
+3. If the OEE value falls below the threshold of 75 percent, the machine must be stopped immediately.
+4. An email alert must be sent automatically to the responsible engineer when the OEE drops below the threshold.
+5. The machine may be restarted only after the engineer has inspected and approved it.
+6. Data collection and OEE calculation must resume automatically after the machine is restarted.
+7. When the machine is disconnected from the monitoring system, the monitoring process stops.
+8. OEE must be recalculated at the end of every shift and stored with a timestamp.
+9. A machine that stays below the OEE threshold for 3 consecutive shifts must be scheduled for maintenance.
+10. The engineer must document the cause of every OEE drop in the maintenance system.
+11. Alarm emails must be acknowledged by the engineer within 1 hour of being sent.
+12. Only the production manager may change the configured OEE threshold.
+13. Units processed during the failure window must be quarantined for quality inspection.
+14. The monitoring system must send a weekly OEE report to the plant manager.
+15. All sensor data used for OEE calculation must be validated before the value is stored.

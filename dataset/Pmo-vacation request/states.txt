@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Employee submits a vacation request
+Completed activities: startEvent
+Current active activity or waiting point: Employee submits a vacation request
+Token position / execution status: token is at Employee submits a vacation request; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum annual leave entitlement: 20 days)
+Applicable rules: Rule 1 (An employee must submit a vacation request at least 3 working days before the intended start date.)
+Possible next activities: Requirement is registered
+
+STATE-02: Intermediate / decision
+Current process position: Supervisor approve or reject the request
+Completed activities: startEvent, Employee submits a vacation request, Requirement is registered, Employee's supervisor receive the request
+Current active activity or waiting point: Supervisor approve or reject the request
+Token position / execution status: token is at Supervisor approve or reject the request; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum annual leave entitlement: 20 days)
+Applicable rules: Rule 1 (An employee must submit a vacation request at least 3 working days before the intended start date.)
+Possible next activities: exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Employee can check rejection reasons
+Completed activities: startEvent, Employee submits a vacation request, Requirement is registered, Employee's supervisor receive the request, Supervisor approve or reject the request, exclusiveGateway, Application is returned to employee, Notification is generated to the HR Representative
+Current active activity or waiting point: Employee can check rejection reasons
+Token position / execution status: token is at Employee can check rejection reasons; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum annual leave entitlement: 20 days)
+Applicable rules: Rule 1 (An employee must submit a vacation request at least 3 working days before the intended start date.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: startEvent, Employee submits a vacation request, Requirement is registered, Employee's supervisor receive the request, Supervisor approve or reject the request, exclusiveGateway, Application is returned to employee, Notification is generated to the HR Representative, Employee can check rejection reasons, HR Representative complete the respective management procedures, exclusiveGateway
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum annual leave entitlement: 20 days)
+Applicable rules: Rule 1 (An employee must submit a vacation request at least 3 working days before the intended start date.)
+Possible next activities: Process completion

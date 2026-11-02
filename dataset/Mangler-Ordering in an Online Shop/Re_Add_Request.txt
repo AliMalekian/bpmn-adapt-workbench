@@ -1,0 +1,12 @@
+Re-Add Request:
+Restored element: Option to enter a separate billing address when it differs from the shipping address
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The step "Enter a separate billing address" is re-inserted into the process after the customer enters the shipping address and while the bank payment confirmation is still pending.
+- The billing-address option is restored as a conditional step: it is presented only when the customer indicates that the billing address is not equal to the shipping address, in accordance with Rule 9 ("A separate billing address may be entered when it is not equal to the shipping address").
+- The shipping address continues to serve as the default billing address when the customer does not request a separate one.
+- The billing-address step runs in parallel with the bank payment confirmation, consistent with Rule 10 ("The shipping address must be entered while the payment confirmation is still pending") and Rule 11 ("The order is finally executed by the system only after both the address and the payment steps are done").
+- All other process elements (login, product selection, cart management, payment, shipment preparation, order finalization) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration; the billing-address feature was always an optional, non-blocking element in the address-entry phase.

@@ -1,0 +1,8 @@
+Request1:
+Removed element: Receive returned items task
+Restoration details: This request restores, in full, everything that Request4 removed from the order fulfillment returns branch so that the process returns to its exact original shape:
+- The "Receive returned items" task (Task_24 in the model) is re-inserted on the returns branch. It is reconnected exactly as before: after the "Send return shipping label" task (Task_17), the returned items are physically received back at the warehouse through the "Receive returned items" task.
+- The "Inspect returned items" task (Task_12) is re-connected so that it is fed by the "Receive returned items" task, exactly as in the original model, restoring the sequence: send return shipping label -> receive returned items -> inspect returned items.
+- The following decision gateway (ExclusiveGateway_5) is restored exactly as before, so that after inspection the return is either processed as a refund (through the "Process refund" task) or as a replacement (through the "Process replacement" task), both merging again at the following gateway (ExclusiveGateway_6) before the return processing concludes.
+- All original sequence flows around these elements are restored: "Send return shipping label" -> "Receive returned items" -> "Inspect returned items" -> refund or replacement. No sequence flow that existed in the original model is missing.
+After this restoration the returns branch is exactly as modeled originally: an issue reported upon delivery triggers the return shipping label, the returned items are received, inspected, and then processed as a refund or a replacement within the 10-business-day return window. The process is back to its original state.

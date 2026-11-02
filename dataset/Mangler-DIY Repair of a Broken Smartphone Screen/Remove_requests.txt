@@ -1,0 +1,28 @@
+Request1:
+Removed element: The step of entering the smartphone model and the damaged part into the tool.
+Reason: To start the repair faster by skipping the initial data entry on the online tool.
+Conflict details: Conflicts with Rule 1 — the smartphone model and the damaged part must be entered into the tool before any material or tool list is generated. Removing this entry step makes it impossible for the tool to generate the correct material and tool lists, and the rest of the repair flow loses its input.
+
+Request2:
+Removed element: The use of a static-free work surface during the screen repair.
+Reason: To simplify the workspace and perform the repair on any available table.
+Conflict details: Conflicts with the resource "Static-free work surfaces available: 1". The process resource plan allocates exactly 1 static-free work surface for the repair; removing the use of this surface contradicts the resource allocation, since a dedicated static-free workspace is a counted resource of the repair setup. Removing it violates the resource plan.
+
+Request3:
+Removed element: The 8-hour adhesive curing step (the newly glued screen must cure before the phone is powered on).
+Reason: To speed up the repair so the phone can be used again on the same day.
+Conflict details: Conflicts with Rule 13 — a newly glued screen must cure for at least 8 hours before the phone is powered on; and with Rule 7 — the repair must follow the tool's step-by-step instructions in the given order, which includes the curing step. It also conflicts with the resource "Adhesive curing time: 8 hours", which defines the curing duration allocated for this step; removing the cure makes the curing-time resource meaningless. In addition, it conflicts with the resource "Adhesive kits in stock: 2", since ordering/using the adhesive kit (Rule 12) is only meaningful together with its curing requirement.
+
+Request4:
+Removed element: The optional step of contacting friends to borrow or buy something (tools or parts) cheaply from them.
+Reason: To avoid the back-and-forth communication with friends and go straight to buying everything from the recommended ordering options.
+Conflict details: None — fully compatible with all rules and resources. Rule 3 says a tool may be borrowed or bought from a friend only if its price is lower than the retail price plus shipping, and Rule 4 says parts that cannot be borrowed or bought cheaply from friends are purchased from the tool's recommended ordering options — but neither rule requires contacting friends; both are permissive conditions, not obligations. The resource "Known friends to contact: 5" is an available capacity, not a mandatory step. Skipping the friends step entirely and buying directly from the recommended ordering options is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

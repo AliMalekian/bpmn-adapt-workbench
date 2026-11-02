@@ -1,0 +1,81 @@
+STATE-01: Initial / early execution
+Current process position: Company
+Completed activities: Trainee
+Current active activity or waiting point: Company
+Token position / execution status: token is at Company; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum weekly applicant updates: 3)
+Applicable rules: Rule 1 (The applicant must enter an interest topic and a desired salary into the internship platform.)
+Possible next activities: E-Government Website
+
+STATE-02: Intermediate / decision
+Current process position: Previous experience?
+Completed activities: Trainee, Company, E-Government Website, Trainee, 3x status updates trainee, 3x status updates company, startEvent, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, 3x status updates trainee, 3x status updates company, Company, E-Government Website, Internship application, topic of interest
+
+amount of money, Experience
+
+Hobbies, DefaultInputSet, DefaultOutputSet, startEvent, DefaultInputSet, DefaultOutputSet, topic of interest
+
+amount of money, Experience
+
+Hobbies, Interested in 
+Internship, startEvent, Employment Contract, Application Window open, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Employment Contract, Internship
+ process
+ is started, Search for intership, Open E-Government Website, Check registration, Enter necessary data, Sign Up Application Portal, Enter topic, salary expectations, experience and hobbies, Enter Topic, Register for internship, Enter webpage, Registered?, Is Registered?, Add extra information?, Add additional info?, Present offers, add additonal Information, parallelGateway, parallelGateway, Create an account, exclusiveGateway, Report E-Government, exclusiveGateway, Confirm Application, Enter additional data, Enter Information, exclusiveGateway, User decides on offers, Enter experience, Enter hobbies, Specify wage, Enter topic, inclusiveGateway, Enter topic of interest, Enter salary expectacions, Any additional information?, Confirm account, Login on the job portal of the 
+E-Government website, exclusiveGateway, Enter desired topic and amount of money., Receive Offer, exclusiveGateway, Invalidate other offers, parallelGateway, parallelGateway, Enter hobbies, Enter experience, Enter expected income, parallelGateway
+Current active activity or waiting point: Previous experience?
+Token position / execution status: token is at Previous experience?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum weekly applicant updates: 3)
+Applicable rules: Rule 1 (The applicant must enter an interest topic and a desired salary into the internship platform.)
+Possible next activities: Enter previous experience, Enter hobbies
+
+STATE-03: Resource-dependent / waiting
+Current process position: Sign internship contract
+Completed activities: Trainee, Company, E-Government Website, Trainee, 3x status updates trainee, 3x status updates company, startEvent, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, 3x status updates trainee, 3x status updates company, Company, E-Government Website, Internship application, topic of interest
+
+amount of money, Experience
+
+Hobbies, DefaultInputSet, DefaultOutputSet, startEvent, DefaultInputSet, DefaultOutputSet, topic of interest
+
+amount of money, Experience
+
+Hobbies, Interested in 
+Internship, startEvent, Employment Contract, Application Window open, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Employment Contract, Internship
+ process
+ is started, Search for intership, Open E-Government Website, Check registration, Enter necessary data, Sign Up Application Portal, Enter topic, salary expectations, experience and hobbies, Enter Topic, Register for internship, Enter webpage, Registered?, Is Registered?, Add extra information?, Add additional info?, Present offers, add additonal Information, parallelGateway, parallelGateway, Create an account, exclusiveGateway, Report E-Government, exclusiveGateway, Confirm Application, Enter additional data, Enter Information, exclusiveGateway, User decides on offers, Enter experience, Enter hobbies, Specify wage, Enter topic, inclusiveGateway, Enter topic of interest, Enter salary expectacions, Any additional information?, Confirm account, Login on the job portal of the 
+E-Government website, exclusiveGateway, Enter desired topic and amount of money., Receive Offer, exclusiveGateway, Invalidate other offers, parallelGateway, parallelGateway, Enter hobbies, Enter experience, Enter expected income, parallelGateway, Previous experience?, exclusiveGateway, parallelGateway, End, Enter experiences and hobbies., exclusiveGateway, exclusiveGateway, parallelGateway, Apply, Publish your application, inclusiveGateway, Search for offers, Enter previous experience, Enter hobbies, Enter topic, Enter minimum salary, Enter experience, Enter hobbies, Offers arrival, All other offers are set invalid, Letter of rejection is sent, Update Inbox, Receive status update about internship, Write status update about trainee, exclusiveGateway, exclusiveGateway, Display fitted offers, parallelGateway, Did the applicant accept an offer?, Work as trainee, new offer?, parallelGateway, Recieve offer, Recieve offer, Analyze offer, Save preferences and specifications, Invalid other offers, parallelGateway, 10 minutes, Check Inbox Offers, Propose recommendation of company to friends of user, Accept offer, Accept offer?, Accept offer?, Offers, parallelGateway, 7 days, 7 days, suitable offer 
+>3 weeks?, Does the user recommend 
+the company?, Set all other offers invalid, Deny offer, parallelGateway, Update candidate profile, Display all offers on the user page, exclusiveGateway, exclusiveGateway, Receive >=3 Feedback letter, Write >= 3 update letters, Accept Offer, Let user decide on friends, endEvent, recieve employment contract, Accept offer, Invalidate all other offers, parallelGateway, Accept offer?, Checking companies status updates, Checking applicants status updates, parallelGateway, parallelGateway, Receive list of friends, Sign employment contract, parallelGateway, Write personal status update, Enter intern feedback, Accept the offer on the E-Government website, Cancel the offer to the company, Did the company update 
+her/his status 3 times?, Did the applicant update her/his 
+status at least 3 times in last week?, Internship finished?, Deny other offers
+Current active activity or waiting point: Sign internship contract
+Token position / execution status: token is at Sign internship contract; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum weekly applicant updates: 3)
+Applicable rules: Rule 1 (The applicant must enter an interest topic and a desired salary into the internship platform.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: Trainee, Company, E-Government Website, Trainee, 3x status updates trainee, 3x status updates company, startEvent, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, 3x status updates trainee, 3x status updates company, Company, E-Government Website, Internship application, topic of interest
+
+amount of money, Experience
+
+Hobbies, DefaultInputSet, DefaultOutputSet, startEvent, DefaultInputSet, DefaultOutputSet, topic of interest
+
+amount of money, Experience
+
+Hobbies, Interested in 
+Internship, startEvent, Employment Contract, Application Window open, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Employment Contract, Internship
+ process
+ is started, Search for intership, Open E-Government Website, Check registration, Enter necessary data, Sign Up Application Portal, Enter topic, salary expectations, experience and hobbies, Enter Topic, Register for internship, Enter webpage, Registered?, Is Registered?, Add extra information?, Add additional info?, Present offers, add additonal Information, parallelGateway, parallelGateway, Create an account, exclusiveGateway, Report E-Government, exclusiveGateway, Confirm Application, Enter additional data, Enter Information, exclusiveGateway, User decides on offers, Enter experience, Enter hobbies, Specify wage, Enter topic, inclusiveGateway, Enter topic of interest, Enter salary expectacions, Any additional information?, Confirm account, Login on the job portal of the 
+E-Government website, exclusiveGateway, Enter desired topic and amount of money., Receive Offer, exclusiveGateway, Invalidate other offers, parallelGateway, parallelGateway, Enter hobbies, Enter experience, Enter expected income, parallelGateway, Previous experience?, exclusiveGateway, parallelGateway, End, Enter experiences and hobbies., exclusiveGateway, exclusiveGateway, parallelGateway, Apply, Publish your application, inclusiveGateway, Search for offers, Enter previous experience, Enter hobbies, Enter topic, Enter minimum salary, Enter experience, Enter hobbies, Offers arrival, All other offers are set invalid, Letter of rejection is sent, Update Inbox, Receive status update about internship, Write status update about trainee, exclusiveGateway, exclusiveGateway, Display fitted offers, parallelGateway, Did the applicant accept an offer?, Work as trainee, new offer?, parallelGateway, Recieve offer, Recieve offer, Analyze offer, Save preferences and specifications, Invalid other offers, parallelGateway, 10 minutes, Check Inbox Offers, Propose recommendation of company to friends of user, Accept offer, Accept offer?, Accept offer?, Offers, parallelGateway, 7 days, 7 days, suitable offer 
+>3 weeks?, Does the user recommend 
+the company?, Set all other offers invalid, Deny offer, parallelGateway, Update candidate profile, Display all offers on the user page, exclusiveGateway, exclusiveGateway, Receive >=3 Feedback letter, Write >= 3 update letters, Accept Offer, Let user decide on friends
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum weekly applicant updates: 3)
+Applicable rules: Rule 1 (The applicant must enter an interest topic and a desired salary into the internship platform.)
+Possible next activities: Process completion

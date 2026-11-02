@@ -1,0 +1,94 @@
+STATE-01: Initial / early execution
+Current process position: Start
+Completed activities: Receive order
+Current active activity or waiting point: Start
+Token position / execution status: token is at Start; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Daily burger stock: 200 units)
+Applicable rules: Rule 1 (The robot accepts only one order at a time.)
+Possible next activities: The customer goes to the Robot
+
+STATE-02: Intermediate / decision
+Current process position: preparing large drink (13 sec. processing)
+Completed activities: Receive order, Start, Customer, Burger robot, Customer, Customer places complete order, startEvent, Burger robot, Description
+
+This process reflects the automated work of a burger robot in a restaurant environment. It has to take orders from customers and then prepare them.
+
+- Customer must place order
+- Based on the order, the robot prepares the dishes
+- Robot always provides status updates for the order
+- Robot prepares the food and places it on a conveyor belt, Burger Robot ask for an burger menu or single burger, Robot accepts order, Description
+
+This process reflects the automated work of a burger robot in a restaurant environment. It has to take orders from customers and then prepare them.
+
+- Customer must place order
+- Based on the order, the robot prepares the dishes
+- Robot always provides status updates for the order
+- Robot prepares the food and places it on a conveyor belt, Food order decided, startEvent, Robotic Burger Seller, Robotic Burger Seller, Start the Order, start process, Initial order, Receiving an order, Process order information, The customer goes to the Robot, Customer checks order status, Customer request Burger robot, exclusiveGateway, Select type of order, Customer makes order, Receive the Order, Place order, Customer creates an order, Display options, menu?, The Robot asks an order, Customer gets his order, parallelGateway, Burger preparing starts, exclusiveGateway, Receive order, Menu or Burger?, Robot receives order, The robot receives an order, Menu?, parallelGateway, Process chosen burger, Menu?, endEvent, Preparing Pommes/Wedges Production, Preparing the drink/soda, parallelGateway, Select menu, Select burger, Ask if burger only or menu, Burger Choosed, Menu Choosed, menu?, The robot asks the customer to choose food, parallelGateway, exclusiveGateway, Ask which side dish was selected, Select suitable cup size, exclusiveGateway, parallelGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, check order status, Ingredients are packed on the burger on the basis of the order, Select type of beverage, exclusiveGateway, Recieve answer, exclusiveGateway, Prepare the drink, parallelGateway, exclusiveGateway, Choosing of food
+menu, Select supplement, Select drink, parallelGateway, parallelGateway, Prepare drink, Prepare burger, The Robot asks fries or wedges., The customer tells drink size, exclusiveGateway, Pommes get prepared, Wedges get prepared, preparing small drink (5 sec. processing), preparing medium drink (9 sec. processing)
+Current active activity or waiting point: preparing large drink (13 sec. processing)
+Token position / execution status: token is at preparing large drink (13 sec. processing); predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Daily burger stock: 200 units)
+Applicable rules: Rule 1 (The robot accepts only one order at a time.)
+Possible next activities: Drink will packed in the order
+
+STATE-03: Resource-dependent / waiting
+Current process position: robot picks chicken patty
+Completed activities: Receive order, Start, Customer, Burger robot, Customer, Customer places complete order, startEvent, Burger robot, Description
+
+This process reflects the automated work of a burger robot in a restaurant environment. It has to take orders from customers and then prepare them.
+
+- Customer must place order
+- Based on the order, the robot prepares the dishes
+- Robot always provides status updates for the order
+- Robot prepares the food and places it on a conveyor belt, Burger Robot ask for an burger menu or single burger, Robot accepts order, Description
+
+This process reflects the automated work of a burger robot in a restaurant environment. It has to take orders from customers and then prepare them.
+
+- Customer must place order
+- Based on the order, the robot prepares the dishes
+- Robot always provides status updates for the order
+- Robot prepares the food and places it on a conveyor belt, Food order decided, startEvent, Robotic Burger Seller, Robotic Burger Seller, Start the Order, start process, Initial order, Receiving an order, Process order information, The customer goes to the Robot, Customer checks order status, Customer request Burger robot, exclusiveGateway, Select type of order, Customer makes order, Receive the Order, Place order, Customer creates an order, Display options, menu?, The Robot asks an order, Customer gets his order, parallelGateway, Burger preparing starts, exclusiveGateway, Receive order, Menu or Burger?, Robot receives order, The robot receives an order, Menu?, parallelGateway, Process chosen burger, Menu?, endEvent, Preparing Pommes/Wedges Production, Preparing the drink/soda, parallelGateway, Select menu, Select burger, Ask if burger only or menu, Burger Choosed, Menu Choosed, menu?, The robot asks the customer to choose food, parallelGateway, exclusiveGateway, Ask which side dish was selected, Select suitable cup size, exclusiveGateway, parallelGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, check order status, Ingredients are packed on the burger on the basis of the order, Select type of beverage, exclusiveGateway, Recieve answer, exclusiveGateway, Prepare the drink, parallelGateway, exclusiveGateway, Choosing of food
+menu, Select supplement, Select drink, parallelGateway, parallelGateway, Prepare drink, Prepare burger, The Robot asks fries or wedges., The customer tells drink size, exclusiveGateway, Pommes get prepared, Wedges get prepared, preparing small drink (5 sec. processing), preparing medium drink (9 sec. processing), preparing large drink (13 sec. processing), exclusiveGateway, exclusiveGateway, parallelGateway, Make payment, Burger only or menu?, parallelGateway, Fries or Wedges?, prepare drink, Ask about side dish, parallelGateway, The robot will start preparing the whole menu, The robot will start with the preparing ofthe burger, exclusiveGateway, Select size of the drink, Prepare burger, 30 sec, Process chosen side dish, exclusiveGateway, fries?, The Robots starts to make the drink, The Robot prepares the burger, exclusiveGateway, exclusiveGateway, Drink will packed in the order, communicate to customer, robot picks sesam bread, robot picks oregano bread, Prepare beverage, Select side, Enter customer's name, Choose the ordered drink, Prepare burger, Prepare the Burger, Status Update, Fries selected, Wedges selected, parallelGateway, fries or wedges?, prepare burger, give status updates, parallelGateway, parallelGateway, Prepare fries, Prepare wedges, exclusiveGateway, parallelGateway, Display update, Select suitable portion size, Give status update, The Robot makes the wedges, The Robot makes the fries, parallelGateway, The Robot gives an order status, medium Pommes will be prepared (23 sec. processing time), small Pommes will be prepared (15 sec. processing time), large Pommes will be prepared (31 sec. processing time), large Wedges will be prepared (50 sec. processing time), medium Wedges will be prepared (35 sec. processing time), small Wedges will be prepared (20 sec. processing time), exclusiveGateway, parallelGateway, parallelGateway, parallelGateway, Is the burger finished?, parallelGateway, Everything Prepared?, prepare the fries, prepare the wedges, prepare fries, prepare wedges, parallelGateway, The robot asks the customer the size of the drink, The robot asks the customer about side dish, The robot asks the customer about the list of ingredients the burger, The robot sends enthusiastic status updates, exclusiveGateway, Prepare large drink, Prepare medium drink, Prepare small drink, Order complete?, Fries?, Finished?, exclusiveGateway, order finished?, Pommes are get packed in the order, Pommes are get packed in the order, robot picks beef patty
+Current active activity or waiting point: robot picks chicken patty
+Token position / execution status: token is at robot picks chicken patty; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Daily burger stock: 200 units)
+Applicable rules: Rule 1 (The robot accepts only one order at a time.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: Place side dish on conveyor belt
+Completed activities: Receive order, Start, Customer, Burger robot, Customer, Customer places complete order, startEvent, Burger robot, Description
+
+This process reflects the automated work of a burger robot in a restaurant environment. It has to take orders from customers and then prepare them.
+
+- Customer must place order
+- Based on the order, the robot prepares the dishes
+- Robot always provides status updates for the order
+- Robot prepares the food and places it on a conveyor belt, Burger Robot ask for an burger menu or single burger, Robot accepts order, Description
+
+This process reflects the automated work of a burger robot in a restaurant environment. It has to take orders from customers and then prepare them.
+
+- Customer must place order
+- Based on the order, the robot prepares the dishes
+- Robot always provides status updates for the order
+- Robot prepares the food and places it on a conveyor belt, Food order decided, startEvent, Robotic Burger Seller, Robotic Burger Seller, Start the Order, start process, Initial order, Receiving an order, Process order information, The customer goes to the Robot, Customer checks order status, Customer request Burger robot, exclusiveGateway, Select type of order, Customer makes order, Receive the Order, Place order, Customer creates an order, Display options, menu?, The Robot asks an order, Customer gets his order, parallelGateway, Burger preparing starts, exclusiveGateway, Receive order, Menu or Burger?, Robot receives order, The robot receives an order, Menu?, parallelGateway, Process chosen burger, Menu?, endEvent, Preparing Pommes/Wedges Production, Preparing the drink/soda, parallelGateway, Select menu, Select burger, Ask if burger only or menu, Burger Choosed, Menu Choosed, menu?, The robot asks the customer to choose food, parallelGateway, exclusiveGateway, Ask which side dish was selected, Select suitable cup size, exclusiveGateway, parallelGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, check order status, Ingredients are packed on the burger on the basis of the order, Select type of beverage, exclusiveGateway, Recieve answer, exclusiveGateway, Prepare the drink, parallelGateway, exclusiveGateway, Choosing of food
+menu, Select supplement, Select drink, parallelGateway, parallelGateway, Prepare drink, Prepare burger, The Robot asks fries or wedges., The customer tells drink size, exclusiveGateway, Pommes get prepared, Wedges get prepared, preparing small drink (5 sec. processing), preparing medium drink (9 sec. processing), preparing large drink (13 sec. processing), exclusiveGateway, exclusiveGateway, parallelGateway, Make payment, Burger only or menu?, parallelGateway, Fries or Wedges?, prepare drink, Ask about side dish, parallelGateway, The robot will start preparing the whole menu, The robot will start with the preparing ofthe burger, exclusiveGateway, Select size of the drink, Prepare burger, 30 sec, Process chosen side dish, exclusiveGateway, fries?, The Robots starts to make the drink, The Robot prepares the burger, exclusiveGateway, exclusiveGateway, Drink will packed in the order, communicate to customer, robot picks sesam bread, robot picks oregano bread, Prepare beverage, Select side, Enter customer's name, Choose the ordered drink, Prepare burger, Prepare the Burger, Status Update, Fries selected, Wedges selected, parallelGateway, fries or wedges?, prepare burger, give status updates, parallelGateway, parallelGateway, Prepare fries, Prepare wedges, exclusiveGateway, parallelGateway, Display update, Select suitable portion size, Give status update, The Robot makes the wedges, The Robot makes the fries, parallelGateway, The Robot gives an order status, medium Pommes will be prepared (23 sec. processing time), small Pommes will be prepared (15 sec. processing time), large Pommes will be prepared (31 sec. processing time), large Wedges will be prepared (50 sec. processing time), medium Wedges will be prepared (35 sec. processing time), small Wedges will be prepared (20 sec. processing time), exclusiveGateway, parallelGateway, parallelGateway, parallelGateway, Is the burger finished?, parallelGateway, Everything Prepared?, prepare the fries, prepare the wedges, prepare fries, prepare wedges, parallelGateway, The robot asks the customer the size of the drink, The robot asks the customer about side dish, The robot asks the customer about the list of ingredients the burger, The robot sends enthusiastic status updates, exclusiveGateway, Prepare large drink, Prepare medium drink, Prepare small drink, Order complete?, Fries?, Finished?, exclusiveGateway, order finished?, Pommes are get packed in the order, Pommes are get packed in the order, robot picks beef patty, robot picks chicken patty, exclusiveGateway, exclusiveGateway, Prepare burger, exclusiveGateway, Ask if fries or wedges and which size, 30 sec, Put burger down on the conveyor belt, Order Delivered, 30 Seconds, exclusiveGateway, exclusiveGateway, Deliver Burger, The customer chooses the sizes of the drink, Question about 
+potato side dish, The customer chooses the ingredients list, exclusiveGateway, parallelGateway, exclusiveGateway, Deliver order, Prepare fries, Prepare wedges, Deliver oder, after 30 seconds, The customer pays an order, parallelGateway, Prepare potato wedges, Prepare French fries, Update status, parallelGateway, Pour large drink, Pour medium drink, Customer makes decision, Give enthusiastic status updates, Roll the conveyor belt, Order Delivered, Take burger from conveyor belt, Depending on the size,
+the time for the making of 
+the drink varies, The robot asks about the size of the wedges, The robot asks about the size ofthe fries, Depending on the ingredients,
+the time for making the burger
+varies, Take order, exclusiveGateway, Order finished, An order delievered via conveyor belt, Order is placed on a conveyor belt, set order status to "finished", exclusiveGateway, 30 seconds, Notify customer, exclusiveGateway, Receive decision, Customer takes the order, Eat Burger, The robot prepared the drink, The customer chooses the size of the wedges, The customer chooses the size of the fries, The robot made the burger, endEvent, The customer receives an order, Check status, Deliver via conveyor belt, Place drink on conveyor belt, exclusiveGateway, Give thanks to costumer, Pay, parallelGateway, Depending on the size,
+the time for the making 
+of the wedges varies, Depending on the size, 
+the time for the making
+of the fries varies, The order is added on the conveyor belt., The customer leaves the building, Is burger prepared?, Food delivered, parallelGateway, Make medium fries, Make large fries, Make medium wedges, Make large wedges, endEvent, Done, The robot prepared the fries, The robot prepared the wedges, The customer picks up the order, End, exclusiveGateway, The side dish is 
+ready, Customer leaves
+Current active activity or waiting point: Place side dish on conveyor belt
+Token position / execution status: token is at Place side dish on conveyor belt; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Daily burger stock: 200 units)
+Applicable rules: Rule 1 (The robot accepts only one order at a time.)
+Possible next activities: parallelGateway

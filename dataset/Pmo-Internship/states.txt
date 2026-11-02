@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Register for internship
+Completed activities: Internship process is started
+Current active activity or waiting point: Register for internship
+Token position / execution status: token is at Register for internship; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum weekly status updates required: 3)
+Applicable rules: Rule 1 (The student enters a topic of interest and the desired compensation, plus experience and hobbies, before any internships can be offered.)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: Publish your application
+Completed activities: Internship process is started, Register for internship, parallelGateway, Enter topic, inclusiveGateway, parallelGateway, Enter hobbies, Enter experience, Enter expected income
+Current active activity or waiting point: Publish your application
+Token position / execution status: token is at Publish your application; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum weekly status updates required: 3)
+Applicable rules: Rule 1 (The student enters a topic of interest and the desired compensation, plus experience and hobbies, before any internships can be offered.)
+Possible next activities: exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Begin internship
+Completed activities: Internship process is started, Register for internship, parallelGateway, Enter topic, inclusiveGateway, parallelGateway, Enter hobbies, Enter experience, Enter expected income, Publish your application, inclusiveGateway, exclusiveGateway, Recieve offer, Accept offer?, Deny offer, parallelGateway, Accept offer, Invalidate all other offers, parallelGateway
+Current active activity or waiting point: Begin internship
+Token position / execution status: token is at Begin internship; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum weekly status updates required: 3)
+Applicable rules: Rule 1 (The student enters a topic of interest and the desired compensation, plus experience and hobbies, before any internships can be offered.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: Internship succesful
+Completed activities: Internship process is started, Register for internship, parallelGateway, Enter topic, inclusiveGateway, parallelGateway, Enter hobbies, Enter experience, Enter expected income, Publish your application, inclusiveGateway, exclusiveGateway, Recieve offer, Accept offer?, Deny offer, parallelGateway, Accept offer, Invalidate all other offers, parallelGateway, Begin internship, parallelGateway, Write at least 3 status updates every week, Recieve 3 status updates from the company, parallelGateway, End internship, Recommend company?, Recommend company to a list of friends via twitter api, exclusiveGateway
+Current active activity or waiting point: Internship succesful
+Token position / execution status: token is at Internship succesful; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum weekly status updates required: 3)
+Applicable rules: Rule 1 (The student enters a topic of interest and the desired compensation, plus experience and hobbies, before any internships can be offered.)
+Possible next activities: Process completion

@@ -1,0 +1,13 @@
+Re_Add_Request:
+Restored element: The "Rate Service Facility" task — the optional post-repair step where the customer rates the local service facility after a successful repair and completion confirmation.
+
+Detailed restoration: Request4 removed the customer rating task from the process. To restore the process to its original state, the rating step must be re-added exactly as follows:
+
+1. After the customer confirms that the fridge is working correctly again (the "Confirm that fridge is okay" task), the process proceeds to the rating step.
+2. The customer is invited to rate the service facility on a scale from 1 to 5 (consistent with the resource "Maximum customer rating score: 5").
+3. The rating is recorded and contributes to the facility's average customer rating, which is monitored against the "Customer satisfaction target (out of 5): 4.5."
+4. If the rating is 2 stars or lower, Rule 13 triggers a mandatory quality review by the central service center.
+5. If the facility's average rating falls below 3.5 out of 5 over a quarter, Rule 8 places the facility under central review.
+6. The process then ends, returning to the original flow where the customer has rated the service facility after a completed repair.
+
+This restores the complete original process: symptoms described, fridge type collected, report sent to central service center, local facility selected, appointment scheduled, technician arrives, repair performed, customer confirms repair is OK, customer rates the service facility, and the process ends. All 15 rules (Rules 1-15) and all 14 resources (25 facilities, 6 technicians each, 8 central operators, 15 vehicles, 12 appointment slots per facility per day, 48-hour standard response, 24-hour emergency response, 20 parts per facility, 4.5 satisfaction target, 3 maximum follow-up visits, 300 weekly capacity, $250,000 annual budget, 90-minute average repair, 5 maximum rating) remain in effect.

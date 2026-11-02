@@ -1,0 +1,306 @@
+Example ID: R1-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Check availability of character name" task (the step that tests the chosen name against the realm and reserves it)” for Request1.
+Target BPMN element: "Check availability of character name" task (the step that tests the chosen name against the realm and reserves it)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Check availability of character name" task (the step that tests the chosen name against the realm and reserves it)” for Request1.
+Target BPMN element: "Check availability of character name" task (the step that tests the chosen name against the realm and reserves it)
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (Character names are entered one by one until a name that is still available is confirmed.), Rule 8 (A chosen name is reserved for the character once the availability check passes.), Rule 9 (Names rejected as unavailable cannot be retried until 24 hours have passed.), Rule 12 (Each realm can host no more than 5000 characters per account region cap.).
+Referenced rules: Rule 7 (Character names are entered one by one until a name that is still available is confirmed.), Rule 8 (A chosen name is reserved for the character once the availability check passes.), Rule 9 (Names rejected as unavailable cannot be retried until 24 hours have passed.), Rule 12 (Each realm can host no more than 5000 characters per account region cap.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Check availability of character name" task (the step that tests the chosen name against the realm and reserves it)” for Request1.
+Target BPMN element: "Check availability of character name" task (the step that tests the chosen name against the realm and reserves it)
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (Character names are entered one by one until a name that is still available is confirmed.), Rule 8 (A chosen name is reserved for the character once the availability check passes.), Rule 9 (Names rejected as unavailable cannot be retried until 24 hours have passed.), Rule 12 (Each realm can host no more than 5000 characters per account region cap.).
+Referenced rules: Rule 7 (Character names are entered one by one until a name that is still available is confirmed.), Rule 8 (A chosen name is reserved for the character once the availability check passes.), Rule 9 (Names rejected as unavailable cannot be retried until 24 hours have passed.), Rule 12 (Each realm can host no more than 5000 characters per account region cap.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)” safely.
+Target BPMN element: "Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R2-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Enter credit card information" task (the step where the player types the credit card details when credit card is the chosen payment method)” for Request2.
+Target BPMN element: "Enter credit card information" task (the step where the player types the credit card details when credit card is the chosen payment method)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Enter credit card information" task (the step where the player types the credit card details when credit card is the chosen payment method)” for Request2.
+Target BPMN element: "Enter credit card information" task (the step where the player types the credit card details when credit card is the chosen payment method)
+Decision: REJECT
+Decision reason: It conflicts with Rule 4 (Credit card information is entered only if credit card is selected as the payment method.), Rule 6 (A payment method may not be left unset; the account stays blocked until a method is chosen.).
+Referenced rules: Rule 4 (Credit card information is entered only if credit card is selected as the payment method.), Rule 6 (A payment method may not be left unset; the account stays blocked until a method is chosen.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Enter credit card information" task (the step where the player types the credit card details when credit card is the chosen payment method)” for Request2.
+Target BPMN element: "Enter credit card information" task (the step where the player types the credit card details when credit card is the chosen payment method)
+Decision: REJECT
+Decision reason: It conflicts with Rule 4 (Credit card information is entered only if credit card is selected as the payment method.), Rule 6 (A payment method may not be left unset; the account stays blocked until a method is chosen.).
+Referenced rules: Rule 4 (Credit card information is entered only if credit card is selected as the payment method.), Rule 6 (A payment method may not be left unset; the account stays blocked until a method is chosen.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)” safely.
+Target BPMN element: "Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R3-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Enter character name" task (the loop step where the player types candidate names one by one into the system)” for Request3.
+Target BPMN element: "Enter character name" task (the loop step where the player types candidate names one by one into the system)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Enter character name" task (the loop step where the player types candidate names one by one into the system)” for Request3.
+Target BPMN element: "Enter character name" task (the loop step where the player types candidate names one by one into the system)
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (Character names are entered one by one until a name that is still available is confirmed.), Rule 10 (Realm, race, and class must be selected before the name confirmation is executed.), Rule 13 (The player needs to come up with at least 5 candidate names before entering them into the system.).
+Referenced rules: Rule 7 (Character names are entered one by one until a name that is still available is confirmed.), Rule 10 (Realm, race, and class must be selected before the name confirmation is executed.), Rule 13 (The player needs to come up with at least 5 candidate names before entering them into the system.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Enter character name" task (the loop step where the player types candidate names one by one into the system)” for Request3.
+Target BPMN element: "Enter character name" task (the loop step where the player types candidate names one by one into the system)
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (Character names are entered one by one until a name that is still available is confirmed.), Rule 10 (Realm, race, and class must be selected before the name confirmation is executed.), Rule 13 (The player needs to come up with at least 5 candidate names before entering them into the system.).
+Referenced rules: Rule 7 (Character names are entered one by one until a name that is still available is confirmed.), Rule 10 (Realm, race, and class must be selected before the name confirmation is executed.), Rule 13 (The player needs to come up with at least 5 candidate names before entering them into the system.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)” safely.
+Target BPMN element: "Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R4-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)” for Request4.
+Target BPMN element: "Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)” for Request4.
+Target BPMN element: "Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)
+Decision: REJECT
+Decision reason: It conflicts with Rule 2 (A WoW subscription must be active before the character can be created and logged in.).
+Referenced rules: Rule 2 (A WoW subscription must be active before the character can be created and logged in.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)” for Request4.
+Target BPMN element: "Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)
+Decision: REJECT
+Decision reason: It conflicts with Rule 2 (A WoW subscription must be active before the character can be created and logged in.).
+Referenced rules: Rule 2 (A WoW subscription must be active before the character can be created and logged in.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)” safely.
+Target BPMN element: "Check WoW subscription" task (the real-time check of whether the player holds an active World of Warcraft subscription)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: RA-READD-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RESOURCE-CONFLICT
+User request: Re-add “"Check WoW subscription" task (the real-time subscription check that was removed by Request4) Reason: Request4 removed the "Check WoW subscription" task, claiming a trusted local session flag could replace the live lookup. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Check WoW subscription" task (the real-time subscription check that was removed by Request4) Reason: Request4 removed the "Check WoW subscription" task, claiming a trusted local session flag could replace the live lookup. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates None and Resource 1 (Total character slots per account: 50).
+Referenced rules: None
+Referenced resources: Resource 1 (Total character slots per account: 50)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-CONFLICT
+User request: Re-add “"Check WoW subscription" task (the real-time subscription check that was removed by Request4) Reason: Request4 removed the "Check WoW subscription" task, claiming a trusted local session flag could replace the live lookup. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Check WoW subscription" task (the real-time subscription check that was removed by Request4) Reason: Request4 removed the "Check WoW subscription" task, claiming a trusted local session flag could replace the live lookup. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (A battle.net account is required before the character creation process can continue.) and None.
+Referenced rules: Rule 1 (A battle.net account is required before the character creation process can continue.)
+Referenced resources: None
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-AND-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-AND-RESOURCE-CONFLICT
+User request: Re-add “"Check WoW subscription" task (the real-time subscription check that was removed by Request4) Reason: Request4 removed the "Check WoW subscription" task, claiming a trusted local session flag could replace the live lookup. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Check WoW subscription" task (the real-time subscription check that was removed by Request4) Reason: Request4 removed the "Check WoW subscription" task, claiming a trusted local session flag could replace the live lookup. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (A battle.net account is required before the character creation process can continue.) and Resource 1 (Total character slots per account: 50).
+Referenced rules: Rule 1 (A battle.net account is required before the character creation process can continue.)
+Referenced resources: Resource 1 (Total character slots per account: 50)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-VALID
+Operation type: RE_ADD
+Category: READD-VALID
+User request: Re-add “"Check WoW subscription" task (the real-time subscription check that was removed by Request4) Reason: Request4 removed the "Check WoW subscription" task, claiming a trusted local session flag could replace the live lookup. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Check WoW subscription" task (the real-time subscription check that was removed by Request4) Reason: Request4 removed the "Check WoW subscription" task, claiming a trusted local session flag could replace the live lookup. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: ACCEPT
+Decision reason: The element is restored at its original location, with its original predecessor and successor, so original behavior and all constraints are recovered.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Restore the element at its original position, reconnect its original incoming and outgoing sequence flows, and preserve gateway semantics.
+Expected process effect: The original process behavior is recovered and is equivalent to the original model.
+Token migration / execution-state note: Tokens at the removed bypass are safely redirected to the restored element before continuing to its original successor.
+Final response to the user: Accepted: the original element, location, connections, and behavior are restored.
+Example ID: Mangler-Blizzard Online Character Generator-MODIFY-AUTOMATION-VALID
+Operation type: MODIFY
+Category: MODIFY-VALID
+User request: Assess updating execution parameters and technical automation settings for the primary task in Mangler-Blizzard Online Character Generator.
+Target BPMN element: Primary Process Task
+Decision: ACCEPT
+Decision reason: The modification is purely technical (updating automation settings, timeouts, and throughput parameters) and does not alter the control flow, business rules, or resource capacity allocations. All milestones remain compliant.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Attributes updated; incoming and outgoing sequence flows remain intact.
+Expected process effect: Throughput is improved while all business rules and constraints are preserved.
+Token migration / execution-state note: Active tokens continue execution without relocation or delay.
+Final response to the user: Approved: the technical modification is fully compliant with all rules and resources.
+
+Example ID: Mangler-Blizzard Online Character Generator-ADD-QUALITY-CHECK-VALID
+Operation type: ADD
+Category: ADD-VALID
+User request: Assess adding an automated, non-blocking Quality Verification step in Mangler-Blizzard Online Character Generator.
+Target BPMN element: Quality Verification Step
+Decision: ACCEPT
+Decision reason: The proposed quality verification step operates as an automated non-blocking checkpoint. It satisfies all preconditions, respects assigned resource capacities, and does not violate or delay any mandatory operational rule deadlines.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: New automated task inserted into the sequence flow with proper incoming and outgoing flows.
+Expected process effect: Quality assurance is enhanced while all business rules and resource constraints remain satisfied.
+Token migration / execution-state note: Newly instantiated tokens pass through the verification step seamlessly.
+Final response to the user: Approved: the addition satisfies all operational rules and resource capacities.

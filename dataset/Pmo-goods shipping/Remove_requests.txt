@@ -1,0 +1,30 @@
+Request1:
+Removed element: The "Clarify shipment method" task (Task_3) - the step in which the secretary clarifies whether the shipment is large (requiring special shipping) or small (normal post).
+Reason: It is proposed for removal so that every parcel is shipped by normal post regardless of amount, avoiding the classification and invited-offer overhead.
+Conflict details: This removal CONFLICTS with Rule 1 of Rules.txt: "Shipping begins only after the secretary determines who will perform the actual shipping of the goods," and with Rule 2: "Shipments above a total weight of 30 kg are classified as large amounts and require special shipping." Both rules presuppose that the shipment method is clarified and the amount classified before shipping proceeds; removing the clarification task directly breaks Rules 1 and 2, and would cause large shipments above 30 kg to be shipped by normal post, which Rule 2 explicitly forbids.
+
+Request2:
+Removed element: The "Get 3 offers from logistic companies" task (Task_4) - the step in which the secretary invites three logistic companies to submit offers for a large shipment.
+Reason: It is proposed for removal to shorten the special-shipping path by selecting a logistic company without collecting the three offers.
+Conflict details: This removal CONFLICTS with the resources in Resources.txt. The resource "Number of logistic companies invited per large shipment: 3" explicitly provisions that three logistic companies are invited for every large shipment; removing the offer-gathering task strands this provisioned invitation capacity entirely and contradicts the resource plan. The removal also conflicts with the resource "Offer validity period (days): 7", which defines the validity window within which gathered offers must be used; with no offers gathered, the provisioned validity window has no purpose.
+
+Request3:
+Removed element: The "Write package label" task (Task_2) - the step in which the secretary writes the package label for every shipment.
+Reason: It is proposed for removal to save preparation work, letting parcels be handed over directly after the insurance decision.
+Conflict details: This removal CONFLICTS with Rule 5 of Rules.txt: "A package label must be written by the secretary for every shipment before it is handed over." Removing the label-writing task directly breaks Rule 5, and also breaks Rule 9 ("Packaged goods are prepared for pickup only after the label and any required insurance are in place"), which makes the label a mandatory precondition before the packaged goods are prepared for pickup. It further conflicts with resources: the resource "Package labels available per day: 100" in Resources.txt provisions the daily supply of package labels for exactly this step, and "Secretaries handling shipping: 2" allocates the secretary capacity that performs the label writing; removing the step contradicts the provisioned label supply and secretary capacity. Being partly rule-driven and partly resource-driven, this removal conflicts with both kinds of constraints.
+
+Request4:
+Removed element: The "Prepare for picking up goods" task (Task_7) - the step in which the packaged goods are prepared for being picked up by the logistic company.
+Reason: It is proposed for removal to let the shipment be considered complete as soon as the goods are packaged and the label/insurance are in place, skipping the final preparation activity.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt explicitly mandates a separate "prepare for picking up goods" task: Rule 7 requires that "Goods must be fully packaged by the warehousemen before the logistic company picks them up," Rule 9 requires that packaged goods be prepared for pickup only after label and insurance are in place, Rule 11 requires the chosen logistic company to be notified of the pickup at least 1 day in advance - but none of these requires a distinct final-preparation task, and Rule 9 is about the ordering of the preparation relative to the label/insurance, which the retained flow still satisfies. No resource in Resources.txt is tied to the preparation-for-pickup step: resources such as "Warehousemen on staff: 6", "Maximum daily normal post batches: 5", and "Small shipment processing time (working days): 2" describe staffing, batch, and processing capacity that the retained packaging, labeling, insuring, and dispatch steps still use. The process remains fully executable, so the removal does not conflict with any rule or resource.
+
+Note (for the re-add request): Request4 removes the "Prepare for picking up goods" task (Task_7) as a model element. The packaged goods are afterwards still collected by the logistic company as an external event; the removal only drops the in-model preparation task. No other part of the process is affected by this removal.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

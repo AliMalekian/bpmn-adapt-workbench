@@ -1,0 +1,16 @@
+Resources for Building a Custom Machine out of Lego Bricks
+
+Number of children in the sorting group: 12
+Number of supervising adults: 2
+Number of sorted part containers: 8
+Number of subcomponents in the machine: 5
+Number of Lego brick sets ordered per design: 6
+Reorder batch size for individual parts: 500 parts
+Total brick purchase budget: $400
+Approved brick set catalog size: 30 sets
+Maximum design revision rounds per subcomponent: 3
+Number of testing stations: 2
+Standard building time per subcomponent: 4 hours
+Average parts per container: 200 parts
+Number of spare subcomponent designs: 1
+Container restock lead time: 2 days

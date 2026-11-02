@@ -1,0 +1,29 @@
+Request1:
+Removed element: Reorder the part as fast as possible (the "Reorder the part as fast as possible" urgent reorder service task)
+Reason: The fast reorder ignores price and can overrun the budget; removing it would leave only the cheapest reorder path.
+Conflict details: Conflicts with Rule 5 ("If the stock of a part falls below 3 units, the fastest available supplier is used for the reorder, regardless of price") and Rule 6 ("If the stock of a part reaches zero, the contract cannot continue"). The "Below 3" urgent branch of the reorder gateway is defined by Rule 5; without the fastest-reorder task the urgent threshold loses its mandatory action and the zero-stock stop condition of Rule 6 has no fast-reorder step feeding into it.
+
+Request2:
+Removed element: Query the next shop (the "Query the next shop" step that queries candidate web shops for availability, price, and delivery time)
+Reason: Querying every shop one by one is slow; removing this step would let the team order from a single known shop immediately.
+Conflict details: Conflicts with the resource "Number of candidate web shops queried: 8" from Resources.txt, which provisions exactly eight web shops to be queried for parts. Removing the query step leaves this resource parameter without a target activity and voids the configured multi-shop sourcing capability. It also leaves "Maximum supplier return rate allowed (percent): 10" from Resources.txt without the comparative querying that feeds supplier selection.
+
+Request3:
+Removed element: Complain to the friends (the "Complain to the friends" email to friends sent when a part's stock reaches zero)
+Reason: The complaint mail adds noise and achieves nothing operationally; removing it would let the project stop silently when stock hits zero.
+Conflict details: Conflicts with Rule 6 ("If the stock of a part reaches zero, the contract cannot continue and a complaint email is sent to friends about the web shops") and with the resource "Zero-stock threshold that stops construction: 0" from Resources.txt. Rule 6 mandates that the complaint email is sent when stock reaches zero, and the zero-stock resource fixes the threshold that triggers this branch; removing the complaint task breaks the mandated zero-stock notification and voids the configured threshold resource that feeds it.
+
+Request4:
+Removed element: Optional administrative archiving and logging step
+Reason: Proposed by operations to streamline case closure by omitting optional secondary archiving overhead.
+Conflict details: None -- fully compatible with all rules and resources. Operates as an ancillary, non-blocking administrative task; core business rules and resource constraints remain fully intact.
+
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

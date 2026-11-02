@@ -1,0 +1,14 @@
+Re-Add request:
+The removal request Request4 removed the "Senior claims officer marks the claim" task (Task_5) from the process. This request semantically restores that removed element and returns the process to exactly its original shape.
+
+Restored element: "Senior claims officer marks the claim" task (Task_5).
+
+How it is restored:
+1. The "Senior claims officer marks the claim" task (Task_5) is reinserted into the process at its original position between the "Recommendation is checked by a senior claims officer" task (Task_4) and the exclusive decision gateway (ExclusiveGateway_1).
+2. The sequential flow is restored exactly as before: with Task_4 completed, the senior claims officer now again performs the explicit marking step, and the flow continues over sequence flow SequenceFlow_5 into Task_5 before the decision is made.
+3. Task_5 again performs its original function: it is the explicit step in which the senior claims officer determines and assigns the OK or Not OK marking to the claim, so that every recommendation is visibly marked before the routing decision is taken.
+4. The subsequent reasoning is restored unchanged: Task_5 again feeds ExclusiveGateway_1, where the validated OK/Not OK marking drives exactly the original two outcomes - the "OK" path proceeds to "Claim handling process proceeds" (Task_7) and the "Not OK" path proceeds to "Claim is sent back" (Task_6).
+5. This reinstates the original structure in which the check (Task_4), the explicit marking (Task_5), and the resulting OK/Not OK routing decision are distinct, sequential steps, matching the original model where every recommendation is both reviewed and explicitly marked.
+6. The process flow ends exactly as in the original model, completing with the end event after "Claim handling process proceeds", with every element, branch, and ordering of the original process restored.
+
+Result: The removal of Task_5 is fully undone, and the claim-handling process is back to precisely its original shape with the explicit "Senior claims officer marks the claim" step present between the senior check and the OK/Not OK decision gateway.

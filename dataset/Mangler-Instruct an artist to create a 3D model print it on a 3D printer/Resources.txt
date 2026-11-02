@@ -1,0 +1,12 @@
+Minimum sketches sent to artist: 3
+Filament reorder threshold: 100 grams
+PLA bed temperature: 60 degrees Celsius
+Extruder temperature: 200 degrees Celsius
+Maximum print duration before pause: 12 hours
+Allowed reprints per model: 2
+Print bed volume: 220 x 220 x 250 mm
+Number of filament colors in stock: 8
+Artist revision rounds allowed: 5
+STL file size limit: 50 MB
+Printed model quality settings: 0.2 mm layer height
+Required filament spools per project: 1

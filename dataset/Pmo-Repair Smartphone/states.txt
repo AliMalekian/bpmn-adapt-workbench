@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Have an account?
+Completed activities: Hardware issue detected
+Current active activity or waiting point: Have an account?
+Token position / execution status: token is at Have an account?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for DIY Repair of a Broken Smartphone Screen)
+Applicable rules: Rule 1 (The user must enter the exact phone model and the reported damage before any guidance is provided.)
+Possible next activities: Create account, exclusiveGateway
+
+STATE-02: Intermediate / decision
+Current process position: List required tools
+Completed activities: Hardware issue detected, Have an account?, Create account, exclusiveGateway, exclusiveGateway, Log into account, Is login Successful?, Select device model, Select type of hardware Issue, parallelGateway, List required materials
+Current active activity or waiting point: List required tools
+Token position / execution status: token is at List required tools; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for DIY Repair of a Broken Smartphone Screen)
+Applicable rules: Rule 1 (The user must enter the exact phone model and the reported damage before any guidance is provided.)
+Possible next activities: parallelGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: purchase online
+Completed activities: Hardware issue detected, Have an account?, Create account, exclusiveGateway, exclusiveGateway, Log into account, Is login Successful?, Select device model, Select type of hardware Issue, parallelGateway, List required materials, List required tools, Offer ordering choices, parallelGateway, Have all required items?, Have intention to get second-hand items?, exclusiveGateway, exclusiveGateway, Contact friends, Display repair instructions, Have intention to purchase new items?, Get second-hand tools and materials from friends, Repair device
+Current active activity or waiting point: purchase online
+Token position / execution status: token is at purchase online; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for DIY Repair of a Broken Smartphone Screen)
+Applicable rules: Rule 1 (The user must enter the exact phone model and the reported damage before any guidance is provided.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: Upload video of reparation steps
+Completed activities: Hardware issue detected, Have an account?, Create account, exclusiveGateway, exclusiveGateway, Log into account, Is login Successful?, Select device model, Select type of hardware Issue, parallelGateway, List required materials, List required tools, Offer ordering choices, parallelGateway, Have all required items?, Have intention to get second-hand items?, exclusiveGateway, exclusiveGateway, Contact friends, Display repair instructions, Have intention to purchase new items?, Get second-hand tools and materials from friends, Repair device, purchase online, exclusiveGateway, Is issue fixed?, Send device to an expert, Have intention to write a review?, exclusiveGateway, Write review, exclusiveGateway, Hardware issue fixed, Have intention to upload a video of repair steps?, exclusiveGateway
+Current active activity or waiting point: Upload video of reparation steps
+Token position / execution status: token is at Upload video of reparation steps; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for DIY Repair of a Broken Smartphone Screen)
+Applicable rules: Rule 1 (The user must enter the exact phone model and the reported damage before any guidance is provided.)
+Possible next activities: exclusiveGateway

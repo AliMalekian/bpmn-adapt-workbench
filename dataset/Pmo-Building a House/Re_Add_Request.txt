@@ -1,0 +1,13 @@
+Re-Add Request:
+Restored element: Creating the list of people attending the party before buying the snacks
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The step "Create a list of people attending the party" is re-inserted into the process after the invitations for the tree house party have been sent out.
+- The builder collects the confirmations and creates an explicit attendance list of the friends who will come to the party.
+- The attendance list is created before any snacks are bought, in accordance with Rule 8 ("A list of people attending the party is created before buying the snacks").
+- Snacks are bought only for the people on the restored attendance list, so that Rule 9 ("Snacks are bought only for the people on the confirmed attendance list") and Rule 10 ("At least one friend must confirm attendance before snacks can be ordered") are applied through the explicit list.
+- The number of snacks per guest (Resource 8: "Number of snacks per guest: 4") and the party snack budget (Resource 7: "Party snack budget: 100 EUR") are used together with the attendance list to determine the final snack order.
+- All other process elements (requirement collection, drafting, material ordering, friend messaging, building, invitations) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration beyond re-establishing the attendance-list step before the snack purchase.

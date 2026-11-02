@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: select a starting block
+Completed activities: startEvent
+Current active activity or waiting point: select a starting block
+Token position / execution status: token is at select a starting block; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Participating in the Vienna Night Run App)
+Applicable rules: Rule 1 (A participant must select a starting block before registering for the Vienna Night Run.)
+Possible next activities: exclusiveGateway
+
+STATE-02: Intermediate / decision
+Current process position: time less than 25 minutes?
+Completed activities: startEvent, select a starting block, exclusiveGateway, parallelGateway, run for 5km, measure the time, parallelGateway
+Current active activity or waiting point: time less than 25 minutes?
+Token position / execution status: token is at time less than 25 minutes?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Participating in the Vienna Night Run App)
+Applicable rules: Rule 1 (A participant must select a starting block before registering for the Vienna Night Run.)
+Possible next activities: train, get your starting number
+
+STATE-03: Resource-dependent / waiting
+Current process position: parallelGateway
+Completed activities: startEvent, select a starting block, exclusiveGateway
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Participating in the Vienna Night Run App)
+Applicable rules: Rule 1 (A participant must select a starting block before registering for the Vienna Night Run.)
+Possible next activities: run for 5km, measure the time, time less than 25 minutes?, run, receive your final running time, drink, measure the time
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: startEvent, select a starting block, exclusiveGateway, parallelGateway, run for 5km, measure the time, parallelGateway, time less than 25 minutes?, train, get your starting number, calculate time between starting time and the end of workday, time more than 1 hour?, exclusiveGateway, go to home, parallelGateway, run, drink, measure the time, parallelGateway, receive your final running time
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Participating in the Vienna Night Run App)
+Applicable rules: Rule 1 (A participant must select a starting block before registering for the Vienna Night Run.)
+Possible next activities: Process completion

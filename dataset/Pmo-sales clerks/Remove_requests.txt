@@ -1,0 +1,28 @@
+Request1:
+Removed element: request credit score task (the step in which the sales clerk submits the credit-scoring request through the software frontend)
+Reason: To reduce handling, the proposal is to have the banking process request the credit score automatically without the clerk initiating it.
+Conflict details: CONFLICTS with Rule 1 of Rules.txt ("A sales clerk may request a credit score for a customer only through the software frontend after verifying the customer's identity.") — removing the clerk-initiated request violates the identity-verification and frontend precondition. It also conflicts with Rule 2 of Rules.txt ("Every scoring request is sent to the agency immediately after the frontend request is submitted."), which is anchored on the frontend request step. The removal therefore breaks Rules 1 and 2.
+
+Request2:
+Removed element: send credit score task (the step in the banking process that returns the scoring result to the frontend after it arrives)
+Reason: To simplify the flow, the proposal is to have the agency send the score directly to the clerk's frontend, skipping the banking-process delivery step.
+Conflict details: CONFLICTS with Rule 12 of Rules.txt ("Clerks can view only the final score and not the intermediate agency data.") — the banking-process delivery step is what enforces this filtering; bypassing it via direct agency transmission would expose intermediate agency data. It also conflicts with Resource "Number of banking frontends: 15" in Resources.txt, because the 15 frontends are connected to the banking process that performs the score delivery, and with Resource "Agency uptime requirement: 99.5%", since direct agency-to-frontend transmission would put the frontend availability at the mercy of the agency channel instead of the banking process. The removal therefore violates Rule 12 and the frontend/agency resources.
+
+Request3:
+Removed element: report delay task (the step in which the agency informs the banking process of the delay when level 1 scoring cannot determine the result immediately)
+Reason: To reduce messaging, the proposal is to skip the delay report and have the banking process simply wait for the level 2 result.
+Conflict details: CONFLICTS with Rule 4 of Rules.txt ("If level 1 cannot determine the score immediately, the agency informs the banking process of the delay.") and Rule 6 of Rules.txt ("Level 2 scoring is initiated only after the agency has reported that level 1 could not determine a result.") — removing the delay report breaks both the notification requirement and the precondition for starting level 2 scoring. It also conflicts with Rule 5 of Rules.txt ("When a delay notification is received, the banking process displays a message to the clerk to check again later."), because the clerk-facing delay message depends on the delay report. The removal therefore breaks Rules 4, 5 and 6.
+
+Request4:
+Removed element: compute credit score (level 1) task (the first quick scoring round executed by the agency, which normally returns an immediate result within seconds)
+Reason: To simplify the agency side, the proposal is to skip the quick level 1 scoring and always run the full level 2 scoring directly.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt mandates that level 1 scoring must be executed; Rules 3, 4 and 6 regulate the ordering of and the fallback from level 1 ("Level 1 scoring is executed first and normally returns an immediate result to the banking system within seconds.", "If level 1 cannot determine the score immediately, the agency informs the banking process of the delay.", and "Level 2 scoring is initiated only after the agency has reported that level 1 could not determine a result."), but these rules condition behavior on level 1 rather than requiring it. Skipping level 1 simply means the delay-report branch is never taken and level 2 is always run. No resource in Resources.txt is tied to a mandatory level 1 computation; the "Level 1 scoring response time (seconds): 30" parameter becomes unused, not violated. The removal is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

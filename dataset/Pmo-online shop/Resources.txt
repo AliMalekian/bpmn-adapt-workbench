@@ -1,0 +1,11 @@
+Number of registered users: 40,000
+Maximum installment count: 12
+Minimum purchase value for installments: $100
+Maximum reward value ratio: 20%
+Return/exchange window (days): 30
+Free delivery order threshold: $50
+Fixed delivery fee: $5
+Number of warehouse staff: 25
+Warehouse order capacity per day: 1,500
+Replacement shipping lead time (days): 3
+Number of delivery partners: 6

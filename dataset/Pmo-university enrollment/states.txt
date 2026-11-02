@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Submit application online
+Completed activities: start
+Current active activity or waiting point: Submit application online
+Token position / execution status: token is at Submit application online; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of admissions office staff: 12)
+Applicable rules: Rule 1 (An application is only considered complete when all required documents have been submitted; incomplete applications are placed on hold for no more than 10 business days.)
+Possible next activities: Review application and documents
+
+STATE-02: Intermediate / decision
+Current process position: end
+Completed activities: start, Submit application online, Review application and documents, exclusiveGateway, Notify applicant of missing documents, exclusiveGateway, Provide missing documents, parallelGateway, Evaluate application by admissions committee, Process fees or waivers, parallelGateway, exclusiveGateway, Send rejection letter, Send acceptance letter, exclusiveGateway, exclusiveGateway
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of admissions office staff: 12)
+Applicable rules: Rule 1 (An application is only considered complete when all required documents have been submitted; incomplete applications are placed on hold for no more than 10 business days.)
+Possible next activities: Cancel application
+
+STATE-03: Resource-dependent / waiting
+Current process position: exclusiveGateway
+Completed activities: start, Submit application online, Review application and documents
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of admissions office staff: 12)
+Applicable rules: Rule 1 (An application is only considered complete when all required documents have been submitted; incomplete applications are placed on hold for no more than 10 business days.)
+Possible next activities: end, parallelGateway, exclusiveGateway, Submit appeal form, Cancel application, Send rejection letter, Notify applicant of missing documents, parallelGateway, Add/drop courses, exclusiveGateway, Assist with visa processing, Withdraw, Graduate, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Send acceptance letter, Post grades, Begin attending classes, exclusiveGateway, exclusiveGateway, exclusiveGateway, Confirm enrollment
+
+STATE-04: Near completion / completed
+Current process position: exclusiveGateway
+Completed activities: start, Submit application online, Review application and documents
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of admissions office staff: 12)
+Applicable rules: Rule 1 (An application is only considered complete when all required documents have been submitted; incomplete applications are placed on hold for no more than 10 business days.)
+Possible next activities: end, parallelGateway, exclusiveGateway, Submit appeal form, Cancel application, Send rejection letter, Notify applicant of missing documents, parallelGateway, Add/drop courses, exclusiveGateway, Assist with visa processing, Withdraw, Graduate, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Send acceptance letter, Post grades, Begin attending classes, exclusiveGateway, exclusiveGateway, exclusiveGateway, Confirm enrollment

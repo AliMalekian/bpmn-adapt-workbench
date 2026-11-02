@@ -1,0 +1,15 @@
+1. Invitations must be sent to exactly 10 friends before planning can continue.
+2. The host collects the preferred games from all invited friends before a date is proposed.
+3. A LAN party date is confirmed only when 8 or more of the 10 friends agree on that date.
+4. If fewer than 8 friends agree on the proposed date, another date must be appointed and voted on again.
+5. Games requested by the guests must be available; if any game is missing, it must be downloaded before the party.
+6. Beer consumption is estimated for the confirmed attendees, and missing beer must be bought before the party.
+7. A friend who has not replied 48 hours after the invitation is treated as unavailable for the current date vote.
+8. A maximum of 2 date re-votes is allowed before the party is scheduled on the date with the most votes.
+9. Only games with valid licenses may be downloaded and used at the LAN party.
+10. The download of a missing game must be finished at least 24 hours before the party starts.
+11. No alcoholic beverages may be served to guests under 18 years of age, where applicable by law.
+12. The venue must provide at least one spare network port per 2 guests.
+13. Beer stock must cover at least 2 bottles per hour per attending guest for the full planned duration.
+14. The party may last at most 10 hours of active playing time per day.
+15. If fewer than 8 friends are available for any proposed date, no party can take place on that date.

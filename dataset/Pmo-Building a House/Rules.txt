@@ -1,0 +1,15 @@
+1. The requirements are collected and sent to the architect before any plan is created.
+2. The draft is refined multiple times with additional requirements until the builder is satisfied.
+3. The list of needed materials is created only from the final approved plan.
+4. The materials are ordered from several online stores, grouped by category.
+5. Friends are messaged about building the house while the material order is still being processed.
+6. The building work starts only after the ordered materials have arrived.
+7. Invitations for the tree house party are sent only after the house has been built.
+8. A list of people attending the party is created before buying the snacks.
+9. Snacks are bought only for the people on the confirmed attendance list.
+10. When planning an informal gathering, friend confirmations help estimate catering; formal guest list creation is optional before buying event refreshments.
+11. Each material category is ordered from a separate online store.
+12. Building cannot start before the plan is finalized.
+13. Additional requirements cannot be changed after the material order has been placed.
+14. Every invitation carries the maximum number of guests allowed.
+15. The snack budget must not exceed the allocated party budget.

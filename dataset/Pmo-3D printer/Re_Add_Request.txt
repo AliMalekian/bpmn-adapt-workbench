@@ -1,0 +1,12 @@
+Re-Add Request:
+Restored element: The printer's continuous status reporting while the bed and extruder are heating
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The step "Receive status" is re-inserted into the process as a continuous activity that runs while the printer bed and the extruder are being heated up.
+- The printer continuously sends back its status to the user during the heating phase, in accordance with Rule 9 ("While heating, the printer continuously sends back its status").
+- The status feedback runs in parallel with the heating of the bed and the extruder, so the user receives live progress information while the printer warms up.
+- The status reporting ends when the target temperatures are reached, at which point the gcode-based printing can start (Rules 8 and 11).
+- All other process elements (sketches, revisions, color selection, stock checks, ordering, heating, gcode generation, printing) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration, as the status-reporting activity does not conflict with any rule or resource in the folder.

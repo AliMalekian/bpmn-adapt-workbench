@@ -1,0 +1,12 @@
+Maximum characters per realm per account: 10
+Maximum character name length (characters): 12
+Maximum saved candidate character names: 5
+Character name uniqueness check servers: 3
+Month added to WoW subscription price (EUR): 12.99
+Battle.net account verification timeout (minutes): 15
+Deleted character name quarantine period (days): 30
+Maximum races selectable at creation: 13
+Maximum classes selectable at creation: 12
+Realms offered in the expansion: 100
+Confirmation selfie slots per character: 4
+International Bank Account Number length (characters): 22

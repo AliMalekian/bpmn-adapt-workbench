@@ -1,0 +1,29 @@
+Request1:
+Removed element: "Train for the 5 km" task (the training and rechecking loop executed by runners who fail the 25-minute qualifying target)
+Reason: Removing the mandatory training loop lets every runner register directly for the run after their first attempt, shortening the preparation process.
+
+Conflict details: Conflicts with Rule 2 ("The official 5 km time must be below 25 minutes before a starting number is issued") because without training, a failing runner never reaches the required sub-25-minute time that the rule demands before a starting number can be issued. It also conflicts with Rule 3 ("Runners who fail the 25-minute target must train and recheck until the goal is achieved"), which explicitly names this task as mandatory. In addition, it conflicts with Resource "Qualification target time: 25 minutes" and "Maximum finishing time for a ranked result: 90 minutes", which together document the performance thresholds that the training loop is meant to achieve.
+
+Request2:
+Removed element: "Measure time" task (the timing step that measures the 5 km run and records the achieved time)
+Reason: Timing is proposed to be dropped and replaced by a manual estimate of the run duration, saving the measurement effort.
+Conflict details: Conflicts with Resource "Official time measurement gates: 6" and "Compatible fitness gadgets: 4500", because the six measurement gates and the fitness-gadget integration exist precisely to perform the official time measurement, and removing the task leaves these resources unused. It also conflicts with Resource "Maximum finishing time for a ranked result: 90 minutes" and "Track length: 5 km", which frame the measurement ranges. Furthermore, it violates Rule 7 ("Times measured by fitness gadgets override manually entered times for the qualification check") and Rule 10 ("The official final running time is measured from the start signal to the finish line crossing"), which presuppose real time measurement.
+
+Request3:
+Removed element: "Get the running time of your run" task (the final step that delivers the official finishing time to the runner)
+Reason: It is proposed to drop the final time-delivery step and let the runner read the result from the leaderboard instead.
+Conflict details: Conflicts with Rule 11 ("Runners must complete the 5 km track within 90 minutes to be ranked with a final time") because without delivery of the final time the ranking result can never be communicated. It also conflicts with Rule 12 ("The app must display the final running time within 15 minutes after the runner finishes"), and with Resource "Final timing result delivery window: 15 minutes" and "Concurrent app server capacity: 10000 users", since the concurrent app capacity exists to serve exactly this final-time delivery. Finally, Rule 15 ("Qualification and final time data are synchronized with the fitness gadget before and after the run") also depends on this step for the finish side.
+
+Request4:
+Removed element: "Change clothes" task (the optional step of changing clothes either at home or at work before travelling to the event)
+Reason: Changing clothes is not part of the official race preparation; participants could run in their work attire, so the step is proposed to be removed.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt requires a changing-clothes step; Rule 5 and Rule 6 only govern the departure decision (home vs. from work) based on the time gap, which remains fully intact, and no resource in Resources.txt is bound to a changing-clothes activity. All official race steps (starting block selection, qualifying time, starting number, running, timing, final time) are unaffected.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

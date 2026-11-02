@@ -1,0 +1,14 @@
+Minimum plastic stock threshold: 100 grams
+Number of available filament colors: 24
+Printer build volume: 220 x 220 x 250 mm
+Extruder target temperature: 200 C
+Heated bed target temperature: 60 C
+Number of sketches to send initially: 3
+Maximum number of revision rounds: 2
+Filament spool weight: 1000 grams
+Filament price per spool: 30 EUR
+Maximum accepted STL file size: 50 MB
+Default layer height: 0.2 mm
+Average print time for a standard model: 6 hours
+Artist design fee: 80 EUR
+Number of printers available: 2

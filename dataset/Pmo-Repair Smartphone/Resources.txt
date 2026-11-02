@@ -1,0 +1,17 @@
+Resources for DIY Repair of a Broken Smartphone Screen
+
+Number of supported smartphone models: 250
+Number of tools recommended per repair: 4
+Number of parts needed for a typical screen repair: 3
+Number of ordering options shown per part: 4
+Maximum borrowing requests to friends per repair: 5
+Number of approved part suppliers: 8
+Expert repair support window after DIY attempt: 14 days
+Replacement screen warranty period: 12 months
+Number of repair instructions per model: 25 steps
+Number of quality check reviewers for published reviews: 2
+Average cost of replacement screen: $60
+Number of tool set sizes: 5
+Estimated repair time for a screen: 45 minutes
+Number of tutorial videos available: 50
+Coverage of repair options: teardown depth 3 levels

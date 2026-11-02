@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment).
+Current token position: Immediately before "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment) on its original BPMN sequence flow.
+Required resources: Resource 1 (Secretaries: 3)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment).
+Current token position: Immediately before "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment) on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 4 (The secretary must invite at least three logistics companies to offer for every special shipment.), Rule 5 (The selected logistics offer may not exceed the cheapest valid offer by more than 5%, otherwise department head approval is required.), Rule 15 (Special shipping costs count against the monthly logistics budget and must be recorded on the day of booking.)
+Expected execution path: Follow the original predecessor → "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment).
+Current token position: Immediately before "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment) on its original BPMN sequence flow.
+Required resources: Resource 1 (Secretaries: 3)
+Relevant rules: Rule 4 (The secretary must invite at least three logistics companies to offer for every special shipment.), Rule 5 (The selected logistics offer may not exceed the cheapest valid offer by more than 5%, otherwise department head approval is required.), Rule 15 (Special shipping costs count against the monthly logistics budget and must be recorded on the day of booking.)
+Expected execution path: Follow the original predecessor → "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape..
+Current token position: Immediately before "Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape. → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

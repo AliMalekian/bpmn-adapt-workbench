@@ -1,0 +1,10 @@
+Re-Add Request:
+Removed element to be restored: Cancellation of the remaining order after an unapproved prototype (the "Cancel production of the remaining order" path in the customer-approval decision gateway)
+
+Restoration details:
+1. Re-insert the "Cancel production of the remaining order" end-event or task after the "Customer Approval?" decision gateway: recreate the BPMN end-event named "Cancel production of the remaining order" together with the outgoing sequence-flow that branches from the "No" output of the gateway.
+2. Restore the behavior: when the customer does not approve the first prototype saw, the process now again terminates the remaining production, exactly as before the removal.
+3. Reconnect the flows: the "Customer Approval?" gateway now once again has two outgoing paths — "Yes" leading to "Produce the remaining order" and "No" leading to "Cancel production of the remaining order" — matching the original BPMN shape exactly; the merge that the removal created on the "No" branch is deleted.
+4. Re-establish the Rule 6 consequence so that when the prototype is not approved within 14 days, the process follows the explicit cancellation path and the restock-fee resource ("Restock fee for unapproved prototype orders (percent): 10" from Resources.txt) is logically applicable again.
+
+The process is thereby returned to exactly its original shape: the cancellation end-event, the "No" branch of the approval gateway, and the associated termination behavior that Request4 removed are all restored.

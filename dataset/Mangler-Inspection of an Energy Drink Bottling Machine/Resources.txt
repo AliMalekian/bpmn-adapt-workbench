@@ -1,0 +1,12 @@
+Specified filling pressure range: 1.2 to 1.8 bar
+Number of inspection steps: 25
+Maximum inspection duration: 4 hours
+Number of authorized inspectors: 5
+Archive retention period: 5 years
+Filling speed threshold: 300 bottles per minute
+Bottle fill volume: 250 ml
+Capping torque range: 1.5 to 2.0 Nm
+Maximum allowed failed checks: 1
+Number of sensor channels: 12
+Serial number digit length: 10
+Alarm reset time: 15 minutes

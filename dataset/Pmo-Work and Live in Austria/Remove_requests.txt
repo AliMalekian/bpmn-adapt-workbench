@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Make passport photo" task — the step where the applicant has a passport photo made in accordance with the required specifications.
+Reason: Removing the passport photo step would drop one of the document-preparation tasks, shortening the documentation gathering phase.
+Conflict details: This removal directly conflicts with Rule 4 ("A passport photo of 35 x 45 mm must comply with the specified Austrian passport photo criteria"). The passport photo is a mandatory visa application document, so without this step the visa application cannot be accepted. It also conflicts with the resource "Visa passport photo size (mm): 35 x 45", which defines the required specification of the photo the task produces.
+
+Request2:
+Removed element: The "Request Austrian health insurance coverage incl. documentation" task — the step where the applicant obtains fully comprehensive travel health insurance coverage and its documentation.
+Reason: Removing the health insurance step would drop the requirement to obtain travel health insurance, simplifying the documentation package.
+Conflict details: This removal conflicts with the resource "Minimum travel health insurance cover (Euro): 30,000" — this resource defines the minimum cover of the fully comprehensive travel health insurance policy that this step obtains; without the step the 30,000 Euro minimum-cover resource has no application. It also conflicts with the resource "Required supporting document categories: 6", since the insurance policy documentation is one of the six required supporting document categories for the visa application.
+
+Request3:
+Removed element: The "Gather documentation to prove financial independence" task — the step where the applicant gathers proof of sufficient means of subsistence.
+Reason: Removing the financial independence documentation task would eliminate one of the document-gathering steps and its associated proof requirements.
+Conflict details: This removal conflicts with Rule 6 ("The applicant must prove sufficient means of subsistence for the stay and for the return journey") — gathering this proof is exactly what this task performs. It also conflicts with the resource "Minimum means of subsistence (Euro per month): 1,050", which defines the monthly subsistence amount that the gathered documentation must demonstrate.
+
+Request4:
+Removed element: The "Check requirements and point for start-up founders" task — the Branch of the requirements check that assesses whether a start-up founder applicant meets the Rot-Weiss-Rot Card points requirements for that applicant category.
+Reason: This task is one applicant-category-specific branch of the requirements check. The process contains parallel requirement-check branches for several categories (highly qualified people, skilled workers in shortage occupations, graduates of Austrian higher education institutions, independent key employees, other key employees, and start-up founders). Removing only the start-up-founder branch keeps the process fully functional for every other applicant category.
+Conflict details: None — fully compatible with all rules and resources. Rules 1-15 concern visa application completeness (Rule 1), travel document and passport photo requirements (Rules 2-4), health insurance and subsistence (Rules 5-6), refusal grounds (Rule 7), representation office competence (Rules 8-11), R-W-R card renewal (Rule 12), accommodation and bank account (Rule 13), supplementary evidence (Rule 14), and prior contact with the representation (Rule 15) — none of them require a start-up-founder-specific requirement check. No resource in Resources.txt is tied to this category branch. The process remains fully executable for all other applicant categories, and all 14 resources remain fully valid and operational.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

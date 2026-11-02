@@ -1,0 +1,47 @@
+STATE-01: Initial / early execution
+Current process position: Farming List
+Completed activities: Inventory
+Current active activity or waiting point: Farming List
+Token position / execution status: token is at Farming List; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum parallel resources farmed: 10)
+Applicable rules: Rule 1 (The player must select at least 1 and at most 10 resources to be collected in parallel by the farming bot.)
+Possible next activities: Tool List
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: Inventory, Farming List, Tool List, Start Game, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Natural Disaster, 1 hour, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Farming List, Inventory, Tool List, Inventory, Inventory, create a farming bot, Farming Bot, Farming Bot, Start, Farming Bot Game, Farming Bot Game, Player, Farming Bot, Farming bot 
+creation desire
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum parallel resources farmed: 10)
+Applicable rules: Rule 1 (The player must select at least 1 and at most 10 resources to be collected in parallel by the farming bot.)
+Possible next activities: Collect Materials, Adjust Farming List, satisfied, Notify player, Create available tools, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, parallelGateway, Deactivate Farming Bot, Activate Farming Bot, Play Game, give bot a name, want to send materials?, final step., parallelGateway, exclusiveGateway, exclusiveGateway, parallelGateway, exclusiveGateway, choose resource preferences, End Farming, brag and send materials to friends, send materials to friends, brag to friends, Farming, parallelGateway, parallelGateway, parallelGateway, Collect the remained resources, Bot finished?, New milestone
+achieved?, Wait for random natural event for some time
+
+STATE-03: Resource-dependent / waiting
+Current process position: RNE happened?
+Completed activities: Inventory, Farming List, Tool List, Start Game, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Natural Disaster, 1 hour, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Farming List, Inventory, Tool List, Inventory, Inventory, create a farming bot, Farming Bot, Farming Bot, Start, Farming Bot Game, Farming Bot Game, Player, Farming Bot, Farming bot 
+creation desire, exclusiveGateway, Check Inventory for damages, Check Inventory, exclusiveGateway, choose recources
+(max 10), Find out wanted resources, Activate Farming Bot, Play Game, Check tool list, Check Tool List, exclusiveGateway, exclusiveGateway, parallelGateway, Check available ressources, Quit Game, exclusiveGateway, exclusiveGateway, give bot a name, Farming, Check repo for already available resources, Collect urgently needed resources, Check for available tools, Game session ended, Create available tools, exclusiveGateway, exclusiveGateway, exclusiveGateway, Deactivate Farming Bot, exclusiveGateway, parallelGateway, parallelGateway, Create Farming List, exclusiveGateway, Notify player, parallelGateway, Collect Materials, farming bot deactivated, exclusiveGateway, natural disaster?, choose new recources?, Milestone?, New tools 
+needed?, Adjust Farming List, exclusiveGateway, Create available tools, Notify player, Adjust the List?, choose resource preferences, set bot back, exclusiveGateway, new recources, exclusiveGateway, notify about new Milestone, exclusiveGateway, Build tools, exclusiveGateway, satisfied, parallelGateway, generate resource preference list (from input), parallelGateway, Collect the remained resources, inclusiveGateway, update list of preferences?, save recources, parallelGateway, Brag about materials, Send materials to friends, random natural disaster, continue Farming?, exclusiveGateway, Update list of resources, inclusiveGateway, exclusiveGateway, Farming ended, Wait for random natural event for some time, parallelGateway, Farming Bot finished, exclusiveGateway, exclusiveGateway
+Current active activity or waiting point: RNE happened?
+Token position / execution status: token is at RNE happened?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum parallel resources farmed: 10)
+Applicable rules: Rule 1 (The player must select at least 1 and at most 10 resources to be collected in parallel by the farming bot.)
+Possible next activities: Reset bot, Start farming
+
+STATE-04: Near completion / completed
+Current process position: send materials to friends
+Completed activities: Inventory, Farming List, Tool List, Start Game, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Natural Disaster, 1 hour, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Farming List, Inventory, Tool List, Inventory, Inventory, create a farming bot, Farming Bot, Farming Bot, Start, Farming Bot Game, Farming Bot Game, Player, Farming Bot, Farming bot 
+creation desire, exclusiveGateway, Check Inventory for damages, Check Inventory, exclusiveGateway, choose recources
+(max 10), Find out wanted resources, Activate Farming Bot, Play Game, Check tool list, Check Tool List, exclusiveGateway, exclusiveGateway, parallelGateway, Check available ressources, Quit Game, exclusiveGateway, exclusiveGateway, give bot a name, Farming, Check repo for already available resources, Collect urgently needed resources, Check for available tools, Game session ended, Create available tools, exclusiveGateway, exclusiveGateway, exclusiveGateway, Deactivate Farming Bot, exclusiveGateway, parallelGateway, parallelGateway, Create Farming List, exclusiveGateway, Notify player, parallelGateway, Collect Materials, farming bot deactivated, exclusiveGateway, natural disaster?, choose new recources?, Milestone?, New tools 
+needed?, Adjust Farming List, exclusiveGateway, Create available tools, Notify player, Adjust the List?, choose resource preferences, set bot back, exclusiveGateway, new recources, exclusiveGateway, notify about new Milestone, exclusiveGateway, Build tools, exclusiveGateway, satisfied, parallelGateway, generate resource preference list (from input), parallelGateway, Collect the remained resources, inclusiveGateway, update list of preferences?, save recources, parallelGateway, Brag about materials, Send materials to friends, random natural disaster, continue Farming?, exclusiveGateway, Update list of resources, inclusiveGateway, exclusiveGateway, Farming ended, Wait for random natural event for some time, parallelGateway, Farming Bot finished, exclusiveGateway, exclusiveGateway, RNE happened?, endEvent, parallelGateway, brag and send materials to friends
+Current active activity or waiting point: send materials to friends
+Token position / execution status: token is at send materials to friends; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum parallel resources farmed: 10)
+Applicable rules: Rule 1 (The player must select at least 1 and at most 10 resources to be collected in parallel by the farming bot.)
+Possible next activities: exclusiveGateway, exclusiveGateway

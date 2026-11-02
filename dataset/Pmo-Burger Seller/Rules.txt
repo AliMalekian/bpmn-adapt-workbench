@@ -1,0 +1,15 @@
+1. If the customer selects a menu, the drink must be prepared first before the robot asks whether the customer wants fries or wedges.
+2. A customer may choose either fries or wedges, but not both in a single order.
+3. Drink, fries, wedges, and burger preparation durations vary depending on the selected size and the number of burger ingredients.
+4. The robot sends an enthusiastic status update to the customer every 30 seconds while the burger is being prepared.
+5. An order is released onto the conveyor belt only after the burger, the side, and the drink (if a menu) are all fully prepared.
+6. During peak lunch hours (11:30 to 14:00), the order queue is limited to 15 concurrent customer orders.
+7. A new order is accepted only if the stock of every required ingredient is at least 2 portions above its reorder minimum.
+8. Fried items (fries or wedges) must be served fresh; no batch may remain in the warming tray longer than 10 minutes.
+9. The robot processes at most 3 burger preparation runs in parallel to guarantee consistent cooking quality.
+10. A burger-only order may not include a drink unless the customer explicitly adds one; menus always include a drink.
+11. The conveyor belt may hold a maximum of 5 completed orders at once before it must be cleared for delivery.
+12. Payment must be completed before preparation starts; prepaid orders receive priority in the queue.
+13. Allergen information (nuts, gluten, lactose) must be displayed on the ordering screen for every menu item.
+14. If two identical orders arrive within 60 seconds, the robot batches them into a single preparation run.
+15. New orders are not accepted within the last 5 minutes before closing so that the cleaning cycle can be completed.

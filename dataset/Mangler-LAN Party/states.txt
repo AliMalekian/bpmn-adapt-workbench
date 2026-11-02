@@ -1,0 +1,95 @@
+STATE-01: Initial / early execution
+Current process position: Send invitation
+Completed activities: List of Games
+Current active activity or waiting point: Send invitation
+Token position / execution status: token is at Send invitation; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of invited friends: 10)
+Applicable rules: Rule 1 (Invitations are sent to exactly 10 friends before the party planning continues.)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: List of Games, Send invitation, List of Games, Desire for 
+LAN party, 4 days, list of game suggestion, 2 days, >= 8 agree, >= 3 disagree, list of game suggestion, Wish for a LAN gameparty, LAN Organisator, Friends, LAN Organisator, Invitation - Google Form, startEvent, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Invitation - Google Form, Friends, Survey for finding a fitting day, Description
+
+This process reflects the planning of a LAN party with several friends. Two different forms are used to request the required information from the friends and transfer it into the own planning process.
+
+- There must be at least 8 friends at one date
+- It must be clarified which games are played
+- A suitable tag for the LAN party must be found
+- The beer demand must be clarified, Friends open the LAN party invitation, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Survey for finding a fitting day, Description
+
+This process reflects the planning of a LAN party with several friends. Two different forms are used to request the required information from the friends and transfer it into the own planning process.
+
+- There must be at least 8 friends at one date
+- It must be clarified which games are played
+- A suitable tag for the LAN party must be found
+- The beer demand must be clarified, parallelGateway, Send Invitation
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of invited friends: 10)
+Applicable rules: Rule 1 (Invitations are sent to exactly 10 friends before the party planning continues.)
+Possible next activities: parallelGateway, Price is calculated, Choose amount, Choose amount, parallelGateway, parallelGateway, Enjoy Party, Send Reminder for Game Suggestion, Select a Date Suggestion, Order beer for that date, Find where can you download the game, Prepare the games for the LAN party, Find where can you download the game, Send a notification that the LAN party will be held on that date, exclusiveGateway, parallelGateway, exclusiveGateway, confirm, that you enough game suggestions, Download the missing games, buy more beer, parallelGateway, create final game list for the LAN, Send invite to your friends, Define a new day, endEvent
+
+STATE-03: Resource-dependent / waiting
+Current process position: Request beer supply
+Completed activities: List of Games, Send invitation, List of Games, Desire for 
+LAN party, 4 days, list of game suggestion, 2 days, >= 8 agree, >= 3 disagree, list of game suggestion, Wish for a LAN gameparty, LAN Organisator, Friends, LAN Organisator, Invitation - Google Form, startEvent, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Invitation - Google Form, Friends, Survey for finding a fitting day, Description
+
+This process reflects the planning of a LAN party with several friends. Two different forms are used to request the required information from the friends and transfer it into the own planning process.
+
+- There must be at least 8 friends at one date
+- It must be clarified which games are played
+- A suitable tag for the LAN party must be found
+- The beer demand must be clarified, Friends open the LAN party invitation, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Survey for finding a fitting day, Description
+
+This process reflects the planning of a LAN party with several friends. Two different forms are used to request the required information from the friends and transfer it into the own planning process.
+
+- There must be at least 8 friends at one date
+- It must be clarified which games are played
+- A suitable tag for the LAN party must be found
+- The beer demand must be clarified, parallelGateway, Send Invitation, exclusiveGateway, exclusiveGateway, Set Final Participant List, exclusiveGateway, Send invites to 10 people, Send invite to your friends, Friends wish video games, Suggest appointment, Receive list of games, Send Reminder for Game Suggestion, parallelGateway, parallelGateway, Select a Date Suggestion, Ask which games do they want to play, Send invite to your friends, Decide for a day, receive answer, All games available?, Compare Existing Games with Desired Games, Check Beer Stock, Send Date Suggestion, Few hours, until the user 
+has all the games that 
+they want to play, check if games have been sent, communicate the prefered amount of beer, >= 8 Friends available?, Prepare Games, Select Games, all games available?, Calculate Needed Beer, parallelGateway, exclusiveGateway, Appointment is set automatically, exclusiveGateway, Download is started automatically, Download Missing Games, exclusiveGateway, need >0 beer?, Appoint a date, Check if you have all the games, confirm, that you enough game suggestions, parallelGateway, Prepare Games, Buy Beer, exclusiveGateway, Few hours, until all 
+people reply if they 
+can play on that date, exclusiveGateway, parallelGateway
+Current active activity or waiting point: Request beer supply
+Token position / execution status: token is at Request beer supply; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of invited friends: 10)
+Applicable rules: Rule 1 (Invitations are sent to exactly 10 friends before the party planning continues.)
+Possible next activities: Receive Answer
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: List of Games, Send invitation, List of Games, Desire for 
+LAN party, 4 days, list of game suggestion, 2 days, >= 8 agree, >= 3 disagree, list of game suggestion, Wish for a LAN gameparty, LAN Organisator, Friends, LAN Organisator, Invitation - Google Form, startEvent, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Invitation - Google Form, Friends, Survey for finding a fitting day, Description
+
+This process reflects the planning of a LAN party with several friends. Two different forms are used to request the required information from the friends and transfer it into the own planning process.
+
+- There must be at least 8 friends at one date
+- It must be clarified which games are played
+- A suitable tag for the LAN party must be found
+- The beer demand must be clarified, Friends open the LAN party invitation, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, Survey for finding a fitting day, Description
+
+This process reflects the planning of a LAN party with several friends. Two different forms are used to request the required information from the friends and transfer it into the own planning process.
+
+- There must be at least 8 friends at one date
+- It must be clarified which games are played
+- A suitable tag for the LAN party must be found
+- The beer demand must be clarified, parallelGateway, Send Invitation, exclusiveGateway, exclusiveGateway, Set Final Participant List, exclusiveGateway, Send invites to 10 people, Send invite to your friends, Friends wish video games, Suggest appointment, Receive list of games, Send Reminder for Game Suggestion, parallelGateway, parallelGateway, Select a Date Suggestion, Ask which games do they want to play, Send invite to your friends, Decide for a day, receive answer, All games available?, Compare Existing Games with Desired Games, Check Beer Stock, Send Date Suggestion, Few hours, until the user 
+has all the games that 
+they want to play, check if games have been sent, communicate the prefered amount of beer, >= 8 Friends available?, Prepare Games, Select Games, all games available?, Calculate Needed Beer, parallelGateway, exclusiveGateway, Appointment is set automatically, exclusiveGateway, Download is started automatically, Download Missing Games, exclusiveGateway, need >0 beer?, Appoint a date, Check if you have all the games, confirm, that you enough game suggestions, parallelGateway, Prepare Games, Buy Beer, exclusiveGateway, Few hours, until all 
+people reply if they 
+can play on that date, exclusiveGateway, parallelGateway, Request beer supply, Enjoy Party, How many people 
+can play on that date?, Find where can you download the game, exclusiveGateway, check my game library with the wanted games, Suggest a day for the LAN Party, Receive Answer, End of the Party, Reserve that day, Download the missing game, parallelGateway, exclusiveGateway, Check if 8 or more people have time on the same day, enough beer?, exclusiveGateway, Ask friends how much beer they would like, Download the missing games, create final game list for the LAN, exclusiveGateway, Start party, Select beer, Prepare the games for the LAN party, Few hours, until all people
+ reply with t
+he amount of beer, parallelGateway, Define a new day
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of invited friends: 10)
+Applicable rules: Rule 1 (Invitations are sent to exactly 10 friends before the party planning continues.)
+Possible next activities: Process completion

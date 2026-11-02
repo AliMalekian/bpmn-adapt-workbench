@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: exclusiveGateway
+Completed activities: Contract project received
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Reorder threshold for a single part: 5)
+Applicable rules: Rule 1 (All candidate web shops for a part must be queried to determine how much they can deliver, at which price, and how long delivery takes.)
+Possible next activities: Query the next shop, More parts needed?, exclusiveGateway, Contract fullfilled?
+
+STATE-02: Intermediate / decision
+Current process position: More parts needed?
+Completed activities: Contract project received, exclusiveGateway, Query the next shop, Ask about quantity, price and deadline, Terms acceptable?, exclusiveGateway, Create a list of the parts
+Current active activity or waiting point: More parts needed?
+Token position / execution status: token is at More parts needed?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Reorder threshold for a single part: 5)
+Applicable rules: Rule 1 (All candidate web shops for a part must be queried to determine how much they can deliver, at which price, and how long delivery takes.)
+Possible next activities: exclusiveGateway, parallelGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: How much is the stock fall?
+Completed activities: Contract project received, exclusiveGateway, Query the next shop, Ask about quantity, price and deadline, Terms acceptable?, exclusiveGateway, Create a list of the parts, More parts needed?, parallelGateway, Receive first batch of parts, Receive second batch of parts, Receive third batch of parts, First parts arrived, Start/Continue building, Any stock falls?
+Current active activity or waiting point: How much is the stock fall?
+Token position / execution status: token is at How much is the stock fall?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Reorder threshold for a single part: 5)
+Applicable rules: Rule 1 (All candidate web shops for a part must be queried to determine how much they can deliver, at which price, and how long delivery takes.)
+Possible next activities: Reorder the cheapest part, Reorder the part as fast as possible, Complain to the friends
+
+STATE-04: Near completion / completed
+Current process position: Project completed
+Completed activities: Contract project received, exclusiveGateway, Query the next shop, Ask about quantity, price and deadline, Terms acceptable?, exclusiveGateway, Create a list of the parts, More parts needed?, parallelGateway, Receive first batch of parts, Receive second batch of parts, Receive third batch of parts, First parts arrived, Start/Continue building, Any stock falls?, How much is the stock fall?, exclusiveGateway, Reorder the cheapest part, Reorder the part as fast as possible, Complain to the friends, Contract fullfilled?, exclusiveGateway
+Current active activity or waiting point: Project completed
+Token position / execution status: token is at Project completed; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Reorder threshold for a single part: 5)
+Applicable rules: Rule 1 (All candidate web shops for a part must be queried to determine how much they can deliver, at which price, and how long delivery takes.)
+Possible next activities: Process completion

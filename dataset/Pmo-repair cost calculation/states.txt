@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Customer brings a defective computer
+Completed activities: startEvent
+Current active activity or waiting point: Customer brings a defective computer
+Token position / execution status: token is at Customer brings a defective computer; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of CRS technicians: 6)
+Applicable rules: Rule 1 (The CRS must check the defect of the defective computer before issuing a repair cost calculation.)
+Possible next activities: CRS checks the defect
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: startEvent, Customer brings a defective computer, CRS checks the defect, CRS hands out a repair cost calculation
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of CRS technicians: 6)
+Applicable rules: Rule 1 (The CRS must check the defect of the defective computer before issuing a repair cost calculation.)
+Possible next activities: parallelGateway, endEvent, Client takes her computer home unrepaired, exclusiveGateway, exclusiveGateway, Repair is finished
+
+STATE-03: Resource-dependent / waiting
+Current process position: Repair the hardware
+Completed activities: startEvent, Customer brings a defective computer, CRS checks the defect, CRS hands out a repair cost calculation, exclusiveGateway, Client takes her computer home unrepaired, exclusiveGateway, exclusiveGateway, parallelGateway, endEvent, Check the hardware, Check the software
+Current active activity or waiting point: Repair the hardware
+Token position / execution status: token is at Repair the hardware; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of CRS technicians: 6)
+Applicable rules: Rule 1 (The CRS must check the defect of the defective computer before issuing a repair cost calculation.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: Repair is finished
+Completed activities: startEvent, Customer brings a defective computer, CRS checks the defect, CRS hands out a repair cost calculation, exclusiveGateway, Client takes her computer home unrepaired, exclusiveGateway, exclusiveGateway, parallelGateway, endEvent, Check the hardware, Check the software, Repair the hardware, Configure the software, parallelGateway, Proper system functionality is tested, exclusiveGateway
+Current active activity or waiting point: Repair is finished
+Token position / execution status: token is at Repair is finished; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of CRS technicians: 6)
+Applicable rules: Rule 1 (The CRS must check the defect of the defective computer before issuing a repair cost calculation.)
+Possible next activities: exclusiveGateway

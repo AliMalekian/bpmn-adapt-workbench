@@ -1,0 +1,12 @@
+Re_Add_Request:
+Restored element: The step of bragging to selected friends and/or sending them materials after the bot has finished.
+
+This request semantically restores everything that Request4 removed. Request4 removed the final sharing step in which the player is able to brag to selected friends and/or send them materials once the bot has finished farming. This restoration brings the process back to its exact original shape:
+
+1. The step "brag to selected friends and/or send them materials" is re-inserted as the final step of the farming process, executed after the bot is finished.
+2. The player is again able to brag — but only in the chat channels of the selected friends, i.e., up to the "Selected friends to brag to: 5" (Rule 10).
+3. The player is again able to send materials to friends — but only while still keeping at least 50% of the collected goal, per the "Minimum goal share kept before sharing: 50%" (Rule 9).
+4. The step is restored as an optional post-finish activity, exactly as described in the process ("After the bot is finished, you should be able to brag to selected friends and/or send them materials"), and it does not alter the automatic stop of farming when all goals are reached (Rule 8).
+5. No other part of the process is altered: resource selection, urgent-first farming (Rule 2), disaster setbacks (Rule 4), milestone notifications (Rule 5), and the updatable resource list (Rule 6) remain exactly as before.
+
+The process is thereby returned to precisely its original state, with the bragging/sharing step fully restored.

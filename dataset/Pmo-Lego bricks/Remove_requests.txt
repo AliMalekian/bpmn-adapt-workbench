@@ -1,0 +1,28 @@
+Request1:
+Removed element: Testing each subcomponent individually after it is built
+Reason: The sorting group and build steps already ensure parts match the design, so individual testing of each subcomponent is proposed as redundant overhead before assembly.
+Conflict details: This removal directly conflicts with Rule 9, which states: "Each subcomponent must be tested individually after it is built, before it is assembled." Removing the testing step makes it impossible to satisfy Rule 9, as there would be no verification that any subcomponent meets quality standards before assembly proceeds.
+
+Request2:
+Removed element: The sorting group of children sorting parts into containers
+Reason: The sorting step is proposed for removal because subcomponents could be built directly from unsorted brick sets, saving time on the sorting phase.
+Conflict details: This removal conflicts with Resource "Number of children in the sorting group: 12." The 12 children exist solely to perform the sorting task; without the sorting step, this resource becomes entirely unused and wasted. It also conflicts with Resource "Number of supervising adults: 2" (the adults supervise the sorting children) and Resource "Number of sorted part containers: 8" (the containers hold sorted parts that would no longer exist).
+
+Request3:
+Removed element: Reordering individual parts when a container runs out
+Reason: It is proposed that once all parts from the original brick sets are used up, the entire process simply ends rather than reordering replacement parts from suppliers.
+Conflict details: This removal conflicts with Rule 5, which states: "If a container runs out of parts, individual replacement parts must be reordered immediately and the container refilled before assembly continues." It also conflicts with Rule 13: "Reorders of individual parts must be placed within 24 hours of a container becoming empty." Additionally, it conflicts with Resource "Reorder batch size for individual parts: 500 parts" and Resource "Container restock lead time: 2 days," both of which exist solely to support the reordering process. Without reordering, these resources become unused.
+
+Request4:
+Removed element: Assembling the tested subcomponents into the final machine
+Reason: It is proposed that the final machine be delivered as a set of separate, individually tested subcomponents rather than being assembled into a single integrated machine, allowing the customer to perform assembly.
+Conflict details: None -- fully compatible with all rules and resources. Rule 11 states that assembly may begin only after all subcomponents pass testing, but no rule mandates that assembly must actually occur. Rules 9 and 10 govern testing and redesign, and Rule 14 governs the final integration test, but none of these require the assembly step itself to take place. No resource in Resources.txt is dependent on the assembly step existing.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

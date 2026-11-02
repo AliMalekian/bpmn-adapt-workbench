@@ -1,0 +1,15 @@
+1. A customer must provide valid personal and payment information when signing up for the subscription service.
+2. The system generates an account and assigns access rights immediately after the sign-up is complete.
+3. Billing cycles run automatically every 30 days with a 3-day payment grace period.
+4. If a payment fails, the customer is notified and given 7 days to settle the balance before the account is suspended.
+5. Renewal notifications are sent 7 days before the renewal date.
+6. Regular updates, product enhancements, and renewal notifications are delivered to active subscribers only.
+7. A cancellation request must be submitted through the account portal or to the support team.
+8. Refunds are issued for unused time only when cancellation occurs within the current billing cycle.
+9. Annual plans cancelled within 14 days of purchase receive a full refund.
+10. The support team must process a cancellation request within 2 business days.
+11. The subscription is deactivated only after the final account balance is settled.
+12. Access to subscription content is terminated on the date the subscription is deactivated.
+13. Reactivation after cancellation requires a new sign-up with a fresh payment method.
+14. Chargebacks are escalated to the billing team within 5 business days of notification.
+15. Any override of the automated billing process requires supervisor approval.

@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Login
+Completed activities: start
+Current active activity or waiting point: Login
+Token position / execution status: token is at Login; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of registered users: 40,000)
+Applicable rules: Rule 1 (A user must log in to their account before starting any purchase order.)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: parallelGateway
+Completed activities: start, Login
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of registered users: 40,000)
+Applicable rules: Rule 1 (A user must log in to their account before starting any purchase order.)
+Possible next activities: Select free reward, exclusiveGateway, Select items, exclusiveGateway, parallelGateway, Set payment method
+
+STATE-03: Resource-dependent / waiting
+Current process position: exclusiveGateway
+Completed activities: start, Login, parallelGateway, Select items, Set payment method, parallelGateway, parallelGateway, Select free reward
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of registered users: 40,000)
+Applicable rules: Rule 1 (A user must log in to their account before starting any purchase order.)
+Possible next activities: Return items, parallelGateway, Deliver items, Complete installment agreement, end, Pay
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Login, parallelGateway, Select items, Set payment method, parallelGateway, parallelGateway, Select free reward, exclusiveGateway, parallelGateway, Complete installment agreement, Pay, exclusiveGateway, exclusiveGateway, Deliver items, exclusiveGateway, Return items
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of registered users: 40,000)
+Applicable rules: Rule 1 (A user must log in to their account before starting any purchase order.)
+Possible next activities: Process completion

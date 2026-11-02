@@ -1,0 +1,15 @@
+1. Parcels weighing 50 kg or more must be shipped via special logistics, not regular post.
+2. Shipments worth more than 1000 EUR require parcel insurance before dispatch.
+3. Parcel insurance may only be arranged by the logistics department head after written approval.
+4. The secretary must invite at least three logistics companies to offer for every special shipment.
+5. The selected logistics offer may not exceed the cheapest valid offer by more than 5%, otherwise department head approval is required.
+6. Special shipments must be handed over to the selected logistics company within 2 business days of offer acceptance.
+7. End-customer parcels heavier than 30 kg are upgraded to special shipping automatically.
+8. Package labels must be written before goods are handed to the mail or logistics company.
+9. Standard post parcels prepared before 15:00 are dispatched on the same working day.
+10. When parcels require packaging, the warehousemen must finish packaging before the logistics company arrives for pickup; bulk container shipments without packaging are permitted.
+11. Special shipments to other shops valued above 5000 EUR always require special shipping and insurance.
+12. Only the secretary may issue package labels; no other staff member may release parcels for shipping.
+13. Logistics companies may collect goods only between 08:00 and 16:00 on business days.
+14. The insured value declared for a parcel must not exceed the invoice value of the goods.
+15. Special shipping costs count against the monthly logistics budget and must be recorded on the day of booking.

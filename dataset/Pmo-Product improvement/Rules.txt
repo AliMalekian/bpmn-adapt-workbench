@@ -1,0 +1,17 @@
+Rules for Product Improvement and Prototype Development
+14. When active monthly steering reviews are scheduled, the R&D team reports progress to the committee; administrative progress reports are not mandatory during autonomous sprint cycles.
+1. Every product improvement idea must be registered and documented before R&D work begins.
+2. R&D must conduct initial research and feasibility studies on every registered idea.
+3. At least two design concepts must be drafted for each idea that passes the feasibility study.
+4. A design is selected based on its feasibility, cost, and market potential scores.
+5. Prototypes must be built using only available, approved materials and resources.
+6. Each prototype must undergo functionality, safety, and market potential tests.
+7. All feedback from the testing phase must be collected and documented.
+8. A prototype that fails a test must be refined and the testing phase reinitiated.
+9. A prototype may be refined a maximum of 3 times before it must be discarded.
+10. Safety tests must be conducted in the dedicated testing laboratory.
+11. Prototype material costs must not exceed 40 percent of the total project budget.
+12. A prototype may be approved for further development only by the project manager.
+13. Only prototypes that pass all tests are recommended for further development.
+14. The R&D team must report progress to the steering committee once per month.
+15. The process ends when the prototype is either approved for further development or discarded.

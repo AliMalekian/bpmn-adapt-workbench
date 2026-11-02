@@ -1,0 +1,45 @@
+STATE-01: Initial / early execution
+Current process position: Storage management
+Completed activities: None
+Current active activity or waiting point: Storage management
+Token position / execution status: token is at Storage management; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Average number of products per order: 5)
+Applicable rules: Rule 1 (Orders are read from the automatic order management system.)
+Possible next activities: Read order
+
+STATE-02: Intermediate / decision
+Current process position: Reorder from wholesaler
+Completed activities: Storage management, Storage management, Stock management system, User, startEvent, needs to ship the order, Start of store
+management, Storage management, Connect to the managment system, read the next available order, Read order, Read order, Read order from system, select first product from the order, exclusiveGateway, exclusiveGateway, Is first order in the stock?, exclusiveGateway, Check if product is in stock, Check if  product is in stock, Contact the wholesaler, Browse the warehouse, check if this product is in stock, Product in stock?, Is in stock?, Reordered from the wholesaler, Withdrawn  the product from the warehouse, product is in stock?, Withdraw from the warehouse list
+Current active activity or waiting point: Reorder from wholesaler
+Token position / execution status: token is at Reorder from wholesaler; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Average number of products per order: 5)
+Applicable rules: Rule 1 (Orders are read from the automatic order management system.)
+Possible next activities: Waited more than 10 days?, Waiting until arrives (handling system)
+
+STATE-03: Resource-dependent / waiting
+Current process position: Request courier
+Completed activities: Storage management, Storage management, Stock management system, User, startEvent, needs to ship the order, Start of store
+management, Storage management, Connect to the managment system, read the next available order, Read order, Read order, Read order from system, select first product from the order, exclusiveGateway, exclusiveGateway, Is first order in the stock?, exclusiveGateway, Check if product is in stock, Check if  product is in stock, Contact the wholesaler, Browse the warehouse, check if this product is in stock, Product in stock?, Is in stock?, Reordered from the wholesaler, Withdrawn  the product from the warehouse, product is in stock?, Withdraw from the warehouse list, Reorder from wholesaler, Withdraw the Product from warehouse, Reorder from wholesaler, exclusiveGateway, take product form the warehouse, order the product, Check if the whole order is ready for shipment, Waited more than 10 days?, Check if the whole order is ready
+for shipment, Waiting until arrives (handling system), Arrival of the product, exclusiveGateway, enter ordering (start) date, Is the order ready for shipment?, Demand delay penalty from wholesaler, Register product in stock, Order is ready for shipment?, Arrived after more than ten days?, delivery delay penalty from the wholesaler, Give the Ok for the arrived product, check if the whole order is ready for shipment, receive the product, parallelGateway, parallelGateway, Demand delivery delay penalty from the wholesaler, exclusiveGateway, exclusiveGateway, is the whole order ready?, check the date
+Current active activity or waiting point: Request courier
+Token position / execution status: token is at Request courier; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Average number of products per order: 5)
+Applicable rules: Rule 1 (Orders are read from the automatic order management system.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: Successfully delivery
+Completed activities: Storage management, Storage management, Stock management system, User, startEvent, needs to ship the order, Start of store
+management, Storage management, Connect to the managment system, read the next available order, Read order, Read order, Read order from system, select first product from the order, exclusiveGateway, exclusiveGateway, Is first order in the stock?, exclusiveGateway, Check if product is in stock, Check if  product is in stock, Contact the wholesaler, Browse the warehouse, check if this product is in stock, Product in stock?, Is in stock?, Reordered from the wholesaler, Withdrawn  the product from the warehouse, product is in stock?, Withdraw from the warehouse list, Reorder from wholesaler, Withdraw the Product from warehouse, Reorder from wholesaler, exclusiveGateway, take product form the warehouse, order the product, Check if the whole order is ready for shipment, Waited more than 10 days?, Check if the whole order is ready
+for shipment, Waiting until arrives (handling system), Arrival of the product, exclusiveGateway, enter ordering (start) date, Is the order ready for shipment?, Demand delay penalty from wholesaler, Register product in stock, Order is ready for shipment?, Arrived after more than ten days?, delivery delay penalty from the wholesaler, Give the Ok for the arrived product, check if the whole order is ready for shipment, receive the product, parallelGateway, parallelGateway, Demand delivery delay penalty from the wholesaler, exclusiveGateway, exclusiveGateway, is the whole order ready?, check the date, Request courier, Pack products, Packing the products, Courier is requested, Register in stock management system, Register the product in the management system, parallelGateway, select the next product from the order, was it necessary to wait more then 10 days?, parallelGateway, parallelGateway, Ready for shipness?, pack the products, request courier, demand delivery delay penalty, exclusiveGateway, Send the order for shipment, Shipping the order, parallelGateway, parallelGateway, register product, End of store
+management, Order was shipped, Pack the product, Request a courier, ship the order, parallelGateway, order is shipped, Ship the delivery
+Current active activity or waiting point: Successfully delivery
+Token position / execution status: token is at Successfully delivery; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Average number of products per order: 5)
+Applicable rules: Rule 1 (Orders are read from the automatic order management system.)
+Possible next activities: Process completion

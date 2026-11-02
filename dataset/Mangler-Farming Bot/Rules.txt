@@ -1,0 +1,15 @@
+1. The player must select at least 1 and at most 10 resources to be collected in parallel by the farming bot.
+2. Resources marked as urgent are farmed first, before non-urgent resources, during every bot run.
+3. A tool resource must be produced before its dependent resource can be farmed.
+4. Natural disasters strike randomly and set the bot's collected progress back by up to 2 days worth of resources.
+5. A milestone notification is sent to the player each time 25% of a selected resource goal is reached.
+6. The list of resources to be farmed can be updated at any time during the farming run without stopping the bot.
+7. Bots may hold a maximum of 10 different resource types in their inventory at the same time.
+8. Farming stops automatically when all selected resource goals are reached.
+9. Materials can be sent to friends only when the player still has at least 50% of the collected goal left.
+10. Bragging about progress is allowed only in chat channels of selected friends.
+11. Each newly unlocked resource requires a minimum of one prerequisite tool to be gathered.
+12. The bot can carry a maximum load of 500 units of resources per run.
+13. When a disaster strikes, the bot immediately relogs the top 3 urgent resources.
+14. A resource listed as "rare" requires 2 resources to be collected in a specific order before it becomes farmable.
+15. The player must confirm the final collection goal list before the bot starts farming.

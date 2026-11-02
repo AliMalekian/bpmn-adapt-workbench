@@ -1,0 +1,29 @@
+Request1:
+Removed element: The "Waiter readies cart" task (Task_1) - the step in which the waiter prepares the serving cart by putting a tablecloth on it and gathering silverware.
+Reason: It is proposed for removal to reduce the preparation workload, letting the waiter deliver the order without first readying a cart.
+Conflict details: This removal CONFLICTS with Rule 7 of Rules.txt: "The room-service cart must carry a proper tablecloth and full silverware set before delivery." Rule 7 explicitly requires the cart to be readied (tablecloth and full silverware set) before delivery, and this is exactly the function of the "Waiter readies cart" task. Removing the task breaks Rule 7. It also weakens Rule 8, because delivery to the guest's room may only occur when the "cart" is ready, and with no cart-ready step the delivery readiness condition cannot be met.
+
+Request2:
+Removed element: The "Manager gives order to sommelier" task (Task_7) - the step in which the room-service manager gives the order to the sommelier to fetch wine and prepare alcoholic beverages.
+Reason: It is proposed for removal so that the sommelier learns of the order directly from the order ticket, skipping the manager's separate dispatch to the sommelier.
+Conflict details: This removal CONFLICTS with the resources in Resources.txt. The resource "Sommeliers: 2" allocates the two sommeliers whose sole designated function in the process is to receive and execute the manager's order to fetch wine and prepare alcoholic beverages; and "Wine bottles in cellar stock: 300" and "Wine varieties offered: 35" describe the cellar provisions that exist to fulfill those sommelier orders. Removing the manager-to-sommelier order step leaves the two allocated sommeliers and the cellar provisions without their designated engagement point, contradicting the resource plan of the process. Rule 3 of Rules.txt also requires "A separate order is given to the sommelier whenever the order includes wine or an alcoholic beverage," which the removal directly breaks.
+
+Request3:
+Removed element: The "Waiter debits guest's account" task (Task_8) - the step in which the waiter debits the guest's account after returning to the room-service station.
+Reason: It is proposed for removal so that the room-service order is considered finished after delivery, skipping the billing step.
+Conflict details: This removal CONFLICTS with both rules and resources. Rules: Rule 10 of Rules.txt states that "The guest's account is debited after delivery and after the waiter returns to the room-service station," and Rule 13 states that "Holds on guest accounts are released only after the full room-service bill is debited." Removing the debiting task breaks both rules, because the account is never debited and the hold on the guest's account is therefore never released. Resources: the resource "Room-service waiters on duty per shift: 5" in Resources.txt allocates the waiters who perform the billing/debiting activity, and the resource "Room-service orders per day (average): 120" quantifies the order volume whose bills must be debited; removing the debiting step contradicts the provisioned waiter capacity and the expected billing workload.
+
+Request4:
+Removed element: Optional administrative archiving and logging step
+Reason: Proposed by operations to streamline case closure by omitting optional secondary archiving overhead.
+Conflict details: None -- fully compatible with all rules and resources. Operates as an ancillary, non-blocking administrative task; core business rules and resource constraints remain fully intact.
+
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

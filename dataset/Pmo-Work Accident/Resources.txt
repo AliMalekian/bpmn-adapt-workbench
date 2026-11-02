@@ -1,0 +1,14 @@
+Accident insurance reporting deadline (days): 5
+Fatal accident reporting deadline (days): 3
+Minimum incapacity period triggering a report (days): 3
+Accident insurance report copies: 3
+Number of recognized volunteer aid organizations: 10
+Work accident claims per year: 2,400
+Accident insurance providers: 1
+Employer notification deadline (immediate, hours): 24
+Labour Inspectorate notification deadline (immediate, hours): 24
+Compensation claim processing time (days): 30
+Annual accident prevention training sessions: 12
+Maximum commuting route coverage distance (kilometers): 100
+Number of insured employees in company: 350
+Safety inspection frequency (times per year): 2

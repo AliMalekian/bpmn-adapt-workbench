@@ -1,0 +1,28 @@
+Request1:
+Removed element: Prepare the drink (the "Prepare beverage" task that produces the drink for menu orders)
+Reason: Drink preparation can take a variable amount of time depending on size, increasing the overall order lead time; removing it would shorten menu-order handling time.
+Conflict details: Conflicts with Rule 1 ("If the customer selects a menu, the drink must be prepared first before the robot asks whether the customer wants fries or wedges"), Rule 5 ("An order is released onto the conveyor belt only after the burger, the side, and the drink (if a menu) are all fully prepared"), and Rule 10 ("menus always include a drink"). Without the beverage task, the mandated preparation order for a menu breaks, the conveyor-release condition of Rule 5 can never be satisfied for a menu order, and the menu loses its definitional drink component.
+
+Request2:
+Removed element: Prepare French fries (the "Prepare French fries" operation including the fries frying step)
+Reason: Frying fries takes variable time and adds warming-tray pressure; removing them would let the robot serve burgers with only the wedges alternative and shorten side preparation.
+Conflict details: Conflicts with the resource "Fries fryer baskets: 2" listed in Resources.txt. Two dedicated fryer baskets are provisioned exactly to run the fries operation; removing the task leaves this resource unallocated and invalidates the kitchen capacity plan defined in Resources.txt. It also conflicts with "Warming tray freshness limit (minutes): 10", the freshness resource that governs the served-fries process, which would have no operating object left.
+
+Request3:
+Removed element: The enthusiastic status update to the customer every 30 seconds during burger preparation (the "Update status" / "Notify customer" task)
+Reason: These periodic updates interrupt preparation and consume the robot's messaging bandwidth; removing them saves time and message traffic.
+Conflict details: Conflicts with Rule 4 ("The robot sends an enthusiastic status update to the customer every 30 seconds while the burger is being prepared") and with the resource "Status update interval (seconds): 30" from Resources.txt, which defines the 30-second interval the status-update step must follow. Removing the step both breaks the mandatory update rule and voids the configured interval parameter.
+
+Request4:
+Removed element: Enter the customer's name (the "Enter customer's name" data-entry task at order intake)
+Reason: Capturing the customer's name is a filler step at order intake with no effect on food production or delivery; removing it would let the robot take orders anonymously and reduce intake time.
+Conflict details: None - fully compatible with all rules and resources. No rule in Rules.txt requires the customer's name to be captured, and no resource in Resources.txt is tied to customer-name entry. The order can be produced and delivered identically without it.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

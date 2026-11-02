@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The "Conduct strategic alignment meeting" task (Task_10) - the review of the drafted plan in a strategic alignment meeting to ensure it aligns with broader organizational goals..
+Current token position: Immediately before The "Conduct strategic alignment meeting" task (Task_10) - the review of the drafted plan in a strategic alignment meeting to ensure it aligns with broader organizational goals. on its original BPMN sequence flow.
+Required resources: Resource 1 (Annual department budget: $500,000)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → The "Conduct strategic alignment meeting" task (Task_10) - the review of the drafted plan in a strategic alignment meeting to ensure it aligns with broader organizational goals. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The "Conduct strategic alignment meeting" task (Task_10) - the review of the drafted plan in a strategic alignment meeting to ensure it aligns with broader organizational goals..
+Current token position: Immediately before The "Conduct strategic alignment meeting" task (Task_10) - the review of the drafted plan in a strategic alignment meeting to ensure it aligns with broader organizational goals. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 2 (Every objective included in the plan must be directly aligned with at least one broader organizational goal.), Rule 5 (The plan is reviewed in a strategic alignment meeting before it is passed to the finance department.)
+Expected execution path: Follow the original predecessor → The "Conduct strategic alignment meeting" task (Task_10) - the review of the drafted plan in a strategic alignment meeting to ensure it aligns with broader organizational goals. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The "Conduct strategic alignment meeting" task (Task_10) - the review of the drafted plan in a strategic alignment meeting to ensure it aligns with broader organizational goals..
+Current token position: Immediately before The "Conduct strategic alignment meeting" task (Task_10) - the review of the drafted plan in a strategic alignment meeting to ensure it aligns with broader organizational goals. on its original BPMN sequence flow.
+Required resources: Resource 1 (Annual department budget: $500,000)
+Relevant rules: Rule 2 (Every objective included in the plan must be directly aligned with at least one broader organizational goal.), Rule 5 (The plan is reviewed in a strategic alignment meeting before it is passed to the finance department.)
+Expected execution path: Follow the original predecessor → The "Conduct strategic alignment meeting" task (Task_10) - the review of the drafted plan in a strategic alignment meeting to ensure it aligns with broader organizational goals. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "Implement plan" task (Task_1)..
+Current token position: Immediately before "Implement plan" task (Task_1). on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "Implement plan" task (Task_1). → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

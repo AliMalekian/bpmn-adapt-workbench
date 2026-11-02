@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: parallelGateway
+Completed activities: startEvent
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum leave duration (weeks): 20)
+Applicable rules: Rule 1 (A parent must select the maternity leave model, including the months duration and the split between parents, before any plan is finalized.)
+Possible next activities: receive confirmation from employer, fetch information about financial support, fetch information about leave models, select appropriate model, notify employer, notify social security
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: startEvent, parallelGateway, fetch information about financial support, fetch information about leave models, parallelGateway, select appropriate model, decide if apply for financial support
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum leave duration (weeks): 20)
+Applicable rules: Rule 1 (A parent must select the maternity leave model, including the months duration and the split between parents, before any plan is finalized.)
+Possible next activities: return to job, apply for financial support, exclusiveGateway, do maternity/paternity leave, prepare necessary documents for leave, prepare necessary documents for leave, prepare necessary documents for leave
+
+STATE-03: Resource-dependent / waiting
+Current process position: parallelGateway
+Completed activities: startEvent
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum leave duration (weeks): 20)
+Applicable rules: Rule 1 (A parent must select the maternity leave model, including the months duration and the split between parents, before any plan is finalized.)
+Possible next activities: receive confirmation from employer, fetch information about financial support, fetch information about leave models, select appropriate model, notify employer, notify social security
+
+STATE-04: Near completion / completed
+Current process position: return to job
+Completed activities: startEvent, parallelGateway, fetch information about financial support, fetch information about leave models, parallelGateway, select appropriate model, decide if apply for financial support, exclusiveGateway, apply for financial support, exclusiveGateway, prepare necessary documents for leave, parallelGateway, notify employer, notify social security, parallelGateway, receive confirmation from employer, check if all necessary documents gathered, exclusiveGateway, do maternity/paternity leave, decide if extend leave or return to work, exclusiveGateway
+Current active activity or waiting point: return to job
+Token position / execution status: token is at return to job; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum leave duration (weeks): 20)
+Applicable rules: Rule 1 (A parent must select the maternity leave model, including the months duration and the split between parents, before any plan is finalized.)
+Possible next activities: Process completion

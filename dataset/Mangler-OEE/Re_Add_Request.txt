@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: Uploading/saving the collected measurement data to the efficiency database/cloud
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The step "Upload measurement data" is re-inserted into the measurement cycle, immediately after the machine's data has been collected and before the OEE value is calculated.
+- The collected availability, performance, and quality readings are saved to the efficiency database/cloud ("Database for machine efficiency" in the BPMN model), so that a persistent record of every measurement cycle is retained.
+- The upload runs for every completed measurement cycle, consistent with the continuous measuring requirement of Rule 1 and the at-least-every-8-hours recomputation requirement of Rule 7.
+- All other process elements (data collection, OEE calculation, threshold monitoring, automatic stop, email notification, engineer restart, recovery verification, dashboard refresh, maintenance log) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration beyond re-establishing the persistence of measurement data; the OEE monitoring infrastructure functions for all connected machines as before.

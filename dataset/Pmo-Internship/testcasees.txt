@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted).
+Current token position: Immediately before Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted) on its original BPMN sequence flow.
+Required resources: Resource 1 (Minimum weekly status updates required: 3)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted).
+Current token position: Immediately before Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted) on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 4 (As soon as one offer is accepted, all other outstanding offers automatically become invalid.), Rule 13 (Once an offer is accepted, the accepted offer's terms (topic, compensation, duration) are frozen and cannot be renegotiated.)
+Expected execution path: Follow the original predecessor → Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted).
+Current token position: Immediately before Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted) on its original BPMN sequence flow.
+Required resources: Resource 1 (Minimum weekly status updates required: 3)
+Relevant rules: Rule 4 (As soon as one offer is accepted, all other outstanding offers automatically become invalid.), Rule 13 (Once an offer is accepted, the accepted offer's terms (topic, compensation, duration) are frozen and cannot be renegotiated.)
+Expected execution path: Follow the original predecessor → Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate restored process activity.
+Current token position: Immediately before restored process activity on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → restored process activity → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

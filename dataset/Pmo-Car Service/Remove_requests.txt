@@ -1,0 +1,28 @@
+Request1:
+Removed element: Make appointment for next service (the "Make appointment for next service" task that schedules the next service date)
+Reason: Scheduling the follow-up appointment at the facility duplicates the app-based reminder that exists anyway; removing it would reduce mechanic workload at checkout.
+Conflict details: Conflicts with Rule 9 ("The mechanic must set the next service date, which defaults to 12 months after the current successful service"). Without this task no next service date is ever set and the 12-month default, which Rule 6 and the reminder cycle of Rules 1, 11 and 13 depend on, breaks down. The subsequent reminder cycle can therefore never be started.
+
+Request2:
+Removed element: Receive updates while waiting (the "Receive updates while waiting" email-update task that keeps the owner informed during multi-day repairs)
+Reason: Sending email updates adds messaging overhead; removing them would let the system stay quiet until the repair is done.
+Conflict details: Conflicts with the resource "Email status update interval (days): 2" from Resources.txt, which configures how often such updates are sent. Removing the update task leaves this resource parameter without a target step and voids the agreed 2-day email checklist. It also leaves "Longest repair wait with email updates (days): 2" in Resources.txt without any process step that uses it.
+
+Request3:
+Removed element: The automatic fine for missing the service (the "User fined" task) issued when the owner does not go to the service within 30 days
+Reason: Fining is punitive and creates dispute handling; removing it would make the reminder system friendlier.
+Conflict details: Conflicts with Rule 4 ("If the owner does not bring the car to the service within 30 days after notification, a fine is issued automatically by the police app") and with the resource "Fine amount for missed service (EUR): 50" from Resources.txt. Rule 4 mandates the automatic fine after the 30-day window, and Resources.txt fixes the amount at 50 EUR; removing the fine task breaks the mandated enforcement step and voids the configured fine amount resource.
+
+Request4:
+Removed element: Bring Documents for Registration (the "Bring Documents for Registration" task where the owner presents registration documents)
+Reason: The registration paperwork step at the facility delays intake and is perceived as redundant because the police app already verified the registration; removing it would speed up the counter visit.
+Conflict details: None - fully compatible with all rules and resources. No rule in Rules.txt requires the owner to present registration documents in person, and no resource in Resources.txt is bound to this task. The app-based registration check already performed at service-need time is unaffected, so the process remains valid without the document-handover step.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

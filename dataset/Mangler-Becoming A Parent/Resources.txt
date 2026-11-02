@@ -1,0 +1,15 @@
+Total supported leave models: 8
+Maximum leave duration per parent: 24 months
+Standard base leave duration: 12 months
+Maximum extension duration: 6 months
+Shared model split increments: 1 month
+Social Security notification lead time: 12 weeks
+Employer notification lead time: 8 weeks
+Employer response acknowledgement window: 14 days
+Maximum document age for filing: 30 days
+Extension decision window before leave end: 3 months
+Model change window after leave start: 2 weeks
+Allowed paid leave days per year per parent: 30 days
+Employer co-payment share: 40%
+Support staff handling leave cases: 6
+Retroactive extension limit: 30 days after leave end

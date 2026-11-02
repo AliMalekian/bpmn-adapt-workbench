@@ -1,0 +1,12 @@
+Room-service operating hours per day: 18
+Percentage of orders including alcoholic beverages (%): 80
+Room-service waiters on duty per shift: 5
+Room-service manager: 1
+Sommeliers: 2
+Serving carts available: 8
+Kitchen capacity for concurrent orders: 20
+Maximum delivery time (minutes): 45
+Wine bottles in cellar stock: 300
+Wine varieties offered: 35
+Nonalcoholic beverage varieties stocked: 15
+Room-service orders per day (average): 120

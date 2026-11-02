@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: exclusiveGateway
+Completed activities: start
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Warehouse floor capacity (square meters): 12,000)
+Applicable rules: Rule 1 (A reorder is triggered automatically when the on-hand stock of an item falls below its predefined reorder threshold.)
+Possible next activities: exclusiveGateway, parallelGateway, exclusiveGateway, Send a manual alert, Send an automated alert, Place stock on shelves, Place stock in storage, Place order with suppliers, Check current inventory level
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: start
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Warehouse floor capacity (square meters): 12,000)
+Applicable rules: Rule 1 (A reorder is triggered automatically when the on-hand stock of an item falls below its predefined reorder threshold.)
+Possible next activities: exclusiveGateway, parallelGateway, exclusiveGateway, Send a manual alert, Send an automated alert, Place stock on shelves, Place stock in storage, Place order with suppliers, Check current inventory level
+
+STATE-03: Resource-dependent / waiting
+Current process position: parallelGateway
+Completed activities: start, exclusiveGateway, Check current inventory level, exclusiveGateway, exclusiveGateway, Send a manual alert, Send an automated alert, exclusiveGateway, Place order with suppliers, Update inventory system with expected delivery dates, Receive stock
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Warehouse floor capacity (square meters): 12,000)
+Applicable rules: Rule 1 (A reorder is triggered automatically when the on-hand stock of an item falls below its predefined reorder threshold.)
+Possible next activities: Update inventory levels, Record stock in system, Inspect stock for quality
+
+STATE-04: Near completion / completed
+Current process position: exclusiveGateway
+Completed activities: start
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Warehouse floor capacity (square meters): 12,000)
+Applicable rules: Rule 1 (A reorder is triggered automatically when the on-hand stock of an item falls below its predefined reorder threshold.)
+Possible next activities: exclusiveGateway, parallelGateway, exclusiveGateway, Send a manual alert, Send an automated alert, Place stock on shelves, Place stock in storage, Place order with suppliers, Check current inventory level

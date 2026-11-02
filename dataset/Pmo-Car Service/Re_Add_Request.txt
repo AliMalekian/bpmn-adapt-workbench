@@ -1,0 +1,10 @@
+Re-Add Request:
+Removed element to be restored: Bring Documents for Registration (the "Bring Documents for Registration" task where the owner presents registration documents at the service facility)
+
+Restoration details:
+1. Re-insert the "Bring Documents for Registration" user-task in the parallel wait branch that runs while the mechanic inspects the car: recreate the BPMN task with its original name, positioned between the service visit opening and the "Gone to service?" decision, so the owner again presents the registration documents during the service visit.
+2. Restore the document-handover behavior: the owner again hands over the registration documents, the facility records them against the service record, and the check at the "Gone to service?" gateway proceeds exactly as in the original model.
+3. Reconnect the sequence flows: the incoming flow from the start of the service visit enters "Bring Documents for Registration" and the outgoing flow continues to the service-completion path as before; the bypass merge introduced by the removal is deleted.
+4. Restore the service record so that every completed service again contains the registration-document confirmation, preserving the full original process shape (check registration -> notify -> attend service with documents -> mechanic enters problems -> email updates -> pay -> "Pickerl" -> schedule next service).
+
+The process is thereby returned to exactly its original shape: the task, its sequence flows, and the recorded document attribute that Request4 removed are all restored.

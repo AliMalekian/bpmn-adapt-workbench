@@ -1,0 +1,10 @@
+Re-Add Request:
+Removed element to be restored: The data-protection/logging side-annotation attached to the end of the sales flow (the informational annotation element that documents the data-handling obligation on the order-processing segment)
+
+Restoration details:
+1. Re-insert the annotation element at the end of the sales process: recreate the BPMN text annotation (TextAnnotation) at the order-processing segment near the "Send order confirmation to customer" / final end-event area, with its original text documenting that sensitive customer data collected during inquiry and ordering must be handled in compliance with data protection policy.
+2. Re-establish the annotation association: restore the annotation connector (association) that ties the annotation to the final order-processing segment, so the documentation again visibly applies to the recording and confirmation steps exactly as in the original model.
+3. Restore the documentation content: the annotation again states the data-protection handling obligation for sensitive customer data gathered during inquiry and ordering, matching Rule 15 of Rules.txt, so the model documents this compliance requirement in the same place it did before the removal.
+4. Keep all executable elements unchanged: the start event, "Receive customer inquiry", the parallel information-and-concerns branch, quote/guidance, order placement, system recording, order confirmation, and the end event remain exactly as they are; only the annotation and its association are re-added, so the process returns to its exact original shape.
+
+The process is thereby returned to exactly its original shape: the annotation element and its association that Request4 removed are fully restored, and every executable step remains as before.

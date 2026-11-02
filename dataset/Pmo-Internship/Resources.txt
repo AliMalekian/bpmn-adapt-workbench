@@ -1,0 +1,11 @@
+Minimum weekly status updates required: 3
+Company status updates about the student: 3
+Compensation acceptance ratio (percent of requested amount): 60
+Maximum offers arriving per student: 5
+Frozen offer validity period (days): 7
+Maximum friends who may receive recommendation tweets: 10
+Twitter notification rate limit (tweets per hour): 100
+Internship reporting period (weeks): 8
+Number of status updates required from student minimum: 3
+Application resubmission window (days): 14
+Company recommendation score minimum: 4.0

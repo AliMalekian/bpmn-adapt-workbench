@@ -1,0 +1,15 @@
+1. All candidate web shops for a part must be queried to determine how much they can deliver, at which price, and how long delivery takes.
+2. A parts order is split across several shops whenever a single shop cannot deliver the required quantity in time.
+3. The cheapest available option must always be used when a part needs to be reordered.
+4. If the stock of a single part falls below 5 units, the cheapest supplier is used to reorder that part.
+5. If the stock of a part falls below 3 units, the fastest available supplier is used for the reorder, regardless of price.
+6. If the stock of a part reaches zero, the contract cannot continue and a complaint email is sent to friends about the web shops.
+7. Construction may begin as soon as the first parts arrive, even while the remaining batches are still in transit.
+8. Parts arrive in batches in a random order, typically up to 2 days earlier or later than the promised date.
+9. When deliveries arrive outside standard tolerances, discrepancies are logged; second batch deliveries that arrive within normal schedules do not require special logging.
+10. Only parts that pass incoming inspection may enter the construction stock.
+11. Reorder requests are raised automatically on a nightly stock check at 22:00.
+12. The budget for any reorder must not exceed the approved project procurement budget for that part type.
+13. Assembled contract items must be delivered to the customer site within 5 working days after the last part batch arrives.
+14. If the number of returned parts from a supplier exceeds 10 percent of the delivered quantity, that supplier is flagged and excluded from the next order.
+15. Each shop in the plan must be associated with a definitive list of parts, quantities, prices, and expected delivery dates.

@@ -1,0 +1,63 @@
+STATE-01: Initial / early execution
+Current process position: startEvent
+Completed activities: None
+Current active activity or waiting point: startEvent
+Token position / execution status: token is at startEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum travel document validity beyond visa: 3 months)
+Applicable rules: Rule 1 (The travel document must stay valid for at least three months beyond the duration of the visa.)
+Possible next activities: Check validity of passport, Check passport validity, exclusiveGateway, exclusiveGateway
+
+STATE-02: Intermediate / decision
+Current process position: parallelGateway
+Completed activities: startEvent, startEvent, Start process, startEvent, startEvent, Check validity of passport, Check passport validity, choose visa category, exclusiveGateway, exclusiveGateway, Apply for visa, How long are you 
+going to stay?, check general requirements, exclusiveGateway, Check requirements and point for Fachkräfte in Mangelberufen, Check requirements and point for Besonders Hochqualifizierte, Check requirements  and point for Sonstige Schlüsselkräfte, Check requirements  and point for Start-up-Gründerinnen/-Gründer, Check requirements for 
+Selbstständige Schlüsselkräfte, Check requirements for Studienabsolventinnen/Studienabsolventen einer österreichischen Hochschule, exclusiveGateway, Request "Rot-Weiß-Rot" card, Request "Aufenthaltstitel", Request visa, exclusiveGateway, general requirements fulfilled?, Visum beantragen, RWR Karte beantragen, Fullfiles
+the requirements 
+or point?, travel visa, Apply for residence permit (Rot-weiß-rot Karte)
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum travel document validity beyond visa: 3 months)
+Applicable rules: Rule 1 (The travel document must stay valid for at least three months beyond the duration of the visa.)
+Possible next activities: Organize accommodation, enter Austria, Open bank account, Organize the move, Organise accommodation, Open an Austrian bank account, Inform country of origin about the relocation, Are you going to 
+have a radio or TV?, Obtain gas and energy vendor, Take care of internet and mobile communication, Live and work in Austria, submit visa application, submit documents, receive answer, Hotel buchen, Dokumente Pruefung, Einreise organisieren, Check if  passport is up to date, make passfoto, prepare birth certificate, exclusiveGateway, Gather documentation to prove financial indepence, application for a residence permit, Request Austrian health insurance coverage incl. documentation, Send documentation to relevant agency
+
+STATE-03: Resource-dependent / waiting
+Current process position: Negotitation 
+successful?
+Completed activities: startEvent, startEvent, Start process, startEvent, startEvent, Check validity of passport, Check passport validity, choose visa category, exclusiveGateway, exclusiveGateway, Apply for visa, How long are you 
+going to stay?, check general requirements, exclusiveGateway, Check requirements and point for Fachkräfte in Mangelberufen, Check requirements and point for Besonders Hochqualifizierte, Check requirements  and point for Sonstige Schlüsselkräfte, Check requirements  and point for Start-up-Gründerinnen/-Gründer, Check requirements for 
+Selbstständige Schlüsselkräfte, Check requirements for Studienabsolventinnen/Studienabsolventen einer österreichischen Hochschule, exclusiveGateway, Request "Rot-Weiß-Rot" card, Request "Aufenthaltstitel", Request visa, exclusiveGateway, general requirements fulfilled?, Visum beantragen, RWR Karte beantragen, Fullfiles
+the requirements 
+or point?, travel visa, Apply for residence permit (Rot-weiß-rot Karte), parallelGateway, check special requirements, endEvent, exclusiveGateway, exclusiveGateway, exclusiveGateway, Organise accommodation, Open an Austrian bank account, special requirements fulfilled?, parallelGateway, prepare Documents for r-w-r card, parallelGateway, parallelGateway, check necessary documents, Hotel buchen, Einreise organisieren, parallelGateway, Organize accommodation, Open bank account, Organize the move, Inform country of origin about the relocation, search apartment, parallelGateway, Check if  passport is up to date, make passfoto, prepare birth certificate, exclusiveGateway, Gather documentation to prove financial indepence, application for a residence permit, Request Austrian health insurance coverage incl. documentation, parallelGateway, Register the new residence with local authorities, apply for apartment, Dokumente Pruefung, exclusiveGateway, parallelGateway, Search and find suited apartment, enter Austria, parallelGateway, negotiate contract, exclusiveGateway, exclusiveGateway, Request new passport, Send documentation to relevant agency, Negotiate rent with landlord, register new residence, Are you going to 
+have a radio or TV?, Obtain gas and energy vendor, Take care of internet and mobile communication, receive contract, Erstellung der Ablehnung, Erstellung der Bestätigung, ruls engine automaticly checks if documentations fullfilles requirements
+Current active activity or waiting point: Negotitation 
+successful?
+Token position / execution status: token is at Negotitation 
+successful?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum travel document validity beyond visa: 3 months)
+Applicable rules: Rule 1 (The travel document must stay valid for at least three months beyond the duration of the visa.)
+Possible next activities: exclusiveGateway, Sign contract
+
+STATE-04: Near completion / completed
+Current process position: Done
+Completed activities: startEvent, startEvent, Start process, startEvent, startEvent, Check validity of passport, Check passport validity, choose visa category, exclusiveGateway, exclusiveGateway, Apply for visa, How long are you 
+going to stay?, check general requirements, exclusiveGateway, Check requirements and point for Fachkräfte in Mangelberufen, Check requirements and point for Besonders Hochqualifizierte, Check requirements  and point for Sonstige Schlüsselkräfte, Check requirements  and point for Start-up-Gründerinnen/-Gründer, Check requirements for 
+Selbstständige Schlüsselkräfte, Check requirements for Studienabsolventinnen/Studienabsolventen einer österreichischen Hochschule, exclusiveGateway, Request "Rot-Weiß-Rot" card, Request "Aufenthaltstitel", Request visa, exclusiveGateway, general requirements fulfilled?, Visum beantragen, RWR Karte beantragen, Fullfiles
+the requirements 
+or point?, travel visa, Apply for residence permit (Rot-weiß-rot Karte), parallelGateway, check special requirements, endEvent, exclusiveGateway, exclusiveGateway, exclusiveGateway, Organise accommodation, Open an Austrian bank account, special requirements fulfilled?, parallelGateway, prepare Documents for r-w-r card, parallelGateway, parallelGateway, check necessary documents, Hotel buchen, Einreise organisieren, parallelGateway, Organize accommodation, Open bank account, Organize the move, Inform country of origin about the relocation, search apartment, parallelGateway, Check if  passport is up to date, make passfoto, prepare birth certificate, exclusiveGateway, Gather documentation to prove financial indepence, application for a residence permit, Request Austrian health insurance coverage incl. documentation, parallelGateway, Register the new residence with local authorities, apply for apartment, Dokumente Pruefung, exclusiveGateway, parallelGateway, Search and find suited apartment, enter Austria, parallelGateway, negotiate contract, exclusiveGateway, exclusiveGateway, Request new passport, Send documentation to relevant agency, Negotiate rent with landlord, register new residence, Are you going to 
+have a radio or TV?, Obtain gas and energy vendor, Take care of internet and mobile communication, receive contract, Erstellung der Ablehnung, Erstellung der Bestätigung, ruls engine automaticly checks if documentations fullfilles requirements, Negotitation 
+successful?, Check residence permit/visa for validity, Register at GIS, exclusiveGateway, parallelGateway, exclusiveGateway, exclusiveGateway, Additional 
+documentation 
+needed?, Sign contract, exclusiveGateway, Live and work in Austria, parallelGateway, melden beim Amt, Wohnung suchen, Agency approves
+ right to stay?, endEvent, Apply for extension of residence permit/visa, Is the permit of
+residence still valid?, submit visa application, submit documents, exclusiveGateway, Request Bank Account on Bank website, exclusiveGateway, Renew your permit of residence, exclusiveGateway, parallelGateway, exclusiveGateway, Bank Systems creates bank account and sends E-Mail confirmation, endEvent, Do you wish to 
+stay or go back?, receive answer, Kinder einschulen, exclusiveGateway, Return to country of origin, positive?, Österreich genießen, endEvent, apply for online bank account, correct application, endEvent, get verified
+Current active activity or waiting point: Done
+Token position / execution status: token is at Done; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum travel document validity beyond visa: 3 months)
+Applicable rules: Rule 1 (The travel document must stay valid for at least three months beyond the duration of the visa.)
+Possible next activities: Process completion

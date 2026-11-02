@@ -1,0 +1,12 @@
+Re_Add_Request:
+Restored element: The premium-shipping option of the airplane delivery step ("premium shipping to the customer").
+
+This request semantically restores everything that Request4 removed. Request4 removed the premium-shipping variant of the delivery step, so that every airplane was delivered with standard shipping only. This restoration brings the process back to its exact original shape:
+
+1. The premium-shipping option is re-inserted as one of the delivery variants of the final delivery step, exactly as it appears in the BPMN model of the luxury-airplane process, where the delivery branches into "premium shipping to the customer" and "standard shipping to the customer".
+2. The restored premium-shipping option is again available as an alternative to the standard shipping when the airplane is delivered to the customer after the test flight has passed without non-conformities (Rule 10).
+3. The restored option does not alter the mandatory confirmation of receipt: the customer must still confirm receipt of the plane to close the process (Rule 11), regardless of which shipping variant is chosen.
+4. The restored option is compatible with all other steps: the interior customization and confirmation (Rules 1 to 4), the dedicated manufacturing teams (Rules 5, 6 and 14), the assembly (Rule 7), the test flight and test protocol (Rules 8, 9 and 15), and the rework procedure (Rule 15) remain exactly as before.
+5. No other part of the process is altered — the premium-shipping variant is the only element restored, and it returns the delivery step to precisely its original two-branch shape.
+
+The process is thereby returned to exactly its original shape, with the premium-shipping option of the delivery step fully restored.

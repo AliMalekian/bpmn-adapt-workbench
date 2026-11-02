@@ -1,0 +1,28 @@
+Request1:
+Removed element: "Test subcomponents" task (the step that individually tests every built subcomponent before assembly)
+Reason: Skipping the subcomponent tests would save 30 minutes per component and shorten the build.
+Conflict details: Conflicts with Rule 7 ("Each subcomponent must pass its individual test successfully before assembly"), which mandates the test for every subcomponent, and Rule 8 ("Failed subcomponents must be redesigned and rebuilt before reassembly is attempted") and Rule 12 ("A redesigned subcomponent must be retested completely before final assembly"), which presuppose repeated testing. It also conflicts with Rule 11 ("Assembly may not start until all subcomponents have passed their final tests"), which depends on the test outputs. The resource "Test budget per subcomponent: 30 minutes" and "Test report template count: 15" document the testing effort of exactly this step.
+
+Request2:
+Removed element: "Sort Lego bricks according to size" task (the children's activity of sorting the bricks from the ordered sets into labelled containers)
+Reason: It is proposed to build directly from the unopened brick sets, eliminating the sorting activity performed by the children.
+Conflict details: Conflicts with Resource "Children in the sorting group: 5" and "Sort containers per set: 12" and "Sorting time budget per container: 20 minutes", because the sorting-group staffing, the container capacity, and the sorting time budget all exist specifically to run this activity. It also conflicts with Resource "Sort containers per set: 12" as the containers are produced by the sorting. Furthermore the removal violates Rule 2 ("Sort containers must be labeled by part type before sorting begins") and Rule 10 ("The sorting group must contain at least 3 children working on the parts"), which are directly tied to this task.
+
+Request3:
+Removed element: "Redesign subcomponent" task (the step that redesigns failed subcomponents before they are rebuilt)
+Reason: Rebuilding the failed subcomponent with the identical design is proposed, skipping the redesign activity.
+Conflict details: Conflicts with Rule 8 ("Failed subcomponents must be redesigned and rebuilt before reassembly is attempted") and Rule 9 ("A subcomponent may be redesigned and rebuilt at most 3 times; further failures require design approval"), which together define the redesign loop. It also conflicts with Resource "Maximum redesign iterations per subcomponent: 3" and "Test report template count: 15", since the redesign iterations are counted by this step. Additionally, Rule 12 ("A redesigned subcomponent must be retested completely before final assembly") depends on the redesigned output of this task.
+
+Request4:
+Removed element: "Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)
+Reason: Building around the shortage by substituting parts from other containers is proposed, so the reorder step can be dropped from the loop.
+Conflict details: None — fully compatible with all rules and resources. Rule 5 ("If a container runs out of parts, individual replacement parts must be reordered before assembly continues") appears, on its face, to require a reorder, BUT it is evaluated only for containers that actually run out; if the build substitutes spare parts from the reserve so that no container ever runs dry mid-assembly, the rule's trigger never fires and is not violated. Rule 6 ("The supply of a container may not fall below 10 parts mid-assembly without triggering a reorder") is satisfied by never letting the supply fall below 10 parts, so no reorder is ever triggered. The resource "Reorder delivery time: 3 days" is not invalidated because no reorder is needed; all other resources and rules are unaffected. The substitute-parts approach keeps the process compliant without the reorder task, so the removal is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

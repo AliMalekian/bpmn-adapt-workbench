@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: "Change clothes" task (the step of changing clothes before travelling to the run, removed by Request4)
+Reason: Request4 removed the "Change clothes" task, claiming participants could run in their work attire. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+
+Detailed restoration:
+1. "Change clothes" task: Restored as the concrete activity that belongs to the departure branch of the process. It is placed back exactly where it originally was, i.e. after the departure decision ("If more than one hour is left between your starting time and the end of your workday, you can go there from home. Else, you need to leave directly from work"). The runner again changes clothes at home when travelling from home, or changes clothes at work when leaving directly from work (the model contains the two variants "Changes clothes at work" and "Go home" in that branch).
+2. Both departure sub-paths restored: The "Change clothes at work" path on the from-work branch and the home departure path are re-established exactly as in the original model, so the travel preparation step happens whichever way the runner gets to the event.
+3. Sequence flows: All original connections are re-established: "Is one hour left between your starting time and the end of your workday?" -> departure decision -> "Changes clothes at work" / "Go home" (with changing clothes) -> "Go to the Vienna Night Run" / "Running". The running and drinking tasks are reached only after this restored preparation step, exactly as in the original process.
+4. Consistency with narrative: The restored step again reflects the narrative line "Depending on when your work day ends, you have to find out whether you can go there from home, or need to leave directly from work."
+
+With the "Change clothes" task restored, the process returns to exactly the original shape described in X_g03.txt and the original model.

@@ -1,0 +1,14 @@
+Re-Add request:
+The removal request Request4 removed the "Make necessary corrections or improvements" task (Task_2) from the process. This request semantically restores that removed element and returns the process to exactly its original shape.
+
+Restored element: "Make necessary corrections or improvements" task (Task_2).
+
+How it is restored:
+1. The "Make necessary corrections or improvements" task (Task_2) is reinserted into the process at its original position, directly between the "Identify gaps or issues" task (Task_7) and the "Conduct final audit" task (Task_10).
+2. The original sequential ordering is restored: after the auditors identify gaps or issues, the flow again continues into Task_2, where the company makes the necessary corrections or improvements; only after this corrective-actions step does the flow proceed to the "Conduct final audit" task (Task_10).
+3. Task_2 again performs its original function: it re-establishes the corrective-actions step in which each identified gap is fixed and improvements are implemented before the company undergoes the final audit, exactly as the process description states ("After making the necessary corrections or improvements, the company undergoes a final audit").
+4. The normal-cycle behavior of the process is restored: even in a cycle that begins with no identified gaps, the correction step is again present in the model and is executed as a routine element before the final audit, so the process graph regains the exact corrective-actions task that was removed.
+5. This reinstates the full audit chain of the original model: Schedule compliance audit (Task_6) - Prepare documentation (Task_8) / Conduct self-assessment (Task_1) / Gather evidence (Task_9) - Conduct external audit (Task_4) - Identify gaps or issues (Task_7) - Make necessary corrections or improvements (Task_2) - Conduct final audit (Task_10) - Award certification (Task_5) - Issue official documents (Task_3) - end.
+6. The process flow ends exactly as in the original model, completing with the end event after the issuance of official documents, with every element, branch, and ordering of the original process restored.
+
+Result: The removal of Task_2 is fully undone, and the compliance-audit process is back to precisely its original shape with the "Make necessary corrections or improvements" step present between the gap-identification step and the final audit.

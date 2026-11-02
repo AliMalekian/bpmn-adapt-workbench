@@ -1,0 +1,306 @@
+Example ID: R1-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Refine requirements" task (the iterative step where additional requirements are sent and the architect returns revised drafts)” for Request1.
+Target BPMN element: "Refine requirements" task (the iterative step where additional requirements are sent and the architect returns revised drafts)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Refine requirements" task (the iterative step where additional requirements are sent and the architect returns revised drafts)” for Request1.
+Target BPMN element: "Refine requirements" task (the iterative step where additional requirements are sent and the architect returns revised drafts)
+Decision: REJECT
+Decision reason: It conflicts with Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.), Rule 3 (Each refinement round with additional requirements must be answered with a revised draft within 1 week.), Rule 4 (Refinement rounds are limited to 5 rounds before a final plan must be frozen.).
+Referenced rules: Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.), Rule 3 (Each refinement round with additional requirements must be answered with a revised draft within 1 week.), Rule 4 (Refinement rounds are limited to 5 rounds before a final plan must be frozen.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Refine requirements" task (the iterative step where additional requirements are sent and the architect returns revised drafts)” for Request1.
+Target BPMN element: "Refine requirements" task (the iterative step where additional requirements are sent and the architect returns revised drafts)
+Decision: REJECT
+Decision reason: It conflicts with Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.), Rule 3 (Each refinement round with additional requirements must be answered with a revised draft within 1 week.), Rule 4 (Refinement rounds are limited to 5 rounds before a final plan must be frozen.).
+Referenced rules: Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.), Rule 3 (Each refinement round with additional requirements must be answered with a revised draft within 1 week.), Rule 4 (Refinement rounds are limited to 5 rounds before a final plan must be frozen.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)” safely.
+Target BPMN element: "Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R2-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Call friends" task (the activity that asks friends to help build the house)” for Request2.
+Target BPMN element: "Call friends" task (the activity that asks friends to help build the house)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Call friends" task (the activity that asks friends to help build the house)” for Request2.
+Target BPMN element: "Call friends" task (the activity that asks friends to help build the house)
+Decision: REJECT
+Decision reason: It conflicts with Rule 8 (Friends are asked to help build the house only after all material orders have been placed.), Rule 9 (At least 3 friends must be available to start the construction phase.).
+Referenced rules: Rule 8 (Friends are asked to help build the house only after all material orders have been placed.), Rule 9 (At least 3 friends must be available to start the construction phase.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Call friends" task (the activity that asks friends to help build the house)” for Request2.
+Target BPMN element: "Call friends" task (the activity that asks friends to help build the house)
+Decision: REJECT
+Decision reason: It conflicts with Rule 8 (Friends are asked to help build the house only after all material orders have been placed.), Rule 9 (At least 3 friends must be available to start the construction phase.).
+Referenced rules: Rule 8 (Friends are asked to help build the house only after all material orders have been placed.), Rule 9 (At least 3 friends must be available to start the construction phase.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)” safely.
+Target BPMN element: "Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R3-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Place order" task (the step where materials are ordered from several online stores)” for Request3.
+Target BPMN element: "Place order" task (the step where materials are ordered from several online stores)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Place order" task (the step where materials are ordered from several online stores)” for Request3.
+Target BPMN element: "Place order" task (the step where materials are ordered from several online stores)
+Decision: REJECT
+Decision reason: It conflicts with Rule 5 (The final materials list must be created only from the approved architectural plan.), Rule 6 (Materials are ordered from online stores only after the final plan is approved.), Rule 7 (Orders exceeding 2000 EUR from a single store require owner approval.).
+Referenced rules: Rule 5 (The final materials list must be created only from the approved architectural plan.), Rule 6 (Materials are ordered from online stores only after the final plan is approved.), Rule 7 (Orders exceeding 2000 EUR from a single store require owner approval.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Place order" task (the step where materials are ordered from several online stores)” for Request3.
+Target BPMN element: "Place order" task (the step where materials are ordered from several online stores)
+Decision: REJECT
+Decision reason: It conflicts with Rule 5 (The final materials list must be created only from the approved architectural plan.), Rule 6 (Materials are ordered from online stores only after the final plan is approved.), Rule 7 (Orders exceeding 2000 EUR from a single store require owner approval.).
+Referenced rules: Rule 5 (The final materials list must be created only from the approved architectural plan.), Rule 6 (Materials are ordered from online stores only after the final plan is approved.), Rule 7 (Orders exceeding 2000 EUR from a single store require owner approval.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)” safely.
+Target BPMN element: "Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R4-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)” for Request4.
+Target BPMN element: "Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)” for Request4.
+Target BPMN element: "Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)
+Decision: REJECT
+Decision reason: It conflicts with Rule 11 (A party invitation is sent only after the house is fully built and inspected.), Rule 12 (Snack quantities are based on the number of attendees on the party list.), Rule 13 (The snack budget may not exceed 15 EUR per attending person.), Rule 14 (The total construction budget, including materials and snacks, may not exceed 15000 EUR.).
+Referenced rules: Rule 11 (A party invitation is sent only after the house is fully built and inspected.), Rule 12 (Snack quantities are based on the number of attendees on the party list.), Rule 13 (The snack budget may not exceed 15 EUR per attending person.), Rule 14 (The total construction budget, including materials and snacks, may not exceed 15000 EUR.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)” for Request4.
+Target BPMN element: "Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)
+Decision: REJECT
+Decision reason: It conflicts with Rule 11 (A party invitation is sent only after the house is fully built and inspected.), Rule 12 (Snack quantities are based on the number of attendees on the party list.), Rule 13 (The snack budget may not exceed 15 EUR per attending person.), Rule 14 (The total construction budget, including materials and snacks, may not exceed 15000 EUR.).
+Referenced rules: Rule 11 (A party invitation is sent only after the house is fully built and inspected.), Rule 12 (Snack quantities are based on the number of attendees on the party list.), Rule 13 (The snack budget may not exceed 15 EUR per attending person.), Rule 14 (The total construction budget, including materials and snacks, may not exceed 15000 EUR.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)” safely.
+Target BPMN element: "Send invitations" activity for the tree house party (the step that invites friends to the party after the house is built)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: RA-READD-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RESOURCE-CONFLICT
+User request: Re-add “"Send invitations" activity for the tree house party (the party invitation step that was removed by Request4) Reason: Request4 removed the party-invitation step, claiming invitations could be dropped. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Send invitations" activity for the tree house party (the party invitation step that was removed by Request4) Reason: Request4 removed the party-invitation step, claiming invitations could be dropped. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates None and Resource 1 (Construction budget: 15000 EUR).
+Referenced rules: None
+Referenced resources: Resource 1 (Construction budget: 15000 EUR)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-CONFLICT
+User request: Re-add “"Send invitations" activity for the tree house party (the party invitation step that was removed by Request4) Reason: Request4 removed the party-invitation step, claiming invitations could be dropped. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Send invitations" activity for the tree house party (the party invitation step that was removed by Request4) Reason: Request4 removed the party-invitation step, claiming invitations could be dropped. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.) and None.
+Referenced rules: Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.)
+Referenced resources: None
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-AND-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-AND-RESOURCE-CONFLICT
+User request: Re-add “"Send invitations" activity for the tree house party (the party invitation step that was removed by Request4) Reason: Request4 removed the party-invitation step, claiming invitations could be dropped. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Send invitations" activity for the tree house party (the party invitation step that was removed by Request4) Reason: Request4 removed the party-invitation step, claiming invitations could be dropped. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.) and Resource 1 (Construction budget: 15000 EUR).
+Referenced rules: Rule 1 (The requirements list must be complete and signed by the owner before it is sent to the architect.)
+Referenced resources: Resource 1 (Construction budget: 15000 EUR)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-VALID
+Operation type: RE_ADD
+Category: READD-VALID
+User request: Re-add “"Send invitations" activity for the tree house party (the party invitation step that was removed by Request4) Reason: Request4 removed the party-invitation step, claiming invitations could be dropped. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Send invitations" activity for the tree house party (the party invitation step that was removed by Request4) Reason: Request4 removed the party-invitation step, claiming invitations could be dropped. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: ACCEPT
+Decision reason: The element is restored at its original location, with its original predecessor and successor, so original behavior and all constraints are recovered.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Restore the element at its original position, reconnect its original incoming and outgoing sequence flows, and preserve gateway semantics.
+Expected process effect: The original process behavior is recovered and is equivalent to the original model.
+Token migration / execution-state note: Tokens at the removed bypass are safely redirected to the restored element before continuing to its original successor.
+Final response to the user: Accepted: the original element, location, connections, and behavior are restored.
+Example ID: Mangler-Building a House-MODIFY-AUTOMATION-VALID
+Operation type: MODIFY
+Category: MODIFY-VALID
+User request: Assess updating execution parameters and technical automation settings for the primary task in Mangler-Building a House.
+Target BPMN element: Primary Process Task
+Decision: ACCEPT
+Decision reason: The modification is purely technical (updating automation settings, timeouts, and throughput parameters) and does not alter the control flow, business rules, or resource capacity allocations. All milestones remain compliant.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Attributes updated; incoming and outgoing sequence flows remain intact.
+Expected process effect: Throughput is improved while all business rules and constraints are preserved.
+Token migration / execution-state note: Active tokens continue execution without relocation or delay.
+Final response to the user: Approved: the technical modification is fully compliant with all rules and resources.
+
+Example ID: Mangler-Building a House-ADD-QUALITY-CHECK-VALID
+Operation type: ADD
+Category: ADD-VALID
+User request: Assess adding an automated, non-blocking Quality Verification step in Mangler-Building a House.
+Target BPMN element: Quality Verification Step
+Decision: ACCEPT
+Decision reason: The proposed quality verification step operates as an automated non-blocking checkpoint. It satisfies all preconditions, respects assigned resource capacities, and does not violate or delay any mandatory operational rule deadlines.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: New automated task inserted into the sequence flow with proper incoming and outgoing flows.
+Expected process effect: Quality assurance is enhanced while all business rules and resource constraints remain satisfied.
+Token migration / execution-state note: Newly instantiated tokens pass through the verification step seamlessly.
+Final response to the user: Approved: the addition satisfies all operational rules and resource capacities.

@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: "Check WoW subscription" task (the real-time subscription check that was removed by Request4)
+Reason: Request4 removed the "Check WoW subscription" task, claiming a trusted local session flag could replace the live lookup. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+
+Detailed restoration:
+1. "Check WoW subscription" task: Restored as the real-time verification activity that runs after the player is logged into the battle.net account and before the character can be created and logged into the game. It is placed back exactly where it originally was in the model, i.e. after account setup is complete and inside the "Subscription present?" decision (the gate that decides whether the player must select a payment method or may proceed to realm/race/class selection).
+2. Verification semantics: The task again performs the live subscription lookup, returning the outcome that feeds the "Subscription present?" exclusive gateway (yes -> "Log into game" / select realm, race, class; no -> "Select payment method"). This restores the exact original branching behaviour.
+3. Sequence flows: All original connections are re-established, so the flow again runs: "Check existence of battle.net account" -> "Check WoW subscription" -> "Subscription present?" -> payment or game-entry path. The payment path for the credit-card and bank-account options is again reachable only through this restored check, exactly as in the original model.
+4. Consistency with rules and resources: The restored task again enforces Rule 2 ("A WoW subscription must be active before the character can be created and logged in") as an explicit real-time check, consistent with the resource "Subscription check frequency: real-time", and ensures that a player without an active subscription cannot bypass the payment step.
+
+With the "Check WoW subscription" task restored, the process returns to exactly the original shape described in G_g03.txt, where the subscription check happens in real time before payment selection and character creation.

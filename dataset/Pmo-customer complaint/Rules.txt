@@ -1,0 +1,15 @@
+1. A complaint can be logged only after it is filed by the customer through an accepted channel (phone, email, or web form).
+2. Customer service must assign the complaint to the relevant department within 1 business day of logging it.
+3. Every complaint is investigated and the customer notified of the decision within 14 business days.
+4. A complaint is considered valid only if the investigation confirms that a defective product or failed service is responsible.
+5. A refund is justified only when the product is returned in its original condition or the service failure is confirmed by records.
+6. Refund eligibility is limited to purchases made within the last 60 days.
+7. Refunds above $1,000 require the approval of the department manager.
+8. The reimbursement is processed by the financial team within 5 business days after refund approval.
+9. A complaint is marked as resolved only after the customer receives the refund or after the rejection is notified.
+10. Customers whose refund is rejected may appeal the decision within 14 days of notification.
+11. Complaints concerning health or safety issues prevent the product from being restocked until the review is complete.
+12. A complaint that is answered by the same department that created the problem must be escalated one level.
+13. Customer satisfaction feedback is collected after every resolved case.
+14. A complaint that receives no reply within 10 business days is automatically escalated to a supervisor.
+15. Repeat complaints about the same product defect trigger a mandatory root-cause analysis for each occurrence.

@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Outline objectives
+Completed activities: start
+Current active activity or waiting point: Outline objectives
+Token position / execution status: token is at Outline objectives; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Annual department budget: $500,000)
+Applicable rules: Rule 1 (Department objectives must be submitted to the strategic planning office no later than 30 days before the start of the upcoming period.)
+Possible next activities: Draft plan
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: start, Outline objectives, Draft plan, Conduct strategic alignment meeting
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Annual department budget: $500,000)
+Applicable rules: Rule 1 (Department objectives must be submitted to the strategic planning office no later than 30 days before the start of the upcoming period.)
+Possible next activities: Review budget feasibility, Approve final budget, Adjust Plan
+
+STATE-03: Resource-dependent / waiting
+Current process position: Adjust Plan
+Completed activities: start, Outline objectives, Draft plan, Conduct strategic alignment meeting, exclusiveGateway, Review budget feasibility, Provide feedback, exclusiveGateway, Approve final budget
+Current active activity or waiting point: Adjust Plan
+Token position / execution status: token is at Adjust Plan; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Annual department budget: $500,000)
+Applicable rules: Rule 1 (Department objectives must be submitted to the strategic planning office no later than 30 days before the start of the upcoming period.)
+Possible next activities: Documented and approve adjustment
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Outline objectives, Draft plan, Conduct strategic alignment meeting, exclusiveGateway, Review budget feasibility, Provide feedback, exclusiveGateway, Approve final budget, Adjust Plan, Distribute budget, Documented and approve adjustment, Implement plan
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Annual department budget: $500,000)
+Applicable rules: Rule 1 (Department objectives must be submitted to the strategic planning office no later than 30 days before the start of the upcoming period.)
+Possible next activities: Process completion

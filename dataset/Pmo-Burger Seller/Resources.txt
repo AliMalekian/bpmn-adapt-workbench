@@ -1,0 +1,13 @@
+Number of cooking stations: 3
+Conveyor belt delivery slots: 5
+Maximum concurrent orders in queue: 15
+Drink dispenser capacity (liters): 40
+Fries fryer baskets: 2
+Wedges fryer baskets: 2
+Burger topping ingredient containers: 6
+Ingredient reorder minimum (portions per topping): 2
+Status update interval (seconds): 30
+Peak-hour order capacity (orders per hour): 90
+Warming tray freshness limit (minutes): 10
+Daily cleaning cycle duration (minutes): 30
+Monthly robot maintenance budget (EUR): 1500

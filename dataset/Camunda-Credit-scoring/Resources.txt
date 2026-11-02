@@ -1,0 +1,15 @@
+Number of sales clerks using the frontend: 25
+Number of active bank branches: 40
+Frontend terminals: 40
+Level-1 scoring capacity: 500 requests per hour
+Level-2 scoring capacity: 60 requests per hour
+Level-2 scoring analysts: 8
+Contracted credit protection agencies: 2
+Level-1 response SLA: 10 seconds
+Level-2 response SLA: 5 minutes
+Maximum pending scoring requests per clerk: 10
+Scoring result retention period: 30 days
+Annual agency interface budget: 80000 EUR
+Interface data bandwidth: 100 Mbps
+Maximum concurrent requests in agency queue: 1000
+Support hotline agents for the agency: 3

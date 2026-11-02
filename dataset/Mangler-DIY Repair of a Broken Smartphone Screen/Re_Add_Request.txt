@@ -1,0 +1,12 @@
+Re_Add_Request:
+Restored element: The step of contacting friends to borrow or buy tools/parts cheaply from them.
+
+This request semantically restores everything that Request4 removed. Request4 removed the step in which the user contacts friends to borrow or buy something cheaply from them (tools or parts), instead going straight to purchasing from the recommended ordering options. This restoration brings the process back to its exact original shape:
+
+1. The step "contact friends to borrow or buy something cheaply" is re-inserted into the repair flow, positioned after the tool has generated the material and tool lists and before the remaining items are purchased.
+2. The tool again lets the user contact friends — up to the available "Known friends to contact: 5" — for the items that are not already available at home (Rule 2).
+3. The restored step still follows the cheap-price condition of Rule 3: a tool may be borrowed or bought from a friend only if its price is lower than the retail price plus shipping.
+4. Items that cannot be borrowed or bought cheaply from friends are again purchased from the tool's recommended ordering options (Rule 4), and up to 3 borrowed tools remain allowed ("Maximum borrowed tools allowed: 3").
+5. No other part of the process is altered: entering the model and damaged part (Rule 1), the ordering-option selection (Rule 5), the instruction step (Rule 6), the repair attempt and retry (Rule 8), and the expert fallback (Rule 10) remain exactly as before.
+
+The process is thereby returned to precisely its original state, with the friends-contacting step fully restored.

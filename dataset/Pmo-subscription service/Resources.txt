@@ -1,0 +1,11 @@
+Billing cycle length (days): 30
+Payment grace period (days): 3
+Payment settlement window (days): 7
+Renewal notification lead time (days): 7
+Cancellation processing time (business days): 2
+Full refund window for annual plans (days): 14
+Chargeback escalation time (business days): 5
+Number of support agents: 8
+Number of active subscribers: 25,000
+Monthly subscription price: $9.99
+Annual subscription price: $99.00

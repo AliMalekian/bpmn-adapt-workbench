@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date).
+Current token position: Immediately before "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date) on its original BPMN sequence flow.
+Required resources: Resource 1 (Maximum leave duration (weeks): 20)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date).
+Current token position: Immediately before "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date) on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 5 (Social Security must be notified of the leave plan at least 15 days before the leave start date.), Rule 7 (Leave may start earlier than planned only with approval from both the company and Social Security.), Rule 11 (Extension approval requires confirmation from both the company and Social Security.)
+Expected execution path: Follow the original predecessor → "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date).
+Current token position: Immediately before "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date) on its original BPMN sequence flow.
+Required resources: Resource 1 (Maximum leave duration (weeks): 20)
+Relevant rules: Rule 5 (Social Security must be notified of the leave plan at least 15 days before the leave start date.), Rule 7 (Leave may start earlier than planned only with approval from both the company and Social Security.), Rule 11 (Extension approval requires confirmation from both the company and Social Security.)
+Expected execution path: Follow the original predecessor → "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate restored process activity.
+Current token position: Immediately before restored process activity on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → restored process activity → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

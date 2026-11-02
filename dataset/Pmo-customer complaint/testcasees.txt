@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved..
+Current token position: Immediately before The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved. on its original BPMN sequence flow.
+Required resources: Resource 1 (Customer service representatives: 8)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved..
+Current token position: Immediately before The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 13 (Customer satisfaction feedback is collected after every resolved case.)
+Expected execution path: Follow the original predecessor → The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved..
+Current token position: Immediately before The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved. on its original BPMN sequence flow.
+Required resources: Resource 1 (Customer service representatives: 8)
+Relevant rules: Rule 13 (Customer satisfaction feedback is collected after every resolved case.)
+Expected execution path: Follow the original predecessor → The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "Assign complaint to relevant department" task (Task_6)..
+Current token position: Immediately before "Assign complaint to relevant department" task (Task_6). on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "Assign complaint to relevant department" task (Task_6). → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

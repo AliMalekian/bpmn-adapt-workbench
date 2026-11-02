@@ -1,0 +1,28 @@
+Request1:
+Removed element: Invalidate all other offers (the "Invalidate all other offers" task triggered when one offer is accepted)
+Reason: Invalidation is automatic bookkeeping that the student can ignore; removing it would let the other offers stay visible as alternatives.
+Conflict details: Conflicts with Rule 4 ("As soon as one offer is accepted, all other outstanding offers automatically become invalid") and Rule 13 ("Once an offer is accepted, the accepted offer's terms (topic, compensation, duration) are frozen and cannot be renegotiated"). The "Invalidate all other offers" task is the step that implements the automatic invalidation of Rule 4, and Rule 13 depends on it to close off renegotiation; removing the task breaks both rules.
+
+Request2:
+Removed element: Receive 3 status updates from the company (the "Recieve 3 status updates from the company" task)
+Reason: The company updates are not something the student controls; removing them would let the student track only their own updates.
+Conflict details: Conflicts with the resource "Company status updates about the student: 3" from Resources.txt, which provisions exactly three company status updates per internship. Removing this task leaves the configured company-update resource without the step that receives those updates, voiding the resource, and it also leaves "Minimum weekly status updates required: 3" from Resources.txt without the paired company-side counterpart.
+
+Request3:
+Removed element: Write at least 3 status updates every week (the "Write at least 3 status updates every week" task by the student)
+Reason: Writing weekly updates takes effort and distracts from the internship itself; removing them would let the student finish without reporting.
+Conflict details: Conflicts with Rule 5 ("The student must write at least 3 status updates about the internship, with at least one update every week"), Rule 7 ("Missing more than one consecutive weekly update invalidates the internship participation record"), and Rule 14 ("Twitter recommendations are disabled if the student posted fewer than the minimum required weekly updates"), and with the resources "Minimum weekly status updates required: 3", "Number of status updates required from student minimum: 3", and "Internship reporting period (weeks): 8" from Resources.txt. The rules make the weekly updates mandatory and tie recommendation eligibility and participation validity to them, and Resources.txt provisions exactly three required updates over an eight-week reporting period for this task; removing it breaks Rules 5, 7 and 14 and voids all three update-count resources.
+
+Request4:
+Removed element: Publish your application (the "Publish your application" step that publicly announces the student's application)
+Reason: Publishing the application is an optional visibility step with no effect on offer processing or the internship itself; removing it would keep the application private.
+Conflict details: None - fully compatible with all rules and resources. No rule in Rules.txt requires the application to be published (Rule 1 only requires entering the topic, compensation, experience, and hobbies), and no resource in Resources.txt is bound to publication. Offers can still arrive, be accepted or denied, all other offers can still be invalidated, status updates and recommendations proceed unchanged, so every rule and resource stays fully satisfied.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

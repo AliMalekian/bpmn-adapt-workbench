@@ -1,0 +1,11 @@
+Re_Add_Request:
+Restored element: Parallel ordering of parts from various online sources.
+
+This request semantically restores everything that Request4 removed. Request4 removed the parallel execution of the ordering step, i.e., the requirement that parts be ordered from the various online sources simultaneously. This restoration brings the process back to its exact original shape:
+
+1. After the customer has confirmed all 5 required properties (guide bar length, chain width, chain pitch, chain type, and gasoline or electric motor type), the ordering step is restored as a set of concurrent branches.
+2. Each online source that can supply required parts is queried and ordered from in parallel — i.e., the order branches for the different online sources run simultaneously instead of one after the other, exactly as described in the process: "you can start ordering the parts from various online sources (in parallel)".
+3. The restored parallel ordering still respects the same preconditions: it may start only after all 5 properties are confirmed (Rules 1 and 2), and the ordered parts still flow into the subsequent manual inspection (Rule 3) and assembly (Rule 4) steps unchanged.
+4. No other part of the process is altered: manual inspection, prototype approval, progress updates, and shipment steps remain exactly as before.
+
+The process is thereby returned to precisely its original state, with the parallel ordering branches fully restored.

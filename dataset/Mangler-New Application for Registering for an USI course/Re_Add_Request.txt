@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: Option to tweet to friends who might want to join
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The step "Tweet to friends via Twitter account" is re-inserted into the process after the user has logged into their account and before completing the registration and providing payment information.
+- The Twitter authorization prerequisite is restored: the user must authorize the connection to their Twitter account before tweeting is possible, in accordance with Rule 13 ("Tweeting to friends is possible only after the user authorizes the connection to their Twitter account").
+- The social-sharing functionality is restored as an optional convenience step that allows users to invite friends who might also want to register for the same course.
+- All other process steps (course selection, account creation/login, registration completion, payment, course ticket issuance) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration, as the tweet feature was always an optional, non-blocking element in the process flow.

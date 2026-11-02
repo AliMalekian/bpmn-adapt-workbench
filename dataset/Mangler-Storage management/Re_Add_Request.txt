@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: Manual confirmation (giving the OK) of an arrived product before it is registered in the stock management system
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The step "Give the OK for the arrived product" is re-inserted into the process, immediately after the reordered product arrives from the wholesaler and before the product is registered in the stock management system.
+- The warehouse employee confirms/approves the arrived product, so that only after this OK is given the product is registered and any further processing continues.
+- The registration step ("Register product in the stock management system") remains and is now again preceded by the manual approval, restoring the original arrival flow described in the process.
+- All other process elements (reading the order, stock checks, withdrawal, reordering, delay-penalty handling, readiness check, packing, courier request, shipment, next-product selection) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration, as the approval step does not conflict with any rule or resource in the folder.

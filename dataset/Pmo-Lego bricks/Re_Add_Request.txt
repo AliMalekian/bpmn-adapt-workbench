@@ -1,0 +1,9 @@
+Re_Add_Request:
+Re-added element: Assembling the tested subcomponents into the final machine
+Reason: This request semantically restores the element removed by Request4 in Remove_requests.txt, returning the process to its original state.
+Restoration details:
+- The process is restored so that the individually built and tested subcomponents are again assembled into the single final machine, exactly as described in the original process ("After building each subcomponent, you have to test them individually and (if each test is successful) assemble them").
+- The restored assembly step applies to all 5 subcomponents (Resource "Number of subcomponents in the machine: 5"), so every successfully tested subcomponent is joined together to form the complete custom machine.
+- The restored assembly respects the assembly gate of Rule 11, so assembly begins only after every subcomponent has passed its individual test. Subcomponents that failed a test are first redesigned and rebuilt (Rule 10) and retested before they can enter assembly.
+- Once the restored assembly is complete, Rule 14 applies again: the complete machine must pass the final integration test before it is accepted as finished, exactly as in the original process.
+- With this restoration, the process is back to its exact original shape: basic design, ordering brick sets, sorting into containers, building each subcomponent individually from the sorted containers, reordering parts when containers run out, individual testing of each subcomponent, assembling the tested subcomponents into the machine, final integration test, and (per Rule 15) dismantling of finished machines unless stored as an approved model.

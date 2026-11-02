@@ -1,0 +1,28 @@
+Request1:
+Removed element: The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline.
+Reason: This step is proposed for removal to streamline the post-acceptance process, assuming that acceptance implies automatic enrollment without a separate confirmation step.
+Conflict details: This removal conflicts with Rule 6, which states: "A student must confirm enrollment within 2 weeks of receiving the acceptance letter, otherwise the application is canceled." Removing the enrollment confirmation step directly violates Rule 6, as there would be no mechanism for students to confirm enrollment or for applications to be canceled due to non-confirmation.
+
+Request2:
+Removed element: The international student office visa processing step — specifically, the assistance provided by the international student office with visa processing for international students.
+Reason: This step is proposed for removal under the assumption that visa processing is an external activity handled outside the university enrollment system and does not need to be part of the internal process.
+Conflict details: This removal conflicts with Resource 14: "Annual visa processing capacity of the international student office: 1,500 students." The international student office and its visa processing capacity of 1,500 students per year are dedicated resources specifically allocated to support this step. Removing the visa processing step renders this resource allocation meaningless and creates a conflict with the resource infrastructure designed to support international student visa processing.
+
+Request3:
+Removed element: The "meeting with an academic advisor" sub-step within the study plan creation process — specifically, the step where the student meets with an academic advisor before selecting courses.
+Reason: This step is proposed for removal to allow students to independently create their study plans without mandatory advisor meetings, speeding up the course selection process.
+Conflict details: This removal conflicts with Rule 7, which states: "First-year students must meet with an academic advisor before selecting any courses." Removing the advisor meeting directly violates this mandatory requirement. Additionally, this removal conflicts with Resource 8: "Number of academic advisors: 8." The 8 academic advisors are allocated resources specifically designated to conduct these advising meetings. Removing the meeting step renders these dedicated resources unable to fulfill their primary function within the process.
+
+Request4:
+Removed element: The student ID card issuance step — specifically, the step where the student obtains a student ID card after enrollment confirmation.
+Reason: This step is proposed for removal to simplify the enrollment process, as the student ID card is not explicitly required for any other step in the enrollment process flow (such as course selection, attending classes, or grade review).
+Conflict details: None — fully compatible with all rules and resources. Rule 14 states "A student ID card is issued only after enrollment confirmation is finalized and any outstanding fees are paid," but this rule sets a precondition for ID card issuance rather than mandating that ID cards must be issued. Removing the ID card step makes this rule inapplicable without violating it. No resource in Resources.txt is specifically tied to student ID card issuance.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

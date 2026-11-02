@@ -1,0 +1,17 @@
+Rules for Inventory Restocking in a Warehouse or Store
+4. When evaluating competitive new tenders, supplier selection takes into account cost, delivery time, and supplier reliability; repeat standard catalogue orders do not require re-evaluation.
+1. Inventory levels must be monitored in the system at least twice a day.
+2. When stock for an item falls below its predefined reorder threshold, an automated alert is triggered.
+3. Only authorized procurement staff may place orders with suppliers.
+4. Supplier selection must take into account cost, delivery time, and supplier reliability.
+5. The inventory system must be updated with expected delivery dates within 24 hours of placing an order.
+6. Delivered stock must be inspected for quality before it is recorded in the system.
+7. Stock that fails quality inspection is rejected and returned to the supplier at the supplier's expense.
+8. Accepted stock must be recorded in the inventory system within 8 hours of delivery.
+9. Stock may be placed on shelves or in storage only after it has been recorded in the system.
+10. The standard reorder threshold for critical items is 20 units.
+11. Manual inventory checks must be confirmed by a second staff member before any reorder is triggered.
+12. A supplier with a delivery time longer than 14 days must be reviewed before being used again.
+13. The minimum order quantity accepted from any supplier is 50 units.
+14. Discrepancies between delivered quantity and ordered quantity must be resolved within 2 days of delivery.
+15. The process ends only after the inventory levels are updated following the complete restock.

@@ -1,0 +1,28 @@
+Request1:
+Removed element: Generating and sending an automatic order confirmation to the customer
+Reason: The order confirmation email is proposed as redundant communication that can be removed to save system resources, since the customer can see the order status on the platform.
+Conflict details: This removal conflicts with Rule 2, which states: "The system must automatically generate and send an order confirmation immediately after the order is placed." Removing the confirmation step directly breaks Rule 2.
+
+Request2:
+Removed element: The warehouse team picking and packing the ordered items
+Reason: It is proposed that the items be delivered directly from suppliers to the customer, bypassing warehouse handling entirely and saving warehouse labor.
+Conflict details: This removal conflicts with Resource "Number of warehouse staff: 30." The 30 warehouse staff exist to perform picking and packing; without this step, the entire workforce becomes unused. It also conflicts with Resource "Picking and packing time limit: 24 hours" -- the 24-hour time limit becomes meaningless if no picking and packing occurs.
+
+Request3:
+Removed element: Handing over every order to an approved logistics provider for delivery
+Reason: It is proposed that orders be delivered by the platform's own couriers rather than being handed over to approved external logistics providers.
+Conflict details: This removal conflicts with Rule 5, which states: "Every order must be handed over to an approved logistics provider for delivery." Removing the handover step breaks Rule 5, as delivery would be performed by couriers who are not approved logistics providers. It also conflicts with Resource "Number of approved logistics providers: 4" -- the 4 approved providers become completely unused if no orders are handed over to them.
+
+Request4:
+Removed element: The customer providing feedback after delivery
+Reason: The process description states that "customer feedback or returns may trigger further actions" after delivery. It is proposed that the customer feedback component be removed, since the core process ends at delivery and feedback is an optional, non-essential follow-up.
+Conflict details: None -- fully compatible with all rules and resources. Rule 11 states that feedback collected after delivery must be recorded, but it only applies if feedback is collected; the rule does not mandate that the process must collect feedback. Removing feedback does not affect order placement, confirmation, picking, shipping, tracking, or delivery. No resource in Resources.txt depends on customer feedback being collected; the feedback channels listed are optional facilities.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

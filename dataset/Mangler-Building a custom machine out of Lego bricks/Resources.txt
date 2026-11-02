@@ -1,0 +1,15 @@
+Available Lego brick sets: 40
+Maximum total parts per machine: 5000 parts
+Spare parts reserve share: 10%
+Sort containers per set: 12
+Minimum parts in a container before reorder: 10
+Children in the sorting group: 5
+Total build time budget: 60 days
+Maximum redesign iterations per subcomponent: 3
+Max subcomponents per machine: 15
+Test budget per subcomponent: 30 minutes
+Sorting time budget per container: 20 minutes
+Reorder delivery time: 3 days
+Assembly workstations: 2
+Test report template count: 15
+Project supervision budget: 2000 EUR

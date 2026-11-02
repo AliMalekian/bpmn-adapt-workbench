@@ -1,0 +1,15 @@
+1. Maternity leave can be planned, taken, and extended by either parent according to the selected model.
+2. The parent must select a maternity leave model when the planning process starts.
+3. The duration of the leave must be configured in full months and split explicitly between the parents in shared models.
+4. Social Security must be notified no later than 12 weeks before the expected leave start.
+5. The employer must be notified at least 8 weeks before the leave begins.
+6. A change of model is only possible within the first 2 weeks of the leave.
+7. The parent decides about an extension no earlier than 3 months before the original leave period ends.
+8. An extension may not exceed 6 additional months and must not exceed 24 months in total.
+9. Employer response to the leave notification must be acknowledged within 14 days of sending.
+10. Company-provided documents submitted to Social Security may not be older than 30 days at the time of filing.
+11. The process cannot create an overlap in which both parents are on leave at the same time in an exclusive model.
+12. Requests for a retroactive extension older than 30 days after the leave end are rejected.
+13. Every update to the leave plan must be communicated to both Social Security and the employer within 5 business days.
+14. Leave costs for the employer may not exceed 40% of the employee's average monthly salary as co-payment.
+15. The platform must verify the parental status of the applicant before any leave is granted.

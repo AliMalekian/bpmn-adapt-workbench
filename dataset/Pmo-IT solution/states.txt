@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Submit IT solution request
+Completed activities: start
+Current active activity or waiting point: Submit IT solution request
+Token position / execution status: token is at Submit IT solution request; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Budget per IT solution request (EUR): 20000)
+Applicable rules: Rule 1 (The request for an IT solution is submitted by an employee or department and must include the required functionality and business justification.)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: start, Submit IT solution request, parallelGateway, Assess compatibility, Evaluate cost and resource needs, parallelGateway
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Budget per IT solution request (EUR): 20000)
+Applicable rules: Rule 1 (The request for an IT solution is submitted by an employee or department and must include the required functionality and business justification.)
+Possible next activities: parallelGateway, Provide support for troubleshooting, exclusiveGateway, Procure necessary tools or licenses, exclusiveGateway, exclusiveGateway, Provide training, end, exclusiveGateway, exclusiveGateway, parallelGateway, exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: exclusiveGateway
+Completed activities: start, Submit IT solution request, parallelGateway, Assess compatibility, Evaluate cost and resource needs, parallelGateway
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Budget per IT solution request (EUR): 20000)
+Applicable rules: Rule 1 (The request for an IT solution is submitted by an employee or department and must include the required functionality and business justification.)
+Possible next activities: parallelGateway, Provide support for troubleshooting, exclusiveGateway, Procure necessary tools or licenses, exclusiveGateway, exclusiveGateway, Provide training, end, exclusiveGateway, exclusiveGateway, parallelGateway, exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: exclusiveGateway
+Completed activities: start, Submit IT solution request, parallelGateway, Assess compatibility, Evaluate cost and resource needs, parallelGateway
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Budget per IT solution request (EUR): 20000)
+Applicable rules: Rule 1 (The request for an IT solution is submitted by an employee or department and must include the required functionality and business justification.)
+Possible next activities: parallelGateway, Provide support for troubleshooting, exclusiveGateway, Procure necessary tools or licenses, exclusiveGateway, exclusiveGateway, Provide training, end, exclusiveGateway, exclusiveGateway, parallelGateway, exclusiveGateway

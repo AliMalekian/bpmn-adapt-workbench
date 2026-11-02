@@ -1,0 +1,8 @@
+Re_Add_Request:
+Re-added element: The procurement team considering cost, delivery time, and supplier reliability when placing an order
+Reason: This request semantically restores the element removed by Request4 in Remove_requests.txt, returning the process to its original state.
+Restoration details:
+- The process is restored so that when the procurement team places an order with suppliers, the order decision again takes into account the three selection factors described in the process description: cost, delivery time, and supplier reliability.
+- This means the "consider supplier selection factors" part of the ordering activity is fully reinstated exactly as it was before the removal. The procurement team once again weighs the cost of each supplier's offer, the promised delivery time, and the supplier's historical reliability before confirming an order.
+- The restored behavior is applied to every order placed in the process, matching the original description ("The procurement team then places an order with suppliers, considering factors like cost, delivery time, and supplier reliability").
+- With this restoration, the process flow is back to its exact original shape: inventory monitoring, threshold-based alerts, order placement with full consideration of the three supplier factors, delivery-date update in the system, quality inspection of delivered stock, recording, shelving, and final inventory update.

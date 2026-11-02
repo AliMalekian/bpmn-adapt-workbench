@@ -1,0 +1,15 @@
+1. The service reminder process starts only after a successful car service has been completed.
+2. The system must check that the car is still registered before the owner is notified.
+3. Vehicles that are no longer registered are removed from the reminder process immediately.
+4. The owner is fined if the required service is not performed within 30 days of the notification.
+5. The fine may not exceed 200 EUR and must be validated by an officer before issue.
+6. The mechanic must enter the reported car problems for reference before the repair starts.
+7. The owner must receive a status update by email every 2 days while the service is open.
+8. Payment through the app is accepted only after the repair is marked as successful by the mechanic.
+9. The "Pickerl" sticker may be issued only after the repair has passed inspection.
+10. The mechanic must enter the date for the next service at the end of the repair process.
+11. The next service date may not be set later than the legally required 12-month interval.
+12. A service left open for more than 7 days must be escalated to the facility manager.
+13. The owner must be notified of the imposed fine no later than 7 days after the 30-day deadline.
+14. Payment for a completed service must be settled within 14 days of receiving the invoice.
+15. The repair record including problems, updates, and next-service date must be archived for 5 years.

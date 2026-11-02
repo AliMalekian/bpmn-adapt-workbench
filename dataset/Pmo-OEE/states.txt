@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: parallelGateway
+Completed activities: OEE data required
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Overall Equipment Effectiveness (OEE) Monitoring)
+Applicable rules: Rule 1 (The monitoring system must collect production data from the machine continuously.)
+Possible next activities: Get quality data, Get availability data, Get performance data, Calculate OEE
+
+STATE-02: Intermediate / decision
+Current process position: Calculate OEE
+Completed activities: OEE data required, parallelGateway, Get quality data, Get availability data, Get performance data, parallelGateway
+Current active activity or waiting point: Calculate OEE
+Token position / execution status: token is at Calculate OEE; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Overall Equipment Effectiveness (OEE) Monitoring)
+Applicable rules: Rule 1 (The monitoring system must collect production data from the machine continuously.)
+Possible next activities: OEE below 50%?
+
+STATE-03: Resource-dependent / waiting
+Current process position: Disconnect the machine
+Completed activities: OEE data required, parallelGateway, Get quality data, Get availability data, Get performance data, parallelGateway, Calculate OEE, OEE below 50%?, Stop the machine, exclusiveGateway, Send email to an engineer, Machine operating normally / Machine disconnected, Machine worth repairing?
+Current active activity or waiting point: Disconnect the machine
+Token position / execution status: token is at Disconnect the machine; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Overall Equipment Effectiveness (OEE) Monitoring)
+Applicable rules: Rule 1 (The monitoring system must collect production data from the machine continuously.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: Continue measuring
+Completed activities: OEE data required, parallelGateway, Get quality data, Get availability data, Get performance data, parallelGateway, Calculate OEE, OEE below 50%?, Stop the machine, exclusiveGateway, Send email to an engineer, Machine operating normally / Machine disconnected, Machine worth repairing?, Disconnect the machine, exclusiveGateway, exclusiveGateway, Repair the issue, Remaining issues?, Restart the machine
+Current active activity or waiting point: Continue measuring
+Token position / execution status: token is at Continue measuring; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Overall Equipment Effectiveness (OEE) Monitoring)
+Applicable rules: Rule 1 (The monitoring system must collect production data from the machine continuously.)
+Possible next activities: exclusiveGateway

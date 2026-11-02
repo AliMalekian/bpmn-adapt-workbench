@@ -1,0 +1,15 @@
+1. The room-service manager accepts room-service orders from guests only during the operating hours of the room-service station.
+2. Every order ticket is submitted to the kitchen to begin food preparation as soon as the order is taken.
+3. A separate order is given to the sommelier whenever the order includes wine or an alcoholic beverage.
+4. A room-service order is assigned to a waiter only after the order has been taken in full.
+5. The waiter may wait to bill a guest if he has another order to prepare or deliver; the older order is billed first.
+6. The waiter is responsible for preparing and serving all nonalcoholic drinks in the order.
+7. The room-service cart must carry a proper tablecloth and full silverware set before delivery.
+8. The order is delivered to the guest's room only when the food, the wine, and the cart are all ready.
+9. Alcoholic beverages are served only to guests who can present valid identification proving they are of legal drinking age.
+10. The guest's account is debited after delivery and after the waiter returns to the room-service station.
+11. Alcoholic beverages are not left unattended, but are served only on arrival at the guest's room.
+12. Room-service stations allow at most 20 concurrent orders in the kitchen queue per shift.
+13. Holds on guest accounts are released only after the full room-service bill is debited.
+14. Food and beverages must be delivered to the guest room within 45 minutes of the order being taken.
+15. The sommelier verifies the cellar stock before confirming an order for a wine that is nearly depleted.

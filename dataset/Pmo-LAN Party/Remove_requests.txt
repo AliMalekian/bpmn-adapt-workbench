@@ -1,0 +1,28 @@
+Request1:
+Removed element: Appoint a date (the "Appoint a date" task where the host proposes a date and gathers agreement)
+Reason: Date negotiation takes days of waiting for replies; removing it would let the host pick the party date directly without the vote.
+Conflict details: Conflicts with Rule 3 ("A LAN party date is confirmed only when 8 or more of the 10 friends agree on that date") and Rule 4 ("If fewer than 8 friends agree on the proposed date, another date must be appointed and voted on again"). The date-appointment task is the mechanism through which the 8-person agreement threshold of Rule 3 and the re-vote loop of Rule 4 operate; without it, no date can be confirmed according to the rules.
+
+Request2:
+Removed element: Order beer for that date (the "Order beer for that date" task when the current beer stock is insufficient)
+Reason: Buying extra beer adds cost and logistics; removing it would rely only on the beer already on hand.
+Conflict details: Conflicts with the resource "Beer per guest per hour (bottles): 2" from Resources.txt, which provisions two bottles per guest per hour and is used to compute the required beer quantity for the "Order beer for that date" task. Removing the order task voids this beer-consumption resource and leaves it with no purchase step to satisfy the computed quantity; it also leaves "Per-person beer budget (EUR): 15" from Resources.txt without the buying activity it budgets for.
+
+Request3:
+Removed element: Download the missing games (the "Download the missing games" task)
+Reason: Downloading takes time and bandwidth; removing it would let the party start with only the games already available.
+Conflict details: Conflicts with Rule 5 ("Games requested by the guests must be available; if any game is missing, it must be downloaded before the party"), Rule 9 ("Only games with valid licenses may be downloaded and used at the LAN party"), and Rule 10 ("The download of a missing game must be finished at least 24 hours before the party starts"), and with the resources "Game download completion lead time (hours): 24" and "Budget for game downloads (EUR): 50" from Resources.txt. The rules make downloading of missing games mandatory, license-validated, and time-bound, and Resources.txt provisions a 24-hour lead time and a 50 EUR download budget for exactly this task; removing the download step breaks Rules 5, 9 and 10 and voids both download resources.
+
+Request4:
+Removed element: Send a notification that the LAN party will be held on that date (the "Send a notification that the LAN party will be held on that date" confirmation message)
+Reason: The date has already been agreed by 8 or more friends, so an extra confirmation notification is redundant; removing it would skip the announcement.
+Conflict details: None - fully compatible with all rules and resources. No rule in Rules.txt requires an explicit post-agreement announcement (Rules 1 through 15 cover invitations, voting, games, beer, network ports, and party limits, but none mandates this notification task), and no resource in Resources.txt is bound to it. The party can still be reserved, prepared, and held exactly as before, so every rule and resource stays satisfied.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

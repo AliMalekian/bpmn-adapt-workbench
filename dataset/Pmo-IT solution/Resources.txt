@@ -1,0 +1,12 @@
+Budget per IT solution request (EUR): 20000
+Hardware sign-off threshold (EUR): 5000
+Support window after rollout (days): 30
+Maximum planned downtime without approval (hours): 4
+Number of test environments: 3
+Number of IT assessors: 5
+Software license pool (seats): 100
+Average request review time (working days): 5
+Monthly maintenance window (hours): 8
+Number of IT support staff: 6
+Single point of contact email response time (hours): 2
+Controlled environment test capacity (solutions at once): 2

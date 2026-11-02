@@ -1,0 +1,29 @@
+Request1:
+Removed element: Login credential verification by the system
+Reason: The login verification step is proposed for removal to allow customers to begin shopping immediately without authentication, reducing friction in the user experience.
+Conflict details: Conflicts with Rule 1: "A customer can continue shopping only after the login is confirmed by the system." Without login verification, there is no confirmation event, directly violating this rule. Also conflicts with Rule 2: "If the login credentials are not valid, the shopping session ends immediately." This rule requires the credential-check mechanism to exist; removing it makes Rule 2 inapplicable. Additionally conflicts with Resource 1 ("Number of registered customers: 45000") — the registered-customer database is the credential source that login verification depends on.
+
+Request2:
+Removed element: Save product to shopping cart after selection
+Reason: The cart-save step is proposed for removal to simplify the shopping flow by assuming products are automatically retained once selected.
+Conflict details: Conflicts with Rule 3: "Each selected product must be added to the shopping cart and saved before the next product is selected." Removing the explicit save step violates this mandatory sequential requirement. Also conflicts with Rule 5: "The order is finalized only after all intended products are in the cart." Without the save step, products may not reliably be in the cart, breaking the finalization prerequisite. Additionally conflicts with Resource 7 ("Maximum cart size: 100 items") — the cart-size limit is enforced at the save point; without it, the limit cannot be validated.
+
+Request3:
+Removed element: Payment data entry and bank confirmation process
+Reason: The entire payment flow is proposed for removal to allow immediate order completion, under the assumption that payment is handled separately after delivery.
+Conflict details: Conflicts with Rule 7: "Payment data must be entered before the bank confirmation is requested." This rule requires the payment-data-entry step to exist before confirmation. Conflicts with Rule 8: "The order is completed only after the bank confirms the payment." Without the payment process, there is no bank confirmation, and the order-completion gate is eliminated. Conflicts with Rule 9: "A separate billing address may be entered when it is not equal to the shipping address." The billing-address option depends on the payment flow. Additionally conflicts with Resource 5 ("Payment confirmation timeout: 15 minutes") — the timeout resource applies to the bank confirmation that would no longer occur, and Resource 12 ("Maximum credit card retry attempts: 3") — retry logic depends on the payment process existing.
+
+Request4:
+Removed element: Optional administrative archiving and logging step
+Reason: Proposed by operations to streamline case closure by omitting optional secondary archiving overhead.
+Conflict details: None -- fully compatible with all rules and resources. Operates as an ancillary, non-blocking administrative task; core business rules and resource constraints remain fully intact.
+
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

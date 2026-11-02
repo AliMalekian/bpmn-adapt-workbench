@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: MPON sents the dismissal to the MPOO
+Completed activities: startEvent
+Current active activity or waiting point: MPON sents the dismissal to the MPOO
+Token position / execution status: token is at MPON sents the dismissal to the MPOO; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (MPOO review deadline (working days): 10)
+Applicable rules: Rule 1 (A dismissal may be sent by the MPON to the MPOO only after the dismissal decision has been documented and approved.)
+Possible next activities: MPOO reviews the dismissal
+
+STATE-02: Intermediate / decision
+Current process position: MPOO reviews the dismissal
+Completed activities: startEvent, MPON sents the dismissal to the MPOO
+Current active activity or waiting point: MPOO reviews the dismissal
+Token position / execution status: token is at MPOO reviews the dismissal; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (MPOO review deadline (working days): 10)
+Applicable rules: Rule 1 (A dismissal may be sent by the MPON to the MPOO only after the dismissal decision has been documented and approved.)
+Possible next activities: exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: MPOO confirmes the dismissal
+Completed activities: startEvent, MPON sents the dismissal to the MPOO, MPOO reviews the dismissal, exclusiveGateway, MPOO opposes the dismissal
+Current active activity or waiting point: MPOO confirmes the dismissal
+Token position / execution status: token is at MPOO confirmes the dismissal; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (MPOO review deadline (working days): 10)
+Applicable rules: Rule 1 (A dismissal may be sent by the MPON to the MPOO only after the dismissal decision has been documented and approved.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: startEvent, MPON sents the dismissal to the MPOO, MPOO reviews the dismissal, exclusiveGateway, MPOO opposes the dismissal, MPOO confirmes the dismissal, exclusiveGateway
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (MPOO review deadline (working days): 10)
+Applicable rules: Rule 1 (A dismissal may be sent by the MPON to the MPOO only after the dismissal decision has been documented and approved.)
+Possible next activities: Process completion

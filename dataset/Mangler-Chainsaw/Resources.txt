@@ -1,0 +1,12 @@
+Production capacity: 20 saws per month
+Assembly stations: 3
+Certified technicians: 4
+Guide bar stock (all lengths): 30 units
+Chain spools in stock: 15 spools
+Electric motor stock: 8 motors
+Gasoline engine stock: 12 engines
+Manual inspection time per part: 5 minutes
+Maximum concurrent customer orders: 10
+Prototype approval deadline: 2 weeks
+Minimum order quantity: 1 saw
+Warranty period: 12 months

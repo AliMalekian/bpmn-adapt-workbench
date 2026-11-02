@@ -1,0 +1,28 @@
+Request1:
+Removed element: Confirm registration via email link (the "Confirm registration via email link" step after account information entry)
+Reason: Clicking the confirmation link delays account activation; removing this step would let the user start the game immediately after entering the account information.
+Conflict details: Conflicts with Rule 2 ("If the user does not have a battle.net account, account information must be entered and the confirmation e-mail link must be clicked before the account is considered active"). Without the confirmation step the account is never activated and the rest of the process cannot legitimately continue, so removing it breaks the mandatory activation condition of Rule 2.
+
+Request2:
+Removed element: Check if battle.net account exists (the "Check if battle.net account exists" service step at the start of account setup)
+Reason: The check consumes time and most users already have an account; removing it would skip straight to the payment and login steps.
+Conflict details: Conflicts with the resource "Battle.net account verification timeout (minutes): 15" from Resources.txt, which configures the verification that this check step performs. Removing the account-existence check voids this configured timeout resource, leaves it with no process step to bound, and undermines the account verification capability the resource set explicitly provisions.
+
+Request3:
+Removed element: The game login step (the "Log into the game" task)
+Reason: Requiring login interrupts character creation; removing it would let the user create the character directly from the account screen.
+Conflict details: Conflicts with Rule 10 ("A user must be logged into the game to finalize character creation") and with the resource "Maximum saved candidate character names: 5" from Resources.txt. Rule 10 makes login mandatory before the character is finalized, and the five-name buffer resource only operates while the user is logged in during character creation; dropping the login step violates Rule 10 and disconnects the saved-name resource from the workflow.
+
+Request4:
+Removed element: Enter BIC (the separate "Enter BIC" field in the bank-account payment path)
+Reason: The BIC entry is a redundant sub-field because the IBAN already encodes the bank identifier; removing this single field would shorten the bank-account payment form.
+Conflict details: None - fully compatible with all rules and resources. No rule in Rules.txt requires a separate BIC entry (Rule 5 only demands valid IBAN and BIC numbers, which the remaining IBAN field still satisfies since the IBAN encodes the bank code), and no resource in Resources.txt references the BIC field (the IBAN length resource "International Bank Account Number length (characters): 22" still applies). The bank-account payment path remains fully valid without the separate BIC input.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

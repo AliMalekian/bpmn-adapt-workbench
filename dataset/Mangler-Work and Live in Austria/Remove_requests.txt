@@ -1,0 +1,29 @@
+Request1:
+Removed element: Providing the passport photo (35 x 45 mm) with the visa application
+Reason: The passport photo is proposed for removal to reduce the document preparation effort for the applicant.
+Conflict details: Conflicts with Rule 4 ("A passport photo in portrait format 35 x 45 mm meeting the specified criteria must be provided"). It also conflicts with Resource 2 ("Required passport photo size: 35 x 45 mm"): the photo-size resource exists precisely to specify this mandatory document, and removing the photo makes the resource value unusable.
+
+Request2:
+Removed element: Proof of sufficient means of subsistence for the stay and the return journey
+Reason: The proof-of-subsistence step is proposed for removal to lower the documentation burden on the applicant.
+Conflict details: Conflicts with Rule 6 ("The applicant must prove sufficient means of subsistence for the intended stay and for the return journey"). It also conflicts with Resource 14 ("Minimum monthly subsistence requirement: 1000 EUR"): the subsistence threshold resource exists to define what must be proven, and removing the proof makes the 1000 EUR requirement unenforceable.
+
+Request3:
+Removed element: Verification of the travel document's validity and issue date before the visa application is accepted
+Reason: The travel-document check is proposed for removal to speed up the application intake.
+Conflict details: Conflicts with Rule 1 ("The travel document must stay valid for at least three months beyond the duration of the visa"), Rule 2 ("The travel document must contain at least two empty pages"), and Rule 3 ("The travel document must have been issued within the last ten years"). It also conflicts with Resource 1 ("Minimum travel document validity beyond visa: 3 months"), Resource 4 ("Required empty pages in travel document: 2"), and Resource 5 ("Maximum travel document age: 10 years"): all three resources specify the values the check enforces, and without the check they cannot be applied.
+
+Request4:
+Removed element: Optional administrative archiving and logging step
+Reason: Proposed by operations to streamline case closure by omitting optional secondary archiving overhead.
+Conflict details: None -- fully compatible with all rules and resources. Operates as an ancillary, non-blocking administrative task; core business rules and resource constraints remain fully intact.
+
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,10 @@
+Re-Add Request:
+Restored element: "scoring request received" start event and "scoring request handled" end event (the administrative lifecycle events of the scoring request that were removed by Request4)
+Reason: Request4 removed the two administrative request-lifecycle events, claiming they were pure bookkeeping. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+
+Detailed restoration:
+1. "scoring request received" (start event): Restored as the explicit start of every scoring request in the agency pool. It is placed exactly where it originally was, at the beginning of the "Scoring (Credit protection agency)" pool, immediately after the banking process sends the scoring request to the agency. Every incoming request is now again formally opened with this event before any work such as "compute credit score (level 1)" or an immediate-result return happens.
+2. "scoring request handled" (end event): Restored as the explicit end of every scoring request in the agency pool. It is placed back immediately after the final outcome leaves the agency. Both normal completions (an instant level-1 result delivered to the banking system) and escalated completions (a level-2 result transmitted back after the delay report) again terminate in this event, formally closing the lifecycle that was started by "scoring request received".
+3. All sequence flows that connect these two events to the surrounding process are restored as well, so the process structure, the event order, and the pool layout are back to the identical original model.
+
+With both events restored, the agency pool again opens and closes each scoring request explicitly, and the process returns to exactly the original shape described in Process_Narrative.txt.

@@ -1,0 +1,17 @@
+Rules for DIY Repair of a Broken Smartphone Screen
+15. When user reviews or repair videos are submitted to the platform, they undergo quality verification; submitting a post-repair video is voluntary.
+1. The user must enter the exact phone model and the reported damage before any guidance is provided.
+2. The tool must generate a list of required materials and a list of tools for the entered model.
+3. Several ordering choices must be shown for each required part.
+4. Tools and parts the user already owns are marked as available and excluded from purchase.
+5. Friends may be contacted to borrow or buy parts only through the tool's sharing feature.
+6. Parts not covered by owned stock or friends must be purchased from approved suppliers.
+7. Step-by-step repair instructions are provided only after all parts and tools are secured.
+8. Only parts and tools compatible with the entered model are recommended.
+9. The repair must be performed with the device powered off and the battery disconnected.
+10. The user must confirm each completed repair step before proceeding to the next instruction.
+11. If the repair succeeds, the user is asked to send a review or a video of the repair.
+12. If the repair has not worked out, the user can send the phone to a certified expert.
+13. Expert repair support must be requested within 14 days of the DIY attempt.
+14. Replacement screens must carry a 12-month warranty.
+15. User-submitted reviews and videos are published only after passing a quality check.

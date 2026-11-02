@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Demand delivery delay penalty from the wholesaler" task — the step where a delivery delay penalty is automatically demanded when a reordered product takes more than 10 days to arrive.
+Reason: Removing the penalty demand step would simplify the relationship with the wholesaler by eliminating the automatic financial penalty mechanism for late deliveries.
+Conflict details: This removal directly conflicts with Rule 3 ("If a reordered product takes more than 10 days to arrive, a delivery delay penalty is automatically demanded from the wholesaler"). It also renders Rule 12 (penalty calculated at 2% of product value per day beyond 10 days, capped at 30%) and Rule 15 (wholesaler's account suspended after 15 days of non-payment) inoperative, because both rules are triggered only after a penalty has been demanded.
+
+Request2:
+Removed element: The "Courier is requested" task — the step where a courier is requested at the same time packing starts once the order is confirmed ready for shipment.
+Reason: Removing the courier request step would let the company handle its own deliveries with internal logistics instead of contracting an external courier, reducing external shipping costs.
+Conflict details: This removal conflicts with the resource "Courier fleet vehicles: 8" — the eight courier vehicles exist specifically to fulfill the courier requests issued at shipment time, and without this task the fleet has no dispatch. It also conflicts with the resource "Order fulfillment capacity (orders per day): 250", because this capacity is built around orders being shipped via the courier fleet. Rule 6 ("The courier is requested at the same time packing starts, once the full order is confirmed ready for shipment") likewise presumes the courier request step exists, so removing it violates that rule as well.
+
+Request3:
+Removed element: The "Reorder from wholesaler" task — the step where an out-of-stock product is automatically reordered from the wholesaler.
+Reason: Removing the automatic reorder step would avoid placing replenishment orders with the wholesaler, cutting the supply-chain ordering overhead.
+Conflict details: This removal conflicts with Rule 2 ("An out-of-stock product is automatically reordered from the wholesaler on the same working day the shortage is identified") — the reorder task is exactly what this rule mandates. It also conflicts with the resources "Wholesaler reorder lead time (days): 7" (this lead time is the delivery time of wholesaler replenishment orders and only relevant if orders are placed) and "Standard reorder point (units): 500" (the replenishment order is raised in the economic order quantity when stock falls below the reorder point). Rule 3's penalty demand also depends on the reorder task, since only reordered products can arrive late, underscoring the conflict.
+
+Request4:
+Removed element: The "Check if the whole order is ready for shipment" task — the manual verification step that checks whether all product lines of the order are available before the shipment decision.
+Reason: The actual readiness decision is made by the exclusive gateway "Order is ready for shipment?" which evaluates whether the order is complete. The preceding manual check task is redundant bookkeeping, so the removal lets the flow go directly from product processing to the gateway's yes/no decision.
+Conflict details: None — fully compatible with all rules and resources. Rule 5 ("An order is eligible for shipment only when every product line of the order is available in sufficient quantity") is still enforced by the "Order is ready for shipment?" gateway, so the eligibility condition remains satisfied. No rule in Rules.txt mandates a dedicated manual check task, and no resource in Resources.txt is tied to this check (the 40 warehouse staff, 12 stock management system users, and 250 orders/day capacity all concern other steps). All 14 resources remain fully valid and operational.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

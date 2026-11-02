@@ -1,0 +1,17 @@
+Rules for Building a Custom Machine out of Lego Bricks
+14. When assembled as a custom prototype, the machine must pass an integration test; subcomponents assembled for standalone module delivery do not require full machine assembly.
+1. A basic machine design must be fully developed and approved before any Lego brick sets are ordered.
+2. Lego brick sets must be ordered only from the list of approved brick set codes.
+3. The sorting group must sort all parts into clearly labeled containers before any subcomponent is built.
+4. Each subcomponent must be built individually using parts taken only from the sorted containers.
+5. If a container runs out of parts, individual replacement parts must be reordered immediately and the container refilled before assembly continues.
+6. Subcomponents may only be built from parts that match the design specification; mismatched parts are returned to the sorting group.
+7. Brickset delivery must be completed within 7 days of placing an order.
+8. The sorting group must be supervised by at least one adult supervisor per 10 children.
+9. Each subcomponent must be tested individually after it is built, before it is assembled.
+10. Any subcomponent that fails its test must be redesigned and rebuilt before it is tested again.
+11. Assembly of the machine may begin only after every subcomponent has passed its individual test.
+12. A maximum of 3 failed tests is allowed per subcomponent before the design must be redone from scratch.
+13. Reorders of individual parts must be placed within 24 hours of a container becoming empty.
+14. The complete machine must pass a final integration test before it is accepted as finished.
+15. All finished machines must be dismantled and their parts sorted back into containers unless stored as an approved model.

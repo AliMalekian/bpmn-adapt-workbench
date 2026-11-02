@@ -1,0 +1,12 @@
+Re_Add_Request:
+Restored element: The student ID card issuance step — specifically, the step where the student obtains a student ID card after enrollment confirmation.
+
+Detailed restoration:
+The following element, which was removed in Request4, is hereby restored to its original position in the process:
+
+1. Student ID Card Issuance: After the student has confirmed enrollment and the enrollment confirmation is finalized (and any outstanding fees are paid, as required by Rule 14), the student obtains a student ID card. This step is placed immediately after the enrollment confirmation step and before the student begins creating their study plan.
+
+Restoration ensures that:
+- The student receives their ID card as part of the standard enrollment flow, consistent with Rule 14 which specifies that "A student ID card is issued only after enrollment confirmation is finalized and any outstanding fees are paid."
+- The process returns to its original state where the enrollment sequence is: acceptance letter sent, student confirms enrollment, student receives orientation materials and IT sets up accounts, (if international) visa processing assistance, student obtains student ID card, and then student begins creating their study plan.
+- All downstream steps that may rely on the student having an ID card (such as campus access, library usage, and portal authentication supported by IT account setup) are once again properly sequenced after ID card issuance.

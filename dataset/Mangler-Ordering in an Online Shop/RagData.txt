@@ -1,0 +1,306 @@
+Example ID: R1-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “Login credential verification by the system” for Request1.
+Target BPMN element: Login credential verification by the system
+Decision: REJECT
+Decision reason: It conflicts with Resource 1 (Number of registered customers: 45000).
+Referenced rules: None
+Referenced resources: Resource 1 (Number of registered customers: 45000)
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “Login credential verification by the system” for Request1.
+Target BPMN element: Login credential verification by the system
+Decision: REJECT
+Decision reason: It conflicts with Rule 1 (A customer can continue shopping only after the login is confirmed by the system.), Rule 2 (If the login credentials are not valid, the shopping session ends immediately.).
+Referenced rules: Rule 1 (A customer can continue shopping only after the login is confirmed by the system.), Rule 2 (If the login credentials are not valid, the shopping session ends immediately.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “Login credential verification by the system” for Request1.
+Target BPMN element: Login credential verification by the system
+Decision: REJECT
+Decision reason: It conflicts with Rule 1 (A customer can continue shopping only after the login is confirmed by the system.), Rule 2 (If the login credentials are not valid, the shopping session ends immediately.). It conflicts with Resource 1 (Number of registered customers: 45000).
+Referenced rules: Rule 1 (A customer can continue shopping only after the login is confirmed by the system.), Rule 2 (If the login credentials are not valid, the shopping session ends immediately.)
+Referenced resources: Resource 1 (Number of registered customers: 45000)
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “Option to enter a separate billing address when it differs from the shipping address” safely.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R2-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “Save product to shopping cart after selection” for Request2.
+Target BPMN element: Save product to shopping cart after selection
+Decision: REJECT
+Decision reason: It conflicts with Resource 7 (Maximum cart size: 100 items).
+Referenced rules: None
+Referenced resources: Resource 7 (Maximum cart size: 100 items)
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “Save product to shopping cart after selection” for Request2.
+Target BPMN element: Save product to shopping cart after selection
+Decision: REJECT
+Decision reason: It conflicts with Rule 3 (Each selected product must be added to the shopping cart and saved before the next product is selected.), Rule 5 (The order is finalized only after all intended products are in the cart.).
+Referenced rules: Rule 3 (Each selected product must be added to the shopping cart and saved before the next product is selected.), Rule 5 (The order is finalized only after all intended products are in the cart.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “Save product to shopping cart after selection” for Request2.
+Target BPMN element: Save product to shopping cart after selection
+Decision: REJECT
+Decision reason: It conflicts with Rule 3 (Each selected product must be added to the shopping cart and saved before the next product is selected.), Rule 5 (The order is finalized only after all intended products are in the cart.). It conflicts with Resource 7 (Maximum cart size: 100 items).
+Referenced rules: Rule 3 (Each selected product must be added to the shopping cart and saved before the next product is selected.), Rule 5 (The order is finalized only after all intended products are in the cart.)
+Referenced resources: Resource 7 (Maximum cart size: 100 items)
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “Option to enter a separate billing address when it differs from the shipping address” safely.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R3-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “Payment data entry and bank confirmation process” for Request3.
+Target BPMN element: Payment data entry and bank confirmation process
+Decision: REJECT
+Decision reason: It conflicts with Resource 5 (Payment confirmation timeout: 15 minutes), Resource 12 (Maximum credit card retry attempts: 3).
+Referenced rules: None
+Referenced resources: Resource 5 (Payment confirmation timeout: 15 minutes), Resource 12 (Maximum credit card retry attempts: 3)
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “Payment data entry and bank confirmation process” for Request3.
+Target BPMN element: Payment data entry and bank confirmation process
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (Payment data must be entered before the bank confirmation is requested.), Rule 8 (The order is completed only after the bank confirms the payment.), Rule 9 (A separate billing address may be entered when it is not equal to the shipping address.).
+Referenced rules: Rule 7 (Payment data must be entered before the bank confirmation is requested.), Rule 8 (The order is completed only after the bank confirms the payment.), Rule 9 (A separate billing address may be entered when it is not equal to the shipping address.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “Payment data entry and bank confirmation process” for Request3.
+Target BPMN element: Payment data entry and bank confirmation process
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (Payment data must be entered before the bank confirmation is requested.), Rule 8 (The order is completed only after the bank confirms the payment.), Rule 9 (A separate billing address may be entered when it is not equal to the shipping address.). It conflicts with Resource 5 (Payment confirmation timeout: 15 minutes), Resource 12 (Maximum credit card retry attempts: 3).
+Referenced rules: Rule 7 (Payment data must be entered before the bank confirmation is requested.), Rule 8 (The order is completed only after the bank confirms the payment.), Rule 9 (A separate billing address may be entered when it is not equal to the shipping address.)
+Referenced resources: Resource 5 (Payment confirmation timeout: 15 minutes), Resource 12 (Maximum credit card retry attempts: 3)
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “Option to enter a separate billing address when it differs from the shipping address” safely.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R4-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “Option to enter a separate billing address when it differs from the shipping address” for Request4.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “Option to enter a separate billing address when it differs from the shipping address” for Request4.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: REJECT
+Decision reason: It conflicts with Rule 9 (A separate billing address may be entered when it is not equal to the shipping address.).
+Referenced rules: Rule 9 (A separate billing address may be entered when it is not equal to the shipping address.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “Option to enter a separate billing address when it differs from the shipping address” for Request4.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: REJECT
+Decision reason: It conflicts with Rule 9 (A separate billing address may be entered when it is not equal to the shipping address.).
+Referenced rules: Rule 9 (A separate billing address may be entered when it is not equal to the shipping address.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “Option to enter a separate billing address when it differs from the shipping address” safely.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: RA-READD-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RESOURCE-CONFLICT
+User request: Re-add “Option to enter a separate billing address when it differs from the shipping address” to the process.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates None and Resource 1 (Number of registered customers: 45000).
+Referenced rules: None
+Referenced resources: Resource 1 (Number of registered customers: 45000)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-CONFLICT
+User request: Re-add “Option to enter a separate billing address when it differs from the shipping address” to the process.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (A customer can continue shopping only after the login is confirmed by the system.) and None.
+Referenced rules: Rule 1 (A customer can continue shopping only after the login is confirmed by the system.)
+Referenced resources: None
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-AND-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-AND-RESOURCE-CONFLICT
+User request: Re-add “Option to enter a separate billing address when it differs from the shipping address” to the process.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (A customer can continue shopping only after the login is confirmed by the system.) and Resource 1 (Number of registered customers: 45000).
+Referenced rules: Rule 1 (A customer can continue shopping only after the login is confirmed by the system.)
+Referenced resources: Resource 1 (Number of registered customers: 45000)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-VALID
+Operation type: RE_ADD
+Category: READD-VALID
+User request: Re-add “Option to enter a separate billing address when it differs from the shipping address” to the process.
+Target BPMN element: Option to enter a separate billing address when it differs from the shipping address
+Decision: ACCEPT
+Decision reason: The element is restored at its original location, with its original predecessor and successor, so original behavior and all constraints are recovered.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Restore the element at its original position, reconnect its original incoming and outgoing sequence flows, and preserve gateway semantics.
+Expected process effect: The original process behavior is recovered and is equivalent to the original model.
+Token migration / execution-state note: Tokens at the removed bypass are safely redirected to the restored element before continuing to its original successor.
+Final response to the user: Accepted: the original element, location, connections, and behavior are restored.
+Example ID: Mangler-Ordering in an Online Shop-MODIFY-AUTOMATION-VALID
+Operation type: MODIFY
+Category: MODIFY-VALID
+User request: Assess updating execution parameters and technical automation settings for the primary task in Mangler-Ordering in an Online Shop.
+Target BPMN element: Primary Process Task
+Decision: ACCEPT
+Decision reason: The modification is purely technical (updating automation settings, timeouts, and throughput parameters) and does not alter the control flow, business rules, or resource capacity allocations. All milestones remain compliant.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Attributes updated; incoming and outgoing sequence flows remain intact.
+Expected process effect: Throughput is improved while all business rules and constraints are preserved.
+Token migration / execution-state note: Active tokens continue execution without relocation or delay.
+Final response to the user: Approved: the technical modification is fully compliant with all rules and resources.
+
+Example ID: Mangler-Ordering in an Online Shop-ADD-QUALITY-CHECK-VALID
+Operation type: ADD
+Category: ADD-VALID
+User request: Assess adding an automated, non-blocking Quality Verification step in Mangler-Ordering in an Online Shop.
+Target BPMN element: Quality Verification Step
+Decision: ACCEPT
+Decision reason: The proposed quality verification step operates as an automated non-blocking checkpoint. It satisfies all preconditions, respects assigned resource capacities, and does not violate or delay any mandatory operational rule deadlines.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: New automated task inserted into the sequence flow with proper incoming and outgoing flows.
+Expected process effect: Quality assurance is enhanced while all business rules and resource constraints remain satisfied.
+Token migration / execution-state note: Newly instantiated tokens pass through the verification step seamlessly.
+Final response to the user: Approved: the addition satisfies all operational rules and resource capacities.

@@ -1,0 +1,28 @@
+Request1:
+Removed element: Enter order task (the step in which the employee enters the guest's order into the POS system)
+Reason: To save time for employees, the proposal is to take orders verbally and skip entering them into the POS system.
+Conflict details: CONFLICTS with Rule 3 of Rules.txt ("The employee enters the order into the POS system and collects the money from the guest before the meal is prepared.") — removing the POS order entry violates this mandatory step. It also conflicts with Resource "Number of POS terminals: 2" in Resources.txt, which allocates the POS terminals precisely for order entry, and with Rule 14 of Rules.txt ("An order may contain no more than 10 items.") and Resource "Maximum items per order: 10", because the item-count limit is enforced through the POS system's order entry. The removal therefore breaks Rule 3, Rule 14 and the resources "Number of POS terminals: 2" and "Maximum items per order: 10".
+
+Request2:
+Removed element: Set up buzzer task (the step in which the employee sets up the guest's buzzer after payment so the guest can be notified when the meal is ready)
+Reason: To reduce equipment handling, the proposal is to have guests wait at the service hatch instead of using buzzers.
+Conflict details: CONFLICTS with Rule 4 of Rules.txt ("After the payment, the employee sets up a buzzer and passes it to the guest with the notification instruction.") — removing the buzzer setup violates this rule. It also conflicts with Resource "Buzzer stock count: 40" in Resources.txt, which budgets 40 buzzers specifically for this step, and with Resource "Buzzer response wait time (minutes): 5" and Resource "Maximum number of announcements per guest: 3", because the call-for-guest logic those parameters define is driven by the buzzer workflow. The removal therefore violates Rule 4 and the buzzer-related resources.
+
+Request3:
+Removed element: Hand over meal task (the step in which the employee physically hands the finished meal to the guest when the guest appears at the service hatch)
+Reason: To reduce service steps, the proposal is to let guests pick their meal up from the service hatch themselves without a handover by the employee.
+Conflict details: CONFLICTS with Rule 9 of Rules.txt ("The meal is handed to the guest only when the guest appears at the service hatch.") — the rule mandates an explicit handover step; removing it makes the rule unenforceable. It also conflicts with Resource "Number of floor employees: 8" and Resource "Number of service hatch positions: 3" in Resources.txt, because the service-hatch positions and floor staffing are sized around the employee-handover workflow. The removal therefore violates Rule 9 and the resources "Number of floor employees: 8" and "Number of service hatch positions: 3".
+
+Request4:
+Removed element: Eat meal task (the step in which the guest consumes the collected meal before the process ends with the guest no longer being hungry)
+Reason: To shorten the guest journey, the proposal is to end the process immediately after the guest collects the meal, treating the meal as taken away and skipping the on-premises dining step.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt requires the guest to eat the meal on the premises; Rules 1 to 15 regulate entering, choosing a dish, ordering, payment, buzzer handling, meal preparation, handover, guest-calling and order limits, but none of them mandates the consumption step itself. No resource in Resources.txt is dedicated to the dining/consumption activity. All mandatory service steps (order entry, payment, buzzer setup, informing the chef, meal preparation, handover) are unaffected. The removal is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

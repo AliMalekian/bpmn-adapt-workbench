@@ -1,0 +1,15 @@
+1. A service request is accepted only if it includes a description of the symptoms and the exact fridge type.
+2. The central service center assigns each request to the nearest local service facility that has availability within 48 hours.
+3. Every service visit must be confirmed by the customer at least 24 hours before the technician's arrival window.
+4. If the technician cannot complete the repair in one visit, a parts work order must be created before leaving the customer's home.
+5. Follow-up visits for missing parts must be scheduled within 5 working days of the initial visit.
+6. A repair is considered complete only after the customer confirms that the fridge is working correctly again.
+7. A service facility can be rated by the customer only after a successful completion confirmation.
+8. Service facilities whose average customer rating falls below 3.5 out of 5 over a quarter are placed under central review.
+9. Emergency repair requests must be scheduled within 24 hours, while regular requests may be scheduled within 7 days.
+10. No more than 3 follow-up visits are allowed per service request without approval from the central service center.
+11. Replacement parts must be ordered by the service facility within 2 working days of identifying the need.
+12. A service request is automatically closed if the customer cannot be reached for confirmation within 30 days.
+13. Customer ratings of 2 stars or lower trigger a mandatory quality review by the central service center.
+14. Warranty repairs are covered only for fridge models on the manufacturer's supported model list.
+15. Each local service facility must keep a minimum stock of the 20 most frequently requested fridge parts.

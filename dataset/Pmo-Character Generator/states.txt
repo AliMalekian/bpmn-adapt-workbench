@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: parallelGateway
+Completed activities: Account is set up
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum characters per realm per account: 10)
+Applicable rules: Rule 1 (Account setup must be started or completed before a WoW character can be created.)
+Possible next activities: Create character names, Check if battle.net account exists, Enter IBAN, Enter BIC, exclusiveGateway, Select realm, Select race, Select class, parallelGateway, exclusiveGateway, Recieve character selfies, Recieve confirmation, Character created
+
+STATE-02: Intermediate / decision
+Current process position: Confirm registration via email link
+Completed activities: Account is set up, parallelGateway, Create character names, Check if battle.net account exists, parallelGateway, Does an account exist?, exclusiveGateway, Create battle.net account, exclusiveGateway, Enter character name
+Current active activity or waiting point: Confirm registration via email link
+Token position / execution status: token is at Confirm registration via email link; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum characters per realm per account: 10)
+Applicable rules: Rule 1 (Account setup must be started or completed before a WoW character can be created.)
+Possible next activities: exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Log into the game
+Completed activities: Account is set up, parallelGateway, Create character names, Check if battle.net account exists, parallelGateway, Does an account exist?, exclusiveGateway, Create battle.net account, exclusiveGateway, Enter character name, Confirm registration via email link, Check if active WoW subscription exists, Name available?, Does a subscription exist?, parallelGateway, Select payment method, exclusiveGateway, Recieve character selfies, Recieve confirmation, Enter credit card information, parallelGateway
+Current active activity or waiting point: Log into the game
+Token position / execution status: token is at Log into the game; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum characters per realm per account: 10)
+Applicable rules: Rule 1 (Account setup must be started or completed before a WoW character can be created.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: parallelGateway
+Completed activities: Account is set up
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum characters per realm per account: 10)
+Applicable rules: Rule 1 (Account setup must be started or completed before a WoW character can be created.)
+Possible next activities: Create character names, Check if battle.net account exists, Enter IBAN, Enter BIC, exclusiveGateway, Select realm, Select race, Select class, parallelGateway, exclusiveGateway, Recieve character selfies, Recieve confirmation, Character created

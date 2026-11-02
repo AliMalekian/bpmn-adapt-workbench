@@ -1,0 +1,8 @@
+Re_Add_Request:
+Re-added element: The R&D team reporting progress to the steering committee once per month
+Reason: This request semantically restores the element removed by Request4 in Remove_requests.txt, returning the process to its original state.
+Restoration details:
+- The process is restored so that the R&D team again reports its progress to the steering committee once per month, exactly as defined by Rule 14 ("The R&D team must report progress to the steering committee once per month").
+- The restored monthly progress report follows the resource "Steering committee reporting frequency: 1 report per month," so exactly one progress report is delivered to the steering committee each month for as long as the improvement/development project is running.
+- The restored reporting activity runs in parallel with the core development work; it does not block the development, testing, or refinement steps, but it is again a standing obligation of the R&D team throughout the project.
+- With this restoration, the process is back to its exact original shape: idea identification and registration, R&D research and feasibility studies, drafting of at least two design concepts, design selection, prototype building with approved materials, functionality/safety/market potential testing, feedback collection and documentation, refinement loops, monthly progress reporting to the steering committee, project manager approval, and final approval or discard of the prototype.

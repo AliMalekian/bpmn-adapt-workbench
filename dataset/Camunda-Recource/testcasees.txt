@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant).
+Current token position: Immediately before "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant) on its original BPMN sequence flow.
+Required resources: Resource 1 (Recourse clerks: 5)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant).
+Current token position: Immediately before "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant) on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 3 (The first reminder must be issued no later than 14 days after the request for payment.), Rule 14 (Every contact with the insurant must be logged with date, channel, and result.)
+Expected execution path: Follow the original predecessor → "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant).
+Current token position: Immediately before "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant) on its original BPMN sequence flow.
+Required resources: Resource 1 (Recourse clerks: 5)
+Relevant rules: Rule 3 (The first reminder must be issued no later than 14 days after the request for payment.), Rule 14 (Every contact with the insurant must be logged with date, channel, and result.)
+Expected execution path: Follow the original predecessor → "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "close case" task on the small-claim branch (the explicit closing step that was removed by Request4) Reason: Request4 removed the "close case" task for recourse claims below the small-claim threshold, claiming the case could simply end without an explicit closing action. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape..
+Current token position: Immediately before "close case" task on the small-claim branch (the explicit closing step that was removed by Request4) Reason: Request4 removed the "close case" task for recourse claims below the small-claim threshold, claiming the case could simply end without an explicit closing action. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "close case" task on the small-claim branch (the explicit closing step that was removed by Request4) Reason: Request4 removed the "close case" task for recourse claims below the small-claim threshold, claiming the case could simply end without an explicit closing action. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape. → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

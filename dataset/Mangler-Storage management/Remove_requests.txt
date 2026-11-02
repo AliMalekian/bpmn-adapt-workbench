@@ -1,0 +1,28 @@
+Request1:
+Removed element: Registering arrived products in the stock management system
+Reason: The registration step is proposed for removal to shorten processing, under the assumption that arrived products can be used immediately without a stock update.
+Conflict details: Conflicts with Rule 7 ("Arrived products must be registered in the stock management system before any further processing"). Removing the registration step directly violates this mandatory rule. It also conflicts with Resource 4 ("Average stock level per product: 500 units") and Resource 3 ("Warehouse storage capacity: 50000 units"): the stock-level and capacity resources are tracked by the stock management system, and without registration they cannot be kept accurate.
+
+Request2:
+Removed element: Automatic demand of the delivery delay penalty from the wholesaler
+Reason: The delay-penalty step is proposed for removal to preserve a good relationship with the wholesaler and avoid the extra billing work.
+Conflict details: Conflicts with Rule 6 ("If the product arrival takes longer than 10 days, a delivery delay penalty is automatically demanded from the wholesaler") and Rule 14 ("The delay penalty is demanded automatically without manual intervention once the 10-day limit is exceeded"). It also conflicts with Resource 6 ("Delay penalty period limit: 10 days") and Resource 7 ("Penalty amount per delayed delivery: 50 EUR"): both resources exist precisely to trigger and size the penalty, and become meaningless if the penalty demand is removed.
+
+Request3:
+Removed element: Simultaneous packing of products and courier request when the order is ready for shipment
+Reason: The parallel execution is proposed for removal so the courier is requested only after the packing is fully finished, simplifying coordination.
+Conflict details: Conflicts with Rule 9 ("Once the order is ready, a courier is requested and the products are packed") and Rule 10 ("Packing and the courier request are performed simultaneously"). Removing the parallelism directly violates the simultaneity rule. It also conflicts with Resource 10 ("Courier request time: 1 hour") and Resource 11 ("Packing time per order: 30 minutes"): the 1-hour courier request and 30-minute packing durations are planned to run concurrently, and serializing them invalidates that resource-based scheduling.
+
+Request4:
+Removed element: The manual confirmation (giving the OK) of an arrived product before it is registered in the stock management system
+Reason: The manual approval step is proposed for removal to reduce manual handling of incoming deliveries and to align with the automation spirit of the process.
+Conflict details: None — fully compatible with all rules and resources. No rule requires a manual OK/approval before registration; Rule 7 ("Arrived products must be registered in the stock management system before any further processing") is still fully satisfied because registration continues to happen when the product arrives, simply without the extra manual approval. Rule 14 even encourages automation ("The delay penalty is demanded automatically without manual intervention once the 10-day limit is exceeded"), so removing a manual intervention fits the process design. No resource in Resources.txt depends on an approval step: reordering thresholds, stock levels, capacities, penalty amounts, and courier/packing times are all unaffected.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

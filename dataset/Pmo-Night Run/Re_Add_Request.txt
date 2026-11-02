@@ -1,0 +1,8 @@
+Re_Add_Request:
+Re-added element: The fitness gadget collecting data during the run
+Reason: This request semantically restores the element removed by Request4 in Remove_requests.txt, returning the process to its original state.
+Restoration details:
+- The process is restored so that information during the run is again collected by fitness gadgets, exactly as the original process states ("Some of the above information you have to enter into the app, some of the information is collected by fitness gadgets").
+- The restored gadget data collection covers the running data gathered during the 5 km run. Because the gadget is again the collection mechanism, the running time measurement is performed by the fitness gadget in the way intended by the resource "Number of fitness gadgets supported by the app: 15," and Rule 6 ("Running time must be measured automatically by the fitness gadget, not entered manually") and Rule 5 (pairing the gadget before running time is measured) are fully applicable again.
+- The gadget-collected data (running time and related run information) is transferred into the app, where it is combined with the data the participant enters manually (such as the end of the workday), restoring the two-source data model described in the process.
+- With this restoration, the process is back to its exact original shape: starting block selection, gadget-paired 5 km timed run, qualification check against the 25-minute limit, training loop if needed, starting number issuance, workday-based travel planning (home or directly from work), running while drinking at the drink stations, finish line timing, and final running time issued and saved to the app.

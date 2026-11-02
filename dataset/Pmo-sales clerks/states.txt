@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: credit scoring (bank)
+Completed activities: credit scoring frontend (bank)
+Current active activity or waiting point: credit scoring (bank)
+Token position / execution status: token is at credit scoring (bank); predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Level 1 scoring response time (seconds): 30)
+Applicable rules: Rule 1 (A sales clerk may request a credit score for a customer only through the software frontend after verifying the customer's identity.)
+Possible next activities: scoring service
+
+STATE-02: Intermediate / decision
+Current process position: compute credit score (level 1)
+Completed activities: credit scoring frontend (bank), credit scoring (bank), scoring service, scoring request received, scoring request received, request credit score
+Current active activity or waiting point: compute credit score (level 1)
+Token position / execution status: token is at compute credit score (level 1); predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Level 1 scoring response time (seconds): 30)
+Applicable rules: Rule 1 (A sales clerk may request a credit score for a customer only through the software frontend after verifying the customer's identity.)
+Possible next activities: send result
+
+STATE-03: Resource-dependent / waiting
+Current process position: credit score received
+Completed activities: credit scoring frontend (bank), credit scoring (bank), scoring service, scoring request received, scoring request received, request credit score, compute credit score (level 1), score received?, send result, report delay, exclusiveGateway, score available?
+Current active activity or waiting point: credit score received
+Token position / execution status: token is at credit score received; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Level 1 scoring response time (seconds): 30)
+Applicable rules: Rule 1 (A sales clerk may request a credit score for a customer only through the software frontend after verifying the customer's identity.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: scoring request handled
+Completed activities: credit scoring frontend (bank), credit scoring (bank), scoring service, scoring request received, scoring request received, request credit score, compute credit score (level 1), score received?, send result, report delay, exclusiveGateway, score available?, credit score received, send credit score, compute credit score (level 2), exclusiveGateway
+Current active activity or waiting point: scoring request handled
+Token position / execution status: token is at scoring request handled; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Level 1 scoring response time (seconds): 30)
+Applicable rules: Rule 1 (A sales clerk may request a credit score for a customer only through the software frontend after verifying the customer's identity.)
+Possible next activities: Process completion

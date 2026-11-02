@@ -1,0 +1,8 @@
+Request1:
+Removed element: "Interview candidate" user task
+Restoration details: This request restores, in full, everything that Request4 removed from the job-application process so that the process returns to its exact original shape:
+- The "Interview candidate" user task (UserTask_3 in the model) is re-inserted on the selection path. It is reconnected exactly as before: the flow enters the "Interview candidate" task from the "Is job application accepted?" decision path (after the company has confirmed receipt and rated the application), and leaves it towards the "Is candidate selected?" exclusive gateway, which decides whether the candidate proceeds to the probation phase or is rejected.
+- The ordering constraint of Rule 5 of Rules.txt is thereby restored: the interview may be negotiated only after the company has confirmed receipt and rated the application, and it is conducted before the candidate selection decision.
+- The original sequence flows around the task are restored: from the application-accepted path into "Interview candidate", and from "Interview candidate" into the "Is candidate selected?" gateway, with the "Yes"/"No" outcomes feeding the "Enter probation phase" task (when selected) and the rejection path (when not selected).
+- No alternative or shortcut connection is left in place; the candidate selection can no longer be made directly from the rated application without an interview.
+After this restoration the hiring path is exactly as modeled originally: an accepted and rated application is followed by a negotiated and conducted job interview, after which the candidate is either selected and enters the probation phase or is rejected. The process is back to its original state.

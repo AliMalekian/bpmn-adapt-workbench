@@ -1,0 +1,17 @@
+Resources for an Online Ordering and Delivery Platform
+
+Maximum orders processed per day: 10,000
+Number of warehouse staff: 30
+Number of approved logistics providers: 4
+Picking and packing time limit: 24 hours
+Standard delivery time limit: 5 business days
+Redelivery attempts allowed per failed delivery: 2
+Return window after delivery: 30 days
+Minimum order value: 5 dollars
+Number of customer feedback channels: 3
+Maximum number of items per order: 50
+Number of warehouses: 3
+Number of customer support agents: 15
+Tracking update frequency: every hour
+Returns processing capacity per day: 200 orders
+Customer satisfaction email send window after delivery: 24 hours

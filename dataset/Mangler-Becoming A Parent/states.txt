@@ -1,0 +1,93 @@
+STATE-01: Initial / early execution
+Current process position: Confirmation
+Completed activities: Start
+Current active activity or waiting point: Confirmation
+Token position / execution status: token is at Confirmation; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Total supported leave models: 8)
+Applicable rules: Rule 1 (Maternity leave can be planned, taken, and extended by either parent according to the selected model.)
+Possible next activities: DefaultInputSet
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: Start, Confirmation, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, ML not possible, ML not possible, Extension not possible, Extension not possible, Birth of Child, Confirmation, ParentalLeaveDB, Birth of child, ParentalLeaveDB, startEvent, startEvent, 3 month before  end of maternity leave, parental leave 
+process initiated, Planning 
+maternity
+leave, choose the employment type, Child Age <2, Check options for parental leave, parallelGateway, ask for maternity leave, block  extension request, Check requirements, Choose length of
+maternity leave for parent taking maternity leave first and living in same household, initially looks after children?, Living in the same household?, Entitled to 
+parental leave?, fetch information about financial support, fetch information about leave models, parallelGateway
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Total supported leave models: 8)
+Applicable rules: Rule 1 (Maternity leave can be planned, taken, and extended by either parent according to the selected model.)
+Possible next activities: parallelGateway, go back to your work, parallelGateway, notify to the parent, End, exclusiveGateway, send all the neccesarry Info  to employer, receive confirmation for maternity leave, Take Maternity Leave, exclusiveGateway, Baby has grown up?, endEvent, apply for financial support, exclusiveGateway, do maternity/paternity leave, prepare necessary documents for leave, prepare necessary documents for leave, prepare necessary documents for leave, enter desired date for an extension, parallelGateway, enter desired data, parallelGateway, parental leave 
+process concluded, parallelGateway, Go back to work, Extend
+maternity leave?, Parent
+employed, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, End of
+maternity leave, parallelGateway, End of
+maternity leave, Begin of
+maternity leave
+
+STATE-03: Resource-dependent / waiting
+Current process position: parallelGateway
+Completed activities: Start, Confirmation, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, ML not possible, ML not possible, Extension not possible, Extension not possible, Birth of Child, Confirmation, ParentalLeaveDB, Birth of child, ParentalLeaveDB, startEvent, startEvent, 3 month before  end of maternity leave, parental leave 
+process initiated, Planning 
+maternity
+leave, choose the employment type, Child Age <2, Check options for parental leave
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Total supported leave models: 8)
+Applicable rules: Rule 1 (Maternity leave can be planned, taken, and extended by either parent according to the selected model.)
+Possible next activities: Employee sends parent information to Social Security, notify to the parent, exclusiveGateway, exclusiveGateway, Send ML Confirmation, Sign Maternity Leave confirmation, Spent time with baby, Feed baby, exclusiveGateway, receive confirmation from employer, fetch information about financial support, fetch information about leave models, select appropriate model, notify employer, notify social security, exclusiveGateway, Infrom the employee to prepare a confirmation, Send confirmation Email, Maternity leave period, End, ask for extension, Notify social security, Notify company, leave granted?, Report
+chosen length of maternity leave to company, Social Security
+confirmed, Report
+chosen length of maternity leave to Social Security
+
+STATE-04: Near completion / completed
+Current process position: notify to the parent
+Completed activities: Start, Confirmation, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, ML not possible, ML not possible, Extension not possible, Extension not possible, Birth of Child, Confirmation, ParentalLeaveDB, Birth of child, ParentalLeaveDB, startEvent, startEvent, 3 month before  end of maternity leave, parental leave 
+process initiated, Planning 
+maternity
+leave, choose the employment type, Child Age <2, Check options for parental leave, parallelGateway, ask for maternity leave, block  extension request, Check requirements, Choose length of
+maternity leave for parent taking maternity leave first and living in same household, initially looks after children?, Living in the same household?, Entitled to 
+parental leave?, fetch information about financial support, fetch information about leave models, parallelGateway, exclusiveGateway, requirements met, Parent, exclusiveGateway, select a parent type, ML not possible, Who takes the ML?, Show
+"Take parental leave before the child's 3rd birthday", Justify refusal, parallelGateway, exclusiveGateway, Infrom the employee to prepare a confirmation, parallelGateway, Fetch information about potential models, exclusiveGateway, Timespan:
+statutory
+maternity leave, Timespan:
+Birth - 
+8wks after birth, End, mother?, Decide when to take Maternity leave, vacation or sick leave?, Notify employer, Extension parental leave?, Baby is sleeping?, select appropriate model, enter desired data, The Employer issues the confirmation, End, Select model, parental leave 
+process concluded, exclusiveGateway, take  protection period, exclusiveGateway, Notify Employer, Notify Employer, Notify employer, exclusiveGateway, Extend parental leave, Who requests parental leave?, Be silent, parallelGateway, decide if apply for financial support, Checking  date of birth of child and duartion, The parent enter the confirmation, Collect notification info, exclusiveGateway, exclusiveGateway, End of vacation or sick leave, End of Protection Period, receive confirmation for maternity leave, Request within extension deadline?, Show
+"register your maternity leave within the next 8 weeks of your child's birth", Maternity leave 
+right after term of protection?, exclusiveGateway, Spent time with baby, Feed baby, exclusiveGateway, Is allowed?, parallelGateway, exclusiveGateway, Parent
+employed, send all the neccesarry Info  to employer, parallelGateway, Inform employer, Request extension, Other parent currently
+in parental leave?, Show
+"inform your employer 3 months before your maternity leave", Show
+"inform your employer within the term of protection", Baby has grown up?, parallelGateway, apply for financial support, exclusiveGateway, Check the status of the spouse, Send confirmation Email, parallelGateway, exclusiveGateway, Other parent employed
+and planning
+maternity leave, The employer receives info and checks  it, Send ML Confirmation, Sign Maternity Leave confirmation, Parental leave extended, Employer accepts?, First handover and child is <23, Inform employer, Baby is grown up, prepare necessary documents for leave, Is the another parent 
+already on maternity leave?, parallelGateway, Notify social security, Notify company, exclusiveGateway, (at least)
+3 months before
+maternity leave, exclusiveGateway, approved?, parallelGateway, Go back to work, Show
+"Only overlap of 1 month allowed with overlap of other parent", Show
+"No overlapping parental leave possible", Extend parental leave?, parallelGateway, Check if they are allowed to switch, exclusiveGateway, Maternity leave period, ask for extension, Receive notice, Receive notice, parallelGateway, End of
+maternity leave, The employer sends parents information to the Social Security, exclusiveGateway, Parental leave taken, notify employer, notify social security, Is switching possible?, exclusiveGateway, parallelGateway, Report
+chosen length of maternity leave to company, Report
+chosen length of maternity leave to Social Security, Social Security checks the Parents Information, Take Maternity Leave, parallelGateway, Reject the Request, Check if there is an overlap for more than 1 month, enter desired date for an extension, leave granted?, parallelGateway, Calculate if chosen length fits, Social Security sends back Parents Information to employee, Extend ML?, receive confirmation from employer, Is a long overlap?, calculate date and check availability, Receive official confirmation, Social Security
+confirmed, Send answer to parent, is other parent taking a parental leave?, Total Time of ML > 2 Months, Age of Child < 2, check if all necessary documents gathered, Check if this the first switching, Is it possible to 
+do an extension?, Sign confirmation, Statutory
+maternity
+leave still
+running, Re-chose length
+of maternity leave, The employee reject parental leave request, The employee approve parental leave request, End Maternity Leave, Start of Maternity Leave since?, exclusiveGateway, Is the first switching?, The extension request is accepted, Take parental leave, End of statutory
+maternity leave, Start date of 
+planned maternity
+leave reached, exclusiveGateway, Send Extension of Maternity Leave, Send Extension of Maternity Leave, do maternity/paternity leave, Collect info about extension, exclusiveGateway, parallelGateway, exclusiveGateway, decide if extend leave or return to work, extension possible?, Begin of
+maternity leave, Employee sends parent information to Social Security
+Current active activity or waiting point: notify to the parent
+Token position / execution status: token is at notify to the parent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Total supported leave models: 8)
+Applicable rules: Rule 1 (Maternity leave can be planned, taken, and extended by either parent according to the selected model.)
+Possible next activities: parental leave approved?, exclusiveGateway

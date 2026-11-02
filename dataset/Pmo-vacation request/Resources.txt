@@ -1,0 +1,14 @@
+Maximum annual leave entitlement: 20 days
+Number of employees in the organization: 150
+Number of HR representatives: 3
+Number of departments: 10
+Minimum notice period for vacation requests: 3 working days
+Maximum vacation days per single block: 10 working days
+Supervisor approval deadline: 2 working days
+Maximum employees on leave per team: 2
+Maximum carry-over days to the next year: 5 days
+Vacation accrual rate per month: 1.67 days
+Number of vacation requests processed per quarter: 200
+Number of managers authorized to approve extended leave: 2
+Maximum pending requests per employee: 1
+Average request processing time: 2 working days

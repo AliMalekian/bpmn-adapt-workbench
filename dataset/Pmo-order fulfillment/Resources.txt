@@ -1,0 +1,11 @@
+Number of warehouse staff: 30
+Order picking lead time (business days): 1
+Payment retry attempts: 3
+Back-order delay estimate (days): 7
+Quality control inspection ratio: 100%
+International customs processing time (days): 2
+Return processing window (business days): 10
+Order processing capacity per day: 2,000
+Feedback email delay after delivery (days): 1
+Gift wrapping stations: 2
+Number of shipping documents preparers: 5

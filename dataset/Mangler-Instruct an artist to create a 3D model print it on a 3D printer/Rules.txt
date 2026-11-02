@@ -1,0 +1,15 @@
+1. The artist must receive at least 3 reference sketches before starting the 3D model project.
+2. Every sketch revision requested by the customer must be incorporated before the model is considered final.
+3. When custom model design is contracted, the artist delivers an STL file after approval; directly supplied 3D models can proceed to printing without gcode conversion steps if pre-sliced.
+4. A plastic color must be chosen before printing can begin.
+5. If the chosen color is available at home, the remaining filament amount is checked; amounts under 100 grams trigger a shopping list entry.
+6. If the chosen color is not available at home, it is ordered and printing waits until delivery.
+7. The printer is only turned on when sufficient filament (100 grams or more) is available.
+8. The bed and extruder must reach their target temperatures before printing starts.
+9. The gcode file is generated from the artist's STL while the printer is heating up.
+10. The printer reports its heating status continuously until both temperatures are reached.
+11. Printing time of more than 12 hours requires a pause for bed re-levelling before continuing.
+12. A printed model is inspected for layer defects; models with defects are reprinted up to 2 times.
+13. PLA filament must be stored in a sealed bag when not in use to prevent moisture absorption.
+14. The bed temperature must be at least 60 degrees Celsius for a successful PLA print.
+15. Only models with a print volume smaller than the build volume are accepted for printing.

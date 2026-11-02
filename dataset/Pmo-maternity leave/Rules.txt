@@ -1,0 +1,15 @@
+1. A parent must select the maternity leave model, including the months duration and the split between parents, before any plan is finalized.
+2. The total maternity leave duration must not exceed the maximum allowed by the selected model.
+3. The leave split between the parents must sum to exactly 100% of the total leave entitlement.
+4. The company must be notified of the leave plan at least 30 days before the leave start date.
+5. Social Security must be notified of the leave plan at least 15 days before the leave start date.
+6. All relevant information must be collected before the leave plan is submitted for approval.
+7. Leave may start earlier than planned only with approval from both the company and Social Security.
+8. At the end of the leave period, the parent may request an extension up to a maximum of 6 additional weeks.
+9. An extension request must be submitted no later than 2 weeks before the end of the current leave period.
+10. If the leave is split between the parents, each parent must submit a separate information form.
+11. Extension approval requires confirmation from both the company and Social Security.
+12. Once the leave plan is confirmed, unused leave days cannot be transferred between the parents.
+13. A parent returning to work must give at least 1 week of notice before the planned return date.
+14. Information gathered from companies must be validated by the employer within 10 business days.
+15. If the parent's employment contract ends before the plan is confirmed, the notification to Social Security is cancelled.

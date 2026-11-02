@@ -1,0 +1,15 @@
+1. A course can be registered for only if at least one free slot is available.
+2. The system lists only courses that still have free slots, together with their dates.
+3. Course registration requires a valid user account at the sports institute.
+4. New accounts may be created only by applicants who are registered at an eligible university.
+5. Applicants not registered at an eligible university must request an activation and wait for the response.
+6. An account becomes active only after the sports institute approves the activation request.
+7. Registration can be completed only after the user has logged in successfully.
+8. A user may hold a course slot for at most one course per course date.
+9. Registration is finalized only after valid payment information has been provided.
+10. Payment must be completed within 48 hours of reserving a slot.
+11. Unpaid slot reservations are automatically cancelled after 48 hours and the slot is released.
+12. A course ticket is issued only after the payment has been confirmed.
+13. If the user chooses to tweet course registration to friends, Twitter authorization is required; social media sharing is entirely optional and not required for course registration.
+14. Account creation is rejected if the applicant's university is not in the list of eligible universities.
+15. A slot is released back to the course pool when a registration is cancelled or payment fails.

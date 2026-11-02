@@ -1,0 +1,15 @@
+Secretaries: 3
+Warehousemen: 6
+Standard post dispatch capacity: 200 parcels per day
+Special shipments capacity: 25 per week
+Logistics companies invited per special shipment: 3
+Standard parcel weight limit: 30 kg
+Special shipping threshold weight: 50 kg
+Parcel insurance coverage limit per item: 5000 EUR
+Annual logistics budget: 250000 EUR
+Packaging boxes in stock: 5000
+Warehouse floor space: 800 square meters
+Forklift trucks: 2
+Loading dock bays for pickup: 4
+Label printer throughput: 300 labels per hour
+Same-day dispatch cutoff time: 15:00

@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Conduct site visit" and "Conduct interview" tasks — the steps where the procurement team visits and interviews the top-ranked suppliers before the final selection.
+Reason: Removing the site visits and interviews would let the procurement team make the selection decision based only on the written proposals, saving travel time and shortening the tender timeline.
+Conflict details: This removal directly conflicts with Rule 5 ("Site visits and interviews are conducted for the top 3 ranked suppliers before a final decision is made"). The rule makes the site visit and interview phase a mandatory prerequisite for the final supplier selection, so removing these tasks breaks the mandated selection procedure.
+
+Request2:
+Removed element: The "Sign contract" task — the step where the selected supplier signs the contract after negotiations are completed.
+Reason: Removing the contract signing step would let the supplier relationship begin immediately after negotiations, eliminating the formal contract execution paperwork.
+Conflict details: This removal conflicts with the resource "Contract negotiation period (days): 45" — this 45-day negotiation window exists precisely to reach an agreement that is then signed, so without the signing step the negotiation period has no formal endpoint. It also conflicts with the resource "Maximum tender duration (days): 120", since the 120-day tender timeline from RFP issue to supplier onboarding culminates in the signed contract; without signing, the tender cannot reach its required completion milestone. Rule 7 ("The contract is signed only after both parties agree on all negotiated terms and legal review is completed") also presumes the signing step exists.
+
+Request3:
+Removed element: The "Evaluate proposal" task — the step where each received supplier proposal is scored against the cost, quality, and delivery time criteria.
+Reason: Removing the formal proposal evaluation would let the procurement team select a supplier without scoring the proposals, shortening the tender process.
+Conflict details: This removal conflicts with Rule 3 ("Every proposal is evaluated on cost, quality, and delivery time, weighted 40%, 30%, and 30% respectively") and Rule 4 ("Suppliers whose proposals fail to meet the minimum quality score of 70 out of 100 are disqualified from selection"). It also conflicts with the resources "Proposal evaluation criteria: 3", "Cost weighting (percent): 40", "Quality weighting (percent): 30", "Delivery time weighting (percent): 30", and "Minimum qualifying quality score (out of 100): 70" — all of these resources describe the inputs of the proposal evaluation step and would become meaningless without it.
+
+Request4:
+Removed element: The "Execute contract" task — the standalone step that formally activates and binds the signed contract after the supplier has been onboarded.
+Reason: Contract execution is the formal activation milestone that occurs after signing and onboarding. The contract is already legally binding once signed (Rule 7) and the supplier is already onboarded (Rule 8), so the separate execution task is redundant administrative bookkeeping.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt mandates a separate execution task: Rule 7 governs signing, Rule 8 governs onboarding after signing, and Rule 13 (code of conduct and data protection agreement signed before execution begins) remains satisfiable because the agreement is signed during onboarding. No resource in Resources.txt is tied to contract execution. The process remains fully executable because signing and onboarding automatically place the contract into effect.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

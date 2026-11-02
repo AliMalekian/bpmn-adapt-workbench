@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Select type of order
+Completed activities: Food order decided
+Current active activity or waiting point: Select type of order
+Token position / execution status: token is at Select type of order; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of cooking stations: 3)
+Applicable rules: Rule 1 (If the customer selects a menu, the drink must be prepared first before the robot asks whether the customer wants fries or wedges.)
+Possible next activities: Menu or just the burger ?
+
+STATE-02: Intermediate / decision
+Current process position: Prepare beverage
+Completed activities: Food order decided, Select type of order, Menu or just the burger ?, Select menu, Select burger, Select type of beverage, exclusiveGateway, parallelGateway, Make payment
+Current active activity or waiting point: Prepare beverage
+Token position / execution status: token is at Prepare beverage; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of cooking stations: 3)
+Applicable rules: Rule 1 (If the customer selects a menu, the drink must be prepared first before the robot asks whether the customer wants fries or wedges.)
+Possible next activities: parallelGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Prepare French fries
+Completed activities: Food order decided, Select type of order, Menu or just the burger ?, Select menu, Select burger, Select type of beverage, exclusiveGateway, parallelGateway, Make payment, Prepare beverage, Select side, Enter customer's name, parallelGateway, parallelGateway, Fries or wedges ?, exclusiveGateway, Prepare burger, Prepare potato wedges
+Current active activity or waiting point: Prepare French fries
+Token position / execution status: token is at Prepare French fries; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of cooking stations: 3)
+Applicable rules: Rule 1 (If the customer selects a menu, the drink must be prepared first before the robot asks whether the customer wants fries or wedges.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: Food delivered
+Completed activities: Food order decided, Select type of order, Menu or just the burger ?, Select menu, Select burger, Select type of beverage, exclusiveGateway, parallelGateway, Make payment, Prepare beverage, Select side, Enter customer's name, parallelGateway, parallelGateway, Fries or wedges ?, exclusiveGateway, Prepare burger, Prepare potato wedges, Prepare French fries, Update status, parallelGateway, exclusiveGateway, 30 seconds, Notify customer, Check status, Deliver via conveyor belt, Is burger ready ?
+Current active activity or waiting point: Food delivered
+Token position / execution status: token is at Food delivered; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of cooking stations: 3)
+Applicable rules: Rule 1 (If the customer selects a menu, the drink must be prepared first before the robot asks whether the customer wants fries or wedges.)
+Possible next activities: Process completion

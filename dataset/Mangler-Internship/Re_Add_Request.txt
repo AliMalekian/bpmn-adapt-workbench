@@ -1,0 +1,11 @@
+Re_Add_Request:
+Restored element: The optional step of entering experience and hobbies into the internship platform.
+
+This request semantically restores everything that Request4 removed. Request4 removed the optional entry of experience and hobbies during the internship application, so that only the mandatory topic of interest and desired salary were entered. This restoration brings the process back to its exact original shape:
+
+1. The step "enter experience and hobbies" is re-inserted into the application flow, right after (and alongside) the entry of the topic of interest and the desired salary, exactly as described in the process ("You can also enter experience and hobbies").
+2. The restored step keeps its optional character: the applicant is again able to add experience and hobbies as additional profile information, which increases the chance of matching offers (Rule 2), but is not mandatory.
+3. The restored step feeds the same matching mechanism: the offers that arrive are matched against the reported interests including the optionally provided experience and hobbies, without changing the offer arrival behavior (Rule 3) or the acceptance window (Rule 8).
+4. No other part of the process is altered: the mandatory topic and salary entry (Rule 1), the salary range check (Rule 13), the status update obligations for applicant and company (Rules 6 and 7), the invalidation of other offers (Rule 5), the offer acceptance window (Rule 8), the minimum internship duration (Rule 12), and the twitter recommendation step after the internship ends (Rules 10, 11 and 14) remain exactly as before.
+
+The process is thereby returned to precisely its original state, with the experience-and-hobbies entry step fully restored.

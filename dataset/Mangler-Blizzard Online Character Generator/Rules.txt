@@ -1,0 +1,15 @@
+1. A battle.net account is required before the character creation process can continue.
+2. A WoW subscription must be verified as active before character creation, which may be established during initial account login without requiring a separate in-flow re-check task.
+3. A new account is finalized only after the confirmation link in the confirmation mail has been clicked.
+4. Credit card information is entered only if credit card is selected as the payment method.
+5. Bank account information requires both IBAN and BIC to be entered and validated.
+6. A payment method may not be left unset; the account stays blocked until a method is chosen.
+7. Character names are entered one by one until a name that is still available is confirmed.
+8. A chosen name is reserved for the character once the availability check passes.
+9. Names rejected as unavailable cannot be retried until 24 hours have passed.
+10. Realm, race, and class must be selected before the name confirmation is executed.
+11. A character name may contain no more than 12 characters.
+12. Each realm can host no more than 5000 characters per account region cap.
+13. The player needs to come up with at least 5 candidate names before entering them into the system.
+14. The confirmation with the character selfies is sent immediately after the name is reserved.
+15. The player receives an additional message when the expansion is released.

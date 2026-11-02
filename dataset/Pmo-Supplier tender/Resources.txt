@@ -1,0 +1,14 @@
+Number of RFP invitations per tender: 15
+Average number of proposals received: 6
+Proposal evaluation criteria: 3
+Cost weighting (percent): 40
+Quality weighting (percent): 30
+Delivery time weighting (percent): 30
+Maximum tender duration (days): 120
+Proposal submission window (days): 30
+Contract negotiation period (days): 45
+Minimum qualifying quality score (out of 100): 70
+Maximum acceptable delivery time (days): 60
+Procurement team members: 5
+Budget overrun tolerance (percent): 10
+Minimum number of qualified proposals required: 3

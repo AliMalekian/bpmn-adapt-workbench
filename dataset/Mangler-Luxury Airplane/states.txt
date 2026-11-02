@@ -1,0 +1,128 @@
+STATE-01: Initial / early execution
+Current process position: Customer
+Completed activities: Order received
+Current active activity or waiting point: Customer
+Token position / execution status: token is at Customer; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of selectable bar types: 5)
+Applicable rules: Rule 1 (The base airplane model is identical for every order; only the interior configuration is customized.)
+Possible next activities: Team
+
+STATE-02: Intermediate / decision
+Current process position: Bar 5
+Completed activities: Order received, Customer, Team, Manufacturer, Test Pilot, Customer, Team, Manufacturer, startEvent, Test Pilot, Number of bar
+
+Number of seats
+
+Color of seats
+
+Amount of toiletwater, Adjusted Order, Protocoll, Receive Order, DefaultInputSet, DefaultOutputSet, DefaultInputSet, Number of bar
+
+Number of seats
+
+Color of seats
+
+Amount of toiletwater, Adjusted Order, Protocoll, send protocol to the customer and to myself, Customer required, DefaultInputSet, DefaultOutputSet, send protocol to the customer and to myself, Customer orders airplane, Purchase
+ order recieved, Get airplane request, Airplane company, Customer, Teams of the company, Airplane company, Headquarter (Vienna), Review Request, Company gets configuration requirements, Getting all interior parts, Customer, startEvent, Kunde, Kunde, Customer gets the configuration form, Customer confirmed the delivery, Teams of the company, russian team, irish team, Description
+
+This process reflects an individual interior configuration of an aircraft. A customer can have many different requirements for the interior of his aircraft and our company has to take these requirements into account in its own process.
+
+- Customer must submit configuration request
+- Customer must create configuration and send it back to the company
+- The customer's wishes are passed on to subteams according to their responsibilities
+- Integration work is carried out at HQ
+- Test flight must be performed, Split task for the different work units, Description
+
+This process reflects an individual interior configuration of an aircraft. A customer can have many different requirements for the interior of his aircraft and our company has to take these requirements into account in its own process.
+
+- Customer must submit configuration request
+- Customer must create configuration and send it back to the company
+- The customer's wishes are passed on to subteams according to their responsibilities
+- Integration work is carried out at HQ
+- Test flight must be performed, Define requirements, Customized airplane order received, Status: In Production, Place an aircraft order, Select basic model, Send list with possible specification to the customer, Check desired airplane type, prepare Configuration form, Company discuss requirements with the customer, inner plane gets montaged, Customer places an Configuration order for the interior of the plane, Choose one of the five different bar models, exclusiveGateway, exclusiveGateway, base model?, The order is being processed, parallelGateway, exclusiveGateway, Customization wanted?, parallelGateway, Individual customizing?, parallelGateway, exclusiveGateway, endEvent, customer send his configuration to the company, review whiskey bar configuration, review vodka bar configuration requirements, exclusiveGateway, Design individual parts, parallelGateway, Build Base Model, request additional parts, Choose properties, Customize basic model interior, Setup of standard interior with standard interior team, Let customer decide on number of bars, Let customer decide on the number of seats, Let customer decide on the color of the seats, Let customer decide on the amount of water in the toilet, Send customizing options, Assemble interior, plane gets on test flight, Create the Test ptotocol, Bar 1, Bar 2, Bar 3, Bar 4
+Current active activity or waiting point: Bar 5
+Token position / execution status: token is at Bar 5; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of selectable bar types: 5)
+Applicable rules: Rule 1 (The base airplane model is identical for every order; only the interior configuration is customized.)
+Possible next activities: Choose number of plane seats
+
+STATE-03: Resource-dependent / waiting
+Current process position: Receive specifications
+Completed activities: Order received, Customer, Team, Manufacturer, Test Pilot, Customer, Team, Manufacturer, startEvent, Test Pilot, Number of bar
+
+Number of seats
+
+Color of seats
+
+Amount of toiletwater, Adjusted Order, Protocoll, Receive Order, DefaultInputSet, DefaultOutputSet, DefaultInputSet, Number of bar
+
+Number of seats
+
+Color of seats
+
+Amount of toiletwater, Adjusted Order, Protocoll, send protocol to the customer and to myself, Customer required, DefaultInputSet, DefaultOutputSet, send protocol to the customer and to myself, Customer orders airplane, Purchase
+ order recieved, Get airplane request, Airplane company, Customer, Teams of the company, Airplane company, Headquarter (Vienna), Review Request, Company gets configuration requirements, Getting all interior parts, Customer, startEvent, Kunde, Kunde, Customer gets the configuration form, Customer confirmed the delivery, Teams of the company, russian team, irish team, Description
+
+This process reflects an individual interior configuration of an aircraft. A customer can have many different requirements for the interior of his aircraft and our company has to take these requirements into account in its own process.
+
+- Customer must submit configuration request
+- Customer must create configuration and send it back to the company
+- The customer's wishes are passed on to subteams according to their responsibilities
+- Integration work is carried out at HQ
+- Test flight must be performed, Split task for the different work units, Description
+
+This process reflects an individual interior configuration of an aircraft. A customer can have many different requirements for the interior of his aircraft and our company has to take these requirements into account in its own process.
+
+- Customer must submit configuration request
+- Customer must create configuration and send it back to the company
+- The customer's wishes are passed on to subteams according to their responsibilities
+- Integration work is carried out at HQ
+- Test flight must be performed, Define requirements, Customized airplane order received, Status: In Production, Place an aircraft order, Select basic model, Send list with possible specification to the customer, Check desired airplane type, prepare Configuration form, Company discuss requirements with the customer, inner plane gets montaged, Customer places an Configuration order for the interior of the plane, Choose one of the five different bar models, exclusiveGateway, exclusiveGateway, base model?, The order is being processed, parallelGateway, exclusiveGateway, Customization wanted?, parallelGateway, Individual customizing?, parallelGateway, exclusiveGateway, endEvent, customer send his configuration to the company, review whiskey bar configuration, review vodka bar configuration requirements, exclusiveGateway, Design individual parts, parallelGateway, Build Base Model, request additional parts, Choose properties, Customize basic model interior, Setup of standard interior with standard interior team, Let customer decide on number of bars, Let customer decide on the number of seats, Let customer decide on the color of the seats, Let customer decide on the amount of water in the toilet, Send customizing options, Assemble interior, plane gets on test flight, Create the Test ptotocol, Bar 1, Bar 2, Bar 3, Bar 4, Bar 5, produce the bar, produce the bar, Order parts, Build the airplane base model, Transmit requirements for the customization to the responsible teams, parallelGateway, Receive Answer, parallelGateway, parallelGateway, Parts available?, parallelGateway, Receive customizing requirements, parallelGateway, parallelGateway, Send test protocol to the customer, Choose number of plane seats, check best ways for deliver to the HQ, exclusiveGateway, Assemble plane, parallelGateway, Adjust Order, Deciding on bars, Deciding on seats, Deciding on toilets, 5 different bars, Amount of water in the toilets, Number of seats, Colour of seats, Order parts and set them up, Use existing parts and set them up, Recieve the specification, parallelGateway, Flight test, Update flight protocol, plane would delivered to customer, choose the seat colour, exclusiveGateway, deliver with a ship (5 days), deliver with plane, exclusiveGateway, 14 Days, parallelGateway, parallelGateway, parallelGateway, exclusiveGateway, Send requirements to specialist team, Display bar type, Select number of seats, Select seat color, Introduce amount of water in the toilets, Test succesful, Send protocol to customer, choose numbers of toiletts, deliver with a ship (5 days), deliver with plane, Start shipping process, parallelGateway, Requirements met?, Amount of toilet water, Number of seats, Select bar type, Satisfied with properties ?, Send list of requirements to different teams, Send parts to assembly hall, exclusiveGateway, exclusiveGateway, parallelGateway, Ajdust errors, parallelGateway, Start shipping process, Create test protocol, Make test flight, Send a reminder to the responsible team, Install the individual bits and pieces in the airplane, parallelGateway, Color of seats, exclusiveGateway, Check proberties, Note down properties, Manufacturing the parts by different teams, exclusiveGateway, Check manufacturing stock, Send requirements to the russian team, Send requirements to the irish team, Send requirements to french team, Send requirements to  the american team, Send requirements to the italian team, Sent plane 
+to customer, parallelGateway, exclusiveGateway, Contact Specialists, exclusiveGateway, Vodka bar, Whiskey bar, Scotch bar
+Current active activity or waiting point: Receive specifications
+Token position / execution status: token is at Receive specifications; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of selectable bar types: 5)
+Applicable rules: Rule 1 (The base airplane model is identical for every order; only the interior configuration is customized.)
+Possible next activities: Send requirements to teams
+
+STATE-04: Near completion / completed
+Current process position: Purchase successful
+Completed activities: Order received, Customer, Team, Manufacturer, Test Pilot, Customer, Team, Manufacturer, startEvent, Test Pilot, Number of bar
+
+Number of seats
+
+Color of seats
+
+Amount of toiletwater, Adjusted Order, Protocoll, Receive Order, DefaultInputSet, DefaultOutputSet, DefaultInputSet, Number of bar
+
+Number of seats
+
+Color of seats
+
+Amount of toiletwater, Adjusted Order, Protocoll, send protocol to the customer and to myself, Customer required, DefaultInputSet, DefaultOutputSet, send protocol to the customer and to myself, Customer orders airplane, Purchase
+ order recieved, Get airplane request, Airplane company, Customer, Teams of the company, Airplane company, Headquarter (Vienna), Review Request, Company gets configuration requirements, Getting all interior parts, Customer, startEvent, Kunde, Kunde, Customer gets the configuration form, Customer confirmed the delivery, Teams of the company, russian team, irish team, Description
+
+This process reflects an individual interior configuration of an aircraft. A customer can have many different requirements for the interior of his aircraft and our company has to take these requirements into account in its own process.
+
+- Customer must submit configuration request
+- Customer must create configuration and send it back to the company
+- The customer's wishes are passed on to subteams according to their responsibilities
+- Integration work is carried out at HQ
+- Test flight must be performed, Split task for the different work units, Description
+
+This process reflects an individual interior configuration of an aircraft. A customer can have many different requirements for the interior of his aircraft and our company has to take these requirements into account in its own process.
+
+- Customer must submit configuration request
+- Customer must create configuration and send it back to the company
+- The customer's wishes are passed on to subteams according to their responsibilities
+- Integration work is carried out at HQ
+- Test flight must be performed, Define requirements, Customized airplane order received, Status: In Production, Place an aircraft order, Select basic model, Send list with possible specification to the customer, Check desired airplane type, prepare Configuration form, Company discuss requirements with the customer, inner plane gets montaged, Customer places an Configuration order for the interior of the plane, Choose one of the five different bar models, exclusiveGateway, exclusiveGateway, base model?, The order is being processed, parallelGateway, exclusiveGateway, Customization wanted?, parallelGateway, Individual customizing?, parallelGateway, exclusiveGateway, endEvent, customer send his configuration to the company, review whiskey bar configuration, review vodka bar configuration requirements, exclusiveGateway, Design individual parts, parallelGateway, Build Base Model, request additional parts, Choose properties, Customize basic model interior, Setup of standard interior with standard interior team, Let customer decide on number of bars, Let customer decide on the number of seats, Let customer decide on the color of the seats, Let customer decide on the amount of water in the toilet, Send customizing options, Assemble interior, plane gets on test flight, Create the Test ptotocol, Bar 1, Bar 2, Bar 3, Bar 4, Bar 5, produce the bar, produce the bar, Order parts, Build the airplane base model, Transmit requirements for the customization to the responsible teams, parallelGateway, Receive Answer, parallelGateway, parallelGateway, Parts available?, parallelGateway, Receive customizing requirements, parallelGateway, parallelGateway, Send test protocol to the customer, Choose number of plane seats, check best ways for deliver to the HQ, exclusiveGateway, Assemble plane, parallelGateway, Adjust Order, Deciding on bars, Deciding on seats, Deciding on toilets, 5 different bars, Amount of water in the toilets, Number of seats, Colour of seats, Order parts and set them up, Use existing parts and set them up, Recieve the specification, parallelGateway, Flight test, Update flight protocol, plane would delivered to customer, choose the seat colour, exclusiveGateway, deliver with a ship (5 days), deliver with plane, exclusiveGateway, 14 Days, parallelGateway, parallelGateway, parallelGateway, exclusiveGateway, Send requirements to specialist team, Display bar type, Select number of seats, Select seat color, Introduce amount of water in the toilets, Test succesful, Send protocol to customer, choose numbers of toiletts, deliver with a ship (5 days), deliver with plane, Start shipping process, parallelGateway, Requirements met?, Amount of toilet water, Number of seats, Select bar type, Satisfied with properties ?, Send list of requirements to different teams, Send parts to assembly hall, exclusiveGateway, exclusiveGateway, parallelGateway, Ajdust errors, parallelGateway, Start shipping process, Create test protocol, Make test flight, Send a reminder to the responsible team, Install the individual bits and pieces in the airplane, parallelGateway, Color of seats, exclusiveGateway, Check proberties, Note down properties, Manufacturing the parts by different teams, exclusiveGateway, Check manufacturing stock, Send requirements to the russian team, Send requirements to the irish team, Send requirements to french team, Send requirements to  the american team, Send requirements to the italian team, Sent plane 
+to customer, parallelGateway, exclusiveGateway, Contact Specialists, exclusiveGateway, Vodka bar, Whiskey bar, Scotch bar, Receive specifications, Manufacturing time, Assembling of the interior, All needed parts available?, exclusiveGateway, Receive customer confirmation, Test successful?, Control the engines and risk factors, Receive Specifications, Black, White, exclusiveGateway, Send requirements to teams, Receivement of individual bits and pieces, exclusiveGateway, Manufacture parts, Order needed parts, Receive bar components, endEvent, Fix problems, Notify customer, Prepare the plane to a test flight, Implement Specifications, exclusiveGateway, Receive individual bits and pieces, Send plane to a test flight, Test produced parts, Customer satisfied?, Receive a test  flight protocol, Status: Ready for test flight, Assemble aircraft, Testing period, Parts ok?, exclusiveGateway, Renegotiate contract, Automatic forwarding to the customer, Start test flight, Send airplane to test flight, Creation of a test protocol, Assemble the plane interior, Deliver plane, exclusiveGateway, Protocoll is generated, parallelGateway, Test paramers okay?, exclusiveGateway, order completed, standard shipping to the customer, premium shipping to the customer, Protocoll is sent to Customer, Testing flight, Create test protocol, Airplane checked and quality confirmed, Conduct test flight, exclusiveGateway, Test flight successful?, parallelGateway, Add evaluation to test protocol, Create test protocol, Receive a confirmation via E-Mail, Status: Repairing, Status: Finished, Receive test protocol, parallelGateway, Recieve test protocol, endEvent, Do Repairing, Receive confirmation, Deliver airplane, Send evalutation to company, Send evaluation to customer, Evaluate test, Deliver plane, Choose supplier, parallelGateway, Test ok?, endEvent, inclusiveGateway, Delivery to customer, Send test protocol to customer, Send request to supplier y, Send request to supplier y, Send request to supplier x, Confirmation of customer, parallelGateway, inclusiveGateway, Airplane delivered, Deliver plane to customer, Send invoice, confirm receivement, Recieve confirmation, Recieve payment, Note down confirmation, parallelGateway, endEvent
+Current active activity or waiting point: Purchase successful
+Token position / execution status: token is at Purchase successful; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of selectable bar types: 5)
+Applicable rules: Rule 1 (The base airplane model is identical for every order; only the interior configuration is customized.)
+Possible next activities: Process completion

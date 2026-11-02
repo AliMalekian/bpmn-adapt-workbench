@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: exclusiveGateway
+Completed activities: startEvent
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Visa passport photo size (mm): 35 x 45)
+Applicable rules: Rule 1 (A visa application is accepted only if the application form and all required supporting documents are complete.)
+Possible next activities: Check requirements and point for skilled workers in shortage occupations, Check requirements and point for particularly highly qualified people, Check requirements and point for other key employees, Check requirements and point for start-up founders, exclusiveGateway, Search and find suited apartment, parallelGateway, Prepare Documents for r-w-r card, Request new passport, endEvent, Check requirements for independent key employees, Check requirements for Graduates of an Austrian higher education institution
+
+STATE-02: Intermediate / decision
+Current process position: parallelGateway
+Completed activities: startEvent, exclusiveGateway, Check requirements and point for skilled workers in shortage occupations, Check requirements and point for particularly highly qualified people, Check requirements and point for other key employees, Check requirements and point for start-up founders, Check requirements for independent key employees, Check requirements for Graduates of an Austrian higher education institution, Fullfiles the requirements or point?, exclusiveGateway, Prepare Documents for r-w-r card
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Visa passport photo size (mm): 35 x 45)
+Applicable rules: Rule 1 (A visa application is accepted only if the application form and all required supporting documents are complete.)
+Possible next activities: Check if passport is up to date, Make passport photo, Prepare birth certificate, exclusiveGateway, Gather documentation to prove financial indepence, Application for a residence permit, Request Austrian health insurance coverage incl. documentation, Send documentation to relevant agency
+
+STATE-03: Resource-dependent / waiting
+Current process position: Request new passport
+Completed activities: startEvent, exclusiveGateway, Check requirements and point for skilled workers in shortage occupations, Check requirements and point for particularly highly qualified people, Check requirements and point for other key employees, Check requirements and point for start-up founders, Check requirements for independent key employees, Check requirements for Graduates of an Austrian higher education institution, Fullfiles the requirements or point?, exclusiveGateway, Prepare Documents for r-w-r card, parallelGateway, Check if passport is up to date, Make passport photo, Prepare birth certificate, exclusiveGateway, Gather documentation to prove financial indepence, Application for a residence permit, Request Austrian health insurance coverage incl. documentation, exclusiveGateway, parallelGateway, Search and find suited apartment, exclusiveGateway
+Current active activity or waiting point: Request new passport
+Token position / execution status: token is at Request new passport; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Visa passport photo size (mm): 35 x 45)
+Applicable rules: Rule 1 (A visa application is accepted only if the application form and all required supporting documents are complete.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: startEvent, exclusiveGateway, Check requirements and point for skilled workers in shortage occupations, Check requirements and point for particularly highly qualified people, Check requirements and point for other key employees, Check requirements and point for start-up founders, Check requirements for independent key employees, Check requirements for Graduates of an Austrian higher education institution, Fullfiles the requirements or point?, exclusiveGateway, Prepare Documents for r-w-r card, parallelGateway, Check if passport is up to date, Make passport photo, Prepare birth certificate, exclusiveGateway, Gather documentation to prove financial indepence, Application for a residence permit, Request Austrian health insurance coverage incl. documentation, exclusiveGateway, parallelGateway, Search and find suited apartment, exclusiveGateway, Request new passport, Send documentation to relevant agency, Negotiate rent with landlord, Rules engine automaticly checks if documentations fullfilles requirements, Negotitation successful?, Additional documentation needed?, Sign contract, Agency approves right to stay?, Request Bank Account on Bank website, exclusiveGateway, Bank Systems creates bank account and sends E-Mail confirmation
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Visa passport photo size (mm): 35 x 45)
+Applicable rules: Rule 1 (A visa application is accepted only if the application form and all required supporting documents are complete.)
+Possible next activities: Process completion

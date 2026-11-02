@@ -1,0 +1,12 @@
+Maximum parallel resources farmed: 10
+Bot inventory capacity: 500 units
+Maximum load per run: 500 units
+Number of tool recipes to unlock: 6
+Milestone notification interval: 25%
+Rare resource dependency count: 2 prerequisites
+Selected friends to brag to: 5
+Disaster setback amount: 2 days of progress
+Minimum goal share kept before sharing: 50%
+Number of configurable bots: 3
+Urgent resource slots: 3
+Farm session time limit: 8 hours

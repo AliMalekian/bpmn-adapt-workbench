@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Check desired airplane type
+Completed activities: Get airplane request
+Current active activity or waiting point: Check desired airplane type
+Token position / execution status: token is at Check desired airplane type; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Luxury Airplane Interior Production)
+Applicable rules: Rule 1 (The customer must submit full interior specifications within 30 days of placing the order.)
+Possible next activities: Individual customizing?
+
+STATE-02: Intermediate / decision
+Current process position: Display bar type
+Completed activities: Get airplane request, Check desired airplane type, Individual customizing?, Send customizing options, Assemble interior, Receive customizing requirements, parallelGateway, parallelGateway, Flight test, Update flight protocol
+Current active activity or waiting point: Display bar type
+Token position / execution status: token is at Display bar type; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Luxury Airplane Interior Production)
+Applicable rules: Rule 1 (The customer must submit full interior specifications within 30 days of placing the order.)
+Possible next activities: Bar type
+
+STATE-03: Resource-dependent / waiting
+Current process position: Send requirements to the russian team
+Completed activities: Get airplane request, Check desired airplane type, Individual customizing?, Send customizing options, Assemble interior, Receive customizing requirements, parallelGateway, parallelGateway, Flight test, Update flight protocol, Display bar type, Select number of seats, Select seat color, Introduce amount of water in the toilets, Test succesful, Send protocol to customer, Bar type, parallelGateway, Ajdust errors, parallelGateway
+Current active activity or waiting point: Send requirements to the russian team
+Token position / execution status: token is at Send requirements to the russian team; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Luxury Airplane Interior Production)
+Applicable rules: Rule 1 (The customer must submit full interior specifications within 30 days of placing the order.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: Get airplane request, Check desired airplane type, Individual customizing?, Send customizing options, Assemble interior, Receive customizing requirements, parallelGateway, parallelGateway, Flight test, Update flight protocol, Display bar type, Select number of seats, Select seat color, Introduce amount of water in the toilets, Test succesful, Send protocol to customer, Bar type, parallelGateway, Ajdust errors, parallelGateway, Send requirements to the russian team, Send requirements to the irish team, Send requirements to french team, Send requirements to the american team, Send requirements to the italian team, Sent plane to customer, exclusiveGateway, Receive customer confirmation, Receive bar components
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Luxury Airplane Interior Production)
+Applicable rules: Rule 1 (The customer must submit full interior specifications within 30 days of placing the order.)
+Possible next activities: Process completion

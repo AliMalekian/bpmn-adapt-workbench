@@ -1,0 +1,28 @@
+Request1:
+Removed element: IP answers the question of the INQ task (the step in which the IP responds to the INQ by either transmitting the requested data or issuing a rejection)
+Reason: To reduce processing work, the proposal is to have the IP transmit the data automatically whenever the request passes the check, with no explicit answer/reply step.
+Conflict details: CONFLICTS with Rule 2 of Rules.txt ("The IP checks every request for completeness and validity before issuing a response.") — the rule ties the response to the check, and removing the answer step leaves no response to issue. It also conflicts with Rule 7 of Rules.txt ("The IP must respond to a valid request within 24 hours of receiving it.") and Resource "Response time limit (hours): 24" in Resources.txt, because the 24-hour response obligation and its resource require a distinct answer step with a measurable response time. The removal therefore breaks Rules 2 and 7 and the resource "Response time limit (hours): 24".
+
+Request2:
+Removed element: IP checks the request of the INQ task (the step in which the IP examines the INQ's request for completeness and validity)
+Reason: To speed up handling, the proposal is to trust incoming requests and transmit the data without an inspection step.
+Conflict details: CONFLICTS with Resource "Failed authentication limit: 3" and Resource "Authentication lockout duration (hours): 12" in Resources.txt — the authentication controls exist to gate the request-checking step, so removing the check makes the failed-authentication counters meaningless. It also conflicts with Resource "Daily request processing capacity: 5,000" and Resource "Duplicate request window (days): 30", because both the capacity cap and the duplicate detection are enforced during request examination; without the check step they cannot be applied. The removal therefore violates the authentication and request-processing resources.
+
+Request3:
+Removed element: INQ transmits the transaction data request task (the step in which the INQ submits the transaction data request carrying the credentials to the IP)
+Reason: To simplify integration, the proposal is to let the IP pull transaction data directly without a formal transmission request from the INQ.
+Conflict details: CONFLICTS with Rule 1 of Rules.txt ("The INQ must submit a transaction data request containing valid credentials for the IP to examine.") — removing the transmission step removes the request-and-credential submission the rule requires. It also conflicts with Rule 9 of Rules.txt ("Every request must be logged with a timestamp and the requester's identity for audit purposes."), because the audit log is built on the transmitted request, and with Resource "Number of authorized INQ entities: 120" in Resources.txt, since the authorization model of 120 INQ entities exists precisely to govern who may transmit requests. The removal therefore violates Rules 1 and 9 and the resource "Number of authorized INQ entities: 120".
+
+Request4:
+Removed element: End event of the process (the final termination node that closes the process once the IP has answered the INQ's question)
+Reason: To simplify the model, the proposal is to leave the end event out and consider the process complete immediately after the IP's answer is delivered, rather than routing through a dedicated end-event node.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt makes any end/termination node mandatory; the rules govern the request submission, the check, the response, logging, encryption, fees, data retention and the INQ's deletion duty, but none of them requires a formal end event. No resource in Resources.txt is allocated to an end node. The three core operations (INQ transmits the request, IP checks the request, IP answers the question) remain fully executable, and removing the end event merely changes the termination bookkeeping, not any rule- or resource-governed behaviour. The removal is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

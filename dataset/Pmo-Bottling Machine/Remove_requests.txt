@@ -1,0 +1,28 @@
+Request1:
+Removed element: Entering the machine type and serial number before the inspection can begin
+Reason: The machine-identification step is proposed for removal so the inspector can start the inspection immediately without typing machine details.
+Conflict details: Conflicts with Rule 1 ("The inspection cannot begin until the machine type and its serial number are entered") and Rule 6 ("The serial number is validated against the machine database before the inspection starts"). Removing the identification step violates the mandatory precondition of Rule 1 and eliminates the input that Rule 6's validation acts on. It also conflicts with Resource 11 ("Number of machines in serial number database: 2400"): the serial-number database exists precisely to validate the entered serial number, and cannot be used if identification is removed.
+
+Request2:
+Removed element: Automatic value collection from the machine when a button is pressed
+Reason: The automatic-collection step is proposed for removal to reduce dependency on the machine interface, assuming the inspector can read all values manually.
+Conflict details: Conflicts with Rule 3 ("Certain values are automatically collected from the machine and shown after a button is pressed"), Rule 9 ("Automatically collected values are read only at the moment the corresponding button is pressed"), and Rule 13 ("The inspector cannot modify automatically collected values"). It also conflicts with Resource 3 ("Number of automatic value collection buttons: 8"): the eight collection buttons exist to trigger these automatic readings, and become meaningless if automatic collection is removed.
+
+Request3:
+Removed element: The follow-up questions triggered when a measured value is outside the normal range
+Reason: The follow-up-question mechanism is proposed for removal so the inspection always uses the same fixed question list and finishes faster.
+Conflict details: Conflicts with Rule 4 ("Depending on the results, additional questions are asked"), Rule 7 ("A value outside the acceptable range for the machine type triggers a follow-up question"), and Rule 5 ("No additional questions are asked when all previous results are within the normal range"). It also conflicts with Resource 12 ("Maximum number of follow-up questions: 6"): the follow-up-question limit resource exists precisely to bound these additional questions, and is unusable if the mechanism is removed.
+
+Request4:
+Removed element: The Bluetooth device connection that links the inspection app to the machine
+Reason: The Bluetooth connection step is proposed for removal under the assumption that the machine's values can be entered manually instead of being fetched over a device connection.
+Conflict details: None — fully compatible with all rules and resources. The rules that mention automatically collected values (Rules 3, 9, 13) still hold, because those automatic values are fetched when a button is pressed regardless of the transport technology; if no Bluetooth connection is available, the automatic collection can be performed over a wired interface, so the rules remain satisfied without the Bluetooth-specific step. No rule requires Bluetooth as the transport. No resource in Resources.txt depends on Bluetooth connectivity; the number of collection buttons (8), the supported machine types (6), the pressure limits, and the inspection cycle time (15 minutes) are all unaffected.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

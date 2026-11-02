@@ -1,0 +1,10 @@
+Re-Add Request:
+Removed element to be restored: Enter BIC (the separate "Enter BIC" user-task field in the bank-account payment path)
+
+Restoration details:
+1. Re-insert the "Enter BIC" user task in the bank-account payment branch of the process: recreate the BPMN user task named "Enter BIC" after the "Enter IBAN" task and before the payment is considered complete, exactly as it appeared in the original model.
+2. Restore the data-entry behavior: the user again types their BIC (Bank Identifier Code) into the dedicated field, and the BIC value is again validated and stored with the bank-account payment data as part of the payment method.
+3. Reconnect the sequence flows: the outgoing flow of "Enter IBAN" now enters "Enter BIC", and the outgoing flow of "Enter BIC" continues to the subscription-activation / login steps exactly as before; the bypass that the removal created around the BIC field is deleted.
+4. Restore full compliance: the bank-account payment branch again collects both IBAN and BIC, so the requirement that bank-account payment includes the BIC detail is met, and the payment-method data record is again complete.
+
+The process is thereby returned to exactly its original shape: the "Enter BIC" user task, its sequence flows, and the captured BIC data attribute that Request4 removed are all restored.

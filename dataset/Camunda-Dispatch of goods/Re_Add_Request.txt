@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: "Package goods" task (the warehousemen step that packages the goods and was removed by Request4)
+Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+
+Detailed restoration:
+1. "Package goods" task: Restored as the warehousemen activity performed by the "Warehouse" pool. It is placed back exactly where it originally was, i.e. running in parallel ("in the meantime") while the secretary clarifies the shipment method, obtains the three logistics offers, and selects a logistics company / arranges normal post shipment.
+2. Packaging boxes: The task again consumes the "Packaging boxes in stock" (5000) resource to wrap and box the goods, exactly as in the original model.
+3. Parallel execution semantics: The original parallel branching that lets the warehousemen package the goods while the administrative work continues is restored, so the process has the same concurrency and the same overall flow as before.
+4. Sequence flows: All connections are re-established: the packaged-goods output again feeds the final "Prepare for picking up goods" step, so that "If everything is ready, the packaged goods are prepared for being picked up by the logistic company" is again preceded by the packaging activity. The precondition of Rule 10 ("The warehousemen must finish packaging before the logistics company arrives for pickup") is again made real by this task.
+
+With the "Package goods" task restored, the process returns to exactly the original shape described in Process_Narrative.txt, where goods are packaged by the warehousemen in parallel with the shipment clarification and then prepared for pickup.

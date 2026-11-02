@@ -1,0 +1,28 @@
+Request1:
+Removed element: Send request for activation and wait for the response (for applicants not registered at an eligible university)
+Reason: The activation-request step is proposed for removal so that applicants can start using the sports institute system immediately without waiting for an activation response.
+Conflict details: Conflicts with Rule 5 ("Applicants not registered at an eligible university must request an activation and wait for the response") and Rule 6 ("An account becomes active only after the sports institute approves the activation request"). Removing the activation request eliminates the mandatory activation workflow that both rules prescribe, so these applicants can never obtain an active account.
+
+Request2:
+Removed element: Log into the account
+Reason: The login step is proposed for removal so that registration can proceed directly after account creation, skipping authentication.
+Conflict details: Conflicts with Rule 7 ("Registration can be completed only after the user has logged in successfully"). Without a login step there is no way to verify the user's identity before registration is completed. It also conflicts with Resource 7 ("Number of registered users: 5000"): the registered-user base exists to support authenticated access, and removing the login step makes this resource infrastructure unusable for the registration flow.
+
+Request3:
+Removed element: Check whether the applicant is registered at an eligible university
+Reason: The eligibility check is proposed for removal so that every applicant can create an account without university validation.
+Conflict details: Conflicts with Rule 4 ("New accounts may be created only by applicants who are registered at an eligible university") and Rule 14 ("Account creation is rejected if the applicant's university is not in the list of eligible universities"). It also conflicts with Resource 3 ("Number of eligible universities: 15"): the list of 15 eligible universities exists precisely to drive this eligibility check, and without the check the list can no longer be enforced.
+
+Request4:
+Removed element: Tweet to friends via the Twitter integration
+Reason: The optional social-sharing step is proposed for removal to simplify the registration flow and remove the dependency on the Twitter integration.
+Conflict details: None — fully compatible with all rules and resources. Rule 13 ("Tweeting to friends is possible only after the user authorizes the connection to their Twitter account") is a permissive rule that only gates tweeting when it occurs; it does not require tweeting to happen. No other rule or resource in the folder references Twitter or the tweet step. The core registration flow (select course, create or log into an account, provide payment information, receive the course ticket) remains fully intact and compliant.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

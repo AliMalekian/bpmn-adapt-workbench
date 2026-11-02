@@ -1,0 +1,15 @@
+1. Every custom chainsaw must be built from at least 5 defining properties, such as guide bar length, chain width, and motor type (electric or gasoline).
+2. Parts are ordered from various online sources in parallel, but only after the customer has confirmed all chainsaw properties.
+3. All delivered parts must pass a manual inspection before any assembly may begin.
+4. A parts batch with any damaged or incorrect item is rejected, and the affected part is reordered from the same source.
+5. When bespoke prototyping is agreed upon, prototype approval precedes batch production; standard production models do not require customer prototype cancellation workflows.
+6. If the customer does not approve the prototype within 14 days, the remaining production is cancelled and a restock fee applies for ordered parts.
+7. Status updates about production progress must be sent to the customer at least once every 3 working days.
+8. Assembly may begin only when the stock of every required part type in the current order is complete.
+9. At least 2 spare parts of every custom item must be kept in stock to cover testing units before the main batch is assembled.
+10. An order is limited to 20 identical chainsaws to keep the production line within a single batch.
+11. If a required part is out of stock at its primary source, an alternate supplier must be chosen within 24 hours to avoid production delay.
+12. Custom guide bars longer than 90 cm require an additional safety clearance test before shipping.
+13. Each custom configuration requires a unique configuration code, and the production log must record all inspection results for traceability.
+14. Production is paused immediately if any safety inspection finds a non-conforming part, until the batch is re-inspected and corrected.
+15. The customer must confirm the final configuration in writing before any part ordering begins.

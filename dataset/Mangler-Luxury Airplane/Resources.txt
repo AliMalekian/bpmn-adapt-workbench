@@ -1,0 +1,12 @@
+Number of selectable bar types: 5
+Maximum number of seats: 40
+Minimum number of seats: 8
+Number of interior manufacturing teams: 6
+Test flight duration: 4 hours
+Toilet water range: 5 to 20 liters
+Number of toilets per plane: 2
+Seat color options: 6
+Interior assembly time: 30 days
+Component delivery window: 21 days
+New test flights after rework: 1
+Maximum total order volume: 3 planes

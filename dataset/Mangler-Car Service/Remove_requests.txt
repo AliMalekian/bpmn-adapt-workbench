@@ -1,0 +1,28 @@
+Request1:
+Removed element: "send status updates to car owner via e-mail" task (the step that emails the owner about the repair progress while the service is open)
+Reason: Switching to a single final notification is proposed, dropping the repeated e-mail status updates.
+Conflict details: Conflicts with Rule 7 ("The owner must receive a status update by email every 2 days while the service is open"), which prescribes exactly this recurring email task. It also conflicts with Resource "Status update frequency for open services: every 2 days" and "Maximum open service duration before escalation: 7 days", which define the cadence and the window in which the updates run. Additionally, Rule 15 ("The repair record including problems, updates, and next-service date must be archived for 5 years") lists "updates" as archived content — content produced only by this task.
+
+Request2:
+Removed element: "check if car is registered" task (the step that verifies the car is still registered before the owner is notified)
+Reason: The registration check is proposed to be skipped on the assumption that the reminder database is already current.
+Conflict details: Conflicts with Resource "Registered vehicle check queries per day: 9000", which quantifies the capacity reserved specifically for the daily registration checks performed by this step. It also conflicts with Resource "Maximum number of cars under reminder per month: 8000", because the reminder population can only be kept correct if the registration status is actually verified. Furthermore the removal violates Rule 2 ("The system must check that the car is still registered before the owner is notified") and Rule 3 ("Vehicles that are no longer registered are removed from the reminder process immediately"), which are the direct business rules for this task.
+
+Request3:
+Removed element: "confirm receipt of payment" / "pay via app" task (the step where the owner pays through the app and the system confirms receipt)
+Reason: Offering payment only by paper invoice at the shop is proposed, removing the in-app payment step.
+Conflict details: Conflicts with Rule 8 ("Payment through the app is accepted only after the repair is marked as successful by the mechanic") and Rule 14 ("Payment for a completed service must be settled within 14 days of receiving the invoice"), because the app-payment path and its settlement window depend on this step. It also conflicts with Resource "App payment transactions per day: 1500" and "Payment settlement window: 14 days", which quantify the app-payment capacity and settlement that this task performs. In addition, Rule 15 requires the payment outcome to be recorded in the archived repair record, which this step provides.
+
+Request4:
+Removed element: "select payment method" decision step (the in-app step where the owner chooses the payment method, e.g. app payment vs. other method)
+Reason: The payment-method selection is a purely cosmetic offer screen; the owner could simply be routed directly to the default app payment, so the selection step is removed.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt mandates an explicit payment-method selection step; Rule 8 ("Payment through the app is accepted only after the repair is marked as successful by the mechanic") and Rule 14 ("Payment for a completed service must be settled within 14 days of receiving the invoice") still hold because the single default payment path satisfies all settlement and timing requirements. No resource in Resources.txt is bound to the selection step. The payment confirmation step itself is retained, so nothing about compliance changes.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

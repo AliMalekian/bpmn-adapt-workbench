@@ -1,0 +1,28 @@
+Request1:
+Removed element: CRS checks the defect task (the step in which the customer service representative examines the defective computer before issuing a repair cost calculation)
+Reason: To save technician time, the proposal is to issue the repair cost calculation directly from the customer's description without an inspection.
+Conflict details: CONFLICTS with Rule 1 of Rules.txt ("The CRS must check the defect of the defective computer before issuing a repair cost calculation.") — removing the defect check violates this mandatory precondition. It also conflicts with Rule 10 of Rules.txt ("Labor is charged at $60 per hour with a minimum charge of 1 hour."), because the labor charge for the inspection cannot be determined if the inspection is never performed. The removal therefore breaks Rules 1 and 10.
+
+Request2:
+Removed element: Client takes her computer home unrepaired task (the step on the rejection branch where the customer collects the unrepaired computer when the quoted costs are not acceptable)
+Reason: To reduce handling steps, the proposal is to keep rejected computers at the service center instead of returning them to the customer.
+Conflict details: CONFLICTS with Resource "Number of CRS technicians: 6" and Resource "Daily repair capacity (computers): 25" in Resources.txt — the service center is sized for the current workload, and retaining unrepaired computers at the center would consume technician capacity and storage that are not allocated in the resources. It also conflicts with Resource "Number of specialist technician benches: 2", since holding unrepaired computers at the center risks them being mistaken for escalated repairs destined for the specialist bench. The removal therefore violates the technician, repair-capacity and specialist-bench resources.
+
+Request3:
+Removed element: Repair the hardware task (the first-pass repair activity on the hardware component, executed in arbitrary order with the software configuration)
+Reason: To cut repair time, the proposal is to perform only the software check-and-configuration and skip the hardware repair pass.
+Conflict details: CONFLICTS with Rule 4 of Rules.txt ("The hardware check-and-repair and the software check-and-configure activities are executed in an arbitrary order.") — the rule explicitly lists both activities, so dropping the hardware repair violates it. It also conflicts with Rule 12 of Rules.txt ("The first pass of hardware repair and software configuration is included in the base repair fee.") and Resource "Base repair fee: $80" in Resources.txt, because the base fee covers both first-pass activities; charging the same base fee for only half the work breaks the fee basis. The removal therefore violates Rules 4 and 12 and the resource "Base repair fee: $80".
+
+Request4:
+Removed element: Proper system functionality is tested task (the functionality test performed after each of the two repair activities to verify the system works correctly)
+Reason: To shorten each repair iteration, the proposal is to skip the intermediate functionality tests and consider the repair finished after the repair activities complete.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt mandates that a functionality test must be performed; Rules 5 and 13 regulate the ordering and duration of the test ("The proper system functionality must be tested after each of the two repair activities." and "Each functionality test must take no longer than 20 minutes after a repair activity."), but removing the test step does not create a violation because the final outcome ("Repair is finished") is reached directly. No resource in Resources.txt is allocated to the tests; the "Functionality test time limit (minutes): 20" resource becomes simply unused, not violated. The removal is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

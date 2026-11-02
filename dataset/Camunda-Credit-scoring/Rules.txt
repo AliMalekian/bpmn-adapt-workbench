@@ -1,0 +1,15 @@
+1. Credit scoring requests may only be submitted by an authorized sales clerk from the banking frontend.
+2. A level-1 scoring request must return a result within 10 seconds or be reported as delayed to the banking system.
+3. Requests that cannot be answered instantly are automatically escalated to level-2 scoring by the agency.
+4. Level-2 scoring must deliver a final result within 5 minutes.
+5. Only a licensed credit protection agency contracted by the bank may perform level-1 and level-2 scoring.
+6. A scoring result older than 30 days cannot be reused and requires a new request.
+7. A customer may be scored at most once per day unless a data error is documented by an agency operator.
+8. Scoring requests received after 17:00 are queued for the next business day.
+9. The frontend must display an arriving score result to the clerk within 60 seconds.
+10. A delayed request must show a "check again later" message to the clerk until the result arrives.
+11. Customers whose history shows more than two level-2 escalations in 90 days require a manual agency review.
+12. The bank may query a score only for customers who have signed a credit report consent form.
+13. All score data exchanged between the bank and the agency must be transmitted over an encrypted channel.
+14. The agency logs every processed scoring request; internal event markers tracking scoring reception do not mandate distinct administrative event handlers.
+15. A clerk may keep at most 10 pending scoring requests open at the same time.

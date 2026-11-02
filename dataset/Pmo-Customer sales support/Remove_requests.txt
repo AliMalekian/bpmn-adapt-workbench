@@ -1,0 +1,28 @@
+Request1:
+Removed element: Place order (the "Place order" task that submits the order after quote approval)
+Reason: Placing the order duplicates the quote approval and adds a step; removing it would treat the approved quote as the order itself.
+Conflict details: Conflicts with Rule 5 ("The order is placed only after the customer approves the quote") and Rule 14 ("Duplicate order entries for the same customer and product are blocked if an identical order was placed within the last 7 days"). Without the "Place order" task there is no order placement to gate on quote approval, so Rule 5's condition becomes meaningless, and the duplicate-order blocking of Rule 14 has no order records to act on.
+
+Request2:
+Removed element: Address customer concerns or questions (the "Address customer concerns or questions" task run in parallel with collecting customer information)
+Reason: Answering concerns in parallel with data collection lengthens the conversation; removing it would speed up the inquiry handling.
+Conflict details: Conflicts with the resource "Average quote preparation time (minutes): 45" from Resources.txt, which budgets the inquiry-handling work that includes addressing customer concerns. Removing the concerns task leaves this time-budget resource without the activity it is meant to cover, and it also leaves the "Number of sales support agents: 12" resource without one of the mandated inquiry-handling steps those agents perform.
+
+Request3:
+Removed element: Record order in system (the "Record order in system" task)
+Reason: Recording adds data-entry overhead; removing it would let the process confirm the order directly after placement.
+Conflict details: Conflicts with Rule 6 ("Every placed order must be recorded in the system and confirmed to the customer before the process ends") and Rule 10 ("An order is considered final only after payment terms are agreed and recorded in the system"), and with the resource "Number of CRM seats: 12" from Resources.txt. Rule 6 makes system recording mandatory before confirmation, Rule 10 makes the order final only after the payment terms are recorded in the system, and the CRM-seat resource exists precisely to support order recording; removing the recording task breaks both rules and voids the CRM resource.
+
+Request4:
+Removed element: The data-protection/logging side-annotation attached to the final order processing (the non-executable annotation tied to the end of the sales flow)
+Reason: The annotation is informational only and does not perform work; removing it would leave the flow visually cleaner.
+Conflict details: None - fully compatible with all rules and resources. No rule in Rules.txt and no resource in Resources.txt is bound to the annotation itself: Rule 15, which addresses data protection, is a data-handling obligation on the recorded data and is fully honored by the remaining recording and confirmation steps regardless of the annotation. Every executable task, gateway, and sequence flow stays intact, so the process remains fully operational and every rule and resource remains satisfied.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

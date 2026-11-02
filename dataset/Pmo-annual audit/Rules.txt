@@ -1,0 +1,15 @@
+1. The audit coordinator starts the annual audit by sending a notification to every regional office.
+2. The regional office must submit its financial statements and supporting documents within 30 days of the notification.
+3. The compliance team must check for regulatory updates that affect the audit before document review begins.
+4. The central audit team reviews the submission and requests clarifications if any discrepancies are found.
+5. The regional office must provide the requested clarifications within 10 working days.
+6. The risk assessment evaluates financial, operational, and compliance risks, and all three must be completed.
+7. A detailed investigation, including data analysis and interviews, is launched when high risk is identified.
+8. Site visits are performed for high-risk findings when data analysis and interviews are insufficient.
+9. The audit report is compiled only after all identified risks have been addressed.
+10. The audit director must review the report and may approve it or send it back for revisions.
+11. If revisions are required, the audit team updates the report and resubmits it for a new review cycle.
+12. A report may be returned for revisions no more than 3 times before it is escalated to the executive board.
+13. The final report is distributed to the executive board and archived once approved.
+14. The entire audit process is closed only after the final report is distributed and archived.
+15. All audit working papers and evidence must be retained for at least 7 years after the audit closes.

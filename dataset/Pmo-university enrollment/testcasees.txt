@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline..
+Current token position: Immediately before The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline. on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of admissions office staff: 12)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline..
+Current token position: Immediately before The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 6 (A student must confirm enrollment within 2 weeks of receiving the acceptance letter, otherwise the application is canceled.)
+Expected execution path: Follow the original predecessor → The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline..
+Current token position: Immediately before The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline. on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of admissions office staff: 12)
+Relevant rules: Rule 6 (A student must confirm enrollment within 2 weeks of receiving the acceptance letter, otherwise the application is canceled.)
+Expected execution path: Follow the original predecessor → The student's enrollment confirmation step — specifically, the requirement that the accepted student must confirm enrollment by a specified deadline. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The student ID card issuance step — specifically, the step where the student obtains a student ID card after enrollment confirmation..
+Current token position: Immediately before The student ID card issuance step — specifically, the step where the student obtains a student ID card after enrollment confirmation. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → The student ID card issuance step — specifically, the step where the student obtains a student ID card after enrollment confirmation. → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

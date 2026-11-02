@@ -1,0 +1,41 @@
+STATE-01: Initial / early execution
+Current process position: Customer
+Completed activities: Production Chainsaw GmbH
+Current active activity or waiting point: Customer
+Token position / execution status: token is at Customer; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Production capacity: 20 saws per month)
+Applicable rules: Rule 1 (A customer order must specify at least 5 properties (guide bar length, chain width, chain pitch, chain type, and gasoline or electric motor type) before part ordering can start.)
+Possible next activities: Production Chainsaw GmbH
+
+STATE-02: Intermediate / decision
+Current process position: parallelGateway
+Completed activities: Production Chainsaw GmbH, Customer, Production Chainsaw GmbH, Feedback, Chainsaw order request, 24 hours passed, DefaultInputSet, DefaultOutputSet, All parts recieved, Feedback, startEvent, wait for arrival, order received, Start, Request porperties, Send update, Inspect parts, Place an chainsaw order, Ask for order, Do manual inspection, Determine properties, Recieve properties, Parts assembled?, Assemble parts, Choose properties, Assemble the parts
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Production capacity: 20 saws per month)
+Applicable rules: Rule 1 (A customer order must specify at least 5 properties (guide bar length, chain width, chain pitch, chain type, and gasoline or electric motor type) before part ordering can start.)
+Possible next activities: Order guide bar, Order chain, Order motor, Order color, Order protective shield, Place order online-shop2, Place order online-shop1, Place order online-shop3, Finish order, Send updates, Do production, Finish chainsaw production, Order parts, Order parts, Check delivery of ordered parts, Order parts
+
+STATE-03: Resource-dependent / waiting
+Current process position: parallelGateway
+Completed activities: Production Chainsaw GmbH, Customer, Production Chainsaw GmbH, Feedback, Chainsaw order request, 24 hours passed, DefaultInputSet, DefaultOutputSet, All parts recieved, Feedback, startEvent, wait for arrival, order received, Start, Request porperties, Send update, Inspect parts, Place an chainsaw order, Ask for order, Do manual inspection, Determine properties, Recieve properties, Parts assembled?, Assemble parts, Choose properties, Assemble the parts
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Production capacity: 20 saws per month)
+Applicable rules: Rule 1 (A customer order must specify at least 5 properties (guide bar length, chain width, chain pitch, chain type, and gasoline or electric motor type) before part ordering can start.)
+Possible next activities: Order guide bar, Order chain, Order motor, Order color, Order protective shield, Place order online-shop2, Place order online-shop1, Place order online-shop3, Finish order, Send updates, Do production, Finish chainsaw production, Order parts, Order parts, Check delivery of ordered parts, Order parts
+
+STATE-04: Near completion / completed
+Current process position: End
+Completed activities: Production Chainsaw GmbH, Customer, Production Chainsaw GmbH, Feedback, Chainsaw order request, 24 hours passed, DefaultInputSet, DefaultOutputSet, All parts recieved, Feedback, startEvent, wait for arrival, order received, Start, Request porperties, Send update, Inspect parts, Place an chainsaw order, Ask for order, Do manual inspection, Determine properties, Recieve properties, Parts assembled?, Assemble parts, Choose properties, Assemble the parts, parallelGateway, Set properties, Positive feedback available?, Note and check properties, parallelGateway, Order parts, Order parts, Order parts, exclusiveGateway, exclusiveGateway, Send chainsaw to customer, Start to order, Send updates, Do production, parallelGateway, parallelGateway, Customer likes chainsaw?, Recieve feedback, parallelGateway, parallelGateway, standard parts ?, Check delivery of ordered parts, Order guide bar, Order chain, Order motor, Order color, Order protective shield, Request number of chainsaws needed, Place order online-shop2, Place order online-shop1, Place order online-shop3, Finish chainsaw production, Prepare special terms, Calculate terms, exclusiveGateway, parallelGateway, Receive number of chainsaws needed, parallelGateway, Send first chainsaw, exclusiveGateway, Perform Inspection, Number of chainsaws needed produced?, Finish order, Receive first chainsaw, Assemble the parts, Set number, Send order to customer, Check chainsaw, Send updates, Chainsaw order completed, satisfied?, Send first saw, Cancel rest of his order, Produce rest of his order, exclusiveGateway, exclusiveGateway, Note down cancellation reason, Cancel production of the remaining order, Produce 
+the remaining
+ order, Complete the contract, endEvent, exclusiveGateway, Send the remaining order, endEvent, Cancel the order
+Current active activity or waiting point: End
+Token position / execution status: token is at End; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Production capacity: 20 saws per month)
+Applicable rules: Rule 1 (A customer order must specify at least 5 properties (guide bar length, chain width, chain pitch, chain type, and gasoline or electric motor type) before part ordering can start.)
+Possible next activities: Process completion

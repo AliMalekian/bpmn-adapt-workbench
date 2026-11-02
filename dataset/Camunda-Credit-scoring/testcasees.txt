@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message).
+Current token position: Immediately before "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message) on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of sales clerks using the frontend: 25)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message).
+Current token position: Immediately before "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message) on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 2 (A level-1 scoring request must return a result within 10 seconds or be reported as delayed to the banking system.), Rule 10 (A delayed request must show a "check again later" message to the clerk until the result arrives.), Rule 15 (A clerk may keep at most 10 pending scoring requests open at the same time.)
+Expected execution path: Follow the original predecessor → "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message).
+Current token position: Immediately before "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message) on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of sales clerks using the frontend: 25)
+Relevant rules: Rule 2 (A level-1 scoring request must return a result within 10 seconds or be reported as delayed to the banking system.), Rule 10 (A delayed request must show a "check again later" message to the clerk until the result arrives.), Rule 15 (A clerk may keep at most 10 pending scoring requests open at the same time.)
+Expected execution path: Follow the original predecessor → "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "scoring request received" start event and "scoring request handled" end event (the administrative lifecycle events of the scoring request that were removed by Request4) Reason: Request4 removed the two administrative request-lifecycle events, claiming they were pure bookkeeping. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape..
+Current token position: Immediately before "scoring request received" start event and "scoring request handled" end event (the administrative lifecycle events of the scoring request that were removed by Request4) Reason: Request4 removed the two administrative request-lifecycle events, claiming they were pure bookkeeping. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "scoring request received" start event and "scoring request handled" end event (the administrative lifecycle events of the scoring request that were removed by Request4) Reason: Request4 removed the two administrative request-lifecycle events, claiming they were pure bookkeeping. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape. → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

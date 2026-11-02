@@ -1,0 +1,15 @@
+1. The base airplane model is identical for every order; only the interior configuration is customized.
+2. When customizing the interior, the customer selects from the offered design configurations; standard factory delivery does not mandate premium shipping arrangements.
+3. The customer specifies the number of seats, their color, and the amount of toilet water in the plane.
+4. All interior specifications must be confirmed by the customer before requirements are sent to the teams.
+5. Each interior component type is manufactured by a dedicated team, e.g. the vodka bar by the Russian team.
+6. Component teams begin manufacturing only after receiving the official requirements document.
+7. The interior is assembled only after all individual bits and pieces from every team have arrived.
+8. After assembly, the plane is sent on a test flight to validate the interior.
+9. A test protocol is created during the flight and sent to the manufacturer and the customer.
+10. The plane is delivered to the customer only after the test flight passes without non-conformities.
+11. The customer must confirm receipt of the plane to close the process.
+12. Seats may be produced only in the colors confirmed by the customer at order time.
+13. The toilet water amount per toilet must be between 5 and 20 liters.
+14. At least 5 different manufacturing teams must submit parts before assembly is authorized.
+15. If the test flight reveals defects, rework is done by the responsible team and a new test flight is scheduled.

@@ -1,0 +1,10 @@
+Re-Add Request:
+Removed element to be restored: Enter the customer's name (the "Enter customer's name" data-entry task at order intake)
+
+Restoration details:
+1. Re-insert the "Enter customer's name" task immediately after the order is received and before the "Menu or just the burger?" decision: recreate the BPMN user-task named "Enter customer's name" together with its incoming and outgoing sequence flows so that every incoming order passes through it.
+2. Restore the data-capture behavior: the robot again prompts the customer for their name, records the name in the order record, and uses it for order tracking and identification at delivery, exactly as before the removal.
+3. Reconnect the flow: the sequence flow from order reception now leads into "Enter customer's name" and then continues to the "Menu or just the burger?" gateway exactly as in the original model; the anonymous-take path introduced by the removal is deleted.
+4. Restore the order record so each order again carries the customer-name field, preserving the process shape (receive order -> enter name -> choose menu/burger -> prepare drink/side/burger -> status updates -> conveyor delivery) fully identical to its original state.
+
+The process is thereby returned to exactly its original shape: every task, sequence flow, and captured data attribute that Request4 removed is restored.

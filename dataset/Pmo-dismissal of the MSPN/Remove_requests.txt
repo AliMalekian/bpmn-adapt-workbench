@@ -1,0 +1,30 @@
+Request1:
+Removed element: The "MSPO rejects the dismissal of the MSPN" task (Task_3) - the branch in which the MSPO rejects the dismissal and returns it to the MSPN with the reasons.
+Reason: It is proposed for removal to eliminate the rejection path entirely, so that the MSPO can only confirm a termination, simplifying the review outcome.
+Conflict details: This removal CONFLICTS with Rule 3 of Rules.txt: "The MSPO must either reject or confirm the dismissal; no other outcome is permitted." Rule 3 explicitly requires rejection to remain one of the two permitted outcomes, so removing the "MSPO rejects the dismissal of the MSPN" task directly breaks Rule 3. It also breaks Rule 4 (a rejected dismissal is "returned to the MSPN together with the rejection reasons") and Rule 5 (resubmission after the MSPN addresses the stated reasons), because without the rejection task no dismissed case can be returned to the MSPN.
+
+Request2:
+Removed element: The "MSPN sends a dismissal to MSPO" task (Task_1) - the opening task in which the MSPN sends the dismissal to the MSPO for review.
+Reason: It is proposed for removal so that the case is treated directly as a review request handed straight to the MSPO office, skipping the formal sending step.
+Conflict details: This removal CONFLICTS with the resources in Resources.txt. The resource "Number of MSPN staff members covered: 18" denotes the MSPN staff whose dismissal cases arrive through the formal send, and "Average dismissals reviewed per month: 3" quantifies the monthly dismissal volume that enters the process precisely through the MSPN sending step; both resources presuppose that dismissal cases are formally sent by the MSPN to the MSPO. Removing the sending task contradicts this provisioned inflow of dismissal cases. The removal also conflicts with the personnel resource "Personnel officers on staff: 3", because these officers review and record cases that first arrive through the sending step.
+
+Request3:
+Removed element: The "MSPO reviews the dismissal" task (Task_2) - the step in which the MSPO reviews the dismissal received from the MSPN.
+Reason: It is proposed for removal so that the MSPO immediately decides to reject or confirm the dismissal without an explicit review step, shortening the case time line.
+Conflict details: This removal CONFLICTS with both rules and resources. Rules: Rule 2 of Rules.txt states that "The MSPO must review each dismissal within 10 working days of receipt," and Rule 9 caps the resubmissions of the same dismissal before referral to the higher authority, which presupposes sequential reviews of the case. Both rules presuppose an explicit review activity; removing the review task breaks Rule 2 and makes the review-based limits meaningless. Resources: the resource "MSPO review deadline (working days): 10" in Resources.txt provisions the 10-working-day window specifically for the MSPO's review; removing the review task leaves that provisioned review capacity unused and contradicts the resource plan of the process.
+
+Request4:
+Removed element: The "MSPO confirms the dismissal of the MSPN" task (Task_4) - the branch in which the MSPO confirms the dismissal of the MSPN.
+Reason: It is proposed for removal in cases where the legal grounds for termination cannot be verified as valid: the MSPO never confirms the dismissal and only ever rejects it (or the case is referred onward), so the confirmation branch is removed from the model for such a case.
+Conflict details: None — fully compatible with all rules and resources. The removal is only proposed for the case in which the legal grounds for termination cannot be verified as valid. In that situation Rule 6 of Rules.txt ("The MSPO may confirm a dismissal only when the legal grounds for termination are verified as valid") means the MSPO is not permitted to confirm the dismissal anyway, and Rule 3's two-outcome constraint remains effective because the only legally available outcome in this case is rejection - so no rule is broken. Rule 7 (effective date), Rule 10 (entering confirmed dismissals in the personnel records), Rule 13 (reconsideration only on newly discovered evidence), and Rule 14 (terms of separation stated in the confirmation must be executed) all concern confirmed dismissals; for a dismissal that is never confirmed, none of these rules is triggered, so they are not violated. No resource in Resources.txt is tied to the confirmation branch: resources such as "MSPO review deadline (working days): 10", "Maximum resubmissions allowed: 2", "Personnel record update deadline (working days): 5", and "Average dismissals reviewed per month: 3" all remain fully compatible, because they concern review, resubmissions, filing, and volume rather than the confirmation branch itself. The process remains fully executable for the described case, so the removal does not conflict with any rule or resource.
+
+Note (for the re-add request): Request4 removes the "MSPO confirms the dismissal of the MSPN" task (Task_4). It applies specifically to a case in which the legal grounds for termination cannot be verified as valid; it does not remove any confirmation, ruling, notification, or personnel-record event, and no other part of the process is affected by this removal.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

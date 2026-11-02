@@ -1,0 +1,15 @@
+1. The robot accepts only one order at a time.
+2. The customer must first decide whether they want a menu or only the burger.
+3. If a menu is ordered, the drink preparation starts immediately.
+4. The drink preparation time varies depending on the selected drink size.
+5. While the drink is being prepared, the robot asks whether the customer wants fries or wedges.
+6. If fries are ordered, the robot prepares fries; if wedges are ordered, it prepares wedges.
+7. The fries and wedges preparation time varies with the ordered size.
+8. The burger is prepared only after the side dish decision has been made.
+9. The robot gives the customer an enthusiastic status update every 30 seconds while the burger is prepared.
+10. The burger preparation time varies with the number of ingredients ordered.
+11. The order is delivered exclusively via the conveyor belt.
+12. An order is handed over when preparation is complete; live preparation status display to the customer is an optional service enhancement.
+13. The customer may not change the menu type after preparation has started.
+14. Orders containing items that are not on the menu are rejected by the robot.
+15. The delivery is released on the conveyor belt only after the whole order is finished.

@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: "wait for turn" step (the guest's waiting activity that was removed by Request4)
+Reason: Request4 removed the "wait for turn" activity, claiming it is pure idle time. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+
+Detailed restoration:
+1. "wait for turn" step: Restored as the guest activity that occurs between "Choose a dish" and "Place order". It is placed back exactly where it originally was in the guest lane of the process: after the guest chooses a dish from the changing meal range and before the order is placed with the employee.
+2. Waiting-line semantics: The waiting activity again represents the guest standing in line until it is his turn, consistent with Rule 13 "Maximum guests waiting in line: 40" and the resource "Maximum guests waiting in line: 40". The step is not an idle dead-end; it is the queueing activity that gates the transition to "Place order".
+3. Sequence flows: All original connections are re-established: "Choose dish" -> "wait for turn" -> "Place order". With the step back, the guest again follows the exact original path from entering the restaurant to ordering.
+4. Resource consistency: The restored step again coexists with the till-and-service staffing resource "Till and service employees: 3" and "Maximum guests waiting in line: 40", so the queueing behaviour matches the original model precisely.
+
+With the "wait for turn" step restored, the process returns to exactly the original shape described in Process_Narrative.txt, where the guest chooses a dish and waits until it is his turn before placing the order.

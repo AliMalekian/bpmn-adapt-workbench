@@ -1,0 +1,28 @@
+Request1:
+Removed element: Build tools (the "Build tools" task that crafts the tools required to gather dependent resources)
+Reason: Crafting tools takes time and interrupts direct collection; removing this step would let the bot collect resources immediately without tool prerequisites.
+Conflict details: Conflicts with Rule 3 ("Tools required to gather a resource must be crafted before the dependent resource can be collected") and Rule 4 ("a tool's crafting dependencies must be satisfied first, otherwise the dependent resource is skipped"). Without the "Build tools" step, the tool prerequisites mandated by Rules 3 and 4 are never produced, and dependent resources could be collected without the required tools.
+
+Request2:
+Removed element: Wait for random natural event for some time (the "Wait for random natural event for some time" wait step and the "Reset bot" handling around natural disasters)
+Reason: Disaster pauses set the farm back and waste time; removing the wait step would let the bot keep farming through any disaster.
+Conflict details: Conflicts with the resource "Disaster progress setback (percent): 20" from Resources.txt, which configures how far the bot is reset when a natural disaster occurs. Removing the disaster wait/reset step leaves this setback resource with no step that applies it and voids the configured 20 percent recovery parameter. It also leaves "Farm recovery time after disaster (minutes): 30" from Resources.txt without a target step.
+
+Request3:
+Removed element: Update list of resources (the "Update list of resources" task that lets the player change the farmed resource list while the bot is running)
+Reason: Updating the list mid-run changes targets unexpectedly and complicates progress tracking; removing this step would keep the original list fixed.
+Conflict details: Conflicts with Rule 7 ("The list of resources to be farmed can be updated at any time while the bot is running") and with the resource "Maximum resources collected in parallel: 10" from Resources.txt. Rule 7 guarantees the player may update the resource list at any time, and the parallel-collection capacity resource governs the list that such updates modify; removing the update step breaks the guaranteed update capability of Rule 7 and disconnects the parallel-collection resource from an updatable list.
+
+Request4:
+Removed element: Give bot a sleeping break (the "Give bot a sleeping break" pause step)
+Reason: This optional rest pause merely delays gathering when the target is near; removing it would let the bot run straight through to completion.
+Conflict details: None - fully compatible with all rules and resources. No rule in Rules.txt mandates a sleeping break (Rule 11 halts only on inventory capacity and Rule 12 on low tool durability, neither of which is the sleeping-break pause), and no resource in Resources.txt is bound to a sleep interval. The bot can still collect, notify, reset after disasters, and finish its farming targets exactly as before.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,12 @@
+Re_Add_Request:
+Restored element: The "review the rejection reasons" sub-element within the rejection feedback path — specifically, the part where the employee reviews the reasons for the rejection after the application is returned.
+
+Detailed restoration:
+The following element, which was removed in Request4, is hereby restored to its original position in the process:
+
+1. Rejection Reasons Review: When a vacation request is rejected by the supervisor, the application is returned to the applicant/employee, and the employee can review the rejection reasons. This sub-element is restored as part of the rejection feedback path, immediately following the supervisor's rejection decision and accompanying the return of the application to the employee.
+
+Restoration ensures that:
+- Upon rejection, the employee not only receives the returned application (the rejection notification) but also has the ability to review the specific reasons for the rejection.
+- The rejection feedback path is fully restored to its original state: the supervisor rejects the request, the application is returned to the applicant/employee, the employee can review the rejection reasons, and the employee may subsequently submit a revised request after 3 working days per Rule 10.
+- The process returns to its complete original form where rejected employees receive full feedback on why their vacation request was denied, enabling them to make informed decisions when submitting revised requests.

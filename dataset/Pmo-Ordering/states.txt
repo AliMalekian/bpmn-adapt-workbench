@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: customer logs into E-Shop
+Completed activities: Open E-Shop Homepage
+Current active activity or waiting point: customer logs into E-Shop
+Token position / execution status: token is at customer logs into E-Shop; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Ordering in an Online Shop)
+Applicable rules: Rule 1 (A customer must log in and receive login confirmation from the system before selecting products.)
+Possible next activities: customer credentials being checked by system
+
+STATE-02: Intermediate / decision
+Current process position: customer adds product to shopping cart
+Completed activities: Open E-Shop Homepage, customer logs into E-Shop, customer credentials being checked by system, succesful login?, exclusiveGateway, exclusiveGateway, customer selects a product, Close E-Shop Homepage
+Current active activity or waiting point: customer adds product to shopping cart
+Token position / execution status: token is at customer adds product to shopping cart; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Ordering in an Online Shop)
+Applicable rules: Rule 1 (A customer must log in and receive login confirmation from the system before selecting products.)
+Possible next activities: customer saves product
+
+STATE-03: Resource-dependent / waiting
+Current process position: customer enters payment data
+Completed activities: Open E-Shop Homepage, customer logs into E-Shop, customer credentials being checked by system, succesful login?, exclusiveGateway, exclusiveGateway, customer selects a product, Close E-Shop Homepage, customer adds product to shopping cart, customer saves product, customer checks if product was already selected, has customer selected all desired products?, parallelGateway, Payment is prepared by system, Shipment is prepared by system, parallelGateway
+Current active activity or waiting point: customer enters payment data
+Token position / execution status: token is at customer enters payment data; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Ordering in an Online Shop)
+Applicable rules: Rule 1 (A customer must log in and receive login confirmation from the system before selecting products.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: order is being finished by system
+Completed activities: Open E-Shop Homepage, customer logs into E-Shop, customer credentials being checked by system, succesful login?, exclusiveGateway, exclusiveGateway, customer selects a product, Close E-Shop Homepage, customer adds product to shopping cart, customer saves product, customer checks if product was already selected, has customer selected all desired products?, parallelGateway, Payment is prepared by system, Shipment is prepared by system, parallelGateway, customer enters payment data, parallelGateway, customer enters shipping address, customer waits until bank confirms payment, if shipping adress == billing adress?, parallelGateway, exclusiveGateway, customer enters an independent billing adress
+Current active activity or waiting point: order is being finished by system
+Token position / execution status: token is at order is being finished by system; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Ordering in an Online Shop)
+Applicable rules: Rule 1 (A customer must log in and receive login confirmation from the system before selecting products.)
+Possible next activities: exclusiveGateway

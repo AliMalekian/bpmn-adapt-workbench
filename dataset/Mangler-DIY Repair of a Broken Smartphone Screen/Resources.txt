@@ -1,0 +1,12 @@
+Replacement screen budget: $120
+Known friends to contact: 5
+Maximum borrowed tools allowed: 3
+Number of recommended ordering choices per part: 3
+Adhesive kits in stock: 2
+Heat gun temperature setting: 80 degrees Celsius
+Adhesive curing time: 8 hours
+Repair attempts allowed before expert: 2
+Cheapest part delivery time: 3 days
+Maximum order value per repair: $250
+Static-free work surfaces available: 1
+Number of owned screwdrivers: 3

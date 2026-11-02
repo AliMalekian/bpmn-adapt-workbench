@@ -1,0 +1,17 @@
+Resources for Overall Equipment Effectiveness (OEE) Monitoring
+
+OEE threshold for machine stop: 75 percent
+Number of monitored machines: 20
+Number of production shifts per day: 3
+Number of responsible engineers: 4
+Alarm acknowledgement time limit: 1 hour
+Number of consecutive failing shifts before maintenance: 3
+Sensor sampling interval: 1 second
+Data collection frequency per shift: continuous
+Weekly OEE reports sent per plant: 1
+Number of plant managers: 2
+Machine restart approval required: engineering approval
+Number of maintenance slots per week: 5
+OEE report retention period: 12 months
+Number of quality inspectors for quarantined units: 3
+Production data storage capacity: 500 GB

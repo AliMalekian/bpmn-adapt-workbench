@@ -1,0 +1,28 @@
+Request1:
+Removed element: Login task (the step in which the user logs in to their account before starting any purchase order)
+Reason: To reduce friction, the proposal is to let users purchase as guests without logging in.
+Conflict details: CONFLICTS with Rule 1 of Rules.txt ("A user must log in to their account before starting any purchase order.") — removing the Login task violates this mandatory precondition. It also conflicts with Rule 13 of Rules.txt ("If an installment payment is missed, the account is blocked from placing new orders until the payment is settled."), because account blocking only works if a user identity tied to an account exists; guest purchases would bypass the block entirely. The removal therefore breaks Rules 1 and 13.
+
+Request2:
+Removed element: Deliver items task (the step that delivers the purchased items to the user after payment or installment completion)
+Reason: To cut shipping costs, the proposal is to end the process at payment and require the user to pick up items.
+Conflict details: CONFLICTS with Resource "Number of delivery partners: 6" in Resources.txt and Resource "Replacement shipping lead time (days): 3" — the platform is explicitly resourced for delivery through 6 delivery partners and a 3-day replacement shipping lead time, so delivery is a designed capability of the process. It also conflicts with Resource "Warehouse order capacity per day: 1,500", since the warehouse capacity is sized to prepare orders for shipping, which presupposes a delivery step. Removing delivery makes these delivery-related resources meaningless. The removal therefore violates the delivery-related resources.
+
+Request3:
+Removed element: Complete installment agreement task (the activity in which the user enters into an installment agreement as an alternative payment method)
+Reason: To simplify payment, the proposal is to accept only full payment and remove the installment option.
+Conflict details: CONFLICTS with Rule 3 of Rules.txt ("The payment method must be either a full payment or an installment agreement.") — removing the installment agreement violates the rule that both payment methods must be available. It also conflicts with Rule 4 of Rules.txt ("Installment agreements are limited to 12 monthly installments and require a minimum purchase value of $100."), which regulates but presupposes the existence of installment agreements. On the resource side it conflicts with Resource "Maximum installment count: 12" and Resource "Minimum purchase value for installments: $100" in Resources.txt, which allocate concrete parameters to the installment option. The removal therefore violates Rules 3 and 4 and the resources "Maximum installment count: 12" and "Minimum purchase value for installments: $100".
+
+Request4:
+Removed element: Return items task (the step in which the user returns delivered items for exchange within the 30-day return window, after which a new delivery of the replacement item is made)
+Reason: To reduce reverse-logistics workload, the proposal is to make all sales final and remove the return-for-exchange option.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt mandates that a return option must exist; Rules 9, 10, 11 and 12 only regulate the return/exchange process once it is triggered, so removing the feature does not violate them. No resource in Resources.txt is dedicated to handling returns. The core purchase flow (login, item selection, payment method, payment/installment, reward, delivery) is unaffected. The removal is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

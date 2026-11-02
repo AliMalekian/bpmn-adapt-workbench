@@ -1,0 +1,15 @@
+1. The next service reminder is scheduled only after a successful previous service has been recorded in the system.
+2. Before notifying the car owner, the system must verify that the car is still registered.
+3. If the car is not registered, no service reminder is sent and the process is suspended until registration is verified.
+4. If the owner does not bring the car to the service within 30 days after notification, a fine is issued automatically by the police app.
+5. The mechanic must record all reported problems with the car, which become part of the reference history for the repair.
+6. The owner receives status updates by email at least once every 2 days while a repair lasts longer than one day.
+7. Payment via the app is enabled only after the mechanic marks the repair as successfully completed.
+8. The "Pickerl" (safety inspection sticker) is issued only after the repair and the technical inspection are both successful.
+9. The mechanic must set the next service date, which defaults to 12 months after the current successful service.
+10. A repair that exceeds 7 working days requires the service facility to send an additional detailed progress notification.
+11. The fine for a missed service may be issued only once per reminder cycle; a new 30-day countdown starts after each reminder.
+12. The car invoice must be fully settled through the app before the Pickerl is released to the owner.
+13. The reminder process restarts only after the owner has completed the service and the mechanic confirms it.
+14. The service facility may accept at most 8 incoming cars per day for full service to guarantee inspection quality.
+15. If a car has gone more than 2 years without a recorded service, a mandatory technical inspection must be booked before a regular service appointment is confirmed.

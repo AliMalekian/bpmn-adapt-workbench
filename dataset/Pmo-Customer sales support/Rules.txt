@@ -1,0 +1,15 @@
+1. The sales process begins only when a potential customer inquires about a product or service.
+2. Sales staff must collect relevant customer information and address every concern or question before a recommendation is given.
+3. Guidance on selecting the appropriate product or service is offered only if the customer is interested.
+4. A quote is issued to the customer only after the specific product or service has been selected.
+5. The order is placed only after the customer approves the quote.
+6. Every placed order must be recorded in the system and confirmed to the customer before the process ends.
+7. Quotes expire 14 days after issue; an expired quote requires a new quote before order placement.
+8. Discounts of more than 15 percent require approval from the sales manager before a quote is sent.
+9. Order confirmation must be sent to the customer within 2 hours of order recording.
+10. An order is considered final only after payment terms are agreed and recorded in the system.
+11. Sales staff may handle at most 20 active quotes at the same time to ensure response quality.
+12. Response to an initial inquiry must be provided within 1 working day.
+13. Returns or cancellations are accepted only within 30 days of the order confirmation date.
+14. Duplicate order entries for the same customer and product are blocked if an identical order was placed within the last 7 days.
+15. Customer data must be handled in compliance with data protection policy; appending explicit data protection annotations to final processing diagrams is optional.

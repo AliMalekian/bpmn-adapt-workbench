@@ -1,0 +1,28 @@
+Request1:
+Removed element: The step of regularly reporting to the job service which companies received job applications.
+Reason: To save administrative effort and keep the application activity private.
+Conflict details: Conflicts with Rule 1 — every job application sent to a company must be reported to the job service registration. It also conflicts with Rule 2 — the job service sends new potential job offers only based on the reported applications and matching interests; without the reporting step the job service has no basis to send new offers. This is supported by the resource "Monthly report deadline: 1st of month", which defines when the reports must be submitted.
+
+Request2:
+Removed element: The rating step in which the company rates each application on the scale from A to E.
+Reason: To let companies skip the evaluation effort and proceed directly to interviews.
+Conflict details: Conflicts with the resources "Rating scale minimum: A" and "Rating scale maximum: E". These two resources define the A-to-E scale that the company rating operation uses; removing the rating step makes both scale resources meaningless and violates the resource plan. In addition, the decision to close applications rated D or lower (Rule 5) and the negotiation of interviews after a positive rating (Rule 6) both depend on this rating — removing it also conflicts with Rules 5 and 6.
+
+Request3:
+Removed element: The review step in which the applicant rates the company after the probation phase.
+Reason: To avoid spending time on feedback about the employer once the probation is over.
+Conflict details: Conflicts with Rule 8 — after probation, both the applicant and the company rate each other on a scale from A to E. It also conflicts with Rule 10 — the process ends when the job becomes permanent and the company rating was not C or lower, since the applicant's rating of the company is exactly what determines whether the process continues; and Rule 11 — if the company is rated C or less, the applicant continues to receive offers but no longer has to report. It further conflicts with the resources "Rating scale minimum: A" and "Rating scale maximum: E", which define the scale used by this rating operation.
+
+Request4:
+Removed element: The optional job-interview negotiation step between the applicant and the company.
+Reason: To shorten the path to hiring by letting companies that already know the applicant move directly to the probation phase.
+Conflict details: None — fully compatible with all rules and resources. Rule 6 states that a job interview "can be negotiated" after a positive application rating — this is a permissive condition, not a mandatory step; no rule requires an interview to take place before the probation phase. No resource in the list is tied to the interview step. Removing the interview negotiation and proceeding from a positive rating directly to the probation phase when a company wants the applicant is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

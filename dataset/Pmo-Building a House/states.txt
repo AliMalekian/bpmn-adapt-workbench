@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Architect
+Completed activities: Customer
+Current active activity or waiting point: Architect
+Token position / execution status: token is at Architect; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of friends messaged for the build: 6)
+Applicable rules: Rule 1 (The requirements are collected and sent to the architect before any plan is created.)
+Possible next activities: Online stores
+
+STATE-02: Intermediate / decision
+Current process position: Check feasibility
+Completed activities: Customer, Architect, Online stores, wish to build a house, Collect requirements, exclusiveGateway, Send requirements, draft received
+Current active activity or waiting point: Check feasibility
+Token position / execution status: token is at Check feasibility; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of friends messaged for the build: 6)
+Applicable rules: Rule 1 (The requirements are collected and sent to the architect before any plan is created.)
+Possible next activities: Draft sufficient?
+
+STATE-03: Resource-dependent / waiting
+Current process position: parallelGateway
+Completed activities: Customer, Architect, Online stores, wish to build a house, Collect requirements, exclusiveGateway, Send requirements, draft received, Check feasibility, Draft sufficient?, Subject to approval?, Refine requirements, Report for builing permit, exclusiveGateway, Create order list, Place order, Calculate effort
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of friends messaged for the build: 6)
+Applicable rules: Rule 1 (The requirements are collected and sent to the architect before any plan is created.)
+Possible next activities: Get order, Affordable?, Build house
+
+STATE-04: Near completion / completed
+Current process position: finished house
+Completed activities: Customer, Architect, Online stores, wish to build a house, Collect requirements, exclusiveGateway, Send requirements, draft received, Check feasibility, Draft sufficient?, Subject to approval?, Refine requirements, Report for builing permit, exclusiveGateway, Create order list, Place order, Calculate effort, parallelGateway, Get order, Affordable?, parallelGateway, Call friends, Hire building company, Build house, exclusiveGateway
+Current active activity or waiting point: finished house
+Token position / execution status: token is at finished house; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of friends messaged for the build: 6)
+Applicable rules: Rule 1 (The requirements are collected and sent to the architect before any plan is created.)
+Possible next activities: Process completion

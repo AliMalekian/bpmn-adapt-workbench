@@ -1,0 +1,12 @@
+Application confirmation deadline: 3 working days
+Minimum weekly applications: 1
+Probation phase length: 6 months
+Offer expiry time: 2 weeks
+Review visibility delay: 1 year
+Maximum one probation at a time: 1
+Rating scale minimum: A
+Rating scale maximum: E
+Number of tracked companies: 20
+Monthly report deadline: 1st of month
+Recommended job offers per week: 5
+Maximum open applications: 15

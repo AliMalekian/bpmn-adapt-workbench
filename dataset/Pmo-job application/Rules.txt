@@ -1,0 +1,15 @@
+1. A job seeker must report the companies they wrote applications to, on a regular basis, at least once every week.
+2. Applications that are not confirmed as received by the company within 14 days are marked as pending and automatically followed up.
+3. New job offers are suggested to a job seeker only based on the companies and fields of their previously submitted applications.
+4. A company must confirm receipt and rate a job application within 30 days of receiving it.
+5. A job interview may be negotiated only after the company has confirmed receipt and rated the application.
+6. A job seeker enters the probation phase only when a company formally offers them a job.
+7. A probation phase lasts at least 1 month and at most 6 months before it is finalized.
+8. After the probation phase, the job seeker and the company may rate each other within 7 days.
+9. Reviews written by a company can be seen by job applicants only after 1 year has passed.
+10. If the job becomes permanent, the process ends and the job seeker stops receiving job offers.
+11. If the job becomes permanent but the company is rated C or lower, the job seeker continues to receive job offers.
+12. A job seeker in a permanent position with a rating of C or lower no longer has to report their applications.
+13. A job seeker may retract a submitted application at any time before the company confirms receipt.
+14. Discrepancies between reported and actually sent applications above 2 per month are flagged for review.
+15. Only job offers from companies with an average rating of B or higher are shown to job seekers with a rating of A.

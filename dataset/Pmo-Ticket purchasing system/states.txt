@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Customer searches for ticket
+Completed activities: start
+Current active activity or waiting point: Customer searches for ticket
+Token position / execution status: token is at Customer searches for ticket; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Daily ticketing capacity (bookings): 50,000)
+Applicable rules: Rule 1 (A ticket is issued only after the customer provides valid personal information and completes the payment.)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: Update seat inventory
+Completed activities: start, Customer searches for ticket, parallelGateway, Select date and time, Select route, parallelGateway, Provide personal information, Provide payment details, parallelGateway, Generate ticket, parallelGateway
+Current active activity or waiting point: Update seat inventory
+Token position / execution status: token is at Update seat inventory; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Daily ticketing capacity (bookings): 50,000)
+Applicable rules: Rule 1 (A ticket is issued only after the customer provides valid personal information and completes the payment.)
+Possible next activities: parallelGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: exclusiveGateway
+Completed activities: start, Customer searches for ticket, parallelGateway, Select date and time, Select route, parallelGateway, Provide personal information, Provide payment details, parallelGateway, Generate ticket, parallelGateway, Update seat inventory
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Daily ticketing capacity (bookings): 50,000)
+Applicable rules: Rule 1 (A ticket is issued only after the customer provides valid personal information and completes the payment.)
+Possible next activities: exclusiveGateway, parallelGateway, parallelGateway, exclusiveGateway, end, exclusiveGateway, exclusiveGateway, exclusiveGateway, Send instructions, parallelGateway, exclusiveGateway, Send reminder, Send ticket via SMS, exclusiveGateway, exclusiveGateway, Post-travel feedback or services, Send ticket via email, exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Customer searches for ticket, parallelGateway, Select date and time, Select route, parallelGateway, Provide personal information, Provide payment details, parallelGateway, Generate ticket, parallelGateway, Update seat inventory, exclusiveGateway, parallelGateway, Send ticket via SMS, Send ticket via email, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, Send reminder, parallelGateway, Send instructions, exclusiveGateway, Customer completes journey, exclusiveGateway, exclusiveGateway, exclusiveGateway, Post-travel feedback or services
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Daily ticketing capacity (bookings): 50,000)
+Applicable rules: Rule 1 (A ticket is issued only after the customer provides valid personal information and completes the payment.)
+Possible next activities: Process completion

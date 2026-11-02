@@ -1,0 +1,28 @@
+Request1:
+Removed element: The step of entering and validating the machine type and serial number before an inspection can begin.
+Reason: To let the inspector start asking the questions immediately without the initial data entry.
+Conflict details: Conflicts with Rule 1 — the machine type and serial number must be entered and validated before an inspection can begin. It also conflicts with Rule 13 — only an authorized inspector may start a new inspection for a given serial number, since the serial number entry is what identifies the machine for authorization; and with Rule 11 — inspection results are archived together with the machine's serial number for 5 years, which requires the serial number to be captured.
+
+Request2:
+Removed element: The confirmation step in which the inspector confirms the automatically collected values before they are stored in the report.
+Reason: To speed up the automatic data collection by storing the sensor values directly without inspector confirmation.
+Conflict details: Conflicts with the resource "Number of authorized inspectors: 5". The 5 authorized inspectors are allocated precisely to perform the manual confirmation and sign-off duties during the inspection; removing the confirmation step makes this staffing allocation partially meaningless and violates the resource plan. It also conflicts with Rule 4 — the inspector must confirm automatically collected values before they are stored in the report.
+
+Request3:
+Removed element: The retest step for a failed subsystem (the retest that unblocks the report after a failed check).
+Reason: To finalize the inspection report immediately even when a subsystem has failed its check.
+Conflict details: Conflicts with Rule 9 — a failed subsystem blocks the inspection report from being finalized until a retest is performed. It also conflicts with the resource "Maximum allowed failed checks: 1", which caps how many failed checks can occur before senior approval is needed (Rule 10); without the retest the failed-check count cannot be reduced and the report cannot proceed. Additionally, removing the retest conflicts with Rule 7 — the inspection must produce a pass or fail verdict for every checked subsystem, because without retest capability a failed subsystem can never be turned into a pass verdict.
+
+Request4:
+Removed element: The step of reading the tube pressure of the filling station manually with the depressurization procedure (the manual reading branch of the filling station pressure check).
+Reason: To rely entirely on the automatic sensor readings of the tube pressure and skip the manual reading procedure.
+Conflict details: None — fully compatible with all rules and resources. The automatic sensor channels are sufficient to obtain the tube pressure value: Rule 3 requires values collected automatically to be read from the sensors and displayed to the inspector, and Rule 4 requires inspector confirmation before storage; Rule 12 only constrains that the pressure value must stay between 1.2 and 1.8 bar for the filling station to pass — it does not mandate that this reading be taken manually. The resource "Number of sensor channels: 12" provides enough automatic channels to cover the pressure reading. Removing the manual depressurization-based reading while keeping the automatic sensor-based reading is fully feasible. (Note: Rule 8 only requires depressurization when manual readings are taken; since no manual readings are taken anymore, the depressurization branch is not triggered.)
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,28 @@
+Request1:
+Removed element: "send reminder" task (the clerk step that issues the first reminder after the request for payment has been sent to the insurant)
+Reason: Sending only the payment request and skipping the reminder stage would reduce the number of contacts with the insurant and simplify the clerk's work.
+Conflict details: Conflicts with Rule 3 ("The first reminder must be issued no later than 14 days after the request for payment"), which makes the reminder a mandatory step in the process. It also conflicts with Rule 14 ("Every contact with the insurant must be logged with date, channel, and result"), because removing the reminder also removes the contact that must be logged. The resource "Reminder deadline after payment request: 14 days" documents the exact deadline for this very step, so the removal is incompatible with the operational resources.
+
+Request2:
+Removed element: "check reasoning" task (the clerk step that investigates the insurant's reasoning after a disagreement)
+Reason: The step is proposed to be dropped so that a disagreement immediately leads to the closure or forwarding decision without a manual review.
+Conflict details: Conflicts with Resource "Legal consultation budget per case: 2500 EUR" and "Recourse clerks: 5", because the legal-consultation budget and the clerk capacity are provided exactly to investigate the insurant's reasoning, and without the check they cannot be used. It also conflicts with Resource "Case management system capacity: 10000 open cases", since a reasoning check depends on the case file being kept open and accessible. Additionally the removal directly violates Rule 8 ("When the insurant disagrees, the clerk must check the reasoning before taking any further step"), which is the strongest evidence of conflict.
+
+Request3:
+Removed element: "hand over to collection agency" task (the step that forwards the case to the contracted collection agency)
+Reason: It is proposed to pursue the unpaid claim internally with repeated reminders instead of forwarding the case to the collection agency, keeping the case in-house.
+Conflict details: Conflicts with Rule 5 ("If the deadline for disagreement passes without payment, the case is forwarded to a collection agency") and Rule 10 ("If the insurant's reasoning is rejected, the case is forwarded to a collection agency"), which both require the hand-over. It also conflicts with Rule 12 ("A case may be sent to a collection agency only once; the agency takes over all further handling"), which presupposes the existence and execution of this hand-over step. On the resource side it conflicts with "Contracted collection agencies: 2" and "Collection agency referral capacity: 40 cases per month", which exist precisely to receive forwarded cases.
+
+Request4:
+Removed element: "case closed" event path / "close case" task used for the low-value branch (the closing action applied to recourse claims below the small-claim threshold)
+Reason: The separate close-case operation for small-value claims is administrative overhead with no financial value, and the case could simply end without an explicit closing step.
+Conflict details: None — fully compatible with all rules and resources. Rule 6 ("Recourse claims below 25 EUR are closed without action as they do not justify the processing cost") is still satisfied, since the claim still ends without pursuing payment; only the explicit "close case" bookkeeping step is dropped. No other rule in Rules.txt mandates the explicit closing step, and no resource in Resources.txt is bound to it.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

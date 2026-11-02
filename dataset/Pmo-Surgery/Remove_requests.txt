@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Hand washing" task — the step where the doctor washes their hands before the procedure.
+Reason: Removing the hand washing step would shorten the preparation phase, reducing the time between entering the sterile environment and beginning the procedure.
+Conflict details: This removal directly conflicts with Rule 1 ("The procedure may begin only after the implements are sterilized, the hands are washed, and the doctor is in sterile clothing"). The rule explicitly lists hand washing as a mandatory prerequisite for the procedure to begin, so without this step the procedure cannot lawfully start.
+
+Request2:
+Removed element: The "Anesthetize patient" task — the step where the patient is anesthetized before the puncture.
+Reason: Removing the anesthesia step would eliminate the anesthesia administration and its associated monitoring overhead, letting the puncture proceed without sedation.
+Conflict details: This removal conflicts with the resource "Anesthesiologists on call: 2" — the two anesthesiologists on call exist specifically to administer and supervise anesthesia; without the anesthesia step they have no defined role and this resource allocation is wasted. It also conflicts with the resource "Surgical theater recovery beds: 6", since post-procedure recovery beds are primarily used for patients waking from anesthesia. Rule 11 ("Patient vitals must be monitored continuously from anesthesia administration until the procedure is finished") is also violated, because the vitals monitoring the rule mandates from anesthesia onward can no longer be anchored to an anesthesia step.
+
+Request3:
+Removed element: The "Get in sterile clothes" task — the step where the doctor puts on sterile surgical clothing before the procedure.
+Reason: Removing the sterile-clothing step would shorten the preparation phase by eliminating the gowning procedure.
+Conflict details: This removal conflicts with Rule 1 ("The procedure may begin only after the implements are sterilized, the hands are washed, and the doctor is in sterile clothing") — sterile clothing is an explicit prerequisite for beginning the procedure. It also conflicts with the resource "Sterile surgical gowns available: 20" — this stock of 20 sterile gowns exists to supply the sterile-clothing step, and without it the 20-gown inventory serves no purpose.
+
+Request4:
+Removed element: The "Check wire in short axis" task — the step where the doctor verifies the guidewire position using the short-axis ultrasound check after the guidewire is installed.
+Reason: The wire position can be verified adequately using the long-axis check. The short-axis check is one of two alternative wire-verification methods in the model, and the process works correctly as long as at least one check is performed before the doctor decides whether the wire is in a good position.
+Conflict details: None — fully compatible with all rules and resources. Rule 5 requires the doctor to check whether the wire is in a good position and return to the puncture step if it is not, but no rule requires both the long-axis and the short-axis check to be performed; the long-axis check remains in the process. Rule 8 (catheter advanced only after the guidewire is in the correct position) and Rule 9 (guidewire removed only after the catheter is advanced) are unaffected. The resources "Ultrasound machines: 3" and "Sterile gel containers per room: 5" remain in use by the long-axis check. All 14 resources remain fully valid and operational.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Manual inspection of all received parts..
+Current token position: Immediately before Manual inspection of all received parts. on its original BPMN sequence flow.
+Required resources: Resource 1 (Production capacity: 20 saws per month)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → Manual inspection of all received parts. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Manual inspection of all received parts..
+Current token position: Immediately before Manual inspection of all received parts. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 3 (All received parts must pass a manual inspection before they are added to the assembly queue; defective parts are returned and re-ordered immediately.), Rule 4 (Assembly of a saw may only begin when 100% of its parts have been inspected and approved.)
+Expected execution path: Follow the original predecessor → Manual inspection of all received parts. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Manual inspection of all received parts..
+Current token position: Immediately before Manual inspection of all received parts. on its original BPMN sequence flow.
+Required resources: Resource 1 (Production capacity: 20 saws per month)
+Relevant rules: Rule 3 (All received parts must pass a manual inspection before they are added to the assembly queue; defective parts are returned and re-ordered immediately.), Rule 4 (Assembly of a saw may only begin when 100% of its parts have been inspected and approved.)
+Expected execution path: Follow the original predecessor → Manual inspection of all received parts. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Parallel ordering of parts from various online sources..
+Current token position: Immediately before Parallel ordering of parts from various online sources. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → Parallel ordering of parts from various online sources. → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

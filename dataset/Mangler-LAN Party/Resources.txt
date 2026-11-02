@@ -1,0 +1,12 @@
+Number of invited friends: 10
+Required agreement for a date: 8 friends
+Beer crates needed: 5 crates
+Games requested: 6
+Missing games to download: 2
+Game download time: 2 hours
+Network ports available: 10
+Number of seats: 10
+Maximum party duration: 2 days
+Beer stock at home: 2 crates
+Power outlets available: 6
+Date replanning rounds allowed: 3

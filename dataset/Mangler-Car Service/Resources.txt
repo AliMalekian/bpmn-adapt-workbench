@@ -1,0 +1,15 @@
+Service reminder notification delay: 30 days
+Maximum fine amount: 200 EUR
+Legal service interval: 12 months
+Status update frequency for open services: every 2 days
+Maximum number of cars under reminder per month: 8000
+Service facility mechanics: 12
+Car service facility bays: 8
+Average service duration: 2 days
+Maximum open service duration before escalation: 7 days
+Fine notification window: 7 days after deadline
+Payment settlement window: 14 days
+App payment transactions per day: 1500
+Registered vehicle check queries per day: 9000
+Repair archive retention: 5 years
+Pickert inspection stations: 4

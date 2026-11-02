@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The "Identify gaps or issues" task (Task_7) - the examination step in which the external auditors review the company's processes and identify any gaps or issues..
+Current token position: Immediately before The "Identify gaps or issues" task (Task_7) - the examination step in which the external auditors review the company's processes and identify any gaps or issues. on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of audit standards maintained (ISO, safety, environmental): 3)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → The "Identify gaps or issues" task (Task_7) - the examination step in which the external auditors review the company's processes and identify any gaps or issues. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The "Identify gaps or issues" task (Task_7) - the examination step in which the external auditors review the company's processes and identify any gaps or issues..
+Current token position: Immediately before The "Identify gaps or issues" task (Task_7) - the examination step in which the external auditors review the company's processes and identify any gaps or issues. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 4 (Every identified gap must be assigned to a responsible owner with a corrective action deadline.), Rule 5 (Corrective actions for high-risk findings must be completed within 30 days; low-risk findings within 60 days.), Rule 6 (The final audit may proceed only after all high-priority nonconformities have been corrected and verified.)
+Expected execution path: Follow the original predecessor → The "Identify gaps or issues" task (Task_7) - the examination step in which the external auditors review the company's processes and identify any gaps or issues. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The "Identify gaps or issues" task (Task_7) - the examination step in which the external auditors review the company's processes and identify any gaps or issues..
+Current token position: Immediately before The "Identify gaps or issues" task (Task_7) - the examination step in which the external auditors review the company's processes and identify any gaps or issues. on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of audit standards maintained (ISO, safety, environmental): 3)
+Relevant rules: Rule 4 (Every identified gap must be assigned to a responsible owner with a corrective action deadline.), Rule 5 (Corrective actions for high-risk findings must be completed within 30 days; low-risk findings within 60 days.), Rule 6 (The final audit may proceed only after all high-priority nonconformities have been corrected and verified.)
+Expected execution path: Follow the original predecessor → The "Identify gaps or issues" task (Task_7) - the examination step in which the external auditors review the company's processes and identify any gaps or issues. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate "Make necessary corrections or improvements" task (Task_2)..
+Current token position: Immediately before "Make necessary corrections or improvements" task (Task_2). on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → "Make necessary corrections or improvements" task (Task_2). → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

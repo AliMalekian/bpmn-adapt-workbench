@@ -1,0 +1,13 @@
+Re-Add request:
+The removal request Request4 removed the "Assign complaint to relevant department" task (Task_6) from the process. This request semantically restores that removed element and returns the process to exactly its original shape.
+
+Restored element: "Assign complaint to relevant department" task (Task_6).
+
+How it is restored:
+1. The "Assign complaint to relevant department" task (Task_6) is reinserted into the process at its original position, directly between the "Log complaint" task (Task_5) and the "Review complaint details" task (Task_9).
+2. The original sequential flow is restored: after the complaint is logged, the flow again continues from Task_5 into Task_6 via SequenceFlow_9, the complaint is again formally assigned to the relevant department for investigation, and only then does the flow proceed from Task_6 to the "Review complaint details" task (Task_9) via SequenceFlow_16.
+3. Task_6 again performs its original function: customer service explicitly assigns the logged complaint to the relevant department for investigation, re-establishing the explicit hand-over step of the original model so that it is clear which department investigates the case.
+4. The rest of the complaint-handling chain is unchanged: the complaint is filed (Task_7), logged (Task_5), explicitly assigned to the relevant department (Task_6), reviewed (Task_9), and either approved and notified (Task_2) or rejected and notified (Task_8), then resolved (Task_1) and finally completed with the optional "Provide feedback" step (Task_4) before reaching the end event - every element and ordering of the original model is restored.
+5. The process flow ends exactly as in the original model, completing with the end event after the resolution and feedback steps, with every element, branch, and ordering of the original process restored.
+
+Result: The removal of Task_6 is fully undone, and the customer-complaint process is back to precisely its original shape with the explicit "Assign complaint to relevant department" step present between the logging and the review of the complaint.

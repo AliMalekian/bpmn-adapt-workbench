@@ -1,0 +1,306 @@
+Example ID: R1-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment)” for Request1.
+Target BPMN element: "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment)” for Request1.
+Target BPMN element: "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment)
+Decision: REJECT
+Decision reason: It conflicts with Rule 4 (The secretary must invite at least three logistics companies to offer for every special shipment.), Rule 5 (The selected logistics offer may not exceed the cheapest valid offer by more than 5%, otherwise department head approval is required.), Rule 15 (Special shipping costs count against the monthly logistics budget and must be recorded on the day of booking.).
+Referenced rules: Rule 4 (The secretary must invite at least three logistics companies to offer for every special shipment.), Rule 5 (The selected logistics offer may not exceed the cheapest valid offer by more than 5%, otherwise department head approval is required.), Rule 15 (Special shipping costs count against the monthly logistics budget and must be recorded on the day of booking.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment)” for Request1.
+Target BPMN element: "Get 3 offers from logistic companies" task (the secretary step that invites three logistics companies to make offers for a special shipment)
+Decision: REJECT
+Decision reason: It conflicts with Rule 4 (The secretary must invite at least three logistics companies to offer for every special shipment.), Rule 5 (The selected logistics offer may not exceed the cheapest valid offer by more than 5%, otherwise department head approval is required.), Rule 15 (Special shipping costs count against the monthly logistics budget and must be recorded on the day of booking.).
+Referenced rules: Rule 4 (The secretary must invite at least three logistics companies to offer for every special shipment.), Rule 5 (The selected logistics offer may not exceed the cheapest valid offer by more than 5%, otherwise department head approval is required.), Rule 15 (Special shipping costs count against the monthly logistics budget and must be recorded on the day of booking.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)” safely.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R2-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Insure parcel" task (the step where one of the logistics department heads takes out parcel insurance when necessary)” for Request2.
+Target BPMN element: "Insure parcel" task (the step where one of the logistics department heads takes out parcel insurance when necessary)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Insure parcel" task (the step where one of the logistics department heads takes out parcel insurance when necessary)” for Request2.
+Target BPMN element: "Insure parcel" task (the step where one of the logistics department heads takes out parcel insurance when necessary)
+Decision: REJECT
+Decision reason: It conflicts with Rule 2 (Shipments worth more than 1000 EUR require parcel insurance before dispatch.), Rule 3 (Parcel insurance may only be arranged by the logistics department head after written approval.), Rule 14 (The insured value declared for a parcel must not exceed the invoice value of the goods.).
+Referenced rules: Rule 2 (Shipments worth more than 1000 EUR require parcel insurance before dispatch.), Rule 3 (Parcel insurance may only be arranged by the logistics department head after written approval.), Rule 14 (The insured value declared for a parcel must not exceed the invoice value of the goods.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Insure parcel" task (the step where one of the logistics department heads takes out parcel insurance when necessary)” for Request2.
+Target BPMN element: "Insure parcel" task (the step where one of the logistics department heads takes out parcel insurance when necessary)
+Decision: REJECT
+Decision reason: It conflicts with Rule 2 (Shipments worth more than 1000 EUR require parcel insurance before dispatch.), Rule 3 (Parcel insurance may only be arranged by the logistics department head after written approval.), Rule 14 (The insured value declared for a parcel must not exceed the invoice value of the goods.).
+Referenced rules: Rule 2 (Shipments worth more than 1000 EUR require parcel insurance before dispatch.), Rule 3 (Parcel insurance may only be arranged by the logistics department head after written approval.), Rule 14 (The insured value declared for a parcel must not exceed the invoice value of the goods.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)” safely.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R3-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Write package label" task (the secretary step that writes the package label for normal post shipments)” for Request3.
+Target BPMN element: "Write package label" task (the secretary step that writes the package label for normal post shipments)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Write package label" task (the secretary step that writes the package label for normal post shipments)” for Request3.
+Target BPMN element: "Write package label" task (the secretary step that writes the package label for normal post shipments)
+Decision: REJECT
+Decision reason: It conflicts with Rule 8 (Package labels must be written before goods are handed to the mail or logistics company.), Rule 9 (Standard post parcels prepared before 15:00 are dispatched on the same working day.), Rule 12 (Only the secretary may issue package labels; no other staff member may release parcels for shipping.).
+Referenced rules: Rule 8 (Package labels must be written before goods are handed to the mail or logistics company.), Rule 9 (Standard post parcels prepared before 15:00 are dispatched on the same working day.), Rule 12 (Only the secretary may issue package labels; no other staff member may release parcels for shipping.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Write package label" task (the secretary step that writes the package label for normal post shipments)” for Request3.
+Target BPMN element: "Write package label" task (the secretary step that writes the package label for normal post shipments)
+Decision: REJECT
+Decision reason: It conflicts with Rule 8 (Package labels must be written before goods are handed to the mail or logistics company.), Rule 9 (Standard post parcels prepared before 15:00 are dispatched on the same working day.), Rule 12 (Only the secretary may issue package labels; no other staff member may release parcels for shipping.).
+Referenced rules: Rule 8 (Package labels must be written before goods are handed to the mail or logistics company.), Rule 9 (Standard post parcels prepared before 15:00 are dispatched on the same working day.), Rule 12 (Only the secretary may issue package labels; no other staff member may release parcels for shipping.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)” safely.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R4-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)” for Request4.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)” for Request4.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)” for Request4.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)” safely.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods in parallel while the shipment method is being clarified)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: RA-READD-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RESOURCE-CONFLICT
+User request: Re-add “"Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates None and Resource 1 (Secretaries: 3).
+Referenced rules: None
+Referenced resources: Resource 1 (Secretaries: 3)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-CONFLICT
+User request: Re-add “"Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (Parcels weighing 50 kg or more must be shipped via special logistics, not regular post.) and None.
+Referenced rules: Rule 1 (Parcels weighing 50 kg or more must be shipped via special logistics, not regular post.)
+Referenced resources: None
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-AND-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-AND-RESOURCE-CONFLICT
+User request: Re-add “"Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (Parcels weighing 50 kg or more must be shipped via special logistics, not regular post.) and Resource 1 (Secretaries: 3).
+Referenced rules: Rule 1 (Parcels weighing 50 kg or more must be shipped via special logistics, not regular post.)
+Referenced resources: Resource 1 (Secretaries: 3)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-VALID
+Operation type: RE_ADD
+Category: READD-VALID
+User request: Re-add “"Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Package goods" task (the warehousemen step that packages the goods and was removed by Request4) Reason: Request4 removed the packaging task, claiming goods could be handed over in bulk containers directly. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: ACCEPT
+Decision reason: The element is restored at its original location, with its original predecessor and successor, so original behavior and all constraints are recovered.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Restore the element at its original position, reconnect its original incoming and outgoing sequence flows, and preserve gateway semantics.
+Expected process effect: The original process behavior is recovered and is equivalent to the original model.
+Token migration / execution-state note: Tokens at the removed bypass are safely redirected to the restored element before continuing to its original successor.
+Final response to the user: Accepted: the original element, location, connections, and behavior are restored.
+Example ID: Camunda-Dispatch of goods-MODIFY-AUTOMATION-VALID
+Operation type: MODIFY
+Category: MODIFY-VALID
+User request: Assess updating execution parameters and technical automation settings for the primary task in Camunda-Dispatch of goods.
+Target BPMN element: Primary Process Task
+Decision: ACCEPT
+Decision reason: The modification is purely technical (updating automation settings, timeouts, and throughput parameters) and does not alter the control flow, business rules, or resource capacity allocations. All milestones remain compliant.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Attributes updated; incoming and outgoing sequence flows remain intact.
+Expected process effect: Throughput is improved while all business rules and constraints are preserved.
+Token migration / execution-state note: Active tokens continue execution without relocation or delay.
+Final response to the user: Approved: the technical modification is fully compliant with all rules and resources.
+
+Example ID: Camunda-Dispatch of goods-ADD-QUALITY-CHECK-VALID
+Operation type: ADD
+Category: ADD-VALID
+User request: Assess adding an automated, non-blocking Quality Verification step in Camunda-Dispatch of goods.
+Target BPMN element: Quality Verification Step
+Decision: ACCEPT
+Decision reason: The proposed quality verification step operates as an automated non-blocking checkpoint. It satisfies all preconditions, respects assigned resource capacities, and does not violate or delay any mandatory operational rule deadlines.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: New automated task inserted into the sequence flow with proper incoming and outgoing flows.
+Expected process effect: Quality assurance is enhanced while all business rules and resource constraints remain satisfied.
+Token migration / execution-state note: Newly instantiated tokens pass through the verification step seamlessly.
+Final response to the user: Approved: the addition satisfies all operational rules and resource capacities.

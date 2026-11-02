@@ -1,0 +1,14 @@
+Number of invited friends: 10
+Minimum agreeing guests for a date: 8
+Maximum date re-votes allowed: 2
+Invitation reply deadline (hours): 48
+Game download completion lead time (hours): 24
+Beer per guest per hour (bottles): 2
+Spare network ports ratio (port per guests): 2
+Maximum daily play time (hours): 10
+Maximum party duration (hours): 10
+Internet bandwidth required (Mbps): 100
+Maximum concurrent players: 10
+PC ethernet ports available at venue: 12
+Budget for game downloads (EUR): 50
+Per-person beer budget (EUR): 15

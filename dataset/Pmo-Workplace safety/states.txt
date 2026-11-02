@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Report incident
+Completed activities: start
+Current active activity or waiting point: Report incident
+Token position / execution status: token is at Report incident; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Incident report logging deadline (hours): 24)
+Applicable rules: Rule 1 (Every incident report is logged into the tracking system within 24 hours of it being reported.)
+Possible next activities: Log report into tracking system
+
+STATE-02: Intermediate / decision
+Current process position: Identify cause of incident
+Completed activities: start, Report incident, Log report into tracking system, Assign report to appropriate team, parallelGateway, Gather necessary information
+Current active activity or waiting point: Identify cause of incident
+Token position / execution status: token is at Identify cause of incident; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Incident report logging deadline (hours): 24)
+Applicable rules: Rule 1 (Every incident report is logged into the tracking system within 24 hours of it being reported.)
+Possible next activities: parallelGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Conduct training
+Completed activities: start, Report incident, Log report into tracking system, Assign report to appropriate team, parallelGateway, Gather necessary information, Identify cause of incident, parallelGateway, Propose corrective actions, exclusiveGateway, Implement fix, Change policy
+Current active activity or waiting point: Conduct training
+Token position / execution status: token is at Conduct training; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Incident report logging deadline (hours): 24)
+Applicable rules: Rule 1 (Every incident report is logged into the tracking system within 24 hours of it being reported.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Report incident, Log report into tracking system, Assign report to appropriate team, parallelGateway, Gather necessary information, Identify cause of incident, parallelGateway, Propose corrective actions, exclusiveGateway, Implement fix, Change policy, Conduct training, exclusiveGateway, Conduct follow-up, Close incident report, Notify all stakeholders
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Incident report logging deadline (hours): 24)
+Applicable rules: Rule 1 (Every incident report is logged into the tracking system within 24 hours of it being reported.)
+Possible next activities: Process completion

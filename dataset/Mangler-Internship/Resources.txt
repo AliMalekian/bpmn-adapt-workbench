@@ -1,0 +1,12 @@
+Minimum weekly applicant updates: 3
+Minimum weekly company updates: 3
+Offer acceptance window: 48 hours
+Minimum internship duration: 3 months
+Maximum internship duration: 12 months
+Salary range: 1,000 to 3,000 units per month
+Maximum simultaneous offers: 8
+Number of friends for recommendation: 10
+Recommended tweets sent in parallel: 10
+Application topics available: 15
+Required update format: 100 characters
+Offer withdrawal grace period: 7 days

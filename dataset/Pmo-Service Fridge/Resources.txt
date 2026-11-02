@@ -1,0 +1,14 @@
+Number of local service facilities: 25
+Service technicians per facility: 6
+Central service center operators: 8
+Service vehicles: 15
+Maximum appointment slots per facility per day: 12
+Standard repair response time (hours): 48
+Emergency response time (hours): 24
+Replacement part inventory items per facility: 20
+Customer satisfaction target (out of 5): 4.5
+Maximum follow-up visits per service request: 3
+Weekly appointment capacity: 300
+Annual spare parts budget: $250,000
+Average repair duration (minutes): 90
+Maximum customer rating score: 5

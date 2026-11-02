@@ -1,0 +1,12 @@
+Number of central service center staff: 8
+Number of local service facilities: 25
+Number of technicians per facility: 4
+Appointment window: 4 hours
+Maximum initial response time: 24 hours
+Number of spare parts carried per technician: 20
+Repair completion deadline: 5 days
+Customer confirmation deadline: 3 days
+Number of service requests per day: 35
+Guarantee period for repairs: 30 days
+Hourly service rate: 85 EUR
+Maximum capacity of the call queue: 50 calls

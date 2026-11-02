@@ -1,0 +1,15 @@
+1. If insurance can launch a potential subrogation claim against an insurant, the case officer must first record the details of the possibility before proceeding.
+2. A subrogation payment request may be sent to an insurant only if the case officer confirms that the possibility of recourse is genuinely valid.
+3. The case officer must set a reminder for payment follow-up on the day the payment request is issued.
+4. If recourse is not possible, the case must be closed within 10 business days without issuing a payment request.
+5. The case is closed only after the received money is booked to the correct claim account.
+6. An insurant who disagrees with the recourse must raise the objection within 14 days of receiving the payment request.
+7. If the insurant's reasoning for disagreement is found to be correct, the case is closed without further collection action.
+8. If the insurant's reasoning is found to be incorrect, the case is forwarded to a collection agency within 5 business days.
+9. If the disagreement deadline is reached and no payment has been received, the case is automatically forwarded to the collection agency.
+10. The collection agency may add a collection fee of up to 15% of the claim amount to the outstanding balance.
+11. Payment requests above $5,000 must be reviewed and approved by a senior claims officer before being sent.
+12. A claim without payment and without active action for more than 180 days is flagged for write-off review.
+13. All communication with the insurant must be documented in the claim file before the case is closed.
+14. Cases with a claim value below $200 may be waived if the estimated collection cost exceeds the claim value.
+15. If a subrogated payment is received but booked to the wrong account, the booking must be corrected within 3 business days.

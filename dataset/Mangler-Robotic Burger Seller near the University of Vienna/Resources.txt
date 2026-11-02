@@ -1,0 +1,14 @@
+Daily burger stock: 200 units
+Daily drink stock: 150 units
+Number of ingredient types: 8
+Minimum burger preparation time: 3 minutes
+Drink preparation time range: 1-2 minutes
+Fries preparation time: 2 minutes
+Wedges preparation time: 3 minutes
+Status update interval: 30 seconds
+Number of orders handled at once: 1
+Conveyor belt delivery time: 45 seconds
+Menu price: 6.90 EUR
+Burger-only price: 4.90 EUR
+Number of staff per shift: 2
+Maximum order capacity during lunch rush: 40 orders per hour

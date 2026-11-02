@@ -1,0 +1,12 @@
+Number of sales support agents: 12
+Maximum active quotes per agent: 20
+Quote validity period (days): 14
+Discount approval threshold (percent): 15
+Order confirmation timeout (hours): 2
+Initial inquiry response time (working days): 1
+Cancellation and return window (days): 30
+Duplicate order blocking window (days): 7
+Product catalog size (items): 500
+Average quote preparation time (minutes): 45
+Number of CRM seats: 12
+Monthly sales target (EUR): 250000

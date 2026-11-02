@@ -1,0 +1,14 @@
+Re-Add request:
+The removal request Request4 removed the "MSPO confirms the dismissal of the MSPN" task (Task_4) from the process. This request semantically restores that removed element and returns the process to exactly its original shape.
+
+Restored element: "MSPO confirms the dismissal of the MSPN" task (Task_4).
+
+How it is restored:
+1. The "MSPO confirms the dismissal of the MSPN" task (Task_4) is reinserted into the process at its original position as the confirmation branch of the review, parallel to the rejection branch.
+2. The exclusive decision gateway ExclusiveGateway_1 is restored to feed both original outcomes: after "MSPO reviews the dismissal" (Task_2) completes, the flow now again branches via ExclusiveGateway_1 into either "MSPO rejects the dismissal of the MSPN" (Task_3) or "MSPO confirms the dismissal of the MSPN" (Task_4), exactly as in the original model.
+3. Task_4 again performs its original function: whenever the legal grounds for termination are verified as valid, the MSPO again confirms the dismissal, so the confirmation path is available for every dismissal whose grounds are valid.
+4. The converging merge is restored: both the rejection branch (from Task_3, via SequenceFlow_6) and the confirmation branch (from Task_4, via SequenceFlow_7) again meet at ExclusiveGateway_2 and continue to the end event via SequenceFlow_8.
+5. This reinstates the original two-outcome decision structure required by Rule 3 ("The MSPO must either reject or confirm the dismissal; no other outcome is permitted"), so the confirmation outcome is once again available whenever it is legally permitted (Rule 6).
+6. The rest of the process is unchanged, so the flow again runs: MSPN sends a dismissal (Task_1), the MSPO reviews it (Task_2), the MSPO rejects or confirms it (Task_3 or restored Task_4), and the case ends at the end event - with every element, branch, and ordering of the original process restored.
+
+Result: The removal of Task_4 is fully undone, and the MSPN dismissal process is back to precisely its original shape with the "MSPO confirms the dismissal of the MSPN" branch present alongside the rejection branch.

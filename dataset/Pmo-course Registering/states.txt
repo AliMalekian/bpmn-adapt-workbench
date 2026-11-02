@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: exclusiveGateway
+Completed activities: wish to enroll in course
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Courses offered per season: 20)
+Applicable rules: Rule 1 (A course can be selected only if at least one free slot is available for the intended course date.)
+Possible next activities: select course, exclusiveGateway, exclusiveGateway, end process, exclusiveGateway, register account, log into account
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: wish to enroll in course
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Courses offered per season: 20)
+Applicable rules: Rule 1 (A course can be selected only if at least one free slot is available for the intended course date.)
+Possible next activities: select course, exclusiveGateway, exclusiveGateway, end process, exclusiveGateway, register account, log into account
+
+STATE-03: Resource-dependent / waiting
+Current process position: parallelGateway
+Completed activities: wish to enroll in course, exclusiveGateway, select course, free spots?, system shows parallel courses and dates, check if another course is interesting, select specific course, exclusiveGateway, already registered?, exclusiveGateway, check if registered at eligible university, exclusiveGateway, exclusiveGateway, eligible university?, log into account, end process, request activation, exclusiveGateway
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Courses offered per season: 20)
+Applicable rules: Rule 1 (A course can be selected only if at least one free slot is available for the intended course date.)
+Possible next activities: connect to twitter account, system issues course tickets, provide payment info
+
+STATE-04: Near completion / completed
+Current process position: system issues course tickets
+Completed activities: wish to enroll in course, exclusiveGateway, select course, free spots?, system shows parallel courses and dates, check if another course is interesting, select specific course, exclusiveGateway, already registered?, exclusiveGateway, check if registered at eligible university, exclusiveGateway, exclusiveGateway, eligible university?, log into account, end process, request activation, exclusiveGateway, parallelGateway, system checks eligibility, register account, connect to twitter account, provide payment info, person eligible?, invite friends to course, parallelGateway
+Current active activity or waiting point: system issues course tickets
+Token position / execution status: token is at system issues course tickets; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Courses offered per season: 20)
+Applicable rules: Rule 1 (A course can be selected only if at least one free slot is available for the intended course date.)
+Possible next activities: exclusiveGateway

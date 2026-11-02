@@ -1,0 +1,28 @@
+Request1:
+Removed element: Entering the end of the workday into the app to plan travel to the run
+Reason: It is proposed that all participants simply go directly to the Night Run venue without needing to plan travel based on their work schedule, simplifying the app experience.
+Conflict details: This removal conflicts with Rule 7, which states: "The end of the participant's workday must be entered into the app to plan travel to the run." Removing this data entry step makes it impossible to satisfy Rule 7. It also makes Rules 8 and 9 inapplicable, as the travel decision logic (home vs. direct from work) can no longer function without the workday end time.
+
+Request2:
+Removed element: Running and drinking at the same time during the Night Run
+Reason: The simultaneous running-and-drinking activity is proposed for removal because drinking during the run is not essential to the race itself and may slow participants down.
+Conflict details: This removal conflicts with Resource "Number of drink stations along the route: 3." The 3 drink stations exist to support participants drinking while running the 5 km course. If the running-and-drinking activity is removed, the drink stations serve no purpose and this resource becomes entirely unused.
+
+Request3:
+Removed element: Measuring the running time during the 5 km run
+Reason: It is proposed that the running time is not measured, and participants simply run for enjoyment without timed competition.
+Conflict details: This removal conflicts with Rule 6, which states: "Running time must be measured automatically by the fitness gadget, not entered manually." Removing the time measurement step directly breaks Rule 6. It also conflicts with Resource "Number of fitness gadgets supported by the app: 15" -- the fitness gadgets exist primarily to measure running time; without time measurement, these gadgets serve no purpose in the process.
+
+Request4:
+Removed element: The fitness gadget collecting data during the run
+Reason: The process description notes that some information is collected by fitness gadgets. It is proposed that this gadget data collection detail be removed from the process, with all data being entered manually into the app instead.
+Conflict details: None -- fully compatible with all rules and resources. Rules 5 and 6 govern how the fitness gadget is paired and how time is measured, but removing the gadget data collection detail does not conflict with any rule or resource. The process can still function with manually entered data or alternative measurement methods, and no resource in Resources.txt depends exclusively on gadget data collection occurring.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

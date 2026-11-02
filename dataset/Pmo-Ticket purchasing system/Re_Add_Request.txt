@@ -1,0 +1,11 @@
+Re_Add_Request:
+Restored element: The "Send instructions" task — the step where the travel company sends the customer check-in and boarding instructions before the journey.
+
+Detailed restoration: Request4 removed the separate "Send instructions" task, relying on the reminders and the ticket itself to carry the essential information. To restore the process to its original state, the instructions step must be re-added as follows:
+
+1. After the ticket is generated and sent to the customer via email or SMS (Rule 7: within 5 minutes of a confirmed booking), and after the pre-departure reminders are sent (Rule 9: at 24 hours and 3 hours before departure), the process again performs the "Send instructions" task.
+2. During "Send instructions," the travel company sends the customer detailed check-in and boarding instructions — including where to check in, what documentation to present (a valid ticket and government-issued identification, per Rule 10), boarding procedures, and any applicable baggage or gate information.
+3. These instructions are sent before travel and complement the reminders, giving the customer full guidance for the check-in and boarding process.
+4. The process continues exactly as before: the customer completes their journey, and post-travel feedback or services may follow (Rule 13: feedback requests are sent within 24 hours after the journey is completed).
+
+This restores the complete original process: customer searches for ticket, selects route/date/time, provides personal information and payment details, booking system generates the ticket, ticket sent via email or SMS, seat inventory updated, reminders sent, instructions sent, customer completes journey, post-travel feedback or services follow. All 15 rules (Rules 1-15) and all 14 resources (50,000 daily bookings, 9 max passengers, 180/480/45 seat capacities, 10-minute payment limit, 48-hour free cancellation window, 1 reschedule waiver, 24-hour reminder lead, 3-hour second reminder lead, 5-minute delivery limit, 2% overbooking tolerance, 20 customer service agents, 24-hour feedback window) remain in effect.

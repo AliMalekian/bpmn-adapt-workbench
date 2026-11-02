@@ -1,0 +1,15 @@
+1. All web shops offering a required part must be queried for price, available quantity, and delivery time before any order is placed.
+2. When ordering from multiple external web shops, multi-shop orders are placed only if a single shop cannot fulfill the quantity; consolidated inventory orders do not require formal shop list creation.
+3. The cheapest combined offer is always chosen when its delivery time is 10 days or less.
+4. When a single shop can deliver fewer than 10 units of a requested part, the remaining quantity is ordered from a second shop.
+5. Parts arrive in batches and may arrive up to 2 days earlier or later than the promised delivery date.
+6. Assembly may begin as soon as the first arriving parts for the project pass inspection.
+7. If the stock of a single part falls below 5 units, a reorder using the cheapest offer is triggered automatically.
+8. If the stock of a single part falls below 3 units, an express reorder with the fastest delivery is triggered.
+9. When the stock of any part reaches zero, no further building that uses that part is allowed until the reorder arrives.
+10. At least 2 different web shops must be available as suppliers for every part type in the project.
+11. A complaint mail to friends is sent only when a part's stock drops to zero during active production.
+12. The total cost of all parts for a project must not exceed the project's parts budget.
+13. Delivery delays of more than 3 days beyond the expected date must be reported in the project log.
+14. Every reordered batch must be counted and inspected before it is added to stock.
+15. Two quotes are compared only when both shops list the part and both can deliver within the requested delivery window.

@@ -1,0 +1,11 @@
+Re_Add_Request:
+Restored element: The job-interview negotiation step between the applicant and the company.
+
+This request semantically restores everything that Request4 removed. Request4 removed the optional job-interview negotiation step, so that after a positive application rating a company could move the applicant directly to the probation phase without an interview. This restoration brings the process back to its exact original shape:
+
+1. The job-interview negotiation step is re-inserted into the process between the positive application rating (Rule 4/Rule 6) and the start of the probation phase.
+2. The applicant is again able to negotiate a job interview with the company after a positive application rating, exactly as described in the process ("A job interview can be negotiated").
+3. The restored step keeps its original conditional character: the interview is negotiated and conducted when the parties choose to do so (Rule 6 remains permissive, as it was in the original process), and it does not replace the confirmation of employment terms in writing that must happen before the probation phase begins (Rule 12).
+4. No other part of the process is altered: application reporting (Rule 1), offer sending (Rule 2), confirmation of receipt within 3 working days (Rule 3), application rating (Rules 4 and 5), the 6-month probation phase (Rule 7), the post-probation mutual ratings (Rule 8), the 1-year review visibility delay (Rule 9), the weekly application minimum (Rule 14), and the 2-week offer expiry (Rule 15) remain exactly as before.
+
+The process is thereby returned to precisely its original state, with the job-interview negotiation step fully restored.

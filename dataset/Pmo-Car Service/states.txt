@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Bring Documents for Registration
+Completed activities: startEvent
+Current active activity or waiting point: Bring Documents for Registration
+Token position / execution status: token is at Bring Documents for Registration; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Cars accepted for service per day: 8)
+Applicable rules: Rule 1 (The next service reminder is scheduled only after a successful previous service has been recorded in the system.)
+Possible next activities: Check if car is still registered?
+
+STATE-02: Intermediate / decision
+Current process position: Gone to service?
+Completed activities: startEvent, Bring Documents for Registration, Check if car is still registered?, Registered?, Check appointment for service, Send reminder notification to user, Received a notificiation
+Current active activity or waiting point: Gone to service?
+Token position / execution status: token is at Gone to service?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Cars accepted for service per day: 8)
+Applicable rules: Rule 1 (The next service reminder is scheduled only after a successful previous service has been recorded in the system.)
+Possible next activities: Mechanic check a car and enter problems, > 30 days?
+
+STATE-03: Resource-dependent / waiting
+Current process position: Pay per App
+Completed activities: startEvent, Bring Documents for Registration, Check if car is still registered?, Registered?, Check appointment for service, Send reminder notification to user, Received a notificiation, Gone to service?, Mechanic check a car and enter problems, > 30 days?, Receive updates while waiting, User fined, Repair done?, Make new appointment
+Current active activity or waiting point: Pay per App
+Token position / execution status: token is at Pay per App; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Cars accepted for service per day: 8)
+Applicable rules: Rule 1 (The next service reminder is scheduled only after a successful previous service has been recorded in the system.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: startEvent, Bring Documents for Registration, Check if car is still registered?, Registered?, Check appointment for service, Send reminder notification to user, Received a notificiation, Gone to service?, Mechanic check a car and enter problems, > 30 days?, Receive updates while waiting, User fined, Repair done?, Make new appointment, Pay per App, parallelGateway, Save repair infos, Send 'Pickerl', parallelGateway, Make appointment for next service
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Cars accepted for service per day: 8)
+Applicable rules: Rule 1 (The next service reminder is scheduled only after a successful previous service has been recorded in the system.)
+Possible next activities: Process completion

@@ -1,0 +1,14 @@
+Number of products in catalog: 5,000
+Warehouse staff: 40
+Warehouse storage capacity (pallets): 3,000
+Stock management system users: 12
+Wholesaler reorder lead time (days): 7
+Delivery delay threshold (days): 10
+Delivery delay penalty (percent of product value per day): 2
+Maximum penalty cap (percent): 30
+Order fulfillment capacity (orders per day): 250
+Courier fleet vehicles: 8
+Standard reorder point (units): 500
+Daily order volume (orders): 200
+Warehouse floor area (square meters): 8,000
+Forklifts: 6

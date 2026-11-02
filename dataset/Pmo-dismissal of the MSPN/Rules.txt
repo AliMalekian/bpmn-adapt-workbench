@@ -1,0 +1,15 @@
+1. A dismissal may be sent by the MSPN to the MSPO only after the termination decision is formally recorded.
+2. The MSPO must review each dismissal within 10 working days of receipt.
+3. The MSPO must either reject or confirm the dismissal; no other outcome is permitted.
+4. If the MSPO rejects the dismissal, it is returned to the MSPN together with the rejection reasons.
+5. A rejected dismissal may be resubmitted only after the MSPN addresses the stated reasons for rejection.
+6. The MSPO may confirm a dismissal only when the legal grounds for termination are verified as valid.
+7. A dismissal takes effect only after the effective date decided by the MSPO is reached.
+8. The affected person must be notified in writing of the final decision in every case.
+9. The MSPN may not re-submit the same dismissal more than twice before the MSPO refers the case to the higher authority.
+10. Confirmed dismissals must be entered in the personnel records within 5 working days.
+11. The MSPO cannot review a dismissal in which he or she has a personal interest.
+12. Dismissal proceedings are halted while a related legal appeal is pending.
+13. A previously confirmed dismissal can be reconsidered only on the basis of newly discovered evidence.
+14. Terms of separation stated in the confirmation must be executed by the MSPN without alteration.
+15. All dismissal documentation must be kept in the archive for at least 5 years.

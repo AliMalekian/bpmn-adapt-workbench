@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: exclusiveGateway
+Completed activities: New order received
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Building a Custom Machine out of Lego Bricks)
+Applicable rules: Rule 1 (A basic machine design must be fully developed and approved before any Lego brick sets are ordered.)
+Possible next activities: Container empty?, Build the next subcomponent, Develop basic design, exclusiveGateway
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: New order received
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Building a Custom Machine out of Lego Bricks)
+Applicable rules: Rule 1 (A basic machine design must be fully developed and approved before any Lego brick sets are ordered.)
+Possible next activities: Container empty?, Build the next subcomponent, Develop basic design, exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Test subcomponent 1
+Completed activities: New order received, exclusiveGateway, Develop basic design, Brick sets already ordered?, Order Lego brick sets, exclusiveGateway, Give the lego sets to the children, exclusiveGateway, Sort the parts into containers, Container empty?, Reorder parts, exclusiveGateway, Build the next subcomponent, Parts remained?, parallelGateway
+Current active activity or waiting point: Test subcomponent 1
+Token position / execution status: token is at Test subcomponent 1; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Building a Custom Machine out of Lego Bricks)
+Applicable rules: Rule 1 (A basic machine design must be fully developed and approved before any Lego brick sets are ordered.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: Machine assembled
+Completed activities: New order received, exclusiveGateway, Develop basic design, Brick sets already ordered?, Order Lego brick sets, exclusiveGateway, Give the lego sets to the children, exclusiveGateway, Sort the parts into containers, Container empty?, Reorder parts, exclusiveGateway, Build the next subcomponent, Parts remained?, parallelGateway, Test subcomponent 1, Test subcomponent 4, Test subcomponent 2, Test subcomponent 3, parallelGateway, All tests successfull?, Assemble subcomponents
+Current active activity or waiting point: Machine assembled
+Token position / execution status: token is at Machine assembled; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Building a Custom Machine out of Lego Bricks)
+Applicable rules: Rule 1 (A basic machine design must be fully developed and approved before any Lego brick sets are ordered.)
+Possible next activities: Process completion

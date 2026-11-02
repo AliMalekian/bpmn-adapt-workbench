@@ -1,0 +1,28 @@
+Request1:
+Removed element: Collecting and sending the requirements to the architect before any plan is created
+Reason: The requirement-collection step is proposed for removal so the architect starts drafting immediately from minimal input.
+Conflict details: Conflicts with Rule 1 ("The requirements are collected and sent to the architect before any plan is created") and Rule 12 ("Building cannot start before the plan is finalized"). Removing the requirement-collection step violates the mandatory precondition of Rule 1 and undercuts the plan that Rule 12 requires to be finalized. It also conflicts with Resource 13 ("Number of collected requirements: 10"): the requirements-count resource specifies how many requirements are gathered, and becomes unusable if the step is removed.
+
+Request2:
+Removed element: Sending messages to the friends who help build the house
+Reason: The friend-messaging step is proposed for removal so the builder relies on hired labor instead of messaging friends, reducing dependence on friends.
+Conflict details: Conflicts with Rule 5 ("Friends are messaged about building the house while the material order is still being processed"). It also conflicts with Resource 1 ("Number of friends messaged for the build: 6"): the six friends are called upon through this messaging step, and removing the step makes the friend-based building support unusable.
+
+Request3:
+Removed element: Sending invitations for the tree house party to the friends
+Reason: The invitation step is proposed for removal so the party planning is skipped entirely.
+Conflict details: Conflicts with Rule 7 ("Invitations for the tree house party are sent only after the house has been built") and Rule 14 ("Every invitation carries the maximum number of guests allowed"). It also conflicts with Resource 5 ("Number of friends invited to the party: 8") and Resource 11 ("Maximum number of guests in the tree house: 12"): the invitation count and the guest-capacity resource both exist to drive the invitation step, and become meaningless if the step is removed.
+
+Request4:
+Removed element: Creating the list of people attending the party before buying the snacks
+Reason: The attendance-list step is proposed for removal under the assumption that snack quantities can be estimated from the number of invitations sent, without building a separate attendance list.
+Conflict details: None — fully compatible with all rules and resources. Rule 8 ("A list of people attending the party is created before buying the snacks") is a permissive "when..." rule tied to buying snacks: the attendance list is only needed if snacks are bought as part of this process. Rule 9 ("Snacks are bought only for the people on the confirmed attendance list") and Rule 10 ("At least one friend must confirm attendance before snacks can be ordered") are satisfied as long as the attendance count is known from the invitations; the removal does not violate them because the confirmed attendees are still known from the invitation responses. No resource in Resources.txt depends on a dedicated attendance-list task: the snack budget (100 EUR) and the snacks-per-guest count (4) only define quantities, not a separate list-processing activity. All building, material-ordering, and invitation elements remain fully intact and compliant.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,30 @@
+Request1:
+Removed element: The "Provide feedback" task (Task_4) - the step in which the customer provides satisfaction feedback after the complaint case is resolved.
+Reason: It is proposed for removal to reduce the number of interactions with customers and to shorten the complaint-resolution cycle.
+Conflict details: This removal CONFLICTS with Rule 13 of Rules.txt: "Customer satisfaction feedback is collected after every resolved case." Rule 13 explicitly mandates that satisfaction feedback be collected after every resolved complaint, so removing the "Provide feedback" step makes it impossible to fulfill that mandate and directly breaks Rule 13. The complaint-resolution process therefore cannot be executed as defined while this step is missing.
+
+Request2:
+Removed element: The "File complaint" task (Task_7) - the opening step in which the customer files the complaint through an accepted channel.
+Reason: It is proposed for removal so that the customer service team can log and investigate the problem directly from an internal report, without requiring the customer to file a formal complaint.
+Conflict details: This removal CONFLICTS with the resources in Resources.txt. The resource "Customer service representatives: 8" is allocated to receive, log, and handle complaints - an intake function that presupposes the customer's filing activity; and the resource "Complaints received per month (average): 300" quantifies the incoming complaint volume that only arrives because customers can file complaints. Removing the filing step contradicts this provisioned intake capacity and the expected monthly complaint inflow, so the removal violates the resource plan of the process.
+
+Request3:
+Removed element: The "Process reimbursement" task (Task_3) - the step in which the financial team processes and credits the approved refund to the customer.
+Reason: It is proposed for removal so that an approved refund is considered paid once the decision is made, skipping the separate reimbursement-processing step.
+Conflict details: This removal CONFLICTS with both rules and resources. Rules: Rule 8 of Rules.txt states that "The reimbursement is processed by the financial team within 5 business days after refund approval," and Rule 9 requires that "A complaint is marked as resolved only after the customer receives the refund or after the rejection is notified" - the receiving of the refund depends on the reimbursement being processed. Removing the reimbursement-processing step makes it impossible for the customer to actually receive the refund, breaking Rules 8 and 9. Resources: the resource "Reimbursement processing time (business days): 5" in Resources.txt provisions the time window in which the financial team must process a reimbursement; removing the task makes this provisioned processing capacity unused and contradicts the resource allocation for the process.
+
+Request4:
+Removed element: The "Assign complaint to relevant department" task (Task_6) - the step in which customer service assigns the logged complaint to the relevant department for investigation.
+Reason: It is proposed for removal so that the logged complaint moves directly to the review of its details, skipping the assignment step and thereby slightly shortening the case-handling path.
+Conflict details: None — fully compatible with all rules and resources. Although Rules.txt explicitly addresses assignment, the constraints it imposes are all satisfied: Rule 2 of Rules.txt requires that the complaint "be assigned to the relevant department within 1 business day of logging it" and Rule 12 requires a same-department case to be "escalated one level"; removing the separate assignment task does not violate these, because the complaint is still forwarded to (and handled by) the relevant department through the direct continuation of the process, so the assignment outcome the rules demand is still achieved. No resource in Resources.txt is tied to a distinct assignment activity: the resource "Complaint assignment deadline (business days): 1" is a deadline, not a requirement that a dedicated assignment task exist, and the eight "Customer service representatives: 8" remain fully used by the retained logging and resolution steps. The process remains fully executable, with the complaint being reviewed and resolved in the relevant department, so the removal does not conflict with any rule or resource.
+
+Note (for the re-add request): Request4 removes only the "Assign complaint to relevant department" task as a model element. It does not remove the assignment outcome: complaints are still handled by the relevant department through the direct continuation of the flow. No other part of the process is affected by this removal.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,15 @@
+Restaurant seating capacity: 80 guests
+Active buzzer units: 120
+Kitchen staff (chefs): 4
+Till and service employees: 3
+POS terminals: 2
+Service hatch slots: 10
+Daily meal production capacity: 600 meals
+Meal preparation time budget: 15 minutes
+Buzzer call-out delay: 5 minutes
+Maximum buzzer call attempts: 3
+Daily ingredient budget: 3000 EUR
+Cash drawer limit per till: 500 EUR
+Maximum guests waiting in line: 40
+Daily menu items: 6
+Card payment terminals: 2

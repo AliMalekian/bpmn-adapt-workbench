@@ -1,0 +1,11 @@
+Annual department budget: $500,000
+Budget submission lead time before period start (days): 30
+Finance review deadline (business days): 15
+Senior approval threshold for budget adjustments (%): 10
+Maximum review rounds allowed: 4
+Number of departments competing for funds: 12
+Hireable employees under the plan: 5
+Equipment budget allocation: $80,000
+Marketing budget allocation: $50,000
+Reallocation pre-approval threshold ($): 5,000
+Monthly progress reporting: 12 reports per year

@@ -1,0 +1,28 @@
+Request1:
+Removed element: Screening all collected resumes against the required qualifications
+Reason: The resume screening step is proposed for removal because HR can invite all applicants directly to interviews, letting the interview process filter candidates instead.
+Conflict details: This removal conflicts with Rule 4, which states: "All collected resumes must be screened against the required qualifications for the role." Removing the screening step makes it impossible to satisfy Rule 4. It also conflicts with Rule 5, since candidates would be invited to a phone interview without passing a resume screening.
+
+Request2:
+Removed element: Conducting initial phone interviews with candidates who pass resume screening
+Reason: The phone interview step is proposed for removal because the in-person interview alone is sufficient to evaluate candidates, saving time for both HR and candidates.
+Conflict details: This removal conflicts with Resource "Number of hired HR interviewer candidates per week: 10." The 10 interviewer candidates hired per week reflects an interview workload that includes phone interviews; removing them leaves this resource unused. It also conflicts with Resource "Number of HR recruiters: 4" -- the recruiters conduct the phone interviews, so the recruiters become underutilized without this step. Additionally, Rule 5 states that candidates "are invited to an initial phone interview," and removing it conflicts with this rule as well.
+
+Request3:
+Removed element: The candidate passing reference checks before an offer is extended
+Reason: It is proposed that reference checks be skipped to shorten the hiring timeline, since the candidate has already performed well in both phone and in-person interviews.
+Conflict details: This removal conflicts with Rule 9, which states: "The chosen candidate must pass reference checks before an offer is extended." Removing reference checks directly breaks Rule 9. It also conflicts with Resource "Number of reference checks per shortlisted candidate: 2" -- the 2 reference checks allocated per candidate become entirely unused.
+
+Request4:
+Removed element: Salary negotiations between HR and the candidate
+Reason: The process description states that "salary negotiations may take place" after an offer is extended. It is proposed that the negotiation activity be removed, and the offer be extended at the standard salary band without negotiation.
+Conflict details: None -- fully compatible with all rules and resources. Rule 10 states that "Salary negotiations are allowed but the final salary must stay within the approved budget band." The word "allowed" means negotiation is optional, not mandatory; skipping it does not violate the rule as long as the final salary stays within the approved band. No other rule requires negotiation. Resource "Salary band width for negotiations: 10 percent" is merely a bound on negotiation and remains valid whether or not negotiation occurs. The process (offer extension, acceptance, onboarding) is fully executable without salary negotiation.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

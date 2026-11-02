@@ -1,0 +1,14 @@
+Re-Add request:
+The removal request Request4 removed the "Set new responsibilities" task (Task_10) from the process. This request semantically restores that removed element and returns the process to exactly its original shape.
+
+Restored element: "Set new responsibilities" task (Task_10).
+
+How it is restored:
+1. The "Set new responsibilities" task (Task_10) is reinserted into the process at its original position between the "Approve promotion" task (Task_9) and the "Transition into new role" task (Task_1).
+2. The process is immediately reactivated exactly as before: after "Approve promotion" finishes, ParallelGateway_2 again splits the flow into two parallel branches, so that "Set new responsibilities" (Task_10) runs in parallel with "Adjust compensation" (Task_7) rather than one branch silently skipping the responsibilities step.
+3. Task_10 again performs its original function: it assigns the promoted employee's new responsibilities under the approved promotion, covering each of the duties of the new role that the promotion granted.
+4. The parallel-join behavior is restored: the new responsibilities branch (from Task_10) and the compensation branch (from Task_7) converge again at ParallelGateway_3, and only when BOTH branches have completed does the process continue to "Transition into new role" (Task_1). This restores the synchronization semantics that existed before Task_10 was removed.
+5. The promotion finalization now again includes both required post-approval actions - setting the new responsibilities AND adjusting the compensation - so the new role is fully defined before the employee transitions into it.
+6. The process flow ends exactly as in the original model: after Task_10 completes, the flow reaches "Transition into new role" (Task_1), then the end event "end", with every element, branch, and ordering of the original process restored.
+
+Result: The removal of Task_10 is fully undone, and the promotion-finalization process is back to precisely its original shape with the "Set new responsibilities" step present in its original parallel position.

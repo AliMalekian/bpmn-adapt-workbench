@@ -1,0 +1,11 @@
+Number of CRS technicians: 6
+Labor rate per hour: $60
+Minimum labor charge (hours): 1
+Parts cost approval threshold: $450
+Cost quote validity (days): 14
+Maximum repair attempts per component: 3
+Functionality test time limit (minutes): 20
+Escalation lead time (business days): 2
+Number of specialist technician benches: 2
+Base repair fee: $80
+Daily repair capacity (computers): 25

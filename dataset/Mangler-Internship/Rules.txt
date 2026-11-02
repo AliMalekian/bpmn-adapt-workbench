@@ -1,0 +1,15 @@
+1. When registering on the platform, an interest topic and desired salary are entered; optional profile sections like hobbies and secondary experiences may be omitted without restriction.
+2. Experience and hobbies are optional but recommended to increase the chance of matching offers.
+3. Offers arrive at arbitrary points in time and each offer lists a company, topic, and salary.
+4. At most one internship offer may be accepted by the applicant.
+5. As soon as one offer is accepted, all other pending offers become invalid automatically.
+6. The applicant must write at least 3 status updates about the internship every week.
+7. The company must write at least 3 status updates about the applicant every week.
+8. An offer can be accepted or denied within 48 hours of receipt; after that the offer may be withdrawn.
+9. An accepted offer may be denied later only if the company fails to publish 3 weekly updates for 2 consecutive weeks.
+10. After the internship ends, the applicant may recommend the company to a list of friends.
+11. Recommendations are published as separate tweets sent in parallel on twitter.
+12. The internship lasts a minimum of 3 months and a maximum of 12 months.
+13. The desired salary must be within the platform's range of 1,000 to 3,000 units per month.
+14. Only completed internships allow company recommendations to be posted.
+15. The applicant must keep at least one unanswered offer open until an acceptance is confirmed.

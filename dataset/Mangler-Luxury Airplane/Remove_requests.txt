@@ -1,0 +1,28 @@
+Request1:
+Removed element: The step in which the customer confirms all interior specifications before the requirements are sent to the manufacturing teams.
+Reason: To speed up the process by forwarding the requirements to the teams as soon as the customer has stated them, without an explicit confirmation round.
+Conflict details: Conflicts with Rule 4 — all interior specifications must be confirmed by the customer before requirements are sent to the teams. It also conflicts with Rule 12 — seats may be produced only in the colors confirmed by the customer at order time, which presupposes the confirmation step.
+
+Request2:
+Removed element: The test flight step in which the assembled airplane is sent on a test flight to validate the interior.
+Reason: To deliver the airplane to the customer faster by skipping the flight validation.
+Conflict details: Conflicts with the resource "Test flight duration: 4 hours", which defines the duration allocated to this operation; removing the test flight makes the 4-hour flight-duration resource meaningless and violates the resource plan. It also conflicts with Rule 8 — after assembly, the plane is sent on a test flight to validate the interior.
+
+Request3:
+Removed element: The step of assembling the individual bits and pieces into the airplane interior.
+Reason: To save the assembly effort and hand the parts directly to the customer for installation.
+Conflict details: Conflicts with Rule 7 — the interior is assembled only after all individual bits and pieces from every team have arrived, and with Rule 14 — at least 5 different manufacturing teams must submit parts before assembly is authorized. It also conflicts with the resources "Interior assembly time: 30 days", which defines the assembly duration, and "Number of interior manufacturing teams: 6", whose part submissions are the prerequisite for the assembly to be authorized; removing the assembly step makes both resources meaningless and violates the resource plan.
+
+Request4:
+Removed element: The option of premium shipping of the airplane to the customer (the "premium shipping to the customer" variant of the delivery step).
+Reason: To standardize the delivery and ship every airplane with the regular standard shipping only.
+Conflict details: None — fully compatible with all rules and resources. The rules cover the customization of the interior (Rules 1 to 4 and 12), the manufacturing teams (Rules 5, 6 and 14), the assembly (Rules 7 and 14), the test flight and protocol (Rules 8, 9 and 15), and the delivery/confirmation (Rules 10 and 11) — but no rule requires or mentions a premium shipping option; Rules 10 and 11 only require that the plane is delivered after a passing test flight and that the customer confirms receipt. No resource in the resource list (e.g., "Test flight duration: 4 hours", "Component delivery window: 21 days", "Maximum total order volume: 3 planes") is tied to a premium shipping variant. Removing the premium-shipping option and always using the standard delivery is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,90 @@
+STATE-01: Initial / early execution
+Current process position: startEvent
+Completed activities: Contract Project
+Current active activity or waiting point: startEvent
+Token position / execution status: token is at startEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Project parts budget: $50,000)
+Applicable rules: Rule 1 (All web shops offering a required part must be queried for price, available quantity, and delivery time before any order is placed.)
+Possible next activities: Create list of necessary parts
+
+STATE-02: Intermediate / decision
+Current process position: start buiding
+Completed activities: Contract Project, startEvent, Manufacturing 
+Contract, Manufacturing 
+Contract, User, Computer, Parts Needed, Contract project received, Manufacturing  starts, Query webshops, Check amount of parts, Check delivery time, Check price, Contract project starts, Contract
+Project
+starts, exclusiveGateway, Create list of necessary parts, Start webshop crawler, exclusiveGateway, Query webshops, Query web shops, Enter all needed parts 
+(designation and quantity), Select required part, Query Webshops for 
+ necessary 
+parts, Startup & Load Interface, Query the next shop, create order list, Create order list, Trigger procurement system, Query webshops for part, Choose the shop wiht cheapest parts, Enter needed part into list, Ask about quantity, price and deadline, Parts available?, exclusiveGateway, exclusiveGateway, Find out delivery details, Make an order to the Webshop, search for part, Terms acceptable?, Order from one shop, Order from several shop, Order from one shop, Order from several shops, Query all shops
+(stock, price, delivery time), Save details in list, exclusiveGateway, search for part in webshop, exclusiveGateway, Create a list of the parts, exclusiveGateway, exclusiveGateway, exclusiveGateway, Compare prices, exclusiveGateway, parallelGateway, More parts needed?, Receive parts, Parts arrive, Pick cheapest shop with at least one part in stock, All required parts covered?, The webshop receives an order, check availability, check quantity, check delivery time, parallelGateway
+Current active activity or waiting point: start buiding
+Token position / execution status: token is at start buiding; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Project parts budget: $50,000)
+Applicable rules: Rule 1 (All web shops offering a required part must be queried for price, available quantity, and delivery time before any order is placed.)
+Possible next activities: parallelGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Contract fullfilled?
+Completed activities: Contract Project, startEvent, Manufacturing 
+Contract, Manufacturing 
+Contract, User, Computer, Parts Needed, Contract project received, Manufacturing  starts, Query webshops, Check amount of parts, Check delivery time, Check price, Contract project starts, Contract
+Project
+starts, exclusiveGateway, Create list of necessary parts, Start webshop crawler, exclusiveGateway, Query webshops, Query web shops, Enter all needed parts 
+(designation and quantity), Select required part, Query Webshops for 
+ necessary 
+parts, Startup & Load Interface, Query the next shop, create order list, Create order list, Trigger procurement system, Query webshops for part, Choose the shop wiht cheapest parts, Enter needed part into list, Ask about quantity, price and deadline, Parts available?, exclusiveGateway, exclusiveGateway, Find out delivery details, Make an order to the Webshop, search for part, Terms acceptable?, Order from one shop, Order from several shop, Order from one shop, Order from several shops, Query all shops
+(stock, price, delivery time), Save details in list, exclusiveGateway, search for part in webshop, exclusiveGateway, Create a list of the parts, exclusiveGateway, exclusiveGateway, exclusiveGateway, Compare prices, exclusiveGateway, parallelGateway, More parts needed?, Receive parts, Parts arrive, Pick cheapest shop with at least one part in stock, All required parts covered?, The webshop receives an order, check availability, check quantity, check delivery time, parallelGateway, start buiding, Start building, Stock
+Sufficient?, Generate list of parts with cheapest price, parallelGateway, parallelGateway, Receive first batch of parts, Receive second batch of parts, Receive third batch of parts, parallelGateway, parallelGateway, Put part, needed quantity, shop and price on order list, Put part, quantity in stock, shop and price on order list, Order parts, The webshop sends an invoice, The webshop delivers an order, The webshop updates Inventory, save result to list, First parts arrived, building, check stock, Continue building, Check amount in stock, More parts
+needed?, Calculate still needed amount, exclusiveGateway, parallelGateway, another webshop 
+available?, Start/Continue building, parallelGateway, how many parts in stock?, parallelGateway, exclusiveGateway, Place
+order, Mark stock of
+this shop as empty in query result, Part arrived, The Manufacturer receives an order and starts buiding, antoher part 
+to search?, Any stock falls?, Manufacturing finished, sufficient amount in stock, Order the fastest, Order the cheapest, Contract project ends, Order the cheapest, Order the fastest, Enough parts available, Parts
+arrive, parallelGateway, stock > 5?, select offer type: cheapest/ fastest, How much is the stock fall?, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, parallelGateway, Update stock, Update accounting, exclusiveGateway, stock = 0?, ordering because stock below 3 
+and already started building?, Reorder the cheapest part, Reorder the part as fast as possible, Complain to the friends
+Current active activity or waiting point: Contract fullfilled?
+Token position / execution status: token is at Contract fullfilled?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Project parts budget: $50,000)
+Applicable rules: Rule 1 (All web shops offering a required part must be queried for price, available quantity, and delivery time before any order is placed.)
+Possible next activities: Start/Continue building, Project completed
+
+STATE-04: Near completion / completed
+Current process position: send complaint  email to friends
+Completed activities: Contract Project, startEvent, Manufacturing 
+Contract, Manufacturing 
+Contract, User, Computer, Parts Needed, Contract project received, Manufacturing  starts, Query webshops, Check amount of parts, Check delivery time, Check price, Contract project starts, Contract
+Project
+starts, exclusiveGateway, Create list of necessary parts, Start webshop crawler, exclusiveGateway, Query webshops, Query web shops, Enter all needed parts 
+(designation and quantity), Select required part, Query Webshops for 
+ necessary 
+parts, Startup & Load Interface, Query the next shop, create order list, Create order list, Trigger procurement system, Query webshops for part, Choose the shop wiht cheapest parts, Enter needed part into list, Ask about quantity, price and deadline, Parts available?, exclusiveGateway, exclusiveGateway, Find out delivery details, Make an order to the Webshop, search for part, Terms acceptable?, Order from one shop, Order from several shop, Order from one shop, Order from several shops, Query all shops
+(stock, price, delivery time), Save details in list, exclusiveGateway, search for part in webshop, exclusiveGateway, Create a list of the parts, exclusiveGateway, exclusiveGateway, exclusiveGateway, Compare prices, exclusiveGateway, parallelGateway, More parts needed?, Receive parts, Parts arrive, Pick cheapest shop with at least one part in stock, All required parts covered?, The webshop receives an order, check availability, check quantity, check delivery time, parallelGateway, start buiding, Start building, Stock
+Sufficient?, Generate list of parts with cheapest price, parallelGateway, parallelGateway, Receive first batch of parts, Receive second batch of parts, Receive third batch of parts, parallelGateway, parallelGateway, Put part, needed quantity, shop and price on order list, Put part, quantity in stock, shop and price on order list, Order parts, The webshop sends an invoice, The webshop delivers an order, The webshop updates Inventory, save result to list, First parts arrived, building, check stock, Continue building, Check amount in stock, More parts
+needed?, Calculate still needed amount, exclusiveGateway, parallelGateway, another webshop 
+available?, Start/Continue building, parallelGateway, how many parts in stock?, parallelGateway, exclusiveGateway, Place
+order, Mark stock of
+this shop as empty in query result, Part arrived, The Manufacturer receives an order and starts buiding, antoher part 
+to search?, Any stock falls?, Manufacturing finished, sufficient amount in stock, Order the fastest, Order the cheapest, Contract project ends, Order the cheapest, Order the fastest, Enough parts available, Parts
+arrive, parallelGateway, stock > 5?, select offer type: cheapest/ fastest, How much is the stock fall?, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, exclusiveGateway, parallelGateway, Update stock, Update accounting, exclusiveGateway, stock = 0?, ordering because stock below 3 
+and already started building?, Reorder the cheapest part, Reorder the part as fast as possible, Complain to the friends, Contract fullfilled?, complaining about webshop, continue normal order, Write complaint mail to friends, Continue order normally, Build using arrived parts, Check stock amount of delivered parts, parallelGateway, finish the project, write an compliament email, stock < 3?, select cheapest, select fastest, exclusiveGateway, Project completed, exclusiveGateway, parallelGateway, Stock
+amount, Build item, endEvent, exclusiveGateway, stock < 5?, order the part with faster delivery, exclusiveGateway, Manufacturing
+finished?, Query all shops
+(stock, price, delivery time), Write complaint E-Mail, Part missing?, order the cheapest part, refacture list by selected offer type, Manufacturing
+finished, Stock 
+below 3, Check order status, Close contract project, add offer to list, Pick fastest shop with at least one part in stock, Pick cheapest shop with at least one part in stock, part already ordered?, contract finished, one store can supply 
+needed amount of parts?, exclusiveGateway, Check quantity of parts, another part
+ on list?, add next best result to list to statisfy amount, Put part, shop and price on reorder list, Quantity?, create final order list, exclusiveGateway, Choose amount of parts and place
+order, Compare delivery time, Compare prices, confirm order, Order fastest part, Order cheapest part, order items, exclusiveGateway, order placed, batch of 
+parts arrive, start building, more parts needed?, complete building, stock below 5 but more than 3
+for one item type?, exclusiveGateway, stock below 3  but more than 0 
+for one item type?, exclusiveGateway, Objekt fertig gebaut
+Current active activity or waiting point: send complaint  email to friends
+Token position / execution status: token is at send complaint  email to friends; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Project parts budget: $50,000)
+Applicable rules: Rule 1 (All web shops offering a required part must be queried for price, available quantity, and delivery time before any order is placed.)
+Possible next activities: exclusiveGateway

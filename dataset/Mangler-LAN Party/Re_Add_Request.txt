@@ -1,0 +1,12 @@
+Re_Add_Request:
+Restored element: The venue/date reservation task ("Reserve that day") for the chosen LAN-party date.
+
+This request semantically restores everything that Request4 removed. Request4 removed the reservation task in which the host formally reserves the chosen LAN-party date, so that the date was confirmed among the friends without any booking. This restoration brings the process back to its exact original shape:
+
+1. The task "Reserve that day" is re-inserted into the planning flow, immediately after a date has been agreed upon by at least 8 of the 10 friends and selected as the party date (Rules 3 and 4).
+2. The restored reservation task formally books/reserves the chosen date, exactly as it appears in the BPMN model of the LAN-party process, and it does not replace the required friend availability agreement that precedes it.
+3. The restored task is compatible with the date-communication obligations: after the date is selected and reserved, the date is still communicated to all 10 friends within 24 hours (Rule 13), and the chosen date still must not fall on a day when more than 3 friends are unavailable (Rule 15).
+4. The restored reservation does not affect the other planning steps: invitations (Rule 1), game-list collection (Rule 2), game availability checks and downloads (Rules 5, 6, 11), the beer requirement check and purchase (Rules 7, 8, 12), the seats and network ports setup (Rule 9), and the start of the party remain exactly as before.
+5. No other part of the process is altered — the reservation task is the only element restored, and it returns the process to precisely its original state with the "Reserve that day" step in place.
+
+The process is thereby returned to exactly its original shape, with the venue/date reservation task fully restored.

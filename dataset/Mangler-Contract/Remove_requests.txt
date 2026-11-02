@@ -1,0 +1,28 @@
+Request1:
+Removed element: The step of querying all web shops for price, available quantity, and delivery time before any order is placed.
+Reason: To save time by skipping the market research and placing orders directly with the shop the project has used before.
+Conflict details: Conflicts with Rule 1 — all web shops offering a required part must be queried for price, available quantity, and delivery time before any order is placed. It also conflicts with Rule 10 — at least 2 different web shops must be available as suppliers for every part type in the project, which cannot be ensured if shops are never queried; and with Rule 15 — two quotes are compared only when both shops list the part and both can deliver within the requested delivery window, which requires the query information.
+
+Request2:
+Removed element: The operation of storing the arriving parts in the warehouse before they are used for building.
+Reason: To skip the intermediate storage step and use the parts directly from the delivery batches.
+Conflict details: Conflicts with the resource "Warehouse capacity: 500 part units". The warehouse capacity of 500 units is allocated specifically to hold the arriving part batches, which arrive at random times and in random order; removing the storage operation makes this allocated capacity meaningless and violates the resource plan. The removal also conflicts with the resource "Number of assembly workstations: 4" indirectly — the warehouse buffering is what keeps the 4 assembly workstations continuously supplied while parts arrive at random; without storage, workstation utilization breaks.
+
+Request3:
+Removed element: The automatic reorder step triggered when the stock of a single part falls below 5 units (reordering the cheapest offer).
+Reason: To reduce the number of purchase orders and cut administrative effort.
+Conflict details: Conflicts with Rule 7 — if the stock of a single part falls below 5 units, a reorder using the cheapest offer is triggered automatically. It also conflicts with the resource "Minimum stock reorder threshold: 5 units", which defines the trigger point of this reorder operation; removing the reorder makes the threshold resource meaningless. In addition, the resource "Cheapest supplier average delivery time: 7 days" is defined to support this cheapest-offer reorder, and without the reorder the delivery-time planning around it is violated.
+
+Request4:
+Removed element: The task of creating the formal list of parts to be ordered from each web shop.
+Reason: To reduce paperwork; the order quantities can be communicated to the shops directly without writing down a separate per-shop parts list.
+Conflict details: None — fully compatible with all rules and resources. No rule requires a formal written per-shop parts list: Rules 1 to 4 and Rule 15 govern how and from which shops parts may be ordered (querying first, ordering from multiple shops only when necessary, choosing the cheapest offer), but none of them mandates the creation of a separate list document. No resource is tied to this list either. Placing the orders directly while still respecting the querying, multi-shop, and cheapest-offer constraints is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

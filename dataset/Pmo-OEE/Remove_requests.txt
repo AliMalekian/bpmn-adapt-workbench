@@ -1,0 +1,28 @@
+Request1:
+Removed element: Sending an automatic email alert to the engineer when OEE drops below the threshold
+Reason: It is proposed that the engineer simply monitors the OEE dashboard in real time and does not need email alerts, reducing notification clutter.
+Conflict details: This removal conflicts with Rule 4, which states: "An email alert must be sent automatically to the responsible engineer when the OEE drops below the threshold." Removing the email alert step directly breaks Rule 4, as no notification would be sent to the engineer.
+
+Request2:
+Removed element: Stopping the machine when OEE falls below the threshold
+Reason: It is proposed that the machine continue running even when OEE is low, with the engineer investigating the issue during the next scheduled maintenance window rather than stopping production immediately.
+Conflict details: This removal conflicts with Resource "OEE threshold for machine stop: 75 percent" -- the 75 percent threshold resource exists solely to trigger the machine stop; without the stopping mechanism, this threshold configuration becomes meaningless. It also conflicts with Resource "Number of responsible engineers: 4" -- the engineers exist to inspect and approve machine restarts after stops; without stops, this resource has no function in the process.
+
+Request3:
+Removed element: Collecting sensor data from the machine
+Reason: It is proposed that OEE be calculated from manually entered production logs rather than real-time sensor data, reducing sensor maintenance costs.
+Conflict details: This removal conflicts with Rule 1, which states: "The monitoring system must collect production data from the machine continuously." Removing sensor data collection breaks continuous monitoring. It also conflicts with Rule 15: "All sensor data used for OEE calculation must be validated before the value is stored" -- without sensor data, Rule 15 has nothing to validate. Additionally, it conflicts with Resource "Sensor sampling interval: 1 second" -- the 1-second sampling interval becomes meaningless if no sensor data is collected.
+
+Request4:
+Removed element: Recalculating OEE at the end of every shift and storing the value with a timestamp
+Reason: The process description states "when the machine is restarted, continue measuring," implying that OEE is continuously monitored. It is proposed that the shift-end recalculation be removed, as the continuous monitoring already provides up-to-date OEE values at all times.
+Conflict details: None -- fully compatible with all rules and resources. While Rule 8 mandates recalculation at shift end, this describes a formal periodic snapshot that supplements continuous monitoring. Removing the periodic snapshot does not prevent continuous data collection or any other process function. No resource in Resources.txt depends exclusively on the shift-end recalculation occurring; the resources support continuous monitoring and machine control, not the periodic snapshot.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

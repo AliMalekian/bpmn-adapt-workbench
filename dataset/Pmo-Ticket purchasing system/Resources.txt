@@ -1,0 +1,14 @@
+Daily ticketing capacity (bookings): 50,000
+Maximum passengers per reservation: 9
+Average flight seat capacity: 180
+Average train seat capacity: 480
+Average bus seat capacity: 45
+Payment processing time limit (minutes): 10
+Free cancellation window (hours): 48
+Reschedule fee waiver count per booking: 1
+Check-in reminder lead time (hours): 24
+Second check-in reminder lead time (hours): 3
+Ticket delivery time limit (minutes): 5
+Overbooking tolerance (percent of capacity): 2
+Customer service agents: 20
+Post-travel feedback window (hours): 24

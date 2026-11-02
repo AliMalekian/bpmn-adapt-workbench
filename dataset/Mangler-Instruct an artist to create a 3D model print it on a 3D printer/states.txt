@@ -1,0 +1,54 @@
+STATE-01: Initial / early execution
+Current process position: STL FIle
+Completed activities: Start
+Current active activity or waiting point: STL FIle
+Token position / execution status: token is at STL FIle; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum sketches sent to artist: 3)
+Applicable rules: Rule 1 (The artist must receive at least 3 reference sketches before starting the 3D model project.)
+Possible next activities: STL File
+
+STATE-02: Intermediate / decision
+Current process position: Choose platic color
+Completed activities: Start, STL FIle, STL File, Printing a 
+3D model, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, STL FIle, STL File, Start Manufacturing Process, continuously sending status to system (PC), startEvent, sending sketches, check proposal, exclusiveGateway, exclusiveGateway, choose plastic color, exclusiveGateway, Artists new proposal arrived, exclusiveGateway, check how much color left, order color, exclusiveGateway, parallelGateway, turn the printer on, DefaultInputSet, DefaultOutputSet, heat up the bed and extruder, DefaultInputSet, DefaultOutputSet, parallelGateway, generate gcode file, print model, exclusiveGateway, exclusiveGateway, exclusiveGateway, put it on the shopping list, Send new change proposal, endEvent, continuously sending status to system (PC), continuously sending status to system (PC), Start 3D-Projekct, Start, Artist, Instructing and printing
+process starts, STL file, printing process started, DefaultInputSet, DefaultOutputSet, STL file, Create a 3D model, create sketches, Instruct an artist, Send sketches to artist, Send change proposal, Instruct an artist, Prepare Some Sketches, Send several 
+sketches, Instruct the artist, exclusiveGateway, send sketches  to artist, Send sketches to the artist, exclusiveGateway, Send sketches, Send Sketches to the artist, Tell changes, Send Sketches, Send sketches to an artist, exclusiveGateway, exclusiveGateway, receive 3D Models, exclusiveGateway, exclusiveGateway, Satisfied with result?, exclusiveGateway, Receive result, artist creates model, Review draft, Check 3D Models, Edit sketch changes, Tell reuired changes
+Current active activity or waiting point: Choose platic color
+Token position / execution status: token is at Choose platic color; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum sketches sent to artist: 3)
+Applicable rules: Rule 1 (The artist must receive at least 3 reference sketches before starting the 3D model project.)
+Possible next activities: Plastic color in stock?
+
+STATE-03: Resource-dependent / waiting
+Current process position: parallelGateway
+Completed activities: Start, STL FIle, STL File, Printing a 
+3D model, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, STL FIle, STL File, Start Manufacturing Process, continuously sending status to system (PC), startEvent, sending sketches, check proposal, exclusiveGateway, exclusiveGateway, choose plastic color, exclusiveGateway, Artists new proposal arrived, exclusiveGateway, check how much color left, order color, exclusiveGateway
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum sketches sent to artist: 3)
+Applicable rules: Rule 1 (The artist must receive at least 3 reference sketches before starting the 3D model project.)
+Possible next activities: succesefully 
+prepared ?, heat up the bed, import STL file into program and request conversion, turn on the printer, heat up extruder, Heat up bed, Heat up extruder, Turn on the printer, Get STL File, Print the model, exclusiveGateway, Send Status, Generate gcode file, Print model, Heat up the bed, Print model, Generate gcode file, Heat up extruder, Turn on printer, Generate gCode from stl, Print 3D Model, exclusiveGateway, Turn printer on, STL file received, Generate the model, Turn on the printer to heat up bed and extruder, Generate the gcode file, Print the model, Generate gcode file, exclusiveGateway, Print the model
+
+STATE-04: Near completion / completed
+Current process position: End
+Completed activities: Start, STL FIle, STL File, Printing a 
+3D model, DefaultInputSet, DefaultOutputSet, DefaultInputSet, DefaultOutputSet, STL FIle, STL File, Start Manufacturing Process, continuously sending status to system (PC), startEvent, sending sketches, check proposal, exclusiveGateway, exclusiveGateway, choose plastic color, exclusiveGateway, Artists new proposal arrived, exclusiveGateway, check how much color left, order color, exclusiveGateway, parallelGateway, turn the printer on, DefaultInputSet, DefaultOutputSet, heat up the bed and extruder, DefaultInputSet, DefaultOutputSet, parallelGateway, generate gcode file, print model, exclusiveGateway, exclusiveGateway, exclusiveGateway, put it on the shopping list, Send new change proposal, endEvent, continuously sending status to system (PC), continuously sending status to system (PC), Start 3D-Projekct, Start, Artist, Instructing and printing
+process starts, STL file, printing process started, DefaultInputSet, DefaultOutputSet, STL file, Create a 3D model, create sketches, Instruct an artist, Send sketches to artist, Send change proposal, Instruct an artist, Prepare Some Sketches, Send several 
+sketches, Instruct the artist, exclusiveGateway, send sketches  to artist, Send sketches to the artist, exclusiveGateway, Send sketches, Send Sketches to the artist, Tell changes, Send Sketches, Send sketches to an artist, exclusiveGateway, exclusiveGateway, receive 3D Models, exclusiveGateway, exclusiveGateway, Satisfied with result?, exclusiveGateway, Receive result, artist creates model, Review draft, Check 3D Models, Edit sketch changes, Tell reuired changes, Choose platic color, Receive model, Satisfied with result?, recieve 3D model from artist, Satisfied with
+ the result?, Models ok?, satisfied?, Receive the result (stl), Plastic color in stock?, alterations needed?, Choose the color, Tell artist to change, satisfied
+ with the result?, Choose plastic color, Discuss changes, Tell artist what to change, Choose plastic color, Tell changes to the artist, Revise sketch changes, Check the result, Check weight, Order the color, Choose a plastic color, Tell the artist what to change, In stock?, tell artist what to change, exclusiveGateway, Is the color in stock?, In stock?, Choose plastic color, Is satisfied?, exclusiveGateway, Plastic available, color in stock?, Check color level, Order color, choose a plastic color for model, Order color, Check  how much color is left, Check quantity, order plastic color, Check color availability, Choose plastic color, Add to shopping list, parallelGateway, Check quantity, Order color, Under 100g?, Receive order confirmation, have you 
+color at home?, exclusiveGateway, How much 
+color is left?, under 100g?, receive plastic color, color in stuck?, Check availability, Turn printer on, STL file received, quantity < 100 g?, Receive color, Put it on shopping list, exclusiveGateway, Color received, is it under 
+100 grams?, order it, Enough color available, Put color on shopping list, exclusiveGateway, add to shopping list, exclusiveGateway, exclusiveGateway, Order color, Check color gramm, Is in stock?, Heat up bed and extruder, Generate gcode file, exclusiveGateway, Put it on the shopping list, exclusiveGateway, exclusiveGateway, exclusiveGateway, put it on your shopping list, exclusiveGateway, parallelGateway, turn on printer, exclusiveGateway, exclusiveGateway, Order plastic color, Is greater than 100gr?, parallelGateway, parallelGateway, Turn on the printer, enough plastic?, Turn on the printer, Get STL File, parallelGateway, Receive plastic, Put on shopping list, exclusiveGateway, Receive order, Put in shopping list, exclusiveGateway, Generate the model, Turn on the printer to heat up bed and extruder, Generate the gcode file, parallelGateway, exclusiveGateway, parallelGateway, Generate gcode file, Send Status, Generate gcode file, parallelGateway, exclusiveGateway, Instructing and printing process ends, parallelGateway, Generate gcode file, exclusiveGateway, Prepare the model for printing, Heat up bed, Heat up extruder, parallelGateway, parallelGateway, Heat up the bed, Generate gcode file, Heat up extruder, Turn on printer, Turn on the 3D Printer, Print the model, parallelGateway, Receive status, parallelGateway, parallelGateway, Print the model, Print model, parallelGateway, parallelGateway, printing process concluded, Print the model, Heated?, heat up the bed, import STL file into program and request conversion, turn on the printer, heat up extruder, exclusiveGateway, End of 3D
+ printing process, model printed, Print model, Generate gCode from stl, exclusiveGateway, Model printed, parallelGateway, program generates  gcode file from STL, extruder send back  status, Updating status, endEvent, parallelGateway, heat up bed and extruder, succesefully 
+prepared ?, Printer heated up?, Print 3D Model, Send back Status, Request print in program
+Current active activity or waiting point: End
+Token position / execution status: token is at End; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Minimum sketches sent to artist: 3)
+Applicable rules: Rule 1 (The artist must receive at least 3 reference sketches before starting the 3D model project.)
+Possible next activities: Process completion

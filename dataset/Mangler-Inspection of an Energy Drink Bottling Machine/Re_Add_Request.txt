@@ -1,0 +1,12 @@
+Re_Add_Request:
+Restored element: The manual reading branch of the filling station pressure check, including the depressurization procedure.
+
+This request semantically restores everything that Request4 removed. Request4 removed the manual reading operation for the tube pressure of the filling station, together with the depressurization procedure that precedes manual readings, so that the pressure was obtained only from automatic sensor channels. This restoration brings the process back to its exact original shape:
+
+1. The manual pressure-reading branch is re-inserted into the inspection flow for the filling station subsystem: the tube pressure value can again be obtained by a manual reading, exactly as described in the process ("Buttons are to be pressed, and values are automatically collected ... shown to you" plus the manual reading capability for pressure checks).
+2. The depressurization procedure is restored in front of the manual reading: the machine must be fully depressurized before the manual reading is taken (Rule 8), since manual readings are now taken again.
+3. The restored reading still must satisfy the pass condition: the tube pressure reading must stay between 1.2 and 1.8 bar for the filling station to pass (Rule 12), matching the resource "Specified filling pressure range: 1.2 to 1.8 bar".
+4. The restored branch is again an alternative to the automatic sensor reading for the same pressure value; values are still read from the sensors and displayed to the inspector when collected automatically (Rule 3), and the inspector confirms values before storage (Rule 4).
+5. No other part of the process is altered: machine type/serial number entry (Rule 1), branching of the inspection sequence (Rule 6), pass/fail verdicts (Rule 7), retest behavior (Rule 9), senior approval (Rule 10), 5-year archiving (Rule 11), the 4-hour session limit (Rule 14), and alarm handling (Rule 15) remain exactly as before.
+
+The process is thereby returned to precisely its original state, with the manual pressure-reading branch and the depressurization procedure fully restored.

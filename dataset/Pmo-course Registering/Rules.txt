@@ -1,0 +1,15 @@
+1. A course can be selected only if at least one free slot is available for the intended course date.
+2. The system displays available courses and dates only for courses that still have free slots.
+3. Registration requires a valid account at the sports institute.
+4. A new user without an account must verify registration at an eligible university before an account is created.
+5. Users who are not at an eligible university must request an activation and may not register until the activation response is received.
+6. Course registration cannot be completed unless payment information is provided.
+7. Registration is confirmed only after payment has been successfully processed.
+8. A course ticket is generated and sent only after the payment is completed.
+9. Users may register for at most 3 courses per season.
+10. A course is closed for registration once its maximum number of participants is reached.
+11. Course cancellations are allowed with a full refund only up to 7 days before the course start date.
+12. Only students currently enrolled at an eligible university quality for the student discount.
+13. Completion of the registration requires the application to be connected to the user's social account to allow inviting friends.
+14. Course fees must be paid in full at the time of registration; installments are not offered.
+15. The activation request must be answered within 5 business days.

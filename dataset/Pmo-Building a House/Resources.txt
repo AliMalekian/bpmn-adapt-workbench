@@ -1,0 +1,13 @@
+Number of friends messaged for the build: 6
+Number of required refinement rounds: 3
+Number of material categories: 5
+Number of online stores used: 4
+Number of friends invited to the party: 8
+Material budget: 1500 EUR
+Party snack budget: 100 EUR
+Number of snacks per guest: 4
+Construction time: 30 days
+Material delivery time: 7 days
+Maximum number of guests in the tree house: 12
+Architect draft fee: 200 EUR
+Number of collected requirements: 10

@@ -1,0 +1,15 @@
+1. Invitations are sent to exactly 10 friends before the party planning continues.
+2. A date for the LAN party is appointed only after the list of wanted games is received.
+3. At least 8 of the 10 friends must agree on a date for the party to be confirmed.
+4. If fewer than 8 friends agree, another date is appointed until 8 friends are free.
+5. While a date is being found, the host checks whether all wanted games are available.
+6. Missing games are downloaded before the party date.
+7. The host must find out how much beer the friends require before the party.
+8. If the available beer stock is lower than the required amount, the missing quantity is bought.
+9. Every participant must have their own seat and network port at the LAN party.
+10. A game may be played only if at least 2 participants have installed it.
+11. The party cannot start until all promised games are downloaded and installed on the LAN network.
+12. At least the required beer amount, rounded up to full crates, must be in stock at party start.
+13. Date changes are communicated to all 10 friends within 24 hours.
+14. The party is postponed if fewer than 5 friends are available on the final confirmed date.
+15. The chosen date must not fall on a day when more than 3 friends are unavailable.

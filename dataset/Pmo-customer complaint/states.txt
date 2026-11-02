@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: File complaint
+Completed activities: start
+Current active activity or waiting point: File complaint
+Token position / execution status: token is at File complaint; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Customer service representatives: 8)
+Applicable rules: Rule 1 (A complaint can be logged only after it is filed by the customer through an accepted channel (phone, email, or web form).)
+Possible next activities: Log complaint
+
+STATE-02: Intermediate / decision
+Current process position: exclusiveGateway
+Completed activities: start, File complaint, Log complaint, Assign complaint to relevant department, Review complaint details
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Customer service representatives: 8)
+Applicable rules: Rule 1 (A complaint can be logged only after it is filed by the customer through an accepted channel (phone, email, or web form).)
+Possible next activities: Resolve complaint, Provide feedback, end, exclusiveGateway, Approve and notify customer, Reject and notify customer
+
+STATE-03: Resource-dependent / waiting
+Current process position: Resolve complaint
+Completed activities: start, File complaint, Log complaint, Assign complaint to relevant department, Review complaint details, exclusiveGateway, Approve and notify customer, Reject and notify customer, Process reimbursement, exclusiveGateway
+Current active activity or waiting point: Resolve complaint
+Token position / execution status: token is at Resolve complaint; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Customer service representatives: 8)
+Applicable rules: Rule 1 (A complaint can be logged only after it is filed by the customer through an accepted channel (phone, email, or web form).)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, File complaint, Log complaint, Assign complaint to relevant department, Review complaint details, exclusiveGateway, Approve and notify customer, Reject and notify customer, Process reimbursement, exclusiveGateway, Resolve complaint, exclusiveGateway, Provide feedback, exclusiveGateway
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Customer service representatives: 8)
+Applicable rules: Rule 1 (A complaint can be logged only after it is filed by the customer through an accepted channel (phone, email, or web form).)
+Possible next activities: Process completion

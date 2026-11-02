@@ -1,0 +1,15 @@
+1. When automated inspection is performed, the Bluetooth link connects the app to the machine; manual inspections do not require Bluetooth connectivity.
+2. Inspection questions require the inspector to input measured values.
+3. Certain values are automatically collected from the machine and shown after a button is pressed.
+4. Depending on the results, additional questions are asked.
+5. No additional questions are asked when all previous results are within the normal range.
+6. The serial number is validated against the machine database before the inspection starts.
+7. A value outside the acceptable range for the machine type triggers a follow-up question.
+8. The inspection workflow is branched according to the machine type.
+9. Automatically collected values are read only at the moment the corresponding button is pressed.
+10. Each inspection question must be answered before the inspection can proceed.
+11. The inspection report is generated only when all required questions have been answered.
+12. Measured values below the lower limit or above the upper limit are flagged immediately.
+13. The inspector cannot modify automatically collected values.
+14. The inspection results determine whether additional maintenance steps are required.
+15. The inspection is complete only when every mandatory check has passed.

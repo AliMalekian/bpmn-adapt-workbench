@@ -1,0 +1,12 @@
+Response time limit (hours): 24
+Maximum data records per request: 10,000
+Data retention limit per request (years): 7
+Fee per transmitted record: $0.05
+Minimum fee per request: $10
+Failed authentication limit: 3
+Authentication lockout duration (hours): 12
+Duplicate request window (days): 30
+INQ data deletion period (days): 90
+Number of authorized INQ entities: 120
+Encryption standard (bits): 256
+Daily request processing capacity: 5,000

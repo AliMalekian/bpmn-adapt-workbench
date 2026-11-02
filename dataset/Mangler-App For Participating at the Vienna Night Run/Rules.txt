@@ -1,0 +1,15 @@
+1. A runner must select a starting block before the run attempt can be registered in the app.
+2. The official 5 km time must be below 25 minutes before a starting number is issued.
+3. Runners who fail the 25-minute target must train and recheck until the goal is achieved.
+4. Starting numbers are issued only after the qualifying time is confirmed by the fitness tracking gadget.
+5. If more than 60 minutes remain between the end of the workday and the run start time, the runner may travel from home; otherwise they must leave directly from work.
+6. The app asks for the runner's workday end time to compute the departure decision.
+7. Times measured by fitness gadgets override manually entered times for the qualification check.
+8. Registration closes 24 hours before the event start.
+9. Each starting block is limited to 500 runners.
+10. The official final running time is measured from the start signal to the finish line crossing.
+11. Runners must complete the 5 km track within 90 minutes to be ranked with a final time.
+12. The app must display the final running time within 15 minutes after the runner finishes.
+13. Runners must use at least one drinking station during the run because they run and drink at the same time.
+14. The selected starting block cannot be changed after the starting number is issued.
+15. Qualification and final time data are synchronized with the fitness gadget before and after the run.

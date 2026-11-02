@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled).
+Current token position: Immediately before Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled) on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of warehouse staff: 30)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled).
+Current token position: Immediately before Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled) on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 2 (If payment fails, the customer is notified within 24 hours and the order is cancelled.), Rule 3 (A payment is considered failed after 3 unsuccessful processing attempts.)
+Expected execution path: Follow the original predecessor → Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled).
+Current token position: Immediately before Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled) on its original BPMN sequence flow.
+Required resources: Resource 1 (Number of warehouse staff: 30)
+Relevant rules: Rule 2 (If payment fails, the customer is notified within 24 hours and the order is cancelled.), Rule 3 (A payment is considered failed after 3 unsuccessful processing attempts.)
+Expected execution path: Follow the original predecessor → Notify about failed payment task (the step that informs the customer when the payment fails and the order is cancelled) → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate restored process activity.
+Current token position: Immediately before restored process activity on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → restored process activity → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

@@ -1,0 +1,15 @@
+1. Account setup must be started or completed before a WoW character can be created.
+2. If the user does not have a battle.net account, account information must be entered and the confirmation e-mail link must be clicked before the account is considered active.
+3. A character can be created only if the battle.net account has an active World of Warcraft subscription.
+4. If there is no active subscription, the payment method must be selected and completed before login.
+5. Credit card payment requires valid credit card information, while bank account payment requires valid IBAN and BIC numbers.
+6. A character name is accepted only if it is still available and meets the naming rules, and the user must enter candidate names one by one until an available name is found.
+7. Every battle.net account may own at most 10 characters per realm.
+8. Character names are limited to a maximum of 12 characters and must be unique.
+9. Realm, race, and class must be selected, and only races and classes allowed for the nominated realm are selectable.
+10. A user must be logged into the game to finalize character creation.
+11. When an expansion is released, a confirmation message with character selfies is sent to the account holder.
+12. Reusing a name of a character that was deleted less than 30 days ago is not permitted.
+13. Payment method changes require re-verification before a subscription can be renewed.
+14. A user may save up to 5 candidate character names before they are checked for availability.
+15. New accounts are blocked from cross-realm character creation until the first payment is successfully processed.

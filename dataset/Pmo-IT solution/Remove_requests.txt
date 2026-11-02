@@ -1,0 +1,28 @@
+Request1:
+Removed element: Provide training (the "Provide training" task for the requesting department)
+Reason: Training consumes staff time and most departments already know the tools; removing it would let the rollout proceed without a training session.
+Conflict details: Conflicts with Rule 8 ("Training is required for the requesting department when the solution changes user-facing workflows"). The "Provide training" task is the only step that satisfies the mandatory training requirement of Rule 8; removing it means no training is ever delivered even when the new solution changes user-facing workflows, directly violating the rule.
+
+Request2:
+Removed element: Provide support for troubleshooting (the "Provide support for troubleshooting" task after rollout)
+Reason: Post-rollout support ties up staff and extends the project; removing it would end IT involvement once the solution is rolled out.
+Conflict details: Conflicts with the resource "Support window after rollout (days): 30" from Resources.txt, which defines how long support must remain available after the rollout. Removing the support task voids this 30-day support-window resource and leaves it with no step that performs the support, and it also leaves "Number of IT support staff: 6" and "Single point of contact email response time (hours): 2" from Resources.txt without the support activity they provision.
+
+Request3:
+Removed element: Test the solution in the controlled environment (the "Test solution" task before rollout)
+Reason: Testing delays delivery of the solution; removing it would let the solution go straight to the department after installation.
+Conflict details: Conflicts with Rule 6 ("Every new solution must be installed and tested in a controlled environment before it is rolled out to the requesting department"), Rule 7 ("Rollout to the production environment happens only after all tests pass in the controlled environment"), and Rule 10 ("Test environments must be isolated so that failed tests cannot affect the production systems"), and with the resources "Number of test environments: 3" and "Controlled environment test capacity (solutions at once): 2" from Resources.txt. The rules mandate controlled-environment testing before any rollout and require isolated test environments, and Resources.txt explicitly provisions three test environments with a capacity of two solutions at once for exactly this task; removing the test task breaks Rules 6, 7 and 10 and voids both configured test-capacity resources.
+
+Request4:
+Removed element: The "end" completion marker of the main rollout flow (the plain end event that terminates the rollout path before the post-rollout tasks are joined)
+Reason: The rollout already finishes naturally when the solution is handed over, so the separate end marker is redundant and clutters the diagram.
+Conflict details: None - fully compatible with all rules and resources. No rule in Rules.txt references the end event itself, and no resource in Resources.txt is bound to it. The rollout, support, and training behaviors covered by Rules 8 and 9 and by Resources.txt remain in place; only the redundant completion marker is dropped, so the process remains fully executable and every rule and resource stays satisfied.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

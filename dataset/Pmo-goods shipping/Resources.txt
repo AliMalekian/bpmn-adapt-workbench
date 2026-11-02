@@ -1,0 +1,11 @@
+Large shipment weight threshold (kg): 30
+Number of logistic companies invited per large shipment: 3
+Insurance threshold shipment value ($): 500
+Offer validity period (days): 7
+Pickup advance notice (days): 1
+Warehousemen on staff: 6
+Secretaries handling shipping: 2
+Logistics department heads: 1
+Maximum daily normal post batches: 5
+Package labels available per day: 100
+Small shipment processing time (working days): 2

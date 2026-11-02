@@ -1,0 +1,13 @@
+Maximum saws per production batch: 20
+Minimum defining properties per saw: 5
+Customer prototype approval period (days): 14
+Status update interval (working days): 3
+Spare parts stock kept per configuration: 2
+Alternate supplier selection deadline (hours): 24
+Maximum guide bar length without extra safety test (cm): 90
+Number of assembly workstations: 3
+Number of inspection stations: 1
+Monthly part-ordering budget (EUR): 20000
+Parallel online suppliers that can be queried: 6
+Standard production time per saw (hours): 4
+Restock fee for unapproved prototype orders (percent): 10

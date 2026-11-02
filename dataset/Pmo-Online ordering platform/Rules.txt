@@ -1,0 +1,17 @@
+Rules for an Online Ordering and Delivery Platform
+11. When customer feedback is submitted after delivery, it is recorded in the system; submitting feedback is voluntary for the customer.
+1. Orders may be placed through the online platform or by phone between 8:00 and 20:00 local time.
+2. The system must automatically generate and send an order confirmation immediately after the order is placed.
+3. The warehouse team must pick and pack the ordered items within 24 hours of the confirmation.
+4. A shipping label is generated only after picking and packing is completed.
+5. Every order must be handed over to an approved logistics provider for delivery.
+6. Tracking information must be sent to the customer as soon as the shipment is dispatched.
+7. The shipment must be monitored until it reaches the customer's address.
+8. Delivery must be completed within 5 business days of dispatch.
+9. If the first delivery attempt fails, the logistics provider must offer up to 2 redelivery attempts.
+10. Orders with a total value below 5 dollars cannot be placed.
+11. Customer feedback collected after delivery must be recorded in the system.
+12. Returns may be initiated within 30 days of delivery.
+13. Returned items are inspected and restocked only if they are undamaged.
+14. Payment must be validated before the order is sent to the warehouse for picking.
+15. The process ends only after delivery is completed and any confirmed return is fully resolved.

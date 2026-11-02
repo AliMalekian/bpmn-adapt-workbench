@@ -1,0 +1,28 @@
+Request1:
+Removed element: "Call guest" task (the employee activity of repeatedly calling for the guest when the guest does not react to the buzzer)
+Reason: Calling out loud is noisy and chaotic; it is proposed to rely on the buzzer alone to gather the guest.
+Conflict details: Conflicts with Rule 4 ("If a guest does not react to the buzzer, the employee calls for them after 5 minutes") and Rule 5 ("Calls for uncollected meals are repeated at 5-minute intervals, up to 3 times in a row"), which explicitly define this calling behaviour. It also conflicts with Rule 15 ("Guests who miss three buzzer calls and do not appear within 30 minutes lose their meal and payment claim"), because that rule counts the very calls that this task performs. The resource "Maximum buzzer call attempts: 3" documents the exact number of calls made by this step, so the removal also breaks the operational mapping.
+
+Request2:
+Removed element: "Set up buzzer" task (the employee activity that activates and configures the buzzer before passing it to the guest)
+Reason: Setting up the buzzer adds a physical device-management step; it is proposed to hand the guest a fixed-number token instead.
+Conflict details: Conflicts with Resource "Active buzzer units: 120" and "Buzzer call-out delay: 5 minutes" and "Maximum buzzer call attempts: 3", because the whole buzzer fleet and its call-out parameters exist specifically for this setup-and-hand-out step. It also conflicts with Resource "Buzzer call-out delay: 5 minutes" being measured from the buzzer setup. Furthermore Rule 13 ("Buzzer units with a battery level below 20% must not be handed to guests") and Rule 14 ("The restaurant is limited to 120 active buzzers at any moment") require the assignment/setup bookkeeping that this task performs, so without it the fleet cannot be managed compliantly.
+
+Request3:
+Removed element: "Inform chef" task (the employee step that tells the chef about the newly placed meal order)
+Reason: The chef could read the orders directly from the POS screen, so the explicit verbal notification to the chef is proposed to be dropped.
+Conflict details: Conflicts with Rule 8 ("The chef places each finished meal in the service hatch and immediately informs the employee") and Rule 7 ("The chef prepares meals strictly in the order of POS entry"), because without the "Inform chef" step the chef would never receive the order that he must prepare in POS order, and the return-information loop would be broken. It also conflicts with Resource "Kitchen staff (chefs): 4" and "POS terminals: 2", since the process design assumes the order-receiving role of the kitchen is fed by this notification.
+
+Request4:
+Removed element: "wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)
+Reason: The waiting activity is pure idle time with no value; the guest could place the order immediately upon entering.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt mandates a formal "wait for turn" activity (Rule 13 "Maximum guests waiting in line: 40" merely caps the waiting line, it does not require the waiting step itself), and no resource in Resources.txt is bound to the waiting activity. The order entry, payment, buzzer, kitchen, and hand-over steps that the rules care about are all unaffected.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

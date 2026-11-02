@@ -1,0 +1,8 @@
+Re_Add_Request:
+Re-added element: Recalculating OEE at the end of every shift and storing the value with a timestamp
+Reason: This request semantically restores the element removed by Request4 in Remove_requests.txt, returning the process to its original state.
+Restoration details:
+- The process is restored so that, in addition to continuous monitoring and the machine stop/restart flow, OEE is again recalculated at the end of every production shift.
+- The OEE value computed at the end of each shift is stored in the monitoring system together with a timestamp, exactly as defined by Rule 8 ("OEE must be recalculated at the end of every shift and stored with a timestamp").
+- The restored shift-end recalculation covers every production shift (the resource "Number of production shifts per day: 3" applies), so at the close of each of the 3 daily shifts the OEE value is recalculated and the result stored with its timestamp.
+- With this restoration, the process is back to its exact original shape: continuous data collection, OEE calculation from availability/performance/quality, threshold-triggered machine stop, email alert to the engineer, engineer inspection and restart approval, resumed measurement, shift-end OEE recalculation with timestamped storage, quarantine of units processed during failure windows, and weekly reports.

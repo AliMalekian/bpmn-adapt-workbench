@@ -1,0 +1,28 @@
+Request1:
+Removed element: Sending several sketches to the artist before the model project can be started
+Reason: The initial-sketch step is proposed for removal so the customer can jump straight to describing change requests, saving effort in the early design phase.
+Conflict details: Conflicts with Rule 1 ("The artist is given several sketches before the model project can be started") and Rule 2 ("Change requests are sent to the artist until the result satisfies the customer"). Removing the sketch step violates the mandatory precondition of Rule 1 and leaves the revision loop of Rule 2 without a starting baseline. It also conflicts with Resource 6 ("Number of sketches to send initially: 3"): the sketch-count resource exists precisely to specify how many sketches open the project, and becomes unusable if the step is removed.
+
+Request2:
+Removed element: Heating up the printer bed and the extruder before printing
+Reason: The heating step is proposed for removal to start printing faster, assuming the printer can print at ambient temperature.
+Conflict details: Conflicts with Rule 8 ("The printer bed and the extruder must be heated up before printing can start") and Rule 11 ("Printing starts only after the gcode file is generated and the target temperatures are reached"). It also conflicts with Resource 4 ("Extruder target temperature: 200 C") and Resource 5 ("Heated bed target temperature: 60 C"): both target-temperature resources specify the values the heating step must reach, and without heating they can never be enforced.
+
+Request3:
+Removed element: Checking the remaining plastic amount and adding it to the shopping list when under 100 grams
+Reason: The stock-level check and shopping-list step are proposed for removal so printing can proceed whenever the chosen color is at home, without tracking remaining material.
+Conflict details: Conflicts with Rule 4 ("If the chosen plastic color is already at home, the remaining amount must be checked") and Rule 5 ("If the remaining plastic is under 100 grams, the color is put on the shopping list"). It also conflicts with Resource 1 ("Minimum plastic stock threshold: 100 grams") and Resource 9 ("Filament spool weight: 1000 grams"): the 100-gram threshold resource triggers the shopping-list action, and the spool weight is used to estimate the remaining amount.
+
+Request4:
+Removed element: The printer's continuous status reporting while the bed and extruder are heating
+Reason: The status-feedback reporting is proposed for removal under the assumption that the user can simply wait until the printer reaches its target temperatures without watching live status messages.
+Conflict details: None — fully compatible with all rules and resources. Rule 9 ("While heating, the printer continuously sends back its status") describes an informative behavior, but no rule or resource requires the user to monitor or act on those status reports: the mandatory behavior is that the bed and extruder reach their target temperatures before printing (Rules 8 and 11), which is unaffected by suppressing the status messages. No resource in Resources.txt depends on status reporting. The heating step, temperature thresholds, gcode generation, and printing logic all remain fully intact and compliant.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

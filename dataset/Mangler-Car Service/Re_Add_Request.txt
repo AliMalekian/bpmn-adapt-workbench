@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: "select payment method" decision step (the payment-method selection removed by Request4)
+Reason: Request4 removed the "select payment method" step, claiming a single default app-payment path would suffice. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+
+Detailed restoration:
+1. "select payment method" step: Restored as an explicit decision/activity step placed back exactly where it originally was: after the mechanic marks the repair as successful (per Rule 8 "Payment through the app is accepted only after the repair is marked as successful by the mechanic") and before the actual payment execution. The step again offers the owner the choice between the app-payment path ("pay via app") and the alternative path ("use other payment method").
+2. Both payment branches restored: The exclusive branching introduced by the restored step is re-established exactly as in the original model: choosing the app path leads to "pay via app" / "confirm receipt of payment", while the other path leads to "use other payment method". No branch is missing; the flow again converges after payment on the completion steps.
+3. Sequence flows: All original connections around the restored step are re-established — "confirm successful repair and grant Pickerl" path -> "select payment method" -> payment execution -> "confirm receipt of payment" -> "enter time for next service". The restored step again sits in the flow between the successful-repair milestone and the actual payment, matching the narrative "You can pay through the app, when the repair is done."
+4. Consistency with rules and resources: The restored step keeps Rule 8 and Rule 14 fully satisfied (payment occurs only after a successful repair and within the settlement window), and it again exercises the resource "App payment transactions per day: 1500" plus the alternative offline payment channel, exactly as in the original design.
+
+With the "select payment method" step restored, the process returns to exactly the original shape described in R_j04.txt, where the owner chooses the payment method in the app after the repair succeeds.

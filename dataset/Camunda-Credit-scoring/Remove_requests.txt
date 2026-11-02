@@ -1,0 +1,28 @@
+Request1:
+Removed element: "report delay" task (the banking process step that informs the clerk about a delayed level-1 scoring and shows the "check again later" message)
+Reason: The process could be simplified by waiting silently for the level-2 result instead of informing the clerk about the delay and asking her to check back later, saving a user interaction and a message.
+Conflict details: Conflicts with Rule 2 ("A level-1 scoring request must return a result within 10 seconds or be reported as delayed to the banking system") because the delay notification is the mandatory reporting channel that makes the level-1 process compliant. Also conflicts with Rule 10 ("A delayed request must show a 'check again later' message to the clerk until the result arrives"), which explicitly requires the message that this task produces, and with Rule 15 ("A clerk may keep at most 10 pending scoring requests open at the same time"), since releasing the pending request without notifying the clerk would silently consume the clerk's open-request quota. It also violates Resource "Level-1 response SLA: 10 seconds" and "Level-2 response SLA: 5 minutes" and "Maximum pending scoring requests per clerk: 10", because without the delay report the process cannot enforce or track the SLA and quota.
+
+Request2:
+Removed element: "compute credit score (level 2)" task (the level-2 scoring computation performed by the credit protection agency for requests that cannot be answered instantly)
+Reason: It is proposed to remove the slow level-2 scoring step so that every request is answered instantly by level 1, shortening the entire process and removing the multi-minute branch.
+Conflict details: Conflicts with the resources of the contracted agency environment: Resource "Level-2 scoring capacity: 60 requests per hour" and "Level-2 scoring analysts: 8" exist precisely to run the level-2 scoring service, and removing the task makes those contracted resources idle and unsupported. It also conflicts with Resource "Contracted credit protection agencies: 2" and "Level-2 response SLA: 5 minutes", because the agencies are contracted to deliver level-2 results within that SLA. Furthermore the removal directly violates Rule 3 ("Requests that cannot be answered instantly are automatically escalated to level-2 scoring by the agency") and Rule 4 ("Level-2 scoring must deliver a final result within 5 minutes"), so the removal is impossible from a business standpoint.
+
+Request3:
+Removed element: "send credit score" / "send result" task (the agency step that transmits the final scoring result back to the banking system over the interface)
+Reason: Removing the result transmission would strip the very step that delivers the score value to the banking frontend, allowing the frontend to display other data instead of the score result.
+Conflict details: Conflicts with Rule 9 ("The frontend must display an arriving score result to the clerk within 60 seconds") and Rule 12 ("The bank may query a score only for customers who have signed a credit report consent form"), because without the transmission step no score data can ever be delivered and no consent-based query can ever produce a displayable result. It also violates Rule 14 ("The agency must log every scoring request with timestamp, customer reference, and result within 24 hours") since no result would ever be recorded. In addition it conflicts with the resources "Interface data bandwidth: 100 Mbps", "Maximum concurrent requests in agency queue: 1000", and "Annual agency interface budget: 80000 EUR", which exist solely to carry the transferred scoring results.
+
+Request4:
+Removed element: "scoring request received" / "scoring request handled" administrative start and end events (the event markers that open and close a scoring request in the agency without performing any value-adding work on the score itself)
+Reason: The request lifecycle bookkeeping events add pure administrative overhead, and the process could simply run inline without explicitly opening and closing the request as separate model events.
+Conflict details: None — fully compatible with all rules and resources. No rule in Rules.txt mandates the explicit administrative start/end event tasks, and no resource in Resources.txt is tied to them. The score computation, delay reporting, transmission and logging steps that the rules care about all remain intact.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

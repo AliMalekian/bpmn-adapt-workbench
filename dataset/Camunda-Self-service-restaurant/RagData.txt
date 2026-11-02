@@ -1,0 +1,306 @@
+Example ID: R1-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Call guest" task (the employee activity of repeatedly calling for the guest when the guest does not react to the buzzer)” for Request1.
+Target BPMN element: "Call guest" task (the employee activity of repeatedly calling for the guest when the guest does not react to the buzzer)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Call guest" task (the employee activity of repeatedly calling for the guest when the guest does not react to the buzzer)” for Request1.
+Target BPMN element: "Call guest" task (the employee activity of repeatedly calling for the guest when the guest does not react to the buzzer)
+Decision: REJECT
+Decision reason: It conflicts with Rule 4 (If a guest does not react to the buzzer, the employee calls for them after 5 minutes.), Rule 5 (Calls for uncollected meals are repeated at 5-minute intervals, up to 3 times in a row.), Rule 15 (Guests who miss three buzzer calls and do not appear within 30 minutes lose their meal and payment claim.).
+Referenced rules: Rule 4 (If a guest does not react to the buzzer, the employee calls for them after 5 minutes.), Rule 5 (Calls for uncollected meals are repeated at 5-minute intervals, up to 3 times in a row.), Rule 15 (Guests who miss three buzzer calls and do not appear within 30 minutes lose their meal and payment claim.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Call guest" task (the employee activity of repeatedly calling for the guest when the guest does not react to the buzzer)” for Request1.
+Target BPMN element: "Call guest" task (the employee activity of repeatedly calling for the guest when the guest does not react to the buzzer)
+Decision: REJECT
+Decision reason: It conflicts with Rule 4 (If a guest does not react to the buzzer, the employee calls for them after 5 minutes.), Rule 5 (Calls for uncollected meals are repeated at 5-minute intervals, up to 3 times in a row.), Rule 15 (Guests who miss three buzzer calls and do not appear within 30 minutes lose their meal and payment claim.).
+Referenced rules: Rule 4 (If a guest does not react to the buzzer, the employee calls for them after 5 minutes.), Rule 5 (Calls for uncollected meals are repeated at 5-minute intervals, up to 3 times in a row.), Rule 15 (Guests who miss three buzzer calls and do not appear within 30 minutes lose their meal and payment claim.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)” safely.
+Target BPMN element: "wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R2-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Set up buzzer" task (the employee activity that activates and configures the buzzer before passing it to the guest)” for Request2.
+Target BPMN element: "Set up buzzer" task (the employee activity that activates and configures the buzzer before passing it to the guest)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Set up buzzer" task (the employee activity that activates and configures the buzzer before passing it to the guest)” for Request2.
+Target BPMN element: "Set up buzzer" task (the employee activity that activates and configures the buzzer before passing it to the guest)
+Decision: REJECT
+Decision reason: It conflicts with Rule 13 (Buzzer units with a battery level below 20% must not be handed to guests.), Rule 14 (The restaurant is limited to 120 active buzzers at any moment.).
+Referenced rules: Rule 13 (Buzzer units with a battery level below 20% must not be handed to guests.), Rule 14 (The restaurant is limited to 120 active buzzers at any moment.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Set up buzzer" task (the employee activity that activates and configures the buzzer before passing it to the guest)” for Request2.
+Target BPMN element: "Set up buzzer" task (the employee activity that activates and configures the buzzer before passing it to the guest)
+Decision: REJECT
+Decision reason: It conflicts with Rule 13 (Buzzer units with a battery level below 20% must not be handed to guests.), Rule 14 (The restaurant is limited to 120 active buzzers at any moment.).
+Referenced rules: Rule 13 (Buzzer units with a battery level below 20% must not be handed to guests.), Rule 14 (The restaurant is limited to 120 active buzzers at any moment.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)” safely.
+Target BPMN element: "wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R3-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Inform chef" task (the employee step that tells the chef about the newly placed meal order)” for Request3.
+Target BPMN element: "Inform chef" task (the employee step that tells the chef about the newly placed meal order)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Inform chef" task (the employee step that tells the chef about the newly placed meal order)” for Request3.
+Target BPMN element: "Inform chef" task (the employee step that tells the chef about the newly placed meal order)
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (The chef prepares meals strictly in the order of POS entry.), Rule 8 (The chef places each finished meal in the service hatch and immediately informs the employee.).
+Referenced rules: Rule 7 (The chef prepares meals strictly in the order of POS entry.), Rule 8 (The chef places each finished meal in the service hatch and immediately informs the employee.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Inform chef" task (the employee step that tells the chef about the newly placed meal order)” for Request3.
+Target BPMN element: "Inform chef" task (the employee step that tells the chef about the newly placed meal order)
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (The chef prepares meals strictly in the order of POS entry.), Rule 8 (The chef places each finished meal in the service hatch and immediately informs the employee.).
+Referenced rules: Rule 7 (The chef prepares meals strictly in the order of POS entry.), Rule 8 (The chef places each finished meal in the service hatch and immediately informs the employee.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)” safely.
+Target BPMN element: "wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R4-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)” for Request4.
+Target BPMN element: "wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)” for Request4.
+Target BPMN element: "wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)
+Decision: REJECT
+Decision reason: It conflicts with Rule 13 (Buzzer units with a battery level below 20% must not be handed to guests.).
+Referenced rules: Rule 13 (Buzzer units with a battery level below 20% must not be handed to guests.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)” for Request4.
+Target BPMN element: "wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)
+Decision: REJECT
+Decision reason: It conflicts with Rule 13 (Buzzer units with a battery level below 20% must not be handed to guests.).
+Referenced rules: Rule 13 (Buzzer units with a battery level below 20% must not be handed to guests.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)” safely.
+Target BPMN element: "wait for turn" step (the guest's waiting activity before placing the order when the restaurant line is long)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: RA-READD-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RESOURCE-CONFLICT
+User request: Re-add “"wait for turn" step (the guest's waiting activity that was removed by Request4) Reason: Request4 removed the "wait for turn" activity, claiming it is pure idle time. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "wait for turn" step (the guest's waiting activity that was removed by Request4) Reason: Request4 removed the "wait for turn" activity, claiming it is pure idle time. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates None and Resource 1 (Restaurant seating capacity: 80 guests).
+Referenced rules: None
+Referenced resources: Resource 1 (Restaurant seating capacity: 80 guests)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-CONFLICT
+User request: Re-add “"wait for turn" step (the guest's waiting activity that was removed by Request4) Reason: Request4 removed the "wait for turn" activity, claiming it is pure idle time. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "wait for turn" step (the guest's waiting activity that was removed by Request4) Reason: Request4 removed the "wait for turn" activity, claiming it is pure idle time. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (A guest must pay for the meal at the till before the order can be entered into the POS system.) and None.
+Referenced rules: Rule 1 (A guest must pay for the meal at the till before the order can be entered into the POS system.)
+Referenced resources: None
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-AND-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-AND-RESOURCE-CONFLICT
+User request: Re-add “"wait for turn" step (the guest's waiting activity that was removed by Request4) Reason: Request4 removed the "wait for turn" activity, claiming it is pure idle time. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "wait for turn" step (the guest's waiting activity that was removed by Request4) Reason: Request4 removed the "wait for turn" activity, claiming it is pure idle time. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (A guest must pay for the meal at the till before the order can be entered into the POS system.) and Resource 1 (Restaurant seating capacity: 80 guests).
+Referenced rules: Rule 1 (A guest must pay for the meal at the till before the order can be entered into the POS system.)
+Referenced resources: Resource 1 (Restaurant seating capacity: 80 guests)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-VALID
+Operation type: RE_ADD
+Category: READD-VALID
+User request: Re-add “"wait for turn" step (the guest's waiting activity that was removed by Request4) Reason: Request4 removed the "wait for turn" activity, claiming it is pure idle time. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "wait for turn" step (the guest's waiting activity that was removed by Request4) Reason: Request4 removed the "wait for turn" activity, claiming it is pure idle time. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: ACCEPT
+Decision reason: The element is restored at its original location, with its original predecessor and successor, so original behavior and all constraints are recovered.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Restore the element at its original position, reconnect its original incoming and outgoing sequence flows, and preserve gateway semantics.
+Expected process effect: The original process behavior is recovered and is equivalent to the original model.
+Token migration / execution-state note: Tokens at the removed bypass are safely redirected to the restored element before continuing to its original successor.
+Final response to the user: Accepted: the original element, location, connections, and behavior are restored.
+Example ID: Camunda-Self-service-restaurant-MODIFY-AUTOMATION-VALID
+Operation type: MODIFY
+Category: MODIFY-VALID
+User request: Assess updating execution parameters and technical automation settings for the primary task in Camunda-Self-service-restaurant.
+Target BPMN element: Primary Process Task
+Decision: ACCEPT
+Decision reason: The modification is purely technical (updating automation settings, timeouts, and throughput parameters) and does not alter the control flow, business rules, or resource capacity allocations. All milestones remain compliant.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Attributes updated; incoming and outgoing sequence flows remain intact.
+Expected process effect: Throughput is improved while all business rules and constraints are preserved.
+Token migration / execution-state note: Active tokens continue execution without relocation or delay.
+Final response to the user: Approved: the technical modification is fully compliant with all rules and resources.
+
+Example ID: Camunda-Self-service-restaurant-ADD-QUALITY-CHECK-VALID
+Operation type: ADD
+Category: ADD-VALID
+User request: Assess adding an automated, non-blocking Quality Verification step in Camunda-Self-service-restaurant.
+Target BPMN element: Quality Verification Step
+Decision: ACCEPT
+Decision reason: The proposed quality verification step operates as an automated non-blocking checkpoint. It satisfies all preconditions, respects assigned resource capacities, and does not violate or delay any mandatory operational rule deadlines.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: New automated task inserted into the sequence flow with proper incoming and outgoing flows.
+Expected process effect: Quality assurance is enhanced while all business rules and resource constraints remain satisfied.
+Token migration / execution-state note: Newly instantiated tokens pass through the verification step seamlessly.
+Final response to the user: Approved: the addition satisfies all operational rules and resource capacities.

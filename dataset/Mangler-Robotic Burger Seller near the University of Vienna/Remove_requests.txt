@@ -1,0 +1,28 @@
+Request1:
+Removed element: Ask whether the customer wants a menu or only the burger
+Reason: The menu/burger decision step is proposed for removal so the robot starts preparing a default burger for every order without asking.
+Conflict details: Conflicts with Rule 2 ("The customer must first decide whether they want a menu or only the burger") and Rule 13 ("The customer may not change the menu type after preparation has started"). Removing the decision step violates the mandatory first decision of Rule 2 and leaves no basis for the menu-type lock of Rule 13. It also conflicts with Resource 11 ("Menu price: 6.90 EUR") and Resource 12 ("Burger-only price: 4.90 EUR"): these two price points exist to distinguish menu from burger-only orders, and without the decision step they can no longer be applied.
+
+Request2:
+Removed element: Enthusiastic status updates every 30 seconds while the burger is prepared
+Reason: The status-update step is proposed for removal to avoid distracting the customer and to reduce processing effort during preparation.
+Conflict details: Conflicts with Rule 9 ("The robot gives the customer an enthusiastic status update every 30 seconds while the burger is prepared") and Resource 8 ("Status update interval: 30 seconds"). Removing the updates directly violates the mandatory 30-second update rule, and the 30-second interval resource exists precisely to schedule these updates. The updates are core to the robot's customer interaction described in the process ("gives you enthusiastic status updates every 30 seconds").
+
+Request3:
+Removed element: Prepare the side dish (fries or wedges) selected by the customer
+Reason: The side-dish preparation step is proposed for removal to shorten the order time, under the assumption that only the drink and the burger are prepared.
+Conflict details: Conflicts with Rule 5 ("While the drink is being prepared, the robot asks whether the customer wants fries or wedges"), Rule 6 ("If fries are ordered, the robot prepares fries; if wedges are ordered, it prepares wedges"), and Rule 7 ("The fries and wedges preparation time varies with the ordered size"). It also conflicts with Resource 6 ("Fries preparation time: 2 minutes") and Resource 7 ("Wedges preparation time: 3 minutes"): both time resources exist to schedule the side-dish preparation that would be removed.
+
+Request4:
+Removed element: The customer's ability to check the current status of their order while it is being prepared
+Reason: The status-check step is proposed for removal under the assumption that it is redundant, because the robot already pushes enthusiastic status updates to the customer every 30 seconds.
+Conflict details: None — fully compatible with all rules and resources. Rule 9 ("The robot gives the customer an enthusiastic status update every 30 seconds while the burger is prepared") mandates the robot-initiated updates, which remain completely untouched; no rule requires a customer-initiated status check in addition to those updates. No resource in Resources.txt depends on a status-check capability. All ordering, menu decision, drink/side/burger preparation, and delivery elements remain fully intact and compliant.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

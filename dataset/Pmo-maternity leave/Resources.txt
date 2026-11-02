@@ -1,0 +1,12 @@
+Maximum leave duration (weeks): 20
+Maximum extension length (weeks): 6
+Company notification lead time (days): 30
+Social Security notification lead time (days): 15
+Extension request deadline before end (weeks): 2
+Number of leave support planners: 4
+Company information validation time (business days): 10
+Parent return notice period (days): 7
+Maximum simultaneous leaves per planner: 25
+Available leave model options: 3
+Information forms per parent: 2
+Annual leave case capacity: 600

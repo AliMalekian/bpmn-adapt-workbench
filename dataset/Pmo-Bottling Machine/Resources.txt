@@ -1,0 +1,13 @@
+Number of supported machine types: 6
+Number of mandatory inspection questions: 12
+Number of automatic value collection buttons: 8
+Upper filling pressure limit: 4.0 bar
+Lower filling pressure limit: 2.5 bar
+Filling volume tolerance: 5 ml
+Conveyor speed range: 10000-30000 bottles per hour
+Canned bottle volume: 330 ml
+Number of inspectors: 5
+Standard inspection cycle time: 15 minutes
+Number of machines in serial number database: 2400
+Maximum number of follow-up questions: 6
+Inspection report generation time: 5 minutes

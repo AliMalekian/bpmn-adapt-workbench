@@ -1,0 +1,10 @@
+Re-Add Request:
+Removed element to be restored: Receive second batch of parts (the "Receive second batch of parts" parallel manual task)
+
+Restoration details:
+1. Re-insert the "Receive second batch of parts" manual task in the parallel inbound-batch branch: recreate the BPMN manual task named "Receive second batch of parts" between the parallel gateway after order completion and the merge into construction, sitting alongside "Receive first batch of parts" and "Receive third batch of parts" exactly as in the original model.
+2. Restore the reception behavior: the second batch of delivered parts is again received and checked as a distinct inbound batch, with its own arrival handling, before all received batches merge and construction continues.
+3. Reconnect the sequence flows: the parallel gateway again emits a dedicated branch into "Receive second batch of parts", and its outgoing flow joins the merge gateway together with the first- and third-batch branches as before; the two-branch structure introduced by the removal is deleted.
+4. Restore the three-batch structure: the inbound phase again consists of three parallel batch receptions, matching the original process shape so that construction resumes only after all three batches are processed.
+
+The process is thereby returned to exactly its original shape: the "Receive second batch of parts" task and its two sequence-flow connections that Request4 removed are all restored.

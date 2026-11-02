@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Guest calls room service
+Completed activities: start
+Current active activity or waiting point: Guest calls room service
+Token position / execution status: token is at Guest calls room service; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Room-service operating hours per day: 18)
+Applicable rules: Rule 1 (The room-service manager accepts room-service orders from guests only during the operating hours of the room-service station.)
+Possible next activities: Manager takes down the order
+
+STATE-02: Intermediate / decision
+Current process position: Kitchen prepares food
+Completed activities: start, Guest calls room service, Manager takes down the order, parallelGateway, Manager submits order ticket to kitchen, Manager assigns order to waiter, exclusiveGateway
+Current active activity or waiting point: Kitchen prepares food
+Token position / execution status: token is at Kitchen prepares food; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Room-service operating hours per day: 18)
+Applicable rules: Rule 1 (The room-service manager accepts room-service orders from guests only during the operating hours of the room-service station.)
+Possible next activities: parallelGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Sommelier fetches wine and prepare alcoholic beverages
+Completed activities: start, Guest calls room service, Manager takes down the order, parallelGateway, Manager submits order ticket to kitchen, Manager assigns order to waiter, exclusiveGateway, Kitchen prepares food, parallelGateway, Manager gives order to sommelier, exclusiveGateway, parallelGateway, Waiter prepares nonalcoholic drinks, Waiter readies cart
+Current active activity or waiting point: Sommelier fetches wine and prepare alcoholic beverages
+Token position / execution status: token is at Sommelier fetches wine and prepare alcoholic beverages; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Room-service operating hours per day: 18)
+Applicable rules: Rule 1 (The room-service manager accepts room-service orders from guests only during the operating hours of the room-service station.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Guest calls room service, Manager takes down the order, parallelGateway, Manager submits order ticket to kitchen, Manager assigns order to waiter, exclusiveGateway, Kitchen prepares food, parallelGateway, Manager gives order to sommelier, exclusiveGateway, parallelGateway, Waiter prepares nonalcoholic drinks, Waiter readies cart, Sommelier fetches wine and prepare alcoholic beverages, Waiter delivers order to guest's room, Waiter returns to room-service station, exclusiveGateway, exclusiveGateway, Waiter waits/delays debiting, Waiter debits guest's account
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Room-service operating hours per day: 18)
+Applicable rules: Rule 1 (The room-service manager accepts room-service orders from guests only during the operating hours of the room-service station.)
+Possible next activities: Process completion

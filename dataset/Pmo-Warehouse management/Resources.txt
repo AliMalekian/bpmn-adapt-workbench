@@ -1,0 +1,15 @@
+Warehouse floor capacity (square meters): 12,000
+Stock keeping units (SKUs): 8,000
+Standard reorder threshold (units): 500
+Average daily demand per SKU (units): 60
+Supplier lead time (days): 7
+Warehouse staff: 55
+Forklifts: 10
+Pallet racks: 1,500
+Quality inspection stations: 4
+Receiving dock doors: 6
+Reorder approval threshold ($): 50,000
+Inventory accuracy target (percent): 99
+Physical count frequency (times per year): 4
+Backup suppliers per item: 2
+Shelf-life first-expiry-first-out threshold (days): 90

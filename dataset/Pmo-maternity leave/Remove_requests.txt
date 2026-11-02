@@ -1,0 +1,28 @@
+Request1:
+Removed element: "notify social security" manual task (the notification of the leave plan to Social Security at least 15 days before the leave start date)
+Reason: To reduce notification workload, the proposal is to notify only the employer and skip the Social Security notification.
+Conflict details: CONFLICTS with Rule 5 of Rules.txt ("Social Security must be notified of the leave plan at least 15 days before the leave start date.") — removing the Social Security notification violates this mandatory notification requirement. It also conflicts with Rule 7 of Rules.txt ("Leave may start earlier than planned only with approval from both the company and Social Security."), because Social Security approval cannot be obtained if Social Security is never notified, and with Rule 11 of Rules.txt ("Extension approval requires confirmation from both the company and Social Security."), which likewise depends on an active Social Security notification channel. The removal therefore breaks Rules 5, 7 and 11.
+
+Request2:
+Removed element: "receive confirmation from employer" service task (the step that validates the company-provided information, including the 10-business-day employer validation of gathered information)
+Reason: To speed up the planning phase, the proposal is to trust the collected company information directly and drop the employer confirmation step.
+Conflict details: CONFLICTS with Resource "Company information validation time (business days): 10" in Resources.txt and Rule 14 of Rules.txt ("Information gathered from companies must be validated by the employer within 10 business days.") — the resource allocates up to 10 business days precisely for this validation step, and the rule makes it mandatory. Removing the confirmation step makes it impossible to honour the employer-validation resource. It also conflicts with Resource "Information forms per parent: 2" and Rule 10 of Rules.txt, because the forms and per-parent information gathering are useless if the collected information is never validated and confirmed by the employer.
+
+Request3:
+Removed element: "prepare necessary documents for leave" manual task (the step that assembles all required leave documents before the leave plan is finalized)
+Reason: To simplify administration, the proposal is to skip the document-preparation step and finalize the plan directly from the collected information.
+Conflict details: CONFLICTS with Rule 6 of Rules.txt ("All relevant information must be collected before the leave plan is submitted for approval.") and Rule 10 of Rules.txt ("If the leave is split between the parents, each parent must submit a separate information form.") — these rules require that complete, documented information (including per-parent forms) is in place before the plan is finalized, which is exactly what the document-preparation step guarantees. On the resource side it conflicts with Resource "Information forms per parent: 2" in Resources.txt, since the forms exist to be prepared and checked before the leave starts. The removal therefore violates Rules 6 and 10 and the resource "Information forms per parent: 2".
+
+Request4:
+Removed element: "apply for financial support" manual task and its preceding decision step "decide if apply for financial support" (the decision whether to apply for financial support, and the actual application task executed when the decision is to apply)
+Reason: To simplify the process, the proposal is to drop the optional financial-support application branch entirely, since financial support is not part of the core leave planning.
+Conflict details: None — fully compatible with all rules and resources. Rules.txt does not require financial support to be applied for; the only financial-support-related step is the optional "fetch information about financial support" service task, which can still be executed at the beginning. No rule mandates an application for financial support, and no resource in Resources.txt is allocated to it. The mandatory leave steps (model selection, notifications, information collection, document preparation, leave execution, extension decision) are all unaffected. The removal is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

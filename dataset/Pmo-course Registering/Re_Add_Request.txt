@@ -1,0 +1,14 @@
+Re-Add request:
+The removal request Request4 removed the "check if another course is interesting" task (UserTask_10) and the routing structure that serves it. This request semantically restores the removed element and its supporting routing, and returns the process to exactly its original shape.
+
+Restored elements: "check if another course is interesting" task (UserTask_10) and the ExclusiveGateway_5 yes/no branching that routes the user between this task and the end of the process.
+
+How they are restored:
+1. The "check if another course is interesting" task (UserTask_10) is reinserted into the process at its original position on the "no free spots" path: when the "free spots?" decision (ExclusiveGateway_1) determines that the selected course has no free slots, the flow again continues into UserTask_10 via SequenceFlow_16 instead of ending the process immediately.
+2. The user task again performs its original function: it asks the user whether another course is interesting, so that a user who cannot get a slot in the first-choice course has the option to look for an alternative course.
+3. The exclusive decision gateway ExclusiveGateway_5 is restored at its original position after UserTask_10, together with its two original branches: the "yes" branch (SequenceFlow_20) routes a user who finds another course interesting back to the beginning of the flow through ExclusiveGateway_6 to "select course" (UserTask_1) so they can choose and attempt registration of a different course, and the "no" branch (SequenceFlow_24) routes a user who is not interested in another course straight to the end of the process (via ExclusiveGateway_7 and ExclusiveGateway_8 to "end process").
+4. The loop structure is fully reinstated: the alternative-course check again forms a re-selection loop (UserTask_10 to ExclusiveGateway_5, "yes" back to the course-select start, and "no" forward to the end), exactly as in the original model.
+5. The main no-slot path is restored to its original behavior: a user whose course has no free slots is again offered the alternative-course check, so the process no longer simply terminates at the "free spots?" decision but again includes the full alternative-course option.
+6. The rest of the registration flow is unchanged, so the process again ends as in the original model, completing at the "end process" event after all the original course-selection, account, payment, and ticket steps, with every element, branch, and ordering of the original process restored.
+
+Result: The removal of UserTask_10 and the ExclusiveGateway_5 routing is fully undone, and the course-registration process is back to precisely its original shape with the alternative-course check and its yes/no routing loop present on the no-free-slots path.

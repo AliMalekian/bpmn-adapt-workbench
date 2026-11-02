@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Logistics
+Completed activities: Dispatch of goods Computer Hardware Shop
+Current active activity or waiting point: Logistics
+Token position / execution status: token is at Logistics; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Large shipment weight threshold (kg): 30)
+Applicable rules: Rule 1 (Shipping begins only after the secretary determines who will perform the actual shipping of the goods.)
+Possible next activities: Secretary
+
+STATE-02: Intermediate / decision
+Current process position: Clarify shipment method
+Completed activities: Dispatch of goods Computer Hardware Shop, Logistics, Secretary, Warehouse, Ship goods, parallelGateway
+Current active activity or waiting point: Clarify shipment method
+Token position / execution status: token is at Clarify shipment method; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Large shipment weight threshold (kg): 30)
+Applicable rules: Rule 1 (Shipping begins only after the secretary determines who will perform the actual shipping of the goods.)
+Possible next activities: Special sandling?
+
+STATE-03: Resource-dependent / waiting
+Current process position: Prepare for picking up goods
+Completed activities: Dispatch of goods Computer Hardware Shop, Logistics, Secretary, Warehouse, Ship goods, parallelGateway, Clarify shipment method, Package goods, Special sandling?, exclusiveGateway, inclusiveGateway, Get 3 offers from logistic companies
+Current active activity or waiting point: Prepare for picking up goods
+Token position / execution status: token is at Prepare for picking up goods; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Large shipment weight threshold (kg): 30)
+Applicable rules: Rule 1 (Shipping begins only after the secretary determines who will perform the actual shipping of the goods.)
+Possible next activities: Shipment prepared
+
+STATE-04: Near completion / completed
+Current process position: exclusiveGateway
+Completed activities: Dispatch of goods Computer Hardware Shop, Logistics, Secretary, Warehouse, Ship goods, parallelGateway, Clarify shipment method, Package goods, Special sandling?
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Large shipment weight threshold (kg): 30)
+Applicable rules: Rule 1 (Shipping begins only after the secretary determines who will perform the actual shipping of the goods.)
+Possible next activities: exclusiveGateway, Prepare for picking up goods

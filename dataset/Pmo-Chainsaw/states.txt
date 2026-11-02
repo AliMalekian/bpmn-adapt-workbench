@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Determine properties
+Completed activities: Start
+Current active activity or waiting point: Determine properties
+Token position / execution status: token is at Determine properties; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum saws per production batch: 20)
+Applicable rules: Rule 1 (Every custom chainsaw must be built from at least 5 defining properties, such as guide bar length, chain width, and motor type (electric or gasoline).)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: parallelGateway
+Completed activities: Start, Determine properties
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum saws per production batch: 20)
+Applicable rules: Rule 1 (Every custom chainsaw must be built from at least 5 defining properties, such as guide bar length, chain width, and motor type (electric or gasoline).)
+Possible next activities: Order parts, Order parts, Check delivery of ordered parts, Order parts
+
+STATE-03: Resource-dependent / waiting
+Current process position: Send first saw
+Completed activities: Start, Determine properties, parallelGateway, Order parts, Order parts, Order parts, parallelGateway, Check delivery of ordered parts, Parts arrived ?, Perform Inspection, Assemble the parts, Send updates
+Current active activity or waiting point: Send first saw
+Token position / execution status: token is at Send first saw; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum saws per production batch: 20)
+Applicable rules: Rule 1 (Every custom chainsaw must be built from at least 5 defining properties, such as guide bar length, chain width, and motor type (electric or gasoline).)
+Possible next activities: Customer Approval ?
+
+STATE-04: Near completion / completed
+Current process position: Send the remaining order
+Completed activities: Start, Determine properties, parallelGateway, Order parts, Order parts, Order parts, parallelGateway, Check delivery of ordered parts, Parts arrived ?, Perform Inspection, Assemble the parts, Send updates, Send first saw, Customer Approval ?, Cancel production of the remaining order, Produce the remaining order, End
+Current active activity or waiting point: Send the remaining order
+Token position / execution status: token is at Send the remaining order; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Maximum saws per production batch: 20)
+Applicable rules: Rule 1 (Every custom chainsaw must be built from at least 5 defining properties, such as guide bar length, chain width, and motor type (electric or gasoline).)
+Possible next activities: End

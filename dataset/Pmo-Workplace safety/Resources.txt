@@ -1,0 +1,14 @@
+Incident report logging deadline (hours): 24
+Investigation completion deadline (days): 14
+High-severity corrective action deadline (days): 5
+Stakeholder notification deadline (days): 3
+Reopening recurrence window (days): 90
+Incident tracking system users: 45
+Safety officers: 3
+Safety committee members: 8
+Incident reports per year: 600
+Training corrective action deadline (days): 30
+Maximum open incidents at any time: 120
+Annual workplace safety audits: 2
+Safety equipment inspection frequency (times per year): 4
+Emergency response drills per year: 6

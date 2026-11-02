@@ -1,0 +1,15 @@
+1. A customer order must specify at least 5 properties (guide bar length, chain width, chain pitch, chain type, and gasoline or electric motor type) before part ordering can start.
+2. Parts for a custom chainsaw order are purchased after the required properties are confirmed; pre-stocked standard inventory parts do not require parallel online supplier ordering.
+3. All received parts must pass a manual inspection before they are added to the assembly queue; defective parts are returned and re-ordered immediately.
+4. Assembly of a saw may only begin when 100% of its parts have been inspected and approved.
+5. Progress updates are sent to the customer at least every 2 weeks during production of large orders.
+6. The first produced saw is sent to the customer as a prototype and must be approved before the remaining saws of the order are produced.
+7. If the prototype is rejected, up to 2 revision rounds are allowed before the order is cancelled.
+8. Assembly of one chainsaw takes at least 4 hours and no more than one workday.
+9. Electric chainsaws require a certified electrician check of the motor before shipment.
+10. Gasoline chainsaws must be test-run for at least 10 minutes with the tank filled before packaging.
+11. Orders of more than 20 saws are split into production batches of 20 units.
+12. If a part is out of stock at the supplier, a substitute part with matching properties may be used only with customer approval.
+13. The quality control checklist of every inspected part must be archived for at least 2 years.
+14. Guide bars are only produced in lengths of 40, 45, 50, 55, and 60 cm; custom lengths are not manufactured.
+15. The workshop accepts new orders only if the total open order volume is below 50 saws.

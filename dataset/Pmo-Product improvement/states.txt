@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Identify idea for new product or improvement
+Completed activities: start
+Current active activity or waiting point: Identify idea for new product or improvement
+Token position / execution status: token is at Identify idea for new product or improvement; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Product Improvement and Prototype Development)
+Applicable rules: Rule 1 (Every product improvement idea must be registered and documented before R&D work begins.)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: Select promising design
+Completed activities: start, Identify idea for new product or improvement, parallelGateway, Conduct feasibility studies, Conduct initial research, parallelGateway, Draft design concepts
+Current active activity or waiting point: Select promising design
+Token position / execution status: token is at Select promising design; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Product Improvement and Prototype Development)
+Applicable rules: Rule 1 (Every product improvement idea must be registered and documented before R&D work begins.)
+Possible next activities: Build prototype
+
+STATE-03: Resource-dependent / waiting
+Current process position: Collect feedback from testing phase
+Completed activities: start, Identify idea for new product or improvement, parallelGateway, Conduct feasibility studies, Conduct initial research, parallelGateway, Draft design concepts, Select promising design, Build prototype, exclusiveGateway, parallelGateway, Test functionality, Test safety, Test market potential, parallelGateway
+Current active activity or waiting point: Collect feedback from testing phase
+Token position / execution status: token is at Collect feedback from testing phase; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Product Improvement and Prototype Development)
+Applicable rules: Rule 1 (Every product improvement idea must be registered and documented before R&D work begins.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Identify idea for new product or improvement, parallelGateway, Conduct feasibility studies, Conduct initial research, parallelGateway, Draft design concepts, Select promising design, Build prototype, exclusiveGateway, parallelGateway, Test functionality, Test safety, Test market potential, parallelGateway, Collect feedback from testing phase, exclusiveGateway, Refine prototype, exclusiveGateway, Discard prototype, Approve prototype for further development, exclusiveGateway
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Resources for Product Improvement and Prototype Development)
+Applicable rules: Rule 1 (Every product improvement idea must be registered and documented before R&D work begins.)
+Possible next activities: Process completion

@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: "go back to your work" task (the step where the parent resumes work, removed by Request4)
+Reason: Request4 removed the "go back to your work" task, claiming the employer system could apply the status update automatically. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+
+Detailed restoration:
+1. "go back to your work" task: Restored as the explicit end-of-leave activity. It is placed back exactly where it originally was, on the branch after the leave period has ended and no extension has been decided (i.e. after "decide about parental leave extension" resolves negatively, or after the original leave period expires without extension), so the parent again performs this step before the process terminates.
+2. Return-to-work status: The restored task again marks the end of the maternity leave in the platform, the parent resumes regular work duty, and the platform records the parent as "back at work" — the identical status semantics as in the original model. This continues to satisfy Rule 6 and Rule 12's framing of leave-end semantics, but now with the explicit activity in place.
+3. Sequence flows: All original connections are re-established: from the end of the leave / negative extension decision, the flow again leads to "go back to your work", and from there to the end of the process, mirroring the original path. The alternative branch that extends the leave ("extend the parental leave") is untouched, so the full original decision structure is preserved.
+4. Consistency with the extension decision: For parents who do choose an extension (per Rule 7 and Rule 8), the original model still only reached "go back to your work" after the extended period; this restore brings back that identical behaviour for the non-extension branch that Request4 had bypassed.
+
+With the "go back to your work" task restored, the process returns to exactly the original shape described in E_j02.txt, where planning, taking, and extending the maternity leave all end with the parent going back to work.

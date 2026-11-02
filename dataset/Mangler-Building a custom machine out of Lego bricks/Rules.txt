@@ -1,0 +1,15 @@
+1. The basic design of the machine must be approved before any brick sets are ordered.
+2. Sort containers must be labeled by part type before sorting begins.
+3. Each Lego brick set must be sorted into a maximum of 12 containers.
+4. A subcomponent may only be assembled using parts from the sorted containers.
+5. If a container runs out of parts, individual replacement parts must be reordered before assembly continues.
+6. The supply of a container may not fall below 10 parts mid-assembly without triggering a reorder.
+7. Each subcomponent must pass its individual test successfully before assembly.
+8. Failed subcomponents must be redesigned and rebuilt before reassembly is attempted.
+9. A subcomponent may be redesigned and rebuilt at most 3 times; further failures require design approval.
+10. The sorting group must contain at least 3 children working on the parts.
+11. Assembly may not start until all subcomponents have passed their final tests.
+12. A redesigned subcomponent must be retested completely before final assembly.
+13. The finished machine may not exceed 5000 Lego parts in total.
+14. Spare parts equal to 10% of the total part count must be ordered as a reserve.
+15. The whole machine must be completed within 60 days of design approval.

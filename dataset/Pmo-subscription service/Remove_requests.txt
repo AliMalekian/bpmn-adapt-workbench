@@ -1,0 +1,28 @@
+Request1:
+Removed element: Generate account task (the step in which the system creates the customer's account immediately after sign-up completes)
+Reason: To simplify backend processing, the proposal is to start billing directly at sign-up without generating a distinct account record.
+Conflict details: CONFLICTS with Rule 2 of Rules.txt ("The system generates an account and assigns access rights immediately after the sign-up is complete.") — removing the account generation violates this mandatory step. It also conflicts with Rule 1 of Rules.txt ("A customer must provide valid personal and payment information when signing up for the subscription service."), because the account record is where the personal and payment information is anchored, and with Rule 13 of Rules.txt ("Reactivation after cancellation requires a new sign-up with a fresh payment method."), which presupposes that accounts exist to be created anew. The removal therefore breaks Rules 1, 2 and 13.
+
+Request2:
+Removed element: Send renewal notifications task (the step that notifies subscribers 7 days before the renewal date)
+Reason: To reduce messaging costs, the proposal is to stop sending renewal notifications.
+Conflict details: CONFLICTS with Resource "Renewal notification lead time (days): 7" in Resources.txt and Rule 5 of Rules.txt ("Renewal notifications are sent 7 days before the renewal date.") — the resource allocates the 7-day lead time specifically for this notification, so removing the step makes the resource meaningless. It also conflicts with Resource "Number of support agents: 8", because renewal notifications are part of the ongoing subscriber-communication workload those agents support, and with Resource "Number of active subscribers: 25,000", since the renewal-notification workload is proportional to the active subscriber base. The removal therefore violates Rule 5 and the resource "Renewal notification lead time (days): 7".
+
+Request3:
+Removed element: Deactivate subscription task (the step in which the support team deactivates the subscription after the final account balance is settled)
+Reason: To shorten the cancellation path, the proposal is to consider the subscription terminated as soon as processing the cancellation request is complete, skipping an explicit deactivation step.
+Conflict details: CONFLICTS with Rule 11 of Rules.txt ("The subscription is deactivated only after the final account balance is settled.") — removing the deactivation step makes the ordering constraint unenforceable. It also conflicts with Rule 12 of Rules.txt ("Access to subscription content is terminated on the date the subscription is deactivated."), which is anchored on the deactivation date, and with Rule 6 of Rules.txt ("Regular updates, product enhancements, and renewal notifications are delivered to active subscribers only."), because without an explicit deactivation nothing cleanly marks the subscriber as inactive. On the resource side it conflicts with Resource "Number of support agents: 8" in Resources.txt, whose workload includes performing deactivations. The removal therefore violates Rules 6, 11 and 12 and the support-agent resource.
+
+Request4:
+Removed element: Send product enhancements task (the step that delivers product enhancement updates to active subscribers as part of the regular communication stream)
+Reason: To reduce message volume, the proposal is to deliver only regular updates and renewal notifications, and stop sending product enhancement messages.
+Conflict details: None — fully compatible with all rules and resources. Rule 6 of Rules.txt ("Regular updates, product enhancements, and renewal notifications are delivered to active subscribers only.") governs the audience of these communications but does not mandate that product enhancements must be sent; it only requires that anything sent reaches active subscribers only. No rule requires the enhancement messages themselves. No resource in Resources.txt is dedicated to product enhancements. The mandatory subscription lifecycle steps (sign-up, account generation, access assignment, billing triggers, updates, cancellation processing, refunds/charges, balance settlement, deactivation) are all unaffected. The removal is fully feasible.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Read order
+Completed activities: Storage management
+Current active activity or waiting point: Read order
+Token position / execution status: token is at Read order; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of products in catalog: 5,000)
+Applicable rules: Rule 1 (A product is withdrawn from stock only when the available quantity is at least equal to the ordered quantity.)
+Possible next activities: exclusiveGateway
+
+STATE-02: Intermediate / decision
+Current process position: Reorder from wholesaler
+Completed activities: Storage management, Read order, exclusiveGateway, Check if product is in stock, Is in stock?, Withdraw the Product from warehouse
+Current active activity or waiting point: Reorder from wholesaler
+Token position / execution status: token is at Reorder from wholesaler; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of products in catalog: 5,000)
+Applicable rules: Rule 1 (A product is withdrawn from stock only when the available quantity is at least equal to the ordered quantity.)
+Possible next activities: Waiting until arrives (handling system)
+
+STATE-03: Resource-dependent / waiting
+Current process position: exclusiveGateway
+Completed activities: Storage management, Read order
+Current active activity or waiting point: exclusiveGateway
+Token position / execution status: token is at exclusiveGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of products in catalog: 5,000)
+Applicable rules: Rule 1 (A product is withdrawn from stock only when the available quantity is at least equal to the ordered quantity.)
+Possible next activities: Register in stock management system, Check if product is in stock
+
+STATE-04: Near completion / completed
+Current process position: Order was shipped
+Completed activities: Storage management, Read order, exclusiveGateway, Check if product is in stock, Is in stock?, Withdraw the Product from warehouse, Reorder from wholesaler, Check if the whole order is ready for shipment, Waiting until arrives (handling system), Order is ready for shipment?, Arrived after more than ten days?, parallelGateway, Demand delivery delay penalty from the wholesaler, exclusiveGateway, Courier is requested, Packing the products, Register in stock management system, parallelGateway, Shipping the order
+Current active activity or waiting point: Order was shipped
+Token position / execution status: token is at Order was shipped; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of products in catalog: 5,000)
+Applicable rules: Rule 1 (A product is withdrawn from stock only when the available quantity is at least equal to the ordered quantity.)
+Possible next activities: Process completion

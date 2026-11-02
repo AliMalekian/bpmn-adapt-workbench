@@ -1,0 +1,15 @@
+Construction budget: 15000 EUR
+Snack budget per attendee: 15 EUR
+Maximum platform height: 4 meters
+Draft delivery time: 3 weeks
+Refinement round delivery time: 1 week
+Maximum refinement rounds: 5
+Minimum friends required to build: 3
+Maximum number of helpers on site: 8
+Completion deadline after plan approval: 6 months
+Ready-to-build projects per year: 4
+Furniture and wood packages available: 6
+Approved architects on the platform: 2
+Number of online stores used for orders: 4
+Single-store order approval threshold: 2000 EUR
+Invitation list capacity: 50 attendees

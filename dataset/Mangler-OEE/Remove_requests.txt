@@ -1,0 +1,28 @@
+Request1:
+Removed element: Stop the machine automatically when the OEE falls below the threshold
+Reason: The automatic machine stop is proposed for removal to keep the machine running continuously and avoid production interruptions.
+Conflict details: Conflicts with Rule 2 ("If the calculated OEE falls below 60 percent, the machine is stopped automatically") and Rule 15 ("Every stop and restart event is recorded with a timestamp in the maintenance log"). Removing the automatic stop directly violates the mandatory stop action, and without the stop action there is no stop event for the maintenance log to record.
+
+Request2:
+Removed element: Send the stop-notification email to the assigned engineer
+Reason: The email notification is proposed for removal to cut communication overhead and reduce reliance on engineer availability.
+Conflict details: Conflicts with Rule 3 ("When the machine is stopped because of low OEE, an email is sent to the assigned engineer") and Rule 11 ("The stop email to the engineer is sent only once per stop event, even if the OEE stays below the threshold for a long time"). It also conflicts with Resource 5 ("Engineer email response time: 2 hours"): the 2-hour response metric presupposes that an email is actually sent to the engineer and the engineer is reachable.
+
+Request3:
+Removed element: Engineer-only restart with the OEE recovery check (the restart gate)
+Reason: The restart gate is proposed for removal so the machine can be restarted immediately without engineer authorization or recovery verification.
+Conflict details: Conflicts with Rule 4 ("The machine may be restarted only by the engineer and only after the OEE has recovered to at least 65 percent"). It also conflicts with Resource 2 ("OEE restart threshold: 65 percent"): the 65 percent restart threshold exists to enforce exactly this recovery check, and removing the gate makes that resource value unusable.
+
+Request4:
+Removed element: Uploading/saving the collected measurement data to the efficiency database/cloud
+Reason: The data-upload step is proposed for removal to simplify the process, assuming OEE can be calculated from data that is kept locally without persisting it to a database/cloud.
+Conflict details: None — fully compatible with all rules and resources. No rule requires measurement data to be uploaded or persisted; Rule 1 (OEE calculated from availability, performance, and quality data) and Rule 7 (OEE recomputed at least every 8 hours) are still satisfied by processing the data in place. No resource in Resources.txt depends on a data-upload or persistence step. The monitoring, threshold stopping, email notification, restart, escalation, and dashboard refresh logic all remain intact.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

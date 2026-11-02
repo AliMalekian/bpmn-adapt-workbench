@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Send an automated alert" task — the step where an automated alert signals the need to reorder when stock reaches the predefined threshold.
+Reason: Removing the automated alert would rely on the manual check-and-alert pathway alone to signal the reorder point.
+Conflict details: This removal directly conflicts with Rule 1 ("A reorder is triggered automatically when the on-hand stock of an item falls below its predefined reorder threshold"). The rule explicitly mandates an AUTOMATIC trigger, so replacing the automated alert with only a manual check means the reorder is no longer triggered automatically, violating the rule.
+
+Request2:
+Removed element: The "Place order with suppliers" task — the step where the procurement team places the replenishment order with a supplier.
+Reason: Removing the order placement step would eliminate the need to interact with external suppliers, letting the warehouse rely on internal stock redistribution instead.
+Conflict details: This removal conflicts with the resource "Supplier lead time (days): 7" — this lead time is the delivery time of orders placed with suppliers, so without the order placement step this resource is never engaged. It also conflicts with the resource "Backup suppliers per item: 2", which exists to route orders to alternative suppliers when a primary supplier fails, and with the resource "Reorder approval threshold ($): 50,000", since large reorders (Rule 15) are placed through this task.
+
+Request3:
+Removed element: The "Inspect stock for quality" task — the step where incoming stock is inspected for quality upon receipt.
+Reason: Removing the quality inspection would let received goods be accepted and shelved immediately, eliminating the inspection wait time.
+Conflict details: This removal conflicts with Rule 5 ("Incoming stock is inspected for quality before it is accepted, registered, and placed on shelves") — inspection is the mandate the rule describes. It also conflicts with the resource "Quality inspection stations: 4" — the four inspection stations exist specifically to perform the quality inspection, so without this task they have no purpose. Rule 6 (failed goods quarantined and returned within 5 working days) also depends on the inspection result to identify failed goods.
+
+Request4:
+Removed element: The "Send a manual alert" task — the step where a manual check signals the need to reorder when stock reaches the predefined threshold, keeping the automated alert as the sole reorder signal.
+Reason: The manual alert is redundant with the automated alert. Modern inventory systems trigger reordering automatically when on-hand stock falls below the reorder threshold, so the manual check-and-alert step can be removed without affecting the reorder process.
+Conflict details: None — fully compatible with all rules and resources. Rule 1 explicitly designates the automatic trigger as the required reorder mechanism, so relying on the automated alert alone strengthens compliance with Rule 1 rather than breaking it. The process description allows "an automated alert or manual check," so the automated alert satisfies the process. No rule or resource in Resources.txt is dedicated to the manual alert (the 55 warehouse staff, 500-unit reorder threshold, 60-unit daily demand, and 7-day lead time all concern other steps). All 15 resources remain fully valid and operational.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

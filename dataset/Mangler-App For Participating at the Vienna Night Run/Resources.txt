@@ -1,0 +1,15 @@
+Total event capacity: 5000 runners
+Capacity per starting block: 500 runners
+Number of starting blocks: 10
+Track length: 5 km
+Qualification target time: 25 minutes
+Departure decision threshold (workday gap): 60 minutes
+Water and drinking stations along the track: 4
+Official time measurement gates: 6
+Maximum finishing time for a ranked result: 90 minutes
+Compatible fitness gadgets: 4500
+Concurrent app server capacity: 10000 users
+Registration closing window: 24 hours before the event
+Volunteers and staff on event day: 120
+First-aid stations: 3
+Final timing result delivery window: 15 minutes

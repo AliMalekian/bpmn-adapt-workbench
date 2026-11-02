@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The step of entering and validating the machine type and serial number before an inspection can begin..
+Current token position: Immediately before The step of entering and validating the machine type and serial number before an inspection can begin. on its original BPMN sequence flow.
+Required resources: Resource 1 (Specified filling pressure range: 1.2 to 1.8 bar)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → The step of entering and validating the machine type and serial number before an inspection can begin. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The step of entering and validating the machine type and serial number before an inspection can begin..
+Current token position: Immediately before The step of entering and validating the machine type and serial number before an inspection can begin. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 1 (The machine type and serial number must be entered and validated before an inspection can begin.), Rule 11 (Inspection results are archived together with the machine's serial number for 5 years.), Rule 13 (Only an authorized inspector may start a new inspection for a given serial number.)
+Expected execution path: Follow the original predecessor → The step of entering and validating the machine type and serial number before an inspection can begin. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The step of entering and validating the machine type and serial number before an inspection can begin..
+Current token position: Immediately before The step of entering and validating the machine type and serial number before an inspection can begin. on its original BPMN sequence flow.
+Required resources: Resource 1 (Specified filling pressure range: 1.2 to 1.8 bar)
+Relevant rules: Rule 1 (The machine type and serial number must be entered and validated before an inspection can begin.), Rule 11 (Inspection results are archived together with the machine's serial number for 5 years.), Rule 13 (Only an authorized inspector may start a new inspection for a given serial number.)
+Expected execution path: Follow the original predecessor → The step of entering and validating the machine type and serial number before an inspection can begin. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The manual reading branch of the filling station pressure check, including the depressurization procedure..
+Current token position: Immediately before The manual reading branch of the filling station pressure check, including the depressurization procedure. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → The manual reading branch of the filling station pressure check, including the depressurization procedure. → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

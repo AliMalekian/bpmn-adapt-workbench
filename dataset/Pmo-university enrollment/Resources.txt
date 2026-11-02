@@ -1,0 +1,15 @@
+Number of admissions office staff: 12
+Maximum application fee: $75
+Number of application fee waivers available per year: 90
+Number of scholarship slots per intake: 25
+Minimum GPA required for admission: 2.5
+Maximum course credits per semester: 18
+Minimum credits for full-time status: 12
+Number of academic advisors: 8
+Number of appeals committee members: 5
+Maximum enrollment per course section: 35 students
+Number of orientation sessions offered per year: 4
+Add/drop period duration: 14 days
+Maximum library and portal accounts provisioned per day: 200
+Annual visa processing capacity of the international student office: 1,500 students
+Maximum appeal response time: 21 days

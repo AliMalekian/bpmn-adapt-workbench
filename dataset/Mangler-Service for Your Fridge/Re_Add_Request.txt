@@ -1,0 +1,12 @@
+Re-Add Request:
+Restored element: The technician's random arrival time within the agreed appointment window
+
+This request semantically restores the single element removed in Request4, returning the process to its original state.
+
+Restoration details:
+- The random-arrival behavior is re-inserted into the process: after the local service facility makes an appointment, the technician may arrive at any random time within the agreed 4-hour appointment window.
+- The arrival time is generated randomly inside the appointment window rather than fixed in advance, in accordance with Rule 4 ("The technician may arrive at any random time within the agreed appointment window").
+- The 4-hour appointment window (Resource 4: "Appointment window: 4 hours") is restored as the bounds within which the random arrival can occur.
+- The technician still notifies the customer of the visit time on the day of the appointment, consistent with Rule 13 ("The service facility must notify the customer of the visit time on the day of the appointment").
+- All other process elements (symptom description, service-facility selection, appointment making, repair, parts handling, confirmation, rating) remain unchanged and continue to operate as originally designed.
+- No rules or resources are affected by this restoration beyond restoring the random arrival within the appointment window.

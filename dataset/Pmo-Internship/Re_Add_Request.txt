@@ -1,0 +1,10 @@
+Re-Add Request:
+Removed element to be restored: Publish your application (the "Publish your application" step that publicly announces the student's application)
+
+Restoration details:
+1. Re-insert the "Publish your application" user task after the application data (topic, compensation, experience, and hobbies) has been entered and before the internship process starts: recreate the BPMN user task named "Publish your application" at its original position in the flow, exactly as it appeared in the original model.
+2. Restore the publication behavior: the student's application is again published / made visible so that prospective internship providers can see it and offers can be routed to the student, matching the original pre-offer stage of the process.
+3. Reconnect the sequence flows: the outgoing flow of the application-entry stage now enters "Publish your application", and its outgoing flow continues to the offer-arrival stage as before; the direct bypass that the removal created is deleted.
+4. Restore the offer-feed relationship: with publication restored, offers again arrive after the application has been made visible, so the ordering of the process (enter data -> publish application -> receive offers -> accept/deny -> invalidate others -> status updates -> recommend via Twitter) matches its exact original shape.
+
+The process is thereby returned to exactly its original shape: the "Publish your application" task and its sequence-flow connections that Request4 removed are fully restored.

@@ -1,0 +1,11 @@
+Re-Add Request:
+Restored element: "Send invitations" activity for the tree house party (the party invitation step that was removed by Request4)
+Reason: Request4 removed the party-invitation step, claiming invitations could be dropped. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+
+Detailed restoration:
+1. "Send invitations" task: Restored as the explicit party-invitation activity. It is placed back exactly where it originally was: after the house has been fully built (and inspected per the intended flow) and before the party takes place, so that the narrative line "After the house is built, you send invitations for a tree house party to your friends" is again implemented as a dedicated step.
+2. Invitation semantics: The restored task again sends the party invitations to the friends, generating the attendee list that the subsequent snack-ordering step depends on. This re-establishes the dependency described in the narrative: "In order to buy the snacks for the party, a list of people that attend the party is created." With the invitation step back, the party-attendee list is again created from the accepted invitations, which is what fuels the snack budget calculation (Rule 12 "Snack quantities are based on the number of attendees on the party list" and Rule 13).
+3. Sequence flows and ordering constraint: All original connections are re-established: Build house / "Build house" -> "Send invitations" -> (party) -> create attendee list -> buy snacks, exactly as in the original model. The restored placement preserves Rule 11 ("A party invitation is sent only after the house is fully built and inspected"), because the invitation step again fires only after the finished-house milestone.
+4. Consistency: The restored step uses the resource "Invitation list capacity: 50 attendees" again, bounding the party list exactly as in the original design.
+
+With the "Send invitations" step restored, the process returns to exactly the original shape described in M_k05.txt, including the tree house party and its snack ordering.

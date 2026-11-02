@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Send notification
+Completed activities: start
+Current active activity or waiting point: Send notification
+Token position / execution status: token is at Send notification; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Regional offices: 12)
+Applicable rules: Rule 1 (The audit coordinator starts the annual audit by sending a notification to every regional office.)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: parallelGateway
+Completed activities: start, Send notification
+Current active activity or waiting point: parallelGateway
+Token position / execution status: token is at parallelGateway; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Regional offices: 12)
+Applicable rules: Rule 1 (The audit coordinator starts the annual audit by sending a notification to every regional office.)
+Possible next activities: Check regulatory updates, exclusiveGateway, Conduct interviews, exclusiveGateway, Prepare financial statements, Conduct data analysis, Gather necessary documents, Evaluate financial risks, Evaluate compliance risks, Evaluate operational risks, Submit documents, exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Conduct data analysis
+Completed activities: start, Send notification, parallelGateway, Check regulatory updates, Prepare financial statements, Gather necessary documents, parallelGateway, Submit documents, Review submission, exclusiveGateway, Request clarifications of discrepancies, exclusiveGateway, Receive clarifications, parallelGateway, Evaluate financial risks, Evaluate compliance risks, Evaluate operational risks, parallelGateway, exclusiveGateway, exclusiveGateway, Launch detailed investigation, Complete risk assessment/mitigation, parallelGateway, Compile audit report, exclusiveGateway, Conduct interviews
+Current active activity or waiting point: Conduct data analysis
+Token position / execution status: token is at Conduct data analysis; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Regional offices: 12)
+Applicable rules: Rule 1 (The audit coordinator starts the annual audit by sending a notification to every regional office.)
+Possible next activities: parallelGateway
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Send notification, parallelGateway, Check regulatory updates, Prepare financial statements, Gather necessary documents, parallelGateway, Submit documents, Review submission, exclusiveGateway, Request clarifications of discrepancies, exclusiveGateway, Receive clarifications, parallelGateway, Evaluate financial risks, Evaluate compliance risks, Evaluate operational risks, parallelGateway, exclusiveGateway, exclusiveGateway, Launch detailed investigation, Complete risk assessment/mitigation, parallelGateway, Compile audit report, exclusiveGateway, Conduct interviews, Conduct data analysis, exclusiveGateway, Perform site visits, exclusiveGateway, parallelGateway, Review report by audit director, exclusiveGateway, Approve report, Send report for revision, Distribute final report, Update and resubmit report, Archive report, Close audit process
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Regional offices: 12)
+Applicable rules: Rule 1 (The audit coordinator starts the annual audit by sending a notification to every regional office.)
+Possible next activities: Process completion

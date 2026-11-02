@@ -1,0 +1,11 @@
+Re_Add_Request:
+Restored element: The "Execute contract" task — the standalone step that formally executes and activates the signed contract after the supplier has been onboarded, making the contract binding and the supplier officially operational.
+
+Detailed restoration: Request4 removed the explicit contract execution step, treating the contract as automatically activated upon signing. To restore the process to its original state, the "Execute contract" task must be re-added as follows:
+
+1. After the contract is signed (Rule 7: both parties agree on all terms, legal review completed, procurement director approval given per Rule 9) and the supplier has been onboarded (Rule 8: vendor registration checklist passed), the process proceeds to the "Execute contract" task.
+2. During "Execute contract," the signed contract is formally executed — meaning it is officially activated, all terms take legal effect, and the supplier is authorized to begin fulfilling the contract obligations. This occurs only after the supplier has signed the code of conduct and data protection agreement (Rule 13: "The selected supplier must sign the code of conduct and data protection agreement before execution begins").
+3. The contract execution step serves as the formal boundary between the onboarding phase and the start of the supplier relationship, ensuring that the contract is not active until all prerequisites (signing, onboarding, code of conduct, data protection agreement) are complete.
+4. After "Execute contract" is completed, the process ends — the supplier is officially onboarded and the contract is executed, exactly as described in the original process description: "The process ends when the supplier is officially onboarded, and the contract is executed."
+
+This restores the complete original process: need identified, RFP issued, proposals received and evaluated, site visits and interviews conducted, supplier selected, negotiations completed, contract signed, supplier onboarded, contract executed. All 15 rules (Rules 1-15) and all 14 resources (15 RFP invitations, 6 average proposals, 3 evaluation criteria, 40%/30%/30% weighting, 120-day maximum tender, 30-day submission window, 45-day negotiation period, 70 minimum quality score, 60-day maximum delivery, 5 team members, 10% budget tolerance, 3 minimum qualified proposals) remain in effect.

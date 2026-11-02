@@ -1,0 +1,306 @@
+Example ID: R1-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Test subcomponents" task (the step that individually tests every built subcomponent before assembly)” for Request1.
+Target BPMN element: "Test subcomponents" task (the step that individually tests every built subcomponent before assembly)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Test subcomponents" task (the step that individually tests every built subcomponent before assembly)” for Request1.
+Target BPMN element: "Test subcomponents" task (the step that individually tests every built subcomponent before assembly)
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (Each subcomponent must pass its individual test successfully before assembly.), Rule 8 (Failed subcomponents must be redesigned and rebuilt before reassembly is attempted.), Rule 11 (Assembly may not start until all subcomponents have passed their final tests.), Rule 12 (A redesigned subcomponent must be retested completely before final assembly.).
+Referenced rules: Rule 7 (Each subcomponent must pass its individual test successfully before assembly.), Rule 8 (Failed subcomponents must be redesigned and rebuilt before reassembly is attempted.), Rule 11 (Assembly may not start until all subcomponents have passed their final tests.), Rule 12 (A redesigned subcomponent must be retested completely before final assembly.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Test subcomponents" task (the step that individually tests every built subcomponent before assembly)” for Request1.
+Target BPMN element: "Test subcomponents" task (the step that individually tests every built subcomponent before assembly)
+Decision: REJECT
+Decision reason: It conflicts with Rule 7 (Each subcomponent must pass its individual test successfully before assembly.), Rule 8 (Failed subcomponents must be redesigned and rebuilt before reassembly is attempted.), Rule 11 (Assembly may not start until all subcomponents have passed their final tests.), Rule 12 (A redesigned subcomponent must be retested completely before final assembly.).
+Referenced rules: Rule 7 (Each subcomponent must pass its individual test successfully before assembly.), Rule 8 (Failed subcomponents must be redesigned and rebuilt before reassembly is attempted.), Rule 11 (Assembly may not start until all subcomponents have passed their final tests.), Rule 12 (A redesigned subcomponent must be retested completely before final assembly.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R1-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)” safely.
+Target BPMN element: "Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R2-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Sort Lego bricks according to size" task (the children's activity of sorting the bricks from the ordered sets into labelled containers)” for Request2.
+Target BPMN element: "Sort Lego bricks according to size" task (the children's activity of sorting the bricks from the ordered sets into labelled containers)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Sort Lego bricks according to size" task (the children's activity of sorting the bricks from the ordered sets into labelled containers)” for Request2.
+Target BPMN element: "Sort Lego bricks according to size" task (the children's activity of sorting the bricks from the ordered sets into labelled containers)
+Decision: REJECT
+Decision reason: It conflicts with Rule 2 (Sort containers must be labeled by part type before sorting begins.), Rule 10 (The sorting group must contain at least 3 children working on the parts.).
+Referenced rules: Rule 2 (Sort containers must be labeled by part type before sorting begins.), Rule 10 (The sorting group must contain at least 3 children working on the parts.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Sort Lego bricks according to size" task (the children's activity of sorting the bricks from the ordered sets into labelled containers)” for Request2.
+Target BPMN element: "Sort Lego bricks according to size" task (the children's activity of sorting the bricks from the ordered sets into labelled containers)
+Decision: REJECT
+Decision reason: It conflicts with Rule 2 (Sort containers must be labeled by part type before sorting begins.), Rule 10 (The sorting group must contain at least 3 children working on the parts.).
+Referenced rules: Rule 2 (Sort containers must be labeled by part type before sorting begins.), Rule 10 (The sorting group must contain at least 3 children working on the parts.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R2-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)” safely.
+Target BPMN element: "Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R3-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Redesign subcomponent" task (the step that redesigns failed subcomponents before they are rebuilt)” for Request3.
+Target BPMN element: "Redesign subcomponent" task (the step that redesigns failed subcomponents before they are rebuilt)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Redesign subcomponent" task (the step that redesigns failed subcomponents before they are rebuilt)” for Request3.
+Target BPMN element: "Redesign subcomponent" task (the step that redesigns failed subcomponents before they are rebuilt)
+Decision: REJECT
+Decision reason: It conflicts with Rule 8 (Failed subcomponents must be redesigned and rebuilt before reassembly is attempted.), Rule 9 (A subcomponent may be redesigned and rebuilt at most 3 times; further failures require design approval.), Rule 12 (A redesigned subcomponent must be retested completely before final assembly.).
+Referenced rules: Rule 8 (Failed subcomponents must be redesigned and rebuilt before reassembly is attempted.), Rule 9 (A subcomponent may be redesigned and rebuilt at most 3 times; further failures require design approval.), Rule 12 (A redesigned subcomponent must be retested completely before final assembly.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Redesign subcomponent" task (the step that redesigns failed subcomponents before they are rebuilt)” for Request3.
+Target BPMN element: "Redesign subcomponent" task (the step that redesigns failed subcomponents before they are rebuilt)
+Decision: REJECT
+Decision reason: It conflicts with Rule 8 (Failed subcomponents must be redesigned and rebuilt before reassembly is attempted.), Rule 9 (A subcomponent may be redesigned and rebuilt at most 3 times; further failures require design approval.), Rule 12 (A redesigned subcomponent must be retested completely before final assembly.).
+Referenced rules: Rule 8 (Failed subcomponents must be redesigned and rebuilt before reassembly is attempted.), Rule 9 (A subcomponent may be redesigned and rebuilt at most 3 times; further failures require design approval.), Rule 12 (A redesigned subcomponent must be retested completely before final assembly.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R3-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)” safely.
+Target BPMN element: "Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: R4-REMOVE-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RESOURCE-CONFLICT
+User request: Assess removal of “"Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)” for Request4.
+Target BPMN element: "Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)
+Decision: REJECT
+Decision reason: No concrete conflict was specified for this request; the operation is rejected pending evidence.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-CONFLICT
+User request: Assess removal of “"Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)” for Request4.
+Target BPMN element: "Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)
+Decision: REJECT
+Decision reason: It conflicts with Rule 5 (If a container runs out of parts, individual replacement parts must be reordered before assembly continues.), Rule 6 (The supply of a container may not fall below 10 parts mid-assembly without triggering a reorder.).
+Referenced rules: Rule 5 (If a container runs out of parts, individual replacement parts must be reordered before assembly continues.), Rule 6 (The supply of a container may not fall below 10 parts mid-assembly without triggering a reorder.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-RULE-AND-RESOURCE-CONFLICT
+Operation type: REMOVE
+Category: REMOVE-RULE-AND-RESOURCE-CONFLICT
+User request: Assess removal of “"Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)” for Request4.
+Target BPMN element: "Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)
+Decision: REJECT
+Decision reason: It conflicts with Rule 5 (If a container runs out of parts, individual replacement parts must be reordered before assembly continues.), Rule 6 (The supply of a container may not fall below 10 parts mid-assembly without triggering a reorder.).
+Referenced rules: Rule 5 (If a container runs out of parts, individual replacement parts must be reordered before assembly continues.), Rule 6 (The supply of a container may not fall below 10 parts mid-assembly without triggering a reorder.)
+Referenced resources: None
+Required BPMN change: No BPMN change is applied; the original incoming and outgoing sequence flows remain intact.
+Expected process effect: The original behavior is preserved because the requested change is rejected.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Rejected: the cited concrete constraint must remain satisfied.
+
+Example ID: R4-REMOVE-VALID
+Operation type: REMOVE
+Category: REMOVE-VALID
+User request: Instead, remove the optional element “"Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)” safely.
+Target BPMN element: "Reorder Lego bricks" task (the step that reorders individual parts when a container runs out of parts)
+Decision: ACCEPT
+Decision reason: The proposed scope is limited to an optional, non-control-flow observation and preserves every mandatory predecessor, successor, rule, and resource constraint.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Remove only the optional occurrence while reconnecting its predecessor directly to its successor; retain all mandatory BPMN elements.
+Expected process effect: The optional observation is bypassed without changing mandatory routing.
+Token migration / execution-state note: Existing tokens remain on their current original sequence flow; no token is moved across an unmet gateway or predecessor.
+Final response to the user: Accepted for the explicitly limited optional scope.
+
+Example ID: RA-READD-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RESOURCE-CONFLICT
+User request: Re-add “"Reorder Lego bricks" task (the reorder step, removed by Request4, plus its loop triggers and flows) Reason: Request4 removed the "Reorder Lego bricks" task claiming substitute parts could avoid any reorder. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Reorder Lego bricks" task (the reorder step, removed by Request4, plus its loop triggers and flows) Reason: Request4 removed the "Reorder Lego bricks" task claiming substitute parts could avoid any reorder. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates None and Resource 1 (Available Lego brick sets: 40).
+Referenced rules: None
+Referenced resources: Resource 1 (Available Lego brick sets: 40)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-CONFLICT
+User request: Re-add “"Reorder Lego bricks" task (the reorder step, removed by Request4, plus its loop triggers and flows) Reason: Request4 removed the "Reorder Lego bricks" task claiming substitute parts could avoid any reorder. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Reorder Lego bricks" task (the reorder step, removed by Request4, plus its loop triggers and flows) Reason: Request4 removed the "Reorder Lego bricks" task claiming substitute parts could avoid any reorder. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (The basic design of the machine must be approved before any brick sets are ordered.) and None.
+Referenced rules: Rule 1 (The basic design of the machine must be approved before any brick sets are ordered.)
+Referenced resources: None
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-RULE-AND-RESOURCE-CONFLICT
+Operation type: RE_ADD
+Category: READD-RULE-AND-RESOURCE-CONFLICT
+User request: Re-add “"Reorder Lego bricks" task (the reorder step, removed by Request4, plus its loop triggers and flows) Reason: Request4 removed the "Reorder Lego bricks" task claiming substitute parts could avoid any reorder. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Reorder Lego bricks" task (the reorder step, removed by Request4, plus its loop triggers and flows) Reason: Request4 removed the "Reorder Lego bricks" task claiming substitute parts could avoid any reorder. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: REJECT
+Decision reason: The re-add would be placed in a way that violates Rule 1 (The basic design of the machine must be approved before any brick sets are ordered.) and Resource 1 (Available Lego brick sets: 40).
+Referenced rules: Rule 1 (The basic design of the machine must be approved before any brick sets are ordered.)
+Referenced resources: Resource 1 (Available Lego brick sets: 40)
+Required BPMN change: No change; reject the conflicting placement.
+Expected process effect: No effect; the invalid re-add is not applied.
+Token migration / execution-state note: Tokens stay on the current valid route.
+Final response to the user: Rejected because the exact proposed placement conflicts with cited constraints.
+
+Example ID: RA-READD-VALID
+Operation type: RE_ADD
+Category: READD-VALID
+User request: Re-add “"Reorder Lego bricks" task (the reorder step, removed by Request4, plus its loop triggers and flows) Reason: Request4 removed the "Reorder Lego bricks" task claiming substitute parts could avoid any reorder. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.” to the process.
+Target BPMN element: "Reorder Lego bricks" task (the reorder step, removed by Request4, plus its loop triggers and flows) Reason: Request4 removed the "Reorder Lego bricks" task claiming substitute parts could avoid any reorder. This request semantically restores EVERYTHING that Request4 removed so the process returns to exactly its original shape.
+Decision: ACCEPT
+Decision reason: The element is restored at its original location, with its original predecessor and successor, so original behavior and all constraints are recovered.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Restore the element at its original position, reconnect its original incoming and outgoing sequence flows, and preserve gateway semantics.
+Expected process effect: The original process behavior is recovered and is equivalent to the original model.
+Token migration / execution-state note: Tokens at the removed bypass are safely redirected to the restored element before continuing to its original successor.
+Final response to the user: Accepted: the original element, location, connections, and behavior are restored.
+Example ID: Mangler-Building a custom machine out of Lego bricks-MODIFY-AUTOMATION-VALID
+Operation type: MODIFY
+Category: MODIFY-VALID
+User request: Assess updating execution parameters and technical automation settings for the primary task in Mangler-Building a custom machine out of Lego bricks.
+Target BPMN element: Primary Process Task
+Decision: ACCEPT
+Decision reason: The modification is purely technical (updating automation settings, timeouts, and throughput parameters) and does not alter the control flow, business rules, or resource capacity allocations. All milestones remain compliant.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: Attributes updated; incoming and outgoing sequence flows remain intact.
+Expected process effect: Throughput is improved while all business rules and constraints are preserved.
+Token migration / execution-state note: Active tokens continue execution without relocation or delay.
+Final response to the user: Approved: the technical modification is fully compliant with all rules and resources.
+
+Example ID: Mangler-Building a custom machine out of Lego bricks-ADD-QUALITY-CHECK-VALID
+Operation type: ADD
+Category: ADD-VALID
+User request: Assess adding an automated, non-blocking Quality Verification step in Mangler-Building a custom machine out of Lego bricks.
+Target BPMN element: Quality Verification Step
+Decision: ACCEPT
+Decision reason: The proposed quality verification step operates as an automated non-blocking checkpoint. It satisfies all preconditions, respects assigned resource capacities, and does not violate or delay any mandatory operational rule deadlines.
+Referenced rules: None
+Referenced resources: None
+Required BPMN change: New automated task inserted into the sequence flow with proper incoming and outgoing flows.
+Expected process effect: Quality assurance is enhanced while all business rules and resource constraints remain satisfied.
+Token migration / execution-state note: Newly instantiated tokens pass through the verification step seamlessly.
+Final response to the user: Approved: the addition satisfies all operational rules and resource capacities.

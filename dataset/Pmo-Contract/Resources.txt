@@ -1,0 +1,12 @@
+Reorder threshold for a single part: 5
+Urgent reorder threshold for a single part: 3
+Zero-stock threshold that stops construction: 0
+Delivery time tolerance (days): 2
+Automatic nightly stock check time (hour): 22
+Construction start after first parts arrive (hours): 4
+Contract delivery deadline after last batch (working days): 5
+Maximum supplier return rate allowed (percent): 10
+Number of candidate web shops queried: 8
+Approved project procurement budget (EUR): 50000
+Monochrome storage units for parts: 12
+Number of construction shifts per day: 1

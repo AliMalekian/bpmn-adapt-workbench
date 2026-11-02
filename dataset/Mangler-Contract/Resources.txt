@@ -1,0 +1,12 @@
+Project parts budget: $50,000
+Number of web shops queried: 6
+Minimum stock reorder threshold: 5 units
+Emergency reorder threshold: 3 units
+Batch delivery tolerance: 2 days
+Warehouse capacity: 500 part units
+Number of part types in project: 12
+Cheapest supplier average delivery time: 7 days
+Fastest supplier delivery time: 2 days
+Number of active project teams: 2
+Stock counting time per batch: 30 minutes
+Number of assembly workstations: 4

@@ -1,0 +1,15 @@
+1. Recourse must be initiated within 30 days of the payment of the insured claim.
+2. A request for payment is sent to the insurant only if the recourse possibility is confirmed by the clerk's check.
+3. The first reminder must be issued no later than 14 days after the request for payment.
+4. The insurant has 14 days to raise a disagreement after receiving the request for payment.
+5. If the deadline for disagreement passes without payment, the case is forwarded to a collection agency.
+6. Recourse claims below 25 EUR are closed without action as they do not justify the processing cost.
+7. Claims above 5000 EUR require a second clerk's review before the request for payment is sent.
+8. When the insurant disagrees, the clerk must check the reasoning before taking any further step.
+9. If the insurant's reasoning is correct, the case is closed and no payment is pursued.
+10. If the insurant's reasoning is rejected, the case is forwarded to a collection agency.
+11. Payments received from the insurant must be booked within 2 business days; low-value claims below the threshold that are closed without action do not require separate closing tasks.
+12. A case may be sent to a collection agency only once; the agency takes over all further handling.
+13. The clerk may have at most 50 open recourse cases at the same time.
+14. Every contact with the insurant must be logged with date, channel, and result.
+15. Recourse claims older than 3 years from the original claim payment are not enforced.

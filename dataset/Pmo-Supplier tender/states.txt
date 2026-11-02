@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Identify need for new supplier or vendor
+Completed activities: start
+Current active activity or waiting point: Identify need for new supplier or vendor
+Token position / execution status: token is at Identify need for new supplier or vendor; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of RFP invitations per tender: 15)
+Applicable rules: Rule 1 (An RFP is issued only after the company formally documents the need for a new supplier or vendor.)
+Possible next activities: Issue request for proposals (RFP)
+
+STATE-02: Intermediate / decision
+Current process position: Evaluate proposal
+Completed activities: start, Identify need for new supplier or vendor, Issue request for proposals (RFP), Receive supplier proposals, exclusiveGateway
+Current active activity or waiting point: Evaluate proposal
+Token position / execution status: token is at Evaluate proposal; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of RFP invitations per tender: 15)
+Applicable rules: Rule 1 (An RFP is issued only after the company formally documents the need for a new supplier or vendor.)
+Possible next activities: exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Select supplier
+Completed activities: start, Identify need for new supplier or vendor, Issue request for proposals (RFP), Receive supplier proposals, exclusiveGateway, Evaluate proposal, exclusiveGateway, exclusiveGateway, Conduct interview, Conduct site visit, exclusiveGateway
+Current active activity or waiting point: Select supplier
+Token position / execution status: token is at Select supplier; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of RFP invitations per tender: 15)
+Applicable rules: Rule 1 (An RFP is issued only after the company formally documents the need for a new supplier or vendor.)
+Possible next activities: Begin contract negotiations
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Identify need for new supplier or vendor, Issue request for proposals (RFP), Receive supplier proposals, exclusiveGateway, Evaluate proposal, exclusiveGateway, exclusiveGateway, Conduct interview, Conduct site visit, exclusiveGateway, Select supplier, Begin contract negotiations, Sign contract, Onboard supplier, Execute contract
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of RFP invitations per tender: 15)
+Applicable rules: Rule 1 (An RFP is issued only after the company formally documents the need for a new supplier or vendor.)
+Possible next activities: Process completion

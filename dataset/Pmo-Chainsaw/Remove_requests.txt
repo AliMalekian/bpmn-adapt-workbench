@@ -1,0 +1,28 @@
+Request1:
+Removed element: Manual inspection of all delivered parts (the "Perform Inspection" task before assembly)
+Reason: Manual inspection is slow and creates a bottleneck on the single inspection station; removing it would let parts flow straight into assembly.
+Conflict details: Conflicts with Rule 3 ("All delivered parts must pass a manual inspection before any assembly may begin") and Rule 4 ("A parts batch with any damaged or incorrect item is rejected, and the affected part is reordered from the same source"), plus Rule 14 ("Production is paused immediately if any safety inspection finds a non-conforming part"). Removing the inspection task eliminates the gate that Rules 3, 4 and 14 all depend on, so defective parts could reach assembly and unsafe saws could ship.
+
+Request2:
+Removed element: Regular production status updates to the customer (the "Send updates" task run during production)
+Reason: Sending progress updates interrupts the production workflow; removing them would let the team stay focused on the build.
+Conflict details: Conflicts with the resource "Status update interval (working days): 3" from Resources.txt, which defines how often production status messages are sent to the customer. Removing the "Send updates" task leaves this resource parameter without a target step and voids the agreed 3-working-day progress-reporting cadence defined in Resources.txt.
+
+Request3:
+Removed element: Ordering the parts from the required parallel online sources (the "Order parts" task)
+Reason: Sourcing parts from many parallel online suppliers is expensive and complex; removing the ordering step would let the team start assembling from the stock already on hand.
+Conflict details: Conflicts with Rule 2 ("Parts are ordered from various online sources in parallel, but only after the customer has confirmed all chainsaw properties") and Rule 15 ("The customer must confirm the final configuration in writing before any part ordering begins"), and with the resources "Parallel online suppliers that can be queried: 6" and "Monthly part-ordering budget (EUR): 20000" from Resources.txt. The rules mandate parallel sourcing after confirmation, and the resource set explicitly provisions six parallel suppliers plus a 20,000 EUR ordering budget for exactly this task; removing it breaks the sourcing rules and voids both configured resources.
+
+Request4:
+Removed element: Cancellation of the remaining order after an unapproved prototype (the "Cancel production of the remaining order" end-event on the "No" output of the "Customer Approval?" decision gateway)
+Reason: The cancel-production path is only reached when the customer rejects the prototype; removing it lets an unapproved prototype simply terminate the run without a dedicated cancellation end-event.
+Conflict details: None — fully compatible with all rules and resources. No business rule mandates that a dedicated "Cancel production of the remaining order" end-event must exist as a modeling element: Rule 5 (production of the rest proceeds only after the customer confirms the prototype) and Rule 6 (if the prototype is not approved within 14 days, remaining production is cancelled and the restock fee applies) describe the applicable outcome conditions, and they are still honored because the approval gateway routes the process to its end when the prototype is not approved; the restock-fee consequence ("Restock fee for unapproved prototype orders (percent): 10" in Resources.txt) remains administratively applicable. No resource in Resources.txt is tied to the cancellation end-event itself. The removal is therefore fully executable without violating any rule or consuming any resource bound.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

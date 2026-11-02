@@ -1,0 +1,12 @@
+Number of audit standards maintained (ISO, safety, environmental): 3
+External audit days allocated per year: 10
+Certification validity period (years): 3
+Surveillance audits per year: 1
+Documentation preparation deadline before audit (days): 10
+High-risk corrective action deadline (days): 30
+Low-risk corrective action deadline (days): 60
+Required passing criteria for certification (%): 90
+Certification decision turnaround after audit closes (days): 30
+Current open corrective actions: 7
+Compliance audit team members: 5
+Annual compliance audit budget: $45,000

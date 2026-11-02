@@ -1,0 +1,10 @@
+MSPO review deadline (working days): 10
+Maximum resubmissions allowed: 2
+Required notification period to affected person (days): 30
+Personnel record update deadline (working days): 5
+Document retention period (years): 5
+Average dismissals reviewed per month: 3
+Number of MSPN staff members covered: 18
+Higher authority referral threshold (review attempts): 3
+Legal appeal suspension period (days): 45
+Personnel officers on staff: 3

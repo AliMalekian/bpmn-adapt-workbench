@@ -1,0 +1,47 @@
+Test case ID: TC-01-RESOURCE-CONFLICT
+Scenario title: Resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The step of entering the smartphone model and the damaged part into the tool..
+Current token position: Immediately before The step of entering the smartphone model and the damaged part into the tool. on its original BPMN sequence flow.
+Required resources: Resource 1 (Replacement screen budget: $120)
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → The step of entering the smartphone model and the damaged part into the tool. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Insufficient/unavailable required resource prevents execution.
+
+Test case ID: TC-02-RULE-CONFLICT
+Scenario title: Rule conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The step of entering the smartphone model and the damaged part into the tool..
+Current token position: Immediately before The step of entering the smartphone model and the damaged part into the tool. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: Rule 1 (The smartphone model and the damaged part must be entered into the tool before any material or tool list is generated.)
+Expected execution path: Follow the original predecessor → The step of entering the smartphone model and the damaged part into the tool. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: The requested action violates the cited rule.
+
+Test case ID: TC-03-RULE-AND-RESOURCE-CONFLICT
+Scenario title: Rule and resource conflict
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The step of entering the smartphone model and the damaged part into the tool..
+Current token position: Immediately before The step of entering the smartphone model and the damaged part into the tool. on its original BPMN sequence flow.
+Required resources: Resource 1 (Replacement screen budget: $120)
+Relevant rules: Rule 1 (The smartphone model and the damaged part must be entered into the tool before any material or tool list is generated.)
+Expected execution path: Follow the original predecessor → The step of entering the smartphone model and the damaged part into the tool. → original successor route; respect any gateway conditions.
+Expected result: BLOCKED
+Validation status: BLOCKED
+Explanation: Both the rule and resource constraints block execution.
+
+Test case ID: TC-04-VALID-EXECUTION
+Scenario title: Valid execution
+Initial state: STATE-02 with a token before the applicable activity.
+User request / process action: Execute or validate The step of contacting friends to borrow or buy tools/parts cheaply from them..
+Current token position: Immediately before The step of contacting friends to borrow or buy tools/parts cheaply from them. on its original BPMN sequence flow.
+Required resources: All resources required by the original process are available.
+Relevant rules: All applicable original rules are satisfied.
+Expected execution path: Follow the original predecessor → The step of contacting friends to borrow or buy tools/parts cheaply from them. → original successor route; respect any gateway conditions.
+Expected result: PASS
+Validation status: PASS
+Explanation: The original route is executable, and the same route is restored after the remove/re-add cycle.

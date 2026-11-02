@@ -1,0 +1,14 @@
+Re-Add request:
+The removal request Request4 removed the "Waiter prepares nonalcoholic drinks" task (Task_5) from the process. This request semantically restores that removed element and returns the process to exactly its original shape.
+
+Restored element: "Waiter prepares nonalcoholic drinks" task (Task_5).
+
+How it is restored:
+1. The "Waiter prepares nonalcoholic drinks" task (Task_5) is reinserted into the process at its original position, split out again as its own dedicated activity on the waiter-preparedness branch.
+2. The original parallel structure is restored: after "Manager assigns order to waiter" (Task_12) completes, ParallelGateway_2 again splits the waiter branch into two parallel flows - one into "Waiter readies cart" (Task_1, via SequenceFlow_13) and the other into "Waiter prepares nonalcoholic drinks" (Task_5, via SequenceFlow_9) - exactly as in the original model.
+3. Task_5 again performs its original function: it re-establishes the dedicated step in which the waiter prepares and serves all the nonalcoholic drinks of the order, so that the responsibility described in Rule 6 of Rules.txt ("The waiter is responsible for preparing and serving all nonalcoholic drinks in the order") is again carried out in a task of its own.
+4. The readiness synchronization is restored: the nonalcoholic-drinks branch (from Task_5, via SequenceFlow_12) again joins the cart branch (from Task_1, via SequenceFlow_25), the kitchen branch (from Task_2, via SequenceFlow_16), and the wine branch (from the sommelier via SequenceFlow_15) at ParallelGateway_1, and only when ALL of these have completed does the flow proceed to "Waiter delivers order to guest's room" (Task_11).
+5. This restores the original readiness condition of Rule 8 exactly: delivery occurs only when the food, the wine, the nonalcoholic drinks, and the cart are all ready, each prepared by its own designated task, just as in the original model.
+6. The rest of the process is unchanged, so the flow again runs: the guest calls room service (Task_13), the manager takes down the order (Task_4), submits the order ticket to the kitchen (Task_9), gives the order to the sommelier (Task_7), assigns the order to the waiter (Task_12), the waiter readies the cart (Task_1) and prepares the nonalcoholic drinks (restored Task_5), the kitchen prepares the food (Task_2), the sommelier fetches the wine (Task_3), the waiter delivers the order (Task_11), returns to the room-service station (Task_10), debits the guest's account (Task_8, with the optional waiter delay, Task_6), and the process ends - with every element, branch, and ordering of the original process restored.
+
+Result: The removal of Task_5 is fully undone, and the room-service process is back to precisely its original shape with the dedicated "Waiter prepares nonalcoholic drinks" step present in parallel with the cart-readying step.

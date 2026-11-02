@@ -1,0 +1,28 @@
+Request1:
+Removed element: The "Check regulatory updates" task — the step where the compliance team checks for regulatory updates that might affect the audit.
+Reason: Removing the regulatory-update check would shorten the audit preparation phase by skipping the compliance review of regulatory changes.
+Conflict details: This removal directly conflicts with Rule 3 ("The compliance team must check for regulatory updates that affect the audit before document review begins"). The rule makes the regulatory-update check a mandatory prerequisite that must be completed before the document review can start, so removing the task breaks the mandated preparation sequence.
+
+Request2:
+Removed element: The "Perform site visits" task — the step where site visits are performed during the detailed investigation of high-risk findings.
+Reason: Removing the site-visit activity would let the investigation rely entirely on data analysis and interviews, avoiding the travel and coordination cost of physical site visits.
+Conflict details: This removal conflicts with the resource "Site visits per audit cycle: 5" — this resource allocation defines the budget of up to 5 site visits per audit cycle, which the "Perform site visits" task consumes; without the task this resource allocation is never used. It also conflicts with Rule 8 ("Site visits are performed for high-risk findings when data analysis and interviews are insufficient"), which explicitly provides for site visits when the other investigation methods cannot confirm the finding.
+
+Request3:
+Removed element: The "Review report by audit director" task — the step where the audit director reviews the compiled audit report and decides whether to approve it or send it back for revisions.
+Reason: Removing the audit director's review would let the compiled audit report flow directly to approval and distribution, eliminating the review cycle.
+Conflict details: This removal conflicts with Rule 10 ("The audit director must review the report and may approve it or send it back for revisions") — the review task is exactly what this rule mandates. It also conflicts with the resource "Audit report review rounds (maximum): 4", which defines the maximum number of review rounds for the report; without the review task, the review-rounds resource has no application. Rule 11 (updates and resubmits after revision) and Rule 12 (maximum 3 revision returns before escalation) also depend on the director's review step.
+
+Request4:
+Removed element: The "Close audit process" task — the final step where the entire audit process is formally closed once the approved report has been distributed.
+Reason: The final report is already distributed to the executive board and archived by the preceding steps, which completes all substantive audit work. The formal closing act adds no new content, so removing it lets the process end immediately after distribution and archiving.
+Conflict details: None — fully compatible with all rules and resources. Rule 14 ("The entire audit process is closed only after the final report is distributed and archived") is a precondition on when closing may occur, not a mandate that a separate closing task must exist; since the process now ends directly after distribution and archiving, the condition is trivially satisfied. No rule in Rules.txt requires a dedicated closing activity, and no resource in Resources.txt is tied to closing the process. All 14 resources remain fully valid and operational (12 regional offices, 8 central audit team members, 2 audit coordinators, 4 compliance team members, 30-day submission deadline, 10-day clarification deadline, 3 max revision cycles, 3 risk categories, 5 site visits per cycle, 4 review rounds, 7-year retention, 90-day average duration, 1 financial statement per office, 9 executive board members).
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

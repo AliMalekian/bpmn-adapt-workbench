@@ -1,0 +1,15 @@
+Recourse clerks: 5
+Maximum open recourse cases per clerk: 50
+Recourse start deadline after claim payment: 30 days
+Reminder deadline after payment request: 14 days
+Disagreement deadline for insurant: 14 days
+Forward-to-agency deadline without payment: 21 days
+Small-claim write-off threshold: 25 EUR
+High-value second-review threshold: 5000 EUR
+Contracted collection agencies: 2
+Collection agency referral capacity: 40 cases per month
+Annual recourse recovery target: 1200000 EUR
+Case management system capacity: 10000 open cases
+Booking completion deadline: 2 business days
+Recourse statute of limitations: 3 years
+Legal consultation budget per case: 2500 EUR

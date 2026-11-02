@@ -1,0 +1,10 @@
+MPOO review deadline (working days): 10
+Maximum review rounds per case: 2
+Appeal window after confirmation (days): 30
+Personnel file update deadline (working days): 5
+Document retention period (years): 3
+Average dismissals processed per month: 4
+Number of employees in the MPON staff: 25
+Higher authority referral threshold (review attempts): 3
+Notice period required for dismissal (days): 30
+Records clerks responsible for filing: 2

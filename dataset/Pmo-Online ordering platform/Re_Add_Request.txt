@@ -1,0 +1,9 @@
+Re_Add_Request:
+Re-added element: The customer providing feedback after delivery
+Reason: This request semantically restores the element removed by Request4 in Remove_requests.txt, returning the process to its original state.
+Restoration details:
+- The process is restored so that after a successful delivery, the customer may again provide feedback, exactly as the original process description states ("the process ends, but customer feedback or returns may trigger further actions").
+- The restored feedback activity is supported by the available feedback channels (Resource "Number of customer feedback channels: 3"), so the customer can submit feedback through any of the 3 channels after receiving their delivery.
+- The restored feedback is recorded in the system in accordance with Rule 11 ("Customer feedback collected after delivery must be recorded in the system"), so any feedback the customer submits is stored and tracked as part of the process.
+- The post-delivery feedback step is reinstated for every order: after delivery is completed, the customer feedback option is once again available and may trigger further actions, alongside the returns process (Rule 12, return window of 30 days; Rule 13, returned items inspected and restocked only if undamaged).
+- With this restoration, the process is back to its exact original shape: order placement (platform or phone), automatic order confirmation, warehouse picking and packing, shipping label, handover to an approved logistics provider, tracking information sent to the customer, shipment monitoring until delivery, completed delivery, and the follow-up phase in which customer feedback or returns may trigger further actions.

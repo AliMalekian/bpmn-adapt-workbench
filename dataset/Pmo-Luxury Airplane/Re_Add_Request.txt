@@ -1,0 +1,9 @@
+Re_Add_Request:
+Re-added element: The customer specifying the amount of water in the toilets
+Reason: This request semantically restores the element removed by Request4 in Remove_requests.txt, returning the process to its original state.
+Restoration details:
+- The process is restored so that the customer customization step again includes specifying the amount of water in the toilets of their airplane, exactly as described in the original process ("the amount of water in the toilets of their plane").
+- The restored water capacity specification is constrained by Rule 5, so the customer-selected water capacity must be set within the valid range of 2 to 25 liters per toilet (as defined by Resource "Water capacity range per toilet: 2-25 liters").
+- The restored specification becomes part of the full interior specification submitted by the customer, alongside the bar selection, the number of seats, and the seat color, before the requirements are sent to the different manufacturing teams.
+- The restored option applies to every airplane ordered, so the customer once again decides the water capacity value when the order is placed, and that value is included in the written interior specifications confirmed by the customer before production requirements are distributed.
+- With this restoration, the process is back to its exact original shape: customer specification (including toilet water capacity), written confirmation, manufacturing by the assigned teams, quality inspection, interior assembly, test flight with test protocol, customer confirmation, and delivery.

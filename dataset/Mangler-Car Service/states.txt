@@ -1,0 +1,107 @@
+STATE-01: Initial / early execution
+Current process position: Car Service
+Completed activities: None
+Current active activity or waiting point: Car Service
+Token position / execution status: token is at Car Service; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Service reminder notification delay: 30 days)
+Applicable rules: Rule 1 (The service reminder process starts only after a successful car service has been completed.)
+Possible next activities: Car Service
+
+STATE-02: Intermediate / decision
+Current process position: Pay though app?
+Completed activities: Car Service, Car Service, startEvent, Car Service, Successful Service, 30 Days, New updates, Category: Repair and Service
+Title: Car Service
+
+The police has a new app to remind you of your car service. The process is
+started after a successful service. When a service is necessary, the system
+checks if your car is still registered. If it is registered, you are notified.
+If you do not go to the service, you are fined after 30 days. At the car
+service facility the mechanic enters the problems of your car for reference.
+While you wait (can take several days), you get status updates via email).
+You can pay through the app, when the repair is done. The mechanic enters
+that the repair was successful and you got your "Pickerl". The mechanic enters
+the time for you next service., Could also eliminate the loop and just have a task named "Use car until the service is required", Successful service, 30 days, Car arrives, 1 day, Car repaired, Category: Repair and Service
+Title: Car Service
+
+The police has a new app to remind you of your car service. The process is
+started after a successful service. When a service is necessary, the system
+checks if your car is still registered. If it is registered, you are notified.
+If you do not go to the service, you are fined after 30 days. At the car
+service facility the mechanic enters the problems of your car for reference.
+While you wait (can take several days), you get status updates via email).
+You can pay through the app, when the repair is done. The mechanic enters
+that the repair was successful and you got your "Pickerl". The mechanic enters
+the time for you next service., Could also eliminate the loop and just have a task named "Use car until the service is required", If you fail to attend appointment, you got fined and a new appointment will be made, Assumption: The user receives a notification for a total of 30 days (one per day)., startEvent, DefaultInputSet, DefaultOutputSet, If you fail to attend appointment, you got fined and a new appointment will be made, Assumption: The user receives a notification for a total of 30 days (one per day)., Successful service, check if car is registered, Is car still registered?, fined, Customer reads Email, exclusiveGateway, Fine owner, parallelGateway, Send status updates via mail, parallelGateway, Bring Documents for Registration, Do new service, exclusiveGateway, Notify customer, the car is not registered, fine submitted, Email checked, Service necessary?, exclusiveGateway, Enter problems, exclusiveGateway
+Current active activity or waiting point: Pay though app?
+Token position / execution status: token is at Pay though app?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Service reminder notification delay: 30 days)
+Applicable rules: Rule 1 (The service reminder process starts only after a successful car service has been completed.)
+Possible next activities: Receive funds in person, Receive funds via app
+
+STATE-03: Resource-dependent / waiting
+Current process position: The App prepares the Invoice
+Completed activities: Car Service, Car Service, startEvent, Car Service, Successful Service, 30 Days, New updates, Category: Repair and Service
+Title: Car Service
+
+The police has a new app to remind you of your car service. The process is
+started after a successful service. When a service is necessary, the system
+checks if your car is still registered. If it is registered, you are notified.
+If you do not go to the service, you are fined after 30 days. At the car
+service facility the mechanic enters the problems of your car for reference.
+While you wait (can take several days), you get status updates via email).
+You can pay through the app, when the repair is done. The mechanic enters
+that the repair was successful and you got your "Pickerl". The mechanic enters
+the time for you next service., Could also eliminate the loop and just have a task named "Use car until the service is required", Successful service, 30 days, Car arrives, 1 day, Car repaired, Category: Repair and Service
+Title: Car Service
+
+The police has a new app to remind you of your car service. The process is
+started after a successful service. When a service is necessary, the system
+checks if your car is still registered. If it is registered, you are notified.
+If you do not go to the service, you are fined after 30 days. At the car
+service facility the mechanic enters the problems of your car for reference.
+While you wait (can take several days), you get status updates via email).
+You can pay through the app, when the repair is done. The mechanic enters
+that the repair was successful and you got your "Pickerl". The mechanic enters
+the time for you next service., Could also eliminate the loop and just have a task named "Use car until the service is required", If you fail to attend appointment, you got fined and a new appointment will be made, Assumption: The user receives a notification for a total of 30 days (one per day)., startEvent, DefaultInputSet, DefaultOutputSet, If you fail to attend appointment, you got fined and a new appointment will be made, Assumption: The user receives a notification for a total of 30 days (one per day)., Successful service, check if car is registered, Is car still registered?, fined, Customer reads Email, exclusiveGateway, Fine owner, parallelGateway, Send status updates via mail, parallelGateway, Bring Documents for Registration, Do new service, exclusiveGateway, Notify customer, the car is not registered, fine submitted, Email checked, Service necessary?, exclusiveGateway, Enter problems, exclusiveGateway, Pay though app?, Check if car is still registered?, Still registered?, notify car owner, exclusiveGateway, Customer comes to the Service, Car still registered?, Use car normally, Repair sucessful / aborted, Repair the car, Receive funds in person, Receive funds via app, registered?, Notify policeman, Car needs no service anymore, check if car was transferred to service facility, Mechanic enters Problems, Notify owner, exclusiveGateway, Check appointment for
+ service, Do service?, exclusiveGateway, parallelGateway, Update repair status to "done", Send reminder notification to user, 30 days, exclusiveGateway, check how much time passed since car service was due, enter car problems at service facility, repairing, Checks updates and send status updates Emails, Give "Pickerl", Received a notificiation, Get fee, Go to car service facility, exclusiveGateway, parallelGateway, parallelGateway, Enter the date of next service, Gone to service?, parallelGateway, send reminder to car owner, send fine to car owner, repair car, send status updates to car owner via e-mail
+Current active activity or waiting point: The App prepares the Invoice
+Token position / execution status: token is at The App prepares the Invoice; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Service reminder notification delay: 30 days)
+Applicable rules: Rule 1 (The service reminder process starts only after a successful car service has been completed.)
+Possible next activities: Customer checks the Invoice
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: Car Service, Car Service, startEvent, Car Service, Successful Service, 30 Days, New updates, Category: Repair and Service
+Title: Car Service
+
+The police has a new app to remind you of your car service. The process is
+started after a successful service. When a service is necessary, the system
+checks if your car is still registered. If it is registered, you are notified.
+If you do not go to the service, you are fined after 30 days. At the car
+service facility the mechanic enters the problems of your car for reference.
+While you wait (can take several days), you get status updates via email).
+You can pay through the app, when the repair is done. The mechanic enters
+that the repair was successful and you got your "Pickerl". The mechanic enters
+the time for you next service., Could also eliminate the loop and just have a task named "Use car until the service is required", Successful service, 30 days, Car arrives, 1 day, Car repaired, Category: Repair and Service
+Title: Car Service
+
+The police has a new app to remind you of your car service. The process is
+started after a successful service. When a service is necessary, the system
+checks if your car is still registered. If it is registered, you are notified.
+If you do not go to the service, you are fined after 30 days. At the car
+service facility the mechanic enters the problems of your car for reference.
+While you wait (can take several days), you get status updates via email).
+You can pay through the app, when the repair is done. The mechanic enters
+that the repair was successful and you got your "Pickerl". The mechanic enters
+the time for you next service., Could also eliminate the loop and just have a task named "Use car until the service is required", If you fail to attend appointment, you got fined and a new appointment will be made, Assumption: The user receives a notification for a total of 30 days (one per day)., startEvent, DefaultInputSet, DefaultOutputSet, If you fail to attend appointment, you got fined and a new appointment will be made, Assumption: The user receives a notification for a total of 30 days (one per day)., Successful service, check if car is registered, Is car still registered?, fined, Customer reads Email, exclusiveGateway, Fine owner, parallelGateway, Send status updates via mail, parallelGateway, Bring Documents for Registration, Do new service, exclusiveGateway, Notify customer, the car is not registered, fine submitted, Email checked, Service necessary?, exclusiveGateway, Enter problems, exclusiveGateway, Pay though app?, Check if car is still registered?, Still registered?, notify car owner, exclusiveGateway, Customer comes to the Service, Car still registered?, Use car normally, Repair sucessful / aborted, Repair the car, Receive funds in person, Receive funds via app, registered?, Notify policeman, Car needs no service anymore, check if car was transferred to service facility, Mechanic enters Problems, Notify owner, exclusiveGateway, Check appointment for
+ service, Do service?, exclusiveGateway, parallelGateway, Update repair status to "done", Send reminder notification to user, 30 days, exclusiveGateway, check how much time passed since car service was due, enter car problems at service facility, repairing, Checks updates and send status updates Emails, Give "Pickerl", Received a notificiation, Get fee, Go to car service facility, exclusiveGateway, parallelGateway, parallelGateway, Enter the date of next service, Gone to service?, parallelGateway, send reminder to car owner, send fine to car owner, repair car, send status updates to car owner via e-mail, The App prepares the Invoice, Mechanic check a car and enter problems, > 30 days?, Enter Problems of the car, Wait for the car, exclusiveGateway, parallelGateway, Customer checks the Invoice, Receive updates while waiting, User fined, Repairs the car, 1 Day, select payment method, Pay through App?, Repair done?, Make new appointment, parallelGateway, Service done?, exclusiveGateway, Pay Invoice through App, Pay in Cash, Pay per App, Pay the bill, Send update, use other payment method, pay via app, exclusiveGateway, parallelGateway, Enter successful repair, exclusiveGateway, Mechanic enters Success Service, Save repair infos, Send "Pickerl", Get Pickerl, confirm receipt of payment, Pickerl Issuance, parallelGateway, Enter time for next service, confirm successful repair and grant "Pickerl", Mechanic enters Next Service Time, Make appointment for next service, enter time for next service, Next Service Time
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Service reminder notification delay: 30 days)
+Applicable rules: Rule 1 (The service reminder process starts only after a successful car service has been completed.)
+Possible next activities: Process completion

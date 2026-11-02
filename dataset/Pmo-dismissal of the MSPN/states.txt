@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: MSPN sends a dismissal to MSPO
+Completed activities: startEvent
+Current active activity or waiting point: MSPN sends a dismissal to MSPO
+Token position / execution status: token is at MSPN sends a dismissal to MSPO; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (MSPO review deadline (working days): 10)
+Applicable rules: Rule 1 (A dismissal may be sent by the MSPN to the MSPO only after the termination decision is formally recorded.)
+Possible next activities: MSPO reviews the dismissal
+
+STATE-02: Intermediate / decision
+Current process position: MSPO reviews the dismissal
+Completed activities: startEvent, MSPN sends a dismissal to MSPO
+Current active activity or waiting point: MSPO reviews the dismissal
+Token position / execution status: token is at MSPO reviews the dismissal; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (MSPO review deadline (working days): 10)
+Applicable rules: Rule 1 (A dismissal may be sent by the MSPN to the MSPO only after the termination decision is formally recorded.)
+Possible next activities: exclusiveGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: MSPO confirms the dismissal of the MSPN
+Completed activities: startEvent, MSPN sends a dismissal to MSPO, MSPO reviews the dismissal, exclusiveGateway, MSPO rejects the dismissal of the MSPN
+Current active activity or waiting point: MSPO confirms the dismissal of the MSPN
+Token position / execution status: token is at MSPO confirms the dismissal of the MSPN; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (MSPO review deadline (working days): 10)
+Applicable rules: Rule 1 (A dismissal may be sent by the MSPN to the MSPO only after the termination decision is formally recorded.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: endEvent
+Completed activities: startEvent, MSPN sends a dismissal to MSPO, MSPO reviews the dismissal, exclusiveGateway, MSPO rejects the dismissal of the MSPN, MSPO confirms the dismissal of the MSPN, exclusiveGateway
+Current active activity or waiting point: endEvent
+Token position / execution status: token is at endEvent; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (MSPO review deadline (working days): 10)
+Applicable rules: Rule 1 (A dismissal may be sent by the MSPN to the MSPO only after the termination decision is formally recorded.)
+Possible next activities: Process completion

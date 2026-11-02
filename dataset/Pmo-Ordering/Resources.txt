@@ -1,0 +1,17 @@
+Resources for Ordering in an Online Shop
+
+Maximum shopping cart size: 50 products
+Bank payment confirmation time limit: 10 minutes
+Session timeout after inactivity: 30 minutes
+Number of login attempts allowed: 3
+Number of supported payment methods: 5
+Number of bank confirmation requests retries: 3
+Number of billing addresses allowed per order: 1
+Number of shipping addresses allowed per order: 1
+Number of registered shop customers: 8,000
+Order processing capacity per hour: 500 orders
+Number of products in the catalog: 2,500
+Customer service response time: 2 hours
+Payment retry waiting period: 5 minutes
+Number of order confirmation channels: 2
+Maximum order processing time: 60 minutes

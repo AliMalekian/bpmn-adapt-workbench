@@ -1,0 +1,15 @@
+1. A reorder is triggered automatically when the on-hand stock of an item falls below its predefined reorder threshold.
+2. The reorder quantity is calculated based on the item's average daily demand and its supplier lead time.
+3. Supplier selection for each reorder considers cost, delivery time, and the supplier's historical reliability rating.
+4. Once an order is placed, the inventory system must be updated with the expected delivery dates immediately.
+5. Incoming stock is inspected for quality before it is accepted, registered, and placed on shelves.
+6. Received goods that fail quality inspection are quarantined and returned to the supplier within 5 working days.
+7. Inventory levels are updated in the system as soon as the restock is completed.
+8. If the expected delivery date passes without delivery, an escalation is sent to the procurement team within 2 working days.
+9. Items with a shelf life shorter than 90 days must be stored on a first-expiry-first-out basis.
+10. No stock may be received without a matching, open purchase order in the system.
+11. Physical stock counts are reconciled with the system records at least once per quarter.
+12. Items in negative stock are blocked from sale until the inventory records are corrected.
+13. Restocking of high-volume items is performed during night shifts to avoid disruption of daily operations.
+14. If a supplier's reliability rating drops below 70 out of 100, reorders are automatically diverted to the backup supplier.
+15. The warehouse manager must approve any reorder exceeding $50,000 in total value.

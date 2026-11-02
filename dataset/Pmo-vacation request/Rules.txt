@@ -1,0 +1,15 @@
+1. An employee must submit a vacation request at least 3 working days before the intended start date.
+2. Only employees who have completed the probation period of 6 months are eligible to request paid vacation.
+3. The immediate supervisor must approve or reject a vacation request within 2 working days of receiving it.
+4. A vacation request is automatically rejected if the employee has already used the maximum annual leave entitlement of 20 days.
+5. No more than 2 employees from the same team may be on vacation at the same time.
+6. Vacation requests are not approved during peak production periods unless the department manager approves them in advance.
+7. A single vacation block cannot exceed 10 consecutive working days; longer periods require senior manager approval.
+8. Vacation days must be used within the same calendar year; no more than 5 days may be carried over to the next year.
+9. Paid vacation accrues at a rate of 1.67 days per month of full-time service.
+10. After a rejection, the employee may submit a revised request no earlier than 3 working days after receiving the rejection notification.
+11. An approved vacation must be recorded in the HR system within 1 working day of the HR representative receiving the notification.
+12. An employee cannot take vacation during weeks in which they are scheduled for mandatory training or an internal audit.
+13. An emergency vacation request may be submitted on the day of departure but requires approval from both the supervisor and the HR representative.
+14. Vacation of more than 5 consecutive days requires an approved handover plan for the employee's responsibilities.
+15. An employee may have at most 1 pending vacation request at any time.

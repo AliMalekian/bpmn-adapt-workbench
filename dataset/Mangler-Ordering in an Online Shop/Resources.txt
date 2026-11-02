@@ -1,0 +1,12 @@
+Number of registered customers: 45000
+Number of products in catalog: 12000
+Minimum order value: 10 EUR
+Order processing time: 2 days
+Payment confirmation timeout: 15 minutes
+Maximum number of concurrent sessions: 3000
+Maximum cart size: 100 items
+Free shipping threshold: 50 EUR
+Bank confirmation fee per transaction: 0.50 EUR
+Number of customer service agents: 12
+Average stock level per product: 250 units
+Maximum credit card retry attempts: 3

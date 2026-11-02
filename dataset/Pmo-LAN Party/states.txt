@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Send invites to 10 people
+Completed activities: Wish for a LAN gameparty
+Current active activity or waiting point: Send invites to 10 people
+Token position / execution status: token is at Send invites to 10 people; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of invited friends: 10)
+Applicable rules: Rule 1 (Invitations must be sent to exactly 10 friends before planning can continue.)
+Possible next activities: Ask which games do they want to play
+
+STATE-02: Intermediate / decision
+Current process position: Few hours, until all people reply if they can play on that date
+Completed activities: Wish for a LAN gameparty, Send invites to 10 people, Ask which games do they want to play, Few hours, until the user has all the games that they want to play, parallelGateway, Appoint a date, Do we have all the games?
+Current active activity or waiting point: Few hours, until all people reply if they can play on that date
+Token position / execution status: token is at Few hours, until all people reply if they can play on that date; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of invited friends: 10)
+Applicable rules: Rule 1 (Invitations must be sent to exactly 10 friends before planning can continue.)
+Possible next activities: How many people can play on that date?
+
+STATE-03: Resource-dependent / waiting
+Current process position: Download successful?
+Completed activities: Wish for a LAN gameparty, Send invites to 10 people, Ask which games do they want to play, Few hours, until the user has all the games that they want to play, parallelGateway, Appoint a date, Do we have all the games?, Few hours, until all people reply if they can play on that date, Find where can you download the games, exclusiveGateway, How many people can play on that date?, Download the missing games, parallelGateway, Reserve that day
+Current active activity or waiting point: Download successful?
+Token position / execution status: token is at Download successful?; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of invited friends: 10)
+Applicable rules: Rule 1 (Invitations must be sent to exactly 10 friends before planning can continue.)
+Possible next activities: exclusiveGateway, Download the missing games
+
+STATE-04: Near completion / completed
+Current process position: LAN party done
+Completed activities: Wish for a LAN gameparty, Send invites to 10 people, Ask which games do they want to play, Few hours, until the user has all the games that they want to play, parallelGateway, Appoint a date, Do we have all the games?, Few hours, until all people reply if they can play on that date, Find where can you download the games, exclusiveGateway, How many people can play on that date?, Download the missing games, parallelGateway, Reserve that day, Download successful?, Ask friends how much beer they would like, Few hours, until all people reply with t he amount of beer, Do you have enough beer?, Order beer for that date, exclusiveGateway, Send a notification that the LAN party will be held on that date
+Current active activity or waiting point: LAN party done
+Token position / execution status: token is at LAN party done; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of invited friends: 10)
+Applicable rules: Rule 1 (Invitations must be sent to exactly 10 friends before planning can continue.)
+Possible next activities: Process completion

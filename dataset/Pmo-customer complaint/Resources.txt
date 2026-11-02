@@ -1,0 +1,10 @@
+Customer service representatives: 8
+Complaints received per month (average): 300
+Complaint assignment deadline (business days): 1
+Investigation and notification deadline (business days): 14
+Automatic escalation after unanswered period (business days): 10
+Refund window from purchase date (days): 60
+Complaint escalation approval threshold ($): 1,000
+Reimbursement processing time (business days): 5
+Refund appeal window (days): 14
+Product categories covered by complaints: 20

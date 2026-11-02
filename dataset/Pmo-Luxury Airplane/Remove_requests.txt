@@ -1,0 +1,28 @@
+Request1:
+Removed element: Creating a test protocol during the test flight
+Reason: The test flight is intended to verify the airplane works; the written test protocol is proposed as unnecessary documentation that can be eliminated to streamline the delivery process.
+Conflict details: This removal conflicts with Rule 12, which states: "A test protocol must be created during the test flight and sent to both the manufacturer and the customer." Removing the protocol step makes it impossible to satisfy Rule 12, as no test report would be generated or sent to either party.
+
+Request2:
+Removed element: The test flight
+Reason: The test flight is proposed for removal because it is time-consuming (2 hours) and costly, and the interior has already passed quality inspection during manufacturing.
+Conflict details: This removal conflicts with Resource "Test flight duration: 2 hours" -- the 2-hour allocated time for the test flight becomes meaningless if no flight occurs. It also conflicts with Resource "Number of test flights per airplane: 1" -- the single allocated test flight slot goes unused. Additionally, Resource "Engineers available for test protocol review: 2" becomes irrelevant since there is no test to review.
+
+Request3:
+Removed element: Customer confirming the test protocol before delivery
+Reason: It is proposed that the airplane be delivered immediately after the test flight without waiting for customer confirmation, to speed up delivery.
+Conflict details: This removal conflicts with Rule 14, which states: "The airplane may only be delivered to the customer after the customer confirms the test protocol." Removing the confirmation step breaks the delivery gate defined by Rule 14. It also conflicts with Resource "Customer confirmation deadline after test flight: 7 days" -- the 7-day confirmation window becomes unused and wasted if no confirmation is required.
+
+Request4:
+Removed element: The customer specifying the amount of water in the toilets
+Reason: The toilet water capacity specification is one of several optional customization choices mentioned alongside bars, seats, and colors. It is proposed to remove this specific customization option from the process.
+Conflict details: None -- fully compatible with all rules and resources. Rule 5 states that water capacity must be set between 2 and 25 liters, but this rule only applies if the water capacity specification exists in the process. No other rule mandates the inclusion of toilet water capacity as a required customization option. Resource "Water capacity range per toilet: 2-25 liters" defines the valid range but does not require the option to be offered. Removing this customization does not prevent any other process step from functioning.
+Request5:
+Removed element: Optional post-completion notification task
+Reason: It is proposed for removal to streamline the completion phase by eliminating the optional confirmation notification to the archival log.
+Conflict details: None – fully compatible with all rules and resources. The notification is purely informational and non-blocking. Removing it preserves all control flow, business rules, and resource allocations.
+
+Request6:
+Removed element: Optional secondary customer satisfaction survey step
+Reason: To reduce operational friction, this optional feedback collection step is proposed for removal.
+Conflict details: None – fully compatible with all rules and resources. The survey step is optional and ancillary; core business rules and resource constraints remain fully intact.

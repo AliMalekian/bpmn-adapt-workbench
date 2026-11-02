@@ -1,0 +1,39 @@
+STATE-01: Initial / early execution
+Current process position: Schedule compliance audit
+Completed activities: start
+Current active activity or waiting point: Schedule compliance audit
+Token position / execution status: token is at Schedule compliance audit; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of audit standards maintained (ISO, safety, environmental): 3)
+Applicable rules: Rule 1 (An external compliance audit may be scheduled only after the company has submitted the required audit application and fee.)
+Possible next activities: parallelGateway
+
+STATE-02: Intermediate / decision
+Current process position: Prepare documentation
+Completed activities: start, Schedule compliance audit, parallelGateway, Conduct self-assessment, Gather evidence
+Current active activity or waiting point: Prepare documentation
+Token position / execution status: token is at Prepare documentation; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of audit standards maintained (ISO, safety, environmental): 3)
+Applicable rules: Rule 1 (An external compliance audit may be scheduled only after the company has submitted the required audit application and fee.)
+Possible next activities: parallelGateway
+
+STATE-03: Resource-dependent / waiting
+Current process position: Conduct final audit
+Completed activities: start, Schedule compliance audit, parallelGateway, Conduct self-assessment, Gather evidence, Prepare documentation, parallelGateway, Conduct external audit, Identify gaps or issues, Make necessary corrections or improvements
+Current active activity or waiting point: Conduct final audit
+Token position / execution status: token is at Conduct final audit; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of audit standards maintained (ISO, safety, environmental): 3)
+Applicable rules: Rule 1 (An external compliance audit may be scheduled only after the company has submitted the required audit application and fee.)
+Possible next activities: exclusiveGateway
+
+STATE-04: Near completion / completed
+Current process position: end
+Completed activities: start, Schedule compliance audit, parallelGateway, Conduct self-assessment, Gather evidence, Prepare documentation, parallelGateway, Conduct external audit, Identify gaps or issues, Make necessary corrections or improvements, Conduct final audit, exclusiveGateway, Award certification, exclusiveGateway, Issue official documents
+Current active activity or waiting point: end
+Token position / execution status: token is at end; predecessors in the traversed BPMN path are complete.
+Relevant user/case context: one active case follows the original model.
+Relevant available resources: Resource 1 (Number of audit standards maintained (ISO, safety, environmental): 3)
+Applicable rules: Rule 1 (An external compliance audit may be scheduled only after the company has submitted the required audit application and fee.)
+Possible next activities: Process completion

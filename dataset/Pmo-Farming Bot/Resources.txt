@@ -1,0 +1,12 @@
+Maximum resources collected in parallel: 10
+Bot inventory carrying capacity (slots): 40
+Disaster progress setback (percent): 20
+Tool durability maintenance threshold (percent): 10
+Priority re-check interval (seconds): 60
+Maximum approved friends who can receive materials: 20
+Shareable milestone threshold (units): 100
+Average collection speed (units per hour): 120
+Number of resource types in the game: 15
+Maximum simultaneous running bots per player: 4
+Tool strength multiplier for rare resources: 2.0
+Farm recovery time after disaster (minutes): 30

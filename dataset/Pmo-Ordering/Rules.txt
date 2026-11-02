@@ -1,0 +1,17 @@
+Rules for Ordering in an Online Shop
+8. A valid shipping address is required for every physical delivery; providing an independent alternative billing address is optional when standard billing applies.
+1. A customer must log in and receive login confirmation from the system before selecting products.
+2. If the login is not successful, the shopping experience stops immediately.
+3. Each selected product must be added to the shopping cart and saved before the next product is chosen.
+4. The customer must check that every desired product has been selected before finishing the order.
+5. Payment and shipment preparation must run simultaneously after the order is finished by the system.
+6. The customer must enter valid payment data and wait for the bank to confirm the payment.
+7. Payment must be confirmed by the bank within 10 minutes of submission.
+8. A shipping address is required for every order.
+9. An independent billing address may be entered if it differs from the shipping address.
+10. The order is finished only after both the address step and the payment step are executed.
+11. Payment data that fails validation must be corrected and resubmitted.
+12. A customer session expires after 30 minutes of inactivity and requires a new login.
+13. Only products showing an in-stock status may be added to the shopping cart.
+14. The cart may be edited until the bank confirms the payment.
+15. The order confirmation is sent to the customer only after payment and address steps are completed.

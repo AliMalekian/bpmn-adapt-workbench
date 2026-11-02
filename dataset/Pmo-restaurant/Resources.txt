@@ -1,0 +1,13 @@
+Number of restaurant seats: 60
+Number of floor employees: 8
+Number of chefs: 3
+Buzzer stock count: 40
+Buzzer response wait time (minutes): 5
+Maximum number of announcements per guest: 3
+Meal disposal threshold (minutes): 20
+Minimum number of main dishes: 5
+Minimum number of vegetarian options: 3
+Maximum items per order: 10
+Number of POS terminals: 2
+Number of service hatch positions: 3
+Kitchen closing order cutoff (minutes): 15
