@@ -112,12 +112,13 @@ class AnalystAgent:
                 "cited_rules": rules_cited,
             })
 
+        clean_raw_request = re.sub(r"(?mi)^\s*Conflict details:.*$", "", request.raw_text or "", flags=re.DOTALL).strip()
         user_payload_dict = {
             "adaptation_request": {
                 "process_id": request.process_id,
                 "operation": request.operation.value,
                 "target_element": request.target_element,
-                "raw_request": request.raw_text,
+                "raw_request": clean_raw_request,
                 "target_node_context": target_node_context,
             },
             "operational_rules": rules,

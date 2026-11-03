@@ -117,6 +117,10 @@ class BenchmarkRunner:
                 return "APPROVE"
             return "APPROVE"
 
+        def _clean_request_text(req_text: str) -> str:
+            """Strips ground-truth conflict details so the LLM must evaluate compliance realistically."""
+            return re.sub(r"(?mi)^\s*Conflict details:.*$", "", req_text or "", flags=re.DOTALL).strip()
+
         # 1. Parse Remove_requests.txt
         if include_all or "REMOVE" in norm_types:
             rem_file = next((f for f in req_files if "remove" in f.name.lower()), None)
@@ -135,7 +139,7 @@ class BenchmarkRunner:
                         "test_id": f"{dataset_name}_REMOVE_{req_num}",
                         "operation": "REMOVE",
                         "target": target_elem,
-                        "request_text": block.strip(),
+                        "request_text": _clean_request_text(block),
                         "dataset": dataset_name,
                         "ground_truth_decision": gt,
                     })
@@ -153,7 +157,7 @@ class BenchmarkRunner:
                     "test_id": f"{dataset_name}_RE_ADD_1",
                     "operation": "RE_ADD",
                     "target": target_elem,
-                    "request_text": content.strip(),
+                    "request_text": _clean_request_text(content),
                     "dataset": dataset_name,
                     "ground_truth_decision": gt,
                 })
@@ -177,7 +181,7 @@ class BenchmarkRunner:
                         "test_id": f"{dataset_name}_MODIFY_{req_num}",
                         "operation": "MODIFY",
                         "target": target_elem,
-                        "request_text": block.strip(),
+                        "request_text": _clean_request_text(block),
                         "dataset": dataset_name,
                         "ground_truth_decision": gt,
                     })
@@ -201,7 +205,7 @@ class BenchmarkRunner:
                         "test_id": f"{dataset_name}_ADD_{req_num}",
                         "operation": "ADD",
                         "target": target_elem,
-                        "request_text": block.strip(),
+                        "request_text": _clean_request_text(block),
                         "dataset": dataset_name,
                         "ground_truth_decision": gt,
                     })
@@ -221,8 +225,7 @@ class BenchmarkRunner:
                     "target": t.name,
                     "request_text": (
                         f'Request1:\nModified element: "{t.name}"\n'
-                        f'Description: Update execution parameters and technical automation settings for "{t.name}" to improve processing throughput.\n'
-                        f'Conflict details: None – fully compliant with all operational rules and within assigned resource capacities. The modification preserves all preconditions, postconditions, and resource roles without introducing any conflict.'
+                        f'Description: Update execution parameters and technical automation settings for "{t.name}" to improve processing throughput.'
                     ),
                     "dataset": dataset_name,
                     "ground_truth_decision": "APPROVE",
@@ -237,11 +240,6 @@ class BenchmarkRunner:
                 src_n = task_nodes[seq_flow.source_ref]
                 tgt_n = task_nodes[seq_flow.target_ref]
                 is_rule_conflict = dataset_name in ("Camunda-Recource", "Pmo-restaurant")
-                conflict_desc = (
-                    "Conflicts with explicit process timing rules and mandatory immediate sequences between these two tasks."
-                    if is_rule_conflict else
-                    "None – fully compliant with all rules and resources. Operates within assigned quality budget without violating any process rules."
-                )
                 gt_val = "REJECT" if is_rule_conflict else "APPROVE"
                 cases.append({
                     "test_id": f"{dataset_name}_ADD_1",
@@ -250,8 +248,7 @@ class BenchmarkRunner:
                     "request_text": (
                         f'Request1:\nAdded element: "Quality Inspection and Verification"\n'
                         f'Position: Insert between "{src_n.name}" and "{tgt_n.name}".\n'
-                        f'Description: Insert an automated quality verification check between "{src_n.name}" and "{tgt_n.name}".\n'
-                        f'Conflict details: {conflict_desc}'
+                        f'Description: Insert an automated quality verification check between "{src_n.name}" and "{tgt_n.name}".'
                     ),
                     "dataset": dataset_name,
                     "ground_truth_decision": gt_val,
@@ -265,8 +262,7 @@ class BenchmarkRunner:
                     "request_text": (
                         f'Request1:\nAdded element: "Quality Inspection and Verification"\n'
                         f'Position: After "{first_n.name}".\n'
-                        f'Description: Insert an automated, non-blocking quality verification check after "{first_n.name}".\n'
-                        f'Conflict details: None – fully compliant with all rules and resources.'
+                        f'Description: Insert an automated, non-blocking quality verification check after "{first_n.name}".'
                     ),
                     "dataset": dataset_name,
                     "ground_truth_decision": "APPROVE",
