@@ -37,9 +37,9 @@ def run_full_82_campaign():
     print(f"RAG Status before run: {get_rag_status()}")
 
     # PHASE 2: Full Evaluation WITH RAG (984 Scenarios)
-    rag_dir = base_dir / "experiments" / "full_82_rag_cold_start_um_llm1"
+    rag_dir = base_dir / "experiments" / "full_82_clean_rag_um_llm1"
     print("\n" + "=" * 75)
-    print("PHASE 2: Starting Full 82-Process Evaluation WITH RAG")
+    print("PHASE 2: Starting Full 82-Process Evaluation WITH RAG (Clean Stripped Prompts)")
     print("=" * 75)
     t0_rag = time.time()
     runner_rag = BenchmarkRunner(
@@ -56,12 +56,12 @@ def run_full_82_campaign():
     print(f"Phase 2 (With RAG) finished in {dur_rag/3600:.2f} hours.")
 
     # Plot Full Learning Curve
-    plot_learning_curve(rag_dir, title="Full 82-Process Continual Learning Curve (UM LLM1)")
+    plot_learning_curve(rag_dir, title="Full 82-Process Continual Learning Curve - Clean Prompts (UM LLM1)")
 
     # PHASE 3: Full Baseline WITHOUT RAG (984 Scenarios)
-    no_rag_dir = base_dir / "experiments" / "full_82_no_rag_um_llm1"
+    no_rag_dir = base_dir / "experiments" / "full_82_clean_no_rag_um_llm1"
     print("\n" + "=" * 75)
-    print("PHASE 3: Starting Full 82-Process Baseline WITHOUT RAG")
+    print("PHASE 3: Starting Full 82-Process Baseline WITHOUT RAG (Clean Stripped Prompts)")
     print("=" * 75)
     t0_no = time.time()
     runner_no = BenchmarkRunner(
