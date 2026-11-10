@@ -94,21 +94,50 @@ class AnalystAgent:
         }
 
         compact_evidence = []
+        req_op = request.operation.value.upper()
+        target_name = (request.target_element or "").lower()
+
         for e in evidence:
             raw = getattr(e, "text", "") or ""
             reason = ""
             rules_cited = ""
+            prec_op = ""
+            prec_target = ""
             for line in raw.splitlines():
-                if line.startswith("Decision reason:"):
+                if line.startswith("Operation:"):
+                    prec_op = line.split(":", 1)[1].strip().upper()
+                elif line.startswith("Target:"):
+                    prec_target = line.split(":", 1)[1].strip().lower()
+                elif line.startswith("Decision reason:"):
                     reason = line.split(":", 1)[1].strip()
                 elif line.startswith("Referenced rules:"):
                     rules_cited = line.split(":", 1)[1].strip()
             if not reason:
                 reason = raw[:250].strip()
+
+            # Structural Graph Alignment Computation
+            # Checks if the precedent matches both operational and topological role
+            op_match = (prec_op == req_op) if prec_op else True
+            target_match = bool(prec_target and (prec_target in target_name or target_name in prec_target))
+
+            if op_match and target_match:
+                structural_alignment = "HIGH"
+            elif op_match or target_match:
+                structural_alignment = "MEDIUM"
+            else:
+                structural_alignment = "LOW"
+
+            # Anti-conservatism safeguard:
+            # If a precedent is a historical REJECTION with LOW structural alignment (different op/context),
+            # do not allow it to bias or poison the prompt against a valid request.
+            if e.decision == "REJECT" and structural_alignment == "LOW":
+                continue
+
             compact_evidence.append({
                 "precedent_id": e.evidence_id,
                 "decision": e.decision,
                 "relevance_score": round(getattr(e, "final_score", 1.0), 3),
+                "structural_alignment": structural_alignment,
                 "precedent_reason": reason,
                 "cited_rules": rules_cited,
             })
@@ -201,4 +230,60 @@ class AnalystAgent:
             proposed_timing=timing,
             planning_result=planning_result.to_dict() if planning_result else None,
             rejection_category=rejection_category,
+        )
+
+    def re_evaluate_after_simulation(
+        self,
+        request: AdaptationRequest,
+        failures: list[dict[str, Any]] | tuple[Any, ...],
+        *,
+        run_id: str,
+    ) -> FeasibilityDecision:
+        """Adversarial re-evaluation: Experimenter discovered an empirical constraint violation in the synthesized model."""
+        violated_rules = []
+        violated_resources = []
+        failure_messages = []
+        for f in failures:
+            if isinstance(f, dict):
+                msg = f.get("message") or f.get("reason") or str(f)
+                failure_messages.append(msg)
+                if f.get("rule_id"):
+                    violated_rules.append(str(f["rule_id"]))
+                if f.get("relevant_rules"):
+                    raw_rules = f["relevant_rules"]
+                    found = re.findall(r"Rule\s*(\d+)", str(raw_rules), re.IGNORECASE)
+                    violated_rules.extend([f"R{r}" for r in found])
+                if f.get("required_resources"):
+                    raw_res = f["required_resources"]
+                    found_res = re.findall(r"Resource\s*(\d+)", str(raw_res), re.IGNORECASE)
+                    violated_resources.extend([f"RES{r}" for r in found_res])
+
+        unique_rules = tuple(sorted(list(set(violated_rules))))
+        unique_resources = tuple(sorted(list(set(violated_resources))))
+
+        if unique_rules and unique_resources:
+            cat = "DUAL_VIOLATION"
+        elif unique_rules:
+            cat = "RULE_VIOLATION"
+        elif unique_resources:
+            cat = "RESOURCE_VIOLATION"
+        else:
+            cat = "RULE_VIOLATION"
+
+        reason = (
+            f"Adversarial Experimenter verification failed: The candidate model allows an illegal execution trace "
+            f"violating constraints. Specific findings: {'; '.join(failure_messages[:2])}"
+        )
+
+        return FeasibilityDecision(
+            decision_id=f"decision-revised-{run_id}",
+            status=DecisionStatus.REJECT,
+            reason=reason,
+            request=request,
+            rule_ids=unique_rules,
+            resource_ids=unique_resources,
+            evidence_ids=(),
+            proposed_timing=None,
+            planning_result=None,
+            rejection_category=cat,
         )

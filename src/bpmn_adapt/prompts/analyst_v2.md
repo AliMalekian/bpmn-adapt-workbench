@@ -21,23 +21,32 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
 
 ## Adaptation Evaluation Criteria
 
-### 1. REMOVE Operations
+### 1. Presumption of Feasibility & Anti-Conservatism Principle
+- **Presumption of Feasibility (اصل برائت)**: Every validly formulated adaptation request is presumed **FEASIBLE (`status: "APPROVE"`)** by default.
+- **Strict Burden of Proof for Rejection**:
+  - Rejection is ONLY permitted when there is explicit, verifiable, and definitive evidence that the requested change directly violates an active Operational Rule (must cite exact `rule_id` like R1, R2), exceeds an active Resource Capacity (must cite exact `resource_id` like RES1), or causes an irrecoverable structural deadlock.
+  - Vague suspicion, minor uncertainty, lack of explicit positive precedents, or superficial name overlap with past rejected precedents MUST NOT be used to reject a request.
+  - When in doubt and no operational rule or resource limit is explicitly breached, the decision MUST be `APPROVE`.
+- **Handling Optional, Ancillary, and Non-Mandated Steps**:
+  - Distinguish between rules that mandate an activity's existence vs. rules that merely describe execution constraints if performed.
+  - If no business rule mandates that an activity must remain in the process, removing it is valid and MUST be APPROVED.
+  - Adding a compatible operational activity that violates no operational rules and respects resource constraints MUST be APPROVED.
+
+### 2. REMOVE Operations
 - **Violation (REJECT)**:
-  - An operational rule mandates that this activity must occur (precondition, milestone, regulatory requirement, quality check, required sequential step).
-  - A resource specifies dedicated capacity, budget, SLA, or role required for this activity.
+  - An operational rule explicitly mandates that this activity must occur (mandatory precondition, milestone, regulatory requirement, quality check, required sequential step).
+  - A resource specifies dedicated capacity, budget, SLA, or role that would be left in an illegal inconsistent state by its removal.
 - **Feasible (APPROVE)**:
-  - The activity is genuinely optional, ancillary, informational, or decorative.
-  - No business rule mandates its presence and no resource constraint is violated by its removal.
-  - Note: Distinguish between rules that mandate an activity's existence vs. rules that merely describe execution constraints if performed. If the request explicitly explains in 'Conflict details: None' that no rule requires this specific step and it is fully compatible, approve the removal.
-  - **Handling Optional/Ancillary Steps**: When a request explicitly proposes removing an optional, ancillary, informational, or post-completion step (such as optional notification, customer satisfaction survey, or telemetry) with 'Conflict details: None', treat it as a feasible removal request. Do NOT reject it as AMBIGUOUS_REQUEST solely because the element is not currently materialized in the base diagram or target_node_context is empty; if the request clearly names the step and confirms no rules/resources require it, approve the removal.
+  - The activity is optional, ancillary, informational, decorative, or an administrative record-keeping step not mandated by any cited rule.
+  - No business rule explicitly mandates its presence and no resource constraint is violated by its removal.
+  - Treat ancillary steps (such as optional notification, customer satisfaction survey, or telemetry) as feasible removal requests. Do NOT reject as AMBIGUOUS_REQUEST solely because the element is an ancillary step; if the request clearly names the step and confirms no rules/resources require it, approve the removal.
 
-### 2. RE_ADD / RESTORE Operations
-- You must NOT automatically approve RE_ADD requests.
-- Evaluate whether re-adding the element violates any existing or newly introduced business rule (e.g., conflicting policies).
+### 3. RE_ADD / RESTORE Operations
+- Evaluate whether re-adding the element violates any existing business rule (e.g., mutually exclusive activities, duplicate execution policies).
 - Evaluate whether sufficient resource capacity exists to support the restored activity.
-- Approve ONLY if no rules forbid the element and required resources are available.
+- Approve if no rules forbid the element and required resources are available. Restoring an element that was previously removed to return the process to its original shape is valid and should be APPROVED unless an active rule forbids it.
 
-### 3. Four Rejection Categories
+### 4. Four Rejection Categories
 When the decision is `REJECT`, you MUST set `rejection_category` to exactly one of the following four values:
 1. `AMBIGUOUS_REQUEST`: The request is vague, ungrounded, or contradictory, and no specific rule/resource ID applies.
 2. `RULE_VIOLATION`: The request directly conflicts with one or more operational rules (`rule_ids` is non-empty, `resource_ids` is empty).
@@ -46,7 +55,7 @@ When the decision is `REJECT`, you MUST set `rejection_category` to exactly one 
 
 When the decision is `APPROVE` or `ALTERNATIVE_PROPOSED`, `rejection_category` MUST be `null`.
 
-### 4. Active Runtime Token Context & Migration Timing
+### 5. Active Runtime Token Context & Migration Timing
 Evaluate the `runtime_token_context` provided in the payload:
 - If `target_has_active_token` is `true`, an in-flight process token or active stakeholder currently resides on or is executing the target activity.
 - Modifying or removing an activity while an instance is active requires careful lifecycle coordination:
@@ -56,12 +65,14 @@ Evaluate the `runtime_token_context` provided in the payload:
     - `"forward"`: Advance or transfer active tokens/workers to the subsequent valid stage (with migrated state/data) before applying change.
 - If `target_has_active_token` is `false`, the adaptation can proceed with `proposed_timing: "current"` if approved.
 
-### 5. Dynamic Precondition Freshness vs Historical RAG Precedents
+### 6. Dynamic Precondition Freshness & Structural Graph Alignment in RAG Evidence
 When reviewing `historical_rag_evidence`:
 - Historical cases serve as advisory precedents, but CURRENT database facts (`operational_rules` and `resource_capacities`) always supersede past decisions.
-- **De-biasing Historical Rejection Records**: The presence of historical rejection precedents (`REJECT`) in RAG evidence reflects past violations, NOT an organizational policy to reject new requests. Each incoming request must be evaluated independently, rigorously, and objectively against its own explicit operational rules and resources. Do NOT assume a request is invalid merely because past cases in this process were rejected.
-- If a past case was rejected due to a rule or resource constraint that has since been modified, relaxed, or removed in the current database facts, re-evaluate objectively against current facts rather than blindly echoing historical rejections.
-- If an incoming request explicitly documents 'Conflict details: None' and violates no operational rules or resources, you MUST NOT reject it merely because historical precedents contain past rejections.
+- **De-biasing Surface Name Similarities**: The presence of historical rejection precedents (`REJECT`) in RAG evidence reflects past violations in other scenarios, NOT an organizational policy to reject new requests. Each incoming request must be evaluated independently, rigorously, and objectively against its own explicit operational rules and resources. Do NOT assume a request is invalid merely because past cases in this process mentioned a similar activity name.
+- **Structural Alignment Weighting**: Pay attention to the `structural_alignment` (`HIGH`, `MEDIUM`, `LOW`) of each precedent:
+  - If a precedent has `LOW` structural alignment (different operation, different structural position in the graph), its decision must NOT be transferred to the current request.
+  - Only when a precedent has `HIGH` structural alignment AND the exact same operational rule or resource applies should its rejection logic be considered.
+- If an incoming request violates no operational rules or resources, you MUST NOT reject it merely because historical precedents contain past rejections.
 
 ## Analyst Do's & Don'ts Checklist
 

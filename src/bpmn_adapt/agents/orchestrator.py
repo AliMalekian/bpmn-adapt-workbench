@@ -68,6 +68,18 @@ class OrchestratorAgent:
             events.append(event)
             self.database.append_event(run_id, kind, payload)
 
+        rules = self.database.get_rules(request.process_id)
+        resources = self.database.get_resources(request.process_id)
+        test_cases = []
+        if getattr(request, "source_folder", None):
+            try:
+                tc_path = Path(request.source_folder) / "testcasees.txt"
+                if tc_path.exists():
+                    from bpmn_adapt.ingestion.discovery import _blocks, _read
+                    test_cases = _blocks(_read(tc_path), "Test case ID:")
+            except Exception as tc_err:
+                logger.debug("Could not load testcasees.txt: %s", tc_err)
+
         # 1. Orchestrator Initial Routing via LLM
         system_prompt = load_prompt("orchestrator")
         routing_response = self.llm.complete(
@@ -193,6 +205,10 @@ class OrchestratorAgent:
                 candidate,
                 original_bpmn_xml=version["bpmn_xml"],
                 operation=request.operation,
+                request=request,
+                rules=rules,
+                resources=resources,
+                test_cases=test_cases,
             )
             self.database.save_experiment(run_id, report)
             record("experimenter_completed", {
@@ -203,6 +219,65 @@ class OrchestratorAgent:
 
             if report.passed:
                 break
+
+            # Adversarial Closed-Loop Feedback to Analyst
+            neg_violations = [f for f in report.failures if isinstance(f, dict) and f.get("type") == "negative_constraint_violation"]
+            if neg_violations and hasattr(self.analyst, "re_evaluate_after_simulation"):
+                record("adversarial_violation_caught", {
+                    "attempt": attempt,
+                    "violations": neg_violations,
+                })
+                revised_decision = self.analyst.re_evaluate_after_simulation(
+                    request,
+                    neg_violations,
+                    run_id=run_id,
+                )
+                self.database.save_decision(run_id, revised_decision)
+                record("analyst_self_corrected", {
+                    "decision_id": revised_decision.decision_id,
+                    "status": revised_decision.status.value,
+                    "rejection_category": revised_decision.rejection_category,
+                    "reason": revised_decision.reason,
+                })
+                self.database.update_run_status(run_id, "rejected")
+                if (
+                    hasattr(self.rag, "index_negative")
+                    and callable(getattr(self.rag, "index_negative", None))
+                ):
+                    try:
+                        summary_text = (
+                            f"Operation: {request.operation.value}\n"
+                            f"Target: {request.target_element}\n"
+                            f"Request: {request.raw_text}\n"
+                            f"Decision: REJECT\n"
+                            f"Decision reason: {revised_decision.reason}\n"
+                            f"Referenced rules: {', '.join(revised_decision.rule_ids) or 'None'}\n"
+                            f"Referenced resources: {', '.join(revised_decision.resource_ids) or 'None'}"
+                        )
+                        self.rag.index_negative(
+                            evidence_id=f"negative-{run_id}",
+                            run_id=run_id,
+                            process_id=request.process_id,
+                            source_version_id=request.source_version_id or f"{request.process_id}-source",
+                            operation=request.operation.value,
+                            text=summary_text,
+                            decision="REJECT",
+                            lineage={"self_corrected": True, "process_id": request.process_id},
+                        )
+                    except Exception as neg_err:
+                        logger.warning("Could not index self-corrected negative RAG experience: %s", neg_err)
+
+                provenance = RunProvenance(
+                    run_id,
+                    request.process_id,
+                    str(request.source_folder),
+                    self.settings.fingerprint(),
+                    self.PROMPT_VERSIONS,
+                    "rejected",
+                    tuple(events),
+                )
+                return AdaptationResult(run_id, "rejected", revised_decision, candidate, report, provenance)
+
             feedback = report.failures
 
         assert candidate is not None and report is not None

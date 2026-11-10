@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import logging
 from pathlib import Path
+import re
 from typing import Any
 import uuid
 
@@ -37,6 +38,11 @@ class ExperimenterAgent:
         candidate: CandidateModel,
         original_bpmn_xml: str | None = None,
         operation: OperationType | None = None,
+        *,
+        request: Any | None = None,
+        rules: Any | None = None,
+        resources: Any | None = None,
+        test_cases: Any | None = None,
     ) -> ExperimentReport:
         graph = BpmnGraph.from_xml(candidate.bpmn_xml)
         failures: list[dict[str, Any]] = []
@@ -148,6 +154,33 @@ class ExperimenterAgent:
                     "ged": ged,
                     "reason": f"Graph edit distance ({ged}) exceeds tolerance 3 for RE_ADD operation",
                 })
+
+        # 7. Adversarial Negative Test Cases & Invariant Constraint Verification
+        # Verifies that candidate model does not execute or permit prohibited paths defined by BLOCKED test cases
+        if test_cases:
+            req_target = (getattr(request, "target_element", None) or "").strip().lower()
+            for tc in test_cases:
+                if not isinstance(tc, dict):
+                    continue
+                expected = (tc.get("expected_result") or "").upper()
+                if expected == "BLOCKED":
+                    action_text = (tc.get("user_request_/_process_action") or "").lower()
+                    tc_target = ""
+                    m = re.search(r'"([^"]+)"', action_text)
+                    if m:
+                        tc_target = m.group(1).lower()
+
+                    if req_target and tc_target and (req_target in tc_target or tc_target in req_target):
+                        # The adaptation directly touched the prohibited activity!
+                        explanation = tc.get("explanation") or "Execution conflicts with operational rule or resource constraints."
+                        failures.append({
+                            "type": "negative_constraint_violation",
+                            "test_case_id": tc.get("id"),
+                            "title": tc.get("scenario_title"),
+                            "message": f"Adversarial verification failed: Candidate model allows illegal execution path ({explanation})",
+                            "relevant_rules": tc.get("relevant_rules"),
+                            "required_resources": tc.get("required_resources"),
+                        })
 
         deterministic_passed = (len(failures) == 0)
 
