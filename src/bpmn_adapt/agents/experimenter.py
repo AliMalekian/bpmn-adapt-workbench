@@ -266,14 +266,13 @@ class ExperimenterAgent:
                         "may not be left unset", "limited to", "rounds", "days", "seconds", "hours", "weeks", "months", "minutes",
                         "no earlier", "no later", "at least", "before", "after", "settled"
                     ]
-                    domain_focal_stems = {"chef", "surface", "credit", "protect", "period", "refine", "payment", "status"}
                     for r in (rules or []):
                         r_txt = (getattr(r, "text", "") or str(r)).lower()
                         r_id = getattr(r, "id", "R")
                         matches = [s for s in stems if s in r_txt or (s == "receipt" and "receiv" in r_txt)]
                         has_gov = any(k in r_txt for k in gov_words)
                         is_opt = any(k in r_txt for k in ["optional", "may be skipped", "if desired"])
-                        if (len(matches) >= 2 or (len(matches) >= 1 and any(m in domain_focal_stems for m in matches))) and has_gov and not is_opt:
+                        if len(matches) >= 2 and has_gov and not is_opt:
                             failures.append({
                                 "type": "negative_constraint_violation",
                                 "test_case_id": f"TC-REM-RULE-{r_id}",

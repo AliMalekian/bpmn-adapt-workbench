@@ -27,7 +27,7 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
   - Genuine non-conflicting adaptations, removing purely optional steps, or adding automated zero-overhead background checkpoints MUST be APPROVED.
   - However, the Presumption of Feasibility is NOT a license to overlook stated rules, resource allocations, or operational handovers!
 - **Skeptical Verification of User Rationalizations & Proposed Workarounds**:
-  - User requests frequently present plausible-sounding excuses or speculative workarounds to justify a change (e.g., *"the chef can read directly from the POS screen"*, *"a fixed default duration will be used instead of manual configuration"*, *"the customer already has card details saved in their profile"*, *"the repair can be performed on any normal table without a static-free mat"*, *"accept the first draft without refinement rounds"*).
+  - User requests frequently present plausible-sounding excuses, informal assumptions, or speculative external workarounds to justify a proposed change (e.g., claiming that manual notifications can be replaced by viewing an external display, that formal configuration steps can be replaced by arbitrary default values, that user inputs are already available in saved external profiles, or that specialized safety equipment or iterative review loops are unnecessary).
   - **MANDATORY**: You MUST NOT accept the user's speculative assumptions, external workarounds, or informal shortcuts as a valid substitute for formal process rules or allocated resources.
   - Unless the process rules or resources *themselves* explicitly provide for that alternative, any request proposing to skip or remove an activity governed by operational rules or dedicated resources is an invalid change and MUST be REJECTED.
 - **Closed-World Resource Inventory Principle**:
@@ -38,7 +38,7 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
 ### 2. REMOVE Operations
 - **Violation (REJECT)**:
   - **Governing Operational Rules**: An operational rule governs, references, or mandates the activity (including notification steps, handover requirements, sequential order constraints, time intervals like "every 30 seconds" or "within 14 days", or quota limits like "up to 5 rounds").
-  - **Dedicated Resource Allocations**: A dedicated physical asset, workspace, or tool is allocated to this task in `resource_capacities` (e.g., static-free work surfaces, dedicated terminals, specialized equipment).
+  - **Dedicated Resource Allocations**: A dedicated physical asset, workspace, or tool is allocated to this task in `resource_capacities` (e.g., dedicated workstations, physical machinery, or specialized facilities).
   - **Parameter Configuration & Data Entry**: The activity configures, chooses, or operationalizes essential parameters (such as leave models, payment methods, order details, or specifications). Replacing explicit configuration with an unapproved "default" or "saved" value violates process rules.
   - **Downstream Functional Dependencies**: Downstream tasks or audit logs depend on the output, notification, or confirmation produced by this activity.
 - **Feasible (APPROVE)**:
