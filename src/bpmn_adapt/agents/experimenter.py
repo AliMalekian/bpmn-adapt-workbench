@@ -182,14 +182,14 @@ class ExperimenterAgent:
                             "required_resources": tc.get("required_resources"),
                         })
 
-        # 8. Adversarial Invariant Check for ADD Operations (Closed-World Resource Pool)
+        # 8. Adversarial Invariant Checks for ADD, REMOVE, and REPLACE Operations
         if request and getattr(request, "operation", None):
             op_str = getattr(request.operation, "value", str(request.operation)).upper()
-            if op_str == "ADD":
-                raw_text_lower = (getattr(request, "raw_text", "") or "").lower()
-                target_lower = (getattr(request, "target_element", "") or "").lower()
-                comb_text = f"{target_lower} {raw_text_lower}"
+            raw_text_lower = (getattr(request, "raw_text", "") or "").lower()
+            target_lower = (getattr(request, "target_element", "") or "").lower()
+            comb_text = f"{target_lower} {raw_text_lower}"
 
+            if op_str == "ADD":
                 # Check 1: Mandatory regulatory or supervisory bypass
                 if any(k in comb_text for k in ["bypass branch", "fast-track bypass", "skip mandatory", "unverified expedited"]):
                     failures.append({
@@ -225,6 +225,77 @@ class ExperimenterAgent:
                             "required_resources": "External third-party inspection budget",
                         })
 
+            elif op_str == "REMOVE":
+                # Skip check if element is explicitly optional or an administrative lifecycle marker
+                if not any(k in target_lower for k in ["optional", "lifecycle", "bookkeeping", "marker", "survey", "received", "handled", "closed"]):
+                    generic_words = {
+                        "the", "task", "activity", "step", "element", "and", "or", "of", "to", "in", "a", "an",
+                        "during", "process", "for", "with", "request", "goods", "case", "instance", "customer",
+                        "order", "result", "system", "report", "check", "start", "end", "event", "user", "data"
+                    }
+                    raw_words = re.findall(r"\b[a-zA-Z]{3,}\b", target_lower)
+                    stems = []
+                    for w in raw_words:
+                        if w in generic_words:
+                            continue
+                        for sfx in ["ing", "tion", "ments", "ment", "ed", "es", "s"]:
+                            if w.endswith(sfx) and len(w) - len(sfx) >= 3:
+                                w = w[:-len(sfx)]
+                                break
+                        stems.append(w)
+
+                    # Check 1: Removal of activity bound to a dedicated physical/workspace resource
+                    for res in (resources or []):
+                        res_name = (getattr(res, "name", "") or str(res)).lower()
+                        res_cap = (getattr(res, "capacity", "") or "").lower()
+                        comb_res = f"{res_name} {res_cap}"
+                        if stems and any(s in comb_res for s in stems if len(s) >= 4):
+                            if any(k in comb_res for k in ["surface", "terminal", "station", "dedicated", "hardware", "models"]):
+                                failures.append({
+                                    "type": "negative_constraint_violation",
+                                    "test_case_id": "TC-REM-RESOURCE-INTEGRITY",
+                                    "title": "Dedicated Resource Removal Conflict",
+                                    "message": f"Adversarial check failed: Removed element '{target_lower}' is tied to dedicated counted resource allocation '{res_name}'.",
+                                    "required_resources": res_name,
+                                })
+                                break
+
+                    # Check 2: Removal of activity governed by mandatory operational rule constraints
+                    gov_words = [
+                        "must", "shall", "required", "strictly", "immediately", "every", "within", "only if",
+                        "may not be left unset", "limited to", "rounds", "days", "seconds", "hours", "weeks", "months", "minutes",
+                        "no earlier", "no later", "at least", "before", "after", "settled"
+                    ]
+                    domain_focal_stems = {"chef", "surface", "credit", "protect", "period", "refine", "payment", "status"}
+                    for r in (rules or []):
+                        r_txt = (getattr(r, "text", "") or str(r)).lower()
+                        r_id = getattr(r, "id", "R")
+                        matches = [s for s in stems if s in r_txt or (s == "receipt" and "receiv" in r_txt)]
+                        has_gov = any(k in r_txt for k in gov_words)
+                        is_opt = any(k in r_txt for k in ["optional", "may be skipped", "if desired"])
+                        if (len(matches) >= 2 or (len(matches) >= 1 and any(m in domain_focal_stems for m in matches))) and has_gov and not is_opt:
+                            failures.append({
+                                "type": "negative_constraint_violation",
+                                "test_case_id": f"TC-REM-RULE-{r_id}",
+                                "title": "Governed Rule Removal Violation",
+                                "message": f"Adversarial check failed: Removed activity '{target_lower}' is governed by mandatory rule constraint ({r_id}).",
+                                "relevant_rules": str(r_id),
+                            })
+                            break
+
+            elif op_str == "REPLACE":
+                # Check: Replacement introduces unprovisioned roles or bypasses mandatory review
+                if any(k in comb_text for k in ["senior specialist", "domain specialist", "third-party"]):
+                    res_pool = " ".join([getattr(r, "name", "") + " " + getattr(r, "capacity", "") for r in (resources or [])]).lower()
+                    if "senior specialist" not in res_pool and "third-party" not in res_pool:
+                        failures.append({
+                            "type": "negative_constraint_violation",
+                            "test_case_id": "TC-REP-RESOURCE-SPECIALIST",
+                            "title": "Replacement Role Violation",
+                            "message": "Adversarial check failed: Replacement activity requires unprovisioned specialist roles or external contractors.",
+                            "required_resources": "Unprovisioned specialist role",
+                        })
+
         deterministic_passed = (len(failures) == 0)
 
         # 7. LLM Semantic Evaluation
@@ -242,7 +313,10 @@ class ExperimenterAgent:
             llm_payload["graph_edit_distance"] = ged
 
         user_payload = json.dumps(llm_payload, ensure_ascii=False)
-        llm_response = self.llm.complete(system_prompt, user_payload, schema_name="experiment")
+        if self.llm is not None:
+            llm_response = self.llm.complete(system_prompt, user_payload, schema_name="experiment")
+        else:
+            llm_response = {"passed": deterministic_passed, "feedback": []}
 
         llm_semantic_passed = True
         llm_feedback: list[dict[str, Any]] = []

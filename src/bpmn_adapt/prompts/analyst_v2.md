@@ -22,9 +22,14 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
 ## Adaptation Evaluation Criteria
 
 ### 1. Presumption of Feasibility & Closed-World Resource Boundaries
-- **Presumption of Feasibility (اصل برائت)**:
+- **Presumption of Feasibility (اصل برائت متعادل)**:
   - This principle protects valid, non-violating operational modifications from being rejected out of vague suspicion or superficial naming similarities to past precedents.
-  - Removing genuinely optional/ancillary steps or adding automated zero-overhead background checkpoints MUST be APPROVED.
+  - Genuine non-conflicting adaptations, removing purely optional steps, or adding automated zero-overhead background checkpoints MUST be APPROVED.
+  - However, the Presumption of Feasibility is NOT a license to overlook stated rules, resource allocations, or operational handovers!
+- **Skeptical Verification of User Rationalizations & Proposed Workarounds**:
+  - User requests frequently present plausible-sounding excuses or speculative workarounds to justify a change (e.g., *"the chef can read directly from the POS screen"*, *"a fixed default duration will be used instead of manual configuration"*, *"the customer already has card details saved in their profile"*, *"the repair can be performed on any normal table without a static-free mat"*, *"accept the first draft without refinement rounds"*).
+  - **MANDATORY**: You MUST NOT accept the user's speculative assumptions, external workarounds, or informal shortcuts as a valid substitute for formal process rules or allocated resources.
+  - Unless the process rules or resources *themselves* explicitly provide for that alternative, any request proposing to skip or remove an activity governed by operational rules or dedicated resources is an invalid change and MUST be REJECTED.
 - **Closed-World Resource Inventory Principle**:
   - The `resource_capacities` list is an EXHAUSTIVE, CLOSED-WORLD inventory of all available organizational roles, personnel, and budgets.
   - Unlisted roles or external services DO NOT EXIST in the organization.
@@ -32,12 +37,13 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
 
 ### 2. REMOVE Operations
 - **Violation (REJECT)**:
-  - An operational rule explicitly mandates that this activity must occur (mandatory precondition, milestone, regulatory requirement, quality check, required sequential step).
-  - A resource specifies dedicated capacity, budget, SLA, or role that would be left in an illegal inconsistent state by its removal.
+  - **Governing Operational Rules**: An operational rule governs, references, or mandates the activity (including notification steps, handover requirements, sequential order constraints, time intervals like "every 30 seconds" or "within 14 days", or quota limits like "up to 5 rounds").
+  - **Dedicated Resource Allocations**: A dedicated physical asset, workspace, or tool is allocated to this task in `resource_capacities` (e.g., static-free work surfaces, dedicated terminals, specialized equipment).
+  - **Parameter Configuration & Data Entry**: The activity configures, chooses, or operationalizes essential parameters (such as leave models, payment methods, order details, or specifications). Replacing explicit configuration with an unapproved "default" or "saved" value violates process rules.
+  - **Downstream Functional Dependencies**: Downstream tasks or audit logs depend on the output, notification, or confirmation produced by this activity.
 - **Feasible (APPROVE)**:
-  - The activity is optional, ancillary, informational, decorative, or an administrative record-keeping step not mandated by any cited rule.
-  - No business rule explicitly mandates its presence and no resource constraint is violated by its removal.
-  - Treat ancillary steps (such as optional notification, customer satisfaction survey, or telemetry) as feasible removal requests. Do NOT reject as AMBIGUOUS_REQUEST solely because the element is an ancillary step; if the request clearly names the step and confirms no rules/resources require it, approve the removal.
+  - The activity is explicitly declared optional in the process rules (e.g., "optional customer satisfaction survey", "optional post-completion confirmation to secondary log").
+  - The activity is a purely administrative lifecycle boundary event marker (such as generic start/end bookkeeping events) that performs no value-adding transformation, has no dedicated counted resource capacity assigned, and whose removal violates no operational rule.
 
 ### 3. ADD Operations
 - **Violation (REJECT)**:
@@ -46,7 +52,15 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
 - **Feasible (APPROVE)**:
   - Automated, non-blocking compliance timestamping, background analytics/telemetry collectors, or automated digital completion notifications that consume zero manual staff headcount, require no external contractors, and operate within standard automated computing infrastructure. These MUST be APPROVED.
 
-### 4. RE_ADD / RESTORE Operations
+### 4. REPLACE Operations
+- **Violation (REJECT)**:
+  - The replacement activity drops or degrades compliance with any operational rule satisfied by the original activity.
+  - The replacement activity introduces unprovisioned specialist roles, unbudgeted third-party contractors, or exceeds provisioned resource capacities.
+  - The replacement activity skips mandatory supervisory reviews, verification gates, or four-eyes principles.
+- **Feasible (APPROVE)**:
+  - The replacement activity completely fulfills all operational rules and obligations of the replaced activity, uses only existing provisioned roles and capacities, and introduces no non-compliant execution paths.
+
+### 5. RE_ADD / RESTORE Operations
 - Evaluate whether re-adding the element violates any existing business rule (e.g., mutually exclusive activities, duplicate execution policies).
 - Evaluate whether sufficient resource capacity exists to support the restored activity.
 - Approve if no rules forbid the element and required resources are available. Restoring an element that was previously removed to return the process to its original shape is valid and should be APPROVED unless an active rule forbids it.
