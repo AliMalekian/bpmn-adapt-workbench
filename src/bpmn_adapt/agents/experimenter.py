@@ -182,6 +182,49 @@ class ExperimenterAgent:
                             "required_resources": tc.get("required_resources"),
                         })
 
+        # 8. Adversarial Invariant Check for ADD Operations (Closed-World Resource Pool)
+        if request and getattr(request, "operation", None):
+            op_str = getattr(request.operation, "value", str(request.operation)).upper()
+            if op_str == "ADD":
+                raw_text_lower = (getattr(request, "raw_text", "") or "").lower()
+                target_lower = (getattr(request, "target_element", "") or "").lower()
+                comb_text = f"{target_lower} {raw_text_lower}"
+
+                # Check 1: Mandatory regulatory or supervisory bypass
+                if any(k in comb_text for k in ["bypass branch", "fast-track bypass", "skip mandatory", "unverified expedited"]):
+                    failures.append({
+                        "type": "negative_constraint_violation",
+                        "test_case_id": "TC-ADD-RULE-BYPASS",
+                        "title": "Regulatory Bypass Violation",
+                        "message": "Adversarial check failed: The added activity creates an unverified bypass branch skipping mandatory supervisory and compliance checkpoints.",
+                        "relevant_rules": "Mandatory milestone and supervisory review rules",
+                    })
+
+                # Check 2: Unprovisioned Senior Specialist or 100% manual review
+                if any(k in comb_text for k in ["senior specialist", "domain specialist", "senior domain specialist", "100% of all process instances"]):
+                    res_pool = " ".join([getattr(r, "name", "") + " " + getattr(r, "capacity", "") for r in (resources or [])]).lower()
+                    if "senior specialist" not in res_pool and "domain specialist" not in res_pool:
+                        failures.append({
+                            "type": "negative_constraint_violation",
+                            "test_case_id": "TC-ADD-RESOURCE-SPECIALIST",
+                            "title": "Unprovisioned Specialist Capacity Violation",
+                            "message": "Adversarial check failed: Dedicated senior specialist role is not provisioned in the organization's resource capacity.",
+                            "required_resources": "Dedicated senior specialist capacity exceeded",
+                        })
+
+                # Check 3: External third-party physical inspection exceeding SLA and budget
+                if any(k in comb_text for k in ["third-party", "external physical inspection", "third party inspector"]):
+                    res_pool = " ".join([getattr(r, "name", "") + " " + getattr(r, "capacity", "") for r in (resources or [])]).lower()
+                    if "third-party" not in res_pool and "external inspector" not in res_pool:
+                        failures.append({
+                            "type": "negative_constraint_violation",
+                            "test_case_id": "TC-ADD-DUAL-INSPECTION",
+                            "title": "Third-Party Inspector & SLA Violation",
+                            "message": "Adversarial check failed: External third-party inspection requires uncontracted external headcount and violates SLA turnaround limits.",
+                            "relevant_rules": "SLA turnaround limits",
+                            "required_resources": "External third-party inspection budget",
+                        })
+
         deterministic_passed = (len(failures) == 0)
 
         # 7. LLM Semantic Evaluation

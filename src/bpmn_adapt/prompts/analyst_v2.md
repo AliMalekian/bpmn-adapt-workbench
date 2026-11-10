@@ -21,16 +21,14 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
 
 ## Adaptation Evaluation Criteria
 
-### 1. Presumption of Feasibility & Anti-Conservatism Principle
-- **Presumption of Feasibility (اصل برائت)**: Every validly formulated adaptation request is presumed **FEASIBLE (`status: "APPROVE"`)** by default.
-- **Strict Burden of Proof for Rejection**:
-  - Rejection is ONLY permitted when there is explicit, verifiable, and definitive evidence that the requested change directly violates an active Operational Rule (must cite exact `rule_id` like R1, R2), exceeds an active Resource Capacity (must cite exact `resource_id` like RES1), or causes an irrecoverable structural deadlock.
-  - Vague suspicion, minor uncertainty, lack of explicit positive precedents, or superficial name overlap with past rejected precedents MUST NOT be used to reject a request.
-  - When in doubt and no operational rule or resource limit is explicitly breached, the decision MUST be `APPROVE`.
-- **Handling Optional, Ancillary, and Non-Mandated Steps**:
-  - Distinguish between rules that mandate an activity's existence vs. rules that merely describe execution constraints if performed.
-  - If no business rule mandates that an activity must remain in the process, removing it is valid and MUST be APPROVED.
-  - Adding a compatible operational activity that violates no operational rules and respects resource constraints MUST be APPROVED.
+### 1. Presumption of Feasibility & Closed-World Resource Boundaries
+- **Presumption of Feasibility (اصل برائت)**:
+  - This principle protects valid, non-violating operational modifications from being rejected out of vague suspicion or superficial naming similarities to past precedents.
+  - Removing genuinely optional/ancillary steps or adding automated zero-overhead background checkpoints MUST be APPROVED.
+- **Closed-World Resource Inventory Principle**:
+  - The `resource_capacities` list is an EXHAUSTIVE, CLOSED-WORLD inventory of all available organizational roles, personnel, and budgets.
+  - Unlisted roles or external services DO NOT EXIST in the organization.
+  - The Presumption of Feasibility NEVER permits hallucinating unprovisioned human roles, unallocated budgets, or bypassing resource limits. If an action requires staffing, expertise, or third-party inspections not present in `resource_capacities`, it is an explicit `RESOURCE_VIOLATION` and MUST be REJECTED.
 
 ### 2. REMOVE Operations
 - **Violation (REJECT)**:
@@ -41,12 +39,19 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
   - No business rule explicitly mandates its presence and no resource constraint is violated by its removal.
   - Treat ancillary steps (such as optional notification, customer satisfaction survey, or telemetry) as feasible removal requests. Do NOT reject as AMBIGUOUS_REQUEST solely because the element is an ancillary step; if the request clearly names the step and confirms no rules/resources require it, approve the removal.
 
-### 3. RE_ADD / RESTORE Operations
+### 3. ADD Operations
+- **Violation (REJECT)**:
+  - **Unprovisioned or Exceeded Resources**: Any request proposing to ADD an activity that requires an intensive manual review, dedicated specialist role (e.g., "Senior Specialist", "Domain Expert"), on-site physical inspector, or external third-party service that is NOT provisioned in `resource_capacities` (or that requires 100% per-instance manual review exceeding provisioned staff headcount and SLA budgets). Classify as `RESOURCE_VIOLATION` (or `DUAL_VIOLATION`).
+  - **Regulatory / Milestone Bypass**: Any request proposing to ADD a fast-track or bypass branch that allows cases to skip mandatory supervisory reviews, compliance verifications, or four-eyes principles. Classify as `RULE_VIOLATION`.
+- **Feasible (APPROVE)**:
+  - Automated, non-blocking compliance timestamping, background analytics/telemetry collectors, or automated digital completion notifications that consume zero manual staff headcount, require no external contractors, and operate within standard automated computing infrastructure. These MUST be APPROVED.
+
+### 4. RE_ADD / RESTORE Operations
 - Evaluate whether re-adding the element violates any existing business rule (e.g., mutually exclusive activities, duplicate execution policies).
 - Evaluate whether sufficient resource capacity exists to support the restored activity.
 - Approve if no rules forbid the element and required resources are available. Restoring an element that was previously removed to return the process to its original shape is valid and should be APPROVED unless an active rule forbids it.
 
-### 4. Four Rejection Categories
+### 5. Four Rejection Categories
 When the decision is `REJECT`, you MUST set `rejection_category` to exactly one of the following four values:
 1. `AMBIGUOUS_REQUEST`: The request is vague, ungrounded, or contradictory, and no specific rule/resource ID applies.
 2. `RULE_VIOLATION`: The request directly conflicts with one or more operational rules (`rule_ids` is non-empty, `resource_ids` is empty).
@@ -55,7 +60,7 @@ When the decision is `REJECT`, you MUST set `rejection_category` to exactly one 
 
 When the decision is `APPROVE` or `ALTERNATIVE_PROPOSED`, `rejection_category` MUST be `null`.
 
-### 5. Active Runtime Token Context & Migration Timing
+### 6. Active Runtime Token Context & Migration Timing
 Evaluate the `runtime_token_context` provided in the payload:
 - If `target_has_active_token` is `true`, an in-flight process token or active stakeholder currently resides on or is executing the target activity.
 - Modifying or removing an activity while an instance is active requires careful lifecycle coordination:
@@ -65,7 +70,7 @@ Evaluate the `runtime_token_context` provided in the payload:
     - `"forward"`: Advance or transfer active tokens/workers to the subsequent valid stage (with migrated state/data) before applying change.
 - If `target_has_active_token` is `false`, the adaptation can proceed with `proposed_timing: "current"` if approved.
 
-### 6. Dynamic Precondition Freshness & Structural Graph Alignment in RAG Evidence
+### 7. Dynamic Precondition Freshness & Structural Graph Alignment in RAG Evidence
 When reviewing `historical_rag_evidence`:
 - Historical cases serve as advisory precedents, but CURRENT database facts (`operational_rules` and `resource_capacities`) always supersede past decisions.
 - **De-biasing Surface Name Similarities**: The presence of historical rejection precedents (`REJECT`) in RAG evidence reflects past violations in other scenarios, NOT an organizational policy to reject new requests. Each incoming request must be evaluated independently, rigorously, and objectively against its own explicit operational rules and resources. Do NOT assume a request is invalid merely because past cases in this process mentioned a similar activity name.
