@@ -5,7 +5,7 @@
 [![Version: v1.1.7](https://img.shields.io/badge/version-1.1.7-green.svg)](https://github.com/AliMalekian/bpmn-adapt-workbench)
 [![Architecture: Multi--Agent](https://img.shields.io/badge/architecture-Multi--Agent%20BPM-orange.svg)](#multi-agent-system-architecture)
 
-A state-of-the-art research platform for safe, runtime adaptation of Business Process Model and Notation (BPMN 2.0) process instances. Designed and developed by **Ali Malekian** as part of advanced doctoral research in Business Process Management (BPM) and Artificial Intelligence.
+A state-of-the-art research platform for safe, runtime adaptation of Business Process Model and Notation (BPMN 2.0) process instances. Designed and developed by **Ali Malekian** as part of advanced M.SC. research in Business Process Management (BPM) and Artificial Intelligence.
 
 The platform orchestrates a collaborative multi-agent architecture powered by Large Language Models (LLMs), dense vector retrieval (RAG via `SentenceTransformers`), formal Petri net simulation, and deterministic Graph Edit Distance (GED) verification to dynamically evaluate, modify, and migrate in-flight process instances under authoritative operational rules and resource constraints.
 
