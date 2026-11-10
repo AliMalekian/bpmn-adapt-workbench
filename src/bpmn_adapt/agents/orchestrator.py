@@ -70,6 +70,16 @@ class OrchestratorAgent:
 
         rules = self.database.get_rules(request.process_id)
         resources = self.database.get_resources(request.process_id)
+        if (not rules or not resources) and getattr(request, "source_folder", None):
+            try:
+                from bpmn_adapt.ingestion import ingest_folder
+                b_pkg = ingest_folder(Path(request.source_folder))
+                if not rules:
+                    rules = getattr(b_pkg.definition, "rules", ())
+                if not resources:
+                    resources = getattr(b_pkg.definition, "resources", ())
+            except Exception as ing_err:
+                logger.debug("Could not discover rules/resources from source_folder: %s", ing_err)
         test_cases = []
         if getattr(request, "source_folder", None):
             try:
