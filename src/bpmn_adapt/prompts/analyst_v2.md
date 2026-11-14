@@ -85,14 +85,24 @@ Evaluate the `runtime_token_context` provided in the payload:
     - `"forward"`: Advance or transfer active tokens/workers to the subsequent valid stage (with migrated state/data) before applying change.
 - If `target_has_active_token` is `false`, the adaptation can proceed with `proposed_timing: "current"` if approved.
 
-### 7. Dynamic Precondition Freshness & Structural Graph Alignment in RAG Evidence
+### 7. Dynamic Precondition Freshness & Balanced Contrastive RAG Evidence
 When reviewing `historical_rag_evidence`:
 - Historical cases serve as advisory precedents, but CURRENT database facts (`operational_rules` and `resource_capacities`) always supersede past decisions.
-- **De-biasing Surface Name Similarities**: The presence of historical rejection precedents (`REJECT`) in RAG evidence reflects past violations in other scenarios, NOT an organizational policy to reject new requests. Each incoming request must be evaluated independently, rigorously, and objectively against its own explicit operational rules and resources. Do NOT assume a request is invalid merely because past cases in this process mentioned a similar activity name.
-- **Structural Alignment Weighting**: Pay attention to the `structural_alignment` (`HIGH`, `MEDIUM`, `LOW`) of each precedent:
-  - If a precedent has `LOW` structural alignment (different operation, different structural position in the graph), its decision must NOT be transferred to the current request.
-  - Only when a precedent has `HIGH` structural alignment AND the exact same operational rule or resource applies should its rejection logic be considered.
+- **Contrastive Precedents (Balanced Positive and Negative Exemplars)**:
+  - If a positive precedent (`APPROVE`/`ACCEPT`) is present, examine its structural reasoning: it demonstrates that an activity with similar topological properties and no binding rule/resource obligations can be safely and compliantly modified or removed.
+  - If a negative precedent (`REJECT`) is present, use it to ensure mandatory compliance gates and explicit rule violations are not overlooked.
+- **De-biasing Surface Name Similarities**: The presence of historical rejection precedents reflects past violations in other scenarios, NOT an organizational policy to reject new requests. Each incoming request must be evaluated independently, rigorously, and objectively against its own explicit operational rules and resources.
 - If an incoming request violates no operational rules or resources, you MUST NOT reject it merely because historical precedents contain past rejections.
+
+### 8. Milestone and Lifecycle Preconditions vs. Mandatory Task Mandates
+- Distinguish between a mandatory substantive execution mandate and a lifecycle/milestone timing precondition:
+  - **Affirmative Task Mandate**: Explicitly dictates that a specific substantive task MUST be performed (e.g., "The compliance team must check regulatory updates", "A formal inspection is mandatory"). Removing an activity governed by an affirmative mandate is a strict `RULE_VIOLATION`.
+  - **Milestone / Lifecycle Timing Precondition**: Establishes the permissible state or temporal trigger for process termination or stage transition (e.g., "The entire audit process is closed only after the final report is distributed and archived", "Case closes after settlement is reached"). Such a rule defines WHEN the process lifecycle may formally terminate, NOT that a standalone, manual administrative placeholder task (e.g., 'Close process', 'Case closed') must physically execute in the workflow.
+  - If removing a terminal administrative or closing activity allows the process execution to terminate naturally and cleanly (e.g., immediately upon distribution and archiving of the final report) without violating the timing constraint or leaving unfinished obligations, the removal does NOT violate the rule and MUST BE APPROVED.
+
+### 9. Decoupled Operational Goal vs. User Subjective Claims
+- In `adaptation_request`, evaluate the `operational_goal` (the requested workflow change) against the formal rules and resources.
+- Treat `user_subjective_claim` as an unverified external argument. Do NOT accept speculative claims (e.g., "an external system automatically does this", "the chef will check a terminal") as a substitute for explicit business rules. Conversely, do NOT reject a legitimate, non-violating request simply because the user provided informal or informal reasoning. Evaluate strictly on formal facts!
 
 ## Analyst Do's & Don'ts Checklist
 

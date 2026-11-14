@@ -121,6 +121,20 @@ class BenchmarkRunner:
             """Strips ground-truth conflict details so the LLM must evaluate compliance realistically."""
             return re.sub(r"(?mi)^\s*Conflict details:.*$", "", req_text or "", flags=re.DOTALL).strip()
 
+        def _extract_target_clean(block: str, prefix: str) -> str:
+            """Extracts clean activity name, preserving full quoted names and removing leading 'The'."""
+            m = re.search(rf"(?mi)^{prefix}:\s*(.*)$", block)
+            if not m:
+                return "Task"
+            raw_line = m.group(1).strip()
+            m_quote = re.search(r'["“]([^"”]+)["”]', raw_line)
+            if m_quote:
+                return m_quote.group(1).strip()
+            val = re.sub(r"^(?:The\s+)", "", raw_line, flags=re.IGNORECASE).strip()
+            val = re.split(r"\s+[—–-]\s+|\s+\(the\s+|\s+task\b|\s+step\b|\s+activity\b", val, flags=re.IGNORECASE)[0]
+            clean = val.strip().strip('"').strip('“').strip('”')
+            return clean if clean else "Task"
+
         # 1. Parse Remove_requests.txt
         if include_all or "REMOVE" in norm_types:
             rem_file = next((f for f in req_files if "remove" in f.name.lower()), None)
@@ -132,8 +146,7 @@ class BenchmarkRunner:
                         continue
                     m_req = re.search(r"(?mi)^Request\s*(\d+):", block)
                     req_num = m_req.group(1) if m_req else str(idx)
-                    m_target = re.search(r'(?mi)^Removed element:\s*"?([^\n\r"]+)"?', block)
-                    target_elem = m_target.group(1).strip() if m_target else "Task"
+                    target_elem = _extract_target_clean(block, "Removed element")
                     gt = _infer_ground_truth(block, "REMOVE")
                     cases.append({
                         "test_id": f"{dataset_name}_REMOVE_{req_num}",
@@ -150,8 +163,7 @@ class BenchmarkRunner:
             readd_file = next((f for f in req_files if any(k in f.name.lower() for k in ("re_add", "readd", "restore"))), None)
             content = readd_file.read_text(encoding="utf-8", errors="ignore") if readd_file else getattr(bundle, "readd_request", "")
             if content:
-                m_target = re.search(r'(?mi)^Restored element:\s*"?([^\n\r"]+)"?', content)
-                target_elem = m_target.group(1).strip() if m_target else "Task"
+                target_elem = _extract_target_clean(content, "Restored element")
                 gt = _infer_ground_truth(content, "RE_ADD")
                 cases.append({
                     "test_id": f"{dataset_name}_RE_ADD_1",
@@ -174,8 +186,7 @@ class BenchmarkRunner:
                         continue
                     m_req = re.search(r"(?mi)^Request\s*(\d+):", block)
                     req_num = m_req.group(1) if m_req else str(idx)
-                    m_target = re.search(r'(?mi)^Modified element:\s*"?([^\n\r"]+)"?', block)
-                    target_elem = m_target.group(1).strip() if m_target else "Task"
+                    target_elem = _extract_target_clean(block, "Modified element")
                     gt = _infer_ground_truth(block, "MODIFY")
                     cases.append({
                         "test_id": f"{dataset_name}_MODIFY_{req_num}",
@@ -198,8 +209,7 @@ class BenchmarkRunner:
                         continue
                     m_req = re.search(r"(?mi)^Request\s*(\d+):", block)
                     req_num = m_req.group(1) if m_req else str(idx)
-                    m_target = re.search(r'(?mi)^Added element:\s*"?([^\n\r"]+)"?', block)
-                    target_elem = m_target.group(1).strip() if m_target else "Task"
+                    target_elem = _extract_target_clean(block, "Added element")
                     gt = _infer_ground_truth(block, "ADD")
                     cases.append({
                         "test_id": f"{dataset_name}_ADD_{req_num}",

@@ -60,8 +60,8 @@ class Settings:
     vector_backend: str = "local"
     vector_path: Path = Path("experiments/vector_index")
     rag_mode: str = "hybrid"
-    rag_semantic_weight: float = 0.65
-    rag_syntactic_weight: float = 0.35
+    rag_semantic_weight: float = 0.70
+    rag_syntactic_weight: float = 0.30
 
     # Persistence and artefacts
     database_url: str = "sqlite:///experiments/runtime_bpmn.db"

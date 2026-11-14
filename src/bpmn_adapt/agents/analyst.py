@@ -64,13 +64,29 @@ class AnalystAgent:
                 from bpmn_adapt.bpmn.graph import BpmnGraph
                 graph = BpmnGraph.from_xml(bpmn_xml)
                 node = graph.element_by_name(request.target_element) or graph.nodes.get(request.target_element)
+                if not node and request.target_element:
+                    t_low = request.target_element.lower().strip()
+                    for cand in graph.nodes.values():
+                        if cand.name and (cand.name.lower() in t_low or t_low in cand.name.lower()):
+                            node = cand
+                            break
                 if node:
+                    succ_ids = list(graph.successors(node.element_id))
+                    pred_ids = list(graph.predecessors(node.element_id))
+                    succ_nodes = [graph.nodes.get(sid) for sid in succ_ids]
+                    pred_nodes = [graph.nodes.get(pid) for pid in pred_ids]
+
+                    is_terminal = bool(succ_nodes and all(sn and ("EndEvent" in sn.kind or "Event" in sn.kind) for sn in succ_nodes if sn))
+                    is_initial = bool(pred_nodes and all(pn and ("StartEvent" in pn.kind or "Event" in pn.kind) for pn in pred_nodes if pn))
+
                     target_node_context = {
                         "id": node.element_id,
                         "name": node.name,
                         "kind": node.kind,
-                        "predecessors": list(graph.predecessors(node.element_id)),
-                        "successors": list(graph.successors(node.element_id)),
+                        "predecessors": [f"{pn.name} ({pn.kind})" if pn and pn.name else (pn.kind if pn else pid) for pid, pn in zip(pred_ids, pred_nodes)],
+                        "successors": [f"{sn.name} ({sn.kind})" if sn and sn.name else (sn.kind if sn else sid) for sid, sn in zip(succ_ids, succ_nodes)],
+                        "is_terminal_step": is_terminal,
+                        "is_initial_step": is_initial,
                     }
         except Exception as exc:
             logger.debug("Could not extract target node context: %s", exc)
@@ -127,10 +143,9 @@ class AnalystAgent:
             else:
                 structural_alignment = "LOW"
 
-            # Anti-conservatism safeguard:
-            # If a precedent is a historical REJECTION with LOW structural alignment (different op/context),
-            # do not allow it to bias or poison the prompt against a valid request.
-            if e.decision == "REJECT" and structural_alignment == "LOW":
+            # Symmetric structural alignment safeguard:
+            # Low structural alignment precedents must NEVER bias the decision (neither false reject nor false approve)
+            if structural_alignment == "LOW":
                 continue
 
             compact_evidence.append({
@@ -142,13 +157,31 @@ class AnalystAgent:
                 "cited_rules": rules_cited,
             })
 
+        # Contrastive 1:1 Exemplar Balancing
+        positives = [ce for ce in compact_evidence if ce["decision"] in ("ACCEPT", "APPROVE")]
+        negatives = [ce for ce in compact_evidence if ce["decision"] == "REJECT"]
+        balanced_evidence = []
+        if positives:
+            balanced_evidence.append(max(positives, key=lambda x: x["relevance_score"]))
+        if negatives:
+            balanced_evidence.append(max(negatives, key=lambda x: x["relevance_score"]))
+        compact_evidence = balanced_evidence
+
         clean_raw_request = re.sub(r"(?mi)^\s*Conflict details:.*$", "", request.raw_text or "", flags=re.DOTALL).strip()
+        user_goal = clean_raw_request
+        user_claim = ""
+        m_reason = re.search(r"(?mi)^Reason:\s*(.*?)(?=\n[A-Z][a-z]+:|\Z)", clean_raw_request, flags=re.DOTALL)
+        if m_reason:
+            user_claim = m_reason.group(1).strip()
+            user_goal = (clean_raw_request[:m_reason.start()] + clean_raw_request[m_reason.end():]).strip()
+
         user_payload_dict = {
             "adaptation_request": {
                 "process_id": request.process_id,
                 "operation": request.operation.value,
                 "target_element": request.target_element,
-                "raw_request": clean_raw_request,
+                "operational_goal": user_goal or clean_raw_request,
+                "user_subjective_claim": user_claim or "No separate user claim provided.",
                 "target_node_context": target_node_context,
             },
             "operational_rules": rules,

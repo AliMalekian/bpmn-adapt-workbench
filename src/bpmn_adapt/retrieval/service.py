@@ -97,7 +97,7 @@ class HybridRAGService:
             semantic = cosine_similarity(query_embedding, self.embedding_client.embed(row["text"]))
             if mode == "syntactic": final = lexical
             elif mode == "semantic": final = semantic
-            else: final = 0.65 * semantic + 0.35 * lexical
+            else: final = 0.70 * semantic + 0.30 * lexical
             score_log[row["evidence_id"]] = {"semantic": semantic, "syntactic": lexical, "final": final}
             evidence.append(RetrievedEvidence(
                 evidence_id=row["evidence_id"], process_id=row["process_id"],
