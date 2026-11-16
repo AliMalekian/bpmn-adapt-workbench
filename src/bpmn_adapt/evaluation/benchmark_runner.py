@@ -122,7 +122,7 @@ class BenchmarkRunner:
             return re.sub(r"(?mi)^\s*Conflict details:.*$", "", req_text or "", flags=re.DOTALL).strip()
 
         def _extract_target_clean(block: str, prefix: str) -> str:
-            """Extracts clean activity name, preserving full quoted names and removing leading 'The'."""
+            """Extracts clean activity name, preserving full quoted names and removing leading descriptors."""
             m = re.search(rf"(?mi)^{prefix}:\s*(.*)$", block)
             if not m:
                 return "Task"
@@ -130,8 +130,8 @@ class BenchmarkRunner:
             m_quote = re.search(r'["“]([^"”]+)["”]', raw_line)
             if m_quote:
                 return m_quote.group(1).strip()
-            val = re.sub(r"^(?:The\s+)", "", raw_line, flags=re.IGNORECASE).strip()
-            val = re.split(r"\s+[—–-]\s+|\s+\(the\s+|\s+task\b|\s+step\b|\s+activity\b", val, flags=re.IGNORECASE)[0]
+            val = re.sub(r"^(?:The\s+)?(?:optional\s+)?(?:secondary\s+)?(?:step|task|activity|event|milestone)?(?:\s+of)?\s+", "", raw_line, flags=re.IGNORECASE).strip()
+            val = re.split(r"\s+[—–-]\s+|\s+\(the\s+|\s+\(that\s+|\s+\(performed\b", val, flags=re.IGNORECASE)[0]
             clean = val.strip().strip('"').strip('“').strip('”')
             return clean if clean else "Task"
 

@@ -34,9 +34,20 @@ class AnalystAgent:
         resources = self.database.get_resources(request.process_id)
         states = self.database.get_states(request.process_id)
 
+        clean_raw_request = re.sub(r"(?mi)^\s*Conflict details:.*$", "", request.raw_text or "", flags=re.DOTALL).strip()
+        user_goal = clean_raw_request
+        user_claim = ""
+        m_reason = re.search(r"(?mi)^Reason:\s*(.*?)(?=\n[A-Z][a-z]+:|\Z)", clean_raw_request, flags=re.DOTALL)
+        if m_reason:
+            user_claim = m_reason.group(1).strip()
+            user_goal = (clean_raw_request[:m_reason.start()] + clean_raw_request[m_reason.end():]).strip()
+
+        # Anchored RAG Query: operation + clean target + operational intent
+        rag_query = f"{request.operation.value} \"{request.target_element}\" | {user_goal or clean_raw_request}"
+
         if getattr(self, "enable_rag", True) and self.rag is not None:
             raw_evidence = self.rag.retrieve(
-                request.raw_text,
+                rag_query,
                 process_id=request.process_id,
                 operation=request.operation.value,
                 source_version_id=request.source_version_id,
@@ -120,25 +131,26 @@ class AnalystAgent:
             prec_op = ""
             prec_target = ""
             for line in raw.splitlines():
-                if line.startswith("Operation:"):
-                    prec_op = line.split(":", 1)[1].strip().upper()
-                elif line.startswith("Target:"):
-                    prec_target = line.split(":", 1)[1].strip().lower()
-                elif line.startswith("Decision reason:"):
-                    reason = line.split(":", 1)[1].strip()
-                elif line.startswith("Referenced rules:"):
-                    rules_cited = line.split(":", 1)[1].strip()
+                line_str = line.strip()
+                if line_str.startswith("Operation type:") or line_str.startswith("Operation:"):
+                    prec_op = line_str.split(":", 1)[1].strip().upper()
+                elif line_str.startswith("Target BPMN element:") or line_str.startswith("Target element:") or line_str.startswith("Target:"):
+                    prec_target = line_str.split(":", 1)[1].strip().lower().strip('"').strip('“').strip('”')
+                elif line_str.startswith("Decision reason:"):
+                    reason = line_str.split(":", 1)[1].strip()
+                elif line_str.startswith("Referenced rules:"):
+                    rules_cited = line_str.split(":", 1)[1].strip()
             if not reason:
                 reason = raw[:250].strip()
 
             # Structural Graph Alignment Computation
-            # Checks if the precedent matches both operational and topological role
+            # Checks if the precedent matches operational intent and topological role
             op_match = (prec_op == req_op) if prec_op else True
-            target_match = bool(prec_target and (prec_target in target_name or target_name in prec_target))
+            target_match = bool(prec_target and (prec_target in target_name or target_name in prec_target or any(w in prec_target for w in target_name.split() if len(w) > 4)))
 
             if op_match and target_match:
                 structural_alignment = "HIGH"
-            elif op_match or target_match:
+            elif op_match:
                 structural_alignment = "MEDIUM"
             else:
                 structural_alignment = "LOW"
@@ -167,14 +179,6 @@ class AnalystAgent:
             balanced_evidence.append(max(negatives, key=lambda x: x["relevance_score"]))
         compact_evidence = balanced_evidence
 
-        clean_raw_request = re.sub(r"(?mi)^\s*Conflict details:.*$", "", request.raw_text or "", flags=re.DOTALL).strip()
-        user_goal = clean_raw_request
-        user_claim = ""
-        m_reason = re.search(r"(?mi)^Reason:\s*(.*?)(?=\n[A-Z][a-z]+:|\Z)", clean_raw_request, flags=re.DOTALL)
-        if m_reason:
-            user_claim = m_reason.group(1).strip()
-            user_goal = (clean_raw_request[:m_reason.start()] + clean_raw_request[m_reason.end():]).strip()
-
         user_payload_dict = {
             "adaptation_request": {
                 "process_id": request.process_id,
@@ -200,6 +204,9 @@ class AnalystAgent:
 
         status_str = str(llm_response.get("status", "")).strip().upper()
         reason = str(llm_response.get("reason", "")).strip()
+        precedent_reasoning = str(llm_response.get("precedent_analogical_reasoning", "")).strip()
+        if precedent_reasoning:
+            logger.debug("Precedent Analogical Reasoning: %s", precedent_reasoning[:150])
         raw_rule_ids = llm_response.get("rule_ids", []) or []
         raw_res_ids = llm_response.get("resource_ids", []) or []
         rule_hits = tuple(str(r) for r in raw_rule_ids)
