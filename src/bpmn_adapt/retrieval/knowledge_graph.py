@@ -47,7 +47,7 @@ class BPMNKnowledgeGraphService:
     def __init__(
         self,
         uri: str = "bolt://localhost:7687",
-        auth: tuple = ("neo4j", "password"),
+        auth: tuple = ("neo4j", "123456789"),
         database: str = "neo4j",
     ):
         self.uri = uri
