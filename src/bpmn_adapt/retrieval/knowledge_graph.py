@@ -46,7 +46,7 @@ class BPMNKnowledgeGraphService:
 
     def __init__(
         self,
-        uri: str = "bolt://localhost:7687",
+        uri: str = "bolt://127.0.0.1:7687",
         auth: tuple = ("neo4j", "123456789"),
         database: str = "neo4j",
     ):
@@ -124,6 +124,7 @@ class BPMNKnowledgeGraphService:
         flows: List[Dict[str, Any]],
         rules: List[Dict[str, Any]],
         resources: List[Dict[str, Any]],
+        folder_name: str = "",
     ):
         """
         Populates a complete business process into the graph:
@@ -131,21 +132,24 @@ class BPMNKnowledgeGraphService:
         - Tasks, Gateways, Events
         - Control flows (SEQUENCE_FLOW)
         - Governance links (GOVERNED_BY)
-        - Resource allocation links (PERFORMED_BY, CONSUMES_CAPACITY)
+        - Resource allocation links (HAS_RESOURCE, CONSUMES_CAPACITY)
         """
         if not self._driver:
             return
+
+        fname = folder_name or name
 
         with self._driver.session(database=self.database) as session:
             # 1. Process node
             session.run(
                 """
                 MERGE (p:Process {process_id: $pid})
-                ON CREATE SET p.name = $name, p.domain = $domain, p.cluster = $cluster, p.created_at = timestamp()
-                ON MATCH SET p.name = $name, p.domain = $domain, p.cluster = $cluster
+                ON CREATE SET p.name = $name, p.folder_name = $fname, p.domain = $domain, p.cluster = $cluster, p.created_at = timestamp()
+                ON MATCH SET p.name = $name, p.folder_name = $fname, p.domain = $domain, p.cluster = $cluster
                 """,
                 pid=process_id,
                 name=name,
+                fname=fname,
                 domain=domain,
                 cluster=cluster,
             )
@@ -155,13 +159,15 @@ class BPMNKnowledgeGraphService:
                 session.run(
                     """
                     MERGE (task:Task {task_id: $tid, process_id: $pid})
-                    ON CREATE SET task.name = $name, task.type = $ttype
+                    ON CREATE SET task.name = $name, task.type = $ttype, task.folder_name = $fname
+                    ON MATCH SET task.name = $name, task.folder_name = $fname
                     WITH task
                     MATCH (p:Process {process_id: $pid})
                     MERGE (p)-[:CONTAINS_TASK]->(task)
                     """,
                     tid=t["id"],
                     pid=process_id,
+                    fname=fname,
                     name=t.get("name", t["id"]),
                     ttype=t.get("type", "UserTask"),
                 )
@@ -171,13 +177,15 @@ class BPMNKnowledgeGraphService:
                 session.run(
                     """
                     MERGE (gw:Gateway {gateway_id: $gid, process_id: $pid})
-                    ON CREATE SET gw.name = $name, gw.gateway_type = $gtype
+                    ON CREATE SET gw.name = $name, gw.gateway_type = $gtype, gw.folder_name = $fname
+                    ON MATCH SET gw.name = $name, gw.folder_name = $fname
                     WITH gw
                     MATCH (p:Process {process_id: $pid})
                     MERGE (p)-[:CONTAINS_GATEWAY]->(gw)
                     """,
                     gid=g["id"],
                     pid=process_id,
+                    fname=fname,
                     name=g.get("name", g["id"]),
                     gtype=g.get("type", "EXCLUSIVE_XOR"),
                 )
@@ -208,13 +216,15 @@ class BPMNKnowledgeGraphService:
                 session.run(
                     """
                     MERGE (rule:BusinessRule {rule_id: $rid, process_id: $pid})
-                    ON CREATE SET rule.expression_text = $rtext, rule.category = $cat
+                    ON CREATE SET rule.expression_text = $rtext, rule.category = $cat, rule.folder_name = $fname
+                    ON MATCH SET rule.expression_text = $rtext, rule.folder_name = $fname
                     WITH rule
                     MATCH (p:Process {process_id: $pid})
                     MERGE (p)-[:HAS_RULE]->(rule)
                     """,
                     rid=rule_id,
                     pid=process_id,
+                    fname=fname,
                     rtext=rule_text,
                     cat=category,
                 )
@@ -241,16 +251,86 @@ class BPMNKnowledgeGraphService:
                 session.run(
                     """
                     MERGE (role:ResourceRole {role_name: $rname, process_id: $pid})
-                    ON CREATE SET role.type = $rtype, role.capacity_spec = $cap
+                    ON CREATE SET role.type = $rtype, role.capacity_spec = $cap, role.folder_name = $fname
+                    ON MATCH SET role.folder_name = $fname, role.capacity_spec = $cap
                     WITH role
                     MATCH (p:Process {process_id: $pid})
                     MERGE (p)-[:HAS_RESOURCE]->(role)
                     """,
                     rname=res_name,
                     pid=process_id,
+                    fname=fname,
                     rtype=res_type,
                     cap=capacity,
                 )
+
+    def inspect_subgraph(self, process_id: str, target_element: str, k_hops: int = 2) -> Dict[str, Any]:
+        """
+        Extracts the local structural neighborhood of a target BPMN element from Neo4j:
+        - Target node metadata
+        - Incoming and outgoing sequence flows
+        - Directly governed business rules and full rule texts
+        - Resource capacities associated with the process
+        """
+        if not self._driver:
+            return {}
+
+        out = {
+            "target": target_element,
+            "found_in_graph": False,
+            "incoming_nodes": [],
+            "outgoing_nodes": [],
+            "governing_rules": [],
+            "governing_rule_details": [],
+            "resources": [],
+            "structural_path": "",
+        }
+
+        with self._driver.session(database=self.database) as session:
+            # 1. Target node, neighbors, and rules
+            cypher = """
+            MATCH (t:Task)
+            WHERE (t.process_id = $pid OR t.folder_name = $pid)
+              AND (
+                toLower(t.name) CONTAINS toLower($tgt)
+                OR toLower($tgt) CONTAINS toLower(t.name)
+                OR any(w IN split(toLower($tgt), ' ') WHERE size(w) > 4 AND toLower(t.name) CONTAINS w)
+              )
+            OPTIONAL MATCH (t)-[:GOVERNED_BY]->(r:BusinessRule)
+            OPTIONAL MATCH (prev)-[:SEQUENCE_FLOW]->(t)
+            OPTIONAL MATCH (t)-[:SEQUENCE_FLOW]->(nxt)
+            RETURN t.name AS name,
+                   collect(DISTINCT r.rule_id) AS rule_ids,
+                   collect(DISTINCT {id: r.rule_id, text: r.expression_text}) AS rule_objs,
+                   collect(DISTINCT prev.name) AS incoming,
+                   collect(DISTINCT nxt.name) AS outgoing
+            LIMIT 1
+            """
+            rec = session.run(cypher, pid=process_id, tgt=target_element).single()
+            if rec and rec["name"]:
+                out["found_in_graph"] = True
+                out["matched_name"] = rec["name"]
+                out["incoming_nodes"] = [x for x in rec["incoming"] if x]
+                out["outgoing_nodes"] = [x for x in rec["outgoing"] if x]
+                out["governing_rules"] = [x for x in rec["rule_ids"] if x]
+                out["governing_rule_details"] = [x for x in rec["rule_objs"] if x and x.get("id")]
+
+                inc_str = ", ".join(out["incoming_nodes"]) if out["incoming_nodes"] else "None"
+                out_str = ", ".join(out["outgoing_nodes"]) if out["outgoing_nodes"] else "None"
+                rules_str = ", ".join(out["governing_rules"]) if out["governing_rules"] else "No direct rules"
+                out["structural_path"] = f"[{inc_str}] -> [{rec['name']}] -> [{out_str}] (Governed by: {rules_str})"
+
+            # 2. Resources
+            res_cypher = """
+            MATCH (p:Process)
+            WHERE p.process_id = $pid OR p.folder_name = $pid OR p.name = $pid
+            MATCH (p)-[:HAS_RESOURCE]->(res:ResourceRole)
+            RETURN res.role_name AS name, res.capacity_spec AS capacity
+            """
+            for row in session.run(res_cypher, pid=process_id):
+                out["resources"].append(f"{row['name']} ({row['capacity']})" if row['capacity'] else row['name'])
+
+        return out
 
     def find_analogous_precedents(
         self,

@@ -24,12 +24,13 @@ class OrchestratorAgent:
         "experimenter": "v2",
     }
 
-    def __init__(self, database, rag_service, llm_client, settings):
+    def __init__(self, database, rag_service, llm_client, settings, kg_service=None):
         self.database = database
         self.rag = rag_service
         self.llm = llm_client
         self.settings = settings
-        self.analyst = AnalystAgent(database, rag_service, llm_client)
+        self.kg = kg_service
+        self.analyst = AnalystAgent(database, rag_service, llm_client, kg_service=kg_service)
         self.modeler = ModelerAgent(llm_client)
         external = (
             ExternalChecker(settings.external_checker_command)

@@ -1,188 +1,211 @@
 """
-ETL Ingestion Script: Populate Clean Neo4j Heterogeneous Knowledge Graph from 82 BPMN Datasets.
+ETL Ingestion Script: Comprehensive Ingestion of all 82 BPMN Processes into Neo4j Knowledge Graph.
+
+Populates:
+1. Process Nodes (SHA-256 process_id, folder_name, name, domain, cluster)
+2. Tasks & Gateways (extracted via BpmnGraph from XML)
+3. Sequence Flows (connecting Tasks, Gateways, Events)
+4. Business Rules & GOVERNED_BY Relationships (binding tasks to normative rules)
+5. Resource Roles & HAS_RESOURCE Relationships (capacities, human roles, metrics)
+6. Decision Precedents & HAS_PRECEDENT Relationships (historical approved/rejected adaptation cases)
 """
 
-import os
-import sys
-import re
-import xml.etree.ElementTree as ET
-from pathlib import Path
+from __future__ import annotations
 import logging
+import os
+from pathlib import Path
+import sys
 
-# Ensure src is on path
 project_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(project_root / "src"))
 
+from bpmn_adapt.bpmn.graph import BpmnGraph
+from bpmn_adapt.ingestion.discovery import ingest_folder
 from bpmn_adapt.retrieval.knowledge_graph import BPMNKnowledgeGraphService
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger("neo4j_etl")
+logger = logging.getLogger("neo4j_full_etl")
 
 
-def parse_bpmn_xml(bpmn_path: Path):
-    tasks = []
-    gateways = []
-    flows = []
-
-    if not bpmn_path.exists():
-        return tasks, gateways, flows
-
-    try:
-        tree = ET.parse(bpmn_path)
-        root = tree.getroot()
-        for elem in root.iter():
-            tag = elem.tag.split("}")[-1] if "}" in elem.tag else elem.tag
-            elem_id = elem.attrib.get("id", "")
-            elem_name = elem.attrib.get("name", elem_id)
-
-            if "task" in tag.lower():
-                tasks.append({"id": elem_id, "name": elem_name.strip(), "type": tag})
-            elif "gateway" in tag.lower():
-                gateways.append({"id": elem_id, "name": elem_name.strip(), "type": tag})
-            elif tag == "sequenceFlow":
-                flows.append({
-                    "id": elem_id,
-                    "source_ref": elem.attrib.get("sourceRef", ""),
-                    "target_ref": elem.attrib.get("targetRef", "")
-                })
-    except Exception as e:
-        logger.warning("Error parsing BPMN at %s: %s", bpmn_path, e)
-
-    return tasks, gateways, flows
-
-
-def parse_rules_file(rules_path: Path):
-    rules = []
-    if not rules_path.exists():
-        return rules
-
-    content = rules_path.read_text(encoding="utf-8-sig", errors="ignore")
-    lines = content.splitlines()
-    cur_rule = None
-
-    for line in lines:
-        line_str = line.strip()
-        if not line_str or line_str.startswith("#"):
-            continue
-
-        # Match: 1. Rule text, Rule 1: text, R1: text
-        m = re.match(r"^(\d+\.|\bRule\s*\d+:?|\bR\d+:?)\s*(.*)", line_str, re.IGNORECASE)
-        if m:
-            prefix = m.group(1).rstrip(":.").strip()
-            rid = f"R{prefix}" if prefix.isdigit() else prefix
-            text = m.group(2).strip()
-            cur_rule = {
-                "rule_id": rid,
-                "text": text,
-                "governed_elements": [],
-                "category": "REGULATORY_COMPLIANCE"
-            }
-            rules.append(cur_rule)
-        elif cur_rule:
-            cur_rule["text"] += " " + line_str
-
-    return rules
-
-
-def parse_resources_file(resources_path: Path):
-    resources = []
-    if not resources_path.exists():
-        return resources
-
-    content = resources_path.read_text(encoding="utf-8-sig", errors="ignore")
-    for line in content.splitlines():
-        line_str = line.strip()
-        if not line_str or line_str.startswith("#"):
-            continue
-        parts = line_str.split(":", 1)
-        name = parts[0].strip()
-        cap = parts[1].strip() if len(parts) > 1 else ""
-        resources.append({"name": name, "capacity": cap, "type": "HUMAN_ROLE"})
-
-    return resources
-
-
-def run_etl(neo4j_uri="bolt://localhost:7687", auth=("neo4j", "123456789")):
+def run_full_etl(neo4j_uri="bolt://127.0.0.1:7687", auth=("neo4j", "123456789")):
     dataset_dir = project_root / "dataset"
     if not dataset_dir.exists():
-        logger.error("Dataset directory not found at %s", dataset_dir)
-        return
+        dataset_dir = Path("E:/Implemention_dataset enriched")
 
+    logger.info("Initializing Neo4j Knowledge Graph Service at %s...", neo4j_uri)
     kg = BPMNKnowledgeGraphService(uri=neo4j_uri, auth=auth)
-    logger.info("Attempting connection to Neo4j at %s...", neo4j_uri)
     if not kg.connect():
-        logger.error("Could not connect to Neo4j.")
-        return
+        raise RuntimeError(f"Could not connect to Neo4j at {neo4j_uri}")
 
+    logger.info("Setting up schema constraints and indexes...")
     kg.initialize_schema()
 
-    process_dirs = sorted([d for d in dataset_dir.iterdir() if d.is_dir()])
-    logger.info("Found %d process datasets to ingest.", len(process_dirs))
+    process_dirs = sorted([d for d in dataset_dir.iterdir() if d.is_dir() and not d.name.startswith(".")])
+    logger.info("Discovered %d process datasets to ingest.", len(process_dirs))
 
-    ingested = 0
-    total_rules_count = 0
-    total_tasks_count = 0
+    total_tasks = 0
+    total_gateways = 0
+    total_flows = 0
+    total_rules = 0
+    total_resources = 0
+    total_precedents = 0
 
-    for pdir in process_dirs:
-        pid = pdir.name
-        cluster = "Pmo" if "pmo" in pid.lower() else ("Mangler" if "mangler" in pid.lower() else "Camunda")
-        domain = "Banking/Finance" if "credit" in pid.lower() or "scoring" in pid.lower() else "General Business"
+    with kg._driver.session(database=kg.database) as session:
+        for idx, pdir in enumerate(process_dirs, 1):
+            fname = pdir.name
+            try:
+                bundle = ingest_folder(pdir)
+            except Exception as e:
+                logger.warning("Could not ingest folder %s: %s", fname, e)
+                continue
 
-        # BPMN file discovery
-        bpmn_file = pdir / "model.bpmn"
-        if not bpmn_file.exists():
-            xmls = list(pdir.glob("*.bpmn"))
-            if xmls:
-                bpmn_file = xmls[0]
+            pid = bundle.definition.process_id
+            name = bundle.definition.name
+            cluster = "Pmo" if "pmo" in fname.lower() else ("Mangler" if "mangler" in fname.lower() else "Camunda")
+            domain = "Banking/Finance" if any(w in fname.lower() for w in ("credit", "scoring", "audit")) else "General Business"
 
-        tasks, gateways, flows = parse_bpmn_xml(bpmn_file)
+            # Parse BPMN Graph
+            graph = BpmnGraph.from_xml(bundle.bpmn_xml)
 
-        # Rules discovery
-        rules_file = pdir / "Business_Rules.txt"
-        if not rules_file.exists():
-            rules_file = pdir / "Rules.txt"
-        rules = parse_rules_file(rules_file)
+            tasks = []
+            gateways = []
+            flows = []
 
-        # Auto-detect governed elements for each rule based on task mentions
-        for r in rules:
-            r_text_low = r["text"].lower()
-            for t in tasks:
-                t_name = t.get("name", "").strip()
-                if len(t_name) > 3 and (t_name.lower() in r_text_low or any(w in r_text_low for w in t_name.lower().split() if len(w) > 4)):
-                    r["governed_elements"].append(t_name)
+            for n in graph.nodes.values():
+                k_low = n.kind.lower()
+                clean_name = n.name.strip() if n.name else n.element_id
+                if "task" in k_low:
+                    tasks.append({"id": n.element_id, "name": clean_name, "type": n.kind})
+                elif "gateway" in k_low:
+                    gateways.append({"id": n.element_id, "name": clean_name, "type": n.kind})
 
-        # Resources discovery
-        res_file = pdir / "Resources.txt"
-        resources = parse_resources_file(res_file)
+            for f in graph.flows.values():
+                flows.append({
+                    "id": f.element_id,
+                    "source_ref": f.source_ref,
+                    "target_ref": f.target_ref,
+                })
 
-        kg.ingest_process_topology(
-            process_id=pid,
-            name=pid,
-            domain=domain,
-            cluster=cluster,
-            tasks=tasks,
-            gateways=gateways,
-            flows=flows,
-            rules=rules,
-            resources=resources,
-        )
+            # Rules and Governed Elements
+            rules = []
+            for r in bundle.definition.rules:
+                r_text_low = r.text.lower()
+                gov_elems = []
+                for t in tasks:
+                    t_name = t["name"]
+                    if len(t_name) > 3 and (t_name.lower() in r_text_low or any(w in r_text_low for w in t_name.lower().split() if len(w) > 4)):
+                        gov_elems.append(t_name)
+                rules.append({
+                    "rule_id": r.rule_id,
+                    "text": r.text,
+                    "governed_elements": gov_elems,
+                    "category": "REGULATORY_COMPLIANCE",
+                })
 
-        total_rules_count += len(rules)
-        total_tasks_count += len(tasks)
-        ingested += 1
+            # Resources
+            resources = []
+            for res in bundle.definition.resources:
+                resources.append({
+                    "name": res.name,
+                    "capacity": str(res.value),
+                    "type": "RESOURCE_SPEC",
+                })
 
-        if ingested % 10 == 0 or ingested == len(process_dirs):
-            logger.info(
-                "Ingested %d / %d processes (Total Tasks: %d, Total Rules: %d).",
-                ingested, len(process_dirs), total_tasks_count, total_rules_count
+            # Ingest Topology into Neo4j
+            kg.ingest_process_topology(
+                process_id=pid,
+                name=name,
+                domain=domain,
+                cluster=cluster,
+                tasks=tasks,
+                gateways=gateways,
+                flows=flows,
+                rules=rules,
+                resources=resources,
+                folder_name=fname,
             )
 
+            # Ingest Historical Decision Precedents from RagData.txt
+            prec_count = 0
+            for prec_idx, rec in enumerate(bundle.rag_records, 1):
+                case_id = f"prec-{fname}-{rec.get('id', prec_idx)}"
+                op = rec.get("operation_type", "REMOVE").replace("RE_ADD", "RE_ADD")
+                dec = rec.get("decision", "UNKNOWN")
+                target = rec.get("target_bpmn_element", "") or rec.get("target", "")
+                reason = rec.get("decision_reason", "") or rec.get("reason", "")
+                rules_cited = rec.get("referenced_rules", "")
+
+                session.run(
+                    """
+                    MERGE (dp:DecisionPrecedent {case_id: $cid})
+                    ON CREATE SET dp.decision = $dec,
+                                  dp.process_id = $pid,
+                                  dp.folder_name = $fname,
+                                  dp.target_element_name = $target,
+                                  dp.operation = $op,
+                                  dp.reason = $reason,
+                                  dp.referenced_rules = $rules_cited
+                    ON MATCH SET dp.decision = $dec,
+                                 dp.process_id = $pid,
+                                 dp.folder_name = $fname,
+                                 dp.target_element_name = $target,
+                                 dp.operation = $op,
+                                 dp.reason = $reason,
+                                 dp.referenced_rules = $rules_cited
+                    WITH dp
+                    MATCH (p:Process {process_id: $pid})
+                    MERGE (p)-[:HAS_PRECEDENT]->(dp)
+                    """,
+                    cid=case_id,
+                    dec=dec,
+                    pid=pid,
+                    fname=fname,
+                    target=target,
+                    op=op,
+                    reason=reason,
+                    rules_cited=rules_cited,
+                )
+
+                if target:
+                    session.run(
+                        """
+                        MATCH (t:Task {process_id: $pid})
+                        WHERE toLower(t.name) CONTAINS toLower($tgt) OR toLower($tgt) CONTAINS toLower(t.name)
+                        MATCH (dp:DecisionPrecedent {case_id: $cid})
+                        MERGE (dp)-[:TARGETS_TASK]->(t)
+                        """,
+                        pid=pid,
+                        tgt=target,
+                        cid=case_id,
+                    )
+
+                prec_count += 1
+
+            total_tasks += len(tasks)
+            total_gateways += len(gateways)
+            total_flows += len(flows)
+            total_rules += len(rules)
+            total_resources += len(resources)
+            total_precedents += prec_count
+
+            if idx % 10 == 0 or idx == len(process_dirs):
+                logger.info(
+                    "[%d/%d] Ingested '%s' -> Tasks: %d, Gateways: %d, Flows: %d, Rules: %d, Resources: %d, Precedents: %d",
+                    idx, len(process_dirs), fname, len(tasks), len(gateways), len(flows), len(rules), len(resources), prec_count
+                )
+
     kg.close()
-    logger.info("Knowledge Graph ETL completed successfully.")
+    logger.info("=" * 60)
+    logger.info("🎉 FULL NEO4J KNOWLEDGE GRAPH INGESTION COMPLETE!")
+    logger.info("Total Processes Ingested: %d", len(process_dirs))
+    logger.info("Total Tasks:             %d", total_tasks)
+    logger.info("Total Gateways:          %d", total_gateways)
+    logger.info("Total Sequence Flows:    %d", total_flows)
+    logger.info("Total Business Rules:    %d", total_rules)
+    logger.info("Total Resources:         %d", total_resources)
+    logger.info("Total Precedents:        %d", total_precedents)
+    logger.info("=" * 60)
 
 
 if __name__ == "__main__":
-    uri = os.environ.get("NEO4J_URI", "bolt://localhost:7687")
-    user = os.environ.get("NEO4J_USER", "neo4j")
-    pwd = os.environ.get("NEO4J_PASSWORD", "123456789")
-    run_etl(neo4j_uri=uri, auth=(user, pwd))
+    run_full_etl()

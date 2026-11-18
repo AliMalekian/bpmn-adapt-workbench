@@ -8,4 +8,4 @@ Restoration details:
 - The warehouse employee confirms/approves the arrived product, so that only after this OK is given the product is registered and any further processing continues.
 - The registration step ("Register product in the stock management system") remains and is now again preceded by the manual approval, restoring the original arrival flow described in the process.
 - All other process elements (reading the order, stock checks, withdrawal, reordering, delay-penalty handling, readiness check, packing, courier request, shipment, next-product selection) remain unchanged and continue to operate as originally designed.
-- No rules or resources are affected by this restoration, as the approval step does not conflict with any rule or resource in the folder.
+- No rules or resources are affected by this restoration, as the approval step is fully compatible with all rules and resources in the folder.

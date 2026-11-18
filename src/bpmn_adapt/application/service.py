@@ -24,10 +24,18 @@ from bpmn_adapt.engine.dry_run import DryRunEngineAdapter
 
 
 class RuntimeAdaptationApplication:
-    def __init__(self,settings,database,llm,embedding):
+    def __init__(self,settings,database,llm,embedding,kg_service=None):
         self.settings=settings; self.database=database; self.llm=llm
         self.rag=HybridRAGService(database,embedding,default_mode=settings.rag_mode)
-        self.orchestrator=OrchestratorAgent(database,self.rag,llm,settings)
+        if kg_service is None:
+            try:
+                from bpmn_adapt.retrieval.knowledge_graph import BPMNKnowledgeGraphService
+                kg_service = BPMNKnowledgeGraphService()
+                kg_service.connect()
+            except Exception:
+                kg_service = None
+        self.kg = kg_service
+        self.orchestrator=OrchestratorAgent(database,self.rag,llm,settings,kg_service=self.kg)
         self.engine=self._build_engine(settings)
 
     @staticmethod
@@ -73,12 +81,15 @@ class RuntimeAdaptationApplication:
         if settings.embedding_provider == "hash_test":
             return cls(settings,database,llm,HashEmbeddingClient())
         if settings.embedding_provider == "sentence_transformers":
+            from bpmn_adapt.retrieval.knowledge_graph import BPMNKnowledgeGraphService
             instance = cls.__new__(cls)
             instance.settings = settings
             instance.database = database
             instance.llm = llm
             instance.rag = HybridRAGService.from_settings(database, settings)
-            instance.orchestrator = OrchestratorAgent(database, instance.rag, llm, settings)
+            instance.kg = BPMNKnowledgeGraphService()
+            instance.kg.connect()
+            instance.orchestrator = OrchestratorAgent(database, instance.rag, llm, settings, kg_service=instance.kg)
             instance.engine = instance._build_engine(settings)
             return instance
         database.close()
@@ -124,7 +135,7 @@ class RuntimeAdaptationApplication:
         bundle=self.ingest(folder); request=self._request(bundle,text,target,operation)
         run_id=str(uuid.uuid4()); self.database.create_run(run_id,request.process_id,self.settings.fingerprint(),"analysis")
         self.database.save_request(run_id,request)
-        decision=AnalystAgent(self.database,self.rag,self.llm).analyse(request,run_id=run_id)
+        decision=AnalystAgent(self.database,self.rag,self.llm,kg_service=getattr(self, "kg", None)).analyse(request,run_id=run_id)
         self.database.save_decision(run_id,decision); self.database.update_run_status(run_id,"analysis_complete")
         return decision
 

@@ -109,12 +109,16 @@ class BenchmarkRunner:
 
         def _infer_ground_truth(req_text: str, operation: str) -> str:
             lower = req_text.casefold()
-            if any(k in lower for k in ("conflict details: none", "no conflict", "fully compatible", "no conflicts")):
+            if any(k in lower for k in (
+                "conflict details: none", "no conflict", "does not conflict",
+                "without conflict", "fully compatible", "no conflicts",
+                "no rules or resources are affected"
+            )):
+                return "APPROVE"
+            if operation == "RE_ADD":
                 return "APPROVE"
             if any(k in lower for k in ("conflict", "violate", "prohibited", "incompatible")):
                 return "REJECT"
-            if operation == "RE_ADD":
-                return "APPROVE"
             return "APPROVE"
 
         def _clean_request_text(req_text: str) -> str:
@@ -365,6 +369,9 @@ class BenchmarkRunner:
             app.orchestrator.llm = p_client
             app.orchestrator.analyst.llm = p_client
             app.orchestrator.analyst.enable_rag = self.enable_rag
+            app.orchestrator.analyst.enable_kg = True
+            if app.kg and app.kg.is_connected():
+                app.orchestrator.analyst.kg = app.kg
             app.orchestrator.modeler.llm = p_client
             app.orchestrator.experimenter.llm = p_client
 

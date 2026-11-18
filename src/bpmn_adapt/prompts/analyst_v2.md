@@ -120,6 +120,13 @@ When `historical_rag_evidence` is provided:
   - Resource items that define metric limits, maximum queue sizes (e.g., "Maximum guests waiting in line: 40"), check frequencies (e.g., "check frequency: real-time"), or administrative fee rates (e.g., "restock fee: 10%") are descriptive tracking metrics and SLA boundaries; they DO NOT constitute affirmative procedural mandates commanding that a dedicated manual task or intermediate catch-event must physically exist in the workflow.
   - When the operational rules declare the procedural step optional or permissible to bypass, the presence of an associated metric parameter in `resource_capacities` is NOT a violation and MUST NOT be used to reject the change!
 
+### 11. Knowledge Graph Structural Context & Multi-Hop Path Reasoning
+- When `knowledge_graph_structural_context` is provided:
+  - It represents the authoritative topological graph of the workflow directly from Neo4j.
+  - `structural_path` shows the exact incoming and outgoing control flows and decision gateways connected to the target element.
+  - `directly_governing_rules` lists the rules with explicit normative control over this node.
+  - Use this topological path to determine if removing or modifying the target node breaks a critical sequence flow or violates an affirmative governing rule. If an affirmative governing rule is violated, you MUST REJECT under `RULE_VIOLATION`.
+
 ## Analyst Do's & Don'ts Checklist
 
 ### DO:

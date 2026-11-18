@@ -21,13 +21,25 @@ VALID_REJECTION_CATEGORIES = {
 
 
 class AnalystAgent:
-    def __init__(self, database, rag_service, llm_client, planner=None, prompt_name: str = "analyst", enable_rag: bool = True):
+    def __init__(
+        self,
+        database,
+        rag_service,
+        llm_client,
+        planner=None,
+        prompt_name: str = "analyst",
+        enable_rag: bool = True,
+        kg_service=None,
+        enable_kg: bool = True,
+    ):
         self.database = database
         self.rag = rag_service
         self.llm = llm_client
         self.planner = planner
         self.prompt_name = prompt_name
         self.enable_rag = enable_rag
+        self.kg = kg_service
+        self.enable_kg = enable_kg
 
     def analyse(self, request: AdaptationRequest, *, run_id: str, planning_context=None) -> FeasibilityDecision:
         rules = self.database.get_rules(request.process_id)
@@ -179,6 +191,14 @@ class AnalystAgent:
             balanced_evidence.append(max(negatives, key=lambda x: x["relevance_score"]))
         compact_evidence = balanced_evidence
 
+        # Knowledge Graph Subgraph & Structural Neighborhood Inspection
+        kg_context = {}
+        if getattr(self, "enable_kg", True) and getattr(self, "kg", None) is not None:
+            try:
+                kg_context = self.kg.inspect_subgraph(request.process_id, request.target_element)
+            except Exception as e:
+                logger.warning("Error inspecting Knowledge Graph subgraph: %s", e)
+
         user_payload_dict = {
             "adaptation_request": {
                 "process_id": request.process_id,
@@ -194,6 +214,16 @@ class AnalystAgent:
             "runtime_token_context": runtime_token_context,
             "historical_rag_evidence": compact_evidence,
         }
+
+        if kg_context and kg_context.get("found_in_graph"):
+            user_payload_dict["knowledge_graph_structural_context"] = {
+                "matched_node": kg_context.get("matched_name"),
+                "structural_path": kg_context.get("structural_path"),
+                "incoming_nodes": kg_context.get("incoming_nodes"),
+                "outgoing_nodes": kg_context.get("outgoing_nodes"),
+                "directly_governing_rules": kg_context.get("governing_rules"),
+                "governing_rules_detail": kg_context.get("governing_rule_details"),
+            }
 
         system_prompt = load_prompt(self.prompt_name)
         user_payload = json.dumps(user_payload_dict, ensure_ascii=False)
