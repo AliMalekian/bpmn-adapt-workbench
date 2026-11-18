@@ -56,11 +56,17 @@ class ModelerAgent:
         import re
         semantic_bpmn_xml = re.sub(r'<bpmndi:BPMNDiagram[\s\S]*?</bpmndi:BPMNDiagram>', '', current_bpmn_xml)
 
+        dec_dict = decision.to_dict()
+        if "reason" in dec_dict and isinstance(dec_dict["reason"], str) and len(dec_dict["reason"]) > 500:
+            dec_dict["reason"] = dec_dict["reason"][:500] + "..."
+
+        existing_nodes = [{"id": n.element_id, "name": n.name, "kind": n.kind} for n in list(graph.nodes.values())[:60]]
+
         payload = {
-            "decision": decision.to_dict(),
+            "decision": dec_dict,
             "experiment_feedback": list(feedback or ()),
             "current_bpmn_xml": semantic_bpmn_xml,
-            "existing_nodes": [{"id": n.element_id, "name": n.name, "kind": n.kind} for n in graph.nodes.values()],
+            "existing_nodes": existing_nodes,
         }
 
         system_prompt = load_prompt(self.prompt_name)

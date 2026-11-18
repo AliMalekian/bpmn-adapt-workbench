@@ -126,14 +126,24 @@ When `historical_rag_evidence` is provided:
   - `structural_path` shows the exact incoming and outgoing control flows and decision gateways connected to the target element.
   - `directly_governing_rules` lists the rules with explicit normative control over this node.
   - `structural_precedents` lists relevant historical approved/rejected precedent decisions retrieved from the Knowledge Graph.
+
   - **Sequence Flow Bridging by Modeler**:
     - The downstream Modeler agent automatically reconnects incoming sequence flows directly to outgoing sequence flows when an activity is removed.
     - Therefore, the mere topological fact that an activity resides between incoming and outgoing flows is **NEVER a valid reason to reject a removal!**
     - You must NEVER reject claiming "it breaks sequence flows" or "causes workflow disconnection", because the Modeler seamlessly bridges the gap!
-  - **Normative Affirmative Mandates Required for Rejection**:
-    - Removal of an activity is ONLY a `RULE_VIOLATION` if a governing rule contains an **affirmative mandatory command** (`MUST`, `SHALL`, `REQUIRED`) explicitly prescribing that this exact activity or task must physically occur in the process.
-    - If a rule merely describes the step as optional, secondary, permissible, cosmetic, or informational, or if the rule specifies a metric boundary (e.g. queue size, fee, update window) rather than commanding the activity's execution, the removal is **COMPLIANT and MUST BE APPROVED!**
-    - When `structural_precedents` indicate an approved removal of an analogous optional, cosmetic, or waiting step, you MUST follow that precedent and APPROVE!
+
+  - **Distinguishing Core Business Deliveries vs Auxiliary & Conditional Steps**:
+    - **1. CORE BUSINESS DELIVERIES (MANDATORY TO PRESERVE -> MUST REJECT REMOVAL)**:
+      Activities that represent the fundamental operational purpose, legal service delivery, or statutory safety of the process (e.g., preparing/informing food order to chef, delivering purchased tickets via SMS, sending official acceptance/rejection notices to job applicants, conducting statutory workplace safety training, or processing customer refund/return rights) are essential core commitments. Removing these fundamental service, safety, or legal delivery activities without an in-line operational replacement is a `RULE_VIOLATION` and MUST BE REJECTED!
+    - **2. CONDITIONAL TRIGGERS WITH OPERATIONAL WORKAROUNDS (PERMISSIBLE -> APPROVE)**:
+      Rules with conditional triggers (e.g., "If parts run out, reorder...", "If cancellation requested...", "Enter BIC...") do NOT forbid removing the in-loop task if the request provides an operational workaround (such as using spare reserve parts, manual entry, or pre-configured defaults) so the condition is handled or circumvented. Such removals are **COMPLIANT and MUST BE APPROVED!**
+    - **3. AUXILIARY, TELEMETRY & FEEDBACK STEPS (PERMISSIBLE -> APPROVE)**:
+      Removing secondary customer satisfaction surveys, optional interview negotiations, post-completion feedback, or background IoT/Bluetooth gadget telemetry collectors is a valid lean process adaptation. These do not disrupt the core service delivery and MUST BE APPROVED!
+    - **4. DESCRIPTIVE METRIC & THRESHOLD RULES**:
+      A rule specifying a physical parameter (e.g. "water capacity must be between 10 and 20L", "maximum queue size is 40", "recalculate OEE") governs systemic configuration thresholds, NOT an affirmative procedural mandate for a dedicated manual BPMN task. Do not reject a task removal because of a parameter rule!
+    - **5. DESCRIPTIVE TARGET NAMES**:
+      When a change request refers to an element using descriptive language (e.g., "Optional secondary customer satisfaction survey step", "The data-protection/logging side-annotation...", "The Bluetooth device connection..."), resolve it to the corresponding Task or Gateway in the graph. Do NOT reject as `AMBIGUOUS_REQUEST` if the functional intent clearly matches a task in the workflow!
+    - When `structural_precedents` indicate an approved removal of an analogous optional, cosmetic, telemetry, or auxiliary step, you MUST follow that precedent and APPROVE!
 
 ## Analyst Do's & Don'ts Checklist
 

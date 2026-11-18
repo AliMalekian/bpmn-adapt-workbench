@@ -289,8 +289,9 @@ class BPMNKnowledgeGraphService:
         with self._driver.session(database=self.database) as session:
             # 1. Target node, neighbors, and rules
             cypher = """
-            MATCH (t:Task)
-            WHERE (t.process_id = $pid OR t.folder_name = $pid)
+            MATCH (t)
+            WHERE (t:Task OR t:Gateway)
+              AND (t.process_id = $pid OR t.folder_name = $pid)
               AND (
                 toLower(t.name) CONTAINS toLower($tgt)
                 OR toLower($tgt) CONTAINS toLower(t.name)

@@ -93,6 +93,14 @@ class AnalystAgent:
                         if cand.name and (cand.name.lower() in t_low or t_low in cand.name.lower()):
                             node = cand
                             break
+                    if not node:
+                        tgt_words = set(w for w in t_low.split() if len(w) > 4)
+                        for cand in graph.nodes.values():
+                            if cand.name:
+                                cand_words = set(w for w in cand.name.lower().split() if len(w) > 4)
+                                if cand_words & tgt_words:
+                                    node = cand
+                                    break
                 if node:
                     succ_ids = list(graph.successors(node.element_id))
                     pred_ids = list(graph.predecessors(node.element_id))
