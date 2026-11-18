@@ -193,9 +193,13 @@ class AnalystAgent:
 
         # Knowledge Graph Subgraph & Structural Neighborhood Inspection
         kg_context = {}
+        kg_precedents = []
         if getattr(self, "enable_kg", True) and getattr(self, "kg", None) is not None:
             try:
                 kg_context = self.kg.inspect_subgraph(request.process_id, request.target_element)
+                kg_precedents = self.kg.find_analogous_precedents(
+                    request.process_id, request.operation.value, request.target_element, limit=2
+                )
             except Exception as e:
                 logger.warning("Error inspecting Knowledge Graph subgraph: %s", e)
 
@@ -216,6 +220,16 @@ class AnalystAgent:
         }
 
         if kg_context and kg_context.get("found_in_graph"):
+            prec_list = [
+                {
+                    "precedent_id": p.precedent_id,
+                    "decision": p.decision,
+                    "target_element": p.target_element,
+                    "explanation": p.explanation,
+                    "governing_rules": p.governing_rules,
+                }
+                for p in kg_precedents
+            ]
             user_payload_dict["knowledge_graph_structural_context"] = {
                 "matched_node": kg_context.get("matched_name"),
                 "structural_path": kg_context.get("structural_path"),
@@ -223,6 +237,7 @@ class AnalystAgent:
                 "outgoing_nodes": kg_context.get("outgoing_nodes"),
                 "directly_governing_rules": kg_context.get("governing_rules"),
                 "governing_rules_detail": kg_context.get("governing_rule_details"),
+                "structural_precedents": prec_list,
             }
 
         system_prompt = load_prompt(self.prompt_name)

@@ -352,48 +352,59 @@ class BPMNKnowledgeGraphService:
         target_norm = target_element.strip().lower()
 
         with self._driver.session(database=self.database) as session:
-            # Query for structural matches:
-            # Matches precedents where the precedent target element shared similar Rule-Gateway-Task meta-paths
+            # 1. Targeted structural match
             cypher = """
-            MATCH (dp:DecisionPrecedent)-[:RESOLVED_REQUEST]->(req:AdaptationRequest)
-            WHERE req.operation = $op
-            OPTIONAL MATCH (req)-[:TARGETS_ELEMENT]->(pt:Task)-[:GOVERNED_BY]->(pr:BusinessRule)
-            OPTIONAL MATCH (pt)-[:SEQUENCE_FLOW*1..2]-(pgw:Gateway)
+            MATCH (dp:DecisionPrecedent)
+            WHERE (dp.process_id = $pid OR dp.folder_name = $pid)
+              AND dp.operation = $op
+              AND (
+                toLower(dp.target_element_name) CONTAINS toLower($tgt)
+                OR toLower($tgt) CONTAINS toLower(dp.target_element_name)
+                OR any(w IN split(toLower($tgt), ' ') WHERE size(w) > 4 AND toLower(dp.target_element_name) CONTAINS w)
+              )
+            OPTIONAL MATCH (dp)-[:TARGETS_TASK]->(t:Task)-[:GOVERNED_BY]->(r:BusinessRule)
             RETURN dp.case_id AS case_id,
                    dp.decision AS decision,
-                   req.operation AS operation,
-                   req.target_element_name AS target_name,
-                   collect(DISTINCT pr.rule_id) AS rule_ids,
-                   collect(DISTINCT pr.category) AS rule_categories,
-                   collect(DISTINCT pgw.gateway_type) AS gateway_types,
-                   dp.conflict_explanation AS explanation,
-                   dp.reasoning_chain AS chain
+                   dp.operation AS operation,
+                   dp.target_element_name AS target_name,
+                   dp.reason AS explanation,
+                   dp.referenced_rules AS referenced_rules,
+                   collect(DISTINCT r.rule_id) AS rule_ids
             LIMIT $limit
             """
-            cursor = session.run(cypher, op=op_norm, limit=limit)
-            for row in cursor:
-                rules = [r for r in row["rule_ids"] if r]
-                cats = [c for c in row["rule_categories"] if c]
-                gws = [g for g in row["gateway_types"] if g]
+            cursor = session.run(cypher, pid=current_process_id, op=op_norm, tgt=target_norm, limit=limit)
+            records = list(cursor)
 
-                rule_summary = ", ".join(rules) if rules else "General Compliance"
-                chain = row["chain"] or (
-                    f"Target({row['target_name']}) -> "
-                    f"Gateways({','.join(gws) if gws else 'None'}) -> "
-                    f"GoverningRules({rule_summary}) => Decision({row['decision']})"
-                )
+            # 2. Contrastive process-level precedents if target not directly matched
+            if not records:
+                contrastive_cypher = """
+                MATCH (dp:DecisionPrecedent)
+                WHERE (dp.process_id = $pid OR dp.folder_name = $pid)
+                  AND dp.operation = $op
+                RETURN dp.case_id AS case_id,
+                       dp.decision AS decision,
+                       dp.operation AS operation,
+                       dp.target_element_name AS target_name,
+                       dp.reason AS explanation,
+                       dp.referenced_rules AS referenced_rules,
+                       [] AS rule_ids
+                LIMIT $limit
+                """
+                records = list(session.run(contrastive_cypher, pid=current_process_id, op=op_norm, limit=limit))
 
+            for row in records:
+                rules = [r for r in row["rule_ids"] if r] or ([row["referenced_rules"]] if row["referenced_rules"] else [])
                 path = PrecedentReasoningPath(
                     precedent_id=row["case_id"] or "PRECEDENT_UNKNOWN",
                     decision=row["decision"] or "APPROVE",
                     operation=row["operation"] or op_norm,
                     target_element=row["target_name"] or "",
-                    meta_path_type="Task-Rule-Gateway-Structural-Analogy",
+                    meta_path_type="Process-Task-Precedent-Graph",
                     structural_similarity=0.95,
                     governing_rules=rules,
                     resource_constraints=[],
-                    reasoning_chain=chain,
-                    explanation=row["explanation"] or "Consistent structural governance pattern.",
+                    reasoning_chain=f"Target({row['target_name']}) -> Rules({', '.join(rules) if rules else 'None'}) => Decision({row['decision']})",
+                    explanation=row["explanation"] or "Consistent governance precedent from Knowledge Graph.",
                 )
                 results.append(path)
 

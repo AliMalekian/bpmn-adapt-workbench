@@ -120,12 +120,20 @@ When `historical_rag_evidence` is provided:
   - Resource items that define metric limits, maximum queue sizes (e.g., "Maximum guests waiting in line: 40"), check frequencies (e.g., "check frequency: real-time"), or administrative fee rates (e.g., "restock fee: 10%") are descriptive tracking metrics and SLA boundaries; they DO NOT constitute affirmative procedural mandates commanding that a dedicated manual task or intermediate catch-event must physically exist in the workflow.
   - When the operational rules declare the procedural step optional or permissible to bypass, the presence of an associated metric parameter in `resource_capacities` is NOT a violation and MUST NOT be used to reject the change!
 
-### 11. Knowledge Graph Structural Context & Multi-Hop Path Reasoning
+### 11. Knowledge Graph Structural Context, Sequence Bridging & Multi-Hop Path Reasoning
 - When `knowledge_graph_structural_context` is provided:
   - It represents the authoritative topological graph of the workflow directly from Neo4j.
   - `structural_path` shows the exact incoming and outgoing control flows and decision gateways connected to the target element.
   - `directly_governing_rules` lists the rules with explicit normative control over this node.
-  - Use this topological path to determine if removing or modifying the target node breaks a critical sequence flow or violates an affirmative governing rule. If an affirmative governing rule is violated, you MUST REJECT under `RULE_VIOLATION`.
+  - `structural_precedents` lists relevant historical approved/rejected precedent decisions retrieved from the Knowledge Graph.
+  - **Sequence Flow Bridging by Modeler**:
+    - The downstream Modeler agent automatically reconnects incoming sequence flows directly to outgoing sequence flows when an activity is removed.
+    - Therefore, the mere topological fact that an activity resides between incoming and outgoing flows is **NEVER a valid reason to reject a removal!**
+    - You must NEVER reject claiming "it breaks sequence flows" or "causes workflow disconnection", because the Modeler seamlessly bridges the gap!
+  - **Normative Affirmative Mandates Required for Rejection**:
+    - Removal of an activity is ONLY a `RULE_VIOLATION` if a governing rule contains an **affirmative mandatory command** (`MUST`, `SHALL`, `REQUIRED`) explicitly prescribing that this exact activity or task must physically occur in the process.
+    - If a rule merely describes the step as optional, secondary, permissible, cosmetic, or informational, or if the rule specifies a metric boundary (e.g. queue size, fee, update window) rather than commanding the activity's execution, the removal is **COMPLIANT and MUST BE APPROVED!**
+    - When `structural_precedents` indicate an approved removal of an analogous optional, cosmetic, or waiting step, you MUST follow that precedent and APPROVE!
 
 ## Analyst Do's & Don'ts Checklist
 
