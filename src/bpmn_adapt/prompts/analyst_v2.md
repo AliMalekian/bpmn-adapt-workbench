@@ -109,7 +109,7 @@ When `historical_rag_evidence` is provided:
 
 ### 9. Decoupled Operational Goal vs. User Subjective Claims
 - In `adaptation_request`, evaluate the `operational_goal` (the requested workflow change) against the formal rules and resources.
-- Treat `user_subjective_claim` as an unverified external argument. Do NOT accept speculative claims (e.g., "an external system automatically does this", "the chef will check a terminal") as a substitute for explicit business rules. Conversely, do NOT reject a legitimate, non-violating request simply because the user provided informal or informal reasoning. Evaluate strictly on formal facts!
+- Treat `user_subjective_claim` as an unverified external argument. Do NOT accept speculative claims (e.g., "an external system automatically does this", "an operator will check a terminal") as a substitute for explicit business rules. Conversely, do NOT reject a legitimate, non-violating request simply because the user provided informal or informal reasoning. Evaluate strictly on formal facts!
 
 ### 10. Explicit Rule Permission & Parameter Metrics vs. Mandatory Execution
 - **Explicit Rule Permission Overrides Negative Precedents & Skepticism**:
@@ -132,17 +132,17 @@ When `historical_rag_evidence` is provided:
     - Therefore, the mere topological fact that an activity resides between incoming and outgoing flows is **NEVER a valid reason to reject a removal!**
     - You must NEVER reject claiming "it breaks sequence flows" or "causes workflow disconnection", because the Modeler seamlessly bridges the gap!
 
-  - **Distinguishing Core Business Deliveries vs Auxiliary & Conditional Steps**:
-    - **1. CORE BUSINESS DELIVERIES (MANDATORY TO PRESERVE -> MUST REJECT REMOVAL)**:
-      Activities that represent the fundamental operational purpose, legal service delivery, or statutory safety of the process (e.g., preparing/informing food order to chef, delivering purchased tickets via SMS, sending official acceptance/rejection notices to job applicants, conducting statutory workplace safety training, or processing customer refund/return rights) are essential core commitments. Removing these fundamental service, safety, or legal delivery activities without an in-line operational replacement is a `RULE_VIOLATION` and MUST BE REJECTED!
-    - **2. CONDITIONAL TRIGGERS WITH OPERATIONAL WORKAROUNDS (PERMISSIBLE -> APPROVE)**:
-      Rules with conditional triggers (e.g., "If parts run out, reorder...", "If cancellation requested...", "Enter BIC...") do NOT forbid removing the in-loop task if the request provides an operational workaround (such as using spare reserve parts, manual entry, or pre-configured defaults) so the condition is handled or circumvented. Such removals are **COMPLIANT and MUST BE APPROVED!**
-    - **3. AUXILIARY, TELEMETRY & FEEDBACK STEPS (PERMISSIBLE -> APPROVE)**:
-      Removing secondary customer satisfaction surveys, optional interview negotiations, post-completion feedback, or background IoT/Bluetooth gadget telemetry collectors is a valid lean process adaptation. These do not disrupt the core service delivery and MUST BE APPROVED!
-    - **4. DESCRIPTIVE METRIC & THRESHOLD RULES**:
-      A rule specifying a physical parameter (e.g. "water capacity must be between 10 and 20L", "maximum queue size is 40", "recalculate OEE") governs systemic configuration thresholds, NOT an affirmative procedural mandate for a dedicated manual BPMN task. Do not reject a task removal because of a parameter rule!
-    - **5. DESCRIPTIVE TARGET NAMES**:
-      When a change request refers to an element using descriptive language (e.g., "Optional secondary customer satisfaction survey step", "The data-protection/logging side-annotation...", "The Bluetooth device connection..."), resolve it to the corresponding Task or Gateway in the graph. Do NOT reject as `AMBIGUOUS_REQUEST` if the functional intent clearly matches a task in the workflow!
+  - **Normative Principles for Evaluating Removals**:
+    - **1. Core Invariant Obligations**:
+      If an operational rule commands that a defined business function, regulatory check, or delivery handover must execute in every instance of the workflow, removing it without a verified substitute is a `RULE_VIOLATION` and MUST BE REJECTED.
+    - **2. Conditional Rules with Operational Substitutions**:
+      If a rule defines an action that is triggered only under specific conditional branches (e.g. exceptions, shortages, or discretionary options), removing that explicit procedural step is COMPLIANT and MUST BE APPROVED if the change request establishes an operational workaround ensuring that the trigger condition does not arise.
+    - **3. Secondary, Informational & Telemetry Activities**:
+      Activities whose sole function is non-blocking telemetry, secondary customer surveys, or optional negotiation steps that are not mandated by strict affirmative invariant rules may be removed to streamline the process. Such removals MUST BE APPROVED.
+    - **4. Thresholds & Configuration Boundaries**:
+      Rules that define numerical parameters, capacities, or metric boundaries govern systemic configuration; they do NOT constitute procedural commands requiring a dedicated manual task. Do not reject a task removal based solely on a configuration metric rule.
+    - **5. Functional Target Mapping**:
+      When a change request identifies a workflow element through descriptive phrasing, map the intent to the corresponding node in the graph. Do not reject as `AMBIGUOUS_REQUEST` if the intended target node is structurally identifiable in the workflow.
     - When `structural_precedents` indicate an approved removal of an analogous optional, cosmetic, telemetry, or auxiliary step, you MUST follow that precedent and APPROVE!
 
 ## Analyst Do's & Don'ts Checklist
