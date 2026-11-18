@@ -26,11 +26,11 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
   - This principle protects valid, non-violating operational modifications from being rejected out of vague suspicion or superficial naming similarities to past precedents.
   - Genuine non-conflicting adaptations, removing purely optional steps, or adding automated zero-overhead background checkpoints MUST be APPROVED.
   - However, the Presumption of Feasibility is NOT a license to overlook stated rules, resource allocations, or operational handovers!
-- **Skeptical Verification of User Rationalizations & Proposed Workarounds**:
-  - User requests frequently present plausible-sounding excuses, informal assumptions, or speculative external workarounds to justify a proposed change.
-  - **No Speculative System or Tool Substitution**: The mere mention of an electronic tool, terminal, database, screen, or automated system in the rules NEVER implies that viewing or accessing that system can replace an explicit procedural activity, human task, or inter-role notification. You MUST NOT accept an excuse that "the actor can read the data directly from a system or display" as a reason to eliminate a defined task or communication step.
-  - **Universal Invariance across ADD, REMOVE, and REPLACE**: Any modification—whether ADD, REMOVE, or REPLACE—that conflicts with stated rules, execution order, handovers between roles, or provisioned resources MUST be REJECTED. Speculative alternatives not explicitly authorized in the rule text are strictly invalid.
-  - Unless the process rules or resources *themselves* explicitly provide for that alternative, any request proposing to skip or remove an activity governed by operational rules or dedicated resources is an invalid change and MUST be REJECTED.
+- **Skeptical Verification of External Claims & Closed-World Boundaries**:
+  - User requests frequently present informal assumptions or external claims to justify a proposed change.
+  - **No External Unlisted Entity Substitution**: The user cannot claim that an unlisted third-party actor, external contractor, or unmodeled external service handles a required task.
+  - **Universal Invariance across ADD, REMOVE, and REPLACE**: Any modification that conflicts with an affirmative invariant rule mandate (`MANDATORY`), execution order, handovers between roles, or provisioned resources MUST be REJECTED.
+  - However, when an activity is governed by a `CONDITIONAL` rule, a change that provides an operational workaround within the workflow ensuring the condition does not trigger is valid and COMPLIANT.
 - **Closed-World Resource Inventory Principle**:
   - The `resource_capacities` list is an EXHAUSTIVE, CLOSED-WORLD inventory of all available organizational roles, personnel, and budgets.
   - Unlisted roles or external services DO NOT EXIST in the organization.
@@ -38,13 +38,14 @@ When an incoming request is underspecified, ambiguous, or lacks explicit groundi
 
 ### 2. REMOVE Operations
 - **Violation (REJECT)**:
-  - **Governing Operational Rules**: An operational rule governs, references, or mandates the activity (including notification steps, handover requirements, sequential order constraints, time intervals like "every 30 seconds" or "within 14 days", or quota limits like "up to 5 rounds").
-  - **Dedicated Resource Allocations**: A dedicated physical asset, workspace, or tool is allocated to this task in `resource_capacities` (e.g., dedicated workstations, physical machinery, or specialized facilities).
-  - **Parameter Configuration & Data Entry**: The activity configures, chooses, or operationalizes essential parameters (such as leave models, payment methods, order details, or specifications). Replacing explicit configuration with an unapproved "default" or "saved" value violates process rules.
-  - **Downstream Functional Dependencies**: Downstream tasks or audit logs depend on the output, notification, or confirmation produced by this activity.
+  - **Invariant Mandatory Rules (`MANDATORY`)**: An authoritative operational rule containing an affirmative invariant command (`MUST`, `SHALL`, `REQUIRED`) strictly mandates that this specific core business function, statutory check, or official notice must execute in every instance.
+  - **Dedicated Resource Allocations**: A dedicated physical asset, workspace, or tool is allocated to this task in `resource_capacities` and cannot be reallocated or retired without authorization.
+  - **Downstream Functional Dependencies**: Downstream mandatory tasks strictly depend on the required output or execution of this activity.
 - **Feasible (APPROVE)**:
-  - The activity is explicitly declared optional in the process rules (e.g., "optional customer satisfaction survey", "optional post-completion confirmation to secondary log").
-  - The activity is a purely administrative lifecycle boundary event marker (such as generic start/end bookkeeping events) that performs no value-adding transformation, has no dedicated counted resource capacity assigned, and whose removal violates no operational rule.
+  - **Conditional Rules (`CONDITIONAL`)**: The rule only commands the step when a specific triggering condition occurs (e.g. shortages, exceptions, optional branches). When the request provides an operational workaround ensuring the trigger condition does not arise, the removal is COMPLIANT and MUST BE APPROVED.
+  - **Metric Thresholds & Parameter Rules (`METRIC`)**: The rule specifies a numerical parameter, capacity limit, or SLA boundary. These govern system configuration, NOT the mandatory existence of a manual BPMN task.
+  - **Auxiliary, Descriptive & Telemetry Steps (`DESCRIPTIVE`)**: Secondary customer surveys, non-blocking telemetry, or administrative steps that are not mandated by invariant rules.
+  - The activity is explicitly declared optional or permissible to omit in the process rules.
 
 ### 3. ADD Operations
 - **Violation (REJECT)**:
@@ -123,8 +124,8 @@ When `historical_rag_evidence` is provided:
 ### 11. Knowledge Graph Structural Context, Sequence Bridging & Multi-Hop Path Reasoning
 - When `knowledge_graph_structural_context` is provided:
   - It represents the authoritative topological graph of the workflow directly from Neo4j.
-  - `structural_path` shows the exact incoming and outgoing control flows and decision gateways connected to the target element.
-  - `directly_governing_rules` lists the rules with explicit normative control over this node.
+  - `structural_path` shows the exact incoming and outgoing control flows, decision gateways, and governing rules with their strictness label: `MANDATORY`, `CONDITIONAL`, `METRIC`, or `DESCRIPTIVE`.
+  - `governing_rules_detail` provides each governing rule's ID, full text, and formal classification.
   - `structural_precedents` lists relevant historical approved/rejected precedent decisions retrieved from the Knowledge Graph.
 
   - **Sequence Flow Bridging by Modeler**:
@@ -132,15 +133,15 @@ When `historical_rag_evidence` is provided:
     - Therefore, the mere topological fact that an activity resides between incoming and outgoing flows is **NEVER a valid reason to reject a removal!**
     - You must NEVER reject claiming "it breaks sequence flows" or "causes workflow disconnection", because the Modeler seamlessly bridges the gap!
 
-  - **Normative Principles for Evaluating Removals**:
-    - **1. Core Invariant Obligations**:
-      If an operational rule commands that a defined business function, regulatory check, or delivery handover must execute in every instance of the workflow, removing it without a verified substitute is a `RULE_VIOLATION` and MUST BE REJECTED.
-    - **2. Conditional Rules with Operational Substitutions**:
-      If a rule defines an action that is triggered only under specific conditional branches (e.g. exceptions, shortages, or discretionary options), removing that explicit procedural step is COMPLIANT and MUST BE APPROVED if the change request establishes an operational workaround ensuring that the trigger condition does not arise.
-    - **3. Secondary, Informational & Telemetry Activities**:
-      Activities whose sole function is non-blocking telemetry, secondary customer surveys, or optional negotiation steps that are not mandated by strict affirmative invariant rules may be removed to streamline the process. Such removals MUST BE APPROVED.
-    - **4. Thresholds & Configuration Boundaries**:
-      Rules that define numerical parameters, capacities, or metric boundaries govern systemic configuration; they do NOT constitute procedural commands requiring a dedicated manual task. Do not reject a task removal based solely on a configuration metric rule.
+  - **Normative Interpretation of Rule Strictness**:
+    - **1. MANDATORY (`INVARIANT_MANDATE`)**:
+      An unconditional imperative obligation commanding that a core business function, regulatory check, or statutory duty must execute in every process instance. Removing an activity governed by a `MANDATORY` rule without a verified replacement is a `RULE_VIOLATION` and MUST BE REJECTED.
+    - **2. CONDITIONAL (`CONDITIONAL_TRIGGER`)**:
+      The rule specifies an action that is triggered only under specific conditional branches (e.g. exceptions, shortages, or discretionary events). Removing that procedural step is COMPLIANT and MUST BE APPROVED if the change request establishes an operational workaround ensuring that the trigger condition does not arise or is handled elsewhere.
+    - **3. METRIC (`METRIC_THRESHOLD`)**:
+      Rules defining numerical parameters, capacities, SLAs, or metric boundaries govern systemic configuration; they do NOT constitute procedural commands requiring a dedicated manual task. Removing a task does NOT violate metric threshold rules and MUST BE APPROVED.
+    - **4. DESCRIPTIVE (`DESCRIPTIVE_POLICY`)**:
+      Informational, telemetry, or secondary activities not mandated by strict invariant rules may be removed to streamline the process. Such removals MUST BE APPROVED.
     - **5. Functional Target Mapping**:
       When a change request identifies a workflow element through descriptive phrasing, map the intent to the corresponding node in the graph. Do not reject as `AMBIGUOUS_REQUEST` if the intended target node is structurally identifiable in the workflow.
     - When `structural_precedents` indicate an approved removal of an analogous optional, cosmetic, telemetry, or auxiliary step, you MUST follow that precedent and APPROVE!

@@ -45,6 +45,7 @@ class BenchmarkRunner:
         allow_synthetic: bool = False,
         resume: bool = False,
         enable_rag: bool = True,
+        enable_kg: bool = True,
         retry_failed_only: bool = False,
         manager: ProviderManager | None = None,
         on_progress: Callable[[int, int, str], None] | None = None,
@@ -62,6 +63,7 @@ class BenchmarkRunner:
         self.allow_synthetic = allow_synthetic
         self.resume = resume
         self.enable_rag = enable_rag
+        self.enable_kg = enable_kg
         self.retry_failed_only = retry_failed_only
         self.manager = manager or ProviderManager()
         self.on_progress = on_progress
@@ -369,9 +371,11 @@ class BenchmarkRunner:
             app.orchestrator.llm = p_client
             app.orchestrator.analyst.llm = p_client
             app.orchestrator.analyst.enable_rag = self.enable_rag
-            app.orchestrator.analyst.enable_kg = True
-            if app.kg and app.kg.is_connected():
+            app.orchestrator.analyst.enable_kg = self.enable_kg
+            if self.enable_kg and app.kg and app.kg.is_connected():
                 app.orchestrator.analyst.kg = app.kg
+            else:
+                app.orchestrator.analyst.kg = None
             app.orchestrator.modeler.llm = p_client
             app.orchestrator.experimenter.llm = p_client
 

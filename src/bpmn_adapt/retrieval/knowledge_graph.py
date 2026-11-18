@@ -206,18 +206,22 @@ class BPMNKnowledgeGraphService:
                     fid=f.get("id", f"{source_id}->{target_id}"),
                 )
 
-            # 5. Rules & GOVERNED_BY links
+            # 5. Rules & GOVERNED_BY links with normative strictness
             for r in rules:
                 rule_id = r.get("rule_id", "R_UNKNOWN")
                 rule_text = r.get("text", "")
                 governed_elements = r.get("governed_elements", [])
                 category = r.get("category", "REGULATORY_COMPLIANCE")
+                rule_type = r.get("rule_type", "INVARIANT_MANDATE")
+                strictness = r.get("strictness", "MANDATORY")
 
                 session.run(
                     """
                     MERGE (rule:BusinessRule {rule_id: $rid, process_id: $pid})
-                    ON CREATE SET rule.expression_text = $rtext, rule.category = $cat, rule.folder_name = $fname
-                    ON MATCH SET rule.expression_text = $rtext, rule.folder_name = $fname
+                    ON CREATE SET rule.expression_text = $rtext, rule.category = $cat, rule.folder_name = $fname,
+                                  rule.rule_type = $rtype, rule.strictness = $strictness
+                    ON MATCH SET rule.expression_text = $rtext, rule.folder_name = $fname,
+                                 rule.rule_type = $rtype, rule.strictness = $strictness
                     WITH rule
                     MATCH (p:Process {process_id: $pid})
                     MERGE (p)-[:HAS_RULE]->(rule)
@@ -227,19 +231,24 @@ class BPMNKnowledgeGraphService:
                     fname=fname,
                     rtext=rule_text,
                     cat=category,
+                    rtype=rule_type,
+                    strictness=strictness,
                 )
 
                 for elem_name in governed_elements:
                     session.run(
                         """
-                        MATCH (t:Task {process_id: $pid})
-                        WHERE toLower(t.name) CONTAINS toLower($ename) OR toLower($ename) CONTAINS toLower(t.name)
+                        MATCH (t {process_id: $pid})
+                        WHERE (t:Task OR t:Gateway)
+                          AND (toLower(t.name) CONTAINS toLower($ename) OR toLower($ename) CONTAINS toLower(t.name))
                         MATCH (rule:BusinessRule {rule_id: $rid, process_id: $pid})
-                        MERGE (t)-[:GOVERNED_BY {strictness: 'MANDATORY'}]->(rule)
+                        MERGE (t)-[g:GOVERNED_BY {strictness: $strictness, rule_type: $rtype}]->(rule)
                         """,
                         pid=process_id,
                         ename=elem_name,
                         rid=rule_id,
+                        strictness=strictness,
+                        rtype=rule_type,
                     )
 
             # 6. Resources & Allocation
@@ -297,15 +306,23 @@ class BPMNKnowledgeGraphService:
                 OR toLower($tgt) CONTAINS toLower(t.name)
                 OR any(w IN split(toLower($tgt), ' ') WHERE size(w) > 4 AND toLower(t.name) CONTAINS w)
               )
-            OPTIONAL MATCH (t)-[:GOVERNED_BY]->(r:BusinessRule)
+            WITH t,
+                 CASE
+                   WHEN toLower(t.name) = toLower($tgt) THEN 1
+                   WHEN toLower(t.name) STARTS WITH toLower($tgt) OR toLower($tgt) STARTS WITH toLower(t.name) THEN 2
+                   WHEN toLower(t.name) CONTAINS toLower($tgt) OR toLower($tgt) CONTAINS toLower(t.name) THEN 3
+                   ELSE 4
+                 END AS score
+            ORDER BY score ASC, size(t.name) ASC
+            LIMIT 1
+            OPTIONAL MATCH (t)-[g:GOVERNED_BY]->(r:BusinessRule)
             OPTIONAL MATCH (prev)-[:SEQUENCE_FLOW]->(t)
             OPTIONAL MATCH (t)-[:SEQUENCE_FLOW]->(nxt)
             RETURN t.name AS name,
-                   collect(DISTINCT r.rule_id) AS rule_ids,
-                   collect(DISTINCT {id: r.rule_id, text: r.expression_text}) AS rule_objs,
+                   collect(DISTINCT {id: r.rule_id, strictness: g.strictness, type: g.rule_type}) AS rule_summaries,
+                   collect(DISTINCT {id: r.rule_id, text: r.expression_text, strictness: g.strictness, type: g.rule_type}) AS rule_objs,
                    collect(DISTINCT prev.name) AS incoming,
                    collect(DISTINCT nxt.name) AS outgoing
-            LIMIT 1
             """
             rec = session.run(cypher, pid=process_id, tgt=target_element).single()
             if rec and rec["name"]:
@@ -313,7 +330,7 @@ class BPMNKnowledgeGraphService:
                 out["matched_name"] = rec["name"]
                 out["incoming_nodes"] = [x for x in rec["incoming"] if x]
                 out["outgoing_nodes"] = [x for x in rec["outgoing"] if x]
-                out["governing_rules"] = [x for x in rec["rule_ids"] if x]
+                out["governing_rules"] = [f"{x['id']} ({x.get('strictness', 'MANDATORY')})" for x in rec["rule_summaries"] if x and x.get("id")]
                 out["governing_rule_details"] = [x for x in rec["rule_objs"] if x and x.get("id")]
 
                 inc_str = ", ".join(out["incoming_nodes"]) if out["incoming_nodes"] else "None"

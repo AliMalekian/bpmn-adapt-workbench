@@ -23,8 +23,24 @@ from bpmn_adapt.bpmn.graph import BpmnGraph
 from bpmn_adapt.ingestion.discovery import ingest_folder
 from bpmn_adapt.retrieval.knowledge_graph import BPMNKnowledgeGraphService
 
+import re
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("neo4j_full_etl")
+
+
+def classify_rule(text: str) -> tuple[str, str]:
+    t = text.lower().strip()
+    cond_patterns = [r'\bif\b', r'\bwhen\b', r'\bunless\b', r'\bin case\b', r'\bwhere\b', r'\bonly if\b', r'\boptional\b', r'\bmay\b', r'\bcan\b']
+    if any(re.search(p, t) for p in cond_patterns):
+        return 'CONDITIONAL', 'CONDITIONAL'
+    metric_patterns = [r'\bmaximum\b', r'\bminimum\b', r'\bat least\b', r'\bat most\b', r'\bcapacity\b', r'\bbetween \d+\b', r'\bfee\b', r'\brate\b', r'\bper shift\b', r'\bper month\b', r'\bseconds\b', r'\bminutes\b', r'\bdays\b', r'%']
+    if any(re.search(p, t) for p in metric_patterns):
+        return 'METRIC_THRESHOLD', 'METRIC'
+    mandate_patterns = [r'\bmust\b', r'\bshall\b', r'\brequired\b', r'\bmandatory\b', r'\bprohibited\b', r'\bnever\b', r'\bforbidden\b']
+    if any(re.search(p, t) for p in mandate_patterns):
+        return 'INVARIANT_MANDATE', 'MANDATORY'
+    return 'DESCRIPTIVE_POLICY', 'DESCRIPTIVE'
 
 
 def run_full_etl(neo4j_uri="bolt://127.0.0.1:7687", auth=("neo4j", "123456789")):
@@ -95,11 +111,14 @@ def run_full_etl(neo4j_uri="bolt://127.0.0.1:7687", auth=("neo4j", "123456789"))
                     t_name = t["name"]
                     if len(t_name) > 3 and (t_name.lower() in r_text_low or any(w in r_text_low for w in t_name.lower().split() if len(w) > 4)):
                         gov_elems.append(t_name)
+                rtype, strictness = classify_rule(r.text)
                 rules.append({
                     "rule_id": r.rule_id,
                     "text": r.text,
                     "governed_elements": gov_elems,
                     "category": "REGULATORY_COMPLIANCE",
+                    "rule_type": rtype,
+                    "strictness": strictness,
                 })
 
             # Resources
