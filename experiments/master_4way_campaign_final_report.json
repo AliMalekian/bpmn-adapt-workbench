@@ -1,0 +1,86 @@
+{
+  "campaign": "Master 4-Way Sequential Benchmark Campaign",
+  "total_duration_hours": 42.13,
+  "phases": [
+    {
+      "phase_id": "kg_pure",
+      "name": "Phase 1: Pure Knowledge Graph (Neo4j HKG)",
+      "enable_kg": true,
+      "enable_rag": false,
+      "duration_hours": 10.45,
+      "duration_seconds": 37624.2,
+      "metrics": {
+        "total": 984,
+        "correct": 902,
+        "acc": 91.66666666666666,
+        "prec": 91.09311740890689,
+        "rec": 93.55509355509356,
+        "f1": 92.30769230769232,
+        "tp": 450,
+        "fp": 44,
+        "tn": 441,
+        "fn": 31
+      }
+    },
+    {
+      "phase_id": "graph_rag",
+      "name": "Phase 2: Hybrid Graph-RAG (Neo4j + Vector RAG)",
+      "enable_kg": true,
+      "enable_rag": true,
+      "duration_hours": 11.19,
+      "duration_seconds": 40283.7,
+      "metrics": {
+        "total": 984,
+        "correct": 908,
+        "acc": 92.27642276422763,
+        "prec": 92.7536231884058,
+        "rec": 92.7536231884058,
+        "f1": 92.7536231884058,
+        "tp": 448,
+        "fp": 35,
+        "tn": 451,
+        "fn": 35
+      }
+    },
+    {
+      "phase_id": "no_rag",
+      "name": "Phase 3: Clean Baseline (No-RAG, No-KG)",
+      "enable_kg": false,
+      "enable_rag": false,
+      "duration_hours": 9.77,
+      "duration_seconds": 35160.9,
+      "metrics": {
+        "total": 984,
+        "correct": 929,
+        "acc": 94.41056910569105,
+        "prec": 95.93147751605996,
+        "rec": 92.56198347107438,
+        "f1": 94.21661409043112,
+        "tp": 448,
+        "fp": 19,
+        "tn": 473,
+        "fn": 36
+      }
+    },
+    {
+      "phase_id": "with_rag",
+      "name": "Phase 4: Flat Vector RAG (With-RAG)",
+      "enable_kg": false,
+      "enable_rag": true,
+      "duration_hours": 10.73,
+      "duration_seconds": 38614.4,
+      "metrics": {
+        "total": 984,
+        "correct": 935,
+        "acc": 95.02032520325203,
+        "prec": 98.01762114537445,
+        "rec": 91.75257731958763,
+        "f1": 94.78168264110755,
+        "tp": 445,
+        "fp": 9,
+        "tn": 483,
+        "fn": 40
+      }
+    }
+  ]
+}
