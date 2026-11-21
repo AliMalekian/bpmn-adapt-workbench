@@ -214,14 +214,18 @@ class BPMNKnowledgeGraphService:
                 category = r.get("category", "REGULATORY_COMPLIANCE")
                 rule_type = r.get("rule_type", "INVARIANT_MANDATE")
                 strictness = r.get("strictness", "MANDATORY")
+                obligation = r.get("obligation", "MANDATORY")
+                trigger = r.get("trigger", "ALWAYS")
 
                 session.run(
                     """
                     MERGE (rule:BusinessRule {rule_id: $rid, process_id: $pid})
                     ON CREATE SET rule.expression_text = $rtext, rule.category = $cat, rule.folder_name = $fname,
-                                  rule.rule_type = $rtype, rule.strictness = $strictness
+                                  rule.rule_type = $rtype, rule.strictness = $strictness,
+                                  rule.obligation = $obligation, rule.trigger = $trigger
                     ON MATCH SET rule.expression_text = $rtext, rule.folder_name = $fname,
-                                 rule.rule_type = $rtype, rule.strictness = $strictness
+                                 rule.rule_type = $rtype, rule.strictness = $strictness,
+                                 rule.obligation = $obligation, rule.trigger = $trigger
                     WITH rule
                     MATCH (p:Process {process_id: $pid})
                     MERGE (p)-[:HAS_RULE]->(rule)
@@ -233,6 +237,8 @@ class BPMNKnowledgeGraphService:
                     cat=category,
                     rtype=rule_type,
                     strictness=strictness,
+                    obligation=obligation,
+                    trigger=trigger,
                 )
 
                 for elem_name in governed_elements:
@@ -242,13 +248,15 @@ class BPMNKnowledgeGraphService:
                         WHERE (t:Task OR t:Gateway)
                           AND (toLower(t.name) CONTAINS toLower($ename) OR toLower($ename) CONTAINS toLower(t.name))
                         MATCH (rule:BusinessRule {rule_id: $rid, process_id: $pid})
-                        MERGE (t)-[g:GOVERNED_BY {strictness: $strictness, rule_type: $rtype}]->(rule)
+                        MERGE (t)-[g:GOVERNED_BY {strictness: $strictness, rule_type: $rtype, obligation: $obligation, trigger: $trigger}]->(rule)
                         """,
                         pid=process_id,
                         ename=elem_name,
                         rid=rule_id,
                         strictness=strictness,
                         rtype=rule_type,
+                        obligation=obligation,
+                        trigger=trigger,
                     )
 
             # 6. Resources & Allocation
@@ -319,8 +327,8 @@ class BPMNKnowledgeGraphService:
             OPTIONAL MATCH (prev)-[:SEQUENCE_FLOW]->(t)
             OPTIONAL MATCH (t)-[:SEQUENCE_FLOW]->(nxt)
             RETURN t.name AS name,
-                   collect(DISTINCT {id: r.rule_id, strictness: g.strictness, type: g.rule_type}) AS rule_summaries,
-                   collect(DISTINCT {id: r.rule_id, text: r.expression_text, strictness: g.strictness, type: g.rule_type}) AS rule_objs,
+                   collect(DISTINCT {id: r.rule_id, strictness: g.strictness, type: g.rule_type, obligation: g.obligation, trigger: g.trigger}) AS rule_summaries,
+                   collect(DISTINCT {id: r.rule_id, text: r.expression_text, strictness: g.strictness, type: g.rule_type, obligation: g.obligation, trigger: g.trigger}) AS rule_objs,
                    collect(DISTINCT prev.name) AS incoming,
                    collect(DISTINCT nxt.name) AS outgoing
             """
@@ -330,7 +338,10 @@ class BPMNKnowledgeGraphService:
                 out["matched_name"] = rec["name"]
                 out["incoming_nodes"] = [x for x in rec["incoming"] if x]
                 out["outgoing_nodes"] = [x for x in rec["outgoing"] if x]
-                out["governing_rules"] = [f"{x['id']} ({x.get('strictness', 'MANDATORY')})" for x in rec["rule_summaries"] if x and x.get("id")]
+                out["governing_rules"] = [
+                    f"{x['id']} ({x.get('strictness', 'MANDATORY')}{' - ' + x.get('trigger') if x.get('trigger') == 'CONDITIONAL' else ''})"
+                    for x in rec["rule_summaries"] if x and x.get("id")
+                ]
                 out["governing_rule_details"] = [x for x in rec["rule_objs"] if x and x.get("id")]
 
                 inc_str = ", ".join(out["incoming_nodes"]) if out["incoming_nodes"] else "None"

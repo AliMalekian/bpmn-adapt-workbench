@@ -29,18 +29,70 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 logger = logging.getLogger("neo4j_full_etl")
 
 
-def classify_rule(text: str) -> tuple[str, str]:
+def classify_rule(text: str) -> tuple[str, str, str, str]:
+    """
+    Two-Axis Normative Ontology Classification:
+    Axis 1: Obligation Level (MANDATORY vs DISCRETIONARY vs METRIC vs DESCRIPTIVE)
+    Axis 2: Trigger Modality (ALWAYS vs CONDITIONAL)
+    """
     t = text.lower().strip()
-    cond_patterns = [r'\bif\b', r'\bwhen\b', r'\bunless\b', r'\bin case\b', r'\bwhere\b', r'\bonly if\b', r'\boptional\b', r'\bmay\b', r'\bcan\b']
-    if any(re.search(p, t) for p in cond_patterns):
-        return 'CONDITIONAL', 'CONDITIONAL'
-    metric_patterns = [r'\bmaximum\b', r'\bminimum\b', r'\bat least\b', r'\bat most\b', r'\bcapacity\b', r'\bbetween \d+\b', r'\bfee\b', r'\brate\b', r'\bper shift\b', r'\bper month\b', r'\bseconds\b', r'\bminutes\b', r'\bdays\b', r'%']
-    if any(re.search(p, t) for p in metric_patterns):
-        return 'METRIC_THRESHOLD', 'METRIC'
-    mandate_patterns = [r'\bmust\b', r'\bshall\b', r'\brequired\b', r'\bmandatory\b', r'\bprohibited\b', r'\bnever\b', r'\bforbidden\b']
-    if any(re.search(p, t) for p in mandate_patterns):
-        return 'INVARIANT_MANDATE', 'MANDATORY'
-    return 'DESCRIPTIVE_POLICY', 'DESCRIPTIVE'
+    
+    # 1. Imperative obligation patterns: statutory, non-bypassable core duties
+    mandate_patterns = [
+        r'\bmust\b', r'\bshall\b', r'\brequired\b', r'\bmandatory\b', r'\bprohibited\b',
+        r'\bnever\b', r'\bforbidden\b', r'\bis forwarded\b', r'\bare forwarded\b',
+        r'\bis issued\b', r'\bare issued\b', r'\bis measured\b', r'\bare measured\b',
+        r'\bis sent\b', r'\bare sent\b', r'\bis entered\b', r'\bare entered\b',
+        r'\bis created\b', r'\bare created\b', r'\bis reported\b', r'\bare reported\b',
+        r'\bis triggered\b', r'\bare triggered\b', r'\bis asked\b', r'\bare asked\b',
+        r'\bis messaged\b', r'\bare messaged\b', r'\bis collected\b', r'\bare collected\b',
+        r'\bis conducted\b', r'\bare conducted\b', r'\bis performed\b', r'\bare performed\b',
+        r'\bis verified\b', r'\bare verified\b', r'\bis notified\b', r'\bare notified\b',
+        r'\bwill be rejected\b', r'\bstrictly\b', r'\bcannot\b', r'\bhave to\b', r'\bhas to\b'
+    ]
+    is_mandatory = any(re.search(p, t) for p in mandate_patterns)
+    
+    # 2. Permissive/Discretionary patterns
+    discretionary_patterns = [
+        r'\boptional\b', r'\bmay\b', r'\bcan be skipped\b', r'\bdiscretionary\b',
+        r'\bnot required\b', r'\bpermitted\b', r'\bsuggested\b'
+    ]
+    is_discretionary = any(re.search(p, t) for p in discretionary_patterns)
+    
+    # 3. Conditional triggers
+    cond_patterns = [
+        r'\bif\b', r'\bwhen\b', r'\bunless\b', r'\bin case\b', r'\bonly if\b',
+        r'\bwhere\b', r'\bprovided that\b'
+    ]
+    is_conditional = any(re.search(p, t) for p in cond_patterns)
+    
+    trigger = 'CONDITIONAL' if is_conditional else 'ALWAYS'
+    
+    if is_mandatory:
+        obligation = 'MANDATORY'
+        rule_type = 'INVARIANT_MANDATE'
+        strictness = 'MANDATORY'
+    elif is_discretionary:
+        obligation = 'DISCRETIONARY'
+        rule_type = 'PERMISSIVE_OPTION'
+        strictness = 'DISCRETIONARY'
+    else:
+        metric_patterns = [
+            r'\bmaximum\b', r'\bminimum\b', r'\bat least\b', r'\bat most\b',
+            r'\bcapacity\b', r'\bbetween \d+\b', r'\bfee\b', r'\brate\b',
+            r'\bper shift\b', r'\bper month\b', r'\bseconds\b', r'\bminutes\b',
+            r'\bdays\b', r'%'
+        ]
+        if any(re.search(p, t) for p in metric_patterns):
+            obligation = 'METRIC'
+            rule_type = 'METRIC_THRESHOLD'
+            strictness = 'METRIC'
+        else:
+            obligation = 'DESCRIPTIVE'
+            rule_type = 'DESCRIPTIVE_POLICY'
+            strictness = 'DESCRIPTIVE'
+            
+    return rule_type, strictness, obligation, trigger
 
 
 def run_full_etl(neo4j_uri="bolt://127.0.0.1:7687", auth=("neo4j", "123456789")):
@@ -111,7 +163,7 @@ def run_full_etl(neo4j_uri="bolt://127.0.0.1:7687", auth=("neo4j", "123456789"))
                     t_name = t["name"]
                     if len(t_name) > 3 and (t_name.lower() in r_text_low or any(w in r_text_low for w in t_name.lower().split() if len(w) > 4)):
                         gov_elems.append(t_name)
-                rtype, strictness = classify_rule(r.text)
+                rtype, strictness, obligation, trigger = classify_rule(r.text)
                 rules.append({
                     "rule_id": r.rule_id,
                     "text": r.text,
@@ -119,6 +171,8 @@ def run_full_etl(neo4j_uri="bolt://127.0.0.1:7687", auth=("neo4j", "123456789"))
                     "category": "REGULATORY_COMPLIANCE",
                     "rule_type": rtype,
                     "strictness": strictness,
+                    "obligation": obligation,
+                    "trigger": trigger,
                 })
 
             # Resources
