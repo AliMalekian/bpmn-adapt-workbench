@@ -1,0 +1,16 @@
+{
+  "method_name": "Two-Axis Pure Knowledge Graph (Best KG-Only)",
+  "folder": "4_pure_kg",
+  "description": "Pure Two-Axis Neo4j Knowledge Graph subgraphs and invariant rule injection without RAG.",
+  "total_scenarios": 984,
+  "metrics": {
+    "accuracy": 93.9,
+    "precision": 96.3,
+    "recall": 91.72,
+    "f1_score": 93.96,
+    "true_positives": 443,
+    "false_positives": 17,
+    "true_negatives": 472,
+    "false_negatives": 40
+  }
+}

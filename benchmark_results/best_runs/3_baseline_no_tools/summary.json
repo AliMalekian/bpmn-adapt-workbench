@@ -1,0 +1,16 @@
+{
+  "method_name": "Baseline No-Tools (Clean Zero-Shot)",
+  "folder": "3_baseline_no_tools",
+  "description": "Zero-shot direct LLM adaptation without RAG and without Knowledge Graph under domain-agnostic invariant rules.",
+  "total_scenarios": 984,
+  "metrics": {
+    "accuracy": 94.41,
+    "precision": 95.93,
+    "recall": 92.56,
+    "f1_score": 94.22,
+    "true_positives": 448,
+    "false_positives": 19,
+    "true_negatives": 473,
+    "false_negatives": 36
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "method_name": "Flat Vector RAG (Best RAG-Only)",
+  "folder": "1_with_rag",
+  "description": "Dense semantic vector retrieval over past adaptation precedents (ChromaDB) with analogical reasoning prompt.",
+  "total_scenarios": 984,
+  "metrics": {
+    "accuracy": 95.02,
+    "precision": 98.02,
+    "recall": 91.75,
+    "f1_score": 94.78,
+    "true_positives": 445,
+    "false_positives": 9,
+    "true_negatives": 483,
+    "false_negatives": 40
+  }
+}

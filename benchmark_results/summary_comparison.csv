@@ -1,0 +1,5 @@
+Rank,Method Key,Method Title,Accuracy (%),Precision (%),Recall (%),F1-Score (%),FP,FN,TP,TN,Directory Path
+1,1_with_rag,Flat Vector RAG (Best RAG-Only),95.02,98.02,91.75,94.78,9,40,445,483,benchmark_results/best_runs/1_with_rag
+2,2_hybrid_kg_rag,Two-Axis Hybrid Graph-RAG (Best Combined),94.41,97.78,91.48,94.52,10,41,440,481,benchmark_results/best_runs/2_hybrid_kg_rag
+3,3_baseline_no_tools,Baseline No-Tools (Clean Zero-Shot),94.41,95.93,92.56,94.22,19,36,448,473,benchmark_results/best_runs/3_baseline_no_tools
+4,4_pure_kg,Two-Axis Pure Knowledge Graph (Best KG-Only),93.9,96.3,91.72,93.96,17,40,443,472,benchmark_results/best_runs/4_pure_kg

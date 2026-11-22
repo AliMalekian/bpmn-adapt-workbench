@@ -1,0 +1,16 @@
+{
+  "method_name": "Two-Axis Hybrid Graph-RAG (Best Combined)",
+  "folder": "2_hybrid_kg_rag",
+  "description": "Decoupled Two-Axis Neo4j Knowledge Graph (Mandatory vs Discretionary / Always vs Conditional) + Dense Vector RAG.",
+  "total_scenarios": 984,
+  "metrics": {
+    "accuracy": 94.41,
+    "precision": 97.78,
+    "recall": 91.48,
+    "f1_score": 94.52,
+    "true_positives": 440,
+    "false_positives": 10,
+    "true_negatives": 481,
+    "false_negatives": 41
+  }
+}

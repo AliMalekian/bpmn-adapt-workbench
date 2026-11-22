@@ -11,6 +11,19 @@ The platform orchestrates a collaborative multi-agent architecture powered by La
 
 ---
 
+## 🏆 Final Master Benchmark Results (82 Processes, 984 Scenarios per Mode)
+> 📊 **Explore the complete benchmark dashboard and raw scenario outputs**:  
+> 👉 **[Go to Benchmark Results Dashboard (`benchmark_results/README.md`)](benchmark_results/README.md)**
+
+| Rank | Architecture | Accuracy | Precision | F1-Score | FP (Illegal Approvals) | Direct Link |
+| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
+| **🥇 1** | **Flat Vector RAG** | **95.02%** | **98.02%** | **94.78%** | **9** | [View Run Files](benchmark_results/best_runs/1_with_rag/) |
+| **🥈 2** | **Two-Axis Hybrid Graph-RAG** | **94.41%** | **97.78%** | **94.52%** | **10** | [View Run Files](benchmark_results/best_runs/2_hybrid_kg_rag/) |
+| **🥉 3** | **Baseline No-Tools (Zero-Shot)** | **94.41%** | 95.93% | 94.22% | 19 | [View Run Files](benchmark_results/best_runs/3_baseline_no_tools/) |
+| **4** | **Two-Axis Pure Knowledge Graph** | 93.90% | 96.30% | 93.96% | 17 | [View Run Files](benchmark_results/best_runs/4_pure_kg/) |
+
+---
+
 ## Table of Contents
 - [1. Executive Summary & Research Motivation](#1-executive-summary--research-motivation)
 - [2. Multi-Agent System Architecture](#2-multi-agent-system-architecture)

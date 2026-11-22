@@ -1,0 +1,54 @@
+{
+  "1_with_rag": {
+    "title": "Flat Vector RAG (Best RAG-Only)",
+    "source_dir": "experiments/master_full_82_with_rag",
+    "description": "Dense semantic vector retrieval over past adaptation precedents (ChromaDB) with analogical reasoning prompt.",
+    "acc": 95.02,
+    "prec": 98.02,
+    "rec": 91.75,
+    "f1": 94.78,
+    "tp": 445,
+    "fp": 9,
+    "tn": 483,
+    "fn": 40
+  },
+  "2_hybrid_kg_rag": {
+    "title": "Two-Axis Hybrid Graph-RAG (Best Combined)",
+    "source_dir": "experiments/v5_2_two_axis_graph_rag",
+    "description": "Decoupled Two-Axis Neo4j Knowledge Graph (Mandatory vs Discretionary / Always vs Conditional) + Dense Vector RAG.",
+    "acc": 94.41,
+    "prec": 97.78,
+    "rec": 91.48,
+    "f1": 94.52,
+    "tp": 440,
+    "fp": 10,
+    "tn": 481,
+    "fn": 41
+  },
+  "3_baseline_no_tools": {
+    "title": "Baseline No-Tools (Clean Zero-Shot)",
+    "source_dir": "experiments/master_full_82_no_rag",
+    "description": "Zero-shot direct LLM adaptation without RAG and without Knowledge Graph under domain-agnostic invariant rules.",
+    "acc": 94.41,
+    "prec": 95.93,
+    "rec": 92.56,
+    "f1": 94.22,
+    "tp": 448,
+    "fp": 19,
+    "tn": 473,
+    "fn": 36
+  },
+  "4_pure_kg": {
+    "title": "Two-Axis Pure Knowledge Graph (Best KG-Only)",
+    "source_dir": "experiments/v5_2_two_axis_kg_pure",
+    "description": "Pure Two-Axis Neo4j Knowledge Graph subgraphs and invariant rule injection without RAG.",
+    "acc": 93.9,
+    "prec": 96.3,
+    "rec": 91.72,
+    "f1": 93.96,
+    "tp": 443,
+    "fp": 17,
+    "tn": 472,
+    "fn": 40
+  }
+}
