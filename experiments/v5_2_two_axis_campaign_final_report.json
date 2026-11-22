@@ -1,0 +1,46 @@
+{
+  "campaign": "Two-Axis Knowledge Graph Benchmark Campaign",
+  "total_duration_hours": 25.76,
+  "phases": [
+    {
+      "phase_id": "two_axis_kg_pure",
+      "name": "Phase 1: Two-Axis Pure Knowledge Graph (Neo4j)",
+      "enable_kg": true,
+      "enable_rag": false,
+      "duration_hours": 9.9,
+      "duration_seconds": 35623.0,
+      "metrics": {
+        "total": 984,
+        "correct": 924,
+        "acc": 93.90243902439023,
+        "prec": 96.30434782608695,
+        "rec": 91.7184265010352,
+        "f1": 93.95546129374337,
+        "tp": 443,
+        "fp": 17,
+        "tn": 472,
+        "fn": 40
+      }
+    },
+    {
+      "phase_id": "two_axis_graph_rag",
+      "name": "Phase 2: Two-Axis Hybrid Graph-RAG (Neo4j + Vector RAG)",
+      "enable_kg": true,
+      "enable_rag": true,
+      "duration_hours": 15.86,
+      "duration_seconds": 57113.5,
+      "metrics": {
+        "total": 984,
+        "correct": 929,
+        "acc": 94.41056910569105,
+        "prec": 97.77777777777777,
+        "rec": 91.47609147609148,
+        "f1": 94.52201933404942,
+        "tp": 440,
+        "fp": 10,
+        "tn": 481,
+        "fn": 41
+      }
+    }
+  ]
+}
