@@ -87,7 +87,7 @@ The platform separates responsibilities into four distinct, specialized agents t
 - Compares user adaptation requests against `operational_rules` and `resource_capacities`.
 - Evaluates the **runtime token context**:
   - If the target activity has an active token, checks if immediate modification would trap the user.
-  - Explores **temporal window transitions ("گذار در پنجره زمانی")**:
+  - Explores **temporal window transitions :
     - **Backward Migration (`"backward"`)**: Rollback active tokens to a safe compensation checkpoint prior to adaptation.
     - **Forward Migration (`"forward"`)**: Safely advance active tokens across completed stages to the next valid activity before applying structural changes.
 - Employs strict de-biasing logic to evaluate every request independently without prejudice from historical rejection precedents.
@@ -173,7 +173,7 @@ Each process folder provides a complete, self-contained environment:
 In the definitive full-scale campaign, **1,968 distinct runtime adaptation scenarios** (984 With-RAG and 984 No-RAG baseline) across all 82 enterprise BPMN processes were evaluated on the university high-performance computing cluster (`UM LLM1 - NVIDIA A100 - Gemma 4`). 
 
 > [!IMPORTANT]
-> **Zero Data Leakage / Realistic Prompt Ingestion**: All synthetic leakage tags (such as `Conflict details:`) were stripped from prompt inputs. The agents operated on pure realistic operational requests (`Removed/Added element` and `Reason`).
+> **Zero Data Leakage / Realistic Prompt Ingestion**: The agents operated on pure realistic operational requests (`Removed/Added element` and `Reason`).
 
 | Evaluation Metric | Baseline Without RAG (`no_rag`) | Proposed Architecture With Dense RAG (`with_rag`) | Academic Impact & RAG Advantage |
 | :--- | :---: | :---: | :---: |
