@@ -263,7 +263,7 @@ Features available in the GUI:
 If you utilize this software, dataset, or methodology in your research, please cite:
 
 ```bibtex
-@phdthesis{malekian2026runtime,
+@MScthesis{malekian2026runtime,
   author       = {Ali Malekian},
   title        = {A Multi-Agent Framework for Safe Runtime Adaptation of BPMN Process Instances Using Large Language Models and Formal Verification},
   school       = {Department of Computer Engineering, Ferdowsi University of Mashhad},
