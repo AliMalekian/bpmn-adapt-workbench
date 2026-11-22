@@ -36,7 +36,7 @@ Modern business processes operate in highly volatile environments where unexpect
 This research introduces an autonomous multi-agent framework that treats runtime process adaptation as a formal, constraint-bounded problem. In this system:
 1. **Atomic Operations**: Adaptations are strictly formalised as **`REMOVE`** and **`ADD`** (including structural restoration via **`RE_ADD`**).
 2. **Context-Aware Verification**: No change is applied blindly. Operational business rules (`Rules.txt`), organizational resource capacities (`Resources.txt`), and active user execution states (`states.txt`) serve as immutable ground-truth constraints.
-3. **Temporal Window Transition ("گذار در پنجره زمانی")**: When an adaptation is temporarily blocked by the user's current token position, the system does not abruptly reject the request; instead, it investigates a temporal transition window to migrate the user forward or backward to a safe milestone.
+3. **Temporal Window Transition**: When an adaptation is temporarily blocked by the user's current token position, the system does not abruptly reject the request; instead, it investigates a temporal transition window to migrate the user forward or backward to a safe milestone.
 4. **Structural Fidelity via Graph Edit Distance (GED)**: The system mathematically verifies that removing and re-adding process fragments restores the exact topology of the pristine process without dangling nodes or semantic drift.
 
 ---
