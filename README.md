@@ -49,7 +49,7 @@ Modern business processes operate in highly volatile environments where unexpect
 This research introduces an autonomous multi-agent framework that treats runtime process adaptation as a formal, constraint-bounded problem. In this system:
 1. **Atomic Operations**: Adaptations are strictly formalised as **`REMOVE`** and **`ADD`** (including structural restoration via **`RE_ADD`**).
 2. **Context-Aware Verification**: No change is applied blindly. Operational business rules (`Rules.txt`), organizational resource capacities (`Resources.txt`), and active user execution states (`states.txt`) serve as immutable ground-truth constraints.
-3. **Temporal Window Transition ("گذار در پنجره زمانی")**: When an adaptation is temporarily blocked by the user's current token position, the system does not abruptly reject the request; instead, it investigates a temporal transition window to migrate the user forward or backward to a safe milestone.
+3. **Temporal Window Transition**: When an adaptation is temporarily blocked by the user's current token position, the system does not abruptly reject the request; instead, it investigates a temporal transition window to migrate the user forward or backward to a safe milestone.
 4. **Structural Fidelity via Graph Edit Distance (GED)**: The system mathematically verifies that removing and re-adding process fragments restores the exact topology of the pristine process without dangling nodes or semantic drift.
 
 ---
@@ -100,7 +100,7 @@ The platform separates responsibilities into four distinct, specialized agents t
 - Compares user adaptation requests against `operational_rules` and `resource_capacities`.
 - Evaluates the **runtime token context**:
   - If the target activity has an active token, checks if immediate modification would trap the user.
-  - Explores **temporal window transitions ("گذار در پنجره زمانی")**:
+  - Explores **temporal window transitions :
     - **Backward Migration (`"backward"`)**: Rollback active tokens to a safe compensation checkpoint prior to adaptation.
     - **Forward Migration (`"forward"`)**: Safely advance active tokens across completed stages to the next valid activity before applying structural changes.
 - Employs strict de-biasing logic to evaluate every request independently without prejudice from historical rejection precedents.
@@ -186,7 +186,7 @@ Each process folder provides a complete, self-contained environment:
 In the definitive full-scale campaign, **1,968 distinct runtime adaptation scenarios** (984 With-RAG and 984 No-RAG baseline) across all 82 enterprise BPMN processes were evaluated on the university high-performance computing cluster (`UM LLM1 - NVIDIA A100 - Gemma 4`). 
 
 > [!IMPORTANT]
-> **Zero Data Leakage / Realistic Prompt Ingestion**: All synthetic leakage tags (such as `Conflict details:`) were stripped from prompt inputs. The agents operated on pure realistic operational requests (`Removed/Added element` and `Reason`).
+> **Zero Data Leakage / Realistic Prompt Ingestion**: The agents operated on pure realistic operational requests (`Removed/Added element` and `Reason`).
 
 | Evaluation Metric | Baseline Without RAG (`no_rag`) | Proposed Architecture With Dense RAG (`with_rag`) | Academic Impact & RAG Advantage |
 | :--- | :---: | :---: | :---: |
@@ -276,7 +276,7 @@ Features available in the GUI:
 If you utilize this software, dataset, or methodology in your research, please cite:
 
 ```bibtex
-@phdthesis{malekian2026runtime,
+@MScthesis{malekian2026runtime,
   author       = {Ali Malekian},
   title        = {A Multi-Agent Framework for Safe Runtime Adaptation of BPMN Process Instances Using Large Language Models and Formal Verification},
   school       = {Department of Computer Engineering, Ferdowsi University of Mashhad},
